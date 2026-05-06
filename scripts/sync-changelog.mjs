@@ -1,11 +1,20 @@
 #!/usr/bin/env node
 /**
  * sync-changelog.mjs
- * Fetches CHANGELOG.md from ophel repo and converts to Mintlify MDX changelog page.
+ * Fetches the bilingual changelog from the ophel repo and converts each
+ * language into a Mintlify MDX changelog page.
+ *
+ * Source files in the ophel repo:
+ *   - CHANGELOG.md         (English, default)
+ *   - CHANGELOG.zh-CN.md   (Chinese)
+ *
+ * Output files in this docs repo:
+ *   - changelog.mdx        (English)
+ *   - zh/changelog.mdx     (Chinese)
  *
  * Usage:
  *   node scripts/sync-changelog.mjs              # fetch from GitHub
- *   node scripts/sync-changelog.mjs --local      # read from local ../ophel/CHANGELOG.md
+ *   node scripts/sync-changelog.mjs --local      # read from local ../ophel/CHANGELOG*.md
  */
 
 import { readFileSync, writeFileSync, mkdirSync } from "fs";
@@ -15,27 +24,39 @@ import { fileURLToPath } from "url";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, "..");
 
-const CHANGELOG_URL =
-	"https://raw.githubusercontent.com/urzeye/ophel/main/CHANGELOG.md";
-const LOCAL_PATH = resolve(__dirname, "../../ophel/CHANGELOG.md");
+const SOURCES = {
+	en: {
+		url: "https://raw.githubusercontent.com/urzeye/ophel/main/CHANGELOG.md",
+		localPath: resolve(__dirname, "../../ophel/CHANGELOG.md"),
+		outPath: resolve(ROOT, "changelog.mdx"),
+		title: "Changelog",
+		description: "All notable changes to Ophel Atlas are documented here.",
+	},
+	zh: {
+		url: "https://raw.githubusercontent.com/urzeye/ophel/main/CHANGELOG.zh-CN.md",
+		localPath: resolve(__dirname, "../../ophel/CHANGELOG.zh-CN.md"),
+		outPath: resolve(ROOT, "zh/changelog.mdx"),
+		title: "更新日志",
+		description: "Ophel Atlas 的所有重要更改均记录于此。",
+	},
+};
 
 const isLocal = process.argv.includes("--local");
 
 // ── Fetch / read source ─────────────────────────────────────────────────────
-async function fetchSource() {
+async function fetchSource(source) {
 	if (isLocal) {
-		console.log("Reading local CHANGELOG.md …");
-		return readFileSync(LOCAL_PATH, "utf8");
+		console.log(`Reading ${source.localPath} …`);
+		return readFileSync(source.localPath, "utf8");
 	}
-	console.log("Fetching CHANGELOG.md from GitHub …");
-	const res = await fetch(CHANGELOG_URL);
+	console.log(`Fetching ${source.url} …`);
+	const res = await fetch(source.url);
 	if (!res.ok) throw new Error(`HTTP ${res.status}: ${res.statusText}`);
 	return res.text();
 }
 
 // ── Parse into version blocks ───────────────────────────────────────────────
 function parseVersions(raw) {
-	// Split on ## [ headings (version entries)
 	const lines = raw.split("\n");
 	const versions = [];
 	let current = null;
@@ -59,9 +80,7 @@ function parseVersions(raw) {
 
 // ── Convert one version to MDX Update block ─────────────────────────────────
 function versionToUpdate(version) {
-	// Trim trailing blank lines
 	let body = version.lines.join("\n").trimEnd();
-	// Indent content by 2 spaces inside Update block for readability
 	const indented = body
 		.split("\n")
 		.map((l) => (l.trim() === "" ? "" : "  " + l))
@@ -76,30 +95,24 @@ function buildMdx(versions, title, description) {
 	return frontmatter + blocks + "\n";
 }
 
+// ── Sync a single language ──────────────────────────────────────────────────
+async function syncLanguage(lang, source) {
+	const raw = await fetchSource(source);
+	const versions = parseVersions(raw);
+	console.log(
+		`[${lang}] Parsed ${versions.length} versions (latest: v${versions[0]?.label})`
+	);
+	const mdx = buildMdx(versions, source.title, source.description);
+	mkdirSync(dirname(source.outPath), { recursive: true });
+	writeFileSync(source.outPath, mdx, "utf8");
+	console.log(`[${lang}] Written: ${source.outPath}`);
+}
+
 // ── Main ─────────────────────────────────────────────────────────────────────
 async function main() {
-	const raw = await fetchSource();
-	const versions = parseVersions(raw);
-
-	console.log(`Parsed ${versions.length} versions (latest: v${versions[0]?.label})`);
-
-	const enMdx = buildMdx(
-		versions,
-		"Changelog",
-		"All notable changes to Ophel Atlas are documented here."
-	);
-	const zhMdx = buildMdx(
-		versions,
-		"更新日志",
-		"Ophel Atlas 的所有重要更改均记录于此。"
-	);
-
-	writeFileSync(resolve(ROOT, "changelog.mdx"), enMdx, "utf8");
-	console.log("Written: changelog.mdx");
-
-	mkdirSync(resolve(ROOT, "zh"), { recursive: true });
-	writeFileSync(resolve(ROOT, "zh/changelog.mdx"), zhMdx, "utf8");
-	console.log("Written: zh/changelog.mdx");
+	for (const [lang, source] of Object.entries(SOURCES)) {
+		await syncLanguage(lang, source);
+	}
 }
 
 main().catch((err) => {
