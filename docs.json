@@ -29,6 +29,22 @@
       "href": "https://github.com/urzeye/ophel"
     }
   },
+  "description": "Ophel Atlas is a browser extension that transforms AI chat into navigable, structured knowledge. Supports ChatGPT, Gemini, Claude, DeepSeek, and 11 more platforms.",
+  "seo": {
+    "indexing": "navigable",
+    "metatags": {
+      "og:site_name": "Ophel Atlas Docs",
+      "og:type": "website",
+      "twitter:card": "summary_large_image",
+      "twitter:site": "@ophel_atlas"
+    }
+  },
+  "search": {
+    "prompt": "Search docs..."
+  },
+  "metadata": {
+    "timestamp": true
+  },
   "contextual": {
     "options": ["assistant", "copy"]
   },
