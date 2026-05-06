@@ -150,7 +150,12 @@
           {
             "tab": "Changelog",
             "icon": "list",
-            "pages": ["changelog"]
+            "groups": [
+              {
+                "group": "Changelog",
+                "pages": ["changelog"]
+              }
+            ]
           }
         ]
       },
@@ -229,7 +234,12 @@
           {
             "tab": "更新日志",
             "icon": "list",
-            "pages": ["zh/changelog"]
+            "groups": [
+              {
+                "group": "更新日志",
+                "pages": ["zh/changelog"]
+              }
+            ]
           }
         ]
       }
