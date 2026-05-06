@@ -1,0 +1,58 @@
+---
+title: "备份与同步 — 本地导出、导入与 Gemini Voyager 迁移"
+sidebarTitle: "备份与同步"
+description: "将 Ophel 数据导出为 JSON 备份，从备份文件导入，或从 Gemini Voyager 迁移文件夹结构。"
+---
+
+Ophel 的所有数据默认只保存在你本机的浏览器存储中。本页介绍如何将数据导出备份，以及如何在设备之间迁移。
+
+## 本地备份（导出）
+
+**设置 → 备份与同步**
+
+支持将数据导出为 JSON 文件，以便备份或迁移到另一台设备：
+
+| 导出类型 | 包含内容                                         |
+| -------- | ------------------------------------------------ |
+| 完整备份 | 所有数据：设置、提示词、会话元数据、文件夹、标签 |
+| 仅提示词 | 提示词库                                         |
+| 仅设置   | 所有配置项                                       |
+
+## 本地导入
+
+将 JSON 文件拖入或点击选择文件导入。Ophel 会在写入前对格式做校验，导入后自动刷新页面以使配置生效。
+
+<Warning>导入会**覆盖**现有数据，建议在导入前先导出一份当前备份。</Warning>
+
+## 从 Gemini Voyager 导入
+
+[Gemini Voyager](https://chromewebstore.google.com/detail/gemini-voyager/pgmfbpioicfjbfghalhcjkfdlkadamep) 是另一款 Gemini 会话管理扩展。如果你早先用它整理了文件夹结构，可以直接将其导出结果导入到 Ophel。
+
+<Steps>
+  <Step title="从 Gemini Voyager 导出数据">
+    在 Gemini Voyager 中导出文件夹数据（JSON 格式，文件名形如
+    `gemini-voyager.folders.v1...`）。
+  </Step>
+  <Step title="复制 JSON 内容">打开导出文件，复制其中全部 JSON 内容。</Step>
+  <Step title="在 Ophel 中执行导入">
+    前往 **设置 → 备份与同步 → 从 Gemini Voyager
+    导入**，将内容粘贴到输入框并点击**开始导入**。
+  </Step>
+  <Step title="确认预览">
+    Ophel 会呈现预览（新增文件夹数、新增会话数等），确认后执行导入。
+  </Step>
+</Steps>
+
+<Note>
+  **导入行为说明**：导入采用增量合并，不会覆盖你在 Ophel
+  已经整理好的文件夹。层级嵌套的 Voyager 文件夹会被压平成路径名（例如「父级 /
+  子级」）。此功能仅适用于 Gemini 平台。
+</Note>
+
+## 清空所有数据
+
+**设置 → 备份与同步 → 清空所有数据**
+
+删除 Ophel 存储的全部本地数据——包括提示词、会话元数据、文件夹、标签和所有设置，恢复到安装初始状态。
+
+<Warning>此操作无法撤销。如需保留数据，请先导出完整备份。</Warning>

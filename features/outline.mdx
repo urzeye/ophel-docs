@@ -6,6 +6,8 @@ description: "Ophel builds a live, clickable table of contents from your questio
 
 The Smart Outline reads your conversation after every AI reply and builds a navigable tree in the side panel. Each of your messages becomes a top-level entry, and any Markdown headings inside the AI's response become nested entries beneath it. The longer the conversation, the more value the outline adds.
 
+![Smart Outline — live conversation table of contents](/images/features/outline.png)
+
 ## How the outline is built
 
 Every time the AI finishes a reply, Ophel scans the page and produces a tree from two sources:
@@ -37,26 +39,28 @@ If you scroll the outline panel itself and lose track of where you are, press `A
 
 Three filter buttons appear above the outline list. They let you reduce noise and focus on what matters.
 
-| Button | What it shows |
-|---|---|
-| **All** (default) | Everything — your questions and all AI headings |
+| Button             | What it shows                                                                            |
+| ------------------ | ---------------------------------------------------------------------------------------- |
+| **All** (default)  | Everything — your questions and all AI headings                                          |
 | **Questions only** | Hides AI headings; shows only your messages — useful for reviewing the conversation flow |
-| **Bookmarks only** | Shows only entries you have starred |
+| **Bookmarks only** | Shows only entries you have starred                                                      |
 
 You can also switch filters with keyboard shortcuts:
 
-| Shortcut | Action |
-|---|---|
-| `Alt+Q` (Mac: `Option+Q`) | Toggle questions-only filter |
-| `Alt+Shift+Q` (Mac: `Option+Shift+Q`) | Show all (clear filter) |
-| `Alt+C` (Mac: `Option+C`) | Toggle bookmarks filter |
+| Shortcut                              | Action                       |
+| ------------------------------------- | ---------------------------- |
+| `Alt+Q` (Mac: `Option+Q`)             | Toggle questions-only filter |
+| `Alt+Shift+Q` (Mac: `Option+Shift+Q`) | Show all (clear filter)      |
+| `Alt+C` (Mac: `Option+C`)             | Toggle bookmarks filter      |
 
 ## Bookmarks
 
 Hover over any outline entry to reveal a star icon. Click it to bookmark that heading. Bookmarks persist across page reloads.
 
 <Note>
-If a bookmarked heading disappears from the conversation — for example, when the AI regenerates a response — it becomes a **ghost bookmark**. Open the outline toolbox and use the cleanup option to remove stale ghost bookmarks.
+  If a bookmarked heading disappears from the conversation — for example, when
+  the AI regenerates a response — it becomes a **ghost bookmark**. Open the
+  outline toolbox and use the cleanup option to remove stale ghost bookmarks.
 </Note>
 
 ## Expand by level
@@ -68,7 +72,8 @@ You can expand the tree to a specific heading depth without manually clicking ev
     A context menu appears with expand-to-level options.
   </Step>
   <Step title="Choose a depth, or use a keyboard shortcut">
-    Press `Alt+Shift+1` through `Alt+Shift+6` (Mac: `Option+Shift+1` through `Option+Shift+6`) to expand to heading levels 1–6 directly.
+    Press `Alt+Shift+1` through `Alt+Shift+6` (Mac: `Option+Shift+1` through
+    `Option+Shift+6`) to expand to heading levels 1–6 directly.
   </Step>
 </Steps>
 
@@ -86,17 +91,17 @@ User question entries show a copy icon on hover. Click it to copy the original q
 
 <Note>Mac users: **Alt** = **Option**.</Note>
 
-| Shortcut | Action |
-|---|---|
-| `Alt+R` | Refresh outline |
-| `Alt+E` | Expand / collapse all |
-| `Alt+Q` | Toggle questions-only filter |
-| `Alt+Shift+Q` | Show all (clear filter) |
-| `Alt+C` | Toggle bookmarks filter |
-| `Alt+L` | Locate current position in outline |
-| `Alt+F` | Search within outline |
-| `Alt+Up` | Jump to previous heading |
-| `Alt+Down` | Jump to next heading |
+| Shortcut         | Action                              |
+| ---------------- | ----------------------------------- |
+| `Alt+R`          | Refresh outline                     |
+| `Alt+E`          | Expand / collapse all               |
+| `Alt+Q`          | Toggle questions-only filter        |
+| `Alt+Shift+Q`    | Show all (clear filter)             |
+| `Alt+C`          | Toggle bookmarks filter             |
+| `Alt+L`          | Locate current position in outline  |
+| `Alt+F`          | Search within outline               |
+| `Alt+Up`         | Jump to previous heading            |
+| `Alt+Down`       | Jump to next heading                |
 | `Alt+Shift+1..6` | Expand outline to heading level 1–6 |
 
 All shortcuts are customizable in **Settings → Shortcuts**.
@@ -105,12 +110,12 @@ All shortcuts are customizable in **Settings → Shortcuts**.
 
 Go to **Settings → Features → Outline** to configure the outline's behavior.
 
-| Setting | Description |
-|---|---|
-| Auto update | Whether the outline refreshes automatically after each AI reply |
-| Update interval | How often Ophel checks for changes (seconds) |
-| Follow mode | Whether the outline tracks your scroll position: `current`, `latest`, or `manual` |
-| Inline bookmark icon | When to show the bookmark star inside the conversation text itself |
-| Panel bookmark icon | When to show the bookmark star in the outline panel entries |
-| Show word count | Show character count tooltip on hover |
-| Prevent auto-scroll | Stop the outline panel from scrolling itself when you navigate |
+| Setting              | Description                                                                       |
+| -------------------- | --------------------------------------------------------------------------------- |
+| Auto update          | Whether the outline refreshes automatically after each AI reply                   |
+| Update interval      | How often Ophel checks for changes (seconds)                                      |
+| Follow mode          | Whether the outline tracks your scroll position: `current`, `latest`, or `manual` |
+| Inline bookmark icon | When to show the bookmark star inside the conversation text itself                |
+| Panel bookmark icon  | When to show the bookmark star in the outline panel entries                       |
+| Show word count      | Show character count tooltip on hover                                             |
+| Prevent auto-scroll  | Stop the outline panel from scrolling itself when you navigate                    |

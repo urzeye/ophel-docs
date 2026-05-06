@@ -10,17 +10,34 @@ If the panel does not appear, press **Alt+P** (Mac: **Option+P**) to open it.
 
 ## The three tabs
 
+![Ophel side panel — three tabs overview](/images/panel/panel-tabs.png)
+
 The panel has three tabs along the top. Click a tab label to switch, or use `Alt+1`, `Alt+2`, `Alt+3` (Mac: `Option+1/2/3`).
 
 <CardGroup cols={3}>
-  <Card title="Outline" icon="list-tree">
-    A live, auto-generated table of contents for the current conversation. Click any heading to jump to it instantly. Supports collapse, expand, search, bookmarks, and real-time word counts.
+  <Card
+    title="Outline"
+    icon="list-tree"
+  >
+    A live, auto-generated table of contents for the current conversation. Click
+    any heading to jump to it instantly. Supports collapse, expand, search,
+    bookmarks, and real-time word counts.
   </Card>
-  <Card title="Conversations" icon="folder-open">
-    An aggregated history from all supported AI platforms. Organize conversations into folders and tags, search with syntax filters, and export to Markdown, JSON, or TXT.
+  <Card
+    title="Conversations"
+    icon="folder-open"
+  >
+    An aggregated history from all supported AI platforms. Organize
+    conversations into folders and tags, search with syntax filters, and export
+    to Markdown, JSON, or TXT.
   </Card>
-  <Card title="Prompts" icon="wand-magic-sparkles">
-    Your personal prompt library. Click a prompt to insert it into the chat input box; double-click to insert and send immediately. Supports variable substitution, categories, and pinning.
+  <Card
+    title="Prompts"
+    icon="wand-magic-sparkles"
+  >
+    Your personal prompt library. Click a prompt to insert it into the chat
+    input box; double-click to insert and send immediately. Supports variable
+    substitution, categories, and pinning.
   </Card>
 </CardGroup>
 
@@ -28,16 +45,18 @@ The panel has three tabs along the top. Click a tab label to switch, or use `Alt
 
 The strip at the very top of the panel gives you fast access to core controls.
 
-| Element | Action |
-| --- | --- |
-| **Title area** | Hover to see a random usage tip with shortcuts adapted to your OS and key bindings. Double-click to toggle privacy mode, which hides the tab title. |
-| **Mode toggle** | Switches between Edge Snap and Floating mode with one click. |
-| **Theme toggle** | Switches between light and dark mode. Shortcut: `Alt+D` (Mac: `Option+D`). |
-| **Settings button** | Opens the settings dialog. Shortcut: `Alt+,` (Mac: `Option+,`). |
+| Element             | Action                                                                                                                                              |
+| ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Title area**      | Hover to see a random usage tip with shortcuts adapted to your OS and key bindings. Double-click to toggle privacy mode, which hides the tab title. |
+| **Mode toggle**     | Switches between Edge Snap and Floating mode with one click.                                                                                        |
+| **Theme toggle**    | Switches between light and dark mode. Shortcut: `Alt+D` (Mac: `Option+D`).                                                                          |
+| **Settings button** | Opens the settings dialog. Shortcut: `Alt+,` (Mac: `Option+,`).                                                                                     |
 
 You can drag the title bar to reposition the panel anywhere on screen when it is in Floating mode.
 
 ## Floating quick buttons
+
+![Floating quick buttons — expanded state and collapsed pill](/images/panel/floating-buttons.png)
 
 The floating button group at the screen edge is your fastest access point to common actions without opening the full panel.
 
@@ -47,47 +66,53 @@ The floating button group at the screen edge is your fastest access point to com
 
 ## Keyboard shortcuts
 
-| Action | Windows / Linux | Mac |
-| --- | --- | --- |
-| Open / close panel | `Alt+P` | `Option+P` |
-| Switch to Outline tab | `Alt+1` | `Option+1` |
-| Switch to Conversations tab | `Alt+2` | `Option+2` |
-| Switch to Prompts tab | `Alt+3` | `Option+3` |
-| Global search | `Ctrl+K` or double `Shift` | `Cmd+K` or double `Shift` |
-| Toggle light / dark | `Alt+D` | `Option+D` |
-| Open settings | `Alt+,` | `Option+,` |
+| Action                      | Windows / Linux            | Mac                       |
+| --------------------------- | -------------------------- | ------------------------- |
+| Open / close panel          | `Alt+P`                    | `Option+P`                |
+| Switch to Outline tab       | `Alt+1`                    | `Option+1`                |
+| Switch to Conversations tab | `Alt+2`                    | `Option+2`                |
+| Switch to Prompts tab       | `Alt+3`                    | `Option+3`                |
+| Global search               | `Ctrl+K` or double `Shift` | `Cmd+K` or double `Shift` |
+| Toggle light / dark         | `Alt+D`                    | `Option+D`                |
+| Open settings               | `Alt+,`                    | `Option+,`                |
 
 ## Global search
 
 Press `Ctrl+K` (Mac: `Cmd+K`) or tap `Shift` twice to open global search. It searches across your outline headings, conversation history, prompt library, and settings in a single query. You can also use advanced syntax filters:
 
-| Filter | Example | Effect |
-| --- | --- | --- |
-| `folder:` | `folder:work` | Limit to a specific folder |
-| `tag:` | `tag:research` | Limit to a specific tag |
-| `type:` | `type:prompt` | Limit to a content type |
-| `date:` | `date:2025-01` | Limit to a date range |
-| `level:` | `level:2` | Limit to a heading level in Outline |
-| `is:` | `is:pinned` | Limit to pinned items |
+| Filter    | Example        | Effect                              |
+| --------- | -------------- | ----------------------------------- |
+| `folder:` | `folder:work`  | Limit to a specific folder          |
+| `tag:`    | `tag:research` | Limit to a specific tag             |
+| `type:`   | `type:prompt`  | Limit to a content type             |
+| `date:`   | `date:2025-01` | Limit to a date range               |
+| `level:`  | `level:2`      | Limit to a heading level in Outline |
+| `is:`     | `is:pinned`    | Limit to pinned items               |
 
 ## Ghost pass-through mode
+
+![Ghost mode — semi-transparent panel with click-through enabled](/images/panel/ghost-mode.webp)
 
 The panel sometimes sits over content you need to click on the AI page. Instead of closing the panel, use ghost mode:
 
 Hold **Ctrl** (Windows/Linux) or **Command** (Mac) for about 0.2 seconds on its own. The panel turns semi-transparent and mouse clicks pass directly through it to the page behind. Release the key to return to normal mode.
 
 <Tip>
-  Ghost mode is useful when the AI response contains a button or link that the panel overlaps. You do not need to close or move the panel — just hold the modifier key, click, then release.
+  Ghost mode is useful when the AI response contains a button or link that the
+  panel overlaps. You do not need to close or move the panel — just hold the
+  modifier key, click, then release.
 </Tip>
 
 ## Edge snap and floating mode
 
+![Panel edge snap — hover to peek preview](/images/panel/edge-snap.webp)
+
 The panel operates in one of two modes. Switch between them using the **mode toggle button** in the panel header, or go to **Settings → General → Panel → Panel Mode**.
 
-| Mode | Behavior |
-| --- | --- |
-| **Edge Snap** | The panel hugs the screen edge and stays hidden. Hover over the edge to peek at the panel content. |
-| **Floating** | The panel floats above the page, stays fully visible at all times, and can be freely repositioned by dragging the title bar. |
+| Mode          | Behavior                                                                                                                     |
+| ------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| **Edge Snap** | The panel hugs the screen edge and stays hidden. Hover over the edge to peek at the panel content.                           |
+| **Floating**  | The panel floats above the page, stays fully visible at all times, and can be freely repositioned by dragging the title bar. |
 
 In Edge Snap mode, dragging the panel title bar pulls it away from the edge, switching it to Floating mode. While dragging, move it to the opposite side of the screen to change the snap direction.
 
@@ -95,28 +120,46 @@ In Edge Snap mode, dragging the panel title bar pulls it away from the edge, swi
 
 All of these are in **Settings → General → Panel**:
 
-| Setting | Description | Default |
-| --- | --- | --- |
-| Panel mode | Edge Snap or Floating | Edge Snap |
-| Default side | Left or right side of the screen | Right |
-| Panel width | 200–600 px | 320 px |
-| Panel height | 50–100 vh | 85 vh |
-| Edge distance | Distance from the screen edge when in Floating mode | 25 px |
-| Snap threshold | Distance from edge that triggers automatic snapping | 30 px |
+| Setting        | Description                                         | Default   |
+| -------------- | --------------------------------------------------- | --------- |
+| Panel mode     | Edge Snap or Floating                               | Edge Snap |
+| Default side   | Left or right side of the screen                    | Right     |
+| Panel width    | 200–600 px                                          | 320 px    |
+| Panel height   | 50–100 vh                                           | 85 vh     |
+| Edge distance  | Distance from the screen edge when in Floating mode | 25 px     |
+| Snap threshold | Distance from edge that triggers automatic snapping | 30 px     |
 
 ## Next steps
 
 <CardGroup cols={2}>
-  <Card title="Smart outline" icon="list-tree" href="/features/outline">
-    Learn how the live outline works — locate mode, follow mode, bookmarks, and word counts.
+  <Card
+    title="Smart outline"
+    icon="list-tree"
+    href="/features/outline"
+  >
+    Learn how the live outline works — locate mode, follow mode, bookmarks, and
+    word counts.
   </Card>
-  <Card title="Conversation management" icon="folder-open" href="/features/conversations">
+  <Card
+    title="Conversation management"
+    icon="folder-open"
+    href="/features/conversations"
+  >
     Organize your chat history with folders, tags, search, and batch exports.
   </Card>
-  <Card title="Prompt library" icon="wand-magic-sparkles" href="/features/prompts">
-    Build and use a reusable prompt library with variable templates and a prompt queue.
+  <Card
+    title="Prompt library"
+    icon="wand-magic-sparkles"
+    href="/features/prompts"
+  >
+    Build and use a reusable prompt library with variable templates and a prompt
+    queue.
   </Card>
-  <Card title="Shortcuts" icon="keyboard" href="/customization/shortcuts">
+  <Card
+    title="Shortcuts"
+    icon="keyboard"
+    href="/customization/shortcuts"
+  >
     View the full shortcut reference and configure custom key bindings.
   </Card>
 </CardGroup>

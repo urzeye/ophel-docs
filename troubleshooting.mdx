@@ -10,20 +10,28 @@ If something isn't working as expected, this page walks you through the most com
 
 ## Panel not appearing
 
+![Ophel side panel — three tabs overview](/images/panel/panel-tabs.png)
+
 The Ophel side panel should appear automatically when you open a supported AI platform. If it doesn't show up:
 
 <Steps>
   <Step title="Confirm the extension is enabled">
-    Click the puzzle-piece icon in your browser toolbar and verify that Ophel Atlas is toggled on. If it's disabled, enable it and reload the page.
+    Click the puzzle-piece icon in your browser toolbar and verify that Ophel
+    Atlas is toggled on. If it's disabled, enable it and reload the page.
   </Step>
   <Step title="Hard-reload the page">
-    Press `Ctrl+Shift+R` (Mac: `Cmd+Shift+R`) to force a full page reload. A standard reload sometimes does not reinitialize the Ophel panel on the page.
+    Press `Ctrl+Shift+R` (Mac: `Cmd+Shift+R`) to force a full page reload. A
+    standard reload sometimes does not reinitialize the Ophel panel on the page.
   </Step>
   <Step title="Check the supported site list">
-    Ophel only activates on its supported platforms. Confirm you're on one of the 15 supported sites (Gemini, ChatGPT, Claude, DeepSeek, Grok, and others). If the URL doesn't match, Ophel will not inject the panel.
+    Ophel only activates on its supported platforms. Confirm you're on one of
+    the 15 supported sites (Gemini, ChatGPT, Claude, DeepSeek, Grok, and
+    others). If the URL doesn't match, Ophel will not inject the panel.
   </Step>
   <Step title="Use the keyboard shortcut as a fallback">
-    If the panel was previously closed, press `Alt+P` (Mac: `Option+P`) to reopen it. This toggles the panel regardless of the state of any floating buttons.
+    If the panel was previously closed, press `Alt+P` (Mac: `Option+P`) to
+    reopen it. This toggles the panel regardless of the state of any floating
+    buttons.
   </Step>
 </Steps>
 
@@ -31,15 +39,22 @@ The Ophel side panel should appear automatically when you open a supported AI pl
 
 ## Outline is empty or not updating
 
+![Outline tab — real-time conversation tree](/images/features/outline.png)
+
 <Steps>
   <Step title="Refresh the outline manually">
-    Press `Alt+R` (Mac: `Option+R`) to force the outline to re-scan the conversation. Some AI platforms update the DOM asynchronously, so the outline may not populate on its own immediately after the page loads.
+    Press `Alt+R` (Mac: `Option+R`) to force the outline to re-scan the
+    conversation. Some AI platforms update the DOM asynchronously, so the
+    outline may not populate on its own immediately after the page loads.
   </Step>
   <Step title="Wait for the AI to finish responding">
-    The outline rebuilds after each AI reply completes. If the AI is still generating, the outline won't update until it finishes.
+    The outline rebuilds after each AI reply completes. If the AI is still
+    generating, the outline won't update until it finishes.
   </Step>
   <Step title="Check the auto-update setting">
-    Go to **Settings → Features → Outline** and confirm that **Auto update** is enabled. If it's off, the outline only refreshes when you trigger it manually with `Alt+R` (Mac: `Option+R`).
+    Go to **Settings → Features → Outline** and confirm that **Auto update** is
+    enabled. If it's off, the outline only refreshes when you trigger it
+    manually with `Alt+R` (Mac: `Option+R`).
   </Step>
 </Steps>
 
@@ -51,7 +66,9 @@ If the outline doesn't highlight the section you're currently reading as you scr
 
 <Steps>
   <Step title="Enable scroll sync in Settings">
-    Go to **Settings → Features → Outline** and set **Follow mode** to `current`. When this is set to `manual`, the outline does not automatically track your scroll position.
+    Go to **Settings → Features → Outline** and set **Follow mode** to
+    `current`. When this is set to `manual`, the outline does not automatically
+    track your scroll position.
   </Step>
 </Steps>
 
@@ -59,14 +76,18 @@ If the outline doesn't highlight the section you're currently reading as you scr
 
 ## Floating buttons disappeared
 
+![Floating action buttons — expanded and collapsed pill state](/images/panel/floating-buttons.png)
+
 The floating action buttons auto-collapse into a compact pill shape after 5 seconds of inactivity. They are not gone — they're just minimized.
 
 <Steps>
   <Step title="Move your mouse near the buttons">
-    Move your cursor within approximately 150 px of the collapsed pill. The buttons will expand automatically.
+    Move your cursor within approximately 150 px of the collapsed pill. The
+    buttons will expand automatically.
   </Step>
   <Step title="Use the keyboard shortcut if the pill is not visible">
-    If the buttons are completely missing from the screen, press `Alt+P` (Mac: `Option+P`) to open the panel. The floating buttons reappear alongside it.
+    If the buttons are completely missing from the screen, press `Alt+P` (Mac:
+    `Option+P`) to open the panel. The floating buttons reappear alongside it.
   </Step>
 </Steps>
 
@@ -74,14 +95,20 @@ The floating action buttons auto-collapse into a compact pill shape after 5 seco
 
 ## Panel covering page content
 
+![Ghost mode — semi-transparent panel with click-through enabled](/images/panel/ghost-mode.webp)
+
 If the Ophel panel is positioned over something you need to click on the underlying page:
 
 <Steps>
   <Step title="Use ghost mode for temporary click-through">
-    Hold **Ctrl** (Windows/Linux) or **Command** (Mac) alone for about 0.2 seconds. The panel becomes transparent and lets clicks pass through to the page behind it. Release the key to restore the panel to normal.
+    Hold **Ctrl** (Windows/Linux) or **Command** (Mac) alone for about 0.2
+    seconds. The panel becomes transparent and lets clicks pass through to the
+    page behind it. Release the key to restore the panel to normal.
   </Step>
   <Step title="Drag the panel to a screen edge">
-    Drag the panel toward any screen edge. When it snaps into place, it hides against the edge and only slides out when you hover over it — freeing up the rest of the screen. To undock it, drag it away from the edge.
+    Drag the panel toward any screen edge. When it snaps into place, it hides
+    against the edge and only slides out when you hover over it — freeing up the
+    rest of the screen. To undock it, drag it away from the edge.
   </Step>
 </Steps>
 
@@ -89,12 +116,17 @@ If the Ophel panel is positioned over something you need to click on the underly
 
 ## Conversations tab is empty
 
+![Conversations tab — folder and tag list](/images/features/conversation.png)
+
 <Steps>
   <Step title="Make sure the AI platform's sidebar has loaded">
-    The Conversations tab reads directly from the AI platform's own sidebar. If that sidebar hasn't loaded yet, Ophel has nothing to display.
+    The Conversations tab reads directly from the AI platform's own sidebar. If
+    that sidebar hasn't loaded yet, Ophel has nothing to display.
   </Step>
   <Step title="Scroll the native sidebar">
-    Open the AI platform's built-in conversation list and scroll down to trigger it to load more items. After it loads, Ophel's Conversations tab will reflect the updated list.
+    Open the AI platform's built-in conversation list and scroll down to trigger
+    it to load more items. After it loads, Ophel's Conversations tab will
+    reflect the updated list.
   </Step>
 </Steps>
 
@@ -106,13 +138,17 @@ The Prompt Queue advances to the next prompt by detecting when the AI page becom
 
 <Steps>
   <Step title="Check whether the AI has actually finished">
-    Some platforms briefly show a loading indicator even after generation is complete. Wait a few seconds to see if the queue advances on its own.
+    Some platforms briefly show a loading indicator even after generation is
+    complete. Wait a few seconds to see if the queue advances on its own.
   </Step>
   <Step title="Use the manual Send next button">
-    If the AI platform uses an unusual loading indicator that Ophel cannot detect, the queue may stall. Click the **Send next** button in the queue overlay to manually advance to the next prompt.
+    If the AI platform uses an unusual loading indicator that Ophel cannot
+    detect, the queue may stall. Click the **Send next** button in the queue
+    overlay to manually advance to the next prompt.
   </Step>
   <Step title="Check that the queue is not paused">
-    Make sure the queue is in the **Running** state, not **Paused**. If it's paused, click **Resume** in the queue overlay.
+    Make sure the queue is in the **Running** state, not **Paused**. If it's
+    paused, click **Resume** in the queue overlay.
   </Step>
 </Steps>
 
@@ -124,10 +160,14 @@ Firefox treats extensions loaded via **Load Temporary Add-on** (through `about:d
 
 <Steps>
   <Step title="Install from Firefox Add-ons for a permanent install">
-    Install Ophel Atlas from the [Firefox Add-ons store](https://addons.mozilla.org/firefox/addon/ophel-ai-chat-enhancer/). Store-installed extensions persist across restarts.
+    Install Ophel Atlas from the [Firefox Add-ons
+    store](https://addons.mozilla.org/firefox/addon/ophel-ai-chat-enhancer/).
+    Store-installed extensions persist across restarts.
   </Step>
   <Step title="Use the userscript as an alternative">
-    If you need to use a local build or cannot use the Add-ons store, install the userscript version via Tampermonkey. Userscripts managed by Tampermonkey are not affected by Firefox's temporary add-on limitation.
+    If you need to use a local build or cannot use the Add-ons store, install
+    the userscript version via Tampermonkey. Userscripts managed by Tampermonkey
+    are not affected by Firefox's temporary add-on limitation.
   </Step>
 </Steps>
 
@@ -139,21 +179,35 @@ If none of the above applies, follow these steps to diagnose the issue before re
 
 <Steps>
   <Step title="Test in an incognito window">
-    Open an incognito (private) window with only Ophel enabled and no other extensions. If the problem disappears, another extension is likely interfering.
+    Open an incognito (private) window with only Ophel enabled and no other
+    extensions. If the problem disappears, another extension is likely
+    interfering.
   </Step>
   <Step title="Check the browser DevTools console">
-    Right-click anywhere on the page, choose **Inspect**, and open the **Console** tab. Look for red error messages that mention Ophel or the AI platform. Copy any errors you find — they're essential for a bug report.
+    Right-click anywhere on the page, choose **Inspect**, and open the
+    **Console** tab. Look for red error messages that mention Ophel or the AI
+    platform. Copy any errors you find — they're essential for a bug report.
   </Step>
   <Step title="Note your versions">
-    Before reporting, note your browser name and version, your Ophel Atlas version (shown in the extension popup), and the affected AI platform URL.
+    Before reporting, note your browser name and version, your Ophel Atlas
+    version (shown in the extension popup), and the affected AI platform URL.
   </Step>
   <Step title="Report on GitHub Issues">
-    Open a new issue at [github.com/urzeye/ophel/issues](https://github.com/urzeye/ophel/issues) with the information from the steps above. Include the console output and a description of how to reproduce the problem.
+    Open a new issue at
+    [github.com/urzeye/ophel/issues](https://github.com/urzeye/ophel/issues)
+    with the information from the steps above. Include the console output and a
+    description of how to reproduce the problem.
   </Step>
 </Steps>
 
 ---
 
-<Card title="Report an issue on GitHub" icon="bug" href="https://github.com/urzeye/ophel/issues">
-  Open a bug report or feature request on the Ophel Atlas GitHub Issues page. Include your browser version, extension version, and any console errors to help the team reproduce the problem.
+<Card
+  title="Report an issue on GitHub"
+  icon="bug"
+  href="https://github.com/urzeye/ophel/issues"
+>
+  Open a bug report or feature request on the Ophel Atlas GitHub Issues page.
+  Include your browser version, extension version, and any console errors to
+  help the team reproduce the problem.
 </Card>

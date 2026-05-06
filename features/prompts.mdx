@@ -6,14 +6,18 @@ description: "Save prompts with variable placeholders, organize them by category
 
 The Prompt Library saves you from retyping the same instructions every session. You build a personal collection of prompt templates, organize them into categories, and insert any prompt into the AI input box with a single click. Variables let you write reusable templates where certain values are filled in at send time.
 
+![Prompt Library — prompt list and categories](/images/features/prompt.png)
+
 ## Using a prompt
 
 <Tabs>
   <Tab title="Single click">
-    Inserts the prompt text into the AI input box but does not submit. You can review or edit the content before sending.
+    Inserts the prompt text into the AI input box but does not submit. You can
+    review or edit the content before sending.
   </Tab>
   <Tab title="Double-click">
-    Inserts and submits immediately. You can turn this off in **Settings → Features → Prompts** if you always want to review before sending.
+    Inserts and submits immediately. You can turn this off in **Settings →
+    Features → Prompts** if you always want to review before sending.
   </Tab>
 </Tabs>
 
@@ -23,12 +27,12 @@ If the prompt contains variables, a dialog appears first asking you to fill in e
 
 Click the **+** button at the top of the Prompts tab and fill in the following fields:
 
-| Field | Description |
-|---|---|
-| Title | A short label shown in the list |
-| Content | The full prompt text; variables can be embedded anywhere |
+| Field    | Description                                                                       |
+| -------- | --------------------------------------------------------------------------------- |
+| Title    | A short label shown in the list                                                   |
+| Content  | The full prompt text; variables can be embedded anywhere                          |
 | Category | Optional group label to keep related prompts together (e.g., "Writing", "Coding") |
-| Pin | Optional; keeps this prompt at the top of the list |
+| Pin      | Optional; keeps this prompt at the top of the list                                |
 
 The prompt appears in the list immediately after saving. You can edit or delete it at any time.
 
@@ -49,6 +53,7 @@ There are three variable sub-types:
 
     {{content}}
     ```
+
   </Accordion>
   <Accordion title="Variable with a default value">
     Add a colon (`:`) after the variable name, followed by the default. The dialog pre-fills the input with that value — press Enter to accept it unchanged.
@@ -58,6 +63,7 @@ There are three variable sub-types:
 
     {{text}}
     ```
+
   </Accordion>
   <Accordion title="Variable with dropdown options">
     Add a colon after the variable name, then list options separated by pipe characters (`|`). The dialog shows a dropdown menu instead of a text field.
@@ -71,6 +77,7 @@ There are three variable sub-types:
     ```text
     Code review for {{language:TypeScript|Python|Go|Rust|Java}}
     ```
+
   </Accordion>
 </AccordionGroup>
 
@@ -94,10 +101,10 @@ Use the search box at the top of the Prompts tab to filter by title or content i
 
 **Import** reads a JSON file back and gives you three merge options:
 
-| Option | Behavior |
-|---|---|
-| Add new | Imports only prompts whose title does not already exist — skips duplicates |
-| Overwrite | Imports all prompts; replaces existing prompts that share the same title |
+| Option      | Behavior                                                                     |
+| ----------- | ---------------------------------------------------------------------------- |
+| Add new     | Imports only prompts whose title does not already exist — skips duplicates   |
+| Overwrite   | Imports all prompts; replaces existing prompts that share the same title     |
 | Replace all | Deletes your current library and replaces it entirely with the imported file |
 
 ## Prompt Queue
@@ -114,9 +121,9 @@ Type directly in the queue input field and press **Enter** to add a prompt. The 
 
 For adding many prompts at once, click the **import** button in the queue panel and paste a block of text. Choose a split mode:
 
-| Split mode | Behavior |
-|---|---|
-| Split by line | Each line becomes one prompt; empty lines are ignored |
+| Split mode         | Behavior                                                                             |
+| ------------------ | ------------------------------------------------------------------------------------ |
+| Split by line      | Each line becomes one prompt; empty lines are ignored                                |
 | Split by delimiter | Enter a custom separator string (e.g., `---`) and the text splits at each occurrence |
 
 A preview shows exactly how the text will be divided before you confirm.
@@ -124,27 +131,29 @@ A preview shows exactly how the text will be divided before you confirm.
 ### Running the Queue
 
 <Steps>
-  <Step title="Press Start">
-    Ophel begins monitoring the AI page.
-  </Step>
+  <Step title="Press Start">Ophel begins monitoring the AI page.</Step>
   <Step title="Ophel sends prompts automatically">
-    Every second, Ophel checks whether the page is idle — no active generation. When it detects two consecutive idle checks, it sends the next prompt in the queue.
+    Every second, Ophel checks whether the page is idle — no active generation.
+    When it detects two consecutive idle checks, it sends the next prompt in the
+    queue.
   </Step>
   <Step title="Manage the queue while it runs">
-    You can pause auto-sending, skip the current item, reorder items by dragging, delete individual items, or clear all remaining items at any time.
+    You can pause auto-sending, skip the current item, reorder items by
+    dragging, delete individual items, or clear all remaining items at any time.
   </Step>
 </Steps>
 
 <Note>
-The queue remembers its paused state between interactions. If you pause and navigate away, it remains paused when you return.
+  The queue remembers its paused state between interactions. If you pause and
+  navigate away, it remains paused when you return.
 </Note>
 
 ## Settings
 
 Go to **Settings → Features → Prompts** to configure:
 
-| Setting | Description |
-|---|---|
-| Double-click to send | Double-clicking a prompt inserts and submits it directly |
-| Submit key | Key used to submit to the AI after insertion — Enter or Ctrl/Shift+Enter |
-| Prompt queue | Enable or disable the queue overlay feature |
+| Setting              | Description                                                              |
+| -------------------- | ------------------------------------------------------------------------ |
+| Double-click to send | Double-clicking a prompt inserts and submits it directly                 |
+| Submit key           | Key used to submit to the AI after insertion — Enter or Ctrl/Shift+Enter |
+| Prompt queue         | Enable or disable the queue overlay feature                              |

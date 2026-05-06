@@ -1,0 +1,124 @@
+---
+title: "安装 Ophel Atlas — Chrome、Firefox 或油猴脚本"
+sidebarTitle: "安装"
+description: "从 Chrome 网上应用店、Firefox 附加组件商店、Greasy Fork 安装 Ophel Atlas，或从 GitHub Releases 手动加载，四步以内完成。"
+---
+
+Ophel Atlas 支持 Chrome/Edge 扩展、Firefox 扩展，以及适用于 Tampermonkey 的油猴脚本三种安装方式。推荐优先使用浏览器扩展——功能更完整，兼容性更好，正式安装后无需开发者模式。
+
+<Tip>
+  尽量使用浏览器扩展版本。油猴脚本版本相比扩展有功能限制，在部分平台上的兼容性也较低。
+</Tip>
+
+## 商店安装
+
+<Tabs>
+  <Tab title="Chrome / Edge">
+    从 Chrome 网上应用店安装，无需开发者模式。
+
+    <Steps>
+      <Step title="打开 Chrome 网上应用店页面">
+        前往 [Ophel Atlas 在 Chrome 网上应用店的页面](https://chromewebstore.google.com/detail/ophel-ai-%E5%AF%B9%E8%AF%9D%E5%A2%9E%E5%BC%BA%E5%B7%A5%E5%85%B7/lpcohdfbomkgepfladogodgeoppclakd)。
+      </Step>
+      <Step title="点击「添加至 Chrome」">
+        点击 **添加至 Chrome**（Edge 用户点击 **添加至 Edge**），在权限提示中确认。
+      </Step>
+      <Step title="打开任意支持的 AI 网站">
+        前往任意[支持的平台](/zh/introduction#支持的平台)，例如 [chatgpt.com](https://chatgpt.com) 或 [claude.ai](https://claude.ai)。Ophel 侧边面板会自动出现在页面右侧。
+      </Step>
+    </Steps>
+
+  </Tab>
+  <Tab title="Firefox">
+    从 Firefox 附加组件商店安装，支持自动更新。
+
+    <Steps>
+      <Step title="打开 Firefox 附加组件页面">
+        前往 [Firefox 附加组件商店的 Ophel AI Chat Enhancer 页面](https://addons.mozilla.org/zh-CN/firefox/addon/ophel-ai-chat-enhancer/)。
+      </Step>
+      <Step title="点击「添加至 Firefox」">
+        点击 **添加至 Firefox**，在权限提示中确认。
+      </Step>
+      <Step title="打开任意支持的 AI 网站">
+        前往任意[支持的平台](/zh/introduction#支持的平台)，Ophel 面板自动出现。
+      </Step>
+    </Steps>
+
+  </Tab>
+  <Tab title="油猴脚本（Tampermonkey）">
+    适合无法安装浏览器扩展，或偏好 Tampermonkey 工作流的用户。
+
+    <Warning>
+      油猴脚本版本功能有限，建议在条件允许时安装扩展版本。
+    </Warning>
+
+    <Steps>
+      <Step title="安装 Tampermonkey">
+        如果还没有，先为你的浏览器安装 [Tampermonkey](https://www.tampermonkey.net/)。
+      </Step>
+      <Step title="打开 Greasy Fork 页面">
+        前往 [Greasy Fork 上的 Ophel AI Chat Page Enhancer](https://greasyfork.org/zh-CN/scripts/563646-ophel-ai-chat-page-enhancer)。
+      </Step>
+      <Step title="点击「安装此脚本」">
+        点击 **安装此脚本**。Tampermonkey 弹出确认对话框，点击 **安装**。
+      </Step>
+      <Step title="打开任意支持的 AI 网站">
+        前往任意[支持的平台](/zh/introduction#支持的平台)，Ophel 面板自动出现。
+      </Step>
+    </Steps>
+
+  </Tab>
+</Tabs>
+
+## 从 GitHub Releases 手动加载
+
+适用于安装特定版本、测试预发布构建，或不想通过商店安装的情况。
+
+<Tabs>
+  <Tab title="Chrome / Edge（手动）">
+    <Steps>
+      <Step title="下载发布包">
+        前往 [GitHub Releases](https://github.com/urzeye/ophel/releases)，下载最新的 `ophel-vX.X.X-chrome.zip`。
+      </Step>
+      <Step title="解压到本地文件夹">
+        将 zip 文件解压到本地某个固定文件夹（不要放在临时目录）。
+      </Step>
+      <Step title="打开扩展管理页面">
+        Chrome 地址栏输入 `chrome://extensions`（Edge 输入 `edge://extensions`），打开扩展管理。
+      </Step>
+      <Step title="开启开发者模式">
+        打开右上角的**开发者模式**开关。
+      </Step>
+      <Step title="加载已解压的扩展程序">
+        点击**加载已解压的扩展程序**，选择刚才解压的文件夹。
+      </Step>
+    </Steps>
+
+    <Warning>
+      手动加载的扩展不会自动更新。如需更新，请重复以上步骤，用新版本替换旧文件夹。
+    </Warning>
+
+  </Tab>
+  <Tab title="Firefox（手动临时加载）">
+    <Steps>
+      <Step title="下载发布包">
+        前往 [GitHub Releases](https://github.com/urzeye/ophel/releases)，下载最新的 `ophel-vX.X.X-firefox.zip`。
+      </Step>
+      <Step title="打开 Firefox 调试页面">
+        地址栏输入 `about:debugging#/runtime/this-firefox`。
+      </Step>
+      <Step title="点击「临时载入附加组件」">
+        点击**临时载入附加组件**，选择下载的 zip 文件。
+      </Step>
+    </Steps>
+
+    <Note>
+      Firefox 临时加载的扩展在浏览器重启后会失效，需重新加载。如需永久安装，请使用 Firefox 附加组件商店版本。
+    </Note>
+
+  </Tab>
+</Tabs>
+
+## 安装后的下一步
+
+安装完成后，打开任意支持的 AI 网站，参阅[面板概览](/zh/panel-overview)了解侧边面板的基础操作和浮动按钮的使用方式。

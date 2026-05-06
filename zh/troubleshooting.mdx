@@ -1,0 +1,144 @@
+---
+title: "故障排查 — 常见问题逐步修复指南"
+sidebarTitle: "故障排查"
+description: "Ophel Atlas 最常见问题的逐步修复方法：面板不显示、大纲为空、提示词队列卡住、Firefox 重启等。"
+---
+
+如果某些功能没有按预期工作，本页提供最常见问题的修复步骤。如果下面没有覆盖你的问题，请在 [GitHub Issues](https://github.com/urzeye/ophel/issues) 中提交报告，附上浏览器版本、扩展版本，以及浏览器控制台中的错误信息。
+
+---
+
+## 面板没有出现
+
+在打开支持的 AI 平台时，Ophel 侧边面板应该自动出现。如果没有显示：
+
+<Steps>
+  <Step title="确认扩展已启用">
+    点击浏览器工具栏中的扩展图标，确认 Ophel Atlas
+    已开启。如果被禁用，启用它并刷新页面。
+  </Step>
+  <Step title="强制刷新页面">
+    按 `Ctrl+Shift+R`（Mac:
+    `Cmd+Shift+R`）强制完整刷新页面。普通刷新有时不会重新初始化 Ophel 面板。
+  </Step>
+  <Step title="检查是否在支持的网站上">
+    Ophel 只在[支持的 15 个平台](/zh/introduction#支持的平台)上激活。确认当前
+    URL 属于其中之一。
+  </Step>
+  <Step title="用快捷键手动打开">
+    如果面板之前被关闭了，按 `Alt+P`（Mac:
+    `Option+P`）重新打开，无论浮动按钮是否可见，这个快捷键都能切换面板状态。
+  </Step>
+</Steps>
+
+---
+
+## 大纲为空或不更新
+
+<Steps>
+  <Step title="手动刷新大纲">
+    按 `Alt+R`（Mac: `Option+R`）强制大纲重新扫描对话。部分 AI 平台异步更新
+    DOM，大纲可能需要几秒才能填充。
+  </Step>
+  <Step title="等待 AI 完成回复">
+    大纲在每次 AI 回复完成后重建。如果 AI 仍在生成中，大纲不会更新。
+  </Step>
+  <Step title="检查自动更新设置">
+    前往 **设置 → 功能 →
+    大纲**，确认**自动更新**已开启。如果关闭，大纲只在手动按 `Alt+R` 时才刷新。
+  </Step>
+</Steps>
+
+---
+
+## 大纲不跟踪滚动位置
+
+如果滚动时大纲没有高亮当前阅读的章节：
+
+<Steps>
+  <Step title="在设置中启用滚动同步">
+    前往 **设置 → 功能 → 大纲**，将**滚动同步**设置为开启状态。
+  </Step>
+</Steps>
+
+---
+
+## 浮动按钮消失
+
+浮动快捷按钮 5 秒不操作后会自动折叠成胶囊形状，并没有真的消失——只是最小化了。
+
+<Steps>
+  <Step title="将鼠标移近胶囊位置">
+    将鼠标移动到胶囊形状约 150px 范围内，按钮会自动展开。
+  </Step>
+  <Step title="如果胶囊完全不可见">
+    按 `Alt+P`（Mac: `Option+P`）打开面板，浮动按钮会随之重新出现。
+  </Step>
+</Steps>
+
+---
+
+## 面板遮挡了需要点击的内容
+
+<Steps>
+  <Step title="使用幽灵穿透模式临时点透">
+    按住 **Ctrl**（Mac: `Command`）约 0.2
+    秒，面板变半透明并允许鼠标点透背后内容。松开按键后恢复。
+  </Step>
+  <Step title="将面板移开或切换到吸附模式">
+    拖动面板标题栏移到屏幕另一侧，或切换到**自动吸附**模式（快捷键 `Alt+M`，Mac:
+    `Option+M`），让面板贴边隐藏。
+  </Step>
+</Steps>
+
+---
+
+## 提示词队列卡住，不发送下一条
+
+<Steps>
+  <Step title="手动触发下一条">
+    在队列叠加层中点击**手动发送下一条**。Ophel
+    需要连续两次检测到页面空闲才会自动发送，部分平台的加载动画会让检测失效。
+  </Step>
+  <Step title="检查 AI 是否还在生成">
+    确认 AI 已经完成回复（无旋转/加载指示器）。队列在检测到生成完成前不会发送。
+  </Step>
+</Steps>
+
+---
+
+## WebDAV 同步失败
+
+<Steps>
+  <Step title="验证服务器地址格式">
+    确认 WebDAV 服务器地址以 `https://` 开头，末尾有没有斜杠均可，但必须是 HTTPS 协议。
+  </Step>
+  <Step title="检查权限">
+    WebDAV 依赖可选权限 `<all_urls>`。前往 **设置 → 权限**，确认该权限已授予。
+  </Step>
+  <Step title="测试连接">
+    在 WebDAV 设置页面点击**测试连接**，查看错误提示（通常是 401 凭证错误、404 路径错误或 CORS 错误）。
+  </Step>
+</Steps>
+
+---
+
+## Firefox 重启后扩展消失
+
+Firefox 上通过 `about:debugging` 手动临时加载的扩展，在浏览器重启后会失效。
+
+<Steps>
+  <Step title="使用 Firefox 附加组件商店版本">
+    前往 [Firefox
+    附加组件商店](https://addons.mozilla.org/zh-CN/firefox/addon/ophel-ai-chat-enhancer/)
+    安装正式版本，支持持久化，不受重启影响。
+  </Step>
+</Steps>
+
+---
+
+## 还是无法解决？
+
+1. 在无痕模式（只开启 Ophel）下复现问题
+2. 打开浏览器开发者工具（右键 → 检查 → Console），查看是否有报错
+3. 携带浏览器版本、扩展版本和控制台输出，在 [GitHub Issues](https://github.com/urzeye/ophel/issues) 页面反馈

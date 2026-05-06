@@ -4,7 +4,11 @@ sidebarTitle: "Conversations"
 description: "Organize your AI chat history with color-coded folders, free-form tags, pinning, bulk actions, and flexible export — all synced from the platform sidebar."
 ---
 
-The Conversations tab gives you a searchable, organized view of every chat on the current AI platform. Ophel reads the same conversation list the AI platform displays and layers folders, tags, pinning, and export on top of it — no data leaves the browser unless you explicitly export or sync.
+The Conversations tab gives you a searchable, organized view of every chat on the current AI platform.
+
+![Conversations tab — folder and tag list](/images/features/conversation.png)
+
+Ophel reads the same conversation list the AI platform displays and layers folders, tags, pinning, and export on top of it — no data leaves the browser unless you explicitly export or sync.
 
 ## How conversations sync
 
@@ -25,18 +29,21 @@ Folders group related conversations with a color-coded label. There are 8 color 
 
 <Steps>
   <Step title="Open the toolbox menu">
-    Click the **☰** button in the floating group, or right-click a conversation in the list.
+    Click the **☰** button in the floating group, or right-click a conversation
+    in the list.
   </Step>
   <Step title="Click Move to folder">
     Pick an existing folder from the list, or type a name to create a new one.
   </Step>
   <Step title="Confirm">
-    The conversation is moved immediately. You can reassign or remove the folder at any time.
+    The conversation is moved immediately. You can reassign or remove the folder
+    at any time.
   </Step>
 </Steps>
 
 <Tip>
-You can also move conversations to a folder from the batch action bar when multiple items are selected.
+  You can also move conversations to a folder from the batch action bar when
+  multiple items are selected.
 </Tip>
 
 ## Tags
@@ -55,11 +62,11 @@ Right-click any conversation, or hover to reveal the action buttons, and click *
 
 Select multiple conversations using their checkboxes to perform bulk actions:
 
-| Action | Description |
-|---|---|
+| Action         | Description                                           |
+| -------------- | ----------------------------------------------------- |
 | Move to folder | Assign all selected conversations to a folder at once |
-| Set tags | Apply one or more tags to all selected conversations |
-| Delete | Remove all selected conversations |
+| Set tags       | Apply one or more tags to all selected conversations  |
+| Delete         | Remove all selected conversations                     |
 
 ## Exporting a conversation
 
@@ -67,10 +74,12 @@ Open the toolbox (**☰**) and click **Export**, or press `Alt+Shift+E` (Mac: `O
 
 <Tabs>
   <Tab title="Markdown (.md)">
-    Preserves headings, code blocks, and image references. Best for pasting into a note-taking app or documentation tool.
+    Preserves headings, code blocks, and image references. Best for pasting into
+    a note-taking app or documentation tool.
   </Tab>
   <Tab title="JSON (.json)">
-    Structured data with all messages, roles, timestamps, and model info. Best for programmatic use or archiving.
+    Structured data with all messages, roles, timestamps, and model info. Best
+    for programmatic use or archiving.
   </Tab>
   <Tab title="Plain text (.txt)">
     No formatting — just the raw text. Works in any text editor.
@@ -83,25 +92,25 @@ You can also click **Copy as Markdown** from the toolbox to copy the entire conv
 
 Configure export behavior in **Settings → Features → Conversations**:
 
-| Setting | Description |
-|---|---|
-| Custom user name | Replaces "User" in the exported output |
-| Custom model name | Replaces the model name in the exported output |
-| Include filename timestamp | Adds a timestamp to the exported filename |
+| Setting                           | Description                                       |
+| --------------------------------- | ------------------------------------------------- |
+| Custom user name                  | Replaces "User" in the exported output            |
+| Custom model name                 | Replaces the model name in the exported output    |
+| Include filename timestamp        | Adds a timestamp to the exported filename         |
 | Include thinking/reasoning chains | Exports reasoning steps for models that show them |
-| Convert images to Base64 | Embeds images inline instead of linking to them |
+| Convert images to Base64          | Embeds images inline instead of linking to them   |
 
 ## Keyboard shortcuts
 
 <Note>Mac users: **Alt** = **Option**.</Note>
 
-| Shortcut | Action |
-|---|---|
-| `Ctrl+Shift+O` | New conversation |
-| `Alt+Shift+R` | Refresh conversation list |
-| `Alt+Shift+L` | Locate current conversation in list |
-| `Alt+[` | Previous conversation |
-| `Alt+]` | Next conversation |
+| Shortcut       | Action                              |
+| -------------- | ----------------------------------- |
+| `Ctrl+Shift+O` | New conversation                    |
+| `Alt+Shift+R`  | Refresh conversation list           |
+| `Alt+Shift+L`  | Locate current conversation in list |
+| `Alt+[`        | Previous conversation               |
+| `Alt+]`        | Next conversation                   |
 
 All shortcuts are customizable in **Settings → Shortcuts**.
 
@@ -109,8 +118,8 @@ All shortcuts are customizable in **Settings → Shortcuts**.
 
 Go to **Settings → Features → Conversations** to configure folder and sync behavior.
 
-| Setting | Description |
-|---|---|
+| Setting               | Description                                                        |
+| --------------------- | ------------------------------------------------------------------ |
 | Folder rainbow colors | Use distinct colored backgrounds for folder-assigned conversations |
-| Auto unpin on sync | Remove pins when syncing from a remote source |
-| Sync delete to cloud | Delete remote records when you delete conversations locally |
+| Auto unpin on sync    | Remove pins when syncing from a remote source                      |
+| Sync delete to cloud  | Delete remote records when you delete conversations locally        |

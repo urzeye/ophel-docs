@@ -1,0 +1,124 @@
+---
+title: "常见问题解答"
+sidebarTitle: "常见问题"
+description: "Ophel Atlas 最常见问题的解答，涵盖安装、面板行为、大纲、会话、提示词队列、权限与隐私。"
+---
+
+<AccordionGroup>
+  <Accordion title="面板没有出现在 AI 页面上。" icon="panel-left">
+    1. 确认扩展已安装并启用（检查浏览器工具栏）
+    2. 用 `Ctrl+Shift+R`（Mac: `Cmd+Shift+R`）强制刷新页面
+    3. 确认当前站点在[支持的平台列表](/zh/introduction#支持的平台)中
+    4. 如果面板被关闭了，按 `Alt+P`（Mac: `Option+P`）重新打开
+  </Accordion>
+
+  <Accordion title="浮动按钮不见了，怎么打开面板？" icon="circle-question">
+    按 `Alt+P`（Mac: `Option+P`），无论浮动按钮是否可见，这个快捷键都能切换面板。
+
+    浮动按钮 5 秒无操作后会折叠成胶囊，将鼠标移近约 150px 内会重新展开。
+
+  </Accordion>
+
+<Accordion
+  title="扩展提示「点击启用」。"
+  icon="shield-halved"
+>
+  部分网址需要你明确授权扩展在该站点运行。点击浏览器工具栏中的扩展图标，选择允许访问当前站点。
+</Accordion>
+
+  <Accordion title="面板挡住了我需要点击的内容。" icon="arrow-pointer">
+    按住 **Ctrl**（Windows/Linux）或 **Command**（Mac），保持约 0.2 秒（只按这一个键），面板会变透明并允许鼠标穿透。松开按键后恢复正常。
+
+    详见[幽灵穿透](/zh/panel-overview#幽灵穿透ghost-pass-through)。
+
+  </Accordion>
+
+<Accordion
+  title="面板吸附到边缘后无法移动。"
+  icon="thumbtack"
+>
+  将鼠标悬停到屏幕边缘，面板会弹出来。然后拖拽它离开边缘即可取消吸附。也可以在
+  **设置 → 通用 → 面板** 中禁用边缘吸附功能。
+</Accordion>
+
+<Accordion
+  title="大纲是空的，但对话有内容。"
+  icon="list-tree"
+>
+  按 `Alt+R`（Mac: `Option+R`）手动刷新大纲。部分平台的 DOM
+  是异步更新的，页面加载后大纲可能需要几秒才能填充。
+</Accordion>
+
+<Accordion
+  title="大纲没有同步我的滚动位置。"
+  icon="arrows-up-down"
+>
+  确认 **设置 → 功能 → 大纲 → 滚动同步** 已开启。
+</Accordion>
+
+<Accordion
+  title="会话标签页中没有显示我的对话。"
+  icon="folder-open"
+>
+  会话标签页从 AI 平台的原生侧边栏读取数据。如果平台侧边栏未加载，Ophel
+  就无法获取对话列表。尝试滚动平台侧边栏以加载更多条目。
+</Accordion>
+
+  <Accordion title="WebDAV 同步的是什么内容？" icon="cloud">
+    WebDAV 只同步 Ophel 中的**元数据**：你在 Ophel 里设置的文件夹归属、标签、置顶状态和备注。不会上传实际的对话消息（那些内容属于 AI 平台）。
+
+    详见 [WebDAV 同步](/zh/data/webdav)。
+
+  </Accordion>
+
+  <Accordion title="提示词队列怎么用？" icon="list-ol">
+    1. 在 **设置 → 功能 → 提示词 → 队列** 中启用队列
+    2. 按 `Alt+J`（Mac: `Option+J`）打开队列叠加层
+    3. 逐条添加，或批量导入一组提示词
+    4. 点击开始，Ophel 会在 AI 每次完成回复后自动发送下一条
+
+    详见[提示词库文档](/zh/features/prompts)。
+
+  </Accordion>
+
+<Accordion
+  title="队列卡住了，没有发送下一条。"
+  icon="hourglass"
+>
+  Ophel 需要连续两次检测到页面空闲（约 2 秒）才会发送下一条。如果 AI 页面使用了
+  Ophel
+  无法识别的加载动画，队列可能会卡住。此时在队列叠加层中点击**手动发送下一条**。
+</Accordion>
+
+  <Accordion title="什么是 Claude Session Key？" icon="key">
+    Claude Session Key 是你在 claude.ai 浏览器会话中的认证令牌。通过添加多个账号的 Key，当一个账号用量达到限额时，可以快速切换到另一个账号继续对话。Ophel 会拦截请求并自动注入激活的 Key。
+
+    Key 存储在你本机的 `chrome.storage.local` 中，Ophel 不会将其上传到任何服务器。
+
+  </Accordion>
+
+<Accordion
+  title="为什么 Ophel 需要 `<all_urls>` 权限？"
+  icon="globe"
+>
+  该权限仅用于去水印功能（抓取并转换图片为 base64）和 WebDAV
+  同步（访问自定义服务器）。如果你不使用这些功能，可以拒绝或在 **设置 → 权限**
+  中撤销。
+</Accordion>
+
+<Accordion
+  title="Ophel 会上传我的对话内容吗？"
+  icon="lock"
+>
+  不会。Ophel
+  完全在你的浏览器本地运行。对话内容、提示词和设置均保存在本地（或你自己配置的
+  WebDAV 服务器）。详情请查看[隐私声明](/zh/data/privacy)。
+</Accordion>
+
+  <Accordion title="如何重置所有数据到初始状态？" icon="rotate-left">
+    前往 **设置 → 备份与同步 → 清空所有数据**。这将删除所有 Ophel 数据，包括提示词、会话元数据、文件夹和设置。
+
+    建议在清空前先导出一份完整备份。
+
+  </Accordion>
+</AccordionGroup>

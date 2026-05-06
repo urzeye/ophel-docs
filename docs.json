@@ -7,65 +7,219 @@
     "light": "#EBF2FF",
     "dark": "#1A2B4A"
   },
+  "logo": {
+    "light": "/images/logo.png",
+    "dark": "/images/logo.png",
+    "href": "https://github.com/urzeye/ophel"
+  },
+  "favicon": "/images/logo.png",
+  "appearance": {
+    "default": "system"
+  },
+  "fonts": {
+    "heading": { "family": "Inter" },
+    "body": { "family": "Inter" }
+  },
+  "background": {
+    "decoration": "gradient"
+  },
   "navbar": {
+    "links": [
+      {
+        "label": "Chrome",
+        "href": "https://chromewebstore.google.com/detail/ophel-ai-%E5%AF%B9%E8%AF%9D%E5%A2%9E%E5%BC%BA%E5%B7%A5%E5%85%B7/lpcohdfbomkgepfladogodgeoppclakd",
+        "icon": "chrome"
+      },
+      {
+        "label": "Firefox",
+        "href": "https://addons.mozilla.org/zh-CN/firefox/addon/ophel-ai-chat-enhancer/",
+        "icon": "firefox-browser"
+      },
+      {
+        "label": "Greasy Fork",
+        "href": "https://greasyfork.org/zh-CN/scripts/563646-ophel-ai-chat-page-enhancer",
+        "icon": "scroll"
+      }
+    ],
     "primary": {
       "type": "github",
       "href": "https://github.com/urzeye/ophel"
     }
   },
-  "navigation": {
-    "tabs": [
+  "contextual": {
+    "options": ["assistant", "copy"]
+  },
+  "footer": {
+    "socials": {
+      "github": "https://github.com/urzeye/ophel"
+    },
+    "links": [
       {
-        "tab": "Docs",
-        "groups": [
+        "header": "Install",
+        "items": [
           {
-            "group": "Get Started",
-            "pages": [
-              "introduction",
-              "installation",
-              "panel-overview"
-            ]
+            "label": "Chrome Web Store",
+            "href": "https://chromewebstore.google.com/detail/ophel-ai-%E5%AF%B9%E8%AF%9D%E5%A2%9E%E5%BC%BA%E5%B7%A5%E5%85%B7/lpcohdfbomkgepfladogodgeoppclakd"
           },
           {
-            "group": "Core Features",
-            "pages": [
-              "features/outline",
-              "features/conversations",
-              "features/prompts",
-              "features/global-search"
-            ]
+            "label": "Firefox Add-ons",
+            "href": "https://addons.mozilla.org/zh-CN/firefox/addon/ophel-ai-chat-enhancer/"
           },
           {
-            "group": "Enhancements",
-            "pages": [
-              "enhancements/reading",
-              "enhancements/layout",
-              "enhancements/content",
-              "enhancements/tab-notifications"
-            ]
+            "label": "Greasy Fork",
+            "href": "https://greasyfork.org/zh-CN/scripts/563646-ophel-ai-chat-page-enhancer"
           },
           {
-            "group": "Customization",
-            "pages": [
-              "customization/appearance",
-              "customization/shortcuts",
-              "customization/site-settings"
-            ]
+            "label": "GitHub Releases",
+            "href": "https://github.com/urzeye/ophel/releases"
+          }
+        ]
+      },
+      {
+        "header": "Resources",
+        "items": [
+          {
+            "label": "GitHub",
+            "href": "https://github.com/urzeye/ophel"
           },
           {
-            "group": "Data & Privacy",
-            "pages": [
-              "data/backup-sync",
-              "data/webdav",
-              "data/privacy",
-              "data/permissions"
-            ]
+            "label": "Issues",
+            "href": "https://github.com/urzeye/ophel/issues"
           },
           {
-            "group": "Help",
-            "pages": [
-              "faq",
-              "troubleshooting"
+            "label": "Changelog",
+            "href": "https://github.com/urzeye/ophel/blob/main/CHANGELOG.md"
+          }
+        ]
+      }
+    ]
+  },
+  "navigation": {
+    "global": {
+      "languages": [
+        { "language": "en", "default": true, "href": "/" },
+        { "language": "cn", "href": "/zh/introduction" }
+      ]
+    },
+    "languages": [
+      {
+        "language": "en",
+        "tabs": [
+          {
+            "tab": "Docs",
+            "groups": [
+              {
+                "group": "Get Started",
+                "icon": "rocket",
+                "pages": ["introduction", "installation", "panel-overview"]
+              },
+              {
+                "group": "Core Features",
+                "icon": "star",
+                "pages": [
+                  "features/outline",
+                  "features/conversations",
+                  "features/prompts",
+                  "features/global-search"
+                ]
+              },
+              {
+                "group": "Enhancements",
+                "icon": "sparkles",
+                "pages": [
+                  "enhancements/reading",
+                  "enhancements/layout",
+                  "enhancements/content",
+                  "enhancements/tab-notifications"
+                ]
+              },
+              {
+                "group": "Customization",
+                "icon": "palette",
+                "pages": [
+                  "customization/appearance",
+                  "customization/shortcuts",
+                  "customization/site-settings"
+                ]
+              },
+              {
+                "group": "Data & Privacy",
+                "icon": "shield",
+                "pages": [
+                  "data/backup-sync",
+                  "data/webdav",
+                  "data/privacy",
+                  "data/permissions"
+                ]
+              },
+              {
+                "group": "Help",
+                "icon": "circle-question",
+                "pages": ["faq", "troubleshooting"]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "language": "cn",
+        "tabs": [
+          {
+            "tab": "文档",
+            "groups": [
+              {
+                "group": "快速开始",
+                "icon": "rocket",
+                "pages": [
+                  "zh/introduction",
+                  "zh/installation",
+                  "zh/panel-overview"
+                ]
+              },
+              {
+                "group": "核心功能",
+                "icon": "star",
+                "pages": [
+                  "zh/features/outline",
+                  "zh/features/conversations",
+                  "zh/features/prompts",
+                  "zh/features/global-search"
+                ]
+              },
+              {
+                "group": "功能增强",
+                "icon": "sparkles",
+                "pages": [
+                  "zh/enhancements/reading",
+                  "zh/enhancements/layout",
+                  "zh/enhancements/content",
+                  "zh/enhancements/tab-notifications"
+                ]
+              },
+              {
+                "group": "个性化设置",
+                "icon": "palette",
+                "pages": [
+                  "zh/customization/appearance",
+                  "zh/customization/shortcuts",
+                  "zh/customization/site-settings"
+                ]
+              },
+              {
+                "group": "数据与隐私",
+                "icon": "shield",
+                "pages": [
+                  "zh/data/backup-sync",
+                  "zh/data/webdav",
+                  "zh/data/privacy",
+                  "zh/data/permissions"
+                ]
+              },
+              {
+                "group": "帮助",
+                "icon": "circle-question",
+                "pages": ["zh/faq", "zh/troubleshooting"]
+              }
             ]
           }
         ]
