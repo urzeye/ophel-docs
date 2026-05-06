@@ -8,8 +8,8 @@
     "dark": "#1A2B4A"
   },
   "logo": {
-    "light": "/images/logo.png",
-    "dark": "/images/logo.png",
+    "light": "/images/logo-light.svg",
+    "dark": "/images/logo-dark.svg",
     "href": "https://github.com/urzeye/ophel"
   },
   "favicon": "/images/logo.png",
