@@ -1,0 +1,37 @@
+name: Sync Changelog
+
+on:
+  schedule:
+    # Every day at 02:00 UTC
+    - cron: "0 2 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout ophel-docs
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Run sync script
+        run: node scripts/sync-changelog.mjs
+
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add changelog.mdx zh/changelog.mdx
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "chore(docs): sync changelog from ophel [skip ci]"
+            git push
+          fi

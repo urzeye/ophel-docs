@@ -150,7 +150,7 @@
           {
             "tab": "Changelog",
             "icon": "list",
-            "href": "https://github.com/urzeye/ophel/blob/main/CHANGELOG.md"
+            "pages": ["changelog"]
           }
         ]
       },
@@ -229,7 +229,7 @@
           {
             "tab": "更新日志",
             "icon": "list",
-            "href": "https://github.com/urzeye/ophel/blob/main/CHANGELOG.md"
+            "pages": ["zh/changelog"]
           }
         ]
       }
