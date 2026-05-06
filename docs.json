@@ -134,6 +134,11 @@
                 "group": "Help",
                 "icon": "circle-question",
                 "pages": ["faq", "troubleshooting"]
+              },
+              {
+                "group": "Changelog",
+                "icon": "list",
+                "pages": ["changelog"]
               }
             ]
           },
@@ -144,16 +149,6 @@
               {
                 "group": "Installation",
                 "pages": ["installation"]
-              }
-            ]
-          },
-          {
-            "tab": "Changelog",
-            "icon": "list",
-            "groups": [
-              {
-                "group": "Changelog",
-                "pages": ["changelog"]
               }
             ]
           }
@@ -218,6 +213,11 @@
                 "group": "帮助",
                 "icon": "circle-question",
                 "pages": ["zh/faq", "zh/troubleshooting"]
+              },
+              {
+                "group": "更新日志",
+                "icon": "list",
+                "pages": ["zh/changelog"]
               }
             ]
           },
@@ -228,16 +228,6 @@
               {
                 "group": "安装",
                 "pages": ["zh/installation"]
-              }
-            ]
-          },
-          {
-            "tab": "更新日志",
-            "icon": "list",
-            "groups": [
-              {
-                "group": "更新日志",
-                "pages": ["zh/changelog"]
               }
             ]
           }
