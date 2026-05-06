@@ -7,7 +7,9 @@ description: "Install Ophel Atlas from the Chrome Web Store, Firefox Add-ons, Gr
 Ophel Atlas is available as a browser extension for Chrome-based browsers and Firefox, and as a userscript for Tampermonkey. The browser extension is recommended — it offers a fuller feature set, better compatibility, and does not require developer mode after the initial install.
 
 <Tip>
-  Use the browser extension version whenever possible. The userscript version has feature limitations compared to the extension and may have lower compatibility on some platforms.
+  Use the browser extension version whenever possible. The userscript version
+  has feature limitations compared to the extension and may have lower
+  compatibility on some platforms.
 </Tip>
 
 ## Download
@@ -18,36 +20,30 @@ Ophel Atlas is available as a browser extension for Chrome-based browsers and Fi
     icon="chrome"
     href="https://chromewebstore.google.com/detail/ophel-ai-%E5%AF%B9%E8%AF%9D%E5%A2%9E%E5%BC%BA%E5%B7%A5%E5%85%B7/lpcohdfbomkgepfladogodgeoppclakd"
   >
-    <div style={{ display: "flex", gap: "6px", flexWrap: "wrap", marginBottom: "8px" }}>
-      ![](https://img.shields.io/chrome-web-store/users/lpcohdfbomkgepfladogodgeoppclakd?logo=google-chrome&logoColor=white&label=users&color=4285F4)
-      ![](https://img.shields.io/chrome-web-store/stars/lpcohdfbomkgepfladogodgeoppclakd?logo=google-chrome&logoColor=white&color=4285F4)
+    <div style={{ display: "flex", gap: "6px", flexWrap: "wrap" }}>
+      <img src="https://img.shields.io/chrome-web-store/users/lpcohdfbomkgepfladogodgeoppclakd?logo=google-chrome&logoColor=white&label=users&color=4285F4" alt="users" />
+      <img src="https://img.shields.io/chrome-web-store/stars/lpcohdfbomkgepfladogodgeoppclakd?logo=google-chrome&logoColor=white&color=4285F4" alt="stars" />
     </div>
-
-    Recommended. Install directly from the Chrome Web Store — no developer mode required.
   </Card>
   <Card
     title="Firefox"
     icon="firefox-browser"
     href="https://addons.mozilla.org/zh-CN/firefox/addon/ophel-ai-chat-enhancer/"
   >
-    <div style={{ display: "flex", gap: "6px", flexWrap: "wrap", marginBottom: "8px" }}>
-      ![](https://img.shields.io/amo/users/ophel-ai-chat-enhancer?logo=firefox&logoColor=white&label=users&color=FF7139)
-      ![](https://img.shields.io/amo/stars/ophel-ai-chat-enhancer?logo=firefox&logoColor=white&color=FF7139)
+    <div style={{ display: "flex", gap: "6px", flexWrap: "wrap" }}>
+      <img src="https://img.shields.io/amo/users/ophel-ai-chat-enhancer?logo=firefox&logoColor=white&label=users&color=FF7139" alt="users" />
+      <img src="https://img.shields.io/amo/stars/ophel-ai-chat-enhancer?logo=firefox&logoColor=white&color=FF7139" alt="stars" />
     </div>
-
-    Install from Firefox Add-ons for a persistent, auto-updating experience.
   </Card>
   <Card
     title="Greasy Fork"
     icon="scroll"
     href="https://greasyfork.org/zh-CN/scripts/563646-ophel-ai-chat-page-enhancer"
   >
-    <div style={{ display: "flex", gap: "6px", flexWrap: "wrap", marginBottom: "8px" }}>
-      ![](https://img.shields.io/greasyfork/dt/563646?logo=tampermonkey&logoColor=white&label=installs&color=4C4C4C)
-      ![](https://img.shields.io/greasyfork/rating-count/563646?logo=tampermonkey&logoColor=white&label=ratings&color=4C4C4C)
+    <div style={{ display: "flex", gap: "6px", flexWrap: "wrap" }}>
+      <img src="https://img.shields.io/greasyfork/dt/563646?logo=tampermonkey&logoColor=white&label=installs&color=4C4C4C" alt="installs" />
+      <img src="https://img.shields.io/greasyfork/rating-count/563646?logo=tampermonkey&logoColor=white&label=ratings&color=4C4C4C" alt="ratings" />
     </div>
-
-    Userscript for Tampermonkey. Works in any browser that supports userscripts.
   </Card>
 </CardGroup>
 
@@ -68,6 +64,7 @@ Ophel Atlas is available as a browser extension for Chrome-based browsers and Fi
         Navigate to any [supported platform](#supported-platforms) — for example, [chatgpt.com](https://chatgpt.com) or [claude.ai](https://claude.ai). The Ophel panel appears automatically on the right side of the page.
       </Step>
     </Steps>
+
   </Tab>
   <Tab title="Firefox">
     Install from the Firefox Add-ons store for a persistent, auto-updating installation.
@@ -83,6 +80,7 @@ Ophel Atlas is available as a browser extension for Chrome-based browsers and Fi
         Navigate to any [supported platform](#supported-platforms). The Ophel panel appears automatically.
       </Step>
     </Steps>
+
   </Tab>
   <Tab title="Userscript (Tampermonkey)">
     Use this method if you cannot install browser extensions, or if you prefer the Tampermonkey workflow.
@@ -105,6 +103,7 @@ Ophel Atlas is available as a browser extension for Chrome-based browsers and Fi
         Navigate to any [supported platform](#supported-platforms). The Ophel panel appears automatically.
       </Step>
     </Steps>
+
   </Tab>
 </Tabs>
 
@@ -148,6 +147,7 @@ Use this method if you want to install a specific version, test a pre-release bu
         Click **Load Temporary Add-on** and select the downloaded zip file. You do not need to extract it.
       </Step>
     </Steps>
+
   </Tab>
   <Tab title="Userscript (manual)">
     <Steps>
@@ -168,26 +168,29 @@ Use this method if you want to install a specific version, test a pre-release bu
 
 After installation, Ophel activates automatically on all 15 of the following platforms:
 
-| Platform | URL |
-| --- | --- |
-| **ChatGPT** | chatgpt.com |
-| **Gemini** | gemini.google.com |
+| Platform              | URL                    |
+| --------------------- | ---------------------- |
+| **ChatGPT**           | chatgpt.com            |
+| **Gemini**            | gemini.google.com      |
 | **Gemini Enterprise** | business.gemini.google |
-| **AI Studio** | aistudio.google.com |
-| **Claude** | claude.ai |
-| **Grok** | grok.com |
-| **DeepSeek** | chat.deepseek.com |
-| **Doubao** | www.doubao.com |
-| **Kimi** | www.kimi.com |
-| **Qwen Studio** | chat.qwen.ai |
-| **Qianwen** | www.qianwen.com |
-| **Yuanbao** | yuanbao.tencent.com |
-| **Z.ai** | chat.z.ai |
-| **ChatGLM** | chatglm.cn |
-| **ima** | ima.qq.com |
+| **AI Studio**         | aistudio.google.com    |
+| **Claude**            | claude.ai              |
+| **Grok**              | grok.com               |
+| **DeepSeek**          | chat.deepseek.com      |
+| **Doubao**            | www.doubao.com         |
+| **Kimi**              | www.kimi.com           |
+| **Qwen Studio**       | chat.qwen.ai           |
+| **Qianwen**           | www.qianwen.com        |
+| **Yuanbao**           | yuanbao.tencent.com    |
+| **Z.ai**              | chat.z.ai              |
+| **ChatGLM**           | chatglm.cn             |
+| **ima**               | ima.qq.com             |
 
 <Note>
-  Support for each platform depends on the site's page structure. If a platform update changes the page layout, Ophel may require an update before it works correctly again. Check [GitHub Issues](https://github.com/urzeye/ophel/issues) for known compatibility problems.
+  Support for each platform depends on the site's page structure. If a platform
+  update changes the page layout, Ophel may require an update before it works
+  correctly again. Check [GitHub Issues](https://github.com/urzeye/ophel/issues)
+  for known compatibility problems.
 </Note>
 
 ## Next steps
