@@ -1,0 +1,57 @@
+---
+title: "Privacy in Ophel Atlas: local-first, no data collection"
+sidebarTitle: "Privacy"
+description: "Ophel stores everything in your browser and collects nothing. No account, no analytics, no conversation data sent to any Ophel server."
+---
+
+Ophel is designed to work entirely on your device. Every setting, prompt, folder, tag, and piece of conversation metadata you create stays in your browser's local storage. Ophel does not collect, transmit, or store any of your data on external servers.
+
+## Where your data lives
+
+All Ophel data is written to your browser's local storage. Nothing is uploaded to Ophel's infrastructure. The data stored locally includes:
+
+- Extension settings and preferences
+- Your prompt library
+- Conversation organization data (folders, tags, pinned state)
+- Reading history positions
+- Theme preferences
+- Claude Session Keys (when you use the Claude multi-account feature)
+
+No account is required to use Ophel. There is no sign-in, no profile, and no sync tied to an Ophel-owned service.
+
+## What Ophel never does
+
+- Ophel does not collect analytics or usage telemetry.
+- Ophel does not display advertisements.
+- Ophel does not read, upload, or have any access to the content of your AI conversations. Conversation messages belong to the AI platform you are using.
+- Ophel does not send your Claude Session Keys to any server other than Claude's own endpoints when you initiate a request.
+
+## Permissions model
+
+Ophel requests only the permissions it needs. Optional permissions are never granted automatically — your browser asks you first, and you can revoke them at any time.
+
+| Type     | Permission      | Purpose                                                      |
+| -------- | --------------- | ------------------------------------------------------------ |
+| Required | `storage`       | Save your settings and local data in the browser             |
+| Required | `declarativeNetRequestWithHostAccess` | Apply header rules on Claude for certain features |
+| Optional | `notifications` | Show a desktop notification when AI generation completes     |
+| Optional | `cookies`       | Read and switch Claude Session Keys                          |
+| Optional | `<all_urls>`    | WebDAV sync and watermark removal                            |
+
+Revoking an optional permission automatically disables the features that depend on it. See [Permissions](/data/permissions) for details on how to grant and revoke each one.
+
+## WebDAV sync: your server, your data
+
+If you choose to enable WebDAV sync, your data is transmitted to the WebDAV server you configure — not to Ophel. You choose the server, you hold the credentials, and you control who has access. Your password is stored locally in your browser and is never sent to Ophel or any third party.
+
+## Claude Session Keys
+
+Claude Session Keys are stored locally in your browser and are used only to make requests to Claude's own endpoints on your behalf. Ophel never transmits them to Ophel's servers or any other third party.
+
+## Exporting and migrating your data
+
+You can export your full data set at any time from **Settings → Backup & Sync**. This lets you move to a different device, keep an offline backup, or leave Ophel without losing anything you've organized. See [Backup & Restore](/data/backup-sync) for export options.
+
+## Open source
+
+Ophel is released under the GPLv3 license. You can read the source code, verify the data practices described here, and build from source yourself.

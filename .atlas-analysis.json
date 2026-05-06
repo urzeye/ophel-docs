@@ -1,0 +1,96 @@
+{
+  "projectType": "frontend",
+  "projectName": "Ophel Atlas",
+  "projectDescription": "A browser extension that transforms AI chat conversations into organized, navigable documents with real-time outlines, conversation folders, and a prompt library — supporting 15 major AI platforms.",
+  "theme": "almond",
+  "primaryColor": "#4285F4",
+  "lightColor": "#EBF2FF",
+  "darkColor": "#1A2B4A",
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Docs",
+        "groups": [
+          {
+            "group": "Get Started",
+            "pages": [
+              "introduction",
+              "installation",
+              "panel-overview"
+            ]
+          },
+          {
+            "group": "Core Features",
+            "pages": [
+              "features/outline",
+              "features/conversations",
+              "features/prompts",
+              "features/global-search"
+            ]
+          },
+          {
+            "group": "Enhancements",
+            "pages": [
+              "enhancements/reading",
+              "enhancements/layout",
+              "enhancements/content",
+              "enhancements/tab-notifications"
+            ]
+          },
+          {
+            "group": "Customization",
+            "pages": [
+              "customization/appearance",
+              "customization/shortcuts",
+              "customization/site-settings"
+            ]
+          },
+          {
+            "group": "Data & Privacy",
+            "pages": [
+              "data/backup-sync",
+              "data/webdav",
+              "data/privacy",
+              "data/permissions"
+            ]
+          },
+          {
+            "group": "Help",
+            "pages": [
+              "faq",
+              "troubleshooting"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "keyFeatures": [
+    "Real-time Smart Outline — auto-generates a clickable table of contents from any AI conversation",
+    "Conversation Management — organize chats into folders and tags with search, filters, and batch actions",
+    "Prompt Library — store, categorize, and send prompts with variable substitution and a prompt queue",
+    "Global Search — unified search across outlines, conversations, prompts, and settings with advanced syntax",
+    "24 built-in themes (light & dark) with custom CSS support",
+    "WebDAV sync for multi-device data consistency",
+    "Keyboard shortcut system with full customization",
+    "Claude Session Key management and multi-account switching",
+    "Mermaid diagram rendering, LaTeX formula support, and Markdown enhancements",
+    "Privacy-first: local storage by default, no data collection, no account required",
+    "Supports 15 AI platforms: ChatGPT, Gemini, Claude, Grok, DeepSeek, Doubao, Kimi, and more"
+  ],
+  "publicApiSurface": [
+    "Browser extension (Chrome, Edge) — Chrome Web Store",
+    "Firefox Add-on — Firefox Add-ons",
+    "Userscript — Greasy Fork (Tampermonkey)",
+    "Manual sideload install from GitHub Releases",
+    "Settings → Features: Outline, Conversations, Prompts, Global Search, Queue",
+    "Settings → Appearance: theme presets, light/dark/system mode, custom CSS via --gh-* variables",
+    "Settings → Shortcuts: fully customizable key bindings",
+    "Settings → Backup & Sync: export/import JSON, WebDAV server configuration",
+    "Settings → Permissions: grant/revoke optional permissions (notifications, cookies, <all_urls>)",
+    "Settings → Site Settings: per-site model lock, Markdown fixes, Gemini watermark removal",
+    "Settings → Claude: Session Key import, validation, and multi-account rotation",
+    "Search syntax filters: folder:, tag:, is:, type:, level:, date:",
+    "Keyboard shortcuts: Alt+P (panel), Alt+R (refresh outline), Alt+K / double-Shift (global search), Alt+D (theme toggle)"
+  ]
+}

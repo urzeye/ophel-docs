@@ -1,0 +1,75 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "name": "Ophel Atlas",
+  "theme": "almond",
+  "colors": {
+    "primary": "#4285F4",
+    "light": "#EBF2FF",
+    "dark": "#1A2B4A"
+  },
+  "navbar": {
+    "primary": {
+      "type": "github",
+      "href": "https://github.com/urzeye/ophel"
+    }
+  },
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Docs",
+        "groups": [
+          {
+            "group": "Get Started",
+            "pages": [
+              "introduction",
+              "installation",
+              "panel-overview"
+            ]
+          },
+          {
+            "group": "Core Features",
+            "pages": [
+              "features/outline",
+              "features/conversations",
+              "features/prompts",
+              "features/global-search"
+            ]
+          },
+          {
+            "group": "Enhancements",
+            "pages": [
+              "enhancements/reading",
+              "enhancements/layout",
+              "enhancements/content",
+              "enhancements/tab-notifications"
+            ]
+          },
+          {
+            "group": "Customization",
+            "pages": [
+              "customization/appearance",
+              "customization/shortcuts",
+              "customization/site-settings"
+            ]
+          },
+          {
+            "group": "Data & Privacy",
+            "pages": [
+              "data/backup-sync",
+              "data/webdav",
+              "data/privacy",
+              "data/permissions"
+            ]
+          },
+          {
+            "group": "Help",
+            "pages": [
+              "faq",
+              "troubleshooting"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

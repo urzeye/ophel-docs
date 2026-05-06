@@ -1,0 +1,76 @@
+---
+title: "Keep Ophel in sync across devices with WebDAV"
+sidebarTitle: "WebDAV Sync"
+description: "Use a WebDAV server to sync Ophel prompts, folders, and settings across devices. Your data goes to your own server — Ophel's infrastructure is never involved."
+---
+
+WebDAV sync lets you push your Ophel data to a server you own and pull it back on any other device where Ophel is installed. Because the data goes to your own server — not to Ophel's infrastructure — you stay in full control of where your data lives. Common WebDAV providers include Nextcloud, Nutstore (Jianguo Yun), and Synology NAS.
+
+## What gets synced
+
+WebDAV sync covers the metadata that Ophel manages locally:
+
+- Folders, tags, and pinned state you've set for your conversations
+- Your prompt library
+- Ophel settings
+- Claude Session Keys (optional; included by default — be careful if you share backup files)
+
+**Not synced:** The actual conversation messages on AI platforms. Those messages belong to each AI service. Ophel has no access to read or upload them.
+
+## Settings
+
+Configure the sync connection at **Settings → Backup & Sync → WebDAV**:
+
+| Field              | Description                                                                                      |
+| ------------------ | ------------------------------------------------------------------------------------------------ |
+| Server URL         | Full URL of your WebDAV server — must start with `https://`                                      |
+| Username           | Your WebDAV account username                                                                     |
+| Password           | Your WebDAV account password (stored locally, never sent to Ophel servers or any third party)    |
+| Remote path        | Directory on the server where sync files are stored (default: `ophel`, created automatically)    |
+| Sync mode          | **Manual** — click a button to sync; or **Automatic** — sync on a set interval                  |
+| Auto sync interval | Minimum time between automatic syncs, in minutes                                                 |
+| Data sources       | Which data types to include: settings, conversations, prompts, and/or Claude Session Keys        |
+
+## Set up WebDAV sync
+
+<Steps>
+  <Step title="Open the WebDAV settings panel">
+    Go to **Settings → Backup & Sync → WebDAV**.
+  </Step>
+  <Step title="Enter your server details">
+    Fill in the Server URL, Username, Password, and Remote path. If the remote path doesn't exist yet, Ophel creates it on first sync.
+  </Step>
+  <Step title="Grant the required permission">
+    WebDAV sync requires the optional `<all_urls>` permission. Your browser will prompt you to grant it the first time you enable the feature.
+  </Step>
+  <Step title="Test the connection">
+    Click **Test connection** to verify your credentials and server reachability before syncing any data.
+  </Step>
+  <Step title="Choose a sync mode and save">
+    Select manual or automatic sync, set an interval if using automatic, choose which data sources to include, and save your configuration.
+  </Step>
+  <Step title="Push your data">
+    Click **Upload backup** to push your current local data to the server.
+  </Step>
+</Steps>
+
+## Restore on a new device
+
+<Steps>
+  <Step title="Configure the same WebDAV server">
+    On the new device, enter the same server URL, username, password, and remote path you used on the original device.
+  </Step>
+  <Step title="Pull from server">
+    Click **Pull from server** to open the list of remote backups, then select the snapshot you want to restore.
+  </Step>
+</Steps>
+
+## Multi-device usage
+
+<Note>
+When multiple devices are active at the same time, use **manual sync** rather than automatic sync. Simultaneous automatic syncs from different devices can cause write conflicts on the server.
+</Note>
+
+## Required permission
+
+WebDAV sync requires the optional `<all_urls>` browser permission. Ophel uses this to make network requests to your WebDAV server's URL. The browser will ask you to grant this permission the first time you enable WebDAV sync. You can revoke it at any time from **Settings → Permissions** — revoking it will disable WebDAV sync automatically.

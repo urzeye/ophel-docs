@@ -1,0 +1,66 @@
+---
+title: "Reading history, scroll lock, and position restore"
+sidebarTitle: "Reading & Scroll"
+description: "Automatically save and restore your reading position per conversation, lock the page during AI generation, and jump around long threads with one-click anchors."
+---
+
+Ophel tracks where you are in each conversation so you never have to scroll back to find your place. Pair that with scroll lock to stay on the part you're reading while the AI is still generating, and a set of quick navigation anchors to jump around long threads instantly.
+
+## Reading history
+
+When you leave a conversation, Ophel quietly records your scroll position. The next time you return, it scrolls you back to exactly where you left off.
+
+**Settings → Features → Reading History**:
+
+| Setting | Description | Default |
+| --- | --- | --- |
+| Record reading position | Track scroll position per conversation | On |
+| Auto-restore | Scroll to last position when reopening a conversation | On |
+| Retention period | How long records are kept before automatic cleanup | 30 days |
+
+Available retention periods: 1 day / 3 days / 7 days / 30 days / 90 days / Forever.
+
+<Tip>
+  To re-read a conversation from the top on a single visit without disabling auto-restore, append `?ophel_skip_restore=1` to the URL when opening it. Ophel skips the restore for that visit only.
+</Tip>
+
+## Scroll lock
+
+While the AI is generating, the page automatically scrolls down to follow new output. If you're reading something earlier in the thread, this is disruptive. Scroll lock freezes the page's scroll position for the duration of generation; once the AI finishes, normal scrolling resumes.
+
+**How to toggle:**
+
+<Tabs>
+  <Tab title="Keyboard shortcut">
+    Press `Alt+S` (`Option+S` on Mac) to toggle scroll lock on or off.
+  </Tab>
+  <Tab title="Toolbox menu">
+    Click the toolbox button in the floating button group, then select **Scroll lock**.
+  </Tab>
+</Tabs>
+
+<Note>
+  Scroll lock is a temporary per-session state and does not persist across page refreshes. If you need it active on every visit to a particular site, toggle it manually after each page load.
+</Note>
+
+## Navigation anchors
+
+The floating button group provides three scroll shortcuts that also work as a navigation system:
+
+| Button | Keyboard shortcut | What it does |
+| --- | --- | --- |
+| Scroll to top (↑) | `Alt+T` (`Option+T` on Mac) | Loads full history and jumps to the top |
+| Scroll to bottom (↓) | `Alt+B` (`Option+B` on Mac) | Jumps to the latest message |
+| Return to anchor | `Alt+Z` (`Option+Z` on Mac) | Returns to the last saved position |
+
+Every time you use **Scroll to top** or **Scroll to bottom**, Ophel saves your current position as an anchor first. Click **Return to anchor** to jump back. Click it again to toggle between the anchor and wherever you are now — useful for cross-referencing two parts of a long conversation.
+
+<Tip>
+  If you want to save your current position as an anchor without scrolling anywhere, enable the **Manual Anchor** button in **Settings → General → Quick Buttons** (hidden by default).
+</Tip>
+
+## Bookmarks
+
+Ophel lets you bookmark specific messages in a conversation for quick access later. Bookmarked items appear in the outline panel so you can jump to them from the sidebar.
+
+To remove bookmarks that point to content that no longer exists, open the toolbox menu and select **Clean up bookmarks**.

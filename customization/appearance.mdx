@@ -1,0 +1,114 @@
+---
+title: "Themes and appearance: 24 presets plus custom CSS"
+sidebarTitle: "Appearance"
+description: "Switch between light, dark, and system modes, pick from 24 built-in theme presets, or write your own CSS to fully control how the Ophel panel looks."
+---
+
+Ophel gives you full control over how the panel looks — from a quick mode toggle to a palette of 24 built-in presets and an open CSS editor for pixel-level customization. All changes apply instantly without reloading the page.
+
+## Light, dark, and system mode
+
+Ophel supports three color modes:
+
+- **Light** — always use a light theme
+- **Dark** — always use a dark theme
+- **System** — automatically match your operating system preference
+
+**How to switch modes:**
+
+<Tabs>
+  <Tab title="Keyboard shortcut">
+    Press `Alt+D` (Mac: `Option+D`) to cycle between light and dark mode.
+  </Tab>
+  <Tab title="Quick buttons">
+    Click the theme button in the floating quick buttons group.
+  </Tab>
+  <Tab title="Settings">
+    Go to **Settings → Appearance** and select a mode from the tabs at the top.
+  </Tab>
+</Tabs>
+
+## Built-in theme presets
+
+Each mode comes with 12 presets. Click any preset card in **Settings → Appearance** to preview and apply it — the transition uses a radial animation that expands from the point you clicked.
+
+<Tabs>
+  <Tab title="Light presets">
+    | Name | Description |
+    | --- | --- |
+    | Google Gradient _(default)_ | Clean white with a blue-green gradient header |
+    | Violet | Soft purple accent palette |
+    | Ocean Blue | Calm sea-blue tones |
+    | Sakura | Delicate pink blossom palette |
+    | Mint | Fresh mint-green highlights |
+    | Nordic Frost | Cool Nordic minimalism |
+    | Lemon Soda | Cheerful yellow-citrus palette |
+    | Ancient Scroll | Warm parchment and sepia tones |
+    | Mono Pro | Minimal black-and-white typography |
+    | Blue-and-White Porcelain | Classic Chinese porcelain blue |
+    | Shortbread | Warm cream and biscuit tones |
+    | Unicorn Dream | Pastel gradient dream theme |
+  </Tab>
+  <Tab title="Dark presets">
+    | Name | Description |
+    | --- | --- |
+    | Classic Dark _(default)_ | Deep gray panel, timeless and readable |
+    | Midnight Blue | Deep blue night palette |
+    | Dark Forest | Muted green shadows |
+    | Cyberpunk Neon | Electric neon on dark |
+    | Roasted Coffee | Warm brown dark palette |
+    | Sunset Dream | Purple-orange sunset gradient |
+    | Dracula | The beloved Dracula color scheme |
+    | Deep Abyss | Almost-black ultra-deep dark |
+    | Crimson Moon | Dark red and crimson accents |
+    | Retro Terminal | Hacker green-on-black terminal look |
+    | EVA Unit-01 | Purple-and-green mecha-inspired |
+    | Aurora | Cool teal aurora borealis |
+  </Tab>
+</Tabs>
+
+## Choosing a theme
+
+1. Open **Settings** (`Alt+,`, Mac: `Option+,`)
+2. Go to **Appearance**
+3. Select **Light** or **Dark** from the mode tabs
+4. Click any preset card to preview and apply it
+
+## Custom CSS
+
+For complete control over the panel's appearance, go to **Settings → Appearance → Custom CSS** and write your own CSS rules.
+
+The panel runs inside a **Shadow DOM**, which means your custom CSS is isolated from the AI platform's page styles — your rules only affect the Ophel panel, nothing else on the page.
+
+The panel's built-in styles use CSS variables prefixed with `--gh-`. Override any of them inside a `:host` block:
+
+```css
+:host {
+  --gh-bg: #1a1a2e;
+  --gh-primary: #e94560;
+  --gh-text: #eaeaea;
+}
+```
+
+<Note>
+  Changes to custom CSS apply instantly. You do not need to reload the page or restart the extension.
+</Note>
+
+### Key CSS variables
+
+| Variable | Controls |
+| --- | --- |
+| `--gh-bg` | Main panel background |
+| `--gh-bg-secondary` | Secondary background (sidebars, alternating rows) |
+| `--gh-text` | Primary text color |
+| `--gh-text-secondary` | Muted text color |
+| `--gh-primary` | Accent / active color (buttons, highlights) |
+| `--gh-border` | Border color |
+| `--gh-shadow` | Panel drop shadow |
+| `--gh-header-bg` | Panel header background (supports gradients) |
+| `--gh-danger` | Delete / destructive action color |
+| `--gh-hover` | Row hover background |
+
+<Tip>
+  `--gh-header-bg` accepts any valid CSS value, including `linear-gradient(...)`. Use it to give the panel header a custom gradient that matches your preferred aesthetic.
+</Tip>

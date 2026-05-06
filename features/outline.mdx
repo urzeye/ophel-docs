@@ -1,0 +1,116 @@
+---
+title: "Smart Outline: live table of contents for AI chats"
+sidebarTitle: "Smart Outline"
+description: "Ophel builds a live, clickable table of contents from your questions and AI headings — with bookmarks, filters, and keyboard shortcuts for long conversations."
+---
+
+The Smart Outline reads your conversation after every AI reply and builds a navigable tree in the side panel. Each of your messages becomes a top-level entry, and any Markdown headings inside the AI's response become nested entries beneath it. The longer the conversation, the more value the outline adds.
+
+## How the outline is built
+
+Every time the AI finishes a reply, Ophel scans the page and produces a tree from two sources:
+
+- **Your questions** — each user message becomes a first-level entry
+- **AI response headings** — Markdown headings (`#`, `##`, `###`, etc.) inside AI replies appear as nested children under the question that triggered them
+
+```text
+You: Explain React core concepts
+  ├── # React Introduction
+  │   ├── ## What is React
+  │   └── ## Why use React
+  ├── # Core Concepts
+  │   ├── ## Components
+  │   ├── ## Props and State
+  │   └── ## Lifecycle
+  └── # Summary
+```
+
+Click any entry in the outline to jump directly to that part of the conversation.
+
+## Scroll following and locate mode
+
+As you scroll the conversation, the outline highlights the entry that matches your current reading position in real time — a position indicator that keeps you oriented inside long threads.
+
+If you scroll the outline panel itself and lose track of where you are, press `Alt+L` (Mac: `Option+L`) to snap the outline panel back to highlight your current position.
+
+## Filter modes
+
+Three filter buttons appear above the outline list. They let you reduce noise and focus on what matters.
+
+| Button | What it shows |
+|---|---|
+| **All** (default) | Everything — your questions and all AI headings |
+| **Questions only** | Hides AI headings; shows only your messages — useful for reviewing the conversation flow |
+| **Bookmarks only** | Shows only entries you have starred |
+
+You can also switch filters with keyboard shortcuts:
+
+| Shortcut | Action |
+|---|---|
+| `Alt+Q` (Mac: `Option+Q`) | Toggle questions-only filter |
+| `Alt+Shift+Q` (Mac: `Option+Shift+Q`) | Show all (clear filter) |
+| `Alt+C` (Mac: `Option+C`) | Toggle bookmarks filter |
+
+## Bookmarks
+
+Hover over any outline entry to reveal a star icon. Click it to bookmark that heading. Bookmarks persist across page reloads.
+
+<Note>
+If a bookmarked heading disappears from the conversation — for example, when the AI regenerates a response — it becomes a **ghost bookmark**. Open the outline toolbox and use the cleanup option to remove stale ghost bookmarks.
+</Note>
+
+## Expand by level
+
+You can expand the tree to a specific heading depth without manually clicking every node.
+
+<Steps>
+  <Step title="Right-click any outline node">
+    A context menu appears with expand-to-level options.
+  </Step>
+  <Step title="Choose a depth, or use a keyboard shortcut">
+    Press `Alt+Shift+1` through `Alt+Shift+6` (Mac: `Option+Shift+1` through `Option+Shift+6`) to expand to heading levels 1–6 directly.
+  </Step>
+</Steps>
+
+Press `Alt+E` (Mac: `Option+E`) to toggle all nodes expanded or collapsed at once.
+
+## Word count on hover
+
+Hover over any outline entry to see a small tooltip showing the approximate character count of that section. This gives you a quick sense of how long an AI response or section is before you navigate to it.
+
+## Copy node text
+
+User question entries show a copy icon on hover. Click it to copy the original question text to your clipboard — handy for re-asking in a new conversation or saving to notes.
+
+## Shortcuts
+
+<Note>Mac users: **Alt** = **Option**.</Note>
+
+| Shortcut | Action |
+|---|---|
+| `Alt+R` | Refresh outline |
+| `Alt+E` | Expand / collapse all |
+| `Alt+Q` | Toggle questions-only filter |
+| `Alt+Shift+Q` | Show all (clear filter) |
+| `Alt+C` | Toggle bookmarks filter |
+| `Alt+L` | Locate current position in outline |
+| `Alt+F` | Search within outline |
+| `Alt+Up` | Jump to previous heading |
+| `Alt+Down` | Jump to next heading |
+| `Alt+Shift+1..6` | Expand outline to heading level 1–6 |
+
+All shortcuts are customizable in **Settings → Shortcuts**.
+
+## Settings
+
+Go to **Settings → Features → Outline** to configure the outline's behavior.
+
+| Setting | Description |
+|---|---|
+| Auto update | Whether the outline refreshes automatically after each AI reply |
+| Update interval | How often Ophel checks for changes (seconds) |
+| Follow mode | Whether the outline tracks your scroll position: `current`, `latest`, or `manual` |
+| Inline bookmark icon | When to show the bookmark star inside the conversation text itself |
+| Panel bookmark icon | When to show the bookmark star in the outline panel entries |
+| Show word count | Show character count tooltip on hover |
+| Prevent auto-scroll | Stop the outline panel from scrolling itself when you navigate |

@@ -1,0 +1,111 @@
+---
+title: "Global Search: find anything across Ophel in seconds"
+sidebarTitle: "Global Search"
+description: "Search outline nodes, conversations, prompts, and settings in one overlay — with syntax filters, fuzzy matching, and instant jump-to-result navigation."
+---
+
+Global Search brings every piece of content Ophel knows about into a single search field. Instead of switching between tabs to find a heading, conversation, or saved prompt, you open one overlay and search everything at once. Results are grouped by type, and selecting one jumps you directly to that item.
+
+## How to open Global Search
+
+| Method | Description |
+|---|---|
+| `Ctrl+K` (Mac: `Cmd+K`) | Default keyboard shortcut |
+| Floating button | Click the search icon in the floating quick-buttons group |
+| Double Shift | Press Shift twice in quick succession — optional; enable in **Settings → Global Search**. Works even when the page is not focused |
+
+<Note>
+Double Shift must be enabled in settings before it works. Unlike other shortcuts, it does not require the page to be focused, making it useful when you are interacting with another part of the browser.
+</Note>
+
+## Search scope
+
+Global Search covers four result types:
+
+| Type | What is included |
+|---|---|
+| Outline nodes | All headings and your questions in the current conversation |
+| Conversations | Saved conversations across all platforms — searchable by title, tag, or folder |
+| Prompts | Titles and content from your prompt library |
+| Settings | Feature names and keywords from the settings page |
+
+Results are grouped by type. Use the arrow keys to navigate up and down, press **Enter** to jump to the selected result, and press **Esc** to close the overlay.
+
+## Syntax filters
+
+Add a prefix to your search query to narrow results to a specific dimension. Syntax filters apply to conversation results.
+
+| Filter | Effect | Example |
+|---|---|---|
+| `folder:name` | Only conversations in the named folder | `folder:work` |
+| `tag:name` | Only conversations with the specified tag | `tag:research` |
+| `site:platform` | Only conversations from a specific AI site | `site:claude` |
+
+You can combine syntax filters with regular keywords and with each other. For example:
+
+```text
+site:gemini tag:research model
+```
+
+This finds conversations on Gemini that have the "research" tag and whose title contains "model".
+
+## Fuzzy search
+
+When fuzzy search is enabled, Ophel allows partial matches — searching `rans` finds `translate`. When it is off, only exact substring matches are returned.
+
+Toggle fuzzy search in **Settings → Global Search**.
+
+<Tip>
+Disable fuzzy search when you want precise results — for example, when searching for a specific variable name or a prompt title you know exactly.
+</Tip>
+
+## Selecting a prompt result
+
+When you press Enter on a **prompt** result, Ophel adapts to the context:
+
+- **Smart insert** (default) — if an AI input box is available on the current page, the prompt is inserted directly into it
+- **Locate only** — Ophel switches to the Prompts tab and highlights the entry, without inserting
+
+Change this behavior in **Settings → Global Search → Prompt Enter behavior**.
+
+## Search tips
+
+<AccordionGroup>
+  <Accordion title="Find a conversation by folder">
+    Type `folder:` followed by part of the folder name. You do not need to type the full name — partial matches work when fuzzy search is on.
+
+    ```text
+    folder:client
+    ```
+  </Accordion>
+  <Accordion title="Find all conversations with a specific tag">
+    Type `tag:` followed by the tag name.
+
+    ```text
+    tag:todo
+    ```
+  </Accordion>
+  <Accordion title="Narrow to a specific AI platform">
+    Type `site:` followed by the platform identifier — for example `chatgpt`, `claude`, `gemini`, `deepseek`.
+
+    ```text
+    site:chatgpt refactor
+    ```
+  </Accordion>
+  <Accordion title="Jump to a settings page">
+    Type a feature or setting name directly. For example, typing `theme` surfaces the Appearance settings entry; typing `shortcut` brings up the Shortcuts page.
+  </Accordion>
+  <Accordion title="Find an outline heading in the current conversation">
+    Open Global Search while reading a conversation and type part of a heading. Selecting the result scrolls the conversation to that heading and highlights the matching outline entry.
+  </Accordion>
+</AccordionGroup>
+
+## Settings
+
+Go to **Settings → Global Search** to configure:
+
+| Setting | Description |
+|---|---|
+| Double Shift | Enable double-pressing Shift to open search |
+| Fuzzy search | Allow partial matches when on; exact substring matches only when off |
+| Prompt Enter behavior | What happens when you press Enter on a prompt result: smart insert or locate only |

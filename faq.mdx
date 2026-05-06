@@ -1,0 +1,159 @@
+---
+title: "Frequently asked questions about Ophel Atlas extension"
+sidebarTitle: "FAQ"
+description: "Answers to common questions about installing Ophel Atlas, using the panel, outline, conversations, prompts, Claude session keys, permissions, and privacy."
+---
+
+This page answers the most common questions about Ophel Atlas. If you don't find what you're looking for here, check the [Troubleshooting](/troubleshooting) page or open an issue on [GitHub Issues](https://github.com/urzeye/ophel/issues).
+
+## Installation & Setup
+
+<AccordionGroup>
+  <Accordion title="Which AI platforms does Ophel support?">
+    Ophel works on 15 AI platforms:
+
+    | Platform          | URL                        |
+    | ----------------- | -------------------------- |
+    | Gemini            | gemini.google.com          |
+    | Gemini Enterprise | business.gemini.google     |
+    | AI Studio         | aistudio.google.com        |
+    | ChatGPT           | chatgpt.com                |
+    | Claude            | claude.ai                  |
+    | Grok              | grok.com                   |
+    | DeepSeek          | chat.deepseek.com          |
+    | Doubao            | www.doubao.com             |
+    | Kimi              | www.kimi.com               |
+    | Qwen Studio       | chat.qwen.ai               |
+    | Qianwen           | www.qianwen.com            |
+    | Yuanbao           | yuanbao.tencent.com        |
+    | Z.ai              | chat.z.ai                  |
+    | ChatGLM           | chatglm.cn                 |
+    | ima               | ima.qq.com                 |
+  </Accordion>
+
+  <Accordion title="How do I enable the extension after installing it?">
+    After installing, open any supported AI platform in your browser. The Ophel panel should appear automatically in the sidebar. If it doesn't, check that the extension is enabled in your browser toolbar (click the puzzle-piece icon and confirm Ophel is toggled on), then hard-reload the page with `Ctrl+Shift+R` (Mac: `Cmd+Shift+R`).
+
+    Some URLs require you to explicitly grant Ophel permission to run. If you see a "Click to enable" prompt in the extension popup, click it and allow access to the current site.
+  </Accordion>
+
+  <Accordion title="What's the difference between the browser extension and the userscript?">
+    The **browser extension** (available for Chrome, Edge, and Firefox) is the recommended option. It has the full feature set, better performance, and higher compatibility because it integrates directly with the browser.
+
+    The **userscript** runs inside a userscript manager like Tampermonkey and does not require a browser extension install. It is a good fallback if you cannot install extensions, but some features may be limited compared to the extension version.
+  </Accordion>
+</AccordionGroup>
+
+## Panel & Navigation
+
+<AccordionGroup>
+  <Accordion title="Why isn't the panel showing on the page?">
+    Work through these steps in order:
+
+    1. Confirm the extension is installed and enabled — check the browser toolbar for the Ophel icon.
+    2. Hard-reload the page: `Ctrl+Shift+R` (Mac: `Cmd+Shift+R`).
+    3. Check that the site you're on is in the [supported platforms list](#which-ai-platforms-does-ophel-support).
+    4. If you previously closed the panel, press `Alt+P` (Mac: `Option+P`) to reopen it, or click the floating show/hide button.
+  </Accordion>
+
+  <Accordion title="How do I open the panel if the floating buttons have disappeared?">
+    Press `Alt+P` (Mac: `Option+P`). This keyboard shortcut toggles the panel regardless of whether the floating buttons are visible on screen.
+  </Accordion>
+
+  <Accordion title="How do I use ghost mode?">
+    Ghost mode makes the panel temporarily transparent and click-through so you can interact with the page behind it. Hold **Ctrl** (Windows/Linux) or **Command** (Mac) alone for about 0.2 seconds. The panel fades out and lets clicks pass through. Release the key to return to normal.
+  </Accordion>
+
+  <Accordion title="What is edge snap, and how do I use it?">
+    Edge snap lets the panel hide against the screen edge and slide out when you need it. Drag the panel toward a screen edge until it snaps into place. To reveal it, hover over that edge — the panel slides out automatically. To undock it, drag it away from the edge.
+
+    If you prefer to keep the panel floating freely, you can disable edge snap entirely in **Settings → General → Panel**.
+  </Accordion>
+</AccordionGroup>
+
+## Outline
+
+<AccordionGroup>
+  <Accordion title="Why is the outline empty even though the conversation has content?">
+    Some AI platforms update the DOM asynchronously, so the outline may not populate immediately when the page first loads. Press `Alt+R` (Mac: `Option+R`) to refresh the outline manually. If the outline stays empty after a refresh, check that **Auto update** is enabled in **Settings → Features → Outline**.
+  </Accordion>
+
+  <Accordion title="Why isn't the outline tracking my scroll position?">
+    The scroll-tracking feature is controlled by a setting. Go to **Settings → Features → Outline** and make sure **Sync outline with scroll** (Follow mode) is set to `current` rather than `manual`.
+  </Accordion>
+
+  <Accordion title="How do I refresh the outline manually?">
+    Press `Alt+R` (Mac: `Option+R`) at any time to force the outline to re-scan the conversation and rebuild its entries. You can also find a refresh button in the outline panel header.
+  </Accordion>
+</AccordionGroup>
+
+## Conversations
+
+<AccordionGroup>
+  <Accordion title="Why aren't my conversations showing in the Conversations tab?">
+    The Conversations tab reads from the AI platform's own sidebar. If the platform's sidebar hasn't fully loaded, Ophel cannot see the conversations. Try scrolling the native sidebar on the AI platform to trigger it to load more items, then check the Conversations tab again.
+  </Accordion>
+
+  <Accordion title="What does WebDAV sync actually back up?">
+    WebDAV sync backs up the **metadata** that Ophel adds to your conversations: titles, folder assignments, tags, pins, and any notes you've added inside Ophel. It does **not** upload the actual conversation messages — those belong to the AI platform and stay there. You can also optionally include your saved prompts, settings, and Claude session keys in the backup.
+  </Accordion>
+</AccordionGroup>
+
+## Prompts & Queue
+
+<AccordionGroup>
+  <Accordion title="How does the Prompt Queue work?">
+    The Prompt Queue lets you line up multiple prompts and send them automatically one by one without waiting manually after each AI response. To use it:
+
+    1. Enable the queue in **Settings → Features → Prompts → Prompt Queue**.
+    2. Open the queue overlay with `Alt+J` (Mac: `Option+J`).
+    3. Add prompts one by one, or use the batch-import option to paste and split a large block of text.
+    4. Press **Start**. Ophel monitors the page and automatically sends the next prompt once it detects the AI has finished responding (no active generation for two consecutive checks, roughly 2 seconds).
+
+    You can pause, skip items, reorder by dragging, or clear the queue at any time.
+  </Accordion>
+
+  <Accordion title="The queue isn't sending the next prompt — why?">
+    Ophel waits until the AI page appears idle (no generation spinner detected) for two consecutive polling intervals, which takes about 2 seconds. If the AI platform uses an unusual loading indicator that Ophel cannot detect, the queue may stall indefinitely. As a workaround, click the manual **Send next** button in the queue overlay to advance to the next prompt.
+  </Accordion>
+</AccordionGroup>
+
+## Claude
+
+<AccordionGroup>
+  <Accordion title="What are Session Keys?">
+    A Claude session key is an authentication token from your active browser session on claude.ai. By adding multiple session keys (from different Claude accounts), you can rotate between accounts when one hits its usage limit. Ophel intercepts outgoing requests to claude.ai and swaps in the active session key automatically.
+  </Accordion>
+
+  <Accordion title="Is it safe to store session keys in Ophel?">
+    Session keys are stored locally in your browser on your own machine. Ophel does not upload them to any server. If you use WebDAV backup and enable the option to include session keys, be careful about who has access to your backup files — they would contain valid authentication tokens.
+  </Accordion>
+</AccordionGroup>
+
+## Permissions
+
+<AccordionGroup>
+  <Accordion title="Why does Ophel ask for the all_urls permission?">
+    The `<all_urls>` permission is required for two optional features: **WebDAV sync** (to connect to your own WebDAV server at any URL) and **watermark removal** (to fetch and convert images). This permission is entirely optional — if you don't use either feature, you can deny or revoke it. Go to **Settings → Permissions** and click **Revoke** next to it.
+  </Accordion>
+
+  <Accordion title="Can I revoke permissions after granting them?">
+    Yes. Go to **Settings → Permissions** and click **Revoke** next to any permission you want to remove. Revoking a permission disables the feature that depends on it, but everything else in Ophel continues to work normally.
+  </Accordion>
+</AccordionGroup>
+
+## Privacy
+
+<AccordionGroup>
+  <Accordion title="Does Ophel send my conversation data anywhere?">
+    No. Ophel runs entirely in your browser. Your conversation data, prompts, and settings stay on your device by default. If you configure WebDAV sync, data is sent only to the WebDAV server you specify — which you control. Ophel itself does not collect or transmit any user data.
+  </Accordion>
+</AccordionGroup>
+
+## General
+
+<AccordionGroup>
+  <Accordion title="How do I reset everything to defaults?">
+    Go to **Settings → Backup & Sync** and click **Clear all data**. This removes all Ophel data stored in your browser, including saved prompts, conversation metadata, folder and tag definitions, and all settings. The AI platform's own conversation history is not affected.
+  </Accordion>
+</AccordionGroup>

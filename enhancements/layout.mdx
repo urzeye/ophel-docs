@@ -1,0 +1,74 @@
+---
+title: "Widescreen, Zen mode, and immersive layout controls"
+sidebarTitle: "Layout"
+description: "Expand the content area on wide screens, hide distracting UI, and control how the Ophel panel sits on screen — all configured per site."
+---
+
+Ophel gives you fine-grained control over how AI pages are displayed. You can widen the reading area to use your full monitor, independently adjust your message bubble width, strip away platform chrome with Zen mode, and make the Ophel panel itself invisible when you need to click something behind it. Layout settings are configured per site so each platform has its own values.
+
+## Page width
+
+Many AI platforms cap their content area to a narrow column, leaving wide margins on large screens. Ophel lets you set a custom maximum width to fill more of the screen.
+
+**Settings → Site Settings → [Select site] → Layout → Page Width**
+
+- **Unit**: percentage of viewport width
+- **Range**: 50%–100%
+- Changes apply immediately; no page refresh needed. Disable the setting at any time to return to the platform's default.
+
+## User message width
+
+Your outgoing message bubbles have their own independent width control, separate from the overall content area. Widening them reduces the whitespace around your messages in conversations that use a wide content area.
+
+**Settings → Site Settings → [Select site] → Layout → User Message Width**
+
+## Zen mode
+
+Zen mode hides platform UI elements outside the conversation — sidebars, navigation bars, headers — so your focus stays on the content.
+
+**How to enable:**
+
+<Tabs>
+  <Tab title="Keyboard shortcut">
+    Press `Ctrl+Shift+Z` (`Cmd+Shift+Z` on Mac) to toggle Zen mode.
+  </Tab>
+  <Tab title="Floating button">
+    Click the **Zen** button in the floating button group.
+  </Tab>
+  <Tab title="Settings (persistent)">
+    Enable **Settings → Site Settings → [Select site] → Layout → Zen Mode** to enter Zen mode automatically every time you open that site.
+  </Tab>
+</Tabs>
+
+<Note>
+  Toggling Zen mode with the button or shortcut creates a temporary state that may not survive a page refresh. Enable it in Settings for a persistent effect on a specific site.
+</Note>
+
+<Note>
+  Zen mode hides elements based on Ophel's knowledge of each platform's DOM structure. The effect may be incomplete on some sites.
+</Note>
+
+## Ghost pass-through
+
+When the Ophel panel overlaps content you need to click, you don't have to move or close the panel first.
+
+Hold **Ctrl** (`Cmd` on Mac) for about 0.2 seconds — without pressing any other keys — and the panel becomes semi-transparent and click-through. Click anything behind it normally. Release the key to restore the panel.
+
+No configuration is needed; this works at any time.
+
+## Panel size and position
+
+You can drag the panel by its title bar to reposition it anywhere on screen. Additional size and behavior settings are in **Settings → General → Panel**:
+
+| Setting | Description | Default |
+| --- | --- | --- |
+| Default open | Open the panel automatically on supported sites | Yes |
+| Default side | Left or right side of the screen | Right |
+| Edge distance | Distance from the screen edge | 25 px |
+| Panel width | Panel width | 320 px |
+| Panel height | Panel height as a percentage of the viewport | 85 vh |
+| Auto-hide | Collapse the panel when you click outside it | No |
+| Edge snap | Snap to the screen edge when dragged near it; hover to preview when snapped | On |
+| Snap threshold | Distance from edge that triggers snapping | 18 px |
+
+When edge snap is on and the panel is snapped, hover over the corresponding screen edge to pop the panel out for a preview. Drag it away from the edge to unsnap it.

@@ -1,0 +1,64 @@
+---
+title: "Tab management and AI completion notifications"
+sidebarTitle: "Tabs & Notifications"
+description: "Auto-rename browser tabs with conversation titles, receive desktop alerts when the AI finishes, and hide tab titles with privacy mode."
+---
+
+When you're running multiple AI conversations across different tabs, keeping track of which tab is which — and knowing when the AI has finished — becomes a real workflow problem. Ophel manages your browser tab titles automatically and can alert you the moment a response is ready, even when you've switched to something else entirely.
+
+## Auto tab renaming
+
+Ophel syncs your browser tab title to the current AI conversation, making it easy to identify open sessions from the tab bar.
+
+**Settings → Features → Tab**:
+
+| Setting | Description | Default |
+| --- | --- | --- |
+| Auto-rename | Sync conversation title to the browser tab | On |
+| Title update interval | How often to poll for title changes | 3 s |
+| Title format | Tab title template using `{title}`, `{status}`, and `{model}` variables | `{status}{title}->{model}` |
+| Show status icon | Display a spinning or check icon in the title during and after generation | On |
+
+The default format produces titles like `⟳ My conversation->GPT-4o` while generating and `✓ My conversation->GPT-4o` when complete.
+
+## Generation complete notifications
+
+When the AI finishes a reply in another tab, Ophel can alert you with a desktop notification, a sound, or both.
+
+**Settings → Features → Alerts**:
+
+| Setting | Description | Default |
+| --- | --- | --- |
+| Completion notification | Send a desktop notification when generation completes | Off |
+| Notification sound | Play an audio cue with the notification | On |
+| Sound preset | Choose from built-in sound effects | softChime |
+| Volume | Notification volume | 50% |
+| Repeat count | How many times to repeat a short sound | 3 |
+| Repeat interval | Time between each repeat | 2 s |
+| Notify when tab is focused | Also notify when the active tab is already in view | Off |
+| Auto-focus window | Bring the browser window to the foreground when generation completes | Off |
+
+<Note>
+  The first time you enable **Completion notification**, the browser will ask for the **notifications** permission. Choose Allow. If you previously denied it, go to **Settings → Permissions** to grant it.
+</Note>
+
+## Privacy mode
+
+If you don't want the tab bar to reveal what you're discussing, privacy mode replaces the browser tab title with custom text of your choosing.
+
+**Settings → Features → Tab**:
+
+| Setting | Description | Default |
+| --- | --- | --- |
+| Privacy mode | Replace the tab title with custom text | Off |
+| Privacy title | The text to display instead of the real title | Google |
+
+<Note>
+  Privacy mode only affects the browser tab title. It has no effect on conversation content or anything inside the Ophel panel.
+</Note>
+
+## Model lock
+
+Ophel can automatically switch to your preferred model each time you open a particular AI site, so you never have to manually re-select your model after a page load.
+
+This is covered in detail on the [site settings](/customization/site-settings) page.

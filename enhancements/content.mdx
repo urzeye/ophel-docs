@@ -1,0 +1,88 @@
+---
+title: "Content enhancements: Mermaid, LaTeX, and Markdown"
+sidebarTitle: "Content"
+description: "Render Mermaid diagrams and LaTeX formulas, format your own messages in Markdown, copy tables in one click, and export conversations."
+---
+
+Ophel adds a layer of interactivity to AI conversation pages: diagrams that some platforms leave as raw code get rendered automatically, math formulas become copyable with a double-click, your own messages display Markdown formatting, and any conversation can be exported in multiple formats.
+
+## Mermaid diagram rendering
+
+Some AI platforms display Mermaid code blocks as raw text instead of rendered diagrams. When Ophel detects an unrendered Mermaid block, it renders the diagram in place automatically.
+
+**Settings → Features → Content → Render Mermaid in AI replies** (default: on)
+
+<Note>
+  This only activates when the platform itself has not rendered the Mermaid block. It will not interfere with native diagram rendering.
+</Note>
+
+## LaTeX formula rendering
+
+When an AI reply contains math, Ophel recognizes LaTeX delimiters and renders the formulas inline. To copy the raw LaTeX source from any rendered formula, double-click it — Ophel copies it to your clipboard immediately.
+
+**Settings → Features → Content → Double-click to copy LaTeX** (default: on)
+
+### Formula delimiter conversion
+
+When copying LaTeX, Ophel can automatically convert between delimiter styles before placing the text on the clipboard:
+
+- Inline: `$ ... $` ↔ `\( ... \)`
+- Block: `$$ ... $$` ↔ `\[ ... \]`
+
+Enable **Settings → Features → Content → Formula delimiter conversion** to convert copied LaTeX to `\( \)` / `\[ \]` form, which is more compatible with tools like Obsidian or Typora.
+
+## User message Markdown rendering
+
+Markdown syntax you type in the AI input box — `**bold**`, `` `code` ``, `- list item` — normally appears as plain text in your message bubble after sending. With this feature enabled, Ophel renders Markdown formatting inside your messages so they're easier to read.
+
+**Settings → Features → Content → Render Markdown in user messages** (default: on)
+
+## Markdown table copy
+
+A **Copy** button appears on tables inside AI replies. Clicking it copies the table as standard Markdown table syntax, ready to paste into any Markdown editor.
+
+**Settings → Features → Content → Copy Markdown tables** (default: on)
+
+## Conversation export
+
+Export any conversation to a file from the toolbox menu → **Export**. Three formats are available:
+
+<AccordionGroup>
+  <Accordion title="Markdown (.md)">
+    Exports the full conversation with speaker labels and message content formatted as Markdown. Useful for pasting into notes apps, wikis, or documentation.
+  </Accordion>
+  <Accordion title="JSON (.json)">
+    Exports structured data including metadata. Useful for programmatic processing or archiving.
+  </Accordion>
+  <Accordion title="Plain text (.txt)">
+    Exports a clean, unformatted transcript.
+  </Accordion>
+</AccordionGroup>
+
+**Settings → Features → Export** controls export behavior:
+
+| Setting | Description |
+| --- | --- |
+| Custom user name | Replaces "Me" in exported files; leave blank to use the default |
+| Custom AI name | Replaces the AI's name in exported files; leave blank to use the platform name |
+| Include timestamp in filename | Appends a timestamp to the filename to avoid overwriting existing exports |
+| Include chain of thought | Include the AI's reasoning content in exports (applies to platforms that expose it) |
+
+## Platform-specific fixes
+
+<AccordionGroup>
+  <Accordion title="Markdown fix (Gemini, AI Studio, ChatGPT)">
+    These platforms sometimes fail to render bold text correctly — `**text**` appears as literal characters instead of formatted output. Ophel includes a patch for each affected platform.
+
+    - **Settings → Site Settings → Gemini → Markdown fix**
+    - **Settings → Site Settings → AI Studio → Markdown fix**
+    - **Settings → Site Settings → ChatGPT → Markdown fix**
+  </Accordion>
+  <Accordion title="Watermark removal (Gemini, AI Studio)">
+    Gemini and AI Studio can attach "Created with Gemini" watermarks when exporting or screenshotting certain content. Enabling this removes those watermarks.
+
+    This feature requires the optional `<all_urls>` permission (used to fetch images and convert them to base64). The browser will prompt for permission the first time you enable it.
+
+    **Settings → Site Settings → Gemini → Remove watermark**
+  </Accordion>
+</AccordionGroup>
