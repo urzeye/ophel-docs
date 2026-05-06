@@ -95,12 +95,6 @@
     ]
   },
   "navigation": {
-    "global": {
-      "languages": [
-        { "language": "en", "default": true, "href": "/" },
-        { "language": "cn", "href": "/zh/introduction" }
-      ]
-    },
     "languages": [
       {
         "language": "en",
