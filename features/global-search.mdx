@@ -6,7 +6,7 @@ description: "Search outline nodes, conversations, prompts, and settings in one 
 
 Global Search brings every piece of content Ophel knows about into a single search field. Instead of switching between tabs to find a heading, conversation, or saved prompt, you open one overlay and search everything at once. Results are grouped by type, and selecting one jumps you directly to that item.
 
-![Global Search overlay — search box with categorized results](/images/enhancements/global-search.png)
+![Global Search overlay — search box with categorized results](/images/enhancements/global-search-en.png)
 
 ## How to open Global Search
 
@@ -24,7 +24,7 @@ Global Search brings every piece of content Ophel knows about into a single sear
 
 ## Search scope
 
-Global Search covers four result types:
+Global Search covers five result types:
 
 | Type          | What is included                                                               |
 | ------------- | ------------------------------------------------------------------------------ |
@@ -32,27 +32,36 @@ Global Search covers four result types:
 | Conversations | Saved conversations across all platforms — searchable by title, tag, or folder |
 | Prompts       | Titles and content from your prompt library                                    |
 | Settings      | Feature names and keywords from the settings page                              |
+| Feature Tips  | Ophel feature discovery tips — type `tip:` to browse them                      |
 
 Results are grouped by type. Use the arrow keys to navigate up and down, press **Enter** to jump to the selected result, and press **Esc** to close the overlay.
 
 ## Syntax filters
 
-Add a prefix to your search query to narrow results to a specific dimension. Syntax filters apply to conversation results.
+Add a `key:value` prefix to narrow results. Multiple filters can be combined with each other and with plain keywords.
 
-| Filter          | Effect                                                        | Example        |
-| --------------- | ------------------------------------------------------------- | -------------- |
-| `folder:name`   | Only conversations in the named folder                        | `folder:work`  |
-| `tag:name`      | Only conversations with the specified tag                     | `tag:research` |
-| `site:platform` | Only conversations from a specific AI site                    | `site:claude`  |
-| `tip:`          | Browse feature discovery tips (not a conversation filter)     | `tip:`         |
+| Filter       | Applies to            | Values                                        | Example           |
+| ------------ | --------------------- | --------------------------------------------- | ----------------- |
+| `type:`      | All                   | `outline` · `conversations` · `prompts` · `settings` | `type:conversations` |
+| `folder:`    | Conversations         | Any folder name (partial match)               | `folder:work`     |
+| `tag:`       | Conversations, Prompts | Any tag name (partial match)                 | `tag:research`    |
+| `is:`        | Conversations         | `pinned` · `unpinned`                         | `is:pinned`       |
+| `level:`     | Outline nodes         | `0` – `6` (heading depth)                     | `level:2`         |
+| `date:`      | Conversations, Prompts | `Nd` — up to 999 days (e.g. `7d`, `30d`)     | `date:30d`        |
 
-You can combine syntax filters with regular keywords and with each other. For example:
+<Note>
+  Type `tip:` in the search box to switch into Feature Tips mode. This is not a
+  syntax filter — it bypasses normal search and lists Ophel feature discovery
+  tips instead.
+</Note>
+
+You can combine filters with each other and with plain keywords. For example:
 
 ```text
-site:gemini tag:research model
+folder:work tag:research model
 ```
 
-This finds conversations on Gemini that have the "research" tag and whose title contains "model".
+This finds conversations in the "work" folder that also have the "research" tag and whose title contains "model".
 
 ## Fuzzy search
 
@@ -93,11 +102,27 @@ Change this behavior in **Settings → Global Search → Prompt Enter behavior**
     ```
 
   </Accordion>
-  <Accordion title="Narrow to a specific AI platform">
-    Type `site:` followed by the platform identifier — for example `chatgpt`, `claude`, `gemini`, `deepseek`.
+  <Accordion title="Filter by pin state">
+    Use `is:pinned` to see only pinned conversations, or `is:unpinned` to exclude them.
 
     ```text
-    site:chatgpt refactor
+    is:pinned project
+    ```
+
+  </Accordion>
+  <Accordion title="Filter by recency">
+    Use `date:Nd` to limit results to conversations or prompts updated within the last N days. For example, `date:7d` returns items from the past week.
+
+    ```text
+    date:30d refactor
+    ```
+
+  </Accordion>
+  <Accordion title="Filter by heading level">
+    Use `level:n` (0–6) to find outline nodes at a specific heading depth. Level 1 is an `<h1>`, level 2 is `<h2>`, and so on. Level 0 matches your own questions in the conversation.
+
+    ```text
+    level:2 overview
     ```
 
   </Accordion>
