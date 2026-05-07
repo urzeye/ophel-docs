@@ -4,6 +4,14 @@ description: "Ophel Atlas 的所有重要更改均记录于此。"
 keywords: ["更新日志", "版本历史", "发布说明", "更新记录", "新功能"]
 ---
 
+<Update label="v1.0.46">
+
+  ### 🐛 问题修复
+
+  - **Gemini 引用来源 tooltip 在 Markdown 修复开启时失效**：修复启用 Markdown 加粗修复功能时，Gemini 的引用来源气泡提示消失的问题。根本原因是修复逻辑通过重写段落 `innerHTML` 破坏了 Gemini 原生的 tooltip 事件绑定。现在包含来源引用标记的段落会跳过处理，保留原有交互行为。（#468）
+
+</Update>
+
 <Update label="v1.0.45">
 
   ### ✨ 功能优化
