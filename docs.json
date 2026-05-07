@@ -9,8 +9,7 @@
   },
   "logo": {
     "light": "/images/logo-light.svg",
-    "dark": "/images/logo-dark.svg",
-    "href": "https://github.com/urzeye/ophel"
+    "dark": "/images/logo-dark.svg"
   },
   "favicon": "/images/logo.png",
   "appearance": {
@@ -27,11 +26,24 @@
   "background": {
     "decoration": "gradient"
   },
+  "interaction": {
+    "drilldown": true
+  },
+  "styling": {
+    "eyebrows": "breadcrumbs",
+    "codeblocks": {
+      "light": "github-light",
+      "dark": "github-dark"
+    }
+  },
+  "thumbnails": {
+    "appearance": "light"
+  },
   "navbar": {
     "links": [
       {
         "label": "Discord",
-        "href": "https://discord.gg/79B2hFxR",
+        "href": "https://discord.gg/rmPzb6Cx9u",
         "icon": {
           "style": "brands",
           "name": "discord"
@@ -68,12 +80,13 @@
     "options": [
       "assistant",
       "copy"
-    ]
+    ],
+    "display": "toc"
   },
   "footer": {
     "socials": {
       "github": "https://github.com/urzeye/ophel",
-      "discord": "https://discord.gg/79B2hFxR",
+      "discord": "https://discord.gg/rmPzb6Cx9u",
       "x": "https://x.com/urzeyeVirgo"
     },
     "links": [
@@ -103,7 +116,7 @@
         "items": [
           {
             "label": "Discord",
-            "href": "https://discord.gg/79B2hFxR"
+            "href": "https://discord.gg/rmPzb6Cx9u"
           },
           {
             "label": "Ko-fi",
@@ -196,7 +209,7 @@
                 ]
               },
               {
-                "group": "Privacy",
+                "group": "Privacy & Permissions",
                 "icon": "shield",
                 "pages": [
                   "data/privacy",
