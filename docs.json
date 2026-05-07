@@ -70,7 +70,8 @@
   "footer": {
     "socials": {
       "github": "https://github.com/urzeye/ophel",
-      "discord": "https://discord.gg/79B2hFxR"
+      "discord": "https://discord.gg/79B2hFxR",
+      "x": "https://x.com/urzeyeVirgo"
     },
     "links": [
       {
@@ -95,7 +96,7 @@
         ]
       },
       {
-        "header": "Community",
+        "header": "Connect",
         "items": [
           {
             "label": "Discord",
@@ -104,6 +105,10 @@
           {
             "label": "Ko-fi",
             "href": "https://ko-fi.com/urzeye"
+          },
+          {
+            "label": "Linux.do",
+            "href": "https://linux.do/u/urzeye"
           }
         ]
       },
