@@ -9,8 +9,7 @@
   },
   "logo": {
     "light": "/images/logo-light.svg",
-    "dark": "/images/logo-dark.svg",
-    "href": "https://github.com/urzeye/ophel"
+    "dark": "/images/logo-dark.svg"
   },
   "favicon": "/images/logo.png",
   "appearance": {
@@ -26,6 +25,19 @@
   },
   "background": {
     "decoration": "gradient"
+  },
+  "interaction": {
+    "drilldown": true
+  },
+  "styling": {
+    "eyebrows": "breadcrumbs",
+    "codeblocks": {
+      "light": "github-light",
+      "dark": "github-dark"
+    }
+  },
+  "thumbnails": {
+    "appearance": "light"
   },
   "navbar": {
     "links": [
@@ -68,7 +80,8 @@
     "options": [
       "assistant",
       "copy"
-    ]
+    ],
+    "display": "toc"
   },
   "footer": {
     "socials": {
@@ -196,7 +209,7 @@
                 ]
               },
               {
-                "group": "Privacy",
+                "group": "Privacy & Permissions",
                 "icon": "shield",
                 "pages": [
                   "data/privacy",
