@@ -122,7 +122,6 @@
                 "icon": "sparkles",
                 "pages": [
                   "enhancements/reading",
-                  "enhancements/layout",
                   "enhancements/content",
                   "enhancements/tab-notifications"
                 ]
@@ -132,16 +131,23 @@
                 "icon": "palette",
                 "pages": [
                   "customization/appearance",
+                  "customization/layout",
                   "customization/shortcuts",
                   "customization/site-settings"
                 ]
               },
               {
-                "group": "Data & Privacy",
-                "icon": "shield",
+                "group": "Backup & Sync",
+                "icon": "cloud-arrow-up",
                 "pages": [
                   "data/backup-sync",
-                  "data/webdav",
+                  "data/webdav"
+                ]
+              },
+              {
+                "group": "Privacy",
+                "icon": "shield",
+                "pages": [
                   "data/privacy",
                   "data/permissions"
                 ]
@@ -211,7 +217,6 @@
                 "icon": "sparkles",
                 "pages": [
                   "zh/enhancements/reading",
-                  "zh/enhancements/layout",
                   "zh/enhancements/content",
                   "zh/enhancements/tab-notifications"
                 ]
@@ -221,16 +226,23 @@
                 "icon": "palette",
                 "pages": [
                   "zh/customization/appearance",
+                  "zh/customization/layout",
                   "zh/customization/shortcuts",
                   "zh/customization/site-settings"
                 ]
               },
               {
-                "group": "数据与隐私",
-                "icon": "shield",
+                "group": "备份与同步",
+                "icon": "cloud-arrow-up",
                 "pages": [
                   "zh/data/backup-sync",
-                  "zh/data/webdav",
+                  "zh/data/webdav"
+                ]
+              },
+              {
+                "group": "隐私与权限",
+                "icon": "shield",
+                "pages": [
                   "zh/data/privacy",
                   "zh/data/permissions"
                 ]
