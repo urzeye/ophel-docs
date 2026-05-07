@@ -10,6 +10,8 @@ description: "Ophel Atlas 最常见问题的逐步修复方法：面板不显示
 
 ## 面板没有出现
 
+![Ophel 侧边面板 — 三标签页概览](/images/panel/panel-tabs.png)
+
 在打开支持的 AI 平台时，Ophel 侧边面板应该自动出现。如果没有显示：
 
 <Steps>
@@ -34,6 +36,8 @@ description: "Ophel Atlas 最常见问题的逐步修复方法：面板不显示
 ---
 
 ## 大纲为空或不更新
+
+![大纲标签页 — 实时会话目录树](/images/features/outline-zh.png)
 
 <Steps>
   <Step title="手动刷新大纲">
@@ -65,6 +69,8 @@ description: "Ophel Atlas 最常见问题的逐步修复方法：面板不显示
 
 ## 浮动按钮消失
 
+![浮动操作按钮 — 展开与折叠胶囊状态](/images/panel/floating-buttons.png)
+
 浮动快捷按钮 5 秒不操作后会自动折叠成胶囊形状，并没有真的消失——只是最小化了。
 
 <Steps>
@@ -80,6 +86,8 @@ description: "Ophel Atlas 最常见问题的逐步修复方法：面板不显示
 
 ## 面板遮挡了需要点击的内容
 
+![幽灵穿透模式 — 半透明可点透面板](/images/panel/ghost-mode.webp)
+
 <Steps>
   <Step title="使用幽灵穿透模式临时点透">
     按住 **Ctrl**（Mac: `Command`）约 0.2
@@ -88,6 +96,23 @@ description: "Ophel Atlas 最常见问题的逐步修复方法：面板不显示
   <Step title="将面板移开或切换到吸附模式">
     拖动面板标题栏移到屏幕另一侧，或切换到**自动吸附**模式（快捷键 `Alt+M`，Mac:
     `Option+M`），让面板贴边隐藏。
+  </Step>
+</Steps>
+
+---
+
+## 会话标签页为空
+
+![会话标签页 — 文件夹与标签列表](/images/features/conversation-zh.png)
+
+<Steps>
+  <Step title="确认 AI 平台侧边栏已加载">
+    会话标签页直接从 AI 平台的原生侧边栏读取数据。如果侧边栏尚未加载，Ophel
+    没有内容可以显示。
+  </Step>
+  <Step title="滚动原生侧边栏">
+    打开 AI 平台自带的对话列表并向下滚动，触发加载更多条目。加载完成后，Ophel
+    的会话标签页会同步更新。
   </Step>
 </Steps>
 

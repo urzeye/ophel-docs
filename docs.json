@@ -17,13 +17,32 @@
     "default": "system"
   },
   "fonts": {
-    "heading": { "family": "Inter" },
-    "body": { "family": "Inter" }
+    "heading": {
+      "family": "Inter"
+    },
+    "body": {
+      "family": "Inter"
+    }
   },
   "background": {
     "decoration": "gradient"
   },
   "navbar": {
+    "links": [
+      {
+        "label": "Discord",
+        "href": "https://discord.gg/79B2hFxR",
+        "icon": {
+          "style": "brands",
+          "name": "discord"
+        }
+      },
+      {
+        "label": "Ko-fi",
+        "href": "https://ko-fi.com/urzeye",
+        "icon": "mug-hot"
+      }
+    ],
     "primary": {
       "type": "github",
       "href": "https://github.com/urzeye/ophel"
@@ -46,11 +65,16 @@
     "timestamp": true
   },
   "contextual": {
-    "options": ["assistant", "copy"]
+    "options": [
+      "assistant",
+      "copy"
+    ]
   },
   "footer": {
     "socials": {
-      "github": "https://github.com/urzeye/ophel"
+      "github": "https://github.com/urzeye/ophel",
+      "discord": "https://discord.gg/79B2hFxR",
+      "x": "https://x.com/urzeyeVirgo"
     },
     "links": [
       {
@@ -71,6 +95,23 @@
           {
             "label": "GitHub Releases",
             "href": "https://github.com/urzeye/ophel/releases"
+          }
+        ]
+      },
+      {
+        "header": "Connect",
+        "items": [
+          {
+            "label": "Discord",
+            "href": "https://discord.gg/79B2hFxR"
+          },
+          {
+            "label": "Ko-fi",
+            "href": "https://ko-fi.com/urzeye"
+          },
+          {
+            "label": "Linux.do",
+            "href": "https://linux.do/u/urzeye"
           }
         ]
       },
@@ -105,7 +146,11 @@
               {
                 "group": "Get Started",
                 "icon": "rocket",
-                "pages": ["introduction", "installation", "panel-overview"]
+                "pages": [
+                  "introduction",
+                  "installation",
+                  "panel-overview"
+                ]
               },
               {
                 "group": "Core Features",
@@ -131,17 +176,23 @@
                 "icon": "palette",
                 "pages": [
                   "customization/appearance",
-                  "customization/layout",
                   "customization/shortcuts",
+                  "customization/layout",
                   "customization/site-settings"
                 ]
               },
               {
-                "group": "Backup & Sync",
+                "group": "Sync & Backup",
                 "icon": "cloud-arrow-up",
                 "pages": [
                   "data/backup-sync",
-                  "data/webdav"
+                  "data/webdav",
+                  {
+                    "group": "From Other Platforms",
+                    "pages": [
+                      "data/migration"
+                    ]
+                  }
                 ]
               },
               {
@@ -155,12 +206,17 @@
               {
                 "group": "Help",
                 "icon": "circle-question",
-                "pages": ["faq", "troubleshooting"]
+                "pages": [
+                  "faq",
+                  "troubleshooting"
+                ]
               },
               {
                 "group": "Changelog",
                 "icon": "list",
-                "pages": ["changelog"]
+                "pages": [
+                  "changelog"
+                ]
               }
             ]
           },
@@ -170,7 +226,9 @@
             "groups": [
               {
                 "group": "Installation",
-                "pages": ["installation"]
+                "pages": [
+                  "installation"
+                ]
               }
             ]
           },
@@ -180,7 +238,9 @@
             "groups": [
               {
                 "group": "Changelog",
-                "pages": ["changelog"]
+                "pages": [
+                  "changelog"
+                ]
               }
             ]
           }
@@ -226,17 +286,23 @@
                 "icon": "palette",
                 "pages": [
                   "zh/customization/appearance",
-                  "zh/customization/layout",
                   "zh/customization/shortcuts",
+                  "zh/customization/layout",
                   "zh/customization/site-settings"
                 ]
               },
               {
-                "group": "备份与同步",
+                "group": "同步与备份",
                 "icon": "cloud-arrow-up",
                 "pages": [
                   "zh/data/backup-sync",
-                  "zh/data/webdav"
+                  "zh/data/webdav",
+                  {
+                    "group": "从其他平台导入",
+                    "pages": [
+                      "zh/data/migration"
+                    ]
+                  }
                 ]
               },
               {
@@ -250,12 +316,17 @@
               {
                 "group": "帮助",
                 "icon": "circle-question",
-                "pages": ["zh/faq", "zh/troubleshooting"]
+                "pages": [
+                  "zh/faq",
+                  "zh/troubleshooting"
+                ]
               },
               {
                 "group": "更新日志",
                 "icon": "list",
-                "pages": ["zh/changelog"]
+                "pages": [
+                  "zh/changelog"
+                ]
               }
             ]
           },
@@ -265,7 +336,9 @@
             "groups": [
               {
                 "group": "安装",
-                "pages": ["zh/installation"]
+                "pages": [
+                  "zh/installation"
+                ]
               }
             ]
           },
@@ -275,7 +348,9 @@
             "groups": [
               {
                 "group": "更新日志",
-                "pages": ["zh/changelog"]
+                "pages": [
+                  "zh/changelog"
+                ]
               }
             ]
           }

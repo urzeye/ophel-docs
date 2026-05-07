@@ -1,0 +1,40 @@
+---
+title: "Migrate from Gemini Voyager"
+sidebarTitle: "Gemini Voyager"
+description: "Import your Gemini Voyager folder structure into Ophel without losing your existing organization."
+---
+
+[Gemini Voyager](https://chromewebstore.google.com/detail/gemini-voyager/pgmfbpioicfjbfghalhcjkfdlkadamep) is a separate Gemini conversation management extension. If you have already organized your conversations into folders there, you can bring that folder structure into Ophel without losing your existing work.
+
+<Steps>
+  <Step title="Export from Gemini Voyager">
+    Inside Gemini Voyager, export your folder data. The file is in JSON format and the filename starts with `gemini-voyager.folders.v1…`.
+  </Step>
+  <Step title="Copy the JSON contents">
+    Open the exported file and copy its entire contents to your clipboard.
+  </Step>
+  <Step title="Paste into Ophel">
+    In Ophel, go to **Settings → Backup & Sync → Import from Gemini Voyager**, paste the JSON into the input field, and click **Start import**.
+  </Step>
+  <Step title="Review the preview and confirm">
+    Ophel shows a preview of what will change — new folders added, conversations moved, and so on. Confirm to proceed.
+  </Step>
+</Steps>
+
+<Note>
+This import must be run from a Gemini page. It uses your currently signed-in Gemini account to match conversations.
+</Note>
+
+## How the import works
+
+<AccordionGroup>
+  <Accordion title="Incremental merge">
+    The import does not overwrite folders you have already organized in Ophel. Only conversations sitting in your inbox or in folders that were previously imported from Voyager will be re-categorized. Your own Ophel folders stay untouched.
+  </Accordion>
+  <Accordion title="Folder flattening">
+    Gemini Voyager supports nested folders; Ophel does not. During import, nested folders are flattened into path-style names — for example, a folder called **Work** with a child **Q2** becomes **Work / Q2** in Ophel.
+  </Accordion>
+  <Accordion title="Gemini only">
+    The Voyager import is specific to Gemini conversations. It will not import conversations from other AI platforms.
+  </Accordion>
+</AccordionGroup>

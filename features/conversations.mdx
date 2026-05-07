@@ -6,7 +6,7 @@ description: "Organize your AI chat history with color-coded folders, free-form 
 
 The Conversations tab gives you a searchable, organized view of every chat on the current AI platform.
 
-![Conversations tab — folder and tag list](/images/features/conversation.png)
+![Conversations tab — folder and tag list](/images/features/conversation-en.png)
 
 Ophel reads the same conversation list the AI platform displays and layers folders, tags, pinning, and export on top of it — no data leaves the browser unless you explicitly export or sync.
 
@@ -113,6 +113,18 @@ Configure export behavior in **Settings → Features → Conversations**:
 | `Alt+]`        | Next conversation                   |
 
 All shortcuts are customizable in **Settings → Shortcuts**.
+
+## WebDAV sync
+
+Configure a WebDAV server in **Settings → Sync & Backup → WebDAV** to sync Ophel's **conversation metadata** to your own private server.
+
+<Note>
+  WebDAV sync transfers only the metadata Ophel stores locally — folder
+  assignments, tags, pin state, and notes. It does not include the actual AI
+  conversation content, which belongs to the AI platform.
+</Note>
+
+Both manual sync (click the button) and automatic sync at a set interval are supported. See [WebDAV Sync](/data/webdav) for full setup instructions.
 
 ## Settings
 
