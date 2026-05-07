@@ -52,7 +52,7 @@ The strip at the very top of the panel gives you fast access to core controls.
 | **Theme toggle**    | Switches between light and dark mode. Shortcut: `Alt+D` (Mac: `Option+D`).                                                                          |
 | **Settings button** | Opens the settings dialog. Shortcut: `Alt+,` (Mac: `Option+,`).                                                                                     |
 
-You can drag the title bar to reposition the panel anywhere on screen when it is in Floating mode.
+You can drag the title bar to reposition the panel anywhere on screen when it is in Floating mode. **Double-clicking** the title bar toggles between Edge Snap and Floating mode without opening settings.
 
 ## Floating quick buttons
 
@@ -69,6 +69,7 @@ The floating button group at the screen edge is your fastest access point to com
 | Action                      | Windows / Linux            | Mac                       |
 | --------------------------- | -------------------------- | ------------------------- |
 | Open / close panel          | `Alt+P`                    | `Option+P`                |
+| Toggle panel mode           | `Alt+M`                    | `Option+M`                |
 | Switch to Outline tab       | `Alt+1`                    | `Option+1`                |
 | Switch to Conversations tab | `Alt+2`                    | `Option+2`                |
 | Switch to Prompts tab       | `Alt+3`                    | `Option+3`                |
@@ -124,10 +125,16 @@ All of these are in **Settings → General → Panel**:
 | -------------- | --------------------------------------------------- | --------- |
 | Panel mode     | Edge Snap or Floating                               | Edge Snap |
 | Default side   | Left or right side of the screen                    | Right     |
-| Panel width    | 200–600 px                                          | 320 px    |
+| Panel width    | 240–600 px                                          | 320 px    |
 | Panel height   | 50–100 vh                                           | 85 vh     |
-| Edge distance  | Distance from the screen edge when in Floating mode | 25 px     |
+| Edge distance  | Distance from the screen edge when in Floating mode | 0 px      |
 | Snap threshold | Distance from edge that triggers automatic snapping | 30 px     |
+
+### Quick buttons behavior
+
+In **Settings → General → Quick Buttons Behavior**, you can also toggle:
+
+- **Hide quick buttons when panel is open** — the floating button group automatically hides while the panel is open, and reappears when you close the panel.
 
 ## Next steps
 

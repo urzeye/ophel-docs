@@ -13,8 +13,8 @@ Many AI platforms cap their content area to a narrow column, leaving wide margin
 **Settings → Site Settings → [Select site] → Layout → Page Width**
 
 - **Unit**: percentage of viewport width
-- **Range**: 50%–100%
-- Changes apply immediately; no page refresh needed. Disable the setting at any time to return to the platform's default.
+- **Range**: 50%–100% (sliders are capped at 99% to preserve a sliver of the original platform chrome)
+- Changes apply immediately; no page refresh needed.
 
 ## User message width
 
@@ -58,17 +58,15 @@ No configuration is needed; this works at any time.
 
 ## Panel size and position
 
-You can drag the panel by its title bar to reposition it anywhere on screen. Additional size and behavior settings are in **Settings → General → Panel**:
+You can drag the panel by its title bar to reposition it anywhere on screen. **Double-clicking** the title bar toggles between Edge Snap and Floating mode. Additional size and behavior settings are in **Settings → General → Panel**:
 
-| Setting | Description | Default |
-| --- | --- | --- |
-| Default open | Open the panel automatically on supported sites | Yes |
-| Default side | Left or right side of the screen | Right |
-| Edge distance | Distance from the screen edge | 25 px |
-| Panel width | Panel width | 320 px |
-| Panel height | Panel height as a percentage of the viewport | 85 vh |
-| Auto-hide | Collapse the panel when you click outside it | No |
-| Edge snap | Snap to the screen edge when dragged near it; hover to preview when snapped | On |
-| Snap threshold | Distance from edge that triggers snapping | 18 px |
+| Setting        | Description                                         | Default   |
+| -------------- | --------------------------------------------------- | --------- |
+| Panel mode     | Edge Snap or Floating                               | Edge Snap |
+| Default side   | Left or right side of the screen                    | Right     |
+| Edge distance  | Distance from the screen edge when in Floating mode | 0 px      |
+| Panel width    | 240–600 px                                          | 320 px    |
+| Panel height   | 50–100 vh                                           | 85 vh     |
+| Snap threshold | Distance from edge that triggers automatic snapping | 30 px     |
 
-When edge snap is on and the panel is snapped, hover over the corresponding screen edge to pop the panel out for a preview. Drag it away from the edge to unsnap it.
+When in Edge Snap mode, hover over the corresponding screen edge to pop the panel out for a preview. Drag the title bar away from the edge to switch to Floating mode.
