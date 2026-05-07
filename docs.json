@@ -31,11 +31,13 @@
     "links": [
       {
         "label": "Discord",
-        "href": "https://discord.gg/79B2hFxR"
+        "href": "https://discord.gg/79B2hFxR",
+        "icon": "discord"
       },
       {
         "label": "Ko-fi",
-        "href": "https://ko-fi.com/urzeye"
+        "href": "https://ko-fi.com/urzeye",
+        "icon": "mug-hot"
       }
     ],
     "primary": {
