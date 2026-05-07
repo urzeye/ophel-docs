@@ -4,7 +4,17 @@ sidebarTitle: "WebDAV 同步"
 description: "配置 WebDAV 服务器将 Ophel 数据同步到 Nextcloud、坚果云、群晖 NAS 等，实现跨设备同步。"
 ---
 
-WebDAV 同步让你把 Ophel 数据上传到自己的私有服务器，并在多台设备之间保持一致。常见的 WebDAV 服务器包括 Nextcloud、坚果云（WebDAV 接口）、Synology NAS 等。
+WebDAV 同步让你把 Ophel 数据上传到自己的私有服务器，并在多台设备之间保持一致。Ophel 内置了常用服务商的连接预设：
+
+| 服务商       | 说明                                                |
+| ------------ | ---------------------------------------------------- |
+| **坚果云**      | 需在网页端生成应用密码，不能直接用登录密码 |
+| **Infinicloud** | 固定 URL，开笱即用                              |
+| **pCloud**   | 固定 URL，开笱即用                              |
+| **Nextcloud** | 自托管，需填写自己的服务器地址                  |
+| **Synology NAS** | 需先在套件中心安装 WebDAV Server 套件  |
+| **Seafile**  | 自托管，需填写自己的服务器地址                  |
+| **自定义**     | 其他任意 WebDAV 内容服务器                  |
 
 ## 配置 WebDAV
 
@@ -46,10 +56,19 @@ WebDAV 同步的是 Ophel 在本地维护的**元数据**：
 - 建议将"自动同步"模式的间隔设置为不低于 5 分钟
 - 同步前请确保服务器地址以 `https://` 开头（不支持 HTTP 明文传输）
 
-## 常用 WebDAV 服务商
+## 常用 WebDAV 服务商配置说明
 
-| 服务         | WebDAV 地址格式                                      | 备注                      |
-| ------------ | ---------------------------------------------------- | ------------------------- |
-| 坚果云       | `https://dav.jianguoyun.com/dav/`                    | 需在网页端生成应用密码    |
-| Nextcloud    | `https://your-server/remote.php/dav/files/username/` | 自托管                    |
-| Synology NAS | `https://your-nas/webdav/`                           | 需启用 WebDAV Server 套件 |
+<AccordionGroup>
+  <Accordion title="坚果云">
+    首先在坚果云网页端进入【帐号信息】生成应用密码，用应用密码而非登录密码填写密码字段。URL 已自动填充为 `https://dav.jianguoyun.com/dav/`。
+  </Accordion>
+  <Accordion title="Nextcloud">
+    将服务器地址填写为 `https://你的域名/remote.php/dav/files/用户名/`，用户名和密码即为 Nextcloud 登录凭证。
+  </Accordion>
+  <Accordion title="Synology NAS">
+    先在群晖套件中心安装 **WebDAV Server** 套件并启用 HTTPS。服务器地址格式为 `https://你的NAS地址/webdav/`。
+  </Accordion>
+  <Accordion title="其他服务商">
+    选择「自定义」并填写服务器地址。
+  </Accordion>
+</AccordionGroup>
