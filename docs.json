@@ -32,7 +32,10 @@
       {
         "label": "Discord",
         "href": "https://discord.gg/79B2hFxR",
-        "icon": "discord"
+        "icon": {
+          "style": "brands",
+          "name": "discord"
+        }
       },
       {
         "label": "Ko-fi",
