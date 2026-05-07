@@ -17,13 +17,27 @@
     "default": "system"
   },
   "fonts": {
-    "heading": { "family": "Inter" },
-    "body": { "family": "Inter" }
+    "heading": {
+      "family": "Inter"
+    },
+    "body": {
+      "family": "Inter"
+    }
   },
   "background": {
     "decoration": "gradient"
   },
   "navbar": {
+    "links": [
+      {
+        "label": "Discord",
+        "href": "https://discord.gg/79B2hFxR"
+      },
+      {
+        "label": "Ko-fi",
+        "href": "https://ko-fi.com/urzeye"
+      }
+    ],
     "primary": {
       "type": "github",
       "href": "https://github.com/urzeye/ophel"
@@ -46,11 +60,15 @@
     "timestamp": true
   },
   "contextual": {
-    "options": ["assistant", "copy"]
+    "options": [
+      "assistant",
+      "copy"
+    ]
   },
   "footer": {
     "socials": {
-      "github": "https://github.com/urzeye/ophel"
+      "github": "https://github.com/urzeye/ophel",
+      "discord": "https://discord.gg/79B2hFxR"
     },
     "links": [
       {
@@ -71,6 +89,19 @@
           {
             "label": "GitHub Releases",
             "href": "https://github.com/urzeye/ophel/releases"
+          }
+        ]
+      },
+      {
+        "header": "Community",
+        "items": [
+          {
+            "label": "Discord",
+            "href": "https://discord.gg/79B2hFxR"
+          },
+          {
+            "label": "Ko-fi",
+            "href": "https://ko-fi.com/urzeye"
           }
         ]
       },
@@ -105,7 +136,11 @@
               {
                 "group": "Get Started",
                 "icon": "rocket",
-                "pages": ["introduction", "installation", "panel-overview"]
+                "pages": [
+                  "introduction",
+                  "installation",
+                  "panel-overview"
+                ]
               },
               {
                 "group": "Core Features",
@@ -144,24 +179,34 @@
                   "data/webdav",
                   {
                     "group": "From Other Platforms",
-                    "pages": ["data/migration"]
+                    "pages": [
+                      "data/migration"
+                    ]
                   }
                 ]
               },
               {
                 "group": "Privacy",
                 "icon": "shield",
-                "pages": ["data/privacy", "data/permissions"]
+                "pages": [
+                  "data/privacy",
+                  "data/permissions"
+                ]
               },
               {
                 "group": "Help",
                 "icon": "circle-question",
-                "pages": ["faq", "troubleshooting"]
+                "pages": [
+                  "faq",
+                  "troubleshooting"
+                ]
               },
               {
                 "group": "Changelog",
                 "icon": "list",
-                "pages": ["changelog"]
+                "pages": [
+                  "changelog"
+                ]
               }
             ]
           },
@@ -171,7 +216,9 @@
             "groups": [
               {
                 "group": "Installation",
-                "pages": ["installation"]
+                "pages": [
+                  "installation"
+                ]
               }
             ]
           },
@@ -181,7 +228,9 @@
             "groups": [
               {
                 "group": "Changelog",
-                "pages": ["changelog"]
+                "pages": [
+                  "changelog"
+                ]
               }
             ]
           }
@@ -240,24 +289,34 @@
                   "zh/data/webdav",
                   {
                     "group": "从其他平台导入",
-                    "pages": ["zh/data/migration"]
+                    "pages": [
+                      "zh/data/migration"
+                    ]
                   }
                 ]
               },
               {
                 "group": "隐私与权限",
                 "icon": "shield",
-                "pages": ["zh/data/privacy", "zh/data/permissions"]
+                "pages": [
+                  "zh/data/privacy",
+                  "zh/data/permissions"
+                ]
               },
               {
                 "group": "帮助",
                 "icon": "circle-question",
-                "pages": ["zh/faq", "zh/troubleshooting"]
+                "pages": [
+                  "zh/faq",
+                  "zh/troubleshooting"
+                ]
               },
               {
                 "group": "更新日志",
                 "icon": "list",
-                "pages": ["zh/changelog"]
+                "pages": [
+                  "zh/changelog"
+                ]
               }
             ]
           },
@@ -267,7 +326,9 @@
             "groups": [
               {
                 "group": "安装",
-                "pages": ["zh/installation"]
+                "pages": [
+                  "zh/installation"
+                ]
               }
             ]
           },
@@ -277,7 +338,9 @@
             "groups": [
               {
                 "group": "更新日志",
-                "pages": ["zh/changelog"]
+                "pages": [
+                  "zh/changelog"
+                ]
               }
             ]
           }
