@@ -29,18 +29,21 @@ description: "Ophel Atlas 最常见问题的解答，涵盖安装、面板行为
     | Z.ai              | chat.z.ai                  |
     | ChatGLM           | chatglm.cn                 |
     | ima               | ima.qq.com                 |
+
   </Accordion>
 
   <Accordion title="安装后如何启用扩展？" icon="puzzle-piece">
     安装完成后，在浏览器中打开任意支持的 AI 平台，Ophel 面板应会自动出现在侧边。如果没有出现，请确认扩展已在浏览器工具栏中开启（点击拼图图标确认 Ophel 已启用），然后用 `Ctrl+Shift+R`（Mac: `Cmd+Shift+R`）强制刷新页面。
 
     某些网址需要你明确授权扩展运行。如果扩展弹窗中出现「点击启用」提示，点击并允许访问当前站点即可。
+
   </Accordion>
 
   <Accordion title="浏览器扩展和油猴脚本有什么区别？" icon="layer-group">
     **浏览器扩展**（支持 Chrome、Edge 和 Firefox）是推荐选项，功能完整、性能更好、兼容性更高。
 
     **油猴脚本**在 Tampermonkey 等脚本管理器中运行，无需安装浏览器扩展，适合无法安装扩展的场景，但部分功能可能受限。
+
   </Accordion>
 </AccordionGroup>
 
@@ -54,15 +57,24 @@ description: "Ophel Atlas 最常见问题的解答，涵盖安装、面板行为
     2. 用 `Ctrl+Shift+R`（Mac: `Cmd+Shift+R`）强制刷新页面
     3. 确认当前站点在[支持的平台列表](#ophel-支持哪些-ai-平台)中
     4. 如果面板被关闭了，按 `Alt+P`（Mac: `Option+P`）重新打开
+
   </Accordion>
 
-  <Accordion title="浮动按钮不见了，怎么打开面板？" icon="circle-question">
-    按 `Alt+P`（Mac: `Option+P`）。无论浮动按钮是否可见，这个快捷键都能切换面板。
-  </Accordion>
+<Accordion
+  title="浮动按钮不见了，怎么打开面板？"
+  icon="circle-question"
+>
+  按 `Alt+P`（Mac: `Option+P`）。无论浮动按钮是否可见，这个快捷键都能切换面板。
+</Accordion>
 
-  <Accordion title="如何使用幽灵穿透模式？" icon="arrow-pointer">
-    幽灵穿透让面板暂时透明并允许鼠标点击穿过，方便操作面板背后的页面内容。按住 **Ctrl**（Windows/Linux）或 **Command**（Mac）约 0.2 秒，面板会变透明并允许穿透。松开按键后恢复正常。
-  </Accordion>
+<Accordion
+  title="如何使用幽灵穿透模式？"
+  icon="arrow-pointer"
+>
+  幽灵穿透让面板暂时透明并允许鼠标点击穿过，方便操作面板背后的页面内容。按住
+  **Ctrl**（Windows/Linux）或 **Command**（Mac）约 0.2
+  秒，面板会变透明并允许穿透。松开按键后恢复正常。
+</Accordion>
 
   <Accordion title="面板吸附到边缘后如何取消？" icon="thumbtack">
     将面板拖向屏幕边缘会自动吸附。悬停到该边缘时面板会弹出。若要取消吸附，拖拽面板离开边缘即可。也可在 **设置 → 通用 → 面板** 中禁用吸附功能。
@@ -76,9 +88,13 @@ description: "Ophel Atlas 最常见问题的解答，涵盖安装、面板行为
     部分 AI 平台异步更新 DOM，页面加载后大纲可能需要几秒才能填充。按 `Alt+R`（Mac: `Option+R`）手动刷新大纲。如果刷新后仍为空，检查 **设置 → 功能 → 大纲 → 自动更新** 是否已开启。
   </Accordion>
 
-  <Accordion title="大纲没有同步我的滚动位置。" icon="arrows-up-down">
-    确认 **设置 → 功能 → 大纲 → 滚动同步** 已开启（跟随模式设为 `current` 而非 `manual`）。
-  </Accordion>
+<Accordion
+  title="大纲没有同步我的滚动位置。"
+  icon="arrows-up-down"
+>
+  确认 **设置 → 功能 → 大纲 → 滚动同步** 已开启（跟随模式设为 `current` 而非
+  `manual`）。
+</Accordion>
 
   <Accordion title="如何手动刷新大纲？" icon="rotate">
     按 `Alt+R`（Mac: `Option+R`）强制重新扫描对话并重建大纲条目。也可点击大纲面板头部的刷新按钮。
@@ -96,6 +112,7 @@ description: "Ophel Atlas 最常见问题的解答，涵盖安装、面板行为
     WebDAV 只同步 Ophel 中的**元数据**：你在 Ophel 里设置的文件夹归属、标签、置顶状态和备注。不会上传实际的对话消息（那些内容属于 AI 平台）。你也可以选择在备份中包含提示词库、设置和 Claude Session Key。
 
     详见 [WebDAV 同步](/zh/data/webdav)。
+
   </Accordion>
 </AccordionGroup>
 
@@ -111,6 +128,7 @@ description: "Ophel Atlas 最常见问题的解答，涵盖安装、面板行为
     4. 点击**开始**。Ophel 检测到页面连续两次空闲（约 2 秒）后自动发送下一条
 
     运行中可以随时暂停、跳过、拖拽排序或清空队列。
+
   </Accordion>
 
   <Accordion title="队列卡住了，没有发送下一条。" icon="hourglass">
@@ -145,8 +163,14 @@ description: "Ophel Atlas 最常见问题的解答，涵盖安装、面板行为
 ## 隐私
 
 <AccordionGroup>
-  <Accordion title="Ophel 会上传我的对话内容吗？" icon="lock">
-    不会。Ophel 完全在你的浏览器本地运行。对话内容、提示词和设置默认保存在你的设备上。如果配置了 WebDAV 同步，数据只会发送到你指定的 WebDAV 服务器——由你完全控制。Ophel 本身不收集或传输任何用户数据。详情请查看[隐私声明](/zh/data/privacy)。
+  <Accordion
+    title="Ophel 会上传我的对话内容吗？"
+    icon="lock"
+  >
+    不会。Ophel
+    完全在你的浏览器本地运行。对话内容、提示词和设置默认保存在你的设备上。如果配置了
+    WebDAV 同步，数据只会发送到你指定的 WebDAV 服务器——由你完全控制。Ophel
+    本身不收集或传输任何用户数据。详情请查看[隐私声明](/zh/data/privacy)。
   </Accordion>
 </AccordionGroup>
 
@@ -157,5 +181,6 @@ description: "Ophel Atlas 最常见问题的解答，涵盖安装、面板行为
     前往 **设置 → 备份与同步**，点击**清空所有数据**。这将删除浏览器中存储的所有 Ophel 数据，包括提示词、会话元数据、文件夹与标签定义、以及所有设置。AI 平台上的实际对话历史不受影响。
 
     建议在清空前先导出一份完整备份。
+
   </Accordion>
 </AccordionGroup>
