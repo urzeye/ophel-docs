@@ -45,6 +45,16 @@ folder:工作 tag:研究 模型
 
 这会找到「工作」文件夹中带「研究」标签、且标题包含「模型」的会话。
 
+## 模糊搜索
+
+开启模糊搜索后，Ophel 允许不完全匹配——搜索 `rans` 也能找到 `translate`。关闭后只返回精确子串匹配。
+
+在 **设置 → 全局搜索** 中开关此选项。
+
+<Tip>
+  如果你想精确定位某个变量名或已知标题，建议关闭模糊搜索，避免噪音结果。
+</Tip>
+
 ## 提示词搜索的插入行为
 
 在搜索结果中选中一条**提示词**后按 Enter，默认行为随场景智能切换：
@@ -61,6 +71,57 @@ folder:工作 tag:研究 模型
 | `Ctrl+K`   | 默认快捷键（Mac 为 Cmd+K）                               |
 | 浮动按钮   | 点击搜索图标                                             |
 | 双击 Shift | 可选，在设置中开启；不同于其他快捷键，此触发无需聚焦页面 |
+
+## 搜索技巧
+
+<AccordionGroup>
+  <Accordion title="按文件夹查找会话">
+    输入 `folder:` 加上文件夹名的一部分。开启模糊搜索后不需要输入完整名称。
+
+    ```text
+    folder:客户
+    ```
+
+  </Accordion>
+  <Accordion title="按标签查找会话">
+    输入 `tag:` 加上标签名。
+
+    ```text
+    tag:待办
+    ```
+
+  </Accordion>
+  <Accordion title="按置顶状态过滤">
+    输入 `is:pinned` 只看已置顶会话，或 `is:unpinned` 排除置顶会话。
+
+    ```text
+    is:pinned 项目
+    ```
+
+  </Accordion>
+  <Accordion title="按时间过滤">
+    输入 `date:Nd` 将结果限制在最近 N 天内更新的会话或提示词。例如 `date:7d` 返回最近一周的内容。
+
+    ```text
+    date:30d 重构
+    ```
+
+  </Accordion>
+  <Accordion title="按标题层级过滤大纲节点">
+    输入 `level:n`（0–6）查找指定深度的大纲节点。Level 1 对应 `<h1>`，Level 2 对应 `<h2>`，以此类推。Level 0 匹配你自己的提问。
+
+    ```text
+    level:2 概述
+    ```
+
+  </Accordion>
+  <Accordion title="跳转到设置项">
+    直接输入功能名称或关键词。例如输入「主题」会出现外观设置入口，输入「快捷键」会出现快捷键设置页面。
+  </Accordion>
+  <Accordion title="在当前对话中查找大纲标题">
+    阅读对话时打开全局搜索，输入标题的一部分。选中结果后页面会滚动到该位置，并在大纲中高亮对应节点。
+  </Accordion>
+</AccordionGroup>
 
 ## 相关设置
 
