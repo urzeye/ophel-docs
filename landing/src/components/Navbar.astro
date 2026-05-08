@@ -1,14 +1,23 @@
 ---
+import type { T } from '../i18n';
+
+interface Props {
+  t: T['nav'];
+  homeHref?: string;
+}
+
+const { t, homeHref = '/' } = Astro.props;
+
 const navLinks = [
-  { label: '功能', href: '#features' },
-  { label: '平台支持', href: '#platforms' },
-  { label: '文档', href: '/docs' },
+  { label: t.features, href: '#features' },
+  { label: t.platforms, href: '#platforms' },
+  { label: t.docs, href: '/docs' },
 ];
 ---
 
 <header class="navbar">
   <div class="navbar-inner">
-    <a href="/" class="logo" aria-label="Ophel 首页">
+    <a href={homeHref} class="logo" aria-label={t.homeLabel}>
       <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
         <rect width="28" height="28" rx="8" fill="url(#logo-gradient)"></rect>
         <path d="M8 14a6 6 0 1 1 12 0A6 6 0 0 1 8 14Z" fill="white" opacity="0.9"></path>
@@ -30,7 +39,7 @@ const navLinks = [
       <span>Ophel</span>
     </a>
 
-    <nav class="nav-links" aria-label="主导航">
+    <nav class="nav-links" aria-label={t.ariaLabel}>
       {
         navLinks.map((link) => (
           <a href={link.href} class="nav-link">
@@ -41,13 +50,16 @@ const navLinks = [
     </nav>
 
     <div class="nav-actions">
+      <a href={t.langSwitchHref} class="btn-lang" aria-label={t.langSwitchAriaLabel}>
+        {t.langSwitch}
+      </a>
       <a
         href="https://chrome.google.com/webstore"
         class="btn-install"
         target="_blank"
         rel="noopener noreferrer"
       >
-        免费安装
+        {t.install}
       </a>
     </div>
   </div>
@@ -109,6 +121,28 @@ const navLinks = [
   .nav-actions {
     margin-left: auto;
     flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .btn-lang {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-text-muted);
+    border: 1px solid var(--color-border);
+    transition:
+      color 0.15s,
+      border-color 0.15s;
+  }
+
+  .btn-lang:hover {
+    color: var(--color-text);
+    border-color: rgba(255, 255, 255, 0.2);
   }
 
   .btn-install {

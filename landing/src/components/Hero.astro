@@ -1,20 +1,23 @@
 ---
+import type { T } from '../i18n';
 
+interface Props {
+  t: T['hero'];
+}
+
+const { t } = Astro.props;
 ---
 
 <section class="hero">
   <div class="hero-inner">
-    <div class="badge">浏览器扩展 · 免费使用</div>
+    <div class="badge">{t.badge}</div>
 
     <h1 class="hero-title">
-      让 AI 对话<br />
-      <span class="gradient-text">可读、可导航、可沉淀</span>
+      {t.titleLine1}<br />
+      <span class="gradient-text">{t.titleGradient}</span>
     </h1>
 
-    <p class="hero-desc">
-      Ophel 为 ChatGPT、Gemini、Claude 等 15 个平台注入实时大纲、会话文件夹与 Prompt 词库。
-      告别无限滚动，让每次对话成为可组织的知识。
-    </p>
+    <p class="hero-desc">{t.desc}</p>
 
     <div class="hero-actions">
       <a
@@ -32,12 +35,12 @@
             stroke-linecap="round"
             stroke-linejoin="round"></path>
         </svg>
-        免费安装 Chrome 扩展
+        {t.ctaPrimary}
       </a>
-      <a href="/docs" class="btn-secondary">查看文档</a>
+      <a href="/docs" class="btn-secondary">{t.ctaSecondary}</a>
     </div>
 
-    <p class="hero-note">支持 Chrome · Edge · Firefox · 油猴脚本</p>
+    <p class="hero-note">{t.note}</p>
   </div>
 
   <!-- 背景装饰 -->

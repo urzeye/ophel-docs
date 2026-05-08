@@ -1,0 +1,123 @@
+---
+import { translations } from '../../../i18n';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Navbar from '../../../components/Navbar.astro';
+import Footer from '../../../components/Footer.astro';
+
+const t = translations.zh;
+const p = t.privacy;
+---
+
+<BaseLayout title={p.title} description={p.metaDesc} lang="zh-CN" enPath="/privacy/">
+  <Navbar t={t.nav} homeHref="/zh/" />
+  <main class="prose-page">
+    <div class="prose-inner">
+      <h1>{p.h1}</h1>
+      <p class="updated">
+        {p.updatedLabel}
+        {new Date().toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}
+      </p>
+
+      <h2>{p.sections.collection.title}</h2>
+      <p>
+        {p.sections.collection.p1}<strong>{p.sections.collection.p1Strong}</strong>
+      </p>
+      <p>
+        {p.sections.collection.p2}<code>chrome.storage.local</code>{p.sections.collection.p2Suffix}
+      </p>
+
+      <h2>{p.sections.permissions.title}</h2>
+      <ul>
+        <li><strong>activeTab / scripting</strong>：{p.sections.permissions.activeTab}</li>
+        <li><strong>storage</strong>：{p.sections.permissions.storage}</li>
+        <li><strong>notifications</strong>{p.sections.permissions.notifications}</li>
+      </ul>
+      <p>{p.sections.permissions.noNetwork}</p>
+
+      <h2>{p.sections.webdav.title}</h2>
+      <p>{p.sections.webdav.p}</p>
+
+      <h2>{p.sections.thirdParty.title}</h2>
+      <p>{p.sections.thirdParty.p}</p>
+
+      <h2>{p.sections.contact.title}</h2>
+      <p>
+        {p.sections.contact.pre}<a
+          href="https://github.com/urzeye/ophel/issues"
+          target="_blank"
+          rel="noopener noreferrer">{p.sections.contact.linkLabel}</a
+        >{p.sections.contact.post}
+      </p>
+    </div>
+  </main>
+  <Footer t={t.footer} />
+</BaseLayout>
+
+<style>
+  .prose-page {
+    padding: 64px 24px;
+  }
+
+  .prose-inner {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  h1 {
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+  }
+
+  .updated {
+    font-size: 14px;
+    color: var(--color-text-muted);
+    margin-bottom: 48px;
+  }
+
+  h2 {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 40px 0 12px;
+    padding-top: 40px;
+    border-top: 1px solid var(--color-border);
+  }
+
+  p {
+    font-size: 15px;
+    color: var(--color-text-muted);
+    line-height: 1.8;
+    margin-bottom: 16px;
+  }
+
+  ul {
+    padding-left: 20px;
+    margin-bottom: 16px;
+  }
+
+  li {
+    font-size: 15px;
+    color: var(--color-text-muted);
+    line-height: 1.8;
+    margin-bottom: 8px;
+  }
+
+  strong {
+    color: var(--color-text);
+  }
+
+  code {
+    font-size: 13px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.08);
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  }
+
+  a {
+    color: var(--color-primary);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+</style>

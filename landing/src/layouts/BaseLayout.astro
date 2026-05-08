@@ -3,27 +3,75 @@ interface Props {
   title?: string;
   description?: string;
   ogImage?: string;
+  /** 当前页面语言，默认 zh-CN；英文版上线后传 'en' */
+  lang?: string;
+  /** 当前页面对应的英文路径（用于 hreflang），默认为当前路径 */
+  enPath?: string;
+  /** 当前页面对应的中文路径（用于 hreflang），默认 /zh + 当前路径 */
+  zhPath?: string;
+  /** 是否输出 JSON-LD SoftwareApplication 结构化数据，仅首页需要 */
+  withJsonLd?: boolean;
 }
 
 const {
-  title = 'Ophel — AI 对话结构化与导航工具',
-  description = 'Ophel 将 AI 对话转化为可阅读、可导航、可复用的知识内容。支持 ChatGPT、Gemini、Claude 等 15 个平台。',
+  title = 'Ophel — AI Conversation Organizer & Navigator',
+  description = 'Ophel transforms AI conversations into readable, navigable, and reusable knowledge. Supports ChatGPT, Gemini, Claude, and 15 platforms.',
   ogImage = '/og-image.png',
+  lang = 'en',
+  enPath,
+  zhPath,
+  withJsonLd = false,
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
+// hreflang — 英文版上线前用占位 URL；上线后两个版本均会真实存在
+const enURL = new URL(enPath ?? Astro.url.pathname.replace(/^\/zh(\/|$)/, '/'), Astro.site);
+const zhURL = new URL(
+  zhPath ?? `/zh${Astro.url.pathname === '/' ? '/' : Astro.url.pathname}`,
+  Astro.site,
+);
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'Ophel',
+  applicationCategory: 'BrowserApplication',
+  operatingSystem: 'Chrome, Firefox, Edge',
+  url: 'https://ophel.app',
+  description:
+    'Transform AI conversations into readable, navigable, and reusable knowledge. Supports ChatGPT, Gemini, Claude, and 12+ platforms.',
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'USD',
+  },
+  author: {
+    '@type': 'Organization',
+    name: 'Ophel',
+    url: 'https://ophel.app',
+  },
+};
 ---
 
 <!doctype html>
-<html lang="zh-CN">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
+    <!-- 让浏览器立即用深色背景渲染，避免白闪 (CLS) -->
+    <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content="#0a0a0f" />
 
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL} />
+
+    <!-- hreflang — 多语言占位（英文版上线后两个链接均指向真实页面） -->
+    <link rel="alternate" hreflang="x-default" href={enURL} />
+    <link rel="alternate" hreflang="en" href={enURL} />
+    <link rel="alternate" hreflang="zh-CN" href={zhURL} />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
@@ -31,6 +79,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={new URL(ogImage, Astro.site)} />
+    <meta property="og:locale" content={lang.replace('-', '_')} />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -42,12 +91,32 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
 
+    <!-- Google Fonts — 异步加载，避免阻塞渲染 (FCP/LCP) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- preload CSS 文件本身，让浏览器提前发现字体请求 -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700&display=swap"
     />
+    <!-- media=print 技巧：CSS 不阻塞渲染，onload 后切换为 all -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    <!-- 无 JS 兜底 -->
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700&display=swap"
+      />
+    </noscript>
+
+    <!-- JSON-LD 结构化数据（仅首页） -->
+    {withJsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
   </head>
   <body>
     <slot />

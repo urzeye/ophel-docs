@@ -1,4 +1,12 @@
 ---
+import type { T } from '../i18n';
+
+interface Props {
+  t: T['platforms'];
+}
+
+const { t } = Astro.props;
+
 const platforms = [
   'ChatGPT',
   'Gemini',
@@ -21,8 +29,8 @@ const platforms = [
 <section class="platforms" id="platforms">
   <div class="section-inner">
     <div class="section-header">
-      <h2 class="section-title">支持 15 个平台</h2>
-      <p class="section-desc">一次安装，覆盖你常用的所有 AI 助手</p>
+      <h2 class="section-title">{t.title}</h2>
+      <p class="section-desc">{t.desc}</p>
     </div>
 
     <div class="platform-grid">

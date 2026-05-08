@@ -1,29 +1,35 @@
 ---
+import type { T } from '../i18n';
 
+interface Props {
+  t: T['footer'];
+}
+
+const { t } = Astro.props;
 ---
 
 <footer class="footer">
   <div class="footer-inner">
     <div class="footer-brand">
       <span class="footer-logo">Ophel</span>
-      <p class="footer-tagline">让 AI 对话可读、可导航、可沉淀</p>
+      <p class="footer-tagline">{t.tagline}</p>
     </div>
 
-    <nav class="footer-links" aria-label="页脚导航">
+    <nav class="footer-links" aria-label={t.ariaLabel}>
       <div class="footer-group">
-        <span class="footer-group-label">产品</span>
-        <a href="#features">功能介绍</a>
-        <a href="/docs/changelog">更新日志</a>
+        <span class="footer-group-label">{t.product}</span>
+        <a href="#features">{t.links.features}</a>
+        <a href="/docs/changelog">{t.links.changelog}</a>
       </div>
       <div class="footer-group">
-        <span class="footer-group-label">资源</span>
-        <a href="/docs">文档</a>
-        <a href="/docs/installation">安装指南</a>
-        <a href="/docs/faq">常见问题</a>
+        <span class="footer-group-label">{t.resources}</span>
+        <a href="/docs">{t.links.docs}</a>
+        <a href="/docs/installation">{t.links.installation}</a>
+        <a href="/docs/faq">{t.links.faq}</a>
       </div>
       <div class="footer-group">
-        <span class="footer-group-label">其他</span>
-        <a href="/privacy">隐私政策</a>
+        <span class="footer-group-label">{t.other}</span>
+        <a href={t.links.privacyHref}>{t.links.privacy}</a>
         <a href="https://github.com/urzeye/ophel" target="_blank" rel="noopener noreferrer"
           >GitHub</a
         >
