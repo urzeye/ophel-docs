@@ -1,0 +1,7 @@
+name = "ophel-router"
+main = "src/index.ts"
+compatibility_date = "2024-11-01"
+compatibility_flags = ["nodejs_compat"]
+
+# 部署后在 Cloudflare Dashboard 中将此 Worker 绑定到 ophel.app 自定义域名
+# Workers & Pages → ophel-router → Settings → Triggers → Custom Domains → ophel.app

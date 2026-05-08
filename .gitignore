@@ -3,3 +3,7 @@ landing/node_modules/
 landing/.wrangler/
 landing/.astro/
 landing/dist/
+
+worker/node_modules/
+worker/.wrangler/
+worker/dist/
