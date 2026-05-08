@@ -42,7 +42,7 @@
   "navbar": {
     "links": [
       {
-        "label": "Discord",
+        "label": " ",
         "href": "https://discord.gg/rmPzb6Cx9u",
         "icon": {
           "style": "brands",
@@ -50,7 +50,7 @@
         }
       },
       {
-        "label": "Ko-fi",
+        "label": " ",
         "href": "https://ko-fi.com/urzeye",
         "icon": "mug-hot"
       }
