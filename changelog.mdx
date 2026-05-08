@@ -1,15 +1,25 @@
 ---
 title: "Changelog"
 description: "All notable changes to Ophel Atlas are documented here."
-keywords: ["changelog", "version history", "release notes", "updates", "new features"]
 ---
+
+<Update label="vUnreleased">
+
+  ### ✨ Improvements
+
+  - **Panel state remembered in auto-snap mode**: Both floating and auto-snap modes now remember whether the panel was open or closed across page refreshes. Previously, auto-snap mode always reopened the panel expanded after a refresh.
+
+  ### 🐛 Bug Fixes
+
+  - **Yuanbao theme sync broken**: Fixed theme detection failing when Yuanbao updated their dark mode implementation from a CSS class to a custom `html[yb-theme-mode]` attribute. The MutationObserver now watches the new attribute, and switching between dark, light, and system modes now works in both directions.
+  - **Drag-to-sort broken on Yuanbao**: Fixed tab order and quick button drag sorting in the settings modal, and prompt item drag sorting in the prompts tab, failing on Yuanbao. Yuanbao's page-level JS was cancelling drags with an empty `dataTransfer`; adding `setData()` in the drag handler prevents the cancellation.
+</Update>
 
 <Update label="v1.0.46">
 
   ### 🐛 Bug Fixes
 
-  - **Gemini source tooltips broken after Markdown fix**: Fixed source/citation tooltip chips disappearing in Gemini when the Markdown bold fix was enabled. The fixer was rewriting paragraph `innerHTML`, destroying Gemini's native event handlers for source tooltips. Affected paragraphs that contain citation chips are now skipped. (#468)
-
+  - **Gemini source tooltips broken after Markdown fix**: Fixed source/citation tooltip chips disappearing in Gemini when the Markdown bold fix was enabled. The fixer was rewriting paragraph `innerHTML`, destroying Gemini's native event handlers for source tooltips. Affected paragraphs that contained citation chips are now skipped. (#468)
 </Update>
 
 <Update label="v1.0.45">

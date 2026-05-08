@@ -1,15 +1,25 @@
 ---
 title: "更新日志"
 description: "Ophel Atlas 的所有重要更改均记录于此。"
-keywords: ["更新日志", "版本历史", "发布说明", "更新记录", "新功能"]
 ---
+
+<Update label="vUnreleased">
+
+  ### ✨ 功能优化
+
+  - **自动吸附模式支持记忆展开状态**：悬浮模式和自动吸附模式均可记住刷新前面板的展开/收起状态，不再强制刷新后展开。
+
+  ### 🐛 问题修复
+
+  - **元宝主题同步失效**：修复元宝将深色模式实现从 CSS class 改为自定义属性 `html[yb-theme-mode]` 后，主题联动失效的问题。MutationObserver 现在监听新属性，深色/浅色/系统三种模式之间的双向切换均已正常。
+  - **元宝拖拽排序失效**：修复设置弹窗中界面排版/快捷按钮拖拽排序，以及提示词 Tab 中提示词拖拽排序在元宝站点完全失效的问题。根因是元宝的页面级 JS 在 dragstart 冒泡阶段检测到空 dataTransfer 后会取消拖拽，在拖拽处理器中添加 setData() 调用即可绕过。
+</Update>
 
 <Update label="v1.0.46">
 
   ### 🐛 问题修复
 
   - **Gemini 引用来源 tooltip 在 Markdown 修复开启时失效**：修复启用 Markdown 加粗修复功能时，Gemini 的引用来源气泡提示消失的问题。根本原因是修复逻辑通过重写段落 `innerHTML` 破坏了 Gemini 原生的 tooltip 事件绑定。现在包含来源引用标记的段落会跳过处理，保留原有交互行为。（#468）
-
 </Update>
 
 <Update label="v1.0.45">
