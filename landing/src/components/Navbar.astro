@@ -1,5 +1,6 @@
 ---
 import type { T } from '../i18n';
+import { CHROME_STORE_URL } from '../i18n';
 
 interface Props {
   t: T['nav'];
@@ -54,7 +55,7 @@ const navLinks = [
         {t.langSwitch}
       </a>
       <a
-        href="https://chrome.google.com/webstore"
+        href={CHROME_STORE_URL}
         class="btn-install"
         target="_blank"
         rel="noopener noreferrer"
