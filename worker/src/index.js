@@ -20,9 +20,16 @@ async function handleRequest(request) {
 
 			return await fetch(proxyRequest);
 		}
-	} catch (error) {
-		return await fetch(request);
-	}
 
-	return await fetch(request);
-}
+    // 非 /docs 请求转发到 Cloudflare Pages（不能用 fetch(request)，否则循环）
+    const PAGES_HOST = "ophel-docs.pages.dev";
+    let pagesUrl = new URL(request.url);
+    pagesUrl.hostname = PAGES_HOST;
+
+    let pagesRequest = new Request(pagesUrl, request);
+    pagesRequest.headers.set("Host", PAGES_HOST);
+
+    return await fetch(pagesRequest);
+  } catch (error) {
+    return new Response("Service unavailable", { status: 503 });
+  }
