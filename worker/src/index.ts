@@ -6,7 +6,7 @@
  *   /*       → 透传到 Cloudflare Pages（Astro landing）
  */
 
-const MINTLIFY_HOST = "urzeye.mintlify.app";
+const MINTLIFY_HOST = "urzeye.mintlify.dev";
 const CUSTOM_DOMAIN = "ophel.app";
 const PAGES_HOST = "ophel-docs.pages.dev";
 
