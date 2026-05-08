@@ -217,6 +217,26 @@
                 "pages": ["changelog"]
               }
             ]
+          },
+          {
+            "tab": "Installation",
+            "icon": "arrow-down-to-line",
+            "groups": [
+              {
+                "group": "Installation",
+                "pages": ["installation"]
+              }
+            ]
+          },
+          {
+            "tab": "Changelog",
+            "icon": "list",
+            "groups": [
+              {
+                "group": "Changelog",
+                "pages": ["changelog"]
+              }
+            ]
           }
         ]
       },
@@ -290,6 +310,26 @@
               {
                 "group": "更新日志",
                 "icon": "list",
+                "pages": ["zh/changelog"]
+              }
+            ]
+          },
+          {
+            "tab": "安装",
+            "icon": "arrow-down-to-line",
+            "groups": [
+              {
+                "group": "安装",
+                "pages": ["zh/installation"]
+              }
+            ]
+          },
+          {
+            "tab": "更新日志",
+            "icon": "list",
+            "groups": [
+              {
+                "group": "更新日志",
                 "pages": ["zh/changelog"]
               }
             ]
