@@ -45,15 +45,19 @@ export default {
     // 其余请求代理到 Cloudflare Pages
     const pagesUrl = new URL(request.url);
     pagesUrl.hostname = PAGES_HOST;
-    return fetch(new Request(pagesUrl.toString(), {
-      method: request.method,
-      headers: (() => {
-        const headers = new Headers(request.headers);
-        headers.set("Host", PAGES_HOST);
-        return headers;
-      })(),
-      body: ["GET", "HEAD"].includes(request.method) ? undefined : request.body,
-      redirect: "follow",
-    }));
+    return fetch(
+      new Request(pagesUrl.toString(), {
+        method: request.method,
+        headers: (() => {
+          const headers = new Headers(request.headers);
+          headers.set("Host", PAGES_HOST);
+          return headers;
+        })(),
+        body: ["GET", "HEAD"].includes(request.method)
+          ? undefined
+          : request.body,
+        redirect: "follow",
+      }),
+    );
   },
 } satisfies ExportedHandler;

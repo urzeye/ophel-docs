@@ -1,10 +1,14 @@
 {
-  "compilerOptions": {
-    "target": "ES2022",
-    "module": "ES2022",
-    "moduleResolution": "bundler",
-    "strict": true,
-    "types": ["@cloudflare/workers-types"]
-  },
-  "include": ["src"]
+	"compilerOptions": {
+		"target": "ES2022",
+		"module": "ES2022",
+		"moduleResolution": "bundler",
+		"strict": true,
+		"types": [
+			"@cloudflare/workers-types"
+		]
+	},
+	"include": [
+		"src"
+	]
 }
