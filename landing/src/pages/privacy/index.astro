@@ -1,0 +1,127 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<BaseLayout title="隐私政策 — Ophel" description="Ophel 的隐私政策：我们如何处理您的数据。">
+  <Navbar />
+  <main class="prose-page">
+    <div class="prose-inner">
+      <h1>隐私政策</h1>
+      <p class="updated">
+        最后更新：{
+          new Date().toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })
+        }
+      </p>
+
+      <h2>数据收集</h2>
+      <p>
+        Ophel 是一款纯本地运行的浏览器扩展。<strong
+          >我们不收集、不上传任何您的对话内容或个人数据。</strong
+        >
+      </p>
+      <p>
+        所有数据（会话标题、文件夹结构、Prompt 词库、设置等）均存储在您本地浏览器的 <code
+          >chrome.storage.local</code
+        > 中，不会上传至任何服务器。
+      </p>
+
+      <h2>权限说明</h2>
+      <ul>
+        <li><strong>activeTab / scripting</strong>：用于向支持的 AI 站点注入界面增强功能。</li>
+        <li><strong>storage</strong>：用于在本地保存您的设置、会话信息和 Prompt 词库。</li>
+        <li><strong>notifications</strong>（可选）：用于在后台任务完成时发送桌面通知。</li>
+      </ul>
+      <p>Ophel 不申请任何网络请求权限（除非您主动启用 WebDAV 同步功能）。</p>
+
+      <h2>WebDAV 同步（可选功能）</h2>
+      <p>
+        如果您选择启用 WebDAV 同步，Ophel 将仅连接您自己配置的 WebDAV 服务器地址， 不经过任何 Ophel
+        的中转服务器。您的数据直接传输到您自己控制的存储服务。
+      </p>
+
+      <h2>第三方服务</h2>
+      <p>Ophel 本身不集成任何第三方统计、广告或追踪服务。</p>
+
+      <h2>联系方式</h2>
+      <p>
+        如有疑问，请通过 <a
+          href="https://github.com/urzeye/ophel/issues"
+          target="_blank"
+          rel="noopener noreferrer">GitHub Issues</a
+        > 联系我们。
+      </p>
+    </div>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .prose-page {
+    padding: 64px 24px;
+  }
+
+  .prose-inner {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  h1 {
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+  }
+
+  .updated {
+    font-size: 14px;
+    color: var(--color-text-muted);
+    margin-bottom: 48px;
+  }
+
+  h2 {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 40px 0 12px;
+    padding-top: 40px;
+    border-top: 1px solid var(--color-border);
+  }
+
+  p {
+    font-size: 15px;
+    color: var(--color-text-muted);
+    line-height: 1.8;
+    margin-bottom: 16px;
+  }
+
+  ul {
+    padding-left: 20px;
+    margin-bottom: 16px;
+  }
+
+  li {
+    font-size: 15px;
+    color: var(--color-text-muted);
+    line-height: 1.8;
+    margin-bottom: 8px;
+  }
+
+  strong {
+    color: var(--color-text);
+  }
+
+  code {
+    font-size: 13px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.08);
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  }
+
+  a {
+    color: var(--color-primary);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+</style>

@@ -8,3 +8,7 @@ drafts/
 
 # 排除特定文件
 private-notes.md
+
+
+# 排除首页项目
+landing/

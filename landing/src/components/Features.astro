@@ -1,0 +1,125 @@
+---
+const features = [
+  {
+    icon: '📋',
+    title: '实时对话大纲',
+    desc: '自动提取 AI 回复中的标题结构，生成可点击的导航大纲，即使对话再长也能快速跳转。',
+  },
+  {
+    icon: '📁',
+    title: '会话文件夹管理',
+    desc: '把散落的对话整理进自定义文件夹，支持标签、搜索、批量操作，让知识有迹可循。',
+  },
+  {
+    icon: '💬',
+    title: 'Prompt 词库',
+    desc: '收藏常用提示词，一键插入到对话框。支持分类、搜索，团队共享也不在话下。',
+  },
+  {
+    icon: '🔍',
+    title: '全局搜索',
+    desc: '语法化搜索跨站点、跨文件夹的历史对话。支持 folder:、tag:、site: 等过滤器。',
+  },
+  {
+    icon: '🎨',
+    title: '深度 UI 定制',
+    desc: '24 套预设主题（12 亮色 + 12 暗色）、禅模式、布局宽度调节，打造属于你的专属界面。',
+  },
+  {
+    icon: '☁️',
+    title: 'WebDAV 云同步',
+    desc: '通过 WebDAV 协议备份和同步你的会话数据，在多设备之间保持一致。',
+  },
+];
+---
+
+<section class="features" id="features">
+  <div class="section-inner">
+    <div class="section-header">
+      <h2 class="section-title">核心功能</h2>
+      <p class="section-desc">为高频使用 AI 的用户设计，让每一次对话都留下价值</p>
+    </div>
+
+    <div class="feature-grid">
+      {
+        features.map((feature) => (
+          <div class="feature-card">
+            <div class="feature-icon" aria-hidden="true">
+              {feature.icon}
+            </div>
+            <h3 class="feature-title">{feature.title}</h3>
+            <p class="feature-desc">{feature.desc}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .features {
+    padding: var(--section-gap) 24px;
+  }
+
+  .section-inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+
+  .section-title {
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+  }
+
+  .section-desc {
+    font-size: 17px;
+    color: var(--color-text-muted);
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+  }
+
+  .feature-card {
+    padding: 28px;
+    border-radius: var(--radius);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    transition:
+      border-color 0.2s,
+      transform 0.2s;
+  }
+
+  .feature-card:hover {
+    border-color: rgba(124, 111, 255, 0.3);
+    transform: translateY(-2px);
+  }
+
+  .feature-icon {
+    font-size: 28px;
+    margin-bottom: 16px;
+  }
+
+  .feature-title {
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+
+  .feature-desc {
+    font-size: 14px;
+    color: var(--color-text-muted);
+    line-height: 1.65;
+  }
+</style>

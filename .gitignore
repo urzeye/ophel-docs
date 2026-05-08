@@ -1,0 +1,5 @@
+# Node.js
+landing/node_modules/
+landing/.wrangler/
+landing/.astro/
+landing/dist/

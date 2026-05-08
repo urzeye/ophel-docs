@@ -1,0 +1,112 @@
+---
+
+---
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="footer-logo">Ophel</span>
+      <p class="footer-tagline">让 AI 对话可读、可导航、可沉淀</p>
+    </div>
+
+    <nav class="footer-links" aria-label="页脚导航">
+      <div class="footer-group">
+        <span class="footer-group-label">产品</span>
+        <a href="#features">功能介绍</a>
+        <a href="/docs/changelog">更新日志</a>
+      </div>
+      <div class="footer-group">
+        <span class="footer-group-label">资源</span>
+        <a href="/docs">文档</a>
+        <a href="/docs/installation">安装指南</a>
+        <a href="/docs/faq">常见问题</a>
+      </div>
+      <div class="footer-group">
+        <span class="footer-group-label">其他</span>
+        <a href="/privacy">隐私政策</a>
+        <a href="https://github.com/urzeye/ophel" target="_blank" rel="noopener noreferrer"
+          >GitHub</a
+        >
+      </div>
+    </nav>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© {new Date().getFullYear()} Ophel. All rights reserved.</p>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    border-top: 1px solid var(--color-border);
+    padding: 64px 24px 32px;
+    margin-top: var(--section-gap);
+  }
+
+  .footer-inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    display: flex;
+    gap: 64px;
+    flex-wrap: wrap;
+    margin-bottom: 48px;
+  }
+
+  .footer-brand {
+    flex: 1;
+    min-width: 200px;
+  }
+
+  .footer-logo {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  .footer-tagline {
+    margin-top: 10px;
+    font-size: 14px;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    max-width: 240px;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 48px;
+    flex-wrap: wrap;
+  }
+
+  .footer-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .footer-group-label {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-text-muted);
+  }
+
+  .footer-group a {
+    font-size: 14px;
+    color: var(--color-text-muted);
+    transition: color 0.15s;
+  }
+
+  .footer-group a:hover {
+    color: var(--color-text);
+  }
+
+  .footer-bottom {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding-top: 24px;
+    border-top: 1px solid var(--color-border);
+    font-size: 13px;
+    color: var(--color-text-muted);
+  }
+</style>
