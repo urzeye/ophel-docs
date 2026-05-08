@@ -2,7 +2,14 @@
 title: "Frequently asked questions about Ophel Atlas extension"
 sidebarTitle: "FAQ"
 description: "Answers to common questions about installing Ophel Atlas, using the panel, outline, conversations, prompts, Claude session keys, permissions, and privacy."
-keywords: ["FAQ", "frequently asked questions", "common questions", "help", "troubleshooting basics"]
+keywords:
+  [
+    "FAQ",
+    "frequently asked questions",
+    "common questions",
+    "help",
+    "troubleshooting basics",
+  ]
 ---
 
 This page answers the most common questions about Ophel Atlas. If you don't find what you're looking for here, check the [Troubleshooting](/troubleshooting) page or open an issue on [GitHub Issues](https://github.com/urzeye/ophel/issues).
@@ -30,18 +37,21 @@ This page answers the most common questions about Ophel Atlas. If you don't find
     | **Z.ai**              | [chat.z.ai](https://chat.z.ai)                           |
     | **ChatGLM**           | [chatglm.cn](https://chatglm.cn)                         |
     | **ima**               | [ima.qq.com](https://ima.qq.com)                         |
+
   </Accordion>
 
   <Accordion title="How do I enable the extension after installing it?" icon="puzzle-piece">
     After installing, open any supported AI platform in your browser. The Ophel panel should appear automatically in the sidebar. If it doesn't, check that the extension is enabled in your browser toolbar (click the puzzle-piece icon and confirm Ophel is toggled on), then hard-reload the page with `Ctrl+Shift+R` (Mac: `Cmd+Shift+R`).
 
     Some URLs require you to explicitly grant Ophel permission to run. If you see a "Click to enable" prompt in the extension popup, click it and allow access to the current site.
+
   </Accordion>
 
   <Accordion title="What's the difference between the browser extension and the userscript?" icon="layer-group">
     The **browser extension** (available for Chrome, Edge, and Firefox) is the recommended option. It has the full feature set, better performance, and higher compatibility because it integrates directly with the browser.
 
     The **userscript** runs inside a userscript manager like Tampermonkey and does not require a browser extension install. It is a good fallback if you cannot install extensions, but some features may be limited compared to the extension version.
+
   </Accordion>
 </AccordionGroup>
 
@@ -55,20 +65,32 @@ This page answers the most common questions about Ophel Atlas. If you don't find
     2. Hard-reload the page: `Ctrl+Shift+R` (Mac: `Cmd+Shift+R`).
     3. Check that the site you're on is in the [supported platforms list](#which-ai-platforms-does-ophel-support).
     4. If you previously closed the panel, press `Alt+P` (Mac: `Option+P`) to reopen it, or click the floating show/hide button.
+
   </Accordion>
 
-  <Accordion title="How do I open the panel if the floating buttons have disappeared?" icon="circle-question">
-    Press `Alt+P` (Mac: `Option+P`). This keyboard shortcut toggles the panel regardless of whether the floating buttons are visible on screen.
-  </Accordion>
+<Accordion
+  title="How do I open the panel if the floating buttons have disappeared?"
+  icon="circle-question"
+>
+  Press `Alt+P` (Mac: `Option+P`). This keyboard shortcut toggles the panel
+  regardless of whether the floating buttons are visible on screen.
+</Accordion>
 
-  <Accordion title="How do I use ghost mode?" icon="arrow-pointer">
-    Ghost mode makes the panel temporarily transparent and click-through so you can interact with the page behind it. Hold **Ctrl** (Windows/Linux) or **Command** (Mac) alone for about 0.2 seconds. The panel fades out and lets clicks pass through. Release the key to return to normal.
-  </Accordion>
+<Accordion
+  title="How do I use ghost mode?"
+  icon="arrow-pointer"
+>
+  Ghost mode makes the panel temporarily transparent and click-through so you
+  can interact with the page behind it. Hold **Ctrl** (Windows/Linux) or
+  **Command** (Mac) alone for about 0.2 seconds. The panel fades out and lets
+  clicks pass through. Release the key to return to normal.
+</Accordion>
 
   <Accordion title="What is edge snap, and how do I use it?" icon="thumbtack">
     Edge snap lets the panel hide against the screen edge and slide out when you need it. Drag the panel toward a screen edge until it snaps into place. To reveal it, hover over that edge — the panel slides out automatically. To undock it, drag it away from the edge.
 
     If you prefer to keep the panel floating freely, you can disable edge snap entirely in **Settings → General → Panel**.
+
   </Accordion>
 </AccordionGroup>
 
@@ -79,9 +101,14 @@ This page answers the most common questions about Ophel Atlas. If you don't find
     Some AI platforms update the DOM asynchronously, so the outline may not populate immediately when the page first loads. Press `Alt+R` (Mac: `Option+R`) to refresh the outline manually. If the outline stays empty after a refresh, check that **Auto update** is enabled in **Settings → Features → Outline**.
   </Accordion>
 
-  <Accordion title="Why isn't the outline tracking my scroll position?" icon="arrows-up-down">
-    The scroll-tracking feature is controlled by a setting. Go to **Settings → Features → Outline** and make sure **Sync outline with scroll** (Follow mode) is set to `current` rather than `manual`.
-  </Accordion>
+<Accordion
+  title="Why isn't the outline tracking my scroll position?"
+  icon="arrows-up-down"
+>
+  The scroll-tracking feature is controlled by a setting. Go to **Settings →
+  Features → Outline** and make sure **Sync outline with scroll** (Follow mode)
+  is set to `current` rather than `manual`.
+</Accordion>
 
   <Accordion title="How do I refresh the outline manually?" icon="rotate">
     Press `Alt+R` (Mac: `Option+R`) at any time to force the outline to re-scan the conversation and rebuild its entries. You can also find a refresh button in the outline panel header.
@@ -112,6 +139,7 @@ This page answers the most common questions about Ophel Atlas. If you don't find
     4. Press **Start**. Ophel monitors the page and automatically sends the next prompt once it detects the AI has finished responding (no active generation for two consecutive checks, roughly 2 seconds).
 
     You can pause, skip items, reorder by dragging, or clear the queue at any time.
+
   </Accordion>
 
   <Accordion title="The queue isn't sending the next prompt — why?" icon="hourglass">
@@ -146,15 +174,27 @@ This page answers the most common questions about Ophel Atlas. If you don't find
 ## Privacy
 
 <AccordionGroup>
-  <Accordion title="Does Ophel send my conversation data anywhere?" icon="lock">
-    No. Ophel runs entirely in your browser. Your conversation data, prompts, and settings stay on your device by default. If you configure WebDAV sync, data is sent only to the WebDAV server you specify — which you control. Ophel itself does not collect or transmit any user data.
+  <Accordion
+    title="Does Ophel send my conversation data anywhere?"
+    icon="lock"
+  >
+    No. Ophel runs entirely in your browser. Your conversation data, prompts,
+    and settings stay on your device by default. If you configure WebDAV sync,
+    data is sent only to the WebDAV server you specify — which you control.
+    Ophel itself does not collect or transmit any user data.
   </Accordion>
 </AccordionGroup>
 
 ## General
 
 <AccordionGroup>
-  <Accordion title="How do I reset everything to defaults?" icon="rotate-left">
-    Go to **Settings → Backup & Sync** and click **Clear all data**. This removes all Ophel data stored in your browser, including saved prompts, conversation metadata, folder and tag definitions, and all settings. The AI platform's own conversation history is not affected.
+  <Accordion
+    title="How do I reset everything to defaults?"
+    icon="rotate-left"
+  >
+    Go to **Settings → Backup & Sync** and click **Clear all data**. This
+    removes all Ophel data stored in your browser, including saved prompts,
+    conversation metadata, folder and tag definitions, and all settings. The AI
+    platform's own conversation history is not affected.
   </Accordion>
 </AccordionGroup>

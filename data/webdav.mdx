@@ -87,3 +87,20 @@ When multiple devices are active at the same time, use **manual sync** rather th
 ## Required permission
 
 WebDAV sync requires the optional `<all_urls>` browser permission. Ophel uses this to make network requests to your WebDAV server's URL. The browser will ask you to grant this permission the first time you enable WebDAV sync. You can revoke it at any time from **Settings → Permissions** — revoking it will disable WebDAV sync automatically.
+
+## Provider-specific setup notes
+
+<AccordionGroup>
+  <Accordion title="Nutstore (Jianguoyun)">
+    Log in to the Jianguoyun web dashboard, go to **Account Info**, and generate an **app-specific password**. Use that app password in the Password field — your main login password will not work. The server URL is pre-filled as `https://dav.jianguoyun.com/dav/`.
+  </Accordion>
+  <Accordion title="Nextcloud">
+    Set the server URL to `https://your-domain/remote.php/dav/files/username/`. Use your Nextcloud login username and password.
+  </Accordion>
+  <Accordion title="Synology NAS">
+    Install the **WebDAV Server** package from Package Center and enable HTTPS. The server URL format is `https://your-nas-address/webdav/`.
+  </Accordion>
+  <Accordion title="Other providers">
+    Select **Custom** and enter your server's WebDAV URL. The URL must start with `https://` — plain HTTP is not supported.
+  </Accordion>
+</AccordionGroup>
