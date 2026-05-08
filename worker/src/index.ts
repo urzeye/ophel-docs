@@ -8,6 +8,7 @@
 
 const MINTLIFY_HOST = "urzeye.mintlify.app";
 const CUSTOM_DOMAIN = "ophel.app";
+const PAGES_HOST = "ophel-docs.pages.dev";
 
 export default {
   async fetch(request: Request): Promise<Response> {
@@ -32,14 +33,27 @@ export default {
           headers.set("X-Forwarded-Proto", "https");
           return headers;
         })(),
-        body: ["GET", "HEAD"].includes(request.method) ? undefined : request.body,
+        body: ["GET", "HEAD"].includes(request.method)
+          ? undefined
+          : request.body,
         redirect: "follow",
       });
 
       return fetch(proxiedRequest);
     }
 
-    // 其余请求透传到 Cloudflare Pages
-    return fetch(request);
+    // 其余请求代理到 Cloudflare Pages
+    const pagesUrl = new URL(request.url);
+    pagesUrl.hostname = PAGES_HOST;
+    return fetch(new Request(pagesUrl.toString(), {
+      method: request.method,
+      headers: (() => {
+        const headers = new Headers(request.headers);
+        headers.set("Host", PAGES_HOST);
+        return headers;
+      })(),
+      body: ["GET", "HEAD"].includes(request.method) ? undefined : request.body,
+      redirect: "follow",
+    }));
   },
 } satisfies ExportedHandler;
