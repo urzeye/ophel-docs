@@ -2,32 +2,33 @@
 title: "WebDAV 同步 — 跨设备同步配置指南"
 sidebarTitle: "WebDAV 同步"
 description: "配置 WebDAV 服务器将 Ophel 数据同步到 Nextcloud、坚果云、群晖 NAS 等，实现跨设备同步。"
-keywords: ["WebDAV同步", "跨设备同步", "自建服务器同步", "数据同步", "WebDAV服务器"]
+keywords:
+  ["WebDAV同步", "跨设备同步", "自建服务器同步", "数据同步", "WebDAV服务器"]
 ---
 
 WebDAV 同步让你把 Ophel 数据上传到自己的私有服务器，并在多台设备之间保持一致。Ophel 内置了常用服务商的连接预设：
 
-| 服务商       | 说明                                                |
-| ------------ | ---------------------------------------------------- |
-| **坚果云**      | 需在网页端生成应用密码，不能直接用登录密码 |
-| **Infinicloud** | 固定 URL，开箱即用                              |
-| **pCloud**   | 固定 URL，开箱即用                              |
-| **Nextcloud** | 自托管，需填写自己的服务器地址                  |
-| **Synology NAS** | 需先在套件中心安装 WebDAV Server 套件  |
-| **Seafile**  | 自托管，需填写自己的服务器地址                  |
-| **自定义**     | 其他任意 WebDAV 内容服务器                  |
+| 服务商           | 说明                                       |
+| ---------------- | ------------------------------------------ |
+| **坚果云**       | 需在网页端生成应用密码，不能直接用登录密码 |
+| **Infinicloud**  | 固定 URL，开箱即用                         |
+| **pCloud**       | 固定 URL，开箱即用                         |
+| **Nextcloud**    | 自托管，需填写自己的服务器地址             |
+| **Synology NAS** | 需先在套件中心安装 WebDAV Server 套件      |
+| **Seafile**      | 自托管，需填写自己的服务器地址             |
+| **自定义**       | 其他任意 WebDAV 内容服务器                 |
 
 ## 配置 WebDAV
 
 **设置 → 备份与同步 → WebDAV**：
 
-| 配置项       | 说明                                                      |
-| ------------ | --------------------------------------------------------- |
-| 服务器地址   | WebDAV 服务器的完整 URL（以 `https://` 开头）             |
-| 用户名       | WebDAV 账号用户名                                         |
-| 密码         | WebDAV 账号密码（存储在本机，不上传给任何第三方）         |
-| 远端目录     | 同步文件存放的路径（默认 `ophel`，自动创建）              |
-| 同步模式     | 手动（点按钮）或自动（按设定间隔）                        |
+| 配置项     | 说明                                              |
+| ---------- | ------------------------------------------------- |
+| 服务器地址 | WebDAV 服务器的完整 URL（以 `https://` 开头）     |
+| 用户名     | WebDAV 账号用户名                                 |
+| 密码       | WebDAV 账号密码（存储在本机，不上传给任何第三方） |
+| 远端目录   | 同步文件存放的路径（默认 `ophel`，自动创建）      |
+| 同步模式   | 手动（点按钮）或自动（按设定间隔）                |
 
 ## 首次设置步骤
 
@@ -62,8 +63,8 @@ WebDAV 同步让你把 Ophel 数据上传到自己的私有服务器，并在多
     点击**从服务器拉取**，打开远端备份列表，选择要恢复的快照即可。
   </Step>
 </Steps>
-| 自动同步间隔 | 自动模式下，两次同步之间的最短间隔（分钟）                |
-| 数据来源     | 选择要同步的数据类型（设置 / 会话 / 提示词 / Claude Key） |
+| 自动同步间隔 | 自动模式下，两次同步之间的最短间隔（分钟） | | 数据来源 |
+选择要同步的数据类型（设置 / 会话 / 提示词 / Claude Key） |
 
 ## 什么数据会被同步？
 
@@ -95,15 +96,17 @@ WebDAV 同步的是 Ophel 在本地维护的**元数据**：
 
 <AccordionGroup>
   <Accordion title="坚果云">
-    首先在坚果云网页端进入【帐号信息】生成应用密码，用应用密码而非登录密码填写密码字段。URL 已自动填充为 `https://dav.jianguoyun.com/dav/`。
+    首先在坚果云网页端进入【帐号信息】生成应用密码，用应用密码而非登录密码填写密码字段。URL
+    已自动填充为 `https://dav.jianguoyun.com/dav/`。
   </Accordion>
   <Accordion title="Nextcloud">
-    将服务器地址填写为 `https://你的域名/remote.php/dav/files/用户名/`，用户名和密码即为 Nextcloud 登录凭证。
+    将服务器地址填写为
+    `https://你的域名/remote.php/dav/files/用户名/`，用户名和密码即为 Nextcloud
+    登录凭证。
   </Accordion>
   <Accordion title="Synology NAS">
-    先在群晖套件中心安装 **WebDAV Server** 套件并启用 HTTPS。服务器地址格式为 `https://你的NAS地址/webdav/`。
+    先在群晖套件中心安装 **WebDAV Server** 套件并启用 HTTPS。服务器地址格式为
+    `https://你的NAS地址/webdav/`。
   </Accordion>
-  <Accordion title="其他服务商">
-    选择「自定义」并填写服务器地址。
-  </Accordion>
+  <Accordion title="其他服务商">选择「自定义」并填写服务器地址。</Accordion>
 </AccordionGroup>

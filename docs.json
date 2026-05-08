@@ -77,10 +77,7 @@
     "timestamp": true
   },
   "contextual": {
-    "options": [
-      "assistant",
-      "copy"
-    ],
+    "options": ["assistant", "copy"],
     "display": "toc"
   },
   "footer": {
@@ -159,11 +156,7 @@
               {
                 "group": "Get Started",
                 "icon": "rocket",
-                "pages": [
-                  "introduction",
-                  "installation",
-                  "panel-overview"
-                ]
+                "pages": ["introduction", "installation", "panel-overview"]
               },
               {
                 "group": "Core Features",
@@ -202,34 +195,24 @@
                   "data/webdav",
                   {
                     "group": "From Other Platforms",
-                    "pages": [
-                      "data/migration"
-                    ]
+                    "pages": ["data/migration"]
                   }
                 ]
               },
               {
                 "group": "Privacy & Permissions",
                 "icon": "shield",
-                "pages": [
-                  "data/privacy",
-                  "data/permissions"
-                ]
+                "pages": ["data/privacy", "data/permissions"]
               },
               {
                 "group": "Help",
                 "icon": "circle-question",
-                "pages": [
-                  "faq",
-                  "troubleshooting"
-                ]
+                "pages": ["faq", "troubleshooting"]
               },
               {
                 "group": "Changelog",
                 "icon": "list",
-                "pages": [
-                  "changelog"
-                ]
+                "pages": ["changelog"]
               }
             ]
           }
@@ -289,34 +272,24 @@
                   "zh/data/webdav",
                   {
                     "group": "从其他平台导入",
-                    "pages": [
-                      "zh/data/migration"
-                    ]
+                    "pages": ["zh/data/migration"]
                   }
                 ]
               },
               {
                 "group": "隐私与权限",
                 "icon": "shield",
-                "pages": [
-                  "zh/data/privacy",
-                  "zh/data/permissions"
-                ]
+                "pages": ["zh/data/privacy", "zh/data/permissions"]
               },
               {
                 "group": "帮助",
                 "icon": "circle-question",
-                "pages": [
-                  "zh/faq",
-                  "zh/troubleshooting"
-                ]
+                "pages": ["zh/faq", "zh/troubleshooting"]
               },
               {
                 "group": "更新日志",
                 "icon": "list",
-                "pages": [
-                  "zh/changelog"
-                ]
+                "pages": ["zh/changelog"]
               }
             ]
           }

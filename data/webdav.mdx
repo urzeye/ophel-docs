@@ -2,22 +2,29 @@
 title: "Keep Ophel in sync across devices with WebDAV"
 sidebarTitle: "WebDAV Sync"
 description: "Use a WebDAV server to sync Ophel prompts, folders, and settings across devices. Your data goes to your own server — Ophel's infrastructure is never involved."
-keywords: ["WebDAV sync", "cross-device sync", "self-hosted sync", "data sync", "WebDAV server"]
+keywords:
+  [
+    "WebDAV sync",
+    "cross-device sync",
+    "self-hosted sync",
+    "data sync",
+    "WebDAV server",
+  ]
 ---
 
 WebDAV sync lets you push your Ophel data to a server you own and pull it back on any other device where Ophel is installed. Because the data goes to your own server — not to Ophel’s infrastructure — you stay in full control of where your data lives.
 
 Ophel has built-in presets for the most common WebDAV providers:
 
-| Provider | Notes |
-| -------- | ----- |
+| Provider                  | Notes                                                  |
+| ------------------------- | ------------------------------------------------------ |
 | **Nutstore (Jianguoyun)** | Generate an app-specific password on the web dashboard |
-| **Infinicloud** | Fixed URL, works out of the box |
-| **pCloud** | Fixed URL, works out of the box |
-| **Nextcloud** | Self-hosted; enter your own server URL |
-| **Synology NAS** | Enable WebDAV Server in Package Center first |
-| **Seafile** | Self-hosted; enter your own server URL |
-| **Custom** | Any other WebDAV-compatible server |
+| **Infinicloud**           | Fixed URL, works out of the box                        |
+| **pCloud**                | Fixed URL, works out of the box                        |
+| **Nextcloud**             | Self-hosted; enter your own server URL                 |
+| **Synology NAS**          | Enable WebDAV Server in Package Center first           |
+| **Seafile**               | Self-hosted; enter your own server URL                 |
+| **Custom**                | Any other WebDAV-compatible server                     |
 
 ## What gets synced
 
@@ -34,15 +41,15 @@ WebDAV sync covers the metadata that Ophel manages locally:
 
 Configure the sync connection at **Settings → Backup & Sync → WebDAV**:
 
-| Field              | Description                                                                                      |
-| ------------------ | ------------------------------------------------------------------------------------------------ |
-| Server URL         | Full URL of your WebDAV server — must start with `https://`                                      |
-| Username           | Your WebDAV account username                                                                     |
-| Password           | Your WebDAV account password (stored locally, never sent to Ophel servers or any third party)    |
-| Remote path        | Directory on the server where sync files are stored (default: `ophel`, created automatically)    |
-| Sync mode          | **Manual** — click a button to sync; or **Automatic** — sync on a set interval                  |
-| Auto sync interval | Minimum time between automatic syncs, in minutes                                                 |
-| Data sources       | Which data types to include: settings, conversations, prompts, and/or Claude Session Keys        |
+| Field              | Description                                                                                   |
+| ------------------ | --------------------------------------------------------------------------------------------- |
+| Server URL         | Full URL of your WebDAV server — must start with `https://`                                   |
+| Username           | Your WebDAV account username                                                                  |
+| Password           | Your WebDAV account password (stored locally, never sent to Ophel servers or any third party) |
+| Remote path        | Directory on the server where sync files are stored (default: `ophel`, created automatically) |
+| Sync mode          | **Manual** — click a button to sync; or **Automatic** — sync on a set interval                |
+| Auto sync interval | Minimum time between automatic syncs, in minutes                                              |
+| Data sources       | Which data types to include: settings, conversations, prompts, and/or Claude Session Keys     |
 
 ## Set up WebDAV sync
 
@@ -71,17 +78,21 @@ Configure the sync connection at **Settings → Backup & Sync → WebDAV**:
 
 <Steps>
   <Step title="Configure the same WebDAV server">
-    On the new device, enter the same server URL, username, password, and remote path you used on the original device.
+    On the new device, enter the same server URL, username, password, and remote
+    path you used on the original device.
   </Step>
   <Step title="Pull from server">
-    Click **Pull from server** to open the list of remote backups, then select the snapshot you want to restore.
+    Click **Pull from server** to open the list of remote backups, then select
+    the snapshot you want to restore.
   </Step>
 </Steps>
 
 ## Multi-device usage
 
 <Note>
-When multiple devices are active at the same time, use **manual sync** rather than automatic sync. Simultaneous automatic syncs from different devices can cause write conflicts on the server.
+  When multiple devices are active at the same time, use **manual sync** rather
+  than automatic sync. Simultaneous automatic syncs from different devices can
+  cause write conflicts on the server.
 </Note>
 
 ## Required permission
@@ -92,15 +103,21 @@ WebDAV sync requires the optional `<all_urls>` browser permission. Ophel uses th
 
 <AccordionGroup>
   <Accordion title="Nutstore (Jianguoyun)">
-    Log in to the Jianguoyun web dashboard, go to **Account Info**, and generate an **app-specific password**. Use that app password in the Password field — your main login password will not work. The server URL is pre-filled as `https://dav.jianguoyun.com/dav/`.
+    Log in to the Jianguoyun web dashboard, go to **Account Info**, and generate
+    an **app-specific password**. Use that app password in the Password field —
+    your main login password will not work. The server URL is pre-filled as
+    `https://dav.jianguoyun.com/dav/`.
   </Accordion>
   <Accordion title="Nextcloud">
-    Set the server URL to `https://your-domain/remote.php/dav/files/username/`. Use your Nextcloud login username and password.
+    Set the server URL to `https://your-domain/remote.php/dav/files/username/`.
+    Use your Nextcloud login username and password.
   </Accordion>
   <Accordion title="Synology NAS">
-    Install the **WebDAV Server** package from Package Center and enable HTTPS. The server URL format is `https://your-nas-address/webdav/`.
+    Install the **WebDAV Server** package from Package Center and enable HTTPS.
+    The server URL format is `https://your-nas-address/webdav/`.
   </Accordion>
   <Accordion title="Other providers">
-    Select **Custom** and enter your server's WebDAV URL. The URL must start with `https://` — plain HTTP is not supported.
+    Select **Custom** and enter your server's WebDAV URL. The URL must start
+    with `https://` — plain HTTP is not supported.
   </Accordion>
 </AccordionGroup>

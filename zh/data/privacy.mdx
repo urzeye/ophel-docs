@@ -45,6 +45,12 @@ Ophel 使用浏览器扩展本地存储（`chrome.storage.local`）保存所有�
 
 WebDAV 连接的凭证（用户名和密码）存储在本机 `chrome.storage.local` 中，不会被发送到除你配置的 WebDAV 地址以外的任何地方。
 
+## Claude Session Keys
+
+Claude Session Keys 存储在你本机的浏览器中，仅用于代表你向 Claude 自己的接口（claude.ai）发送请求。Ophel 不会将它们发送到 Ophel 的服务器或任何第三方。
+
+如果你在完整备份中包含了 Session Keys，请妥善保管备份文件——备份中会包含有效的认证令牌。
+
 ## 完整控制
 
 你可以随时：
