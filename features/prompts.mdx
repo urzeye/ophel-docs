@@ -158,3 +158,47 @@ Go to **Settings → Features → Prompts** to configure:
 | Double-click to send | Double-clicking a prompt inserts and submits it directly                 |
 | Submit key           | Key used to submit to the AI after insertion — **Enter** or **Ctrl+Enter**   |
 | Prompt queue         | Enable or disable the queue overlay feature                              |
+
+## Example templates
+
+Here are some ready-to-use prompt templates that demonstrate variable syntax. Copy any of them directly into a new prompt.
+
+<AccordionGroup>
+  <Accordion title="Translation with language selector">
+    ```text
+    Translate the following text into {{target_language:English|Chinese|Japanese|French|Spanish|German}}. Keep the original formatting.
+
+    {{text}}
+    ```
+  </Accordion>
+  <Accordion title="Code review with language choice">
+    ```text
+    Review the following {{language:TypeScript|Python|Go|Rust|Java}} code. Focus on: readability, potential bugs, and performance. Output your findings in bullet points.
+
+    ```{{language}}
+    {{code}}
+    ```
+    ```
+  </Accordion>
+  <Accordion title="Tone rewriter">
+    ```text
+    Rewrite the following text in a {{tone:professional|casual|concise|detailed|humorous}} tone. Preserve the core meaning.
+
+    {{text}}
+    ```
+  </Accordion>
+  <Accordion title="Meeting summary">
+    ```text
+    Summarize the following meeting notes into:
+    1. Key decisions
+    2. Action items (with owner if mentioned)
+    3. Open questions
+
+    Meeting: {{meeting_title}}
+    Date: {{date}}
+
+    Notes:
+    {{notes}}
+    ```
+  </Accordion>
+</AccordionGroup>

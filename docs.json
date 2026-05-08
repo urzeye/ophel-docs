@@ -66,8 +66,10 @@
     "metatags": {
       "og:site_name": "Ophel Atlas Docs",
       "og:type": "website",
+      "og:image": "https://ophel.app/images/og-cover.png",
       "twitter:card": "summary_large_image",
-      "twitter:site": "@urzeyeVirgo"
+      "twitter:site": "@urzeyeVirgo",
+      "twitter:image": "https://ophel.app/images/og-cover.png"
     }
   },
   "search": {
