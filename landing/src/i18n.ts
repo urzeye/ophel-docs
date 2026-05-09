@@ -85,9 +85,9 @@ const en = {
     ariaLabel: 'Footer navigation',
   },
   meta: {
-    title: 'Ophel — AI Conversation Organizer & Navigator',
+    title: 'Ophel — AI Chat Organizer & Outline Navigator',
     description:
-      'Ophel transforms AI conversations into readable, navigable, and reusable knowledge. Supports ChatGPT, Gemini, Claude, and 15 platforms.',
+      'Ophel transforms AI chats into readable, navigable knowledge. Real-time outlines, conversation folders & prompt library for ChatGPT, Gemini, Claude and 15 platforms.',
   },
   privacy: {
     title: 'Privacy Policy — Ophel',
@@ -211,9 +211,9 @@ const zh = {
     ariaLabel: '页脚导航',
   },
   meta: {
-    title: 'Ophel — AI 对话结构化与导航工具',
+    title: 'Ophel — AI 对话大纲 · 会话管理 · Prompt 词库',
     description:
-      'Ophel 将 AI 对话转化为可阅读、可导航、可复用的知识内容。支持 ChatGPT、Gemini、Claude 等 15 个平台。',
+      'Ophel 为 ChatGPT、Gemini、Claude 等 15 个 AI 平台注入实时大纲、会话文件夹与 Prompt 词库，让对话可读、可导航、可沉淀。',
   },
   privacy: {
     title: '隐私政策 — Ophel',
