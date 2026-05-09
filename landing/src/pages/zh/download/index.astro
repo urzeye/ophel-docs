@@ -1,0 +1,325 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Navbar from '../../../components/Navbar.astro';
+import Footer from '../../../components/Footer.astro';
+import { translations, CHROME_STORE_URL } from '../../../i18n';
+
+const t = translations.zh;
+
+const platforms = [
+  {
+    name: 'Chrome',
+    icon: '🌐',
+    badge: '推荐',
+    desc: '从 Chrome 网上应用店安装，适用于 Chrome、Edge、Brave、Arc 及所有基于 Chromium 的浏览器。',
+    cta: '安装到 Chrome',
+    href: CHROME_STORE_URL,
+    note: '需要 Chrome 88+',
+  },
+  {
+    name: 'Firefox',
+    icon: '🦊',
+    badge: null,
+    desc: '从 Firefox 附加组件商店安装，功能与 Chrome 扩展完全一致。',
+    cta: '安装到 Firefox',
+    href: 'https://addons.mozilla.org/zh-CN/firefox/addon/ophel-ai-chat-enhancer/',
+    note: '需要 Firefox 109+',
+  },
+  {
+    name: '油猴脚本',
+    icon: '🐒',
+    badge: null,
+    desc: '通过 Greasy Fork 安装油猴脚本，适用于任何支持 Tampermonkey 或 Violentmonkey 的浏览器。',
+    cta: '从 Greasy Fork 安装',
+    href: 'https://greasyfork.org/zh-CN/scripts/563646-ophel-ai-chat-page-enhancer',
+    note: '需要 Tampermonkey 或 Violentmonkey',
+  },
+  {
+    name: 'GitHub Releases',
+    icon: '📦',
+    badge: null,
+    desc: '从 GitHub 直接下载最新版 .crx 或 .xpi 文件，用于手动安装或自托管部署。',
+    cta: '查看 Releases',
+    href: 'https://github.com/urzeye/ophel/releases',
+    note: '需要手动安装',
+  },
+];
+
+const supportedSites = [
+  'ChatGPT', 'Gemini', 'Claude', 'Grok', 'DeepSeek',
+  'AI Studio', '豆包', 'Kimi', '通义千问 (Web)', '通义千问 (App)',
+  '元宝', 'Z.ai', 'ChatGLM', 'Ima', 'Gemini Enterprise',
+];
+---
+
+<BaseLayout
+  title="下载安装 Ophel — Chrome、Firefox、油猴脚本"
+  description="免费安装 Ophel 到 Chrome、Firefox、Edge 或油猴脚本。支持 ChatGPT、Gemini、Claude 等 15 个 AI 平台。"
+  lang="zh-CN"
+  enPath="/download/"
+>
+  <Navbar t={t.nav} homeHref="/zh/" />
+  <main class="download-page">
+    <div class="download-container">
+      <header class="download-header">
+        <p class="download-badge">免费 · 无需注册</p>
+        <h1>安装 Ophel</h1>
+        <p class="download-desc">
+          一个扩展，支持 <strong>{supportedSites.length} 个 AI 平台</strong>，覆盖主流浏览器。
+        </p>
+      </header>
+
+      <div class="platform-grid">
+        {platforms.map((p) => (
+          <article class="platform-card">
+            <div class="platform-icon">{p.icon}</div>
+            <div class="platform-info">
+              <div class="platform-name-row">
+                <h2>{p.name}</h2>
+                {p.badge && <span class="platform-badge">{p.badge}</span>}
+              </div>
+              <p class="platform-desc">{p.desc}</p>
+              <a href={p.href} target="_blank" rel="noopener noreferrer" class="platform-cta">
+                {p.cta} ↗
+              </a>
+              <span class="platform-note">{p.note}</span>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <section class="supported-sites">
+        <h2>支持的平台</h2>
+        <div class="sites-grid">
+          {supportedSites.map((site) => (
+            <span class="site-chip">{site}</span>
+          ))}
+        </div>
+      </section>
+
+      <section class="install-steps">
+        <h2>快速开始</h2>
+        <ol class="steps-list">
+          <li>
+            <span class="step-num">1</span>
+            <div>
+              <strong>安装扩展</strong>
+              <p>点击上方「安装到 Chrome」并添加到浏览器。</p>
+            </div>
+          </li>
+          <li>
+            <span class="step-num">2</span>
+            <div>
+              <strong>打开支持的 AI 网站</strong>
+              <p>访问 ChatGPT、Gemini、Claude 或其他 15 个支持平台中的任意一个。</p>
+            </div>
+          </li>
+          <li>
+            <span class="step-num">3</span>
+            <div>
+              <strong>Ophel 自动激活</strong>
+              <p>面板会出现在页面右侧，点击切换按钮即可展开。</p>
+            </div>
+          </li>
+        </ol>
+      </section>
+    </div>
+  </main>
+  <Footer t={t.footer} />
+</BaseLayout>
+
+<style>
+  .download-page {
+    padding: 80px 24px 0;
+  }
+
+  .download-container {
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  .download-header {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+
+  .download-badge {
+    display: inline-block;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 16px;
+  }
+
+  .download-header h1 {
+    font-size: clamp(2.25rem, 5vw, 3.5rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    margin-bottom: 16px;
+    background: linear-gradient(135deg, var(--color-text) 0%, var(--color-text-muted) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .download-desc {
+    font-size: 1.0625rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+  }
+
+  .platform-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    gap: 16px;
+    margin-bottom: 64px;
+  }
+
+  .platform-card {
+    display: flex;
+    gap: 20px;
+    padding: 24px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    transition: border-color 0.2s;
+  }
+
+  .platform-card:hover {
+    border-color: var(--color-primary);
+  }
+
+  .platform-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+    line-height: 1;
+    padding-top: 2px;
+  }
+
+  .platform-name-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+
+  .platform-name-row h2 {
+    font-size: 1.0625rem;
+    font-weight: 600;
+  }
+
+  .platform-badge {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-accent);
+    background: rgba(74, 240, 196, 0.12);
+    padding: 2px 8px;
+    border-radius: 20px;
+  }
+
+  .platform-desc {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+
+  .platform-cta {
+    display: inline-block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+
+  .platform-cta:hover {
+    opacity: 0.75;
+  }
+
+  .platform-note {
+    display: block;
+    margin-top: 8px;
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+  }
+
+  .supported-sites,
+  .install-steps {
+    margin-bottom: 64px;
+  }
+
+  .supported-sites h2,
+  .install-steps h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 24px;
+    letter-spacing: -0.02em;
+  }
+
+  .sites-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .site-chip {
+    font-size: 0.875rem;
+    padding: 6px 14px;
+    border-radius: 20px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-muted);
+  }
+
+  .steps-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .steps-list li {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+
+  .step-num {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    color: #fff;
+    font-size: 0.875rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .steps-list strong {
+    display: block;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  .steps-list p {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+  }
+
+  @media (max-width: 640px) {
+    .platform-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

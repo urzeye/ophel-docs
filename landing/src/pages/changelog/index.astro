@@ -1,0 +1,227 @@
+---
+import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import { translations } from '../../i18n';
+
+const t = translations.en;
+
+// 构建时从 ophel 仓库读取 CHANGELOG.md
+const changelogPath = resolve(process.cwd(), '../../ophel/CHANGELOG.md');
+let rawContent = '';
+try {
+  rawContent = readFileSync(changelogPath, 'utf-8');
+} catch {
+  rawContent = '# Changelog\n\nCould not load changelog.';
+}
+
+// 解析版本块
+function parseVersions(raw: string) {
+  const lines = raw.split('\n');
+  const versions: { label: string; body: string }[] = [];
+  let current: { label: string; lines: string[] } | null = null;
+
+  for (const line of lines) {
+    const m = line.match(/^## \[(.+?)\]/);
+    if (m) {
+      if (current) versions.push({ label: current.label, body: current.lines.join('\n').trim() });
+      current = { label: m[1], lines: [] };
+      continue;
+    }
+    if (current) {
+      if (line.trim() === '---') continue;
+      current.lines.push(line);
+    }
+  }
+  if (current) versions.push({ label: current.label, body: current.lines.join('\n').trim() });
+  return versions;
+}
+
+// 简单 Markdown → HTML 转换（仅处理 changelog 所需的子集）
+function mdToHtml(md: string): string {
+  return md
+    // ### 标题
+    .replace(/^### (.+)$/gm, '<h3>$1</h3>')
+    // **bold**
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    // (#NNN) → GitHub issue link
+    .replace(/\(#(\d+)\)/g, '(<a href="https://github.com/urzeye/ophel/issues/$1" target="_blank" rel="noopener noreferrer">#$1</a>)')
+    // 无序列表
+    .replace(/^- (.+)$/gm, '<li>$1</li>')
+    // 空行分段（被列表包裹时不额外加 p）
+    .replace(/\n\n+/g, '\n')
+    // 将连续 <li> 包进 <ul>
+    .replace(/(<li>[\s\S]*?<\/li>)(\n<li>[\s\S]*?<\/li>)*/g, (match) => `<ul>${match}</ul>`)
+    // 去除 ul 内残余换行
+    .replace(/<\/li>\n<li>/g, '</li><li>');
+}
+
+const versions = parseVersions(rawContent).slice(0, 20); // 最多显示 20 个版本
+---
+
+<BaseLayout
+  title="Changelog — Ophel"
+  description="All notable changes to Ophel Atlas browser extension. Release notes, bug fixes, and new features."
+  lang="en"
+  zhPath="/zh/changelog/"
+>
+  <Navbar t={t.nav} />
+  <main class="changelog-page">
+    <div class="changelog-container">
+      <header class="changelog-header">
+        <h1>Changelog</h1>
+        <p>All notable changes to Ophel Atlas are documented here.</p>
+        <a
+          href="https://github.com/urzeye/ophel/blob/main/CHANGELOG.md"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="changelog-github-link"
+        >
+          View on GitHub ↗
+        </a>
+      </header>
+
+      <div class="changelog-list">
+        {versions.map((v) => (
+          <article class="changelog-entry">
+            <div class="changelog-version-tag">v{v.label}</div>
+            <div class="changelog-body" set:html={mdToHtml(v.body)} />
+          </article>
+        ))}
+      </div>
+    </div>
+  </main>
+  <Footer t={t.footer} />
+</BaseLayout>
+
+<style>
+  .changelog-page {
+    padding: 80px 24px 0;
+  }
+
+  .changelog-container {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  .changelog-header {
+    margin-bottom: 56px;
+  }
+
+  .changelog-header h1 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    margin-bottom: 12px;
+    background: linear-gradient(135deg, var(--color-text) 0%, var(--color-text-muted) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .changelog-header p {
+    color: var(--color-text-muted);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+  }
+
+  .changelog-github-link {
+    display: inline-block;
+    margin-top: 12px;
+    font-size: 0.875rem;
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+
+  .changelog-github-link:hover {
+    opacity: 0.75;
+  }
+
+  .changelog-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .changelog-entry {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 24px;
+    padding: 32px 0;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .changelog-entry:first-child {
+    border-top: none;
+  }
+
+  .changelog-version-tag {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    padding-top: 4px;
+    white-space: nowrap;
+  }
+
+  .changelog-body :global(h3) {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-text-muted);
+    margin: 20px 0 8px;
+  }
+
+  .changelog-body :global(h3:first-child) {
+    margin-top: 0;
+  }
+
+  .changelog-body :global(ul) {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .changelog-body :global(li) {
+    font-size: 0.9375rem;
+    line-height: 1.65;
+    color: var(--color-text);
+    padding-left: 1.25em;
+    position: relative;
+  }
+
+  .changelog-body :global(li)::before {
+    content: '–';
+    position: absolute;
+    left: 0;
+    color: var(--color-text-muted);
+  }
+
+  .changelog-body :global(strong) {
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  .changelog-body :global(a) {
+    color: var(--color-primary);
+    text-decoration: none;
+  }
+
+  .changelog-body :global(a:hover) {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 560px) {
+    .changelog-entry {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+  }
+</style>

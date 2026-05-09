@@ -67,8 +67,12 @@
       "og:site_name": "Ophel Atlas Docs",
       "og:type": "website",
       "og:image": "https://ophel.app/images/og-cover.png",
+      "og:image:width": "1280",
+      "og:image:height": "640",
+      "og:image:type": "image/png",
       "twitter:card": "summary_large_image",
       "twitter:site": "@urzeyeVirgo",
+      "twitter:creator": "@urzeyeVirgo",
       "twitter:image": "https://ophel.app/images/og-cover.png"
     }
   },

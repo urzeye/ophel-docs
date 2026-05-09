@@ -1,0 +1,215 @@
+---
+import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Navbar from '../../../components/Navbar.astro';
+import Footer from '../../../components/Footer.astro';
+import { translations } from '../../../i18n';
+
+const t = translations.zh;
+
+const changelogPath = resolve(process.cwd(), '../../ophel/CHANGELOG.zh-CN.md');
+let rawContent = '';
+try {
+  rawContent = readFileSync(changelogPath, 'utf-8');
+} catch {
+  rawContent = '# 更新日志\n\n无法加载更新日志。';
+}
+
+function parseVersions(raw: string) {
+  const lines = raw.split('\n');
+  const versions: { label: string; body: string }[] = [];
+  let current: { label: string; lines: string[] } | null = null;
+
+  for (const line of lines) {
+    const m = line.match(/^## \[(.+?)\]/);
+    if (m) {
+      if (current) versions.push({ label: current.label, body: current.lines.join('\n').trim() });
+      current = { label: m[1], lines: [] };
+      continue;
+    }
+    if (current) {
+      if (line.trim() === '---') continue;
+      current.lines.push(line);
+    }
+  }
+  if (current) versions.push({ label: current.label, body: current.lines.join('\n').trim() });
+  return versions;
+}
+
+function mdToHtml(md: string): string {
+  return md
+    .replace(/^### (.+)$/gm, '<h3>$1</h3>')
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\(#(\d+)\)/g, '(<a href="https://github.com/urzeye/ophel/issues/$1" target="_blank" rel="noopener noreferrer">#$1</a>)')
+    .replace(/^- (.+)$/gm, '<li>$1</li>')
+    .replace(/\n\n+/g, '\n')
+    .replace(/(<li>[\s\S]*?<\/li>)(\n<li>[\s\S]*?<\/li>)*/g, (match) => `<ul>${match}</ul>`)
+    .replace(/<\/li>\n<li>/g, '</li><li>');
+}
+
+const versions = parseVersions(rawContent).slice(0, 20);
+---
+
+<BaseLayout
+  title="更新日志 — Ophel"
+  description="Ophel Atlas 浏览器扩展的所有重要更新、问题修复和新功能记录。"
+  lang="zh-CN"
+  enPath="/changelog/"
+>
+  <Navbar t={t.nav} homeHref="/zh/" />
+  <main class="changelog-page">
+    <div class="changelog-container">
+      <header class="changelog-header">
+        <h1>更新日志</h1>
+        <p>Ophel Atlas 的所有重要更改均记录于此。</p>
+        <a
+          href="https://github.com/urzeye/ophel/blob/main/CHANGELOG.zh-CN.md"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="changelog-github-link"
+        >
+          在 GitHub 上查看 ↗
+        </a>
+      </header>
+
+      <div class="changelog-list">
+        {versions.map((v) => (
+          <article class="changelog-entry">
+            <div class="changelog-version-tag">v{v.label}</div>
+            <div class="changelog-body" set:html={mdToHtml(v.body)} />
+          </article>
+        ))}
+      </div>
+    </div>
+  </main>
+  <Footer t={t.footer} />
+</BaseLayout>
+
+<style>
+  .changelog-page {
+    padding: 80px 24px 0;
+  }
+
+  .changelog-container {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  .changelog-header {
+    margin-bottom: 56px;
+  }
+
+  .changelog-header h1 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    margin-bottom: 12px;
+    background: linear-gradient(135deg, var(--color-text) 0%, var(--color-text-muted) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .changelog-header p {
+    color: var(--color-text-muted);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+  }
+
+  .changelog-github-link {
+    display: inline-block;
+    margin-top: 12px;
+    font-size: 0.875rem;
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+
+  .changelog-github-link:hover {
+    opacity: 0.75;
+  }
+
+  .changelog-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .changelog-entry {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 24px;
+    padding: 32px 0;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .changelog-entry:first-child {
+    border-top: none;
+  }
+
+  .changelog-version-tag {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    padding-top: 4px;
+    white-space: nowrap;
+  }
+
+  .changelog-body :global(h3) {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-text-muted);
+    margin: 20px 0 8px;
+  }
+
+  .changelog-body :global(h3:first-child) {
+    margin-top: 0;
+  }
+
+  .changelog-body :global(ul) {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .changelog-body :global(li) {
+    font-size: 0.9375rem;
+    line-height: 1.65;
+    color: var(--color-text);
+    padding-left: 1.25em;
+    position: relative;
+  }
+
+  .changelog-body :global(li)::before {
+    content: '–';
+    position: absolute;
+    left: 0;
+    color: var(--color-text-muted);
+  }
+
+  .changelog-body :global(strong) {
+    font-weight: 600;
+  }
+
+  .changelog-body :global(a) {
+    color: var(--color-primary);
+    text-decoration: none;
+  }
+
+  .changelog-body :global(a:hover) {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 560px) {
+    .changelog-entry {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+  }
+</style>

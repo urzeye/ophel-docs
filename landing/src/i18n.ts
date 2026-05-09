@@ -73,6 +73,9 @@ const en = {
     links: {
       features: 'Features',
       changelog: 'Changelog',
+      changelogHref: '/changelog/',
+      download: 'Download',
+      downloadHref: '/download/',
       docs: 'Docs',
       installation: 'Installation',
       faq: 'FAQ',
@@ -196,6 +199,9 @@ const zh = {
     links: {
       features: '功能介绍',
       changelog: '更新日志',
+      changelogHref: '/zh/changelog/',
+      download: '下载安装',
+      downloadHref: '/zh/download/',
       docs: '文档',
       installation: '安装指南',
       faq: '常见问题',

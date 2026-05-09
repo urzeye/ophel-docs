@@ -36,11 +36,15 @@ const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'SoftwareApplication',
   name: 'Ophel',
+  alternateName: 'Ophel Atlas',
   applicationCategory: 'BrowserApplication',
+  applicationSubCategory: 'ProductivityApplication',
   operatingSystem: 'Chrome, Firefox, Edge',
+  softwareVersion: '1.0.47',
   url: 'https://ophel.app',
   description:
-    'Transform AI conversations into readable, navigable, and reusable knowledge. Supports ChatGPT, Gemini, Claude, and 12+ platforms.',
+    'Transform AI conversations into readable, navigable, and reusable knowledge. Supports ChatGPT, Gemini, Claude, and 15 platforms.',
+  screenshot: 'https://ophel.app/og-image.png',
   offers: {
     '@type': 'Offer',
     price: '0',
@@ -51,6 +55,12 @@ const jsonLd = {
     name: 'Ophel',
     url: 'https://ophel.app',
   },
+  sameAs: [
+    'https://github.com/urzeye/ophel',
+    'https://chromewebstore.google.com/detail/ophel-ai-%E5%AF%B9%E8%AF%9D%E5%A2%9E%E5%BC%BA%E5%B7%A5%E5%85%B7/lpcohdfbomkgepfladogodgeoppclakd',
+    'https://addons.mozilla.org/zh-CN/firefox/addon/ophel-ai-chat-enhancer/',
+    'https://greasyfork.org/zh-CN/scripts/563646-ophel-ai-chat-page-enhancer',
+  ],
 };
 ---
 
@@ -75,21 +85,34 @@ const jsonLd = {
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Ophel" />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={new URL(ogImage, Astro.site)} />
-    <meta property="og:locale" content={lang.replace('-', '_')} />
+    <meta property="og:image:width" content="1280" />
+    <meta property="og:image:height" content="640" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:alt" content={title} />
+    <meta property="og:locale" content={lang === 'zh-CN' ? 'zh_CN' : 'en_US'} />
+    {lang === 'zh-CN' && <meta property="og:locale:alternate" content="en_US" />}
+    {lang !== 'zh-CN' && <meta property="og:locale:alternate" content="zh_CN" />}
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@urzeyeVirgo" />
+    <meta name="twitter:creator" content="@urzeyeVirgo" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={new URL(ogImage, Astro.site)} />
+    <meta name="twitter:image:alt" content={title} />
 
-    <!-- Favicon -->
+    <!-- Favicon & Touch Icons -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 
     <!-- Google Fonts — 异步加载，避免阻塞渲染 (FCP/LCP) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />

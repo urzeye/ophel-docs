@@ -19,7 +19,8 @@ const { t } = Astro.props;
       <div class="footer-group">
         <span class="footer-group-label">{t.product}</span>
         <a href="#features">{t.links.features}</a>
-        <a href="/docs/changelog">{t.links.changelog}</a>
+        <a href={t.links.changelogHref}>{t.links.changelog}</a>
+        <a href={t.links.downloadHref}>{t.links.download}</a>
       </div>
       <div class="footer-group">
         <span class="footer-group-label">{t.resources}</span>
