@@ -9,7 +9,8 @@
   },
   "logo": {
     "light": "/images/logo-light.svg",
-    "dark": "/images/logo-dark.svg"
+    "dark": "/images/logo-dark.svg",
+    "href": "https://ophel.app"
   },
   "favicon": "/images/logo.png",
   "appearance": {
