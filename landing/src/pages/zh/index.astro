@@ -1,13 +1,15 @@
 ---
-import { translations } from '../../i18n';
+import { translations, CHROME_STORE_URL } from '../../i18n';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Navbar from '../../components/Navbar.astro';
-import Hero from '../../components/Hero.astro';
-import Features from '../../components/Features.astro';
+import { Hero } from '../../components/Hero';
+import { Features } from '../../components/Features';
 import Platforms from '../../components/Platforms.astro';
 import Footer from '../../components/Footer.astro';
 
 const t = translations.zh;
+
+const FIREFOX_URL_ZH = 'https://addons.mozilla.org/zh-CN/firefox/addon/ophel-ai-chat-enhancer/';
 ---
 
 <BaseLayout
@@ -19,9 +21,31 @@ const t = translations.zh;
 >
   <Navbar t={t.nav} homeHref="/zh/" />
   <main>
-    <Hero t={t.hero} />
-    <Features t={t.features} />
-    <Platforms t={t.platforms} />
+    <Hero
+      client:load
+      titleLine1={t.hero.titleLine1}
+      titleLine2={t.hero.titleGradient}
+      description={t.hero.desc}
+      primaryCta={t.hero.ctaPrimary}
+      secondaryCta={t.hero.ctaSecondary}
+      primaryLink={CHROME_STORE_URL}
+      secondaryLink="https://ophel.app/docs/zh/introduction"
+      alternateInstallLabel="查看其他安装方式"
+      alternateInstallLink="/zh/download/"
+      browserCtas={{
+        chrome: { label: '安装 Chrome 扩展', href: CHROME_STORE_URL },
+        edge: { label: '安装 Chrome 扩展', href: CHROME_STORE_URL },
+        firefox: { label: '安装到 Firefox', href: FIREFOX_URL_ZH },
+        default: { label: t.hero.ctaPrimary, href: CHROME_STORE_URL },
+      }}
+    />
+    <Features
+      client:load
+      featuresTitle={t.features.title}
+      featuresSubtitle={t.features.desc}
+      items={t.features.items}
+    />
+    <Platforms t={t.platforms} locale="zh" />
   </main>
   <Footer t={t.footer} />
 </BaseLayout>

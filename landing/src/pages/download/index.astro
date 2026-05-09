@@ -3,6 +3,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Navbar from '../../components/Navbar.astro';
 import Footer from '../../components/Footer.astro';
 import { translations, CHROME_STORE_URL } from '../../i18n';
+import { SpotlightCard } from '../../components/ui/SpotlightCard';
+import { getSupportedPlatforms } from '../../lib/supported-platforms';
 
 const t = translations.en;
 
@@ -27,7 +29,7 @@ const platforms = [
   },
   {
     name: 'Tampermonkey',
-    icon: '🐒',
+    icon: '🐵',
     badge: null,
     desc: 'Install as a userscript via Greasy Fork. Works in any browser that supports Tampermonkey or Violentmonkey.',
     cta: 'Install via Greasy Fork',
@@ -38,18 +40,24 @@ const platforms = [
     name: 'GitHub Releases',
     icon: '📦',
     badge: null,
-    desc: 'Download the latest .crx or .xpi directly from GitHub for manual installation or self-hosting.',
-    cta: 'View Releases',
+    desc: 'Download the latest .zip or .xpi package from GitHub Releases for manual setup or self-hosting.',
+    cta: 'Open Releases',
     href: 'https://github.com/urzeye/ophel/releases',
-    note: 'Manual installation required',
+    note: 'ZIP and XPI packages available',
   },
 ];
 
-const supportedSites = [
-  'ChatGPT', 'Gemini', 'Claude', 'Grok', 'DeepSeek',
-  'AI Studio', 'Doubao', 'Kimi', 'QwenAI', 'Qianwen',
-  'Yuanbao', 'Z.ai', 'ChatGLM', 'Ima', 'Gemini Enterprise',
-];
+const allSupportedSites = getSupportedPlatforms('en');
+const supportedSitesRow1 = allSupportedSites.slice(0, 6);
+const supportedSitesRow2 = allSupportedSites.slice(6);
+
+const iconImgs: Record<string, string> = {
+  Chrome: '/icons/chrome.svg',
+  Firefox: '/icons/firefox.svg',
+  Tampermonkey: '/icons/tampermonkey.svg',
+  'GitHub Releases': '/icons/github.svg',
+  // Edge: '/icons/edge.svg',  // Edge Store 上架审核中，暂时注释
+};
 ---
 
 <BaseLayout
@@ -60,268 +68,197 @@ const supportedSites = [
   withJsonLd={false}
 >
   <Navbar t={t.nav} />
-  <main class="download-page">
-    <div class="download-container">
-      <header class="download-header">
-        <p class="download-badge">Free · No account required</p>
-        <h1>Install Ophel</h1>
-        <p class="download-desc">
-          One extension. Works with <strong>{supportedSites.length} AI platforms</strong>.
-          Available for all major browsers.
+  <main class="relative min-h-screen py-24 bg-background">
+    <!-- 背景流光 -->
+    <div class="pointer-events-none absolute inset-0 bg-grid-white opacity-[0.03]"></div>
+    <div
+      class="pointer-events-none absolute top-[10%] left-1/2 w-[800px] h-[500px] -translate-x-1/2 bg-neon-cyan/10 blur-[120px] rounded-full"
+    >
+    </div>
+
+    <div class="relative z-10 w-full max-w-6xl mx-auto px-6 max-w-4xl">
+      <header class="text-center mb-16">
+        <p
+          class="inline-flex items-center rounded-full border border-neon-cyan/20 bg-neon-cyan/5 px-3 py-1 text-xs font-medium uppercase tracking-widest text-neon-cyan mb-6"
+        >
+          Free · No account required
+        </p>
+        <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white mb-6">
+          Install Ophel
+        </h1>
+        <p class="text-lg text-zinc-400 max-w-2xl mx-auto leading-relaxed">
+          One extension. Works with <strong class="text-white"
+            >{allSupportedSites.length} AI platforms</strong
+          >. Available for all major browsers.
         </p>
       </header>
 
-      <div class="platform-grid">
-        {platforms.map((p) => (
-          <article class="platform-card">
-            <div class="platform-icon">{p.icon}</div>
-            <div class="platform-info">
-              <div class="platform-name-row">
-                <h2>{p.name}</h2>
-                {p.badge && <span class="platform-badge">{p.badge}</span>}
+      <div class="grid gap-6 md:grid-cols-2 mb-16">
+        {
+          platforms.map((p) => (
+            <SpotlightCard className="p-6 group">
+              <div class="relative z-10 flex gap-4 h-full">
+                <div class="flex-shrink-0 pt-1 group-hover:scale-110 transition-transform">
+                  {iconImgs[p.name] ? (
+                    <img src={iconImgs[p.name]} alt={p.name} width="36" height="36" />
+                  ) : (
+                    <span class="text-3xl">{p.icon}</span>
+                  )}
+                </div>
+                <div class="flex flex-col flex-1">
+                  <div class="flex items-center gap-3 mb-2">
+                    <h2 class="text-lg font-bold text-zinc-100 group-hover:text-white transition-colors">
+                      {p.name}
+                    </h2>
+                    {p.badge && (
+                      <span class="px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-black bg-neon-cyan rounded-full">
+                        {p.badge}
+                      </span>
+                    )}
+                  </div>
+                  <p class="text-sm text-zinc-400 leading-relaxed mb-4 flex-1">{p.desc}</p>
+                  <div class="mt-auto">
+                    <a
+                      href={p.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="inline-flex items-center text-sm font-semibold text-neon-cyan hover:text-neon-cyan/80 transition-colors"
+                    >
+                      {p.cta} <span class="ml-1 text-[10px]">↗</span>
+                    </a>
+                    <span class="block mt-1.5 text-xs text-zinc-600">{p.note}</span>
+                  </div>
+                </div>
               </div>
-              <p class="platform-desc">{p.desc}</p>
-              <a href={p.href} target="_blank" rel="noopener noreferrer" class="platform-cta">
-                {p.cta} ↗
-              </a>
-              <span class="platform-note">{p.note}</span>
-            </div>
-          </article>
-        ))}
+            </SpotlightCard>
+          ))
+        }
       </div>
 
-      <section class="supported-sites">
-        <h2>Supported Platforms</h2>
-        <div class="sites-grid">
-          {supportedSites.map((site) => (
-            <span class="site-chip">{site}</span>
-          ))}
+      <section class="mb-16">
+        <h2 class="text-xl font-bold text-white mb-6 flex items-center gap-2">
+          <span class="h-px bg-white/20 flex-1"></span>
+          Supported Platforms
+          <span class="h-px bg-white/20 flex-1"></span>
+        </h2>
+        <div class="flex flex-col items-center gap-3">
+          <div class="flex flex-wrap justify-center gap-3">
+            {
+              supportedSitesRow1.map((site) => (
+                <a
+                  href={site.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title={site.href}
+                  aria-label={`Open ${site.label}`}
+                  class="inline-flex items-center gap-2.5 px-4 py-2 text-sm font-medium text-zinc-300 bg-surface border border-surface-border rounded-full hover:border-neon-cyan/30 hover:text-white hover:bg-white/[0.03] transition-colors"
+                >
+                  {site.iconSrc ? (
+                    <span
+                      class={`inline-flex items-center justify-center shrink-0 ${site.iconVariant === 'inverted' ? 'w-5 h-5 rounded-full bg-white/10 border border-white/15' : ''}`}
+                    >
+                      <img
+                        src={site.iconSrc}
+                        alt=""
+                        width="18"
+                        height="18"
+                        class={`shrink-0 ${site.iconVariant === 'inverted' ? 'w-4 h-4 [filter:brightness(0)_invert(1)]' : ''}`}
+                        loading="lazy"
+                      />
+                    </span>
+                  ) : (
+                    <span class="shrink-0">{site.emoji}</span>
+                  )}
+                  <span>{site.label}</span>
+                </a>
+              ))
+            }
+          </div>
+          <div class="flex flex-wrap justify-center gap-3">
+            {
+              supportedSitesRow2.map((site) => (
+                <a
+                  href={site.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title={site.href}
+                  aria-label={`Open ${site.label}`}
+                  class="inline-flex items-center gap-2.5 px-4 py-2 text-sm font-medium text-zinc-300 bg-surface border border-surface-border rounded-full hover:border-neon-cyan/30 hover:text-white hover:bg-white/[0.03] transition-colors"
+                >
+                  {site.iconSrc ? (
+                    <span
+                      class={`inline-flex items-center justify-center shrink-0 ${site.iconVariant === 'inverted' ? 'w-5 h-5 rounded-full bg-white/10 border border-white/15' : ''}`}
+                    >
+                      <img
+                        src={site.iconSrc}
+                        alt=""
+                        width="18"
+                        height="18"
+                        class={`shrink-0 ${site.iconVariant === 'inverted' ? 'w-4 h-4 [filter:brightness(0)_invert(1)]' : ''}`}
+                        loading="lazy"
+                      />
+                    </span>
+                  ) : (
+                    <span class="shrink-0">{site.emoji}</span>
+                  )}
+                  <span>{site.label}</span>
+                </a>
+              ))
+            }
+          </div>
         </div>
       </section>
 
-      <section class="install-steps">
-        <h2>Quick Start</h2>
-        <ol class="steps-list">
-          <li>
-            <span class="step-num">1</span>
-            <div>
-              <strong>Install the extension</strong>
-              <p>Click "Install on Chrome" above and add it to your browser.</p>
-            </div>
-          </li>
-          <li>
-            <span class="step-num">2</span>
-            <div>
-              <strong>Open any supported AI site</strong>
-              <p>Visit ChatGPT, Gemini, Claude, or any of the 15 supported platforms.</p>
-            </div>
-          </li>
-          <li>
-            <span class="step-num">3</span>
-            <div>
-              <strong>Ophel activates automatically</strong>
-              <p>The panel appears on the right side. Click the toggle button to open it.</p>
-            </div>
-          </li>
-        </ol>
+      <section>
+        <div class="p-8 md:p-10 rounded-2xl bg-surface border border-surface-border">
+          <h2 class="text-2xl font-bold text-white mb-8">Quick Start</h2>
+          <ol class="space-y-8">
+            <li class="flex gap-5">
+              <span
+                class="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full border border-white/10 bg-white/5 text-sm font-bold text-white shadow-[0_0_15px_rgba(0,240,255,0.2)]"
+                >1</span
+              >
+              <div>
+                <strong class="block text-base font-semibold text-white mb-1.5"
+                  >Install the extension</strong
+                >
+                <p class="text-sm text-zinc-400 leading-relaxed">
+                  Click "Install on Chrome" above and add it to your browser.
+                </p>
+              </div>
+            </li>
+            <li class="flex gap-5">
+              <span
+                class="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full border border-white/10 bg-white/5 text-sm font-bold text-white shadow-[0_0_15px_rgba(0,240,255,0.2)]"
+                >2</span
+              >
+              <div>
+                <strong class="block text-base font-semibold text-white mb-1.5"
+                  >Open any supported AI site</strong
+                >
+                <p class="text-sm text-zinc-400 leading-relaxed">
+                  Visit ChatGPT, Gemini, Claude, or any of the 15 supported platforms.
+                </p>
+              </div>
+            </li>
+            <li class="flex gap-5">
+              <span
+                class="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full border border-white/10 bg-white/5 text-sm font-bold text-white shadow-[0_0_15px_rgba(0,240,255,0.2)]"
+                >3</span
+              >
+              <div>
+                <strong class="block text-base font-semibold text-white mb-1.5"
+                  >Ophel activates automatically</strong
+                >
+                <p class="text-sm text-zinc-400 leading-relaxed">
+                  The panel appears on the right side. Click the toggle button to open it.
+                </p>
+              </div>
+            </li>
+          </ol>
+        </div>
       </section>
     </div>
   </main>
   <Footer t={t.footer} />
 </BaseLayout>
-
-<style>
-  .download-page {
-    padding: 80px 24px 0;
-  }
-
-  .download-container {
-    max-width: 860px;
-    margin: 0 auto;
-  }
-
-  .download-header {
-    text-align: center;
-    margin-bottom: 64px;
-  }
-
-  .download-badge {
-    display: inline-block;
-    font-size: 0.8125rem;
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--color-accent);
-    margin-bottom: 16px;
-  }
-
-  .download-header h1 {
-    font-size: clamp(2.25rem, 5vw, 3.5rem);
-    font-weight: 700;
-    letter-spacing: -0.03em;
-    margin-bottom: 16px;
-    background: linear-gradient(135deg, var(--color-text) 0%, var(--color-text-muted) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .download-desc {
-    font-size: 1.0625rem;
-    color: var(--color-text-muted);
-    line-height: 1.6;
-  }
-
-  .platform-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-    gap: 16px;
-    margin-bottom: 64px;
-  }
-
-  .platform-card {
-    display: flex;
-    gap: 20px;
-    padding: 24px;
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius);
-    transition: border-color 0.2s;
-  }
-
-  .platform-card:hover {
-    border-color: var(--color-primary);
-  }
-
-  .platform-icon {
-    font-size: 2rem;
-    flex-shrink: 0;
-    line-height: 1;
-    padding-top: 2px;
-  }
-
-  .platform-name-row {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 8px;
-  }
-
-  .platform-name-row h2 {
-    font-size: 1.0625rem;
-    font-weight: 600;
-  }
-
-  .platform-badge {
-    font-size: 0.6875rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--color-accent);
-    background: rgba(74, 240, 196, 0.12);
-    padding: 2px 8px;
-    border-radius: 20px;
-  }
-
-  .platform-desc {
-    font-size: 0.875rem;
-    color: var(--color-text-muted);
-    line-height: 1.6;
-    margin-bottom: 16px;
-  }
-
-  .platform-cta {
-    display: inline-block;
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: var(--color-primary);
-    text-decoration: none;
-    transition: opacity 0.2s;
-  }
-
-  .platform-cta:hover {
-    opacity: 0.75;
-  }
-
-  .platform-note {
-    display: block;
-    margin-top: 8px;
-    font-size: 0.75rem;
-    color: var(--color-text-muted);
-  }
-
-  .supported-sites,
-  .install-steps {
-    margin-bottom: 64px;
-  }
-
-  .supported-sites h2,
-  .install-steps h2 {
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin-bottom: 24px;
-    letter-spacing: -0.02em;
-  }
-
-  .sites-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-
-  .site-chip {
-    font-size: 0.875rem;
-    padding: 6px 14px;
-    border-radius: 20px;
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    color: var(--color-text-muted);
-  }
-
-  .steps-list {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-  }
-
-  .steps-list li {
-    display: flex;
-    gap: 20px;
-    align-items: flex-start;
-  }
-
-  .step-num {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background: var(--color-primary);
-    color: #fff;
-    font-size: 0.875rem;
-    font-weight: 700;
-    flex-shrink: 0;
-  }
-
-  .steps-list strong {
-    display: block;
-    font-size: 0.9375rem;
-    font-weight: 600;
-    margin-bottom: 4px;
-  }
-
-  .steps-list p {
-    font-size: 0.875rem;
-    color: var(--color-text-muted);
-    line-height: 1.6;
-  }
-
-  @media (max-width: 640px) {
-    .platform-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-</style>

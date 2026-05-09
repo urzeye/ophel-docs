@@ -1,29 +1,18 @@
 ---
 import type { T } from '../i18n';
 
+import { getSupportedPlatforms, type SupportedPlatformLocale } from '../lib/supported-platforms';
+
 interface Props {
   t: T['platforms'];
+  locale?: SupportedPlatformLocale;
 }
 
-const { t } = Astro.props;
+const { t, locale = 'en' } = Astro.props;
 
-const platforms = [
-  'ChatGPT',
-  'Gemini',
-  'Claude',
-  'Grok',
-  'AI Studio',
-  'DeepSeek',
-  'Doubao',
-  'Kimi',
-  'QwenAI',
-  'Qianwen',
-  'Yuanbao',
-  'Z.ai',
-  'ChatGLM',
-  'Ima',
-  'Gemini Enterprise',
-];
+const allPlatforms = getSupportedPlatforms(locale);
+const platformRow1 = allPlatforms.slice(0, 6);
+const platformRow2 = allPlatforms.slice(6);
 ---
 
 <section class="platforms" id="platforms">
@@ -33,8 +22,59 @@ const platforms = [
       <p class="section-desc">{t.desc}</p>
     </div>
 
-    <div class="platform-grid">
-      {platforms.map((name) => <div class="platform-chip">{name}</div>)}
+    <div class="platform-rows-container">
+      <div class="platform-row">
+        {
+          platformRow1.map((platform) => (
+            <a
+              class="platform-chip"
+              href={platform.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              title={platform.href}
+              aria-label={`${platform.label} (${platform.href})`}
+            >
+              <span
+                class={`platform-chip-icon ${platform.iconVariant === 'inverted' ? 'platform-chip-icon-inverted' : ''}`}
+                aria-hidden="true"
+              >
+                {platform.iconSrc ? (
+                  <img src={platform.iconSrc} alt="" loading="lazy" />
+                ) : (
+                  <span>{platform.emoji}</span>
+                )}
+              </span>
+              <span class="platform-chip-label">{platform.label}</span>
+            </a>
+          ))
+        }
+      </div>
+      <div class="platform-row">
+        {
+          platformRow2.map((platform) => (
+            <a
+              class="platform-chip"
+              href={platform.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              title={platform.href}
+              aria-label={`${platform.label} (${platform.href})`}
+            >
+              <span
+                class={`platform-chip-icon ${platform.iconVariant === 'inverted' ? 'platform-chip-icon-inverted' : ''}`}
+                aria-hidden="true"
+              >
+                {platform.iconSrc ? (
+                  <img src={platform.iconSrc} alt="" loading="lazy" />
+                ) : (
+                  <span>{platform.emoji}</span>
+                )}
+              </span>
+              <span class="platform-chip-label">{platform.label}</span>
+            </a>
+          ))
+        }
+      </div>
     </div>
   </div>
 </section>
@@ -72,30 +112,98 @@ const platforms = [
     color: var(--color-text-muted);
   }
 
-  .platform-grid {
+  .platform-rows-container {
     display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    justify-content: center;
-    max-width: 800px;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    max-width: 1000px;
     margin: 0 auto;
   }
 
+  .platform-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
   .platform-chip {
-    padding: 8px 20px;
-    border-radius: 100px;
-    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 46px;
+    padding: 9px 12px;
+    border-radius: 14px;
+    font-size: 13px;
     font-weight: 500;
     background: var(--color-surface);
     border: 1px solid var(--color-border);
     color: var(--color-text-muted);
+    text-decoration: none;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
     transition:
+      transform 0.15s,
       color 0.15s,
-      border-color 0.15s;
+      border-color 0.15s,
+      background 0.15s,
+      box-shadow 0.15s;
   }
 
   .platform-chip:hover {
     color: var(--color-text);
     border-color: rgba(124, 111, 255, 0.4);
+    background: color-mix(in srgb, var(--color-surface) 80%, rgba(124, 111, 255, 0.12));
+    transform: translateY(-1px);
+    box-shadow:
+      0 10px 30px rgba(0, 0, 0, 0.22),
+      inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  }
+
+  .platform-chip:focus-visible {
+    outline: 2px solid rgba(124, 111, 255, 0.65);
+    outline-offset: 2px;
+  }
+
+  .platform-chip-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+  }
+
+  .platform-chip-icon img {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+    display: block;
+  }
+
+  .platform-chip-icon-inverted {
+    width: 24px;
+    height: 24px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+  }
+
+  .platform-chip-icon-inverted img {
+    width: 16px;
+    height: 16px;
+    filter: brightness(0) invert(1);
+  }
+
+  .platform-chip-label {
+    min-width: 0;
+    flex: 1;
+    overflow-wrap: anywhere;
+  }
+
+  @media (max-width: 640px) {
+    .platform-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
   }
 </style>

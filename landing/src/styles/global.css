@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #030303;
+  --color-surface: #0a0a0a;
+  --color-surface-hover: #121212;
+  --color-surface-border: rgba(255, 255, 255, 0.08);
+  
+  --color-neon-cyan: #00f0ff;
+  --color-neon-blue: #003cff;
+  
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+}
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+  
+  html {
+    @apply bg-background text-white antialiased;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    min-height: 100vh;
+  }
+
+  ::selection {
+    @apply bg-neon-cyan/30 text-white;
+  }
+}
+
+@layer utilities {
+  /* 网格背景效果 */
+  .bg-grid-white {
+    background-size: 40px 40px;
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  }
+  /* 径向渐变遮罩，用于英雄区让网格向外变暗融合 */
+  .mask-radial-faded {
+    mask-image: radial-gradient(circle at center, black, transparent 80%);
+  }
+  /* 炫光文字 */
+  .text-glow-cyan {
+    text-shadow: 0 0 20px rgba(0, 240, 255, 0.5);
+  }
+}

@@ -8,112 +8,62 @@ interface Props {
 const { t } = Astro.props;
 ---
 
-<footer class="footer">
-  <div class="footer-inner">
-    <div class="footer-brand">
-      <span class="footer-logo">Ophel</span>
-      <p class="footer-tagline">{t.tagline}</p>
+<footer class="border-t border-white/10 bg-background py-12 md:py-16">
+  <div class="w-full max-w-6xl mx-auto px-6">
+    <div class="grid gap-8 md:grid-cols-4 lg:grid-cols-5">
+      <div class="col-span-2">
+        <a href="/" class="mb-4 inline-flex items-center gap-2">
+          <svg width="24" height="24" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+            <rect width="28" height="28" rx="6" fill="#000" stroke="rgba(0, 240, 255, 0.5)" stroke-width="1.5"></rect>  
+            <path d="M8 14a6 6 0 1 1 12 0A6 6 0 0 1 8 14Z" fill="#00f0ff" opacity="0.9"></path>
+            <circle cx="14" cy="14" r="2.5" fill="#000"></circle>
+          </svg>
+          <span class="text-lg font-bold text-white">Ophel</span>
+        </a>
+        <p class="text-sm leading-relaxed text-zinc-400 max-w-sm">
+          {t.desc}
+        </p>
+      </div>
+
+      <div>
+        <h3 class="mb-4 text-sm font-semibold text-white">{t.product}</h3>
+        <ul class="space-y-3 text-sm text-zinc-400">
+          <li><a href={t.links.downloadHref} class="hover:text-neon-cyan transition-colors">{t.links.download}</a></li>
+          <li><a href={t.links.changelogHref} class="hover:text-neon-cyan transition-colors">{t.links.changelog}</a></li>
+          <li><a href={t.links.docsHref} class="hover:text-neon-cyan transition-colors">{t.links.docs}</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="mb-4 text-sm font-semibold text-white">{t.support}</h3>
+        <ul class="space-y-3 text-sm text-zinc-400">
+          <li>
+            <a href={t.links.githubHref} target="_blank" rel="noopener noreferrer" class="hover:text-neon-cyan transition-colors">
+              {t.links.github}
+            </a>
+          </li>
+          <li>
+            <a href={t.links.issueHref} target="_blank" rel="noopener noreferrer" class="hover:text-neon-cyan transition-colors">
+              {t.links.issue}
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="mb-4 text-sm font-semibold text-white">{t.legal}</h3>
+        <ul class="space-y-3 text-sm text-zinc-400">
+          <li><a href={t.links.privacyHref} class="hover:text-neon-cyan transition-colors">{t.links.privacy}</a></li>
+        </ul>
+      </div>
     </div>
 
-    <nav class="footer-links" aria-label={t.ariaLabel}>
-      <div class="footer-group">
-        <span class="footer-group-label">{t.product}</span>
-        <a href="#features">{t.links.features}</a>
-        <a href={t.links.changelogHref}>{t.links.changelog}</a>
-        <a href={t.links.downloadHref}>{t.links.download}</a>
+    <div class="mt-12 flex flex-col items-center justify-between border-t border-white/5 pt-8 sm:flex-row">
+      <p class="text-sm text-zinc-500">
+        © {new Date().getFullYear()} Ophel. {t.rights}.
+      </p>
+      <div class="mt-4 flex gap-4 sm:mt-0 text-zinc-500 text-sm">
       </div>
-      <div class="footer-group">
-        <span class="footer-group-label">{t.resources}</span>
-        <a href="/docs">{t.links.docs}</a>
-        <a href="/docs/installation">{t.links.installation}</a>
-        <a href="/docs/faq">{t.links.faq}</a>
-      </div>
-      <div class="footer-group">
-        <span class="footer-group-label">{t.other}</span>
-        <a href={t.links.privacyHref}>{t.links.privacy}</a>
-        <a href="https://github.com/urzeye/ophel" target="_blank" rel="noopener noreferrer"
-          >GitHub</a
-        >
-      </div>
-    </nav>
-  </div>
-
-  <div class="footer-bottom">
-    <p>© {new Date().getFullYear()} Ophel. All rights reserved.</p>
+    </div>
   </div>
 </footer>
-
-<style>
-  .footer {
-    border-top: 1px solid var(--color-border);
-    padding: 64px 24px 32px;
-    margin-top: var(--section-gap);
-  }
-
-  .footer-inner {
-    max-width: var(--max-width);
-    margin: 0 auto;
-    display: flex;
-    gap: 64px;
-    flex-wrap: wrap;
-    margin-bottom: 48px;
-  }
-
-  .footer-brand {
-    flex: 1;
-    min-width: 200px;
-  }
-
-  .footer-logo {
-    font-size: 20px;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-  }
-
-  .footer-tagline {
-    margin-top: 10px;
-    font-size: 14px;
-    color: var(--color-text-muted);
-    line-height: 1.6;
-    max-width: 240px;
-  }
-
-  .footer-links {
-    display: flex;
-    gap: 48px;
-    flex-wrap: wrap;
-  }
-
-  .footer-group {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .footer-group-label {
-    font-size: 12px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--color-text-muted);
-  }
-
-  .footer-group a {
-    font-size: 14px;
-    color: var(--color-text-muted);
-    transition: color 0.15s;
-  }
-
-  .footer-group a:hover {
-    color: var(--color-text);
-  }
-
-  .footer-bottom {
-    max-width: var(--max-width);
-    margin: 0 auto;
-    padding-top: 24px;
-    border-top: 1px solid var(--color-border);
-    font-size: 13px;
-    color: var(--color-text-muted);
-  }
-</style>

@@ -1,4 +1,6 @@
 ---
+import '../styles/global.css';
+
 interface Props {
   title?: string;
   description?: string;
@@ -65,7 +67,7 @@ const jsonLd = {
 ---
 
 <!doctype html>
-<html lang={lang}>
+<html lang={lang} class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -146,51 +148,3 @@ const jsonLd = {
   </body>
 </html>
 
-<style is:global>
-  *,
-  *::before,
-  *::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-
-  :root {
-    --color-bg: #0a0a0f;
-    --color-surface: #13131a;
-    --color-border: rgba(255, 255, 255, 0.08);
-    --color-text: #f0f0f5;
-    --color-text-muted: #8888a0;
-    --color-primary: #7c6fff;
-    --color-primary-glow: rgba(124, 111, 255, 0.3);
-    --color-accent: #4af0c4;
-    --font: 'Inter', system-ui, sans-serif;
-    --radius: 12px;
-    --max-width: 1120px;
-    --section-gap: 96px;
-  }
-
-  html {
-    scroll-behavior: smooth;
-  }
-
-  body {
-    background: var(--color-bg);
-    color: var(--color-text);
-    font-family: var(--font);
-    font-size: 16px;
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  a {
-    color: inherit;
-    text-decoration: none;
-  }
-
-  img,
-  video {
-    max-width: 100%;
-    display: block;
-  }
-</style>

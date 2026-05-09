@@ -17,8 +17,19 @@
     "format:check": "prettier --check ."
   },
   "dependencies": {
+    "@astrojs/react": "^5.0.4",
     "@astrojs/sitemap": "^3.7.2",
-    "astro": "^6.3.1"
+    "@tailwindcss/vite": "^4.3.0",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "astro": "^6.3.1",
+    "clsx": "^2.1.1",
+    "framer-motion": "^12.38.0",
+    "lucide-react": "^1.14.0",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6",
+    "tailwind-merge": "^3.5.0",
+    "tailwindcss": "^4.3.0"
   },
   "devDependencies": {
     "prettier": "^3.0.0",
