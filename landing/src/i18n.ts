@@ -8,6 +8,8 @@ const en = {
   nav: {
     features: 'Features',
     platforms: 'Platforms',
+    changelog: 'Changelog',
+    changelogHref: '/changelog/',
     docs: 'Docs',
     docsHref: '/docs/',
     install: 'Install',
@@ -136,6 +138,8 @@ const zh = {
   nav: {
     features: '功能',
     platforms: '平台支持',
+    changelog: '更新日志',
+    changelogHref: '/zh/changelog/',
     docs: '文档',
     docsHref: 'https://ophel.app/docs/zh/introduction',
     install: '安装',
