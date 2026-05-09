@@ -3,16 +3,18 @@ title: "Changelog"
 description: "All notable changes to Ophel Atlas are documented here."
 ---
 
-<Update label="vUnreleased">
+<Update label="v1.0.47">
 
   ### ✨ Improvements
 
-  - **Panel state remembered in auto-snap mode**: Both floating and auto-snap modes now remember whether the panel was open or closed across page refreshes. Previously, auto-snap mode always reopened the panel expanded after a refresh.
+  - **Gemini Markdown Bold Fix now defaults to off**: The "Markdown Bold Fix" toggle for Gemini is now disabled by default. It can still be enabled in Settings → Site Settings → Gemini.
+  - **Panel state remembered in auto-snap mode**: Both floating and auto-snap modes now remember whether the panel was open or closed across page refreshes.
 
   ### 🐛 Bug Fixes
 
-  - **Yuanbao theme sync broken**: Fixed theme detection failing when Yuanbao updated their dark mode implementation from a CSS class to a custom `html[yb-theme-mode]` attribute. The MutationObserver now watches the new attribute, and switching between dark, light, and system modes now works in both directions.
-  - **Drag-to-sort broken on Yuanbao**: Fixed tab order and quick button drag sorting in the settings modal, and prompt item drag sorting in the prompts tab, failing on Yuanbao. Yuanbao's page-level JS was cancelling drags with an empty `dataTransfer`; adding `setData()` in the drag handler prevents the cancellation.
+  - **Claude reply notifications repeating endlessly**: Fixed notifications firing repeatedly after a reply was completed on Claude.ai. (#470)
+  - **Yuanbao theme sync broken**: Fixed theme detection failing on Yuanbao after they changed their dark mode implementation.
+  - **Drag-to-sort broken on Yuanbao**: Fixed tab order, quick button, and prompt drag sorting failing on Yuanbao.
 </Update>
 
 <Update label="v1.0.46">
@@ -989,6 +991,8 @@ description: "All notable changes to Ophel Atlas are documented here."
   - Open source and transparent
 
 
+  [1.0.47]: https://github.com/urzeye/ophel/releases/tag/v1.0.47
+  [1.0.46]: https://github.com/urzeye/ophel/releases/tag/v1.0.46
   [1.0.45]: https://github.com/urzeye/ophel/releases/tag/v1.0.45
   [1.0.44]: https://github.com/urzeye/ophel/releases/tag/v1.0.44
   [1.0.43]: https://github.com/urzeye/ophel/releases/tag/v1.0.43
