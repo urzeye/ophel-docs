@@ -137,6 +137,7 @@ const platformRow2 = allPlatforms.slice(6);
     border-radius: 14px;
     font-size: 13px;
     font-weight: 500;
+    flex-shrink: 0;
     background: var(--color-surface);
     border: 1px solid var(--color-border);
     color: var(--color-text-muted);
@@ -196,9 +197,7 @@ const platformRow2 = allPlatforms.slice(6);
   }
 
   .platform-chip-label {
-    min-width: 0;
-    flex: 1;
-    overflow-wrap: anywhere;
+    white-space: nowrap;
   }
 
   @media (max-width: 640px) {

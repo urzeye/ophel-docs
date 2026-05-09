@@ -33,11 +33,11 @@ function parseVersions(raw: string) {
 
 function mdToHtml(md: string): string {
   return md
-    .replace(/^### (.+)$/gm, '<h3 class="text-xs font-semibold uppercase tracking-wider text-zinc-500 mt-6 mb-3">$1</h3>')
+    .replace(/^\s*### (.+)$/gm, '<h3 class="text-xs font-semibold uppercase tracking-wider text-zinc-500 mt-6 mb-3">$1</h3>')
     .replace(/`([^`]+)`/g, '<code class="px-1 py-0.5 text-xs font-mono bg-white/10 text-zinc-300 rounded">$1</code>')
     .replace(/\*\*(.+?)\*\*/g, '<strong class="font-semibold text-zinc-200">$1</strong>')
     .replace(/\(#(\d+)\)/g, '(<a href="https://github.com/urzeye/ophel/issues/$1" target="_blank" rel="noopener noreferrer" class="text-neon-cyan hover:text-neon-cyan/80 hover:underline">#$1</a>)')
-    .replace(/^- (.+)$/gm, '<li class="relative pl-6 text-zinc-400 leading-relaxed text-sm mb-2 before:content-[\'\'] before:absolute before:left-0 before:top-2.5 before:w-2 before:h-px before:bg-zinc-600">$1</li>')
+    .replace(/^\s*- (.+)$/gm, '<li class="relative pl-6 text-zinc-400 leading-relaxed text-sm mb-2 before:content-[\'\'] before:absolute before:left-0 before:top-2.5 before:w-2 before:h-px before:bg-zinc-600">$1</li>')
     .replace(/\n\n+/g, '\n')
     .replace(/(<li[\s\S]*?<\/li>)(\n<li[\s\S]*?<\/li>)*/g, (match) => `<ul class="mb-4">${match}</ul>`)
     .replace(/<\/li>\n<li/g, '</li><li');
