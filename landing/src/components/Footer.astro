@@ -13,7 +13,14 @@ const { t } = Astro.props;
     <div class="grid gap-8 md:grid-cols-4 lg:grid-cols-5">
       <div class="col-span-2">
         <a href="/" class="mb-4 inline-flex items-center gap-2">
-          <img src="/logo.png" alt="Ophel logo" width="28" height="28" class="rounded-md" aria-hidden="true" />
+          <img
+            src="/logo.png"
+            alt="Ophel logo"
+            width="28"
+            height="28"
+            class="rounded-md"
+            aria-hidden="true"
+          />
           <span class="text-lg font-bold text-white">Ophel</span>
         </a>
         <p class="text-sm leading-relaxed text-zinc-400 max-w-sm">
@@ -24,9 +31,18 @@ const { t } = Astro.props;
       <div>
         <h3 class="mb-4 text-sm font-semibold text-white">{t.product}</h3>
         <ul class="space-y-3 text-sm text-zinc-400">
-          <li><a href={t.links.downloadHref} class="hover:text-neon-cyan transition-colors">{t.links.download}</a></li>
-          <li><a href={t.links.changelogHref} class="hover:text-neon-cyan transition-colors">{t.links.changelog}</a></li>
-          <li><a href={t.links.docsHref} class="hover:text-neon-cyan transition-colors">{t.links.docs}</a></li>
+          <li>
+            <a href={t.links.downloadHref} class="hover:text-neon-cyan transition-colors"
+              >{t.links.download}</a>
+          </li>
+          <li>
+            <a href={t.links.changelogHref} class="hover:text-neon-cyan transition-colors"
+              >{t.links.changelog}</a>
+          </li>
+          <li>
+            <a href={t.links.docsHref} class="hover:text-neon-cyan transition-colors"
+              >{t.links.docs}</a>
+          </li>
         </ul>
       </div>
 
@@ -34,12 +50,22 @@ const { t } = Astro.props;
         <h3 class="mb-4 text-sm font-semibold text-white">{t.support}</h3>
         <ul class="space-y-3 text-sm text-zinc-400">
           <li>
-            <a href={t.links.githubHref} target="_blank" rel="noopener noreferrer" class="hover:text-neon-cyan transition-colors">
+            <a
+              href={t.links.githubHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="hover:text-neon-cyan transition-colors"
+            >
               {t.links.github}
             </a>
           </li>
           <li>
-            <a href={t.links.issueHref} target="_blank" rel="noopener noreferrer" class="hover:text-neon-cyan transition-colors">
+            <a
+              href={t.links.issueHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="hover:text-neon-cyan transition-colors"
+            >
               {t.links.issue}
             </a>
           </li>
@@ -49,17 +75,21 @@ const { t } = Astro.props;
       <div>
         <h3 class="mb-4 text-sm font-semibold text-white">{t.legal}</h3>
         <ul class="space-y-3 text-sm text-zinc-400">
-          <li><a href={t.links.privacyHref} class="hover:text-neon-cyan transition-colors">{t.links.privacy}</a></li>
+          <li>
+            <a href={t.links.privacyHref} class="hover:text-neon-cyan transition-colors"
+              >{t.links.privacy}</a>
+          </li>
         </ul>
       </div>
     </div>
 
-    <div class="mt-12 flex flex-col items-center justify-between border-t border-white/5 pt-8 sm:flex-row">
+    <div
+      class="mt-12 flex flex-col items-center justify-between border-t border-white/5 pt-8 sm:flex-row"
+    >
       <p class="text-sm text-zinc-500">
         © {new Date().getFullYear()} Ophel. {t.rights}.
       </p>
-      <div class="mt-4 flex gap-4 sm:mt-0 text-zinc-500 text-sm">
-      </div>
+      <div class="mt-4 flex gap-4 sm:mt-0 text-zinc-500 text-sm"></div>
     </div>
   </div>
 </footer>
