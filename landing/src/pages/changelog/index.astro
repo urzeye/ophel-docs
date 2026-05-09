@@ -8,34 +8,26 @@ import { translations } from '../../i18n';
 
 const t = translations.en;
 
-// 构建时从 ophel 仓库读取 CHANGELOG.md
-const changelogPath = resolve(process.cwd(), '../../ophel/CHANGELOG.md');
+// 构建时读取同仓库的 changelog.mdx（稳定可靠，无跨仓库依赖）
+const changelogPath = resolve(process.cwd(), '../changelog.mdx');
 let rawContent = '';
 try {
   rawContent = readFileSync(changelogPath, 'utf-8');
 } catch {
-  rawContent = '# Changelog\n\nCould not load changelog.';
+  rawContent = '';
 }
 
-// 解析版本块
+// 解析 <Update label="..."> MDX 格式
 function parseVersions(raw: string) {
-  const lines = raw.split('\n');
   const versions: { label: string; body: string }[] = [];
-  let current: { label: string; lines: string[] } | null = null;
-
-  for (const line of lines) {
-    const m = line.match(/^## \[(.+?)\]/);
-    if (m) {
-      if (current) versions.push({ label: current.label, body: current.lines.join('\n').trim() });
-      current = { label: m[1], lines: [] };
-      continue;
-    }
-    if (current) {
-      if (line.trim() === '---') continue;
-      current.lines.push(line);
-    }
+  const regex = /<Update label="([^"]+)">([\s\S]*?)<\/Update>/g;
+  let match;
+  while ((match = regex.exec(raw)) !== null) {
+    const label = match[1].trim().replace(/^v/i, ''); // 去掉前缀 v
+    const body = match[2].trim();
+    if (label.toLowerCase().includes('unreleased')) continue;
+    versions.push({ label, body });
   }
-  if (current) versions.push({ label: current.label, body: current.lines.join('\n').trim() });
   return versions;
 }
 
@@ -44,6 +36,8 @@ function mdToHtml(md: string): string {
   return md
     // ### 标题
     .replace(/^### (.+)$/gm, '<h3 class="text-xs font-semibold uppercase tracking-wider text-zinc-500 mt-6 mb-3">$1</h3>')
+    // `code`
+    .replace(/`([^`]+)`/g, '<code class="px-1 py-0.5 text-xs font-mono bg-white/10 text-zinc-300 rounded">$1</code>')
     // **bold**
     .replace(/\*\*(.+?)\*\*/g, '<strong class="font-semibold text-zinc-200">$1</strong>')
     // (#NNN) → GitHub issue link
