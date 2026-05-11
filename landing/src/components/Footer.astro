@@ -13,14 +13,7 @@ const { t } = Astro.props;
     <div class="grid gap-8 md:grid-cols-4 lg:grid-cols-5">
       <div class="col-span-2">
         <a href="/" class="mb-4 inline-flex items-center gap-2">
-          <img
-            src="/logo.png"
-            alt="Ophel logo"
-            width="28"
-            height="28"
-            class="rounded-md"
-            aria-hidden="true"
-          />
+          <img src="/logo.png" alt="Ophel logo" width="28" height="28" class="rounded-md" />
           <span class="text-lg font-bold text-white">Ophel</span>
         </a>
         <p class="text-sm leading-relaxed text-zinc-400 max-w-sm">
@@ -33,15 +26,18 @@ const { t } = Astro.props;
         <ul class="space-y-3 text-sm text-zinc-400">
           <li>
             <a href={t.links.downloadHref} class="hover:text-neon-cyan transition-colors"
-              >{t.links.download}</a>
+              >{t.links.download}</a
+            >
           </li>
           <li>
             <a href={t.links.changelogHref} class="hover:text-neon-cyan transition-colors"
-              >{t.links.changelog}</a>
+              >{t.links.changelog}</a
+            >
           </li>
           <li>
             <a href={t.links.docsHref} class="hover:text-neon-cyan transition-colors"
-              >{t.links.docs}</a>
+              >{t.links.docs}</a
+            >
           </li>
         </ul>
       </div>
@@ -77,7 +73,8 @@ const { t } = Astro.props;
         <ul class="space-y-3 text-sm text-zinc-400">
           <li>
             <a href={t.links.privacyHref} class="hover:text-neon-cyan transition-colors"
-              >{t.links.privacy}</a>
+              >{t.links.privacy}</a
+            >
           </li>
         </ul>
       </div>

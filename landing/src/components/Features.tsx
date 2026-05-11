@@ -13,9 +13,7 @@ export function Features({ featuresTitle, featuresSubtitle, items }: any) {
           <h2 className="text-3xl font-bold tracking-tight sm:text-5xl text-white mb-6">
             {featuresTitle}
           </h2>
-          <p className="text-lg text-zinc-400 max-w-2xl mx-auto">
-            {featuresSubtitle}
-          </p>
+          <p className="text-lg text-zinc-400 max-w-2xl mx-auto">{featuresSubtitle}</p>
         </div>
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-2 max-w-6xl mx-auto">
@@ -27,9 +25,11 @@ export function Features({ featuresTitle, featuresSubtitle, items }: any) {
                   <div className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-white/5 border border-white/10 text-white group-hover:text-neon-cyan group-hover:border-neon-cyan/30 transition-colors">
                     <Icon size={24} />
                   </div>
-                  <h3 className="mb-3 text-xl font-bold text-zinc-100 group-hover:text-white transition-colors">{item.title}</h3>
+                  <h3 className="mb-3 text-xl font-bold text-zinc-100 group-hover:text-white transition-colors">
+                    {item.title}
+                  </h3>
                   <p className="text-zinc-400 leading-relaxed group-hover:text-zinc-300 transition-colors">
-                    {item.description}
+                    {item.desc}
                   </p>
                 </div>
               </SpotlightCard>

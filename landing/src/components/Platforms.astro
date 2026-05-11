@@ -39,7 +39,7 @@ const platformRow2 = allPlatforms.slice(6);
                 aria-hidden="true"
               >
                 {platform.iconSrc ? (
-                  <img src={platform.iconSrc} alt="" loading="lazy" />
+                  <img src={platform.iconSrc} alt={`${platform.label} logo`} loading="lazy" />
                 ) : (
                   <span>{platform.emoji}</span>
                 )}
@@ -65,7 +65,7 @@ const platformRow2 = allPlatforms.slice(6);
                 aria-hidden="true"
               >
                 {platform.iconSrc ? (
-                  <img src={platform.iconSrc} alt="" loading="lazy" />
+                  <img src={platform.iconSrc} alt={`${platform.label} logo`} loading="lazy" />
                 ) : (
                   <span>{platform.emoji}</span>
                 )}
@@ -123,7 +123,7 @@ const platformRow2 = allPlatforms.slice(6);
 
   .platform-row {
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     justify-content: center;
     gap: 10px;
   }
