@@ -199,11 +199,7 @@
                 "icon": "cloud-arrow-up",
                 "pages": [
                   "data/backup-sync",
-                  "data/webdav",
-                  {
-                    "group": "From Other Platforms",
-                    "pages": ["data/migration"]
-                  }
+                  "data/webdav"
                 ]
               },
               {
@@ -295,11 +291,7 @@
                 "icon": "cloud-arrow-up",
                 "pages": [
                   "zh/data/backup-sync",
-                  "zh/data/webdav",
-                  {
-                    "group": "从其他平台导入",
-                    "pages": ["zh/data/migration"]
-                  }
+                  "zh/data/webdav"
                 ]
               },
               {
