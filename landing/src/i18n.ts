@@ -69,6 +69,10 @@ const en = {
     title: '15 Platforms Supported',
     desc: 'Install once. Works with all your favorite AI assistants.',
   },
+  reviews: {
+    title: 'Loved by Users',
+    subtitle: 'Real feedback from power users across the globe',
+  },
   footer: {
     tagline: 'Readable, navigable, lasting AI conversations.',
     desc: 'Readable, navigable, lasting AI conversations.',
@@ -207,6 +211,10 @@ const zh = {
   platforms: {
     title: '支持 15 个平台',
     desc: '一次安装，覆盖你常用的所有 AI 助手',
+  },
+  reviews: {
+    title: '用户真实评价',
+    subtitle: '来自 Chrome 应用商店的真实好评',
   },
   footer: {
     tagline: '让 AI 对话可读、可导航、可沉淀',

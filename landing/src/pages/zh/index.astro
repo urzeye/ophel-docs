@@ -5,6 +5,7 @@ import Navbar from '../../components/Navbar.astro';
 import { Hero } from '../../components/Hero';
 import { Features } from '../../components/Features';
 import Platforms from '../../components/Platforms.astro';
+import { ReviewsMarquee } from '../../components/ReviewsMarquee';
 import Footer from '../../components/Footer.astro';
 
 const t = translations.zh;
@@ -12,12 +13,7 @@ const t = translations.zh;
 const FIREFOX_URL_ZH = 'https://addons.mozilla.org/zh-CN/firefox/addon/ophel-ai-chat-enhancer/';
 ---
 
-<BaseLayout
-  title={t.meta.title}
-  description={t.meta.description}
-  lang="zh-CN"
-  enPath="/"
->
+<BaseLayout title={t.meta.title} description={t.meta.description} lang="zh-CN" enPath="/">
   <Navbar t={t.nav} homeHref="/zh/" />
   <main>
     <Hero
@@ -44,6 +40,7 @@ const FIREFOX_URL_ZH = 'https://addons.mozilla.org/zh-CN/firefox/addon/ophel-ai-
       featuresSubtitle={t.features.desc}
       items={t.features.items}
     />
+    <ReviewsMarquee client:load title={t.reviews.title} subtitle={t.reviews.subtitle} />
     <Platforms t={t.platforms} locale="zh" />
   </main>
   <Footer t={t.footer} />
