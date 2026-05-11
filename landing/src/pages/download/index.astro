@@ -141,8 +141,8 @@ const iconImgs: Record<string, string> = {
           Supported Platforms
           <span class="h-px bg-white/20 flex-1"></span>
         </h2>
-        <div class="flex flex-col items-center gap-3">
-          <div class="flex flex-nowrap justify-center gap-3">
+        <div class="dl-sites-container flex flex-col items-center gap-3">
+          <div class="dl-sites-row flex flex-nowrap justify-center gap-3">
             {
               supportedSitesRow1.map((site) => (
                 <a
@@ -174,7 +174,7 @@ const iconImgs: Record<string, string> = {
               ))
             }
           </div>
-          <div class="flex flex-nowrap justify-center gap-3">
+          <div class="dl-sites-row flex flex-nowrap justify-center gap-3">
             {
               supportedSitesRow2.map((site) => (
                 <a
@@ -262,3 +262,16 @@ const iconImgs: Record<string, string> = {
   </main>
   <Footer t={t.footer} />
 </BaseLayout>
+
+<style>
+  @media (max-width: 768px) {
+    .dl-sites-container {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .dl-sites-row {
+      display: contents;
+    }
+  }
+</style>
