@@ -197,10 +197,7 @@
               {
                 "group": "Sync & Backup",
                 "icon": "cloud-arrow-up",
-                "pages": [
-                  "data/backup-sync",
-                  "data/webdav"
-                ]
+                "pages": ["data/backup-sync", "data/webdav"]
               },
               {
                 "group": "Privacy & Permissions",
@@ -289,10 +286,7 @@
               {
                 "group": "同步与备份",
                 "icon": "cloud-arrow-up",
-                "pages": [
-                  "zh/data/backup-sync",
-                  "zh/data/webdav"
-                ]
+                "pages": ["zh/data/backup-sync", "zh/data/webdav"]
               },
               {
                 "group": "隐私与权限",
