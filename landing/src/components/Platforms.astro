@@ -202,9 +202,15 @@ const platformRow2 = allPlatforms.slice(6);
     white-space: nowrap;
   }
 
-  @media (max-width: 640px) {
-    .platform-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+  @media (max-width: 768px) {
+    .platform-rows-container {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .platform-row {
+      display: contents;
     }
   }
 </style>
