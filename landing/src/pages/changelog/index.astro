@@ -55,14 +55,14 @@ function mdToHtml(md: string): string {
       // 无序列表
       .replace(
         /^\s*- (.+)$/gm,
-        '<li class="relative pl-6 text-zinc-400 leading-relaxed text-sm mb-2 before:content-[\'\'] before:absolute before:left-0 before:top-2.5 before:w-2 before:h-px before:bg-zinc-600">$1</li>',
+        '<li class="flex gap-2 text-zinc-400 leading-relaxed text-sm mb-2"><span class="mt-[0.6em] flex-shrink-0 w-2 h-px bg-zinc-600 inline-block"></span><span>$1</span></li>',
       )
       // 空行分段（被列表包裹时不额外加 p）
       .replace(/\n\n+/g, '\n')
       // 将连续 <li> 包进 <ul>
       .replace(
         /(<li[\s\S]*?<\/li>)(\n<li[\s\S]*?<\/li>)*/g,
-        (match) => `<ul class="mb-4">${match}</ul>`,
+        (match) => `<ul class="mb-4 list-none pl-0">${match}</ul>`,
       )
       // 去除 ul 内残余换行
       .replace(/<\/li>\n<li/g, '</li><li')

@@ -4,6 +4,10 @@ export type Lang = 'en' | 'zh';
 export const CHROME_STORE_URL =
   'https://chromewebstore.google.com/detail/ophel-ai-%E5%AF%B9%E8%AF%9D%E5%A2%9E%E5%BC%BA%E5%B7%A5%E5%85%B7/lpcohdfbomkgepfladogodgeoppclakd';
 
+/** Microsoft Edge 外接程序详情页 */
+export const EDGE_STORE_URL =
+  'https://microsoftedge.microsoft.com/addons/detail/ophel-atlas-ai-chat-navi/ffpenkdeifijngifjmbbpijfpdhlolga';
+
 const en = {
   nav: {
     features: 'Features',

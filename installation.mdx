@@ -1,8 +1,8 @@
 ---
-title: "Install Ophel Atlas on Chrome, Firefox, or as a Userscript"
+title: "Install Ophel Atlas on Chrome, Edge, Firefox, or as a Userscript"
 sidebarTitle: "Installation"
-description: "Install Ophel Atlas from the Chrome Web Store, Firefox Add-ons, Greasy Fork, or sideload it manually from GitHub Releases in four steps or fewer."
-keywords: ["install Ophel", "Chrome extension", "Firefox addon", "userscript", "Tampermonkey", "browser extension setup", "download"]
+description: "Install Ophel Atlas from the Chrome Web Store, Edge Add-ons, Firefox Add-ons, Greasy Fork, or sideload it manually from GitHub Releases in four steps or fewer."
+keywords: ["install Ophel", "Chrome extension", "Edge extension", "Edge Add-ons", "Firefox addon", "userscript", "Tampermonkey", "browser extension setup", "download"]
 ---
 
 Ophel Atlas is available as a browser extension for Chrome-based browsers and Firefox, and as a userscript for Tampermonkey. The browser extension is recommended — it offers a fuller feature set, better compatibility, and does not require developer mode after the initial install.
@@ -18,7 +18,7 @@ Ophel Atlas is available as a browser extension for Chrome-based browsers and Fi
 <div
   style={{
     display: "grid",
-    gridTemplateColumns: "repeat(3,1fr)",
+    gridTemplateColumns: "repeat(2,1fr)",
     gap: "16px",
     margin: "0 0 32px",
   }}
@@ -58,7 +58,7 @@ Ophel Atlas is available as a browser extension for Chrome-based browsers and Fi
           flexShrink: "0",
         }}
       />
-      Chrome / Edge
+      Chrome
     </span>
     <span
       style={{
@@ -76,6 +76,59 @@ Ophel Atlas is available as a browser extension for Chrome-based browsers and Fi
       />
       <img
         src="https://img.shields.io/chrome-web-store/stars/lpcohdfbomkgepfladogodgeoppclakd?logo=google-chrome&logoColor=white&color=4285F4"
+        style={{ display: "block", margin: "0", height: "20px" }}
+      />
+    </span>
+  </a>
+  <a
+    href="https://microsoftedge.microsoft.com/addons/detail/ophel-atlas-ai-chat-navi/ffpenkdeifijngifjmbbpijfpdhlolga"
+    target="_blank"
+    style={{
+      display: "flex",
+      flexDirection: "column",
+      gap: "10px",
+      padding: "16px",
+      border: "1px solid rgba(128,128,128,0.2)",
+      borderRadius: "12px",
+      textDecoration: "none",
+      color: "inherit",
+    }}
+  >
+    <span
+      style={{
+        display: "flex",
+        alignItems: "center",
+        gap: "7px",
+        fontWeight: "600",
+        fontSize: "14px",
+        margin: "0",
+        lineHeight: "1.4",
+      }}
+    >
+      <img
+        src="data:image/svg+xml;base64,PHN2ZyByb2xlPSJpbWciIHZpZXdCb3g9IjAgMCAyNCAyNCIKCXhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZmlsbD0iIzAwNzhENCI+Cgk8dGl0bGU+TWljcm9zb2Z0IEVkZ2U8L3RpdGxlPgoJPHBhdGggZD0iTTIxLjE3IDEyLjA0Yy4wNC4yOC4wNi41Ni4wNi44NGE5LjgzIDkuODMgMCAwMS05LjgzIDkuODMgOS44MyA5LjgzIDAgMDEtOS44My05LjgzQTkuODMgOS44MyAwIDAxMTEuNCAzLjA1Yy42OCAwIDEuMzQuMDcgMS45Ny4yQTcuMTUgNy4xNSAwIDAwMjAuOCAxMGE3LjIgNy4yIDAgMDAuMzcgMi4wNHpNMTEuMTcgNS41YTcuMzggNy4zOCAwIDAwLTcuMSA1LjQ0aDkuMjhhMi4yNSAyLjI1IDAgMDAyLjI1LTIuMjUgMi4yNSAyLjI1IDAgMDAtLjEtLjY3IDcuMzkgNy4zOSAwIDAwLTQuMzMtMi41MnptLjY2IDEzLjM4YzIuODcgMCA1LjQxLTEuNiA2Ljc1LTMuOThIOC43YTIuOTYgMi45NiAwIDAxLTIuOTUtMi45NXYtLjE0SDQuMWE3LjM4IDcuMzggMCAwMDcuNzMgNy4wN3oiLz4KPC9zdmc+Cg=="
+        style={{
+          display: "block",
+          width: "16px",
+          height: "16px",
+          margin: "0",
+          flexShrink: "0",
+        }}
+      />
+      Edge Add-ons
+    </span>
+    <span
+      style={{
+        display: "flex",
+        gap: "6px",
+        flexWrap: "wrap",
+        margin: "0",
+        padding: "0",
+        lineHeight: "1",
+      }}
+    >
+      <img
+        src="https://img.shields.io/badge/Edge_Add--ons-0078D7?logo=microsoft-edge&logoColor=white&style=flat"
         style={{ display: "block", margin: "0", height: "20px" }}
       />
     </span>
@@ -199,7 +252,7 @@ Ophel Atlas is available as a browser extension for Chrome-based browsers and Fi
 ## Install from a store
 
 <Tabs>
-  <Tab title="Chrome / Edge">
+  <Tab title="Chrome">
     Install directly from the Chrome Web Store — no developer mode required.
 
     <Steps>
@@ -207,7 +260,23 @@ Ophel Atlas is available as a browser extension for Chrome-based browsers and Fi
         Go to the [Ophel Atlas listing on the Chrome Web Store](https://chromewebstore.google.com/detail/ophel-ai-%E5%AF%B9%E8%AF%9D%E5%A2%9E%E5%BC%BA%E5%B7%A5%E5%85%B7/lpcohdfbomkgepfladogodgeoppclakd).
       </Step>
       <Step title="Click Add to Chrome">
-        Click **Add to Chrome** (or **Add to Edge** if you are on Edge). Confirm the permissions prompt.
+        Click **Add to Chrome** and confirm the permissions prompt.
+      </Step>
+      <Step title="Open a supported AI site">
+        Navigate to any [supported platform](#supported-platforms) — for example, [chatgpt.com](https://chatgpt.com) or [claude.ai](https://claude.ai). The Ophel panel appears automatically on the right side of the page.
+      </Step>
+    </Steps>
+
+  </Tab>
+  <Tab title="Edge Add-ons">
+    Install directly from the Microsoft Edge Add-ons store.
+
+    <Steps>
+      <Step title="Open the Edge Add-ons listing">
+        Go to the [Ophel Atlas listing on the Microsoft Edge Add-ons store](https://microsoftedge.microsoft.com/addons/detail/ophel-atlas-ai-chat-navi/ffpenkdeifijngifjmbbpijfpdhlolga).
+      </Step>
+      <Step title="Click Get">
+        Click **Get** and confirm the permissions prompt.
       </Step>
       <Step title="Open a supported AI site">
         Navigate to any [supported platform](#supported-platforms) — for example, [chatgpt.com](https://chatgpt.com) or [claude.ai](https://claude.ai). The Ophel panel appears automatically on the right side of the page.

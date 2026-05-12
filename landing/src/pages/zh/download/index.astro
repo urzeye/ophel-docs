@@ -2,7 +2,7 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Navbar from '../../../components/Navbar.astro';
 import Footer from '../../../components/Footer.astro';
-import { translations, CHROME_STORE_URL } from '../../../i18n';
+import { translations, CHROME_STORE_URL, EDGE_STORE_URL } from '../../../i18n';
 import { SpotlightCard } from '../../../components/ui/SpotlightCard';
 import { getSupportedPlatforms } from '../../../lib/supported-platforms';
 
@@ -17,6 +17,15 @@ const platforms = [
     cta: '安装到 Chrome',
     href: CHROME_STORE_URL,
     note: '需要 Chrome 88+',
+  },
+  {
+    name: 'Edge',
+    icon: '🔷',
+    badge: null,
+    desc: '从 Microsoft Edge 外接程序商店直接安装，专为 Edge 浏览器适配。',
+    cta: '安装到 Edge',
+    href: EDGE_STORE_URL,
+    note: '需要 Edge 88+',
   },
   {
     name: 'Firefox',
@@ -53,10 +62,10 @@ const supportedSitesRow2 = allSupportedSites.slice(6);
 
 const iconImgs: Record<string, string> = {
   Chrome: '/icons/chrome.svg',
+  Edge: '/icons/edge.svg',
   Firefox: '/icons/firefox.svg',
   油猴脚本: '/icons/tampermonkey.svg',
   'GitHub Releases': '/icons/github.svg',
-  // Edge: '/icons/edge.svg',  // Edge 店上架审核中，暂时注释
 };
 ---
 
