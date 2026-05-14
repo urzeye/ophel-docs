@@ -7,6 +7,14 @@ description: "Ophel Atlas 的所有重要更改均记录于此。"
 
 </Update>
 
+<Update label="v1.0.49">
+
+  ### 🐛 问题修复
+
+  - **macOS CJK 字体修复后 Windows UI 字体回退异常**：在 Windows 与其他非 macOS 平台恢复 `system-ui` 优先，仅在 macOS 上保留 CJK 字体位于 `system-ui` 前方。同时移除 Inter 本地回退中的 Arial/Roboto 别名，避免未内置 Inter 的环境混用不相关字体，改为回落到原生系统 UI 字体。（#489 回归，#491）
+  - **macOS CJK 字体显示过细（PingFang SC）**：将 macOS CJK 首选字体由 `PingFang SC` 改为 `Hiragino Sans SC`（PingFang SC 保留为兜底）。黑体-简笔画更粗，正常字重下在 macOS 上可读性更佳。
+</Update>
+
 <Update label="v1.0.48">
 
   ### 🐛 问题修复
@@ -1011,6 +1019,8 @@ description: "Ophel Atlas 的所有重要更改均记录于此。"
   - 开源透明
 
 
+  [1.0.49]: https://github.com/urzeye/ophel/releases/tag/v1.0.49
+  [1.0.48]: https://github.com/urzeye/ophel/releases/tag/v1.0.48
   [1.0.47]: https://github.com/urzeye/ophel/releases/tag/v1.0.47
   [1.0.46]: https://github.com/urzeye/ophel/releases/tag/v1.0.46
   [1.0.45]: https://github.com/urzeye/ophel/releases/tag/v1.0.45
