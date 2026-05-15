@@ -3,6 +3,37 @@ title: "Changelog"
 description: "All notable changes to Ophel Atlas are documented here."
 ---
 
+<Update label="This week — May 11–15, 2026">
+
+  A recap of what shipped this week across `v1.0.49` and `v1.0.50`.
+
+  ### 🐛 Bug fixes
+
+  **Layout & width**
+
+  - Page width and user query width adjustments now work correctly on DeepSeek, Kimi, and Qianwen. See [Layout](/customization/layout).
+  - Code blocks on ChatGLM keep a consistent width when [page width](/customization/layout) is enabled.
+  - Code blocks now stand out clearly from the message bubble on Kimi, DeepSeek, and similar sites.
+
+  **Outline & shortcuts**
+
+  - Long conversations on AI Studio and ChatGPT now show the full [outline](/features/outline) instead of only nearby messages.
+  - The `Alt+/` model‑switch [shortcut](/customization/shortcuts) on AI Studio no longer reports "model selector not found".
+
+  **Reading experience**
+
+  - The copy button in user‑message code blocks stays visible while scrolling.
+  - Code and math in Qianwen user messages render correctly again.
+  - Clean mode hides the new promotional banners on ChatGLM, Ima, and Kimi. See [Site settings](/customization/site-settings).
+
+  **Theme & typography**
+
+  - The circular theme‑switch animation is back on ChatGPT. See [Appearance](/customization/appearance).
+  - Windows UI font priority restored after last week's macOS CJK fix, so non‑macOS systems no longer mix unrelated fallback fonts.
+  - macOS now prefers Hiragino Sans SC over PingFang SC for CJK text, making Simplified Chinese more legible at normal weight.
+
+</Update>
+
 <Update label="v1.0.50">
 
   ### 🐛 Bug Fixes
