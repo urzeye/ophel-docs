@@ -3,6 +3,18 @@ title: "Changelog"
 description: "All notable changes to Ophel Atlas are documented here."
 ---
 
+<Update label="v1.0.50">
+
+  ### 🐛 Bug Fixes
+
+  - **AI Studio outline missed prompts in long conversations**: The [outline](/features/outline) now reads AI Studio's full conversation timeline and reveals off-screen user prompts when you click them, so every turn appears in long, virtualized chats.
+  - **ChatGPT outline shrank while scrolling**: ChatGPT outline entries now persist as you scroll. Cached entries remain clickable and jump back to the original turn even after ChatGPT unmounts older messages. (#402)
+  - **ChatGPT theme toggle animation invisible after site update**: The circular reveal when toggling [theme](/customization/appearance) on ChatGPT works again after their recent redesign broke the View Transition target.
+  - **Code copy button disappeared when scrolling user-query code blocks**: The copy button now stays pinned to the top-right of code blocks regardless of how far you scroll inside them, and no longer causes line-wrap glitches.
+  - **User-query code blocks blended into the bubble on Kimi, DeepSeek, and similar sites**: Code blocks inside your messages now use a semi-transparent overlay and matching border, so they stay visually distinct on every site and theme — including dark mode on DeepSeek. A subtle bubble overlay was also added for sites where user bubbles have no native background.
+
+</Update>
+
 <Update label="vUnreleased">
 
   ### 🐛 Bug Fixes
