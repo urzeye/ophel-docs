@@ -98,7 +98,9 @@ function buildMdx(versions, title, description) {
 // ── Sync a single language ──────────────────────────────────────────────────
 async function syncLanguage(lang, source) {
 	const raw = await fetchSource(source);
-	const versions = parseVersions(raw);
+	const versions = parseVersions(raw).filter(
+		(v) => v.label.toLowerCase() !== "unreleased"
+	);
 	console.log(
 		`[${lang}] Parsed ${versions.length} versions (latest: v${versions[0]?.label})`
 	);

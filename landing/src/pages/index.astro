@@ -1,5 +1,6 @@
 ---
 import { translations, CHROME_STORE_URL } from '../i18n';
+import { getLatestVersion } from '../lib/changelog';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Navbar from '../components/Navbar.astro';
 import { Hero } from '../components/Hero';
@@ -9,6 +10,7 @@ import { ReviewsMarquee } from '../components/ReviewsMarquee';
 import Footer from '../components/Footer.astro';
 
 const t = translations.en;
+const latestVersion = getLatestVersion();
 
 const FIREFOX_URL_EN = 'https://addons.mozilla.org/en-US/firefox/addon/ophel-ai-chat-enhancer/';
 ---
@@ -33,6 +35,7 @@ const FIREFOX_URL_EN = 'https://addons.mozilla.org/en-US/firefox/addon/ophel-ai-
       secondaryLink="https://ophel.app/docs/"
       alternateInstallLabel="See other install options"
       alternateInstallLink="/download/"
+      version={latestVersion}
       browserCtas={{
         chrome: { label: 'Install on Chrome', href: CHROME_STORE_URL },
         edge: { label: 'Install on Chrome', href: CHROME_STORE_URL },

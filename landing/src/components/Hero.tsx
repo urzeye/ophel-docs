@@ -32,6 +32,7 @@ export function Hero({
   alternateInstallLabel,
   alternateInstallLink,
   browserCtas,
+  version,
 }: {
   titleLine1: string;
   titleLine2: string;
@@ -43,6 +44,7 @@ export function Hero({
   alternateInstallLabel: string;
   alternateInstallLink: string;
   browserCtas?: Record<string, BrowserCta>;
+  version?: string;
 }) {
   const [ctaLabel, setCtaLabel] = useState(primaryCta);
   const [ctaHref, setCtaHref] = useState(primaryLink);
@@ -91,7 +93,7 @@ export function Hero({
         <motion.div variants={itemVars} className="mb-8 flex justify-center">
           <div className="inline-flex items-center rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-sm text-zinc-300 backdrop-blur-md transition-colors hover:bg-white/[0.08]">
             <span className="flex h-2 w-2 rounded-full bg-neon-cyan mr-2 animate-pulse shadow-[0_0_8px_rgba(0,240,255,0.8)]"></span>
-            Ophel v1.0.47 is live
+            Ophel {version ? `v${version} is live` : 'is live'}
           </div>
         </motion.div>
 

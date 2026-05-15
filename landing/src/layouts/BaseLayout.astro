@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { getLatestVersion } from '../lib/changelog';
 
 interface Props {
   title?: string;
@@ -42,7 +43,7 @@ const jsonLd = {
   applicationCategory: 'BrowserApplication',
   applicationSubCategory: 'ProductivityApplication',
   operatingSystem: 'Chrome, Firefox, Edge',
-  softwareVersion: '1.0.47',
+  softwareVersion: getLatestVersion() || '1.0.50',
   url: 'https://ophel.app',
   description:
     'Transform AI conversations into readable, navigable, and reusable knowledge. Supports ChatGPT, Gemini, Claude, and 15 platforms.',
