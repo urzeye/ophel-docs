@@ -3,6 +3,37 @@ title: "更新日志"
 description: "Ophel Atlas 的所有重要更改均记录于此。"
 ---
 
+<Update label="本周更新 — 2026 年 5 月 11–15 日">
+
+  本周 `v1.0.49` 与 `v1.0.50` 发布内容回顾。
+
+  ### 🐛 问题修复
+
+  **布局与宽度**
+
+  - 修复了 DeepSeek、Kimi、千问的页面宽度与用户提问宽度调整不生效或对齐异常的问题。详见 [布局设置](/zh/customization/layout)。
+  - ChatGLM 开启[页面宽度](/zh/customization/layout)调整后，代码块宽度保持一致。
+  - Kimi、DeepSeek 等站点的代码块背景色现在能与消息气泡清晰区分。
+
+  **大纲与快捷键**
+
+  - AI Studio 与 ChatGPT 长对话现在能完整显示[大纲](/zh/features/outline)，不再只显示当前可见消息。
+  - AI Studio 的 `Alt+/` 模型切换[快捷键](/zh/customization/shortcuts)不再提示「找不到模型选择器」。
+
+  **阅读体验**
+
+  - 在用户消息代码块内滚动时，复制按钮保持可见。
+  - 千问用户消息中的代码与公式恢复正常渲染。
+  - 净化模式正确隐藏 ChatGLM、Ima、Kimi 的新版推广横幅。详见[站点设置](/zh/customization/site-settings)。
+
+  **主题与字体**
+
+  - ChatGPT 切换明暗主题时圆形扩散动画恢复正常。详见[外观主题](/zh/customization/appearance)。
+  - 上周 macOS CJK 修复带来的 Windows UI 字体回退异常已恢复，非 macOS 系统不再混用不相关的回退字体。
+  - macOS CJK 字体首选改为 Hiragino Sans SC（PingFang SC 兜底），正常字重下简体中文更易读。
+
+</Update>
+
 <Update label="v1.0.50">
 
   ### 🐛 问题修复
