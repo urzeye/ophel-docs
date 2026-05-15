@@ -3,6 +3,27 @@ title: "Changelog"
 description: "All notable changes to Ophel Atlas are documented here."
 ---
 
+<Update label="Week of May 11, 2026">
+
+  This week's releases (v1.0.49 and v1.0.50) focus on stability — width and layout fixes across more AI sites, better font rendering on macOS and Windows, and a batch of fixes for the outline, code blocks, and shortcuts.
+
+  ### 🐛 Bug fixes
+
+  - **Page width and user query width now work consistently** on [DeepSeek, Kimi, and Qianwen](/customization/site-settings) — widths apply to both messages and the input box and stay aligned after the fix.
+  - **Clean mode hides new promotional banners** on ChatGLM, Tencent ima, and Kimi again. See [Clean mode](/enhancements/content).
+  - **Code blocks render more consistently**: fixed inconsistent widths on ChatGLM when page-width adjustment is on, hard-to-read code blocks on Kimi and DeepSeek where bubbles blended into the background, and the copy button disappearing when scrolling inside a code block in user messages.
+  - **Qianwen user messages**: code and math now render correctly.
+  - **Outline reliability**: in long conversations on AI Studio and ChatGPT, the [outline](/features/outline) no longer drops to only showing nearby messages.
+  - **Shortcuts**: `Alt+/` no longer reports "model selector not found" on AI Studio. See [Shortcuts](/customization/shortcuts).
+  - **ChatGPT theme switch**: restored the circular theme-switch animation.
+
+  ### 🔤 Typography
+
+  - **macOS CJK text** now uses Hiragino Sans SC (with PingFang SC as fallback) — heavier strokes render more legibly at normal weight.
+  - **Windows UI font regression fixed**: `system-ui` is back in priority on Windows and other non-macOS platforms, while macOS keeps CJK fonts ahead of `system-ui`. Environments without bundled Inter now fall back to the native system UI font instead of mixing unrelated fonts.
+
+</Update>
+
 <Update label="v1.0.50">
 
   ### 🐛 Bug Fixes
