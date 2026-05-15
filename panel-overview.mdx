@@ -61,9 +61,17 @@ You can drag the title bar to reposition the panel anywhere on screen when it is
 
 The floating button group at the screen edge is your fastest access point to common actions without opening the full panel.
 
-- The group **auto-collapses** into a pill shape after about 5 seconds of inactivity. Move your cursor within roughly 150 px of it to expand it again.
+- The group **auto-collapses** into a pill shape after about 5 seconds of inactivity. By default, moving your cursor within **150 px** of it expands it again. The wake distance is configurable: go to **Settings → Quick Buttons → Proximity Wake Radius** (0–300 px). Set it to **0** to enable dwell-hover mode — the group only expands after the cursor rests on the pill for 300 ms, so simply passing through it does not trigger expansion.
 - **Long-press and drag** any button to reposition the entire group to a different spot on screen.
 - Click **☰ (Toolbox)** to reveal additional actions: export conversation, move to folder, assign tags, toggle scroll lock, model lock, and more.
+
+**Additional settings** (`Settings → Quick Buttons`):
+
+| Setting | Description |
+| ------- | ----------- |
+| **Proximity Wake Radius** | Distance (px) at which the cursor wakes up the collapsed pill (default 150). Set to 0 for dwell-hover mode. |
+| **Opacity** | Transparency of the button group in its collapsed / idle state. |
+| **Hide when panel is open** | Automatically collapses the quick button group while the panel is open; it reappears when the panel closes. |
 
 ## Keyboard shortcuts
 
