@@ -3,6 +3,54 @@ title: "Changelog"
 description: "All notable changes to Ophel Atlas are documented here."
 ---
 
+<Update label="This week — v1.0.48 to v1.0.50" description="May 13–15, 2026">
+
+  Three bug-fix releases shipped this week (v1.0.48, v1.0.49, v1.0.50), focused on site adapter updates and visual polish across DeepSeek, Kimi, Qianwen, ChatGLM, AI Studio, ChatGPT, Gemini, and Claude.
+
+  ### 🐛 Bug Fixes
+
+  **Site layout and styling**
+
+  - Page-width and user-question-width adjustments now apply correctly on DeepSeek, Kimi, and Qianwen. See [Layout](/customization/layout).
+  - Code blocks on ChatGLM keep a consistent width when page-width adjustment is enabled.
+  - Code blocks are now easier to distinguish from the message bubble background on Kimi, DeepSeek, and other sites.
+  - Clean mode hides the new promotional banners on ChatGLM, Ima, and Kimi. See [Site settings](/customization/site-settings).
+  - Code and math in Qianwen user messages render correctly again.
+  - User query code blocks no longer wrap too early next to the copy button, and the copy button stays visible while scrolling inside a code block.
+  - Syntax highlighting in user query code blocks is restored on sites that were overriding hljs token colors.
+
+  **ChatGPT**
+
+  - Model lock works again after ChatGPT's 2025 redesign, including non-English locales.
+  - The outline now shows all messages in long ChatGPT conversations instead of only nearby ones (also fixes the same issue on AI Studio).
+  - The circular theme-switch animation appears as expected. See [Appearance](/customization/appearance).
+
+  **Gemini**
+
+  - Code indentation is preserved when copying or rendering user query Markdown.
+  - The Gemini font no longer reverts to Times New Roman when user messages contain code blocks (primarily Firefox / Zen Browser).
+
+  **AI Studio**
+
+  - The `Alt+/` shortcut no longer reports "model selector not found". See [Shortcuts](/customization/shortcuts).
+
+  **Theme sync**
+
+  - User message bubbles keep their original platform colors when native theme sync is enabled on ChatGPT, Kimi, and Gemini.
+
+  **Fonts**
+
+  - macOS CJK rendering switched to Hiragino Sans SC (with PingFang SC as fallback) for heavier, more legible strokes at normal weight.
+  - Restored `system-ui` priority on Windows and other non-macOS platforms, fixing a UI font regression introduced by the earlier macOS CJK fix.
+  - Removed Arial/Roboto local aliases from the Inter fallback so environments without bundled Inter fall back to the native system UI font.
+  - CJK characters render correctly on English-locale macOS instead of falling back to Hiragino (Japanese) glyphs.
+
+  **Other**
+
+  - "Love Ophel?" store icons in Settings → About stay at a consistent size when platform names wrap.
+
+</Update>
+
 <Update label="v1.0.50">
 
   ### 🐛 Bug Fixes
