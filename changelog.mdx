@@ -3,6 +3,43 @@ title: "Changelog"
 description: "All notable changes to Ophel Atlas are documented here."
 ---
 
+<Update label="Week of May 12, 2026">
+
+  This week brought three back-to-back stability releases (v1.0.48 – v1.0.50) focused on platform adapter fixes, typography polish, and layout consistency across supported AI sites.
+
+  ### 🐛 Bug fixes
+
+  **Platform adapters**
+
+  - **ChatGPT model lock** restored after the 2025 ChatGPT redesign that removed the header model switcher, and now works correctly in non-English locales. See [Site settings](/customization/site-settings).
+  - **AI Studio and ChatGPT outlines** now show all messages in long conversations instead of only nearby ones. See [Smart outline](/features/outline).
+  - **Alt+/ shortcut** on AI Studio no longer reports "model selector not found". See [Shortcuts](/customization/shortcuts).
+  - **DeepSeek, Kimi, and Qianwen** page-width and user-question-width adjustments now apply correctly and stay aligned. See [Layout](/customization/layout).
+  - **Qianwen** user messages render code and math correctly.
+  - **ChatGLM** code blocks no longer display with inconsistent widths when page-width adjustment is on.
+  - **Clean mode** now hides new promotional banners on ChatGLM, Ima, and Kimi. See [Reading enhancements](/enhancements/reading).
+
+  **User messages**
+
+  - **Gemini user queries** preserve code indentation when copied or exported.
+  - **Gemini user messages** keep Google Sans / Roboto rendering when they contain code blocks (previously fell back to Times New Roman on Firefox / Zen Browser).
+  - **Code block copy button** in user queries no longer disappears when scrolling, and no longer forces premature line wraps.
+  - **Syntax highlighting** in user-query code blocks is no longer overridden by site CSS.
+  - **User message bubble** background keeps its native platform color on ChatGPT, Kimi, and Gemini when theme sync is enabled.
+  - **Code block contrast** improved on Kimi, DeepSeek, and similar sites so blocks stand out from the message bubble background.
+
+  **Typography**
+
+  - **macOS CJK rendering** now uses `Hiragino Sans SC` (with `PingFang SC` as fallback) for heavier, more legible strokes, and no longer falls back to Japanese glyphs in English locale.
+  - **Windows UI fonts** restored to `system-ui` priority after the macOS CJK fix caused a regression.
+
+  **UI polish**
+
+  - **ChatGPT theme switch** now plays the circular expand animation again.
+  - **Settings → About** store icons keep a consistent size when platform names wrap; the German "Edge Add-on" label was shortened to match other locales.
+
+</Update>
+
 <Update label="v1.0.50">
 
   ### 🐛 Bug Fixes

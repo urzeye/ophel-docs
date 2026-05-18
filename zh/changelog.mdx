@@ -3,6 +3,43 @@ title: "更新日志"
 description: "Ophel Atlas 的所有重要更改均记录于此。"
 ---
 
+<Update label="2026 年 5 月 12 日当周">
+
+  本周连续发布三个稳定性版本（v1.0.48 – v1.0.50），重点修复各 AI 站点适配、排版细节与布局一致性问题。
+
+  ### 🐛 问题修复
+
+  **站点适配**
+
+  - **ChatGPT 模型锁定**：适配 2025 ChatGPT 新版页面（移除了顶部模型切换按钮）后恢复正常，并在非英文界面下也能正确识别。详见[站点设置](/zh/customization/site-settings)。
+  - **AI Studio 与 ChatGPT 大纲**：长对话中不再只显示当前可见消息，恢复完整大纲。详见[智能大纲](/zh/features/outline)。
+  - **AI Studio `Alt+/` 快捷键**：不再提示「找不到模型选择器」。详见[快捷键](/zh/customization/shortcuts)。
+  - **DeepSeek、Kimi、千问**：页面宽度与用户提问宽度调整重新生效且对齐正常。详见[布局](/zh/customization/layout)。
+  - **千问**：用户消息中的代码与数学公式可正常渲染。
+  - **ChatGLM**：开启页面宽度调整后，代码块宽度不再忽宽忽窄。
+  - **净化模式**：可正确隐藏 ChatGLM、Ima、Kimi 新版的活动推广区。详见[阅读增强](/zh/enhancements/reading)。
+
+  **用户消息**
+
+  - **Gemini 用户提问**：复制或导出时保留代码缩进。
+  - **Gemini 用户消息**：包含代码块时不再回退为 Times New Roman，正确保留 Google Sans / Roboto 字体（主要影响 Firefox / Zen Browser）。
+  - **代码复制按钮**：在用户提问代码块内向下滚动时不再消失，也不会再挤压首行宽度造成提前换行。
+  - **代码语法高亮**：用户提问代码块的高亮颜色不再被站点 CSS 覆盖。
+  - **用户消息气泡**：开启原生主题同步后，ChatGPT、Kimi、Gemini 的用户气泡保留原生平台颜色。
+  - **代码块对比度**：在 Kimi、DeepSeek 等站点下与消息气泡背景区分更明显。
+
+  **字体排版**
+
+  - **macOS CJK 字体**：首选改为 `Hiragino Sans SC`（保留 `PingFang SC` 作为兜底），笔画更粗更易读，英文系统下也不再回退到日文字形。
+  - **Windows UI 字体**：修复 macOS CJK 调整后的回归问题，恢复 `system-ui` 优先级。
+
+  **界面细节**
+
+  - **ChatGPT 主题切换**：圆形扩散动画恢复正常。
+  - **设置 → 关于**：商店图标在平台名称换行时仍保持一致大小；德语「Edge Add-on」缩短以与其他语言保持一致。
+
+</Update>
+
 <Update label="v1.0.50">
 
   ### 🐛 问题修复
