@@ -1,36 +1,60 @@
-addEventListener("fetch", (event) => {
-	event.respondWith(handleRequest(event.request));
-});
+export default {
+	async fetch(request) {
+		try {
+			const url = new URL(request.url);
 
-async function handleRequest(request) {
-	try {
-		const urlObject = new URL(request.url);
+			// .well-known 路径直接透传
+			if (url.pathname.startsWith("/.well-known/")) {
+				return fetch(request);
+			}
 
-		if (/^\/docs/.test(urlObject.pathname)) {
-			const DOCS_URL = "urzeye.mintlify.dev";
-			const CUSTOM_URL = "ophel.app";
+			// /docs 路径代理到 Mintlify
+			if (url.pathname === "/docs" || url.pathname.startsWith("/docs/")) {
+				const DOCS_URL = "urzeye.mintlify.dev";
+				const CUSTOM_URL = "ophel.app";
 
-			let url = new URL(request.url);
-			url.hostname = DOCS_URL;
+				const mintlifyUrl = new URL(request.url);
+				mintlifyUrl.hostname = DOCS_URL;
 
-			let proxyRequest = new Request(url, request);
-			proxyRequest.headers.set("Host", DOCS_URL);
-			proxyRequest.headers.set("X-Forwarded-Host", CUSTOM_URL);
-			proxyRequest.headers.set("X-Forwarded-Proto", "https");
+				const proxiedRequest = new Request(mintlifyUrl.toString(), {
+					method: request.method,
+					headers: (() => {
+						const headers = new Headers(request.headers);
+						headers.set("Host", DOCS_URL);
+						headers.set("X-Forwarded-Host", CUSTOM_URL);
+						headers.set("X-Forwarded-Proto", "https");
+						return headers;
+					})(),
+					body: ["GET", "HEAD"].includes(request.method)
+						? undefined
+						: request.body,
+					redirect: "follow",
+				});
 
-			return await fetch(proxyRequest);
+				return fetch(proxiedRequest);
+			}
+
+			// 其他请求转发到 Cloudflare Pages
+			const PAGES_HOST = "ophel-docs.pages.dev";
+			const pagesUrl = new URL(request.url);
+			pagesUrl.hostname = PAGES_HOST;
+
+			const pagesRequest = new Request(pagesUrl.toString(), {
+				method: request.method,
+				headers: (() => {
+					const headers = new Headers(request.headers);
+					headers.set("Host", PAGES_HOST);
+					return headers;
+				})(),
+				body: ["GET", "HEAD"].includes(request.method)
+					? undefined
+					: request.body,
+				redirect: "follow",
+			});
+
+			return fetch(pagesRequest);
+		} catch (error) {
+			return new Response("Service unavailable", { status: 503 });
 		}
-
-		// 非 /docs 请求转发到 Cloudflare Pages（不能用 fetch(request)，否则循环）
-		const PAGES_HOST = "ophel-docs.pages.dev";
-		let pagesUrl = new URL(request.url);
-		pagesUrl.hostname = PAGES_HOST;
-
-		let pagesRequest = new Request(pagesUrl, request);
-		pagesRequest.headers.set("Host", PAGES_HOST);
-
-		return await fetch(pagesRequest);
-	} catch (error) {
-		return new Response("Service unavailable", { status: 503 });
-	}
-}
+	},
+};
