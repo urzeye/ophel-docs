@@ -189,7 +189,7 @@ export const reviews: Review[] = [
     avatar:
       'https://lh3.googleusercontent.com/a-/ALV-UjVwv0jFS2TRGiNOMB4xl4BXF5j1D5jRIlR6t-4xgaUSpNIsYWc=s48-w48-h48',
     text: '实在太好用了，老师请把收款码贴出来，求求。',
-    weight: 3,
+    weight: 5,
   },
   {
     id: 'pathan-boks',
@@ -570,6 +570,46 @@ export const reviews: Review[] = [
       'https://lh3.googleusercontent.com/a-/ALV-UjVkzer_9WP7uigP9Q9dneH7kzLV8dlGt4MLxeMcKrVMiwStA8s=s48-w48-h48',
     text: '相当棒的插件，瑕不掩瑜，非常好用。',
     weight: 2,
+  },
+  {
+    id: 'lokesh-Dewangan',
+    name: 'lokesh Dewangan',
+    avatar:
+      'https://lh3.googleusercontent.com/a/ACg8ocIYvDwmJKke7aMN5DiGZ0wgbbaQbIlm6AYQhnAOhHGTw0pHPA=s96-w96-h96',
+    text: 'GOOD',
+    weight: 1,
+  },
+  {
+    id: 'Lucy-Chiang',
+    name: 'Lucy Chiang',
+    avatar:
+      'https://lh3.googleusercontent.com/a/ACg8ocL79PfaiTIm-c_6pr510aWDDMx4ghSdSgS7Q8jW9TWl5IwcAbh6=s96-w96-h96',
+    text: '功能齊全，很好用',
+    weight: 1,
+  },
+  {
+    id: 'xw',
+    name: 'xw',
+    avatar:
+      'https://lh3.googleusercontent.com/a/ACg8ocI5dAOGQ3p7T3ePx6TOfxgbPeFguO0_7-8VBG1-7o6TLCl51w=s96-w96-h96',
+    text: '太赞了，非常好非常全的功能！',
+    weight: 1,
+  },
+  {
+    id: 'wujingfeng',
+    name: '吴靖烽',
+    avatar:
+      'https://lh3.googleusercontent.com/a-/ALV-UjUCa434TacAUF9sicOFDHoM96zPD9KeXFJtf8gSEjQoroL9igE=s96-w96-h96',
+    text: '很好用的扩展，主流AI网站都有覆盖，不再需要为每个网站单独安装扩展管理文件夹分类',
+    weight: 5,
+  },
+  {
+    id: 'xianword',
+    name: 'xianword',
+    avatar:
+      'https://lh3.googleusercontent.com/a-/ALV-UjXYH8m6UdZk8cJqZqJoWEeKKTVGNnPopzj_9_7ghaqfnkgSb33C=s96-w96-h96',
+    text: '太棒了！！！',
+    weight: 4,
   },
 ];
 
