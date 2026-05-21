@@ -3,31 +3,6 @@ title: "Changelog"
 description: "All notable changes to Ophel Atlas are documented here."
 ---
 
-<Update label="Week of May 20, 2026">
-
-  Three releases shipped this week (v1.0.49 – v1.0.51), focused on smoother conversation handling and reliable long-chat exports across ChatGPT, AI Studio, and 12 other sites.
-
-  ### ✨ New features
-
-  - **Proximity wake radius for Quick Buttons**: A new slider in [Quick Buttons settings](/panel-overview) controls how close the cursor must be before the floating widget auto-expands. Set it to **0** for a true dwell-hover mode — the widget only expands after the cursor rests on it for 300 ms, preventing accidental triggers as you move across the screen.
-  - **Drag conversations into folders**: In the [Conversations tab](/features/conversations), drop a chat onto any folder to move it. No more right-click menus for simple reorganization.
-
-  ### 🔧 Updates
-
-  - **macOS font polish**: CJK text now uses Hiragino Sans SC by default for better legibility, while Windows keeps its native `system-ui` stack — no more thin or mismatched glyphs across platforms. See [Appearance & themes](/customization/appearance).
-
-  ### 🐛 Bug fixes
-
-  - **ChatGPT outlines and navigation in long chats**: The [outline](/features/outline) now stays complete and clickable in long conversations, and no longer lags or shows empty entries when you switch between chats.
-  - **Reliable long-conversation exports**: ChatGPT and AI Studio exports have been re-engineered to handle virtualized message lists. No more duplicated, out-of-order, or truncated turns — every user prompt, reply, and thinking block is captured in one pass.
-  - **Conversation titles on shared pages**: Browser tab titles and exported Markdown headings now display correctly on shared (non-owned) conversation pages across 12 sites, including ChatGPT, Gemini, Claude, Grok, AI Studio, Kimi, DeepSeek, and more.
-  - **Floating panel positioning preview**: The default edge-distance setting now lives under Floating panel mode only, and dragging or adjusting the slider previews the panel position in real time.
-  - **Page width and rendering fixes**: Width adjustments and user-message rendering are restored on DeepSeek, Kimi, and Qianwen. Code blocks now stand out from message bubbles on Kimi and DeepSeek, and ChatGLM code blocks render at consistent widths.
-  - **Misc**: Fixes for the `Alt+/` shortcut on AI Studio, copy buttons inside long code blocks, and the circular theme-switch animation on ChatGPT.
-
-  Releases: [v1.0.49](https://github.com/urzeye/ophel/releases/tag/v1.0.49) · [v1.0.50](https://github.com/urzeye/ophel/releases/tag/v1.0.50) · [v1.0.51](https://github.com/urzeye/ophel/releases/tag/v1.0.51)
-</Update>
-
 <Update label="v1.0.51">
 
   ### ✨ New Features
