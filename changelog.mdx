@@ -3,37 +3,6 @@ title: "Changelog"
 description: "All notable changes to Ophel Atlas are documented here."
 ---
 
-<Update label="Week of May 18, 2026">
-
-  This week shipped two releases — **v1.0.51** and **v1.0.52** — focused on smoother panel interactions, tab title clarity, and a wave of fixes for ChatGPT, Gemini, and AI Studio long-conversation workflows.
-
-  ### ✨ New features
-
-  - **Hover the Ophel logo to peek at the panel** — When the panel is collapsed into the Quick Buttons logo, hovering now opens a temporary panel preview anchored beside the Quick Buttons group. Clicking still toggles the panel as usual. See [Panel overview](/panel-overview).
-  - **Quick Buttons proximity wake radius** — A new slider in `Settings → Quick Buttons` controls how close the cursor must be before the floating widget auto-expands (default 150 px). Set it to **0** for true dwell-hover mode — the widget only expands after the cursor rests on the water-drop for 300 ms.
-  - **Drag conversations into folders** — In the Conversations tab, drag any chat onto a folder to move it there. Thanks @t0ny-peng. See [Conversations](/features/conversations).
-  - **Tab status indicator: hide checkmark when read** — A new option keeps the ✅ completion icon visible only until you view the tab, then hides it automatically. See [Tab notifications](/enhancements/tab-notifications).
-  - **Title format token chips** — `{status}`, `{title}`, and `{model}` placeholders in the title format input now render as styled blue chips, making templates easier to read and edit.
-
-  ### 🔧 Updates
-
-  - **Reading history is now scoped to your own conversations** — Reading history saves and resumes positions only on owned conversation pages; shared pages, new-chat routes, and other site URLs no longer trigger auto-resume. See [Reading history](/enhancements/reading).
-  - **Conversation sync cleanup** — Manual sync now removes conversations deleted on the same site/account, and opens Gemini's recent chats section when needed before syncing.
-  - **Floating panel settings UX** — The default edge-distance margin setting only appears under Floating panel mode now, and previews update in real time when you adjust margin or position.
-
-  ### 🐛 Bug fixes
-
-  - **ChatGPT outline and navigation in long chats** — Resolved cases where the outline was incomplete, clicks failed to navigate, or switching conversations caused stale or empty headings.
-  - **ChatGPT export duplication and truncation** — Re-engineered the export pipeline to handle virtualization, so every turn is loaded, ordered correctly, and deduplicated in long conversations.
-  - **AI Studio export missed turns and looped** — Rewrote the export collector so every user prompt, assistant reply, attachment, and "thoughts" turn is captured in a single pass.
-  - **Shared conversation titles across 12 sites** — Browser tab titles and exported Markdown headings now work correctly on shared (non-owned) conversation pages.
-  - **Gemini Library page "Open in New Tab"** — Adapted to the new `/library` path (renamed from `/mystuff`) and adjusted button position to avoid overlap with Gemini's native delete button.
-  - **Gemini sidebar redesign compatibility** — Updated the Gemini adapter to support the new sidebar items, restoring conversation ID/title extraction and navigation.
-  - **Tab title `->` duplication** — Fixed a race condition where the auto-rename title format could repeatedly append `->` when the model name was temporarily unavailable.
-  - **Zen mode exit button readability** — Replaced the translucent button background with the theme's primary background color so the exit text stays readable over any page content.
-
-</Update>
-
 <Update label="v1.0.52">
 
   ### ✨ New Features
