@@ -513,7 +513,7 @@ export const reviews: Review[] = [
     avatar:
       'https://lh3.googleusercontent.com/a-/ALV-UjUJsi63K9I1UK72TbUFSL0Z9guRRmO0EGR0UqrLHVM8S4jb8Ig=s48-w48-h48',
     text: 'good extension !',
-    weight: 1,
+    weight: 3,
   },
   {
     id: 'siim-liimand',
@@ -529,7 +529,7 @@ export const reviews: Review[] = [
     avatar:
       'https://lh3.googleusercontent.com/a-/ALV-UjWoaQsNh1D0PeNsH1HFTZAukzEQ_idr7SoPD5EACpwA1AsmT8M=s48-w48-h48',
     text: '必须给个好评，支持一下。',
-    weight: 1,
+    weight: 4,
   },
   {
     id: 'chromie',
@@ -537,7 +537,7 @@ export const reviews: Review[] = [
     avatar:
       'https://lh3.googleusercontent.com/a-/ALV-UjUmaB0yms2zXQld6jckaKpF73PES22xclffS-KEZgyfYhyHUM-v=s48-w48-h48',
     text: '很好用，很难不支持。',
-    weight: 1,
+    weight: 3,
   },
   {
     id: 'wunrry-wu',
@@ -545,7 +545,7 @@ export const reviews: Review[] = [
     avatar:
       'https://lh3.googleusercontent.com/a/ACg8ocJpBFTZm0TpPw4PvyLwF9-rbrTKIYiEeJ2v1GW4J-YdeoMD4Ag=s48-w48-h48',
     text: "good, it's very convenient",
-    weight: 1,
+    weight: 4,
   },
   {
     id: 'nai-an',
@@ -553,7 +553,7 @@ export const reviews: Review[] = [
     avatar:
       'https://lh3.googleusercontent.com/a-/ALV-UjUxoA2Bmbfv0CBYIqECRQG8s62ZibDRqFaNbEWzPsvVhMkoEvIE=s48-w48-h48',
     text: '很好用的扩展，完美补上了 Gemini 没有 timeline 的问题 :)',
-    weight: 2,
+    weight: 4,
   },
   {
     id: 'nalan-ye',
@@ -585,7 +585,7 @@ export const reviews: Review[] = [
     avatar:
       'https://lh3.googleusercontent.com/a/ACg8ocL79PfaiTIm-c_6pr510aWDDMx4ghSdSgS7Q8jW9TWl5IwcAbh6=s96-w96-h96',
     text: '功能齊全，很好用',
-    weight: 1,
+    weight: 4,
   },
   {
     id: 'xw',
@@ -593,7 +593,7 @@ export const reviews: Review[] = [
     avatar:
       'https://lh3.googleusercontent.com/a/ACg8ocI5dAOGQ3p7T3ePx6TOfxgbPeFguO0_7-8VBG1-7o6TLCl51w=s96-w96-h96',
     text: '太赞了，非常好非常全的功能！',
-    weight: 1,
+    weight: 4,
   },
   {
     id: 'wujingfeng',
@@ -610,6 +610,30 @@ export const reviews: Review[] = [
       'https://lh3.googleusercontent.com/a-/ALV-UjXYH8m6UdZk8cJqZqJoWEeKKTVGNnPopzj_9_7ghaqfnkgSb33C=s96-w96-h96',
     text: '太棒了！！！',
     weight: 4,
+  },
+  {
+    id: 'yangfan',
+    name: '杨帆',
+    avatar:
+      'https://lh3.googleusercontent.com/a/ACg8ocJN8u5xtmD7sqgCRB_XV8Bz3tuemNPWJSFxNjC85H3aLMt9xu8=s96-w96-h96',
+    text: '好用的扩展！',
+    weight: 4,
+  },
+  {
+    id: 'CEDRIC-W',
+    name: 'CEDRIC W',
+    avatar:
+      'https://lh3.googleusercontent.com/a/ACg8ocKWxmEtqYyBeeMKKWq1XfT8cerKhhcC2I1P2zsawEXEOVcgWQ=s96-w96-h96',
+    text: ' 太厉害了',
+    weight: 4,
+  },
+  {
+    id: 'Wy-X',
+    name: 'Wy X',
+    avatar:
+      'https://lh3.googleusercontent.com/a-/ALV-UjVgIF7GZKnrKNwP2QSX911RnKOQkF0waO9l5k-syVcfLMy82A=s96-w96-h96',
+    text: 'It’s working so smoothly now! I’ve been struggling with this search issue lately, so this is great!! It solved my problem!',
+    weight: 5,
   },
 ];
 
