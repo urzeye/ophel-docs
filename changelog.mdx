@@ -3,6 +3,22 @@ title: "Changelog"
 description: "All notable changes to Ophel Atlas are documented here."
 ---
 
+<Update label="v1.0.53">
+
+  ### ✨ New Features
+
+  - **Formula copy format setting** — Double-click formula copy can now output either LaTeX source or MathML source. LaTeX delimiter wrapping remains available for LaTeX mode, while MathML mode copies the serialized `<math>` source when the site exposes one.
+
+  ### 🐛 Bug Fixes
+
+  - **Claude adapter** — Adapted to Claude's recent page redesign: outline no longer picks up screen-reader-only headings, share links with new URL format are now recognized, theme switching works again, model locking and click simulation are compatible with the new UI components.
+  - **Doubao virtual scroll navigation** — Adapted Doubao to its new virtual-list chat DOM so outline jumps, return anchors, and top/bottom navigation now use the real `v_list_scroller` container. The outline also keeps an in-memory cache of headings and user prompts that have entered the viewport, preventing previously seen outline items from disappearing when Doubao unloads them from the DOM.
+  - **Kimi conversation navigation** — Fixed the Conversations tab failing to switch Kimi chats when clicking history items from Kimi's sidebar. Kimi chat links are now matched by parsed conversation ID instead of a broad selector, with an SPA route fallback when the native link is not mounted.
+  - **Ima user prompt extraction** — Restored user-question detection for Ima's updated chat DOM, so prompts inside the new `userBubbleWrap` / `chatMainBubble` structure are included in outline, export, usage stats, and user-query Markdown rendering again.
+  - **Formula copy site compatibility** — Added Qwen Studio support for its non-standard formula DOM where LaTeX source is embedded as direct text inside `<math>`. Kimi and Yuanbao now explicitly show an unsupported-site message instead of attempting unreliable extraction from visual-only KaTeX HTML.
+  - **Gemini Canvas freeze with table Markdown copy** — Table copy buttons are no longer injected into Gemini Canvas editor tables, preventing ProseMirror DOM update loops that could freeze or crash the page when a Canvas document contains tables. (#535)
+</Update>
+
 <Update label="v1.0.52">
 
   ### ✨ New Features
@@ -1063,6 +1079,7 @@ description: "All notable changes to Ophel Atlas are documented here."
   - Open source and transparent
 
 
+  [1.0.53]: https://github.com/urzeye/ophel/releases/tag/v1.0.53
   [1.0.52]: https://github.com/urzeye/ophel/releases/tag/v1.0.52
   [1.0.51]: https://github.com/urzeye/ophel/releases/tag/v1.0.51
   [1.0.50]: https://github.com/urzeye/ophel/releases/tag/v1.0.50
