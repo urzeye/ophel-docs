@@ -3,9 +3,32 @@ title: "Changelog"
 description: "All notable changes to Ophel Atlas are documented here."
 ---
 
+<Update label="v1.0.54">
+
+  ### 🚀 New Features
+
+  - **Prompt queue and library integration** — Prompt Library actions can now add prompts to the queue, and the queue batch dialog can add prompts directly from the library. (#547, @mrpops2ko)
+
+  ### ✨ Improvements
+
+  - **Direct row drag sorting** — Prompt items and conversation folders can now be reordered by long-press dragging the row itself, matching the existing conversation-item interaction without requiring a dedicated drag handle.
+  - **Clearer outline tab icon** — Updated the Outline tab and tab-order settings icon to better communicate the outline hierarchy while keeping the previous document-style icon for empty states.
+  - **Prompt floating controls** — Softened the selected-prompt bar styling and aligned it with the prompt queue above the input box.
+
+  ### 🐛 Bug Fixes
+
+  - **Doubao and Ima panel theme switching** — Ophel's panel theme now switches independently on sites that do not support native page theme changes, fixing Doubao getting stuck in dark mode and keeping rendered user-query code blocks readable.
+  - **ChatGPT clean mode sponsored cards** — Clean Mode now hides ChatGPT sponsored recommendation cards, including the new ad blocks with "Ad options" menus.
+  - **Doubao outline extraction** — Doubao outlines now recognize the newer `md-box-root` answer DOM, restoring headings for conversations that previously showed an empty outline. (#565)
+  - **Conversation folder selector icon spacing** — Tightened the sync-folder selector padding and gave folder emoji icons a stable centered box so they no longer look clipped in the Conversations toolbar.
+  - **Attachment-only submit shortcut** — Pressing Enter or Ctrl+Enter can now send messages that contain only images or attachments. (#555)
+  - **Temporary panel preview interactions** — Dialogs, menus, dropdowns, and Prompt tab popups opened from the temporary Quick Buttons panel preview now keep the preview available while you interact with them, then close the preview automatically once the interaction ends.
+  - **DeepSeek outline navigation** — Outline jumps to user questions in long DeepSeek conversations now use DeepSeek's native timeline when the message is outside the mounted DOM, avoid stale jump results during rapid clicks, and keep only the current outline item highlighted without showing bookmark-missing notices for normal outline jumps.
+</Update>
+
 <Update label="v1.0.53">
 
-  ### ✨ New Features
+  ### 🚀 New Features
 
   - **Formula copy format setting** — Double-click formula copy can now output either LaTeX source or MathML source. LaTeX delimiter wrapping remains available for LaTeX mode, while MathML mode copies the serialized `<math>` source when the site exposes one.
 
@@ -21,7 +44,7 @@ description: "All notable changes to Ophel Atlas are documented here."
 
 <Update label="v1.0.52">
 
-  ### ✨ New Features
+  ### 🚀 New Features
 
   - **Hover Ophel logo to temporarily preview the panel** — When the panel is collapsed into the Quick Buttons logo, hovering the logo now opens a temporary panel preview anchored beside the Quick Buttons group. The preview does not persist the panel's expanded state, and clicking the logo still performs the regular panel toggle. (#524)
   - **Title format token chips** — The title format input in Settings now renders `{status}`, `{title}`, and `{model}` placeholders as styled blue chips, making the format template easier to read and edit at a glance.
@@ -39,7 +62,7 @@ description: "All notable changes to Ophel Atlas are documented here."
 
 <Update label="v1.0.51">
 
-  ### ✨ New Features
+  ### 🚀 New Features
 
   - **Quick Buttons proximity wake radius** (`Settings → Quick Buttons`): A new slider controls how close the cursor must be before the floating widget auto-expands (default 150 px, matching previous behavior). Set it to **0** for a true dwell-hover mode — the widget only expands after the cursor rests on the water-drop for 300 ms, preventing accidental expansion from the cursor passing through. (#492)
   - **Drag conversations into folders**: In the Conversations tab, you can now drag a chat onto any folder to move it there. Thanks @t0ny-peng (#512)
@@ -1079,6 +1102,7 @@ description: "All notable changes to Ophel Atlas are documented here."
   - Open source and transparent
 
 
+  [1.0.54]: https://github.com/urzeye/ophel/releases/tag/v1.0.54
   [1.0.53]: https://github.com/urzeye/ophel/releases/tag/v1.0.53
   [1.0.52]: https://github.com/urzeye/ophel/releases/tag/v1.0.52
   [1.0.51]: https://github.com/urzeye/ophel/releases/tag/v1.0.51
