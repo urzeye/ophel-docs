@@ -1,11 +1,20 @@
 ---
-title: "Widescreen, Zen mode, and immersive layout controls"
+title: "Widescreen, Zen mode, Clean Mode, and panel layout"
 sidebarTitle: "Layout"
-description: "Customize page and message width, enter Zen mode to hide platform chrome, and configure panel size and behavior — all configured per site."
-keywords: ["widescreen layout", "zen mode", "page width", "panel layout", "message width", "immersive mode"]
+description: "Customize page and message width, use Zen mode and Clean Mode to reduce clutter, and configure panel size and behavior — all configured per site."
+keywords:
+  [
+    "widescreen layout",
+    "zen mode",
+    "clean mode",
+    "page width",
+    "panel layout",
+    "message width",
+    "immersive mode",
+  ]
 ---
 
-Ophel gives you fine-grained control over how AI pages are displayed. You can widen the reading area to use your full monitor, independently adjust your message bubble width, and strip away platform chrome with Zen mode. Layout settings are configured per site so each platform has its own values.
+Ophel gives you fine-grained control over how AI pages are displayed. You can widen the reading area to use your full monitor, independently adjust your message bubble width, hide page chrome with Zen mode, and reduce ads or redundant page elements with Clean Mode. Layout settings are configured per site so each platform has its own values.
 
 ## Page width
 
@@ -37,16 +46,34 @@ Zen mode hides platform UI elements outside the conversation — sidebars, navig
     Click the **Zen** button in the floating button group.
   </Tab>
   <Tab title="Settings (persistent)">
-    Enable **Settings → Site Settings → [Select site] → Layout → Zen Mode** to enter Zen mode automatically every time you open that site.
+    Enable **Settings → Site Settings → [Select site] → Layout → Zen Mode** to
+    enter Zen mode automatically every time you open that site.
   </Tab>
 </Tabs>
 
 <Note>
-  Toggling Zen mode with the button or shortcut creates a temporary state that may not survive a page refresh. Enable it in Settings for a persistent effect on a specific site.
+  Toggling Zen mode with the button or shortcut creates a temporary state that
+  may not survive a page refresh. Enable it in Settings for a persistent effect
+  on a specific site.
 </Note>
 
 <Note>
-  Zen mode hides elements based on Ophel's knowledge of each platform's DOM structure. The effect may be incomplete on some sites.
+  Zen mode hides elements based on Ophel's knowledge of each platform's DOM
+  structure. The effect may be incomplete on some sites.
+</Note>
+
+## Clean Mode
+
+Clean Mode hides page clutter such as disclaimers, ads, download prompts, promotional cards, and other non-conversation elements. It is enabled by default and configured per site.
+
+**Settings → Site Settings → [Select site] → Layout → Clean Mode**
+
+Clean Mode is narrower than Zen mode: it keeps the normal platform layout visible, but removes elements Ophel recognizes as redundant. Zen mode focuses more aggressively by hiding sidebars and navigation; when Zen mode is enabled, it also includes the clean effect.
+
+<Note>
+  On ChatGPT, Clean Mode also hides sponsored cards when Ophel can identify
+  them. Since each platform can change its page structure, some promotional
+  elements may require future adapter updates.
 </Note>
 
 ## Panel size and position

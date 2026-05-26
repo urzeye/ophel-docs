@@ -24,6 +24,8 @@ Ophel reads the same conversation list the AI platform displays and layers folde
 
 Ophel observes the AI platform's sidebar and reflects its conversation list in real time. When you create, rename, or delete a conversation on the platform, the Conversations tab updates automatically. The metadata Ophel adds — folder assignments, tags, pins — is stored locally and overlaid on top of the platform's data.
 
+The folder selector in the upper-left toolbar controls the default folder for new sync results. After you select a folder there, newly discovered conversations are added to that folder by default, whether they are found during manual sync or detected later from the platform sidebar. Existing conversations keep their current folder unless you move them.
+
 ## Browsing and filtering
 
 The Conversations tab supports several ways to narrow the list:
@@ -37,7 +39,7 @@ The Conversations tab supports several ways to narrow the list:
 
 Folders group related conversations with a color-coded label. There are 8 color options. Enable **rainbow colors** in settings to give each folder's conversations a distinct tinted background throughout the list.
 
-A single conversation can belong to multiple folders at once — assign it again from the toolbox or context menu.
+A conversation belongs to one folder at a time. Moving it to another folder updates the local Ophel metadata; it does not modify the original conversation content on the AI platform.
 
 <Steps>
   <Step title="Open the toolbox menu">
@@ -57,6 +59,14 @@ A single conversation can belong to multiple folders at once — assign it again
   You can also move conversations to a folder from the batch action bar when
   multiple items are selected.
 </Tip>
+
+### Drag conversations to folders
+
+Drag any conversation row onto a folder row to move it there. The target folder highlights while you hover over it, and the list updates as soon as you drop.
+
+### Reorder folders
+
+Drag any non-default folder row to reorder your folder list. The default inbox folder stays fixed, and buttons or inputs inside a folder row remain interactive instead of starting a drag.
 
 ## Tags
 
@@ -142,12 +152,12 @@ Both manual sync (click the button) and automatic sync at a set interval are sup
 
 Go to **Settings → Features → Conversations** to configure folder and sync behavior.
 
-| Setting                           | Description                                                        |
-| --------------------------------- | ------------------------------------------------------------------ |
-| Default sort order                | Sort by last modified, creation time, or alphabetical title        |
-| Show site logo                    | Display the AI platform icon next to each conversation in the list |
-| Default export format             | File format used when you click Export                             |
-| Export filename template          | Custom naming rule for exported files (supports `{title}`, `{date}`) |
-| Folder rainbow colors             | Use distinct colored backgrounds for folder-assigned conversations |
-| Auto unpin on sync                | Remove pins when syncing from a remote source                      |
-| Sync delete to cloud              | Delete remote records when you delete conversations locally        |
+| Setting                  | Description                                                          |
+| ------------------------ | -------------------------------------------------------------------- |
+| Default sort order       | Sort by last modified, creation time, or alphabetical title          |
+| Show site logo           | Display the AI platform icon next to each conversation in the list   |
+| Default export format    | File format used when you click Export                               |
+| Export filename template | Custom naming rule for exported files (supports `{title}`, `{date}`) |
+| Folder rainbow colors    | Use distinct colored backgrounds for folder-assigned conversations   |
+| Auto unpin on sync       | Remove pins when syncing from a remote source                        |
+| Sync delete to cloud     | Delete remote records when you delete conversations locally          |

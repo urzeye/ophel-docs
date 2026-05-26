@@ -2,7 +2,15 @@
 title: "Prompt Library: build and reuse your prompt templates"
 sidebarTitle: "Prompt Library"
 description: "Save prompts with variable placeholders, organize them by category, insert with one click or queue multiple prompts for automatic sequential sending."
-keywords: ["prompt templates", "prompt library", "variable prompts", "prompt categories", "prompt insertion", "prompt queue"]
+keywords:
+  [
+    "prompt templates",
+    "prompt library",
+    "variable prompts",
+    "prompt categories",
+    "prompt insertion",
+    "prompt queue",
+  ]
 ---
 
 The Prompt Library saves you from retyping the same instructions every session. You build a personal collection of prompt templates, organize them into categories, and insert any prompt into the AI input box with a single click. Variables let you write reusable templates where certain values are filled in at send time.
@@ -17,8 +25,11 @@ The Prompt Library saves you from retyping the same instructions every session. 
     review or edit the content before sending.
   </Tab>
   <Tab title="Double-click">
-    Inserts and submits immediately. You can turn this off in **Settings →
-    Features → Prompts** if you always want to review before sending.
+    Inserts and submits immediately. If the AI is already generating and
+    **Prompt Queue** is enabled, Ophel adds the prompt to the queue instead of
+    interrupting the current reply. You can turn double-click sending off in
+    **Settings → Features → Prompts** if you always want to review before
+    sending.
   </Tab>
 </Tabs>
 
@@ -96,6 +107,8 @@ Click the pin icon on any prompt to float it to the top of the list. Pinned prom
 
 Use the search box at the top of the Prompts tab to filter by title or content in real time. Pinned prompts always stay at the top of sorted results.
 
+Drag any prompt row to reorder your library. Buttons, inputs, menus, and other interactive controls inside a row remain clickable and do not start a drag.
+
 ## Import and export
 
 **Export** saves your entire prompt library to a JSON file, useful for backup or transferring to another device.
@@ -120,7 +133,27 @@ Go to **Settings → Features → Prompts → Prompt Queue** and toggle it on. A
 
 Type directly in the queue input field and press **Enter** to add a prompt. The queue displays a numbered list of pending items.
 
-For adding many prompts at once, click the **import** button in the queue panel and paste a block of text. Choose a split mode:
+You can also add saved prompts from the Prompt Library:
+
+| Source                                              | Behavior                                                                          |
+| --------------------------------------------------- | --------------------------------------------------------------------------------- |
+| Prompt More menu → **Add to queue**                 | Adds the selected prompt as one queue item                                        |
+| Prompt More menu → **Split lines and add to queue** | Splits the prompt content by line and adds each non-empty line as a separate item |
+| Double-click a prompt while the AI is generating    | Queues the prompt automatically when Prompt Queue is enabled                      |
+
+Variable prompts open the variable dialog first when you add them from the prompt row menu. After you confirm the variables, the resolved prompt is added to the queue.
+
+For adding many prompts at once, click the **import** button in the queue panel. The dialog has two sources:
+
+<Tabs>
+  <Tab title="Prompt Library">
+    Select saved prompts directly from your library. Choose **Each prompt as one
+    item** or **Split by line**. Prompts that still require variables are
+    disabled in this batch picker; open them from the Prompts tab first so you
+    can fill the variables.
+  </Tab>
+  <Tab title="Text">Paste a block of text and choose a split mode:</Tab>
+</Tabs>
 
 | Split mode         | Behavior                                                                             |
 | ------------------ | ------------------------------------------------------------------------------------ |
@@ -153,11 +186,11 @@ A preview shows exactly how the text will be divided before you confirm.
 
 Go to **Settings → Features → Prompts** to configure:
 
-| Setting              | Description                                                              |
-| -------------------- | ------------------------------------------------------------------------ |
-| Double-click to send | Double-clicking a prompt inserts and submits it directly                 |
-| Submit key           | Key used to submit to the AI after insertion — **Enter** or **Ctrl+Enter**   |
-| Prompt queue         | Enable or disable the queue overlay feature                              |
+| Setting              | Description                                                                |
+| -------------------- | -------------------------------------------------------------------------- |
+| Double-click to send | Double-clicking a prompt inserts and submits it directly                   |
+| Submit key           | Key used to submit to the AI after insertion — **Enter** or **Ctrl+Enter** |
+| Prompt queue         | Enable or disable the queue overlay feature                                |
 
 ## Example templates
 
@@ -170,6 +203,7 @@ Here are some ready-to-use prompt templates that demonstrate variable syntax. Co
 
     {{text}}
     ```
+
   </Accordion>
   <Accordion title="Code review with language choice">
     ```text
@@ -179,6 +213,7 @@ Here are some ready-to-use prompt templates that demonstrate variable syntax. Co
     {{code}}
     ```
     ```
+
   </Accordion>
   <Accordion title="Tone rewriter">
     ```text
@@ -186,6 +221,7 @@ Here are some ready-to-use prompt templates that demonstrate variable syntax. Co
 
     {{text}}
     ```
+
   </Accordion>
   <Accordion title="Meeting summary">
     ```text
@@ -200,5 +236,6 @@ Here are some ready-to-use prompt templates that demonstrate variable syntax. Co
     Notes:
     {{notes}}
     ```
+
   </Accordion>
 </AccordionGroup>
