@@ -2,7 +2,17 @@
 title: "Navigate the Ophel panel: tabs, buttons, and modes"
 sidebarTitle: "Panel Overview"
 description: "Learn how Ophel's side panel is organized — three tabs, a header toolbar, floating quick buttons, ghost pass-through mode, edge snap, and keyboard shortcuts."
-keywords: ["Ophel panel", "side panel", "tabs overview", "quick buttons", "ghost mode", "edge snap", "keyboard shortcuts", "panel navigation"]
+keywords:
+  [
+    "Ophel panel",
+    "side panel",
+    "tabs overview",
+    "quick buttons",
+    "ghost mode",
+    "edge snap",
+    "keyboard shortcuts",
+    "panel navigation",
+  ]
 ---
 
 After you install Ophel Atlas and open any supported AI site, the panel activates automatically. A side panel appears on the right edge of the screen, and a small group of floating quick-action buttons appear nearby. This page explains how each part of the panel works so you can navigate it efficiently from day one.
@@ -16,26 +26,17 @@ If the panel does not appear, press **Alt / ⌥+P** to open it.
 The panel has three tabs along the top. Click a tab label to switch, or use `Alt / ⌥+1`, `Alt / ⌥+2`, `Alt / ⌥+3`.
 
 <CardGroup cols={3}>
-  <Card
-    title="Outline"
-    icon="list-tree"
-  >
+  <Card title="Outline" icon="list-tree">
     A live, auto-generated table of contents for the current conversation. Click
     any heading to jump to it instantly. Supports collapse, expand, search,
     bookmarks, and real-time word counts.
   </Card>
-  <Card
-    title="Conversations"
-    icon="folder-open"
-  >
+  <Card title="Conversations" icon="folder-open">
     An aggregated history from all supported AI platforms. Organize
     conversations into folders and tags, search with syntax filters, and export
     to Markdown, JSON, or TXT.
   </Card>
-  <Card
-    title="Prompts"
-    icon="wand-magic-sparkles"
-  >
+  <Card title="Prompts" icon="wand-magic-sparkles">
     Your personal prompt library. Click a prompt to insert it into the chat
     input box; double-click to insert and send immediately. Supports variable
     substitution, categories, and pinning.
@@ -62,15 +63,16 @@ You can drag the title bar to reposition the panel anywhere on screen when it is
 The floating button group at the screen edge is your fastest access point to common actions without opening the full panel.
 
 - The group **auto-collapses** into a pill shape after about 5 seconds of inactivity. By default, moving your cursor within **150 px** of it expands it again. The wake distance is configurable: go to **Settings → Quick Buttons → Proximity Wake Radius** (0–300 px). Set it to **0** to enable dwell-hover mode — the group only expands after the cursor rests on the pill for 300 ms, so simply passing through it does not trigger expansion.
+- When the group is collapsed, hover the panel logo for a short dwell to open a temporary panel preview beside the buttons. Moving away hides the preview; clicking the logo still opens or closes the panel persistently.
 - **Long-press and drag** any button to reposition the entire group to a different spot on screen.
 - Click **☰ (Toolbox)** to reveal additional actions: export conversation, move to folder, assign tags, toggle scroll lock, model lock, and more.
 
 **Additional settings** (`Settings → Quick Buttons`):
 
-| Setting | Description |
-| ------- | ----------- |
-| **Proximity Wake Radius** | Distance (px) at which the cursor wakes up the collapsed pill (default 150). Set to 0 for dwell-hover mode. |
-| **Opacity** | Transparency of the button group in its collapsed / idle state. |
+| Setting                     | Description                                                                                                 |
+| --------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| **Proximity Wake Radius**   | Distance (px) at which the cursor wakes up the collapsed pill (default 150). Set to 0 for dwell-hover mode. |
+| **Opacity**                 | Transparency of the button group in its collapsed / idle state.                                             |
 | **Hide when panel is open** | Automatically collapses the quick button group while the panel is open; it reappears when the panel closes. |
 
 ## Keyboard shortcuts
@@ -148,11 +150,7 @@ In **Settings → General → Quick Buttons Behavior**, you can also toggle:
 ## Next steps
 
 <CardGroup cols={2}>
-  <Card
-    title="Smart outline"
-    icon="list-tree"
-    href="/features/outline"
-  >
+  <Card title="Smart outline" icon="list-tree" href="/features/outline">
     Learn how the live outline works — locate mode, follow mode, bookmarks, and
     word counts.
   </Card>
@@ -171,11 +169,7 @@ In **Settings → General → Quick Buttons Behavior**, you can also toggle:
     Build and use a reusable prompt library with variable templates and a prompt
     queue.
   </Card>
-  <Card
-    title="Shortcuts"
-    icon="keyboard"
-    href="/customization/shortcuts"
-  >
+  <Card title="Shortcuts" icon="keyboard" href="/customization/shortcuts">
     View the full shortcut reference and configure custom key bindings.
   </Card>
 </CardGroup>

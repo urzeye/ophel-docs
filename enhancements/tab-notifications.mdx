@@ -2,7 +2,15 @@
 title: "Tab management and AI completion notifications"
 sidebarTitle: "Tabs & Notifications"
 description: "Auto-rename browser tabs with conversation titles, receive desktop alerts when the AI finishes, and hide tab titles with privacy mode."
-keywords: ["tab management", "AI completion notification", "tab rename", "privacy mode", "browser tabs", "desktop alert"]
+keywords:
+  [
+    "tab management",
+    "AI completion notification",
+    "tab rename",
+    "privacy mode",
+    "browser tabs",
+    "desktop alert",
+  ]
 ---
 
 When you're running multiple AI conversations across different tabs, keeping track of which tab is which — and knowing when the AI has finished — becomes a real workflow problem. Ophel manages your browser tab titles automatically and can alert you the moment a response is ready, even when you've switched to something else entirely.
@@ -13,14 +21,17 @@ Ophel syncs your browser tab title to the current AI conversation, making it eas
 
 **Settings → Features → Tab**:
 
-| Setting | Description | Default |
-| --- | --- | --- |
-| Auto-rename | Sync conversation title to the browser tab | On |
-| Title update interval | How often to poll for title changes | 3 s |
-| Title format | Tab title template using `{title}`, `{status}`, and `{model}` variables | `{status}{title}->{model}` |
-| Show status icon | Display a spinning or check icon in the title during and after generation | On |
+| Setting                         | Description                                                                                       | Default                    |
+| ------------------------------- | ------------------------------------------------------------------------------------------------- | -------------------------- |
+| Auto-rename                     | Sync conversation title to the browser tab                                                        | On                         |
+| Title update interval           | How often to poll for title changes                                                               | 3 s                        |
+| Title format                    | Tab title template using `{title}`, `{status}`, and `{model}` variables                           | `{status}{title}->{model}` |
+| Show status icon                | Display a generating or completed icon in the tab title (`⏳` / `✅`)                             | On                         |
+| Only show checkmark when unread | Show `✅` only while the completed reply has not been viewed; hide it after you return to the tab | Off                        |
 
-The default format produces titles like `⟳ My conversation->GPT-4o` while generating and `✓ My conversation->GPT-4o` when complete.
+The default format produces titles like `⏳ My conversation->GPT-4o` while generating and `✅ My conversation->GPT-4o` when complete.
+
+The title format editor highlights `{status}`, `{title}`, and `{model}` as token chips and provides buttons to insert them, so you can adjust the template without mistyping a placeholder.
 
 ## Generation complete notifications
 
@@ -28,19 +39,21 @@ When the AI finishes a reply in another tab, Ophel can alert you with a desktop 
 
 **Settings → Features → Alerts**:
 
-| Setting | Description | Default |
-| --- | --- | --- |
-| Completion notification | Send a desktop notification when generation completes | Off |
-| Notification sound | Play an audio cue with the notification | On |
-| Sound preset | Choose from built-in sound effects | softChime |
-| Volume | Notification volume | 50% |
-| Repeat count | How many times to repeat a short sound | 3 |
-| Repeat interval | Time between each repeat | 2 s |
-| Notify when tab is focused | Also notify when the active tab is already in view | Off |
-| Auto-focus window | Bring the browser window to the foreground when generation completes | Off |
+| Setting                    | Description                                                          | Default   |
+| -------------------------- | -------------------------------------------------------------------- | --------- |
+| Completion notification    | Send a desktop notification when generation completes                | Off       |
+| Notification sound         | Play an audio cue with the notification                              | On        |
+| Sound preset               | Choose from built-in sound effects                                   | softChime |
+| Volume                     | Notification volume                                                  | 50%       |
+| Repeat count               | How many times to repeat a short sound                               | 3         |
+| Repeat interval            | Time between each repeat                                             | 2 s       |
+| Notify when tab is focused | Also notify when the active tab is already in view                   | Off       |
+| Auto-focus window          | Bring the browser window to the foreground when generation completes | Off       |
 
 <Note>
-  The first time you enable **Completion notification**, the browser will ask for the **notifications** permission. Choose Allow. If you previously denied it, go to **Settings → Permissions** to grant it.
+  The first time you enable **Completion notification**, the browser will ask
+  for the **notifications** permission. Choose Allow. If you previously denied
+  it, go to **Settings → Permissions** to grant it.
 </Note>
 
 ## Privacy mode
@@ -49,13 +62,14 @@ If you don't want the tab bar to reveal what you're discussing, privacy mode rep
 
 **Settings → Features → Tab**:
 
-| Setting | Description | Default |
-| --- | --- | --- |
-| Privacy mode | Replace the tab title with custom text | Off |
-| Privacy title | The text to display instead of the real title | Google |
+| Setting       | Description                                   | Default |
+| ------------- | --------------------------------------------- | ------- |
+| Privacy mode  | Replace the tab title with custom text        | Off     |
+| Privacy title | The text to display instead of the real title | Google  |
 
 <Note>
-  Privacy mode only affects the browser tab title. It has no effect on conversation content or anything inside the Ophel panel.
+  Privacy mode only affects the browser tab title. It has no effect on
+  conversation content or anything inside the Ophel panel.
 </Note>
 
 ## Model lock
