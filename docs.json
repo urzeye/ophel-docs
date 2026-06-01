@@ -77,6 +77,16 @@
       "twitter:image": "https://ophel.app/images/og-cover.png"
     }
   },
+  "redirects": [
+    {
+      "source": "/data/migration",
+      "destination": "/data/backup-sync"
+    },
+    {
+      "source": "/zh/data/migration",
+      "destination": "/zh/data/backup-sync"
+    }
+  ],
   "search": {
     "prompt": "Search docs..."
   },
