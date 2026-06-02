@@ -3,6 +3,30 @@ title: "Changelog"
 description: "All notable changes to Ophel Atlas are documented here."
 ---
 
+<Update label="v1.0.56">
+
+  ### 🚀 New Features
+
+  - **AI Studio user attachments in exports** — AI Studio Markdown exports now include images and files from user prompts; zip packages preserve downloadable user images under `assets/images/`, while file-only cards keep their visible filename and token details in Markdown.
+  - **ChatGLM attachment, image, and thought export** — ChatGLM exports now preserve user-uploaded images and files plus AI-generated images in Markdown and zip packages. Share-page exports also recognize ChatGLM's current thinking payloads and format included thoughts as `> [Thought]` blockquotes when "Include Thoughts in Export" is enabled, while filtering user avatars from exported assets.
+  - **ChatGPT generated image export** — ChatGPT Markdown exports now include generated image-only assistant turns, preserving generated images in both regular Markdown output and zip asset packages.
+  - **Claude export attachments and thoughts** — Claude Markdown exports now preserve images and files from user prompts in both Markdown and zip package modes, and can include expanded Claude thinking blocks when "Include Thoughts in Export" is enabled.
+  - **DeepSeek user attachments in exports** — DeepSeek Markdown exports now include images and files from user prompts, including share pages; zip packages resolve downloadable share attachments into `assets/images/` and `assets/files/` with stable Markdown references.
+  - **Doubao image and attachment export** — Doubao Markdown exports now include images and files from user prompts plus images from assistant replies. Zip packages preserve downloadable resources under `assets/images/` and `assets/files/`, with generated-image fallback handling for pages that keep only placeholder images in the DOM.
+  - **Grok image and attachment export** — Grok Markdown exports now include generated images from assistant replies plus images and files from user prompts. Zip packages preserve downloadable images under `assets/images/` and user files under `assets/files/` with stable Markdown references.
+  - **Gemini Canvas code export** — Gemini conversation and share-page exports now open Canvas artifacts, switch to the code tab without relying on localized labels, and include generated Canvas code in Markdown exports.
+  - **Ima attachment, generated image, and thought export** — Ima Markdown exports now include user-uploaded images and files, preserve AI-generated images in regular Markdown and zip asset packages, and include visible thinking content when "Include Thoughts in Export" is enabled. Empty attachment containers are ignored so plain user prompts no longer export a phantom `attachment` item.
+  - **Kimi share conversation export** — Kimi share pages are now supported in conversation export, outline, and scroll navigation. Exports preserve user-uploaded images in Markdown and zip asset packages, include visible file attachment labels, and keep user prompts aligned with the correct assistant replies.
+  - **Qianwen attachment and generated image export** — Qianwen Markdown exports now recognize the current share-page question and answer DOM, include user-uploaded images and file cards, and preserve AI-generated images in both regular Markdown and zip asset packages, avoiding empty-message exports on updated pages.
+  - **Qwen Studio attachment, generated image, and thought export** — Qwen Studio Markdown exports now include user-uploaded images and full file-card names, preserve AI-generated images in regular Markdown and zip asset packages, and can export expanded thinking details from regular and share-page conversations when "Include Thoughts in Export" is enabled.
+  - **Yuanbao attachment, generated image, and thought export** — Yuanbao Markdown exports now include images and files from user prompts, preserve AI-generated images in regular Markdown and zip asset packages, and include visible thinking content when "Include Thoughts in Export" is enabled.
+  - **Z.ai attachment and thought export** — Z.ai conversation and share-page exports now preserve user-uploaded images and files in Markdown and zip packages, deduplicate signed CDN links from API and DOM sources, and include reasoning blocks when "Include Thoughts in Export" is enabled.
+
+  ### ✨ Improvements
+
+  - **Export progress overlay** — Long conversation exports now show a full-page progress overlay with the current export stage, blocking accidental clicks, scrolling, and typing while Ophel loads history, extracts content, packages assets, saves files, and restores the page.
+</Update>
+
 <Update label="v1.0.55">
 
   ### 🚀 New Features
@@ -1121,6 +1145,7 @@ description: "All notable changes to Ophel Atlas are documented here."
   - Open source and transparent
 
 
+  [1.0.56]: https://github.com/urzeye/ophel/releases/tag/v1.0.56
   [1.0.55]: https://github.com/urzeye/ophel/releases/tag/v1.0.55
   [1.0.54]: https://github.com/urzeye/ophel/releases/tag/v1.0.54
   [1.0.53]: https://github.com/urzeye/ophel/releases/tag/v1.0.53
