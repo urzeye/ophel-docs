@@ -3,6 +3,20 @@ title: "更新日志"
 description: "Ophel Atlas 的所有重要更改均记录于此。"
 ---
 
+<Update label="v1.0.58">
+
+  ### 🐛 问题修复
+
+  - **对话标题隔离** — 浏览器标签页重命名现在会把 Ophel 管理的状态、模型标签与原始对话标题隔离，避免页面取不到模型名时把标签页状态、模型名或反复追加的 `->` 分隔符带入导出的对话标题和文件名。
+  - **豆包分享页导出与大纲** — 现在会把 `/thread/` 下的豆包分享链接识别为可导出的对话，分享页消息列表也可用于大纲提取，不再依赖普通对话页的虚拟列表结构。
+  - **Z.ai 分享页大纲** — Z.ai 分享页现在会复用导出使用的对话内容容器识别逻辑，即使分享 DOM 没有常规的 `#chat-container` 包裹也能抽取大纲。
+  - **ChatGLM 代码块导出** — ChatGLM 回复被代码块拆成多段时，现在会导出完整回答，不再停在第一个渲染出来的 Markdown 片段。
+  - **未命名导出标题国际化** — 抓取不到标题时，导出的未命名标题现在会跟随当前界面语言，即使旧数据里保存过其他语言的兜底标题也不会继续沿用。
+  - **Qianwen 用户问题 Markdown 对比度** — Qianwen 开启用户问题 Markdown 渲染后，现在会使用专门的可读气泡样式，不再继承原生问题卡片的低对比度颜色。
+  - **Qianwen/Qwen Studio 大纲重复问题** — 用户问题被站点多层容器包裹时，现在大纲里只显示一次，同时保持导出内容不变。
+  - **自定义标签页标题格式** — 模型名缺失和已管理标题污染现在会按用户配置的占位符结构解析，不再依赖某个分隔符清理，避免任意自定义格式下标题递归增长。
+</Update>
+
 <Update label="v1.0.57">
 
   ### 🐛 问题修复
@@ -1154,6 +1168,7 @@ description: "Ophel Atlas 的所有重要更改均记录于此。"
   - 开源透明
 
 
+  [1.0.58]: https://github.com/urzeye/ophel/releases/tag/v1.0.58
   [1.0.57]: https://github.com/urzeye/ophel/releases/tag/v1.0.57
   [1.0.56]: https://github.com/urzeye/ophel/releases/tag/v1.0.56
   [1.0.55]: https://github.com/urzeye/ophel/releases/tag/v1.0.55
