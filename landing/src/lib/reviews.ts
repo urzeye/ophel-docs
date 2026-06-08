@@ -624,7 +624,7 @@ export const reviews: Review[] = [
     name: 'CEDRIC W',
     avatar:
       'https://lh3.googleusercontent.com/a/ACg8ocKWxmEtqYyBeeMKKWq1XfT8cerKhhcC2I1P2zsawEXEOVcgWQ=s96-w96-h96',
-    text: ' 太厉害了',
+    text: '太厉害了',
     weight: 4,
   },
   {
@@ -633,6 +633,22 @@ export const reviews: Review[] = [
     avatar:
       'https://lh3.googleusercontent.com/a-/ALV-UjVgIF7GZKnrKNwP2QSX911RnKOQkF0waO9l5k-syVcfLMy82A=s96-w96-h96',
     text: 'It’s working so smoothly now! I’ve been struggling with this search issue lately, so this is great!! It solved my problem!',
+    weight: 5,
+  },
+  {
+    id: 'PeiQi-Nicholas',
+    name: 'PeiQi Nicholas',
+    avatar:
+      'https://lh3.googleusercontent.com/a-/ALV-UjXStrqxD9ORwuMNkq28dLhn1O2q0gEnnNt4OQFo4_Q3SmTFkJ4y=s96-w96-h96',
+    text: '牛逼，比我做的强',
+    weight: 5,
+  },
+  {
+    id: 'Lewu-Gao',
+    name: 'Lewu Gao',
+    avatar:
+      'https://lh3.googleusercontent.com/a/ACg8ocKgY-LmLqE1O7OLjo9H4eOjhXo0WJxxma3SqvgKuB9CHj5KOw=s96-w96-h96',
+    text: '太好用了，感谢🙏',
     weight: 5,
   },
 ];
