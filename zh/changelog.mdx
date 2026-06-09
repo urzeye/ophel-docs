@@ -3,6 +3,23 @@ title: "更新日志"
 description: "Ophel Atlas 的所有重要更改均记录于此。"
 ---
 
+<Update label="v1.0.59">
+
+  ### 🚀 新增功能
+
+  - **大纲复制** — 大纲工具栏现在可以复用导出流程，将当前选择层级的大纲复制为 Markdown 标题；虚拟滚动会话会先加载完整内容并在结束后恢复页面位置，再复制标题与用户提问。(#539)
+  - **会话快速打开** — 会话条目现在可通过右键菜单在新标签页打开，方便复用旧会话而不替换当前聊天。(#578)
+
+  ### 🐛 问题修复
+
+  - **ChatGPT 原生 TOC 大纲** — 当 ChatGPT 原生 TOC 只有悬浮后才把真实提示词写入按钮时，大纲现在可以恢复完整的用户问题列表，并按 TOC 实例缓存已抽取文本；油猴版也不再因跨 Realm `PointerEvent` 构造失败而报错。(#642)
+  - **ChatGPT 标签页状态** — 当侧边栏会话标题包含“Stop”或“停止”时，ChatGPT 空闲标签页不再误显示 `⏳`；生成状态检测现在只使用输入区内可见的停止按钮。(#630)
+  - **Gemini 标签页重命名** — 开启自动重命名后，Gemini 在回复过程中不再反复闪回原生页面标题。
+  - **Gemini 去水印** — 改用 SDK 实现替换旧版 Gemini/Nano Banana 去水印逻辑，并修复用户上传图误处理和生成图去水印回归问题。(#593, #625)
+  - **提示词导入** — 提示词库导入现在支持从备份页面导出的提示词备份文件，不再只接受裸提示词列表 JSON。
+  - **用户问题渲染间距** — 用户问题渲染为 Markdown 后，现在会忽略站点原生纯文本换行样式，避免 DeepSeek、豆包、Z.ai、ChatGLM、通义千问等站点在段落和引用块之间出现过大的空白间距。
+</Update>
+
 <Update label="v1.0.58">
 
   ### 🐛 问题修复
@@ -1168,6 +1185,7 @@ description: "Ophel Atlas 的所有重要更改均记录于此。"
   - 开源透明
 
 
+  [1.0.59]: https://github.com/urzeye/ophel/releases/tag/v1.0.59
   [1.0.58]: https://github.com/urzeye/ophel/releases/tag/v1.0.58
   [1.0.57]: https://github.com/urzeye/ophel/releases/tag/v1.0.57
   [1.0.56]: https://github.com/urzeye/ophel/releases/tag/v1.0.56
