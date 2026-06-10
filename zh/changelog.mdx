@@ -3,6 +3,20 @@ title: "更新日志"
 description: "Ophel Atlas 的所有重要更改均记录于此。"
 ---
 
+<Update label="v1.0.60">
+
+  ### ✨ 功能优化
+
+  - **油猴脚本包体积** — 将 Markdown 渲染代码、Markdown 样式、用户提问 Markdown 样式和站点图标拆分为外部油猴资源，减少 Greasy Fork 同步时需要处理的内联代码，同时保持原有渲染注入路径不变。
+  - **禅模式退出按钮** — 禅模式设置新增“显示退出按钮”开关，可隐藏页面上的退出按钮，保留快捷按钮和快捷键退出入口，避免遮挡标题或对话内容。(#645)
+
+  ### 🐛 问题修复
+
+  - **AI Studio 移动端 Enter 键** — Android 等移动设备上的 AI Studio 现在会让软键盘 Enter 插入换行，不再误触发送；通过 Ophel 触发的发送仍会使用原生发送按钮或安全的键盘兜底。(#646)
+  - **AI Studio 移动端历史同步** — AI Studio 会话同步现在可以识别移动端 Library 卡片布局，移动端有历史记录时不再误提示找不到侧边栏会话。
+  - **会话同步加载** — 会话同步现在会使用各站点适配器自己的会话来源判断侧边栏历史是否加载完成，为慢速懒加载侧边栏等待更久，并在无法确认已完整加载时禁用同步删除；豆包和元宝也改为复用更安全的基类加载逻辑。(#639)
+</Update>
+
 <Update label="v1.0.59">
 
   ### 🚀 新增功能
@@ -1185,6 +1199,7 @@ description: "Ophel Atlas 的所有重要更改均记录于此。"
   - 开源透明
 
 
+  [1.0.60]: https://github.com/urzeye/ophel/releases/tag/v1.0.60
   [1.0.59]: https://github.com/urzeye/ophel/releases/tag/v1.0.59
   [1.0.58]: https://github.com/urzeye/ophel/releases/tag/v1.0.58
   [1.0.57]: https://github.com/urzeye/ophel/releases/tag/v1.0.57

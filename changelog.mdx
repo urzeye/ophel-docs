@@ -3,6 +3,20 @@ title: "Changelog"
 description: "All notable changes to Ophel Atlas are documented here."
 ---
 
+<Update label="v1.0.60">
+
+  ### ✨ Improvements
+
+  - **Userscript bundle size** — Split Markdown rendering code, Markdown styles, user-query Markdown styles, and site icons into external userscript assets so Greasy Fork sync has less inline code to process while preserving the existing rendering injection path.
+  - **Zen Mode exit button** — Added a "Show exit button" setting for Zen Mode, so the on-page exit button can be hidden while keeping the quick button and shortcut exit paths available. (#645)
+
+  ### 🐛 Bug Fixes
+
+  - **AI Studio mobile Enter key** — AI Studio on Android and other mobile devices now lets the soft-keyboard Enter key insert a newline instead of triggering an accidental send, while Ophel-driven sends still use the native send button or the safe keyboard fallback. (#646)
+  - **AI Studio mobile history sync** — AI Studio conversation sync now recognizes the mobile Library card layout, so mobile pages no longer report that no sidebar conversations were found when history is available.
+  - **Conversation sync loading** — Conversation sync now uses each adapter's own conversation source to decide when sidebar history has finished loading, waits longer for slow lazy-loaded sidebars, and disables sync-delete when a complete load cannot be confirmed. Doubao and Yuanbao now share the safer base loader. (#639)
+</Update>
+
 <Update label="v1.0.59">
 
   ### 🚀 New Features
@@ -1184,6 +1198,7 @@ description: "All notable changes to Ophel Atlas are documented here."
   - Open source and transparent
 
 
+  [1.0.60]: https://github.com/urzeye/ophel/releases/tag/v1.0.60
   [1.0.59]: https://github.com/urzeye/ophel/releases/tag/v1.0.59
   [1.0.58]: https://github.com/urzeye/ophel/releases/tag/v1.0.58
   [1.0.57]: https://github.com/urzeye/ophel/releases/tag/v1.0.57
