@@ -1,0 +1,169 @@
+---
+title: "Conversation Export: Markdown, JSON, zip packages, and asset preservation"
+sidebarTitle: "Export"
+description: "Export AI conversations in Markdown, JSON, plain text, or zip packages — with per-platform support for images, attachments, code artifacts, Deep Research reports, and thinking chains."
+keywords:
+  [
+    "conversation export",
+    "Markdown export",
+    "zip package export",
+    "export images",
+    "export attachments",
+    "Deep Research export",
+    "Canvas export",
+    "artifact export",
+    "thinking chain export",
+  ]
+---
+
+Ophel can export any AI conversation to a file, preserving not just the text but also images, uploaded files, generated assets, code artifacts, and reasoning chains — depending on what the platform exposes. You control the output format, what gets included, and how files are packaged.
+
+## How to export
+
+| Method | Description |
+| --- | --- |
+| Toolbox menu | Click **☰** in the floating button group, then **Export** |
+| Keyboard shortcut | `Alt / ⌥+Shift+E` exports the current conversation |
+| Conversations tab | Click the **Export** action on any conversation row |
+
+After triggering an export, a full-page progress overlay blocks accidental interaction while Ophel loads history, extracts content, packages assets, saves the file, and restores the page.
+
+## Export formats
+
+<Tabs>
+  <Tab title="Markdown (.md)">
+    Preserves headings, code blocks, and image references. Best for pasting into
+    a note-taking app or documentation tool.
+  </Tab>
+  <Tab title="Markdown zip package (.zip)">
+    Same Markdown output, bundled as a zip archive with all referenced assets
+    preserved in organized subdirectories. Choose this when the conversation
+    contains images, files, or generated artifacts you want to keep alongside
+    the text.
+  </Tab>
+  <Tab title="JSON (.json)">
+    Structured data with all messages, roles, timestamps, and model info. Best
+    for programmatic use or archiving.
+  </Tab>
+  <Tab title="Plain text (.txt)">
+    No formatting — just the raw text. Works in any text editor.
+  </Tab>
+</Tabs>
+
+You can also click **Copy as Markdown** from the toolbox to copy the entire conversation to your clipboard without saving a file.
+
+## Packaging mode
+
+Go to **Settings → Features → Export → Packaging mode** to choose how Markdown exports handle assets:
+
+| Mode | Behavior |
+| --- | --- |
+| **Markdown only** | Exports a single `.md` file. Images and attachments appear as text references or external links. |
+| **Zip package** | Bundles the Markdown file together with all assets in a `.zip` archive. This is the default. |
+
+When zip mode is active, Ophel downloads the archive directly instead of a standalone Markdown file.
+
+### Zip package structure
+
+```
+conversation-title.zip
+├── conversation-title.md
+└── assets/
+    ├── images/       ← Generated and embedded images
+    ├── files/        ← User-uploaded attachments (PDFs, documents, etc.)
+    └── documents/    ← Exported artifacts (Claude documents, Gemini Canvas code)
+```
+
+All references inside the Markdown file use stable relative paths, so the zip extracts cleanly into any folder.
+
+## Platform export capabilities
+
+Each AI platform exposes different types of content. The table below shows what Ophel can preserve per platform.
+
+| Platform | User attachments | Generated images | Thinking chains | Artifacts & reports |
+| --- | :---: | :---: | :---: | --- |
+| **ChatGPT** | ✅ | ✅ | — | Deep Research reports |
+| **Gemini** | ✅ | ✅ | ✅ | Canvas code, Deep Research reports |
+| **Gemini Enterprise** | ✅ | ✅ | ✅ | Canvas code, Deep Research reports |
+| **AI Studio** | ✅ | — | — | — |
+| **Claude** | ✅ | — | ✅ | Document artifacts |
+| **Grok** | ✅ | ✅ | — | — |
+| **DeepSeek** | ✅ | — | — | — |
+| **Doubao** | ✅ | ✅ | — | — |
+| **Kimi** | ✅ | — | ✅ | Share page exports |
+| **Qwen Studio** | ✅ | ✅ | ✅ | — |
+| **Qianwen** | ✅ | ✅ | — | — |
+| **Yuanbao** | ✅ | ✅ | ✅ | — |
+| **Z.ai** | ✅ | — | ✅ | — |
+| **ChatGLM** | ✅ | ✅ | ✅ | — |
+| **ima** | ✅ | ✅ | ✅ | — |
+
+<Note>
+  This table reflects what Ophel can extract from each platform's current page
+  structure. If a platform redesigns its DOM, some capabilities may need adapter
+  updates before they work again.
+</Note>
+
+## Platform-specific export details
+
+### ChatGPT
+
+- **Generated images** — AI-generated image-only replies are included in both Markdown and zip exports.
+- **Deep Research reports** — When a Deep Research report is available, the export includes the report title and a link. In zip mode, linked report files are preserved under `assets/files/`.
+- **User attachments** — Uploaded images and linked files from user prompts are packaged in zip mode.
+
+### Gemini & Gemini Enterprise
+
+- **Canvas code artifacts** — Exports open Canvas artifacts, switches to the code tab, and includes the generated code in the Markdown output.
+- **Deep Research exports** — Covers owned app conversations, share pages, and generated report share pages. Closed report panels are opened during export and restored afterward.
+- **Deep Research report actions** — When a Deep Research report panel is open, **Copy Markdown** and **Download Markdown** buttons appear in the report toolbar, exporting only the current report without changing the regular conversation export.
+
+### Claude
+
+- **Document artifacts** — Markdown document artifacts are exported as linked files under `assets/documents/` in zip packages.
+- **Thinking chains** — Expanded Claude thinking blocks are included when "Include Thoughts in Export" is enabled.
+- **Attachments** — Uploaded images and linked files from user prompts are packaged in zip mode, preserving the original reply order of text and artifact links.
+
+### Kimi
+
+- **Share page export** — Kimi share pages are supported for export, outline extraction, and scroll navigation.
+- **Thought chains** — Visible thinking content is included when "Include Thoughts in Export" is enabled.
+- **User images** — Uploaded images are preserved in Markdown and zip exports.
+
+### Deep Research report export (Gemini)
+
+Gemini Deep Research reports are handled separately from regular conversation exports:
+
+- The Outline tab shows a **Chat / Document** source switch when a report is open, letting you browse the report outline independently from the conversation outline.
+- The report panel toolbar includes **Copy Markdown** and **Download Markdown** buttons for exporting only the report content.
+- During a full conversation export, Ophel opens the report panel if it is closed, extracts the content, and restores the panel state afterward.
+
+## Export settings
+
+Configure export behavior in **Settings → Features → Export**:
+
+| Setting | Description | Default |
+| --- | --- | --- |
+| Packaging mode | Markdown only or zip package | Zip package |
+| Default export format | File format used when you click Export | Markdown |
+| Custom user name | Replaces "User" in the exported output | (empty) |
+| Custom AI name | Replaces the AI name in the exported output | (empty) |
+| Include filename timestamp | Adds a timestamp to the exported filename | Off |
+| Include thinking/reasoning chains | Exports reasoning steps for platforms that expose them | On |
+| Convert images to Base64 | Embeds images inline instead of linking to them | Off |
+| Export filename template | Custom naming rule for exported files (supports `{title}`, `{date}`) | `{title}` |
+
+## Copy as Markdown
+
+Click **Copy as Markdown** from the toolbox menu to copy the entire conversation to your clipboard in Markdown format. This is faster than exporting a file when you just need to paste the content into a note, email, or another AI chat.
+
+## Export from share pages
+
+Ophel supports exporting from share pages on most platforms. The browser tab title and export filename use the page heading when the conversation title is not exposed on a share page. Platform-specific share page support:
+
+- **Gemini** — owned app conversations, conversation share pages, and report share pages
+- **Kimi** — share page conversations with images and file labels
+- **Doubao** — share links under `/thread/`
+- **Z.ai** — conversation and share pages
+- **ChatGLM** — share pages with thinking content
+- **Qwen Studio** — regular and share page conversations with thinking details
