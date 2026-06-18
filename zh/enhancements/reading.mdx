@@ -7,6 +7,7 @@ keywords: ["阅读历史", "滚动锁定", "位置恢复", "阅读进度", "页�
 ---
 
 import { Icon } from "/snippets/icon.jsx"
+import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
 
 Ophel 记录你在每个对话中的阅读位置，让你不再需要重新滚动寻找上次读到的地方。配合滚动锁定，在 AI 生成时固定你的阅读位置；再加上一组快速导航锚点，在长对话的不同位置之间瞬间跳转。
 
@@ -41,7 +42,7 @@ AI 每生成一段内容，页面就会自动滚动到最新处——这在你�
 
 <Tabs>
   <Tab title="键盘快捷键">
-    按 `Alt / ⌥+S` 切换开启/关闭。
+    按 <Shortcut combo="alt+s" /> 切换开启/关闭。
   </Tab>
   <Tab title="工具箱菜单">
     点击浮动按钮组中的 <Icon src="/images/icons/tools.svg" alt="工具箱图标" /> 工具箱图标，选择 <Icon src="/images/icons/scroll-lock.svg" alt="滚动锁定图标" /> **滚动锁定**。
@@ -58,9 +59,9 @@ AI 每生成一段内容，页面就会自动滚动到最新处——这在你�
 
 | 按钮 | 键盘快捷键 | 功能 |
 | --- | --- | --- |
-| <Icon src="/images/icons/scroll-top.svg" alt="滚到顶部图标" /> 滚到顶部 | `Alt / ⌥+T` | 加载完整历史并跳转到顶部 |
-| <Icon src="/images/icons/scroll-bottom.svg" alt="滚到底部图标" /> 滚到底部 | `Alt / ⌥+B` | 跳转到最新消息 |
-| <Icon src="/images/icons/anchor.svg" alt="返回锚点图标" /> 返回锚点 | `Alt / ⌥+Z` | 跳回上次保存的位置 |
+| <Icon src="/images/icons/scroll-top.svg" alt="滚到顶部图标" /> 滚到顶部 | <Shortcut combo="alt+t" /> | 加载完整历史并跳转到顶部 |
+| <Icon src="/images/icons/scroll-bottom.svg" alt="滚到底部图标" /> 滚到底部 | <Shortcut combo="alt+b" /> | 跳转到最新消息 |
+| <Icon src="/images/icons/anchor.svg" alt="返回锚点图标" /> 返回锚点 | <Shortcut combo="alt+z" /> | 跳回上次保存的位置 |
 
 每次使用**滚到顶部**或**滚到底部**，Ophel 都会先把当前位置保存为锚点。点击**返回锚点**即可跳回。再次点击可在锚点位置和当前位置之间来回切换——非常适合在长对话中交叉对比两处内容。
 

@@ -7,6 +7,7 @@ keywords: ["主题", "深色模式", "浅色模式", "自定义CSS", "主题预�
 ---
 
 import { Icon } from "/snippets/icon.jsx"
+import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
 import { ThemePresetGrid } from "/snippets/theme-preset-grid.jsx"
 
 ![外观与主题设置 — 主题预览与切换](/images/appearance/theme-preview-zh.png)
@@ -19,7 +20,7 @@ Ophel 支持三种模式：
 - <Icon src="/images/icons/theme-dark.svg" alt="深色主题图标" /> **深色** — 始终使用暗色主题
 - <Icon src="/images/icons/theme-system.svg" alt="跟随系统图标" /> **跟随系统** — 自动跟随操作系统的外观设置
 
-可通过浮动按钮组中的 <Icon src="/images/icons/theme-system.svg" alt="主题切换图标" /> 主题切换按钮、快捷键 <Icon src="/images/icons/keyboard.svg" alt="快捷键图标" /> `Alt / ⌥+D`，或 <Icon src="/images/icons/settings.svg" alt="设置图标" /> **设置 → 外观** 切换。
+可通过浮动按钮组中的 <Icon src="/images/icons/theme-system.svg" alt="主题切换图标" /> 主题切换按钮、快捷键 <Icon src="/images/icons/keyboard.svg" alt="快捷键图标" /> <Shortcut combo="alt+d" />，或 <Icon src="/images/icons/settings.svg" alt="设置图标" /> **设置 → 外观** 切换。
 
 <Tip>
   开启**跟随站点主题**后，当 AI 平台（如 Gemini、ChatGPT）切换亮/暗模式时，Ophel
@@ -54,7 +55,7 @@ Ophel 支持三种模式：
 
 <Steps>
   <Step title="打开设置">
-    按 <Icon src="/images/icons/keyboard.svg" alt="快捷键图标" /> `Alt / ⌥+,`，或点击面板标题栏的 <Icon src="/images/icons/settings.svg" alt="设置图标" /> 设置图标。
+    按 <Icon src="/images/icons/keyboard.svg" alt="快捷键图标" /> <Shortcut combo="alt+," />，或点击面板标题栏的 <Icon src="/images/icons/settings.svg" alt="设置图标" /> 设置图标。
   </Step>
   <Step title="进入外观页面">在设置页面中点击 **外观**。</Step>
   <Step title="选择并应用">

@@ -7,6 +7,7 @@ keywords: ["smart outline", "table of contents", "conversation outline", "bookma
 ---
 
 import { Icon } from "/snippets/icon.jsx"
+import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
 
 The Smart Outline reads your conversation after every AI reply and builds a navigable tree in the side panel. Each of your messages becomes a top-level entry, and any Markdown headings inside the AI's response become nested entries beneath it. The longer the conversation, the more value the outline adds.
 
@@ -37,7 +38,7 @@ Click any entry in the outline to jump directly to that part of the conversation
 
 As you scroll the conversation, the outline highlights the entry that matches your current reading position in real time — a position indicator that keeps you oriented inside long threads.
 
-If you scroll the outline panel itself and lose track of where you are, click the <Icon src="/images/icons/locate.svg" alt="Locate current position icon" /> **Locate current position** button or press `Alt / ⌥+L` to snap the outline panel back to highlight your current position.
+If you scroll the outline panel itself and lose track of where you are, click the <Icon src="/images/icons/locate.svg" alt="Locate current position icon" /> **Locate current position** button or press <Shortcut combo="alt+l" /> to snap the outline panel back to highlight your current position.
 
 ## Filter and toolbar controls
 
@@ -56,9 +57,9 @@ You can also switch filters with keyboard shortcuts:
 
 | Shortcut                              | Action                                         |
 | ------------------------------------- | ---------------------------------------------- |
-| `Alt / ⌥+Q`        | Toggle user questions on/off                   |
-| `Alt / ⌥+Shift+Q` | Show only user questions (collapse to level 0) |
-| `Alt / ⌥+C`        | Toggle bookmarks filter                        |
+| <Shortcut combo="alt+q" />        | Toggle user questions on/off                   |
+| <Shortcut combo="alt+shift+q" /> | Show only user questions (collapse to level 0) |
+| <Shortcut combo="alt+c" />        | Toggle bookmarks filter                        |
 
 ## Bookmarks
 
@@ -81,11 +82,11 @@ You can expand the tree to a specific heading depth without manually clicking ev
     A context menu appears with expand-to-level options.
   </Step>
   <Step title="Choose a depth, or use a keyboard shortcut">
-    Press `Alt / ⌥+Shift+1` through `Alt / ⌥+Shift+6` to expand to heading levels 1–6 directly.
+    Press <Shortcut combo="alt+shift+1" /> through <Shortcut combo="alt+shift+6" /> to expand to heading levels 1–6 directly.
   </Step>
 </Steps>
 
-Press `Alt / ⌥+E` to toggle all nodes expanded or collapsed at once.
+Press <Shortcut combo="alt+e" /> to toggle all nodes expanded or collapsed at once.
 
 ## Word count on hover
 
@@ -105,20 +106,20 @@ On platforms that expose a separate document panel — such as Claude's right-si
 
 ## Shortcuts
 
-<Note>Mac users: **Alt** = **Option**.</Note>
+<ShortcutLegend />
 
 | Shortcut         | Action                                         |
 | ---------------- | ---------------------------------------------- |
-| `Alt+R`          | Refresh outline                                |
-| `Alt+E`          | Expand / collapse all                          |
-| `Alt+Q`          | Toggle user questions on/off                   |
-| `Alt+Shift+Q`    | Show only user questions (collapse to level 0) |
-| `Alt+C`          | Toggle bookmarks filter                        |
-| `Alt+L`          | Locate current position in outline             |
-| `Alt+F`          | Search within outline                          |
-| `Alt+Up`         | Jump to previous heading                       |
-| `Alt+Down`       | Jump to next heading                           |
-| `Alt+Shift+1..6` | Expand outline to heading level 1–6            |
+| <Shortcut combo="alt+r" />          | Refresh outline                                |
+| <Shortcut combo="alt+e" />          | Expand / collapse all                          |
+| <Shortcut combo="alt+q" />          | Toggle user questions on/off                   |
+| <Shortcut combo="alt+shift+q" />    | Show only user questions (collapse to level 0) |
+| <Shortcut combo="alt+c" />          | Toggle bookmarks filter                        |
+| <Shortcut combo="alt+l" />          | Locate current position in outline             |
+| <Shortcut combo="alt+f" />          | Search within outline                          |
+| <Shortcut combo="alt+up" />         | Jump to previous heading                       |
+| <Shortcut combo="alt+down" />       | Jump to next heading                           |
+| <Shortcut combo="alt+shift+1" /> - <Shortcut combo="alt+shift+6" /> | Expand outline to heading level 1–6            |
 
 All shortcuts are customizable in **Settings → Shortcuts**.
 

@@ -15,6 +15,7 @@ keywords:
 ---
 
 import { Icon } from "/snippets/icon.jsx"
+import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
 
 ![提示词库标签页 — 提示词列表与分类](/images/features/prompt-zh.png)
 
@@ -109,7 +110,7 @@ import { Icon } from "/snippets/icon.jsx"
 
 ### 启用队列
 
-进入 <Icon src="/images/icons/settings.svg" alt="设置图标" /> **设置 → 功能 → 提示词 → 提示词队列**，开启开关。输入框附近会出现 <Icon src="/images/icons/prompt-queue.svg" alt="提示词队列图标" /> 队列小组件，也可以用快捷键 <Icon src="/images/icons/keyboard.svg" alt="快捷键图标" /> `Alt / ⌥+J` 随时显示/隐藏。
+进入 <Icon src="/images/icons/settings.svg" alt="设置图标" /> **设置 → 功能 → 提示词 → 提示词队列**，开启开关。输入框附近会出现 <Icon src="/images/icons/prompt-queue.svg" alt="提示词队列图标" /> 队列小组件，也可以用快捷键 <Icon src="/images/icons/keyboard.svg" alt="快捷键图标" /> <Shortcut combo="alt+j" /> 随时显示/隐藏。
 
 ### 批量导入
 
@@ -157,7 +158,7 @@ import { Icon } from "/snippets/icon.jsx"
 | 设置项     | 说明                                                      |
 | ---------- | --------------------------------------------------------- |
 | 双击发送   | 双击提示词时是否直接提交，不经过手动确认                  |
-| 提交键     | 插入后用于向 AI 提交的按键（**Enter** 或 **Ctrl+Enter**） |
+| 提交键     | 插入后用于向 AI 提交的按键（**Enter** 或 <Shortcut combo="ctrl+enter" sameOnMac />） |
 | <Icon src="/images/icons/prompt-queue.svg" alt="提示词队列图标" /> 提示词队列 | 是否启用提示词队列功能 |
 
 ## 示例模板

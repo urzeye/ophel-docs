@@ -14,6 +14,7 @@ keywords:
 ---
 
 import { Icon } from "/snippets/icon.jsx"
+import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
 
 This page answers the most common questions about Ophel Atlas. If you don't find what you're looking for here, check the [Troubleshooting](/troubleshooting) page or open an issue on [GitHub Issues](https://github.com/urzeye/ophel/issues).
 
@@ -44,7 +45,7 @@ This page answers the most common questions about Ophel Atlas. If you don't find
   </Accordion>
 
   <Accordion title="How do I enable the extension after installing it?" icon="puzzle-piece">
-    After installing, open any supported AI platform in your browser. The Ophel panel should appear automatically in the sidebar. If it doesn't, check that the extension is enabled in your browser toolbar (click the puzzle-piece icon and confirm Ophel is toggled on), then hard-reload the page with `Ctrl / ⌘+Shift+R`.
+    After installing, open any supported AI platform in your browser. The Ophel panel should appear automatically in the sidebar. If it doesn't, check that the extension is enabled in your browser toolbar (click the puzzle-piece icon and confirm Ophel is toggled on), then hard-reload the page with <Shortcut combo="ctrl+shift+r" />.
 
     Some URLs require you to explicitly grant Ophel permission to run. If you see a "Click to enable" prompt in the extension popup, click it and allow access to the current site.
 
@@ -65,9 +66,9 @@ This page answers the most common questions about Ophel Atlas. If you don't find
     Work through these steps in order:
 
     1. Confirm the extension is installed and enabled — check the browser toolbar for the Ophel icon.
-    2. Hard-reload the page: `Ctrl / ⌘+Shift+R`.
+    2. Hard-reload the page: <Shortcut combo="ctrl+shift+r" />.
     3. Check that the site you're on is in the [supported platforms list](#which-ai-platforms-does-ophel-support).
-    4. If you previously closed the panel, press <Icon src="/images/icons/keyboard.svg" alt="Keyboard shortcut icon" /> `Alt / ⌥+P` to reopen it, or click the <Icon src="/images/icons/sparkle.svg" alt="Panel quick button icon" /> panel button in the floating quick buttons group.
+    4. If you previously closed the panel, press <Icon src="/images/icons/keyboard.svg" alt="Keyboard shortcut icon" /> <Shortcut combo="alt+p" /> to reopen it, or click the <Icon src="/images/icons/sparkle.svg" alt="Panel quick button icon" /> panel button in the floating quick buttons group.
 
   </Accordion>
 
@@ -75,7 +76,7 @@ This page answers the most common questions about Ophel Atlas. If you don't find
   title="How do I open the panel if the floating buttons have disappeared?"
   icon="circle-question"
 >
-  Press <Icon src="/images/icons/keyboard.svg" alt="Keyboard shortcut icon" /> `Alt / ⌥+P`. This keyboard shortcut toggles the panel
+  Press <Icon src="/images/icons/keyboard.svg" alt="Keyboard shortcut icon" /> <Shortcut combo="alt+p" />. This keyboard shortcut toggles the panel
   regardless of whether the floating buttons are visible on screen.
 </Accordion>
 
@@ -84,8 +85,8 @@ This page answers the most common questions about Ophel Atlas. If you don't find
   icon="arrow-pointer"
 >
   Ghost mode makes the panel temporarily transparent and click-through so you
-  can interact with the page behind it. Hold **Ctrl** (Windows/Linux) or
-  **Command** (Mac) alone for about 0.2 seconds. The panel fades out and lets
+  can interact with the page behind it. Hold <Shortcut combo="ctrl" /> alone
+  for about 0.2 seconds. The panel fades out and lets
   clicks pass through. Release the key to return to normal.
 </Accordion>
 
@@ -101,7 +102,7 @@ This page answers the most common questions about Ophel Atlas. If you don't find
 
 <AccordionGroup>
   <Accordion title="Why is the outline empty even though the conversation has content?" icon="list-tree">
-    Some AI platforms update the DOM asynchronously, so the outline may not populate immediately when the page first loads. Press `Alt / ⌥+R` to refresh the outline manually. If the outline stays empty after a refresh, check that **Auto update** is enabled in **Settings → Features → Outline**.
+    Some AI platforms update the DOM asynchronously, so the outline may not populate immediately when the page first loads. Press <Shortcut combo="alt+r" /> to refresh the outline manually. If the outline stays empty after a refresh, check that **Auto update** is enabled in **Settings → Features → Outline**.
   </Accordion>
 
 <Accordion
@@ -114,7 +115,7 @@ This page answers the most common questions about Ophel Atlas. If you don't find
 </Accordion>
 
   <Accordion title="How do I refresh the outline manually?" icon="rotate">
-    Press <Icon src="/images/icons/refresh.svg" alt="Refresh outline icon" /> `Alt / ⌥+R` at any time to force the outline to re-scan the conversation and rebuild its entries.
+    Press <Icon src="/images/icons/refresh.svg" alt="Refresh outline icon" /> <Shortcut combo="alt+r" /> at any time to force the outline to re-scan the conversation and rebuild its entries.
   </Accordion>
 </AccordionGroup>
 
@@ -137,7 +138,7 @@ This page answers the most common questions about Ophel Atlas. If you don't find
     The Prompt Queue lets you line up multiple prompts and send them automatically one by one without waiting manually after each AI response. To use it:
 
     1. Enable the queue in <Icon src="/images/icons/settings.svg" alt="Settings icon" /> **Settings → Features → Prompts → Prompt Queue**.
-    2. Open the queue overlay with <Icon src="/images/icons/keyboard.svg" alt="Keyboard shortcut icon" /> `Alt / ⌥+J`.
+    2. Open the queue overlay with <Icon src="/images/icons/keyboard.svg" alt="Keyboard shortcut icon" /> <Shortcut combo="alt+j" />.
     3. Add prompts one by one, or use the batch-import option to paste and split a large block of text.
     4. After you add pending prompts, Ophel automatically sends the next one once it detects the AI has finished responding (no active generation for two consecutive checks, roughly 2 seconds).
 
@@ -146,7 +147,7 @@ This page answers the most common questions about Ophel Atlas. If you don't find
   </Accordion>
 
   <Accordion title="The queue isn't sending the next prompt — why?" icon="hourglass">
-    Ophel waits until the AI page appears idle (no generation spinner detected) for two consecutive polling intervals, which takes about 2 seconds. If the AI platform uses an unusual loading indicator that Ophel cannot detect, the queue may stall indefinitely. As a workaround, open the queue overlay with <Icon src="/images/icons/keyboard.svg" alt="Keyboard shortcut icon" /> `Alt / ⌥+J` and use **Force Send** on a pending item.
+    Ophel waits until the AI page appears idle (no generation spinner detected) for two consecutive polling intervals, which takes about 2 seconds. If the AI platform uses an unusual loading indicator that Ophel cannot detect, the queue may stall indefinitely. As a workaround, open the queue overlay with <Icon src="/images/icons/keyboard.svg" alt="Keyboard shortcut icon" /> <Shortcut combo="alt+j" /> and use **Force Send** on a pending item.
   </Accordion>
 </AccordionGroup>
 

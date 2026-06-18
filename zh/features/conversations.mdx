@@ -16,6 +16,7 @@ keywords:
 ---
 
 import { Icon } from "/snippets/icon.jsx"
+import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
 
 ![会话标签页 — 文件夹与标签列表](/images/features/conversation-zh.png)
 
@@ -90,7 +91,7 @@ Ophel 从当前 AI 平台的原生侧边栏读取会话列表，将其展示在�
 你可以通过三种入口导出对话：
 
 - **快捷按钮组**：点击浮动快捷按钮组里的 <Icon src="/images/icons/tools.svg" alt="工具箱图标" /> **工具箱**图标，然后点击 <Icon src="/images/icons/export.svg" alt="导出图标" /> **导出**按钮导出 <Icon src="/images/icons/markdown.svg" alt="Markdown 文件图标" /> Markdown。
-- **快捷键**：按 `Ctrl+Shift+E`（Mac：`Command+Shift+E`），将当前对话导出为 <Icon src="/images/icons/markdown.svg" alt="Markdown 文件图标" /> Markdown。
+- **快捷键**：按 <Shortcut combo="ctrl+shift+e" />，将当前对话导出为 <Icon src="/images/icons/markdown.svg" alt="Markdown 文件图标" /> Markdown。
 - **会话行菜单**：在会话标签页中，点击目标会话右侧的 <Icon src="/images/icons/more-horizontal.svg" alt="三个点菜单图标" /> 三个点菜单，选择 <Icon src="/images/icons/export.svg" alt="导出图标" /> **导出**，再选择 <Icon src="/images/icons/markdown.svg" alt="Markdown 文件图标" /> Markdown、<Icon src="/images/icons/json-file.svg" alt="JSON 文件图标" /> JSON 或 <Icon src="/images/icons/txt-file.svg" alt="TXT 文件图标" /> TXT 格式。
 
 Markdown 导出可以选择打包为 zip，包含对话中引用的图片、附件和其他资源文件。
@@ -117,17 +118,17 @@ Markdown 导出可以选择打包为 zip，包含对话中引用的图片、附�
 
 ## 常用快捷键
 
-<Note>Mac 上的 `Ctrl` 快捷键对应 `Command`，`Alt` 对应 `Option`。</Note>
+<ShortcutLegend lang="zh" />
 
-| 操作                 | 快捷键                                  |
-| -------------------- | --------------------------------------- |
-| 新建对话             | `Ctrl+Shift+O`（Mac：`Command+Shift+O`） |
-| 刷新会话列表         | `Alt+Shift+R`                           |
-| 定位当前会话         | `Alt+Shift+L`                           |
-| 上一个会话           | `Alt+[`                                 |
-| 下一个会话           | `Alt+]`                                 |
-| 导出当前对话         | `Ctrl+Shift+E`（Mac：`Command+Shift+E`） |
-| 复制最新 AI 回复     | `Ctrl+Shift+C`（Mac：`Command+Shift+C`） |
+| 操作             | 快捷键                             |
+| ---------------- | ---------------------------------- |
+| 新建对话         | <Shortcut combo="ctrl+shift+o" />  |
+| 刷新会话列表     | <Shortcut combo="alt+shift+r" />   |
+| 定位当前会话     | <Shortcut combo="alt+shift+l" />   |
+| 上一个会话       | <Shortcut combo="alt+[" />         |
+| 下一个会话       | <Shortcut combo="alt+]" />         |
+| 导出当前对话     | <Shortcut combo="ctrl+shift+e" />  |
+| 复制最新 AI 回复 | <Shortcut combo="ctrl+shift+c" />  |
 
 ## 相关设置
 

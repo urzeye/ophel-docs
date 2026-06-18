@@ -16,6 +16,7 @@ keywords:
 ---
 
 import { Icon } from "/snippets/icon.jsx"
+import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
 
 The Conversations tab gives you a searchable, organized view of every chat on the current AI platform.
 
@@ -89,7 +90,7 @@ Click the <Icon src="/images/icons/batch.svg" alt="Batch mode icon" /> **Batch M
 You can export a conversation in three ways:
 
 - **Quick button group** — click the <Icon src="/images/icons/tools.svg" alt="Toolbox icon" /> toolbox icon in the floating quick button group, then click <Icon src="/images/icons/export.svg" alt="Export icon" /> **Export** to export <Icon src="/images/icons/markdown.svg" alt="Markdown file icon" /> Markdown.
-- **Keyboard shortcut** — press `Ctrl+Shift+E` (`Command+Shift+E` on macOS) to export the current conversation as <Icon src="/images/icons/markdown.svg" alt="Markdown file icon" /> Markdown.
+- **Keyboard shortcut** — press <Shortcut combo="ctrl+shift+e" /> to export the current conversation as <Icon src="/images/icons/markdown.svg" alt="Markdown file icon" /> Markdown.
 - **Conversation row menu** — in the Conversations tab, click the <Icon src="/images/icons/more-horizontal.svg" alt="Three-dot menu icon" /> three-dot menu on a conversation row, choose <Icon src="/images/icons/export.svg" alt="Export icon" /> **Export**, then select <Icon src="/images/icons/markdown.svg" alt="Markdown file icon" /> Markdown, <Icon src="/images/icons/json-file.svg" alt="JSON file icon" /> JSON, or <Icon src="/images/icons/txt-file.svg" alt="TXT file icon" /> TXT.
 
 Markdown exports can optionally be delivered as a zip package that includes images, attachments, and other assets referenced in the conversation.
@@ -100,16 +101,17 @@ For full details on export formats, packaging modes, asset handling, and per-pla
 
 ## Keyboard shortcuts
 
-<Note>On macOS, **Ctrl** shortcuts use **Command**, and **Alt** shortcuts use **Option**.</Note>
+<ShortcutLegend />
 
-| Shortcut                                          | Action                              |
-| ------------------------------------------------- | ----------------------------------- |
-| `Ctrl+Shift+O`                                    | New conversation                    |
-| `Alt+Shift+R`                                     | Refresh conversation list           |
-| `Alt+Shift+L`                                     | Locate current conversation in list |
-| `Alt+[`                                           | Previous conversation               |
-| `Alt+]`                                           | Next conversation                   |
-| `Ctrl+Shift+E` (`Command+Shift+E` on macOS)       | Export current conversation         |
+| Shortcut                           | Action                              |
+| ---------------------------------- | ----------------------------------- |
+| <Shortcut combo="ctrl+shift+o" />  | New conversation                    |
+| <Shortcut combo="alt+shift+r" />   | Refresh conversation list           |
+| <Shortcut combo="alt+shift+l" />   | Locate current conversation in list |
+| <Shortcut combo="alt+[" />         | Previous conversation               |
+| <Shortcut combo="alt+]" />         | Next conversation                   |
+| <Shortcut combo="ctrl+shift+e" />  | Export current conversation         |
+| <Shortcut combo="ctrl+shift+c" />  | Copy latest AI reply                |
 
 All shortcuts are customizable in **Settings → Shortcuts**.
 

@@ -17,6 +17,7 @@ keywords:
 ---
 
 import { Icon } from "/snippets/icon.jsx"
+import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
 
 安装成功后，打开任意[支持的 AI 网站](/introduction#支持的平台)，Ophel 会自动激活，在页面右侧显示侧边面板，并在屏幕边缘出现一组浮动快捷按钮。
 
@@ -24,7 +25,7 @@ import { Icon } from "/snippets/icon.jsx"
 
 ![Ophel 侧边面板 — 三个标签页概览](/images/panel/panel-tabs.png)
 
-点击面板顶部的标签栏切换，或使用 `Alt / ⌥+1` / `Alt / ⌥+2` / `Alt / ⌥+3`：
+点击面板顶部的标签栏切换，或使用 <Shortcut combo="alt+1" /> / <Shortcut combo="alt+2" /> / <Shortcut combo="alt+3" />：
 
 <CardGroup cols={3}>
   <Card title="大纲" icon="list-tree">
@@ -40,18 +41,18 @@ import { Icon } from "/snippets/icon.jsx"
   </Card>
 </CardGroup>
 
-<Note>如果面板没有自动出现，按 **Alt / ⌥+P** 手动打开。</Note>
+<Note>如果面板没有自动出现，按 <Shortcut combo="alt+p" /> 手动打开。</Note>
 
 ## 基础操作
 
 | 操作            | 方法                                                         |
 | --------------- | ------------------------------------------------------------ |
-| 切换标签页      | 点击顶部标签栏，或按 `Alt / ⌥+1` / `Alt / ⌥+2` / `Alt / ⌥+3` |
-| 打开 / 关闭面板 | `Alt / ⌥+P`，或点击浮动按钮组中的面板开关图标                |
-| 切换面板模式    | `Alt / ⌥+M`，或双击标题栏，或点击标题栏模式切换按钮          |
-| 全局搜索        | `Ctrl / ⌘+K`（或配置的快捷键）                               |
-| 切换亮 / 暗模式 | `Alt / ⌥+D`，或点击浮动按钮中的主题图标                      |
-| 打开设置        | `Alt / ⌥+,`，或点击面板顶部标题栏中的 <Icon src="/images/icons/settings.svg" alt="设置图标" /> 设置图标，或点击 <Icon src="/images/icons/tools.svg" alt="工具箱图标" /> 工具箱里的 <Icon src="/images/icons/settings.svg" alt="设置图标" /> 设置项 |
+| 切换标签页      | 点击顶部标签栏，或按 <Shortcut combo="alt+1" /> / <Shortcut combo="alt+2" /> / <Shortcut combo="alt+3" /> |
+| 打开 / 关闭面板 | <Shortcut combo="alt+p" />，或点击浮动按钮组中的面板开关图标                |
+| 切换面板模式    | <Shortcut combo="alt+m" />，或双击标题栏，或点击标题栏模式切换按钮          |
+| 全局搜索        | <Shortcut combo="ctrl+k" />（或配置的快捷键）                               |
+| 切换亮 / 暗模式 | <Shortcut combo="alt+d" />，或点击浮动按钮中的主题图标                      |
+| 打开设置        | <Shortcut combo="alt+," />，或点击面板顶部标题栏中的 <Icon src="/images/icons/settings.svg" alt="设置图标" /> 设置图标，或点击 <Icon src="/images/icons/tools.svg" alt="工具箱图标" /> 工具箱里的 <Icon src="/images/icons/settings.svg" alt="设置图标" /> 设置项 |
 
 ## 浮动快捷按钮
 
@@ -100,7 +101,7 @@ import { Icon } from "/snippets/icon.jsx"
 
 ## 全局搜索
 
-按 `Ctrl / ⌘+K`，或点击浮动按钮中的 <Icon src="/images/icons/search.svg" alt="全局搜索图标" /> 搜索图标，打开全局搜索叠加层。它将大纲节点、历史对话、提示词库和设置项统一纳入一个搜索框，无需逐个标签翻找。也可以连按两次 `Shift` 触发（需在 **设置 → 全局搜索** 中开启）。
+按 <Shortcut combo="ctrl+k" />，或点击浮动按钮中的 <Icon src="/images/icons/search.svg" alt="全局搜索图标" /> 搜索图标，打开全局搜索叠加层。它将大纲节点、历史对话、提示词库和设置项统一纳入一个搜索框，无需逐个标签翻找。也可以连按两次 `Shift` 触发（需在 **设置 → 全局搜索** 中开启）。
 
 支持以下语法过滤，多个过滤条件可以组合使用：
 
@@ -124,7 +125,7 @@ import { Icon } from "/snippets/icon.jsx"
 
 面板遮住了你需要点击的内容？不必先关闭面板：
 
-按住 **Ctrl**（Windows/Linux）或 **Command**（Mac），保持约 **0.2 秒**（只按这一个键），面板会变半透明并允许鼠标穿透，你可以直接点击背后的 AI 页面内容。松开键后面板恢复正常。
+按住 <Shortcut combo="ctrl" />，保持约 **0.2 秒**（只按这一个键），面板会变半透明并允许鼠标穿透，你可以直接点击背后的 AI 页面内容。松开键后面板恢复正常。
 
 ## 面板吸附到边缘
 
@@ -141,7 +142,7 @@ import { Icon } from "/snippets/icon.jsx"
 
 - 直接点击面板标题栏右侧的 **模式切换按钮**（图钉/吸附图标）
 - **双击**面板顶部标题栏（Logo 或品牌名区域）
-- 快捷键 `Alt / ⌥+M`（可在 **设置 → 快捷键** 中自定义）
+- 快捷键 <Shortcut combo="alt+m" />（可在 **设置 → 快捷键** 中自定义）
 
 <Tip>
   在自动吸附模式下，拖拽面板标题栏可将面板拖离边缘，此时按住拖动到对侧边缘可改变吸附方向。
@@ -154,9 +155,9 @@ import { Icon } from "/snippets/icon.jsx"
 | 元素         | 操作                                                                    |
 | ------------ | ----------------------------------------------------------------------- |
 | 标题区域     | 鼠标悬停显示随机使用小贴士；双击快速切换面板显示模式（悬浮 ↔ 自动吸附） |
-| 模式切换按钮 | 在「自动吸附」和「悬浮」模式之间一键切换（快捷键 `Alt / ⌥+M`）          |
-| 主题切换按钮 | 切换亮/暗模式（`Alt / ⌥+D`）                                            |
-| <Icon src="/images/icons/settings.svg" alt="设置图标" /> 设置按钮 | 打开设置弹窗（`Alt / ⌥+,`）                                             |
+| 模式切换按钮 | 在「自动吸附」和「悬浮」模式之间一键切换（快捷键 <Shortcut combo="alt+m" />）          |
+| 主题切换按钮 | 切换亮/暗模式（<Shortcut combo="alt+d" />）                                            |
+| <Icon src="/images/icons/settings.svg" alt="设置图标" /> 设置按钮 | 打开设置弹窗（<Shortcut combo="alt+," />）                                             |
 
 ## 面板基本设置
 

@@ -18,6 +18,7 @@ keywords:
 ---
 
 import { Icon } from "/snippets/icon.jsx"
+import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
 
 Ophel can export any AI conversation to a file, preserving not just the text but also images, uploaded files, generated assets, code artifacts, and reasoning chains — depending on what the platform exposes. You control the output format, what gets included, and how files are packaged.
 
@@ -26,7 +27,7 @@ Ophel can export any AI conversation to a file, preserving not just the text but
 | Method | Description |
 | --- | --- |
 | Floating quick buttons | Click the <Icon src="/images/icons/tools.svg" alt="Toolbox icon" /> toolbox icon, then click <Icon src="/images/icons/export.svg" alt="Export icon" /> **Export** to save <Icon src="/images/icons/markdown.svg" alt="Markdown file icon" /> Markdown |
-| Keyboard shortcut | `Ctrl+Shift+E` (`Command+Shift+E` on macOS) exports the current conversation as <Icon src="/images/icons/markdown.svg" alt="Markdown file icon" /> Markdown |
+| Keyboard shortcut | <Shortcut combo="ctrl+shift+e" /> exports the current conversation as <Icon src="/images/icons/markdown.svg" alt="Markdown file icon" /> Markdown |
 | Conversations tab | Click the <Icon src="/images/icons/more-horizontal.svg" alt="Three-dot menu icon" /> three-dot menu on a conversation row, choose <Icon src="/images/icons/export.svg" alt="Export icon" /> **Export**, then select <Icon src="/images/icons/markdown.svg" alt="Markdown file icon" /> Markdown, <Icon src="/images/icons/json-file.svg" alt="JSON file icon" /> JSON, or <Icon src="/images/icons/txt-file.svg" alt="TXT file icon" /> TXT |
 
 After triggering an export, a full-page progress overlay blocks accidental interaction while Ophel loads history, extracts content, packages assets, saves the file, and restores the page.

@@ -26,6 +26,7 @@
 - Use sentence case for headings
 - Bold for UI elements: Click **Settings**
 - Code formatting for file names, commands, paths, and code references
+- For Ophel keyboard shortcuts, use `/snippets/shortcut.jsx` instead of hand-writing Mac variants. `ctrl` maps to Windows/Linux `Ctrl` and Mac `Command`; `alt` maps to Windows/Linux `Alt` and Mac `Option`. Prompt submit is the only documented exception: `Ctrl+Enter` remains `Ctrl+Enter` on Mac.
 
 ## Content boundaries
 

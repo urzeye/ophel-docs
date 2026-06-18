@@ -15,6 +15,7 @@ keywords:
 ---
 
 import { Icon } from "/snippets/icon.jsx"
+import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
 
 The Prompt Library saves you from retyping the same instructions every session. You build a personal collection of prompt templates, organize them into categories, and insert any prompt into the AI input box with a single click. Variables let you write reusable templates where certain values are filled in at send time.
 
@@ -130,7 +131,7 @@ The Prompt Queue lets you line up multiple prompts and send them automatically o
 
 ### Enabling the Queue
 
-Go to <Icon src="/images/icons/settings.svg" alt="Settings icon" /> **Settings → Features → Prompts → Prompt Queue** and toggle it on. A <Icon src="/images/icons/prompt-queue.svg" alt="Prompt Queue icon" /> queue widget appears near the AI input box. Show or hide it at any time with the **Toggle Prompt Queue** shortcut (default: <Icon src="/images/icons/keyboard.svg" alt="Keyboard shortcut icon" /> `Alt / ⌥+J`).
+Go to <Icon src="/images/icons/settings.svg" alt="Settings icon" /> **Settings → Features → Prompts → Prompt Queue** and toggle it on. A <Icon src="/images/icons/prompt-queue.svg" alt="Prompt Queue icon" /> queue widget appears near the AI input box. Show or hide it at any time with the **Toggle Prompt Queue** shortcut (default: <Icon src="/images/icons/keyboard.svg" alt="Keyboard shortcut icon" /> <Shortcut combo="alt+j" />).
 
 ### Adding prompts to the Queue
 
@@ -189,7 +190,7 @@ Go to **Settings → Features → Prompts** to configure:
 | Setting              | Description                                                                |
 | -------------------- | -------------------------------------------------------------------------- |
 | Double-click to send | Double-clicking a prompt inserts and submits it directly                   |
-| Submit key           | Key used to submit to the AI after insertion — **Enter** or **Ctrl+Enter** |
+| Submit key           | Key used to submit to the AI after insertion — **Enter** or <Shortcut combo="ctrl+enter" sameOnMac /> |
 | <Icon src="/images/icons/prompt-queue.svg" alt="Prompt Queue icon" /> Prompt queue | Enable or disable the queue overlay feature |
 
 ## Example templates

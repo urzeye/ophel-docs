@@ -18,6 +18,7 @@ keywords:
 ---
 
 import { Icon } from "/snippets/icon.jsx"
+import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
 
 Ophel 可以导出任何 AI 对话，不仅保留文本，还能保留图片、上传文件、AI 生成的资源、代码产物和推理链——具体取决于平台暴露了什么内容。你可以自由控制输出格式、包含内容和打包方式。
 
@@ -26,7 +27,7 @@ Ophel 可以导出任何 AI 对话，不仅保留文本，还能保留图片、�
 | 方式 | 说明 |
 | --- | --- |
 | 浮动快捷按钮 | 点击 <Icon src="/images/icons/tools.svg" alt="工具箱图标" /> 工具箱图标，再点 <Icon src="/images/icons/export.svg" alt="导出图标" /> **导出**，保存为 <Icon src="/images/icons/markdown.svg" alt="Markdown 文件图标" /> Markdown |
-| 快捷键 | `Ctrl+Shift+E`（Mac：`Command+Shift+E`）导出当前对话为 <Icon src="/images/icons/markdown.svg" alt="Markdown 文件图标" /> Markdown |
+| 快捷键 | <Shortcut combo="ctrl+shift+e" /> 导出当前对话为 <Icon src="/images/icons/markdown.svg" alt="Markdown 文件图标" /> Markdown |
 | 会话标签页 | 点击会话行右侧的 <Icon src="/images/icons/more-horizontal.svg" alt="三个点菜单图标" /> 三点菜单，选择 <Icon src="/images/icons/export.svg" alt="导出图标" /> **导出**，再选择 <Icon src="/images/icons/markdown.svg" alt="Markdown 文件图标" /> Markdown、<Icon src="/images/icons/json-file.svg" alt="JSON 文件图标" /> JSON 或 <Icon src="/images/icons/txt-file.svg" alt="TXT 文件图标" /> TXT |
 
 触发导出后，会显示全屏进度遮罩，阻止误操作。Ophel 依次完成加载历史、提取内容、打包资源、保存文件、恢复页面状态。

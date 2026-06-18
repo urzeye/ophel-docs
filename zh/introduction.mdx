@@ -6,6 +6,7 @@ keywords: ["浏览器扩展", "AI对话增强", "支持平台", "会话管理", 
 ---
 
 import { Icon } from "/snippets/icon.jsx"
+import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
 
 Ophel Atlas 是一款浏览器扩展，将 AI 对话从无限滚动的聊天流，转化为可阅读、可导航、可复用的知识内容。它完全运行在你的浏览器中——无需账号、无需服务器、无数据上传——打开任意支持的 AI 平台时即自动激活。
 
@@ -42,7 +43,7 @@ Ophel Atlas 是一款浏览器扩展，将 AI 对话从无限滚动的聊天流�
     icon="magnifying-glass"
   >
     按
-    `Ctrl / ⌘+K` 打开统一搜索，覆盖大纲、会话、提示词和设置项。支持
+    <Shortcut combo="ctrl+k" /> 打开统一搜索，覆盖大纲、会话、提示词和设置项。支持
     `folder:`、`tag:`、`date:`、`type:` 等语法过滤器。
   </Card>
   <Card

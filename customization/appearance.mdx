@@ -7,6 +7,7 @@ keywords: ["themes", "dark mode", "light mode", "custom CSS", "theme presets", "
 ---
 
 import { Icon } from "/snippets/icon.jsx"
+import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
 import { ThemePresetGrid } from "/snippets/theme-preset-grid.jsx"
 
 Ophel gives you full control over how the panel looks.
@@ -27,7 +28,7 @@ Ophel supports three color modes:
 
 <Tabs>
   <Tab title="Keyboard shortcut">
-    Press <Icon src="/images/icons/keyboard.svg" alt="Keyboard shortcut icon" /> `Alt / ⌥+D` to cycle between light and dark mode.
+    Press <Icon src="/images/icons/keyboard.svg" alt="Keyboard shortcut icon" /> <Shortcut combo="alt+d" /> to cycle between light and dark mode.
   </Tab>
   <Tab title="Quick buttons">
     Click the <Icon src="/images/icons/theme-system.svg" alt="Theme button icon" /> theme button in the floating quick buttons group.
@@ -64,7 +65,7 @@ Each mode comes with 12 presets. Click any preset card in **Settings → Appeara
 
 ## Choosing a theme
 
-1. Open <Icon src="/images/icons/settings.svg" alt="Settings icon" /> **Settings** (`Alt / ⌥+,`)
+1. Open <Icon src="/images/icons/settings.svg" alt="Settings icon" /> **Settings** (<Shortcut combo="alt+," />)
 2. Go to **Appearance**
 3. Select **Light** or **Dark** from the mode tabs
 4. Click any preset card to preview and apply it

@@ -7,6 +7,7 @@ keywords: ["模型锁定", "站点设置", "Claude会话密钥", "Gemini去水�
 ---
 
 import { Icon } from "/snippets/icon.jsx"
+import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
 
 各 AI 平台在页面结构、行为和账号模型上各有差异。Ophel 支持为每个站点独立配置，而不是强制使用统一的全局设置。进入 **设置 → 站点设置**，从左侧边栏选择站点即可查看其专属选项。
 
@@ -131,7 +132,7 @@ Session Key（格式为 `sk-ant-sid...`）是浏览器在 claude.ai 上使用的
     进入 <Icon src="/images/icons/settings.svg" alt="设置图标" /> **设置 → 站点设置 → Claude**，在当前 Session Key 选择器中选择目标 Key，或点击某个 Key 行上的**设为当前**。
   </Tab>
   <Tab title="键盘快捷键">
-    按 <Icon src="/images/icons/keyboard.svg" alt="快捷键图标" /> `Ctrl+Alt+S`（Mac：`Command+Option+S`）切换到列表中的下一个 Key。
+    按 <Icon src="/images/icons/keyboard.svg" alt="快捷键图标" /> <Shortcut combo="ctrl+alt+s" /> 切换到列表中的下一个 Key。
   </Tab>
 </Tabs>
 

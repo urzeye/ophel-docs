@@ -7,6 +7,7 @@ keywords: ["reading history", "scroll lock", "position restore", "reading progre
 ---
 
 import { Icon } from "/snippets/icon.jsx"
+import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
 
 Ophel tracks where you are in each conversation so you never have to scroll back to find your place. Pair that with scroll lock to stay on the part you're reading while the AI is still generating, and a set of quick navigation anchors to jump around long threads instantly.
 
@@ -36,7 +37,7 @@ While the AI is generating, the page automatically scrolls down to follow new ou
 
 <Tabs>
   <Tab title="Keyboard shortcut">
-    Press `Alt / ⌥+S` to toggle scroll lock on or off.
+    Press <Shortcut combo="alt+s" /> to toggle scroll lock on or off.
   </Tab>
   <Tab title="Toolbox menu">
     Click the <Icon src="/images/icons/tools.svg" alt="Toolbox icon" /> toolbox icon in the floating button group, then select <Icon src="/images/icons/scroll-lock.svg" alt="Scroll lock icon" /> **Scroll Lock**.
@@ -53,9 +54,9 @@ The floating button group provides three scroll shortcuts that also work as a na
 
 | Button | Keyboard shortcut | What it does |
 | --- | --- | --- |
-| <Icon src="/images/icons/scroll-top.svg" alt="Scroll to top icon" /> Scroll to top | `Alt / ⌥+T` | Loads full history and jumps to the top |
-| <Icon src="/images/icons/scroll-bottom.svg" alt="Scroll to bottom icon" /> Scroll to bottom | `Alt / ⌥+B` | Jumps to the latest message |
-| <Icon src="/images/icons/anchor.svg" alt="Return to anchor icon" /> Return to anchor | `Alt / ⌥+Z` | Returns to the last saved position |
+| <Icon src="/images/icons/scroll-top.svg" alt="Scroll to top icon" /> Scroll to top | <Shortcut combo="alt+t" /> | Loads full history and jumps to the top |
+| <Icon src="/images/icons/scroll-bottom.svg" alt="Scroll to bottom icon" /> Scroll to bottom | <Shortcut combo="alt+b" /> | Jumps to the latest message |
+| <Icon src="/images/icons/anchor.svg" alt="Return to anchor icon" /> Return to anchor | <Shortcut combo="alt+z" /> | Returns to the last saved position |
 
 Every time you use **Scroll to top** or **Scroll to bottom**, Ophel saves your current position as an anchor first. Click **Return to anchor** to jump back. Click it again to toggle between the anchor and wherever you are now — useful for cross-referencing two parts of a long conversation.
 

@@ -7,6 +7,7 @@ keywords: ["常见问题", "FAQ", "问答", "帮助", "故障排查基础"]
 ---
 
 import { Icon } from "/snippets/icon.jsx"
+import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
 
 本页收录了关于 Ophel Atlas 最常见的问题。如果这里没有你需要的答案，请查看[故障排查](/troubleshooting)页面，或在 [GitHub Issues](https://github.com/urzeye/ophel/issues) 上提交反馈。
 
@@ -37,7 +38,7 @@ import { Icon } from "/snippets/icon.jsx"
   </Accordion>
 
   <Accordion title="安装后如何启用扩展？" icon="puzzle-piece">
-    安装完成后，在浏览器中打开任意支持的 AI 平台，Ophel 面板应会自动出现在侧边。如果没有出现，请确认扩展已在浏览器工具栏中开启（点击拼图图标确认 Ophel 已启用），然后用 `Ctrl / ⌘+Shift+R` 强制刷新页面。
+    安装完成后，在浏览器中打开任意支持的 AI 平台，Ophel 面板应会自动出现在侧边。如果没有出现，请确认扩展已在浏览器工具栏中开启（点击拼图图标确认 Ophel 已启用），然后用 <Shortcut combo="ctrl+shift+r" /> 强制刷新页面。
 
     某些网址需要你明确授权扩展运行。如果扩展弹窗中出现「点击启用」提示，点击并允许访问当前站点即可。
 
@@ -58,9 +59,9 @@ import { Icon } from "/snippets/icon.jsx"
     按以下顺序排查：
 
     1. 确认扩展已安装并启用（检查浏览器工具栏）
-    2. 用 `Ctrl / ⌘+Shift+R` 强制刷新页面
+    2. 用 <Shortcut combo="ctrl+shift+r" /> 强制刷新页面
     3. 确认当前站点在[支持的平台列表](#ophel-支持哪些-ai-平台)中
-    4. 如果面板被关闭了，按 `Alt / ⌥+P` 重新打开
+    4. 如果面板被关闭了，按 <Shortcut combo="alt+p" /> 重新打开
 
   </Accordion>
 
@@ -68,7 +69,7 @@ import { Icon } from "/snippets/icon.jsx"
   title="浮动按钮不见了，怎么打开面板？"
   icon="circle-question"
 >
-  按 <Icon src="/images/icons/keyboard.svg" alt="快捷键图标" /> `Alt / ⌥+P`。无论浮动按钮是否可见，这个快捷键都能切换面板。
+  按 <Icon src="/images/icons/keyboard.svg" alt="快捷键图标" /> <Shortcut combo="alt+p" />。无论浮动按钮是否可见，这个快捷键都能切换面板。
 </Accordion>
 
 <Accordion
@@ -76,7 +77,7 @@ import { Icon } from "/snippets/icon.jsx"
   icon="arrow-pointer"
 >
   幽灵穿透让面板暂时透明并允许鼠标点击穿过，方便操作面板背后的页面内容。按住
-  **Ctrl**（Windows/Linux）或 **Command**（Mac）约 0.2
+  <Shortcut combo="ctrl" /> 约 0.2
   秒，面板会变透明并允许穿透。松开按键后恢复正常。
 </Accordion>
 
@@ -89,7 +90,7 @@ import { Icon } from "/snippets/icon.jsx"
 
 <AccordionGroup>
   <Accordion title="大纲是空的，但对话有内容。" icon="list-tree">
-    部分 AI 平台异步更新 DOM，页面加载后大纲可能需要几秒才能填充。按 `Alt / ⌥+R` 手动刷新大纲。如果刷新后仍为空，检查 **设置 → 功能 → 大纲 → 自动更新** 是否已开启。
+    部分 AI 平台异步更新 DOM，页面加载后大纲可能需要几秒才能填充。按 <Shortcut combo="alt+r" /> 手动刷新大纲。如果刷新后仍为空，检查 **设置 → 功能 → 大纲 → 自动更新** 是否已开启。
   </Accordion>
 
 <Accordion
@@ -101,7 +102,7 @@ import { Icon } from "/snippets/icon.jsx"
 </Accordion>
 
   <Accordion title="如何手动刷新大纲？" icon="rotate">
-    按 <Icon src="/images/icons/refresh.svg" alt="刷新大纲图标" /> `Alt / ⌥+R` 强制重新扫描对话并重建大纲条目。
+    按 <Icon src="/images/icons/refresh.svg" alt="刷新大纲图标" /> <Shortcut combo="alt+r" /> 强制重新扫描对话并重建大纲条目。
   </Accordion>
 </AccordionGroup>
 
@@ -127,7 +128,7 @@ import { Icon } from "/snippets/icon.jsx"
     提示词队列让你把多条提示词排好队，Ophel 会在 AI 每次完成回复后自动发送下一条。使用方法：
 
     1. 在 <Icon src="/images/icons/settings.svg" alt="设置图标" /> **设置 → 功能 → 提示词 → 队列** 中启用
-    2. 按 <Icon src="/images/icons/keyboard.svg" alt="快捷键图标" /> `Alt / ⌥+J` 打开队列叠加层
+    2. 按 <Icon src="/images/icons/keyboard.svg" alt="快捷键图标" /> <Shortcut combo="alt+j" /> 打开队列叠加层
     3. 逐条添加，或用批量导入粘贴一组提示词
     4. 加入待发送内容后，Ophel 检测到页面连续两次空闲（约 2 秒）后自动发送下一条
 
@@ -136,7 +137,7 @@ import { Icon } from "/snippets/icon.jsx"
   </Accordion>
 
   <Accordion title="队列卡住了，没有发送下一条。" icon="hourglass">
-    Ophel 需要连续两次检测到页面空闲（约 2 秒）才会发送。如果 AI 页面使用了 Ophel 无法识别的加载动画，队列可能会卡住。此时按 <Icon src="/images/icons/keyboard.svg" alt="快捷键图标" /> `Alt / ⌥+J` 打开队列叠加层，并对待发送条目使用**强制发送**。
+    Ophel 需要连续两次检测到页面空闲（约 2 秒）才会发送。如果 AI 页面使用了 Ophel 无法识别的加载动画，队列可能会卡住。此时按 <Icon src="/images/icons/keyboard.svg" alt="快捷键图标" /> <Shortcut combo="alt+j" /> 打开队列叠加层，并对待发送条目使用**强制发送**。
   </Accordion>
 </AccordionGroup>
 

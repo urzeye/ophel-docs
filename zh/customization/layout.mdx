@@ -16,6 +16,7 @@ keywords:
 ---
 
 import { Icon } from "/snippets/icon.jsx"
+import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
 
 Ophel 提供多类布局设置：自定义页面内容区宽度、调整用户问题气泡宽度、用禅模式隐藏平台导航，以及用净化模式移除广告、免责声明、下载按钮等冗余元素。这些功能均按站点独立配置。
 
@@ -43,7 +44,7 @@ Ophel 提供多类布局设置：自定义页面内容区宽度、调整用户�
 **开启方式（任一即可）：**
 
 - 浮动按钮组 → <Icon src="/images/icons/eye.svg" alt="禅模式图标" /> 禅模式图标
-- 快捷键 <Icon src="/images/icons/keyboard.svg" alt="快捷键图标" /> `Ctrl / ⌘+Shift+Z`
+- 快捷键 <Icon src="/images/icons/keyboard.svg" alt="快捷键图标" /> <Shortcut combo="ctrl+shift+z" />
 - <Icon src="/images/icons/settings.svg" alt="设置图标" /> **设置 → 站点设置 → [选择站点] → 布局 → 禅模式**（持久化）
 
 <Tip>
@@ -52,7 +53,7 @@ Ophel 提供多类布局设置：自定义页面内容区宽度、调整用户�
 
 ### 禅模式退出按钮
 
-禅模式激活后，屏幕上会显示一个小的 <Icon src="/images/icons/eye-closed.svg" alt="退出禅模式图标" /> 退出按钮，方便你在不用快捷键的情况下退出禅模式。如果你更习惯只用快捷键（`Ctrl / ⌘+Shift+Z`），可以在 **设置 → 站点设置 → [选择站点] → 布局 → 显示禅模式退出按钮** 中隐藏此按钮。
+禅模式激活后，屏幕上会显示一个小的 <Icon src="/images/icons/eye-closed.svg" alt="退出禅模式图标" /> 退出按钮，方便你在不用快捷键的情况下退出禅模式。如果你更习惯只用快捷键（<Shortcut combo="ctrl+shift+z" />），可以在 **设置 → 站点设置 → [选择站点] → 布局 → 显示禅模式退出按钮** 中隐藏此按钮。
 
 ## <Icon src="/images/icons/clean-mode.svg" alt="净化模式图标" /> 净化模式
 

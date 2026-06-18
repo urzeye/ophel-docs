@@ -7,6 +7,7 @@ keywords: ["model lock", "site settings", "Claude session key", "Gemini watermar
 ---
 
 import { Icon } from "/snippets/icon.jsx"
+import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
 
 Different AI platforms have different page structures, behaviors, and account models. Ophel lets you configure settings independently for each site rather than applying a single global configuration. Go to **Settings → Site Settings** and select a site from the left sidebar to see its available options.
 
@@ -131,7 +132,7 @@ A Session Key (`sk-ant-sid...` format) is the authentication token your browser 
     Go to <Icon src="/images/icons/settings.svg" alt="Settings icon" /> **Settings → Site Settings → Claude** and select a key from the current Session Key selector, or use **Set as current** on a key row.
   </Tab>
   <Tab title="Keyboard shortcut">
-    Press <Icon src="/images/icons/keyboard.svg" alt="Keyboard shortcut icon" /> `Ctrl+Alt+S` (`Command+Option+S` on macOS) to switch to the next key in your list.
+    Press <Icon src="/images/icons/keyboard.svg" alt="Keyboard shortcut icon" /> <Shortcut combo="ctrl+alt+s" /> to switch to the next key in your list.
   </Tab>
 </Tabs>
 

@@ -7,22 +7,21 @@ keywords: ["键盘快捷键", "热键", "快捷键自定义", "按键重映射",
 ---
 
 import { Icon } from "/snippets/icon.jsx"
+import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
 
 Ophel 为几乎所有操作提供了键盘快捷键——打开面板、导航大纲、管理会话、触发全局搜索等。每个快捷键均可自定义：重新映射按键、移除不常用的快捷键，或通过一个开关一键禁用所有快捷键。
 
 ## 查看与编辑快捷键
 
-1. 打开**设置**（`Alt / ⌥+,`）
+1. 打开**设置**（<Shortcut combo="alt+," />）
 2. 进入**快捷键**
 3. 点击任意快捷键行即可录入新的组合键
 4. 点击行末的 **×** 可删除该快捷键
 5. 使用顶部的**启用快捷键**开关可一键禁用所有快捷键
 
-Ophel 会自动检测冲突。若你分配了已被占用的组合键，系统会提示警告，方便你在保存前解决冲突。
+保存前 Ophel 会自动检查冲突。若新组合键已被占用，系统会标出冲突项，你可以改键或先移除旧绑定。
 
-<Note>
-  下表中，**Alt** 在 Windows/Linux 上为 `Alt`，在 Mac 上为 `Option`；**Ctrl** 在 Windows/Linux 上为 `Ctrl`，在 Mac 上为 `Cmd`。
-</Note>
+<ShortcutLegend lang="zh" />
 
 ## 快捷键参考
 
@@ -30,72 +29,72 @@ Ophel 会自动检测冲突。若你分配了已被占用的组合键，系统�
   <Accordion title="面板">
     | 操作 | 默认快捷键 |
     | --- | --- |
-    | <Icon src="/images/icons/sparkle.svg" alt="面板图标" /> 打开/关闭面板 | `Alt+P` |
-    | <Icon src="/images/icons/snap-to-edge.svg" alt="面板模式图标" /> 切换面板模式（吸附 / 悬浮） | `Alt+M` |
-    | <Icon src="/images/icons/outline.svg" alt="大纲图标" /> 切换到大纲标签 | `Alt+1` |
-    | <Icon src="/images/icons/conversation.svg" alt="会话图标" /> 切换到会话标签 | `Alt+2` |
-    | <Icon src="/images/icons/prompt.svg" alt="提示词图标" /> 切换到提示词标签 | `Alt+3` |
-    | <Icon src="/images/icons/theme-system.svg" alt="主题图标" /> 切换亮色/暗色主题 | `Alt+D` |
-    | <Icon src="/images/icons/settings.svg" alt="设置图标" /> 打开设置 | `Alt+,` |
-    | <Icon src="/images/icons/keyboard.svg" alt="快捷键图标" /> 查看快捷键列表 | `Alt+\` |
+    | <Icon src="/images/icons/sparkle.svg" alt="面板图标" /> 打开/关闭面板 | <Shortcut combo="alt+p" /> |
+    | <Icon src="/images/icons/snap-to-edge.svg" alt="面板模式图标" /> 切换面板模式（吸附 / 悬浮） | <Shortcut combo="alt+m" /> |
+    | <Icon src="/images/icons/outline.svg" alt="大纲图标" /> 切换到大纲标签 | <Shortcut combo="alt+1" /> |
+    | <Icon src="/images/icons/conversation.svg" alt="会话图标" /> 切换到会话标签 | <Shortcut combo="alt+2" /> |
+    | <Icon src="/images/icons/prompt.svg" alt="提示词图标" /> 切换到提示词标签 | <Shortcut combo="alt+3" /> |
+    | <Icon src="/images/icons/theme-system.svg" alt="主题图标" /> 切换亮色/暗色主题 | <Shortcut combo="alt+d" /> |
+    | <Icon src="/images/icons/settings.svg" alt="设置图标" /> 打开设置 | <Shortcut combo="alt+," /> |
+    | <Icon src="/images/icons/keyboard.svg" alt="快捷键图标" /> 查看快捷键列表 | <Shortcut combo="alt+backslash" /> |
   </Accordion>
   <Accordion title="大纲">
     | 操作 | 默认快捷键 |
     | --- | --- |
-    | <Icon src="/images/icons/refresh.svg" alt="刷新图标" /> 刷新大纲 | `Alt+R` |
-    | <Icon src="/images/icons/expand-all.svg" alt="展开图标" /> 一键展开/折叠全部 | `Alt+E` |
-    | <Icon src="/images/icons/outline.svg" alt="标题层级图标" /> 展开到标题级别 1 | `Alt+Shift+1` |
-    | <Icon src="/images/icons/outline.svg" alt="标题层级图标" /> 展开到标题级别 2 | `Alt+Shift+2` |
-    | <Icon src="/images/icons/outline.svg" alt="标题层级图标" /> 展开到标题级别 3 | `Alt+Shift+3` |
-    | <Icon src="/images/icons/outline.svg" alt="标题层级图标" /> 展开到标题级别 4 | `Alt+Shift+4` |
-    | <Icon src="/images/icons/outline.svg" alt="标题层级图标" /> 展开到标题级别 5 | `Alt+Shift+5` |
-    | <Icon src="/images/icons/outline.svg" alt="标题层级图标" /> 展开到标题级别 6 | `Alt+Shift+6` |
-    | <Icon src="/images/icons/arrow-up.svg" alt="上一个标题图标" /> 跳转到上一个标题 | `Alt+ArrowUp` |
-    | <Icon src="/images/icons/arrow-down.svg" alt="下一个标题图标" /> 跳转到下一个标题 | `Alt+ArrowDown` |
-    | <Icon src="/images/icons/user-query.svg" alt="我的问题图标" /> 切换"我的问题"过滤 | `Alt+Q` |
-    | <Icon src="/images/icons/user-query.svg" alt="仅我的问题图标" /> 仅我的问题模式 | `Alt+Shift+Q` |
-    | <Icon src="/images/icons/star.svg" alt="书签图标" /> 切换书签过滤 | `Alt+C` |
-    | <Icon src="/images/icons/locate.svg" alt="定位图标" /> 在大纲中定位当前位置 | `Alt+L` |
-    | <Icon src="/images/icons/search.svg" alt="搜索图标" /> 搜索大纲 | `Alt+F` |
+    | <Icon src="/images/icons/refresh.svg" alt="刷新图标" /> 刷新大纲 | <Shortcut combo="alt+r" /> |
+    | <Icon src="/images/icons/expand-all.svg" alt="展开图标" /> 一键展开/折叠全部 | <Shortcut combo="alt+e" /> |
+    | <Icon src="/images/icons/outline.svg" alt="标题层级图标" /> 展开到标题级别 1 | <Shortcut combo="alt+shift+1" /> |
+    | <Icon src="/images/icons/outline.svg" alt="标题层级图标" /> 展开到标题级别 2 | <Shortcut combo="alt+shift+2" /> |
+    | <Icon src="/images/icons/outline.svg" alt="标题层级图标" /> 展开到标题级别 3 | <Shortcut combo="alt+shift+3" /> |
+    | <Icon src="/images/icons/outline.svg" alt="标题层级图标" /> 展开到标题级别 4 | <Shortcut combo="alt+shift+4" /> |
+    | <Icon src="/images/icons/outline.svg" alt="标题层级图标" /> 展开到标题级别 5 | <Shortcut combo="alt+shift+5" /> |
+    | <Icon src="/images/icons/outline.svg" alt="标题层级图标" /> 展开到标题级别 6 | <Shortcut combo="alt+shift+6" /> |
+    | <Icon src="/images/icons/arrow-up.svg" alt="上一个标题图标" /> 跳转到上一个标题 | <Shortcut combo="alt+arrowup" /> |
+    | <Icon src="/images/icons/arrow-down.svg" alt="下一个标题图标" /> 跳转到下一个标题 | <Shortcut combo="alt+arrowdown" /> |
+    | <Icon src="/images/icons/user-query.svg" alt="我的问题图标" /> 切换"我的问题"过滤 | <Shortcut combo="alt+q" /> |
+    | <Icon src="/images/icons/user-query.svg" alt="仅我的问题图标" /> 仅我的问题模式 | <Shortcut combo="alt+shift+q" /> |
+    | <Icon src="/images/icons/star.svg" alt="书签图标" /> 切换书签过滤 | <Shortcut combo="alt+c" /> |
+    | <Icon src="/images/icons/locate.svg" alt="定位图标" /> 在大纲中定位当前位置 | <Shortcut combo="alt+l" /> |
+    | <Icon src="/images/icons/search.svg" alt="搜索图标" /> 搜索大纲 | <Shortcut combo="alt+f" /> |
   </Accordion>
   <Accordion title="会话">
     | 操作 | 默认快捷键 |
     | --- | --- |
-    | <Icon src="/images/icons/conversation.svg" alt="新建对话图标" /> 新建对话 | `Ctrl+Shift+O` |
-    | <Icon src="/images/icons/refresh.svg" alt="刷新图标" /> 刷新会话列表 | `Alt+Shift+R` |
-    | <Icon src="/images/icons/locate.svg" alt="定位图标" /> 定位当前会话 | `Alt+Shift+L` |
-    | <Icon src="/images/icons/chevron-up.svg" alt="上一个会话图标" /> 上一个会话 | `Alt+[` |
-    | <Icon src="/images/icons/chevron-down.svg" alt="下一个会话图标" /> 下一个会话 | `Alt+]` |
+    | <Icon src="/images/icons/conversation.svg" alt="新建对话图标" /> 新建对话 | <Shortcut combo="ctrl+shift+o" /> |
+    | <Icon src="/images/icons/refresh.svg" alt="刷新图标" /> 刷新会话列表 | <Shortcut combo="alt+shift+r" /> |
+    | <Icon src="/images/icons/locate.svg" alt="定位图标" /> 定位当前会话 | <Shortcut combo="alt+shift+l" /> |
+    | <Icon src="/images/icons/chevron-up.svg" alt="上一个会话图标" /> 上一个会话 | <Shortcut combo="alt+[" /> |
+    | <Icon src="/images/icons/chevron-down.svg" alt="下一个会话图标" /> 下一个会话 | <Shortcut combo="alt+]" /> |
   </Accordion>
   <Accordion title="编辑与操作">
     | 操作 | 默认快捷键 |
     | --- | --- |
-    | <Icon src="/images/icons/clear.svg" alt="停止图标" /> 停止 AI 生成 | `Alt+K` |
-    | <Icon src="/images/icons/edit.svg" alt="输入框图标" /> 聚焦到输入框 | `Alt+I` |
-    | <Icon src="/images/icons/search.svg" alt="全局搜索图标" /> 打开全局搜索 | `Ctrl+K` |
-    | <Icon src="/images/icons/export.svg" alt="导出图标" /> 导出当前对话 | `Ctrl+Shift+E` |
-    | <Icon src="/images/icons/copy.svg" alt="复制图标" /> 复制最新 AI 回复 | `Ctrl+Shift+C` |
-    | <Icon src="/images/icons/copy.svg" alt="复制代码图标" /> 复制最后一个代码块 | `Alt+;` |
-    | <Icon src="/images/icons/scroll-lock.svg" alt="滚动锁定图标" /> 切换滚动锁定 | `Alt+S` |
-    | <Icon src="/images/icons/eye.svg" alt="禅模式图标" /> 切换禅模式 | `Ctrl+Shift+Z` |
-    | <Icon src="/images/icons/prompt-queue.svg" alt="提示词队列图标" /> 切换提示词队列 | `Alt+J` |
-    | <Icon src="/images/icons/model-lock.svg" alt="模型选择器图标" /> 显示模型选择器 | `Alt+/` |
+    | <Icon src="/images/icons/clear.svg" alt="停止图标" /> 停止 AI 生成 | <Shortcut combo="alt+k" /> |
+    | <Icon src="/images/icons/edit.svg" alt="输入框图标" /> 聚焦到输入框 | <Shortcut combo="alt+i" /> |
+    | <Icon src="/images/icons/search.svg" alt="全局搜索图标" /> 打开全局搜索 | <Shortcut combo="ctrl+k" /> |
+    | <Icon src="/images/icons/export.svg" alt="导出图标" /> 导出当前对话 | <Shortcut combo="ctrl+shift+e" /> |
+    | <Icon src="/images/icons/copy.svg" alt="复制图标" /> 复制最新 AI 回复 | <Shortcut combo="ctrl+shift+c" /> |
+    | <Icon src="/images/icons/copy.svg" alt="复制代码图标" /> 复制最后一个代码块 | <Shortcut combo="alt+;" /> |
+    | <Icon src="/images/icons/scroll-lock.svg" alt="滚动锁定图标" /> 切换滚动锁定 | <Shortcut combo="alt+s" /> |
+    | <Icon src="/images/icons/eye.svg" alt="禅模式图标" /> 切换禅模式 | <Shortcut combo="ctrl+shift+z" /> |
+    | <Icon src="/images/icons/prompt-queue.svg" alt="提示词队列图标" /> 切换提示词队列 | <Shortcut combo="alt+j" /> |
+    | <Icon src="/images/icons/model-lock.svg" alt="模型选择器图标" /> 显示模型选择器 | <Shortcut combo="alt+/" /> |
   </Accordion>
   <Accordion title="导航">
     | 操作 | 默认快捷键 |
     | --- | --- |
-    | <Icon src="/images/icons/scroll-top.svg" alt="滚到顶部图标" /> 滚动到对话顶部 | `Alt+T` |
-    | <Icon src="/images/icons/scroll-bottom.svg" alt="滚到底部图标" /> 滚动到对话底部 | `Alt+B` |
-    | <Icon src="/images/icons/anchor.svg" alt="锚点图标" /> 返回锚点位置 | `Alt+Z` |
+    | <Icon src="/images/icons/scroll-top.svg" alt="滚到顶部图标" /> 滚动到对话顶部 | <Shortcut combo="alt+t" /> |
+    | <Icon src="/images/icons/scroll-bottom.svg" alt="滚到底部图标" /> 滚动到对话底部 | <Shortcut combo="alt+b" /> |
+    | <Icon src="/images/icons/anchor.svg" alt="锚点图标" /> 返回锚点位置 | <Shortcut combo="alt+z" /> |
   </Accordion>
   <Accordion title="站点特定">
     | 操作 | 默认快捷键 |
     | --- | --- |
-    | <Icon src="/images/icons/settings.svg" alt="Claude 设置图标" /> 打开 Claude 设置 | `Ctrl+Alt+C` |
-    | <Icon src="/images/icons/keyboard.svg" alt="Claude Key 切换图标" /> 切换 Claude 会话密钥 | `Ctrl+Alt+S` |
-    | <Icon src="/images/icons/settings.svg" alt="Gemini 设置图标" /> 打开 Gemini 设置 | `Ctrl+Alt+G` |
-    | <Icon src="/images/icons/theme-system.svg" alt="主题设置图标" /> 打开主题设置 | `Ctrl+Alt+T` |
-    | <Icon src="/images/icons/model-lock.svg" alt="模型锁定图标" /> 打开模型锁定设置 | `Ctrl+Alt+L` |
+    | <Icon src="/images/icons/settings.svg" alt="Claude 设置图标" /> 打开 Claude 设置 | <Shortcut combo="ctrl+alt+c" /> |
+    | <Icon src="/images/icons/keyboard.svg" alt="Claude Key 切换图标" /> 切换 Claude 会话密钥 | <Shortcut combo="ctrl+alt+s" /> |
+    | <Icon src="/images/icons/settings.svg" alt="Gemini 设置图标" /> 打开 Gemini 设置 | <Shortcut combo="ctrl+alt+g" /> |
+    | <Icon src="/images/icons/theme-system.svg" alt="主题设置图标" /> 打开主题设置 | <Shortcut combo="ctrl+alt+t" /> |
+    | <Icon src="/images/icons/model-lock.svg" alt="模型锁定图标" /> 打开模型锁定设置 | <Shortcut combo="ctrl+alt+l" /> |
   </Accordion>
 </AccordionGroup>
 

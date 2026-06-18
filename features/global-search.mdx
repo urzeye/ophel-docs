@@ -7,6 +7,7 @@ keywords: ["global search", "search syntax", "fuzzy search", "conversation searc
 ---
 
 import { Icon } from "/snippets/icon.jsx"
+import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
 
 Global Search brings every piece of content Ophel knows about into a single search field. Instead of switching between tabs to find a heading, conversation, or saved prompt, you open one overlay and search everything at once. Results are grouped by type, and selecting one jumps you directly to that item.
 
@@ -16,7 +17,7 @@ Global Search brings every piece of content Ophel knows about into a single sear
 
 | Method                  | Description                                                                                                                       |
 | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| <Icon src="/images/icons/keyboard.svg" alt="Keyboard shortcut icon" /> `Ctrl / ⌘+K` | Default keyboard shortcut |
+| <Icon src="/images/icons/keyboard.svg" alt="Keyboard shortcut icon" /> <Shortcut combo="ctrl+k" /> | Default keyboard shortcut |
 | <Icon src="/images/icons/search.svg" alt="Search icon" /> Floating button | Click the search icon in the floating quick-buttons group |
 | Double Shift            | Press Shift twice in quick succession — optional; enable in **Settings → Global Search**. Works even when the page is not focused |
 

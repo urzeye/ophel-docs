@@ -7,6 +7,7 @@ keywords: ["troubleshooting", "panel not showing", "outline empty", "debug steps
 ---
 
 import { Icon } from "/snippets/icon.jsx"
+import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
 
 If something isn't working as expected, this page walks you through the most common issues and how to fix them. For problems not covered here, open a report on [GitHub Issues](https://github.com/urzeye/ophel/issues) with your browser version, extension version, and any errors from the browser console.
 
@@ -22,7 +23,7 @@ The Ophel side panel should appear automatically when you open a supported AI pl
     Atlas is toggled on. If it's disabled, enable it and reload the page.
   </Step>
   <Step title="Hard-reload the page">
-    Press `Ctrl / ⌘+Shift+R` to force a full page reload. A
+    Press <Shortcut combo="ctrl+shift+r" /> to force a full page reload. A
     standard reload sometimes does not reinitialize the Ophel panel on the page.
   </Step>
   <Step title="Check the supported site list">
@@ -31,7 +32,7 @@ The Ophel side panel should appear automatically when you open a supported AI pl
     others). If the URL doesn't match, Ophel will not inject the panel.
   </Step>
   <Step title="Use the keyboard shortcut as a fallback">
-    If the panel was previously closed, press <Icon src="/images/icons/keyboard.svg" alt="Keyboard shortcut icon" /> `Alt / ⌥+P` to
+    If the panel was previously closed, press <Icon src="/images/icons/keyboard.svg" alt="Keyboard shortcut icon" /> <Shortcut combo="alt+p" /> to
     reopen it. This toggles the panel regardless of the state of any floating
     buttons.
   </Step>
@@ -43,7 +44,7 @@ The Ophel side panel should appear automatically when you open a supported AI pl
 
 <Steps>
   <Step title="Refresh the outline manually">
-    Press <Icon src="/images/icons/refresh.svg" alt="Refresh outline icon" /> `Alt / ⌥+R` to force the outline to re-scan the
+    Press <Icon src="/images/icons/refresh.svg" alt="Refresh outline icon" /> <Shortcut combo="alt+r" /> to force the outline to re-scan the
     conversation. Some AI platforms update the DOM asynchronously, so the
     outline may not populate on its own immediately after the page loads.
   </Step>
@@ -54,7 +55,7 @@ The Ophel side panel should appear automatically when you open a supported AI pl
   <Step title="Check the auto-update setting">
     Go to **Settings → Features → Outline** and confirm that **Auto update** is
     enabled. If it's off, the outline only refreshes when you trigger it
-    manually with `Alt / ⌥+R`.
+    manually with <Shortcut combo="alt+r" />.
   </Step>
 </Steps>
 
@@ -82,8 +83,7 @@ The floating action buttons auto-collapse into a compact pill shape after 5 seco
     buttons will expand automatically.
   </Step>
   <Step title="Use the keyboard shortcut if the pill is not visible">
-    If the buttons are completely missing from the screen, press <Icon src="/images/icons/keyboard.svg" alt="Keyboard shortcut icon" /> `Alt+P` (Mac:
-    `Option+P`) to open the panel. The floating buttons reappear alongside it.
+    If the buttons are completely missing from the screen, press <Icon src="/images/icons/keyboard.svg" alt="Keyboard shortcut icon" /> <Shortcut combo="alt+p" /> to open the panel. The floating buttons reappear alongside it.
   </Step>
 </Steps>
 
@@ -95,7 +95,7 @@ If the Ophel panel is positioned over something you need to click on the underly
 
 <Steps>
   <Step title="Use ghost mode for temporary click-through">
-    Hold **Ctrl** (Windows/Linux) or **Command** (Mac) alone for about 0.2
+    Hold <Shortcut combo="ctrl" /> alone for about 0.2
     seconds. The panel becomes transparent and lets clicks pass through to the
     page behind it. Release the key to restore the panel to normal.
   </Step>
@@ -133,7 +133,7 @@ The <Icon src="/images/icons/prompt-queue.svg" alt="Prompt Queue icon" /> Prompt
   </Step>
   <Step title="Force-send a pending item">
     If the AI platform uses an unusual loading indicator that Ophel cannot
-    detect, the queue may stall. Open the queue overlay with <Icon src="/images/icons/keyboard.svg" alt="Keyboard shortcut icon" /> `Alt / ⌥+J`, then use **Force Send** on the pending item you want to send now.
+    detect, the queue may stall. Open the queue overlay with <Icon src="/images/icons/keyboard.svg" alt="Keyboard shortcut icon" /> <Shortcut combo="alt+j" />, then use **Force Send** on the pending item you want to send now.
   </Step>
 </Steps>
 

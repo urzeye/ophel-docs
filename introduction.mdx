@@ -6,6 +6,7 @@ keywords: ["AI chat enhancement", "browser extension features", "supported platf
 ---
 
 import { Icon } from "/snippets/icon.jsx"
+import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
 
 Ophel Atlas is a browser extension that transforms AI chat sessions from endless scrollable threads into structured, navigable documents. It runs entirely in your browser — no account, no server, no data upload — and activates automatically on any of the 15 supported AI platforms the moment you open them.
 
@@ -46,7 +47,7 @@ Long AI conversations are hard to navigate. You lose track of earlier conclusion
     title="Global search"
     icon="magnifying-glass"
   >
-    Press `Ctrl / ⌘+K` to open a unified search across your
+    Press <Shortcut combo="ctrl+k" /> to open a unified search across your
     outline, conversations, prompts, and settings. Supports advanced syntax
     filters such as `folder:`, `tag:`, `date:`, and `type:`.
   </Card>
