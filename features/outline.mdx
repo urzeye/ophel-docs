@@ -5,6 +5,8 @@ description: "Ophel builds a live, clickable table of contents from your questio
 keywords: ["smart outline", "table of contents", "conversation outline", "bookmarks", "heading navigation", "AI outline", "live outline"]
 ---
 
+import { Icon } from "/snippets/icon.jsx"
+
 The Smart Outline reads your conversation after every AI reply and builds a navigable tree in the side panel. Each of your messages becomes a top-level entry, and any Markdown headings inside the AI's response become nested entries beneath it. The longer the conversation, the more value the outline adds.
 
 ![Smart Outline — live conversation table of contents](/images/features/outline-en.png)
@@ -34,17 +36,20 @@ Click any entry in the outline to jump directly to that part of the conversation
 
 As you scroll the conversation, the outline highlights the entry that matches your current reading position in real time — a position indicator that keeps you oriented inside long threads.
 
-If you scroll the outline panel itself and lose track of where you are, press `Alt / ⌥+L` to snap the outline panel back to highlight your current position.
+If you scroll the outline panel itself and lose track of where you are, click the <Icon src="/images/icons/locate.svg" alt="Locate current position icon" /> **Locate current position** button or press `Alt / ⌥+L` to snap the outline panel back to highlight your current position.
 
-## Filter modes
+## Filter and toolbar controls
 
-Three filter buttons appear above the outline list. They let you reduce noise and focus on what matters.
+The outline toolbar gives you quick controls for filtering, expansion, copying, locating, and scrolling.
 
 | Button             | What it shows                                                                            |
 | ------------------ | ---------------------------------------------------------------------------------------- |
-| **All** (default)  | Everything — your questions and all AI headings                                          |
-| **Questions only** | Hides AI headings; shows only your messages — useful for reviewing the conversation flow |
-| **Bookmarks only** | Shows only entries you have starred                                                      |
+| <Icon src="/images/icons/user-query.svg" alt="User questions icon" /> **Questions toggle** | Shows or hides your messages as outline entries — useful for reviewing the conversation flow |
+| <Icon src="/images/icons/star.svg" alt="Bookmarks icon" /> **Bookmarks only** | Shows only entries you have starred |
+| <Icon src="/images/icons/expand-all.svg" alt="Expand all icon" /> / <Icon src="/images/icons/collapse-all.svg" alt="Collapse all icon" /> **Expand / collapse all** | Expands or collapses the visible outline tree |
+| <Icon src="/images/icons/copy-outline.svg" alt="Copy outline icon" /> **Copy outline** | Copies a Markdown outline for the current source |
+| <Icon src="/images/icons/locate.svg" alt="Locate current position icon" /> **Locate current position** | Scrolls the outline panel back to the item matching your current reading position |
+| <Icon src="/images/icons/scroll-top.svg" alt="Scroll to outline top icon" /> / <Icon src="/images/icons/scroll-bottom.svg" alt="Scroll to outline bottom icon" /> **Scroll top / bottom** | Jumps within the outline list without moving the conversation page |
 
 You can also switch filters with keyboard shortcuts:
 
@@ -56,12 +61,14 @@ You can also switch filters with keyboard shortcuts:
 
 ## Bookmarks
 
-Hover over any outline entry to reveal a star icon. Click it to bookmark that heading. Bookmarks persist across page reloads.
+Hover over any outline entry to reveal the <Icon src="/images/icons/star.svg" alt="Star bookmark icon" /> star icon. Click it to bookmark that heading. Bookmarks persist across page reloads.
 
 <Note>
   If a bookmarked heading disappears from the conversation — for example, when
   the AI regenerates a response — it becomes a **ghost bookmark**. Open the
-  outline toolbox and use the cleanup option to remove stale ghost bookmarks.
+  <Icon src="/images/icons/tools.svg" alt="Toolbox icon" /> **Toolbox** and
+  select <Icon src="/images/icons/cleanup.svg" alt="Clear invalid bookmarks icon" />
+  **Clear Invalid Bookmarks** to remove stale ghost bookmarks.
 </Note>
 
 ## Expand by level
@@ -85,15 +92,15 @@ Hover over any outline entry to see a small tooltip showing the approximate char
 
 ## Copy node text
 
-User question entries show a copy icon on hover. Click it to copy the original question text to your clipboard — handy for re-asking in a new conversation or saving to notes.
+Outline entries show a <Icon src="/images/icons/copy.svg" alt="Copy icon" /> copy icon on hover. Click it to copy that node's text to your clipboard — handy for re-asking a question in a new conversation or saving a heading to notes.
 
 ## Copy full outline
 
-Click the toolbox menu (**☰**) and select **Copy Outline** to copy the entire outline tree as structured text. This uses the same export data that powers Markdown exports, so the output includes all heading levels and preserves the tree hierarchy — useful for pasting into a note-taking app or creating a conversation summary.
+Click the <Icon src="/images/icons/copy-outline.svg" alt="Copy outline icon" /> **Copy outline** button in the Outline toolbar to copy a structured Markdown outline for the current source. For conversations, the copy follows the current user-question toggle and heading level. For document outlines, it follows the visible outline tree. For virtualized long conversations, Ophel loads the full history first, then restores the page position when it finishes.
 
 ## Document outline sources
 
-On platforms that expose a separate document panel — such as Claude's right-side document panel or Gemini's Deep Research report — the outline header shows a **Chat / Document** source switch. When you select **Document**, the outline tree reflects the document's heading structure instead of the conversation's, letting you navigate the report independently from the chat thread.
+On platforms that expose a separate document panel — such as Claude's right-side document panel or Gemini's Deep Research report — the outline header shows a <Icon src="/images/icons/outline-document.svg" alt="Document outline icon" /> **Chat / Document** source switch. When you select **Document**, the outline tree reflects the document's heading structure instead of the conversation's, letting you navigate the report independently from the chat thread.
 
 ## Shortcuts
 

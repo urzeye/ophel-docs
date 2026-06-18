@@ -5,6 +5,8 @@ description: "按站点独立配置模型锁定、Markdown 渲染修复、Gemini
 keywords: ["模型锁定", "站点设置", "Claude会话密钥", "Gemini去水印", "按站点配置", "AI模型"]
 ---
 
+import { Icon } from "/snippets/icon.jsx"
+
 各 AI 平台在页面结构、行为和账号模型上各有差异。Ophel 支持为每个站点独立配置，而不是强制使用统一的全局设置。进入 **设置 → 站点设置**，从左侧边栏选择站点即可查看其专属选项。
 
 ## 模型锁定
@@ -22,7 +24,7 @@ keywords: ["模型锁定", "站点设置", "Claude会话密钥", "Gemini去水�
   只需输入模型名称的一部分。例如输入 `flash` 可匹配 `Gemini 2.0 Flash`。若有多个模型匹配，则选择第一个。
 </Tip>
 
-每个站点的模型锁定配置相互独立，可以为不同平台设置不同的目标模型。也可以从**工具箱菜单**快速切换当前站点的模型锁定状态。
+每个站点的模型锁定配置相互独立，可以为不同平台设置不同的目标模型。也可以从 <Icon src="/images/icons/tools.svg" alt="工具箱图标" /> **工具箱** → <Icon src="/images/icons/model-lock.svg" alt="模型锁定图标" /> **模型锁定** 快速切换当前站点的模型锁定状态。
 
 <Note>
   如果你在会话中手动切换到其他模型，模型锁定只在下次页面加载时重新生效，不会覆盖本次会话中的手动选择。
@@ -124,11 +126,11 @@ Session Key（格式为 `sk-ant-sid...`）是浏览器在 claude.ai 上使用的
 **切换账号：**
 
 <Tabs>
-  <Tab title="工具箱菜单">
-    打开工具箱菜单，点击当前激活的 Key，从列表中选择另一个。
+  <Tab title="设置页">
+    进入 <Icon src="/images/icons/settings.svg" alt="设置图标" /> **设置 → 站点设置 → Claude**，在当前 Session Key 选择器中选择目标 Key，或点击某个 Key 行上的**设为当前**。
   </Tab>
   <Tab title="键盘快捷键">
-    按 `Ctrl+Alt / ⌘⌥+S` 切换到列表中的下一个 Key。
+    按 <Icon src="/images/icons/keyboard.svg" alt="快捷键图标" /> `Ctrl+Alt+S`（Mac：`Command+Option+S`）切换到列表中的下一个 Key。
   </Tab>
 </Tabs>
 

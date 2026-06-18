@@ -15,6 +15,8 @@ keywords:
   ]
 ---
 
+import { Icon } from "/snippets/icon.jsx"
+
 After you install Ophel Atlas and open any supported AI site, the panel activates automatically. A side panel appears on the right edge of the screen, and a small group of floating quick-action buttons appear nearby. This page explains how each part of the panel works so you can navigate it efficiently from day one.
 
 If the panel does not appear, press **Alt / ⌥+P** to open it.
@@ -52,7 +54,7 @@ The strip at the very top of the panel gives you fast access to core controls.
 | **Title area**      | Hover to see a random usage tip with shortcuts adapted to your OS and key bindings. Double-click to toggle privacy mode, which hides the tab title. |
 | **Mode toggle**     | Switches between Edge Snap and Floating mode with one click.                                                                                        |
 | **Theme toggle**    | Switches between light and dark mode. Shortcut: `Alt / ⌥+D`.                                                                                        |
-| **Settings button** | Opens the settings dialog. Shortcut: `Alt / ⌥+,`.                                                                                                   |
+| <Icon src="/images/icons/settings.svg" alt="Settings icon" /> **Settings button** | Opens the settings dialog. Shortcut: `Alt / ⌥+,`.                                                                                                   |
 
 You can drag the title bar to reposition the panel anywhere on screen when it is in Floating mode. **Double-clicking** the title bar toggles between Edge Snap and Floating mode without opening settings.
 
@@ -65,7 +67,7 @@ The floating button group at the screen edge is your fastest access point to com
 - The group **auto-collapses** into a pill shape after about 5 seconds of inactivity. By default, moving your cursor within **150 px** of it expands it again. The wake distance is configurable: go to **Settings → Quick Buttons → Proximity Wake Radius** (0–300 px). Set it to **0** to enable dwell-hover mode — the group only expands after the cursor rests on the pill for 300 ms, so simply passing through it does not trigger expansion.
 - When the group is collapsed, hover the panel logo for a short dwell to open a temporary panel preview beside the buttons. Moving away hides the preview; clicking the logo still opens or closes the panel persistently.
 - **Long-press and drag** any button to reposition the entire group to a different spot on screen.
-- Click **☰ (Toolbox)** to reveal additional actions: export conversation, move to folder, assign tags, toggle scroll lock, model lock, and more.
+- Click the <Icon src="/images/icons/tools.svg" alt="Toolbox icon" /> **Toolbox** icon to reveal additional actions: <Icon src="/images/icons/export.svg" alt="Export icon" /> **Export**, <Icon src="/images/icons/copy.svg" alt="Copy Markdown icon" /> **Copy Markdown**, <Icon src="/images/icons/folder-move.svg" alt="Move conversation icon" /> **Move Conversation**, <Icon src="/images/icons/tag.svg" alt="Set tag icon" /> **Set Tag**, <Icon src="/images/icons/scroll-lock.svg" alt="Scroll lock icon" /> **Scroll Lock**, <Icon src="/images/icons/model-lock.svg" alt="Model lock icon" /> **Model Lock**, <Icon src="/images/icons/cleanup.svg" alt="Clear invalid bookmarks icon" /> **Clear Invalid Bookmarks**, and <Icon src="/images/icons/settings.svg" alt="Settings icon" /> **Settings**.
 
 **Additional settings** (`Settings → Quick Buttons`):
 
@@ -90,7 +92,7 @@ The floating button group at the screen edge is your fastest access point to com
 
 ## Global search
 
-Press `Ctrl / ⌘+K` or tap `Shift` twice to open global search. It searches across your outline headings, conversation history, prompt library, and settings in a single query. You can also use advanced syntax filters:
+Press `Ctrl / ⌘+K`, tap `Shift` twice, or click the <Icon src="/images/icons/search.svg" alt="Global search icon" /> search icon in the floating quick buttons to open global search. It searches across your outline headings, conversation history, prompt library, and settings in a single query. You can also use advanced syntax filters:
 
 | Filter    | Example        | Effect                              |
 | --------- | -------------- | ----------------------------------- |

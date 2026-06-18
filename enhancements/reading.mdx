@@ -5,6 +5,8 @@ description: "Automatically save and restore your reading position per conversat
 keywords: ["reading history", "scroll lock", "position restore", "reading progress", "page anchors", "scroll position"]
 ---
 
+import { Icon } from "/snippets/icon.jsx"
+
 Ophel tracks where you are in each conversation so you never have to scroll back to find your place. Pair that with scroll lock to stay on the part you're reading while the AI is still generating, and a set of quick navigation anchors to jump around long threads instantly.
 
 ## Reading history
@@ -36,7 +38,7 @@ While the AI is generating, the page automatically scrolls down to follow new ou
     Press `Alt / ⌥+S` to toggle scroll lock on or off.
   </Tab>
   <Tab title="Toolbox menu">
-    Click the toolbox button in the floating button group, then select **Scroll lock**.
+    Click the <Icon src="/images/icons/tools.svg" alt="Toolbox icon" /> toolbox icon in the floating button group, then select <Icon src="/images/icons/scroll-lock.svg" alt="Scroll lock icon" /> **Scroll Lock**.
   </Tab>
 </Tabs>
 
@@ -50,18 +52,18 @@ The floating button group provides three scroll shortcuts that also work as a na
 
 | Button | Keyboard shortcut | What it does |
 | --- | --- | --- |
-| Scroll to top (↑) | `Alt / ⌥+T` | Loads full history and jumps to the top |
-| Scroll to bottom (↓) | `Alt / ⌥+B` | Jumps to the latest message |
-| Return to anchor | `Alt / ⌥+Z` | Returns to the last saved position |
+| <Icon src="/images/icons/scroll-top.svg" alt="Scroll to top icon" /> Scroll to top | `Alt / ⌥+T` | Loads full history and jumps to the top |
+| <Icon src="/images/icons/scroll-bottom.svg" alt="Scroll to bottom icon" /> Scroll to bottom | `Alt / ⌥+B` | Jumps to the latest message |
+| <Icon src="/images/icons/anchor.svg" alt="Return to anchor icon" /> Return to anchor | `Alt / ⌥+Z` | Returns to the last saved position |
 
 Every time you use **Scroll to top** or **Scroll to bottom**, Ophel saves your current position as an anchor first. Click **Return to anchor** to jump back. Click it again to toggle between the anchor and wherever you are now — useful for cross-referencing two parts of a long conversation.
 
 <Tip>
-  If you want to save your current position as an anchor without scrolling anywhere, enable the **Manual Anchor** button in **Settings → General → Quick Buttons** (hidden by default).
+  If you want to save your current position as an anchor without scrolling anywhere, enable the <Icon src="/images/icons/manual-anchor.svg" alt="Manual anchor icon" /> **Manual Anchor** button in **Settings → General → Quick Buttons** (hidden by default).
 </Tip>
 
 ## Bookmarks
 
 Ophel lets you bookmark specific messages in a conversation for quick access later. Bookmarked items appear in the outline panel so you can jump to them from the sidebar.
 
-To remove bookmarks that point to content that no longer exists, open the toolbox menu and select **Clean up bookmarks**.
+To remove bookmarks that point to content that no longer exists, open the <Icon src="/images/icons/tools.svg" alt="Toolbox icon" /> **Toolbox** and select <Icon src="/images/icons/cleanup.svg" alt="Clear invalid bookmarks icon" /> **Clear Invalid Bookmarks**.

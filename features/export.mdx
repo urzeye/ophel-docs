@@ -16,15 +16,17 @@ keywords:
   ]
 ---
 
+import { Icon } from "/snippets/icon.jsx"
+
 Ophel can export any AI conversation to a file, preserving not just the text but also images, uploaded files, generated assets, code artifacts, and reasoning chains — depending on what the platform exposes. You control the output format, what gets included, and how files are packaged.
 
 ## How to export
 
 | Method | Description |
 | --- | --- |
-| Toolbox menu | Click **☰** in the floating button group, then **Export** |
-| Keyboard shortcut | `Alt / ⌥+Shift+E` exports the current conversation |
-| Conversations tab | Click the **Export** action on any conversation row |
+| Floating quick buttons | Click the <Icon src="/images/icons/tools.svg" alt="Toolbox icon" /> toolbox icon, then click <Icon src="/images/icons/export.svg" alt="Export icon" /> **Export** |
+| Keyboard shortcut | `Ctrl+Shift+E` (`Command+Shift+E` on macOS) exports the current conversation as Markdown |
+| Conversations tab | Click the <Icon src="/images/icons/more-horizontal.svg" alt="Three-dot menu icon" /> three-dot menu on a conversation row, choose <Icon src="/images/icons/export.svg" alt="Export icon" /> **Export**, then select Markdown, JSON, or TXT |
 
 After triggering an export, a full-page progress overlay blocks accidental interaction while Ophel loads history, extracts content, packages assets, saves the file, and restores the page.
 
@@ -50,7 +52,7 @@ After triggering an export, a full-page progress overlay blocks accidental inter
   </Tab>
 </Tabs>
 
-You can also click **Copy as Markdown** from the toolbox to copy the entire conversation to your clipboard without saving a file.
+You can also click <Icon src="/images/icons/tools.svg" alt="Toolbox icon" /> **Toolbox** → <Icon src="/images/icons/copy.svg" alt="Copy Markdown icon" /> **Copy Markdown** to copy the entire conversation to your clipboard without saving a file.
 
 ## Packaging mode
 
@@ -155,7 +157,7 @@ Configure export behavior in **Settings → Features → Export**:
 
 ## Copy as Markdown
 
-Click **Copy as Markdown** from the toolbox menu to copy the entire conversation to your clipboard in Markdown format. This is faster than exporting a file when you just need to paste the content into a note, email, or another AI chat.
+Click <Icon src="/images/icons/tools.svg" alt="Toolbox icon" /> **Toolbox** → <Icon src="/images/icons/copy.svg" alt="Copy Markdown icon" /> **Copy Markdown** to copy the entire conversation to your clipboard in Markdown format. This is faster than exporting a file when you just need to paste the content into a note, email, or another AI chat.
 
 ## Export from share pages
 

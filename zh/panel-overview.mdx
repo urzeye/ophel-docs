@@ -15,6 +15,8 @@ keywords:
   ]
 ---
 
+import { Icon } from "/snippets/icon.jsx"
+
 安装成功后，打开任意[支持的 AI 网站](/zh/introduction#支持的平台)，Ophel 会自动激活，在页面右侧显示侧边面板，并在屏幕边缘出现一组浮动快捷按钮。
 
 ## 面板的三个标签页
@@ -47,7 +49,7 @@ keywords:
 | 切换面板模式    | `Alt / ⌥+M`，或双击标题栏，或点击标题栏模式切换按钮          |
 | 全局搜索        | `Ctrl / ⌘+K`（或配置的快捷键）                               |
 | 切换亮 / 暗模式 | `Alt / ⌥+D`，或点击浮动按钮中的主题图标                      |
-| 打开设置        | `Alt / ⌥+,`，或工具箱中的设置项                              |
+| 打开设置        | `Alt / ⌥+,`，或点击 <Icon src="/images/icons/tools.svg" alt="工具箱图标" /> 工具箱里的 <Icon src="/images/icons/settings.svg" alt="设置图标" /> 设置项 |
 
 ## 浮动快捷按钮
 
@@ -58,7 +60,7 @@ keywords:
 - **5 秒无操作**后自动收缩为胶囊形。默认鼠标移近 **150px** 后重新展开——此距离可在 **设置 → 快捷按钮 → 感应唤醒距离** 中调整（0–300px）。设为 **0** 可启用停留悬停模式：鼠标须在胶囊上停留 300ms 后才展开，划过不触发。
 - 按钮组收缩后，鼠标在面板 Logo 上短暂停留，会在按钮旁临时预览面板。鼠标移开后预览自动收起；点击 Logo 仍然是持久打开 / 关闭面板。
 - **长按拖拽**可移动到屏幕任意位置
-- 点击 **☰（工具箱）** 按钮，弹出更多操作：导出对话、移动到文件夹、设置标签、开关滚动锁定、模型锁定等
+- 点击 <Icon src="/images/icons/tools.svg" alt="工具箱图标" /> **工具箱**图标，弹出更多操作：<Icon src="/images/icons/export.svg" alt="导出图标" /> **导出**、<Icon src="/images/icons/copy.svg" alt="复制 Markdown 图标" /> **复制 Markdown**、<Icon src="/images/icons/folder-move.svg" alt="移动会话图标" /> **移动会话**、<Icon src="/images/icons/tag.svg" alt="设置标签图标" /> **设置标签**、<Icon src="/images/icons/scroll-lock.svg" alt="滚动锁定图标" /> **滚动锁定**、<Icon src="/images/icons/model-lock.svg" alt="模型锁定图标" /> **模型锁定**、<Icon src="/images/icons/cleanup.svg" alt="清除无效收藏图标" /> **清除无效收藏**和 <Icon src="/images/icons/settings.svg" alt="设置图标" /> **设置**
 
 **其他设置**（设置 → 快捷按钮）：
 
@@ -70,7 +72,7 @@ keywords:
 
 ## 全局搜索
 
-按 `Ctrl / ⌘+K`，或点击浮动按钮中的搜索图标，打开全局搜索叠加层。它将大纲节点、历史对话、提示词库和设置项统一纳入一个搜索框，无需逐个标签翻找。也可以连按两次 `Shift` 触发（需在 **设置 → 全局搜索** 中开启）。
+按 `Ctrl / ⌘+K`，或点击浮动按钮中的 <Icon src="/images/icons/search.svg" alt="全局搜索图标" /> 搜索图标，打开全局搜索叠加层。它将大纲节点、历史对话、提示词库和设置项统一纳入一个搜索框，无需逐个标签翻找。也可以连按两次 `Shift` 触发（需在 **设置 → 全局搜索** 中开启）。
 
 支持以下语法过滤，多个过滤条件可以组合使用：
 
@@ -126,7 +128,7 @@ keywords:
 | 标题区域     | 鼠标悬停显示随机使用小贴士；双击快速切换面板显示模式（悬浮 ↔ 自动吸附） |
 | 模式切换按钮 | 在「自动吸附」和「悬浮」模式之间一键切换（快捷键 `Alt / ⌥+M`）          |
 | 主题切换按钮 | 切换亮/暗模式（`Alt / ⌥+D`）                                            |
-| 设置按钮     | 打开设置弹窗（`Alt / ⌥+,`）                                             |
+| <Icon src="/images/icons/settings.svg" alt="设置图标" /> 设置按钮 | 打开设置弹窗（`Alt / ⌥+,`）                                             |
 
 ## 面板基本设置
 

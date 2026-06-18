@@ -5,6 +5,8 @@ description: "Configure model lock, Markdown rendering fixes, Gemini watermark r
 keywords: ["model lock", "site settings", "Claude session key", "Gemini watermark", "per-site configuration", "AI model"]
 ---
 
+import { Icon } from "/snippets/icon.jsx"
+
 Different AI platforms have different page structures, behaviors, and account models. Ophel lets you configure settings independently for each site rather than applying a single global configuration. Go to **Settings → Site Settings** and select a site from the left sidebar to see its available options.
 
 ## Model lock
@@ -22,7 +24,7 @@ Model lock solves a common annoyance: manually switching back to your preferred 
   You only need part of the model name. Entering `flash` matches `Gemini 2.0 Flash`. If multiple models match, the first match is selected.
 </Tip>
 
-Each site's model lock setting is independent, so you can configure different target models for different platforms. You can also toggle model lock for the current site quickly from the **Toolbox menu**.
+Each site's model lock setting is independent, so you can configure different target models for different platforms. You can also toggle model lock for the current site quickly from <Icon src="/images/icons/tools.svg" alt="Toolbox icon" /> **Toolbox** → <Icon src="/images/icons/model-lock.svg" alt="Model lock icon" /> **Model Lock**.
 
 <Note>
   If you manually switch to a different model during a session, model lock only kicks in again on the next page load — it won't override your manual selection mid-session.
@@ -124,11 +126,11 @@ A Session Key (`sk-ant-sid...` format) is the authentication token your browser 
 **Switching between accounts:**
 
 <Tabs>
-  <Tab title="Toolbox menu">
-    Open the Toolbox menu, click the currently active key, and select a different one from the list.
+  <Tab title="Settings page">
+    Go to <Icon src="/images/icons/settings.svg" alt="Settings icon" /> **Settings → Site Settings → Claude** and select a key from the current Session Key selector, or use **Set as current** on a key row.
   </Tab>
   <Tab title="Keyboard shortcut">
-    Press `Ctrl+Alt / ⌘⌥+S` to switch to the next key in your list.
+    Press <Icon src="/images/icons/keyboard.svg" alt="Keyboard shortcut icon" /> `Ctrl+Alt+S` (`Command+Option+S` on macOS) to switch to the next key in your list.
   </Tab>
 </Tabs>
 
