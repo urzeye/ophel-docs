@@ -69,7 +69,7 @@ Tags are free-form labels — one conversation can have multiple tags. Use them 
 
 ## Pinning conversations
 
-Right-click any conversation, or click the <Icon src="/images/icons/more-horizontal.svg" alt="Three-dot menu icon" /> three-dot menu on its row, then choose **Pin** to move it to the top of the list. Pins persist across sessions.
+Right-click any conversation, or click the <Icon src="/images/icons/more-horizontal.svg" alt="Three-dot menu icon" /> three-dot menu on its row, then choose <Icon src="/images/icons/pin.svg" alt="Pin icon" /> **Pin** to move it to the top of the list. Pinned rows show a filled pin in the same menu; choose <Icon src="/images/icons/pin.svg" alt="Unpin icon" /> **Unpin** to return the row to normal sorting. Pins persist across sessions.
 
 ## Batch operations
 
@@ -81,14 +81,15 @@ Click the <Icon src="/images/icons/batch.svg" alt="Batch mode icon" /> **Batch M
 | <Icon src="/images/icons/export.svg" alt="Export icon" /> Export | Export the selected conversation as a file |
 | <Icon src="/images/icons/folder-move.svg" alt="Move conversation icon" /> Move | Assign all selected conversations to a folder at once |
 | <Icon src="/images/icons/delete.svg" alt="Delete icon" /> Delete | Remove all selected conversations |
+| <Icon src="/images/icons/clear.svg" alt="Exit batch mode icon" /> Exit | Leave batch mode and clear the current selection |
 
 ## Exporting a conversation
 
 You can export a conversation in three ways:
 
-- **Quick button group** — click the <Icon src="/images/icons/tools.svg" alt="Toolbox icon" /> toolbox icon in the floating quick button group, then click <Icon src="/images/icons/export.svg" alt="Export icon" /> **Export** to export Markdown.
-- **Keyboard shortcut** — press `Ctrl+Shift+E` (`Command+Shift+E` on macOS) to export the current conversation as Markdown.
-- **Conversation row menu** — in the Conversations tab, click the <Icon src="/images/icons/more-horizontal.svg" alt="Three-dot menu icon" /> three-dot menu on a conversation row, choose <Icon src="/images/icons/export.svg" alt="Export icon" /> **Export**, then choose Markdown, JSON, or TXT.
+- **Quick button group** — click the <Icon src="/images/icons/tools.svg" alt="Toolbox icon" /> toolbox icon in the floating quick button group, then click <Icon src="/images/icons/export.svg" alt="Export icon" /> **Export** to export <Icon src="/images/icons/markdown.svg" alt="Markdown file icon" /> Markdown.
+- **Keyboard shortcut** — press `Ctrl+Shift+E` (`Command+Shift+E` on macOS) to export the current conversation as <Icon src="/images/icons/markdown.svg" alt="Markdown file icon" /> Markdown.
+- **Conversation row menu** — in the Conversations tab, click the <Icon src="/images/icons/more-horizontal.svg" alt="Three-dot menu icon" /> three-dot menu on a conversation row, choose <Icon src="/images/icons/export.svg" alt="Export icon" /> **Export**, then select <Icon src="/images/icons/markdown.svg" alt="Markdown file icon" /> Markdown, <Icon src="/images/icons/json-file.svg" alt="JSON file icon" /> JSON, or <Icon src="/images/icons/txt-file.svg" alt="TXT file icon" /> TXT.
 
 Markdown exports can optionally be delivered as a zip package that includes images, attachments, and other assets referenced in the conversation.
 
@@ -129,10 +130,6 @@ Go to **Settings → Features → Conversations** to configure folder and sync b
 
 | Setting                  | Description                                                          |
 | ------------------------ | -------------------------------------------------------------------- |
-| Default sort order       | Sort by last modified, creation time, or alphabetical title          |
-| Show site logo           | Display the AI platform icon next to each conversation in the list   |
-| Default export format    | File format used when you click Export                               |
-| Export filename template | Custom naming rule for exported files (supports `{title}`, `{date}`) |
 | Folder rainbow colors    | Use distinct colored backgrounds for folder-assigned conversations   |
 | Auto unpin on sync       | Remove pins when syncing from a remote source                        |
 | Sync delete to cloud     | Delete remote records when you delete conversations locally          |

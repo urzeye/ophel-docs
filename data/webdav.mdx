@@ -12,6 +12,8 @@ keywords:
   ]
 ---
 
+import { Icon } from "/snippets/icon.jsx"
+
 WebDAV sync lets you push your Ophel data to a server you own and pull it back on any other device where Ophel is installed. Because the data goes to your own server — not to Ophel’s infrastructure — you stay in full control of where your data lives.
 
 Ophel has built-in presets for the most common WebDAV providers:
@@ -64,13 +66,13 @@ Configure the sync connection at **Settings → Backup & Sync → WebDAV**:
     WebDAV sync requires the optional `<all_urls>` permission. Your browser will prompt you to grant it the first time you enable the feature.
   </Step>
   <Step title="Test the connection">
-    Click **Test connection** to verify your credentials and server reachability before syncing any data.
+    Click <Icon src="/images/icons/check.svg" alt="Test connection icon" /> **Test connection** to verify your credentials and server reachability before syncing any data.
   </Step>
   <Step title="Choose a sync mode and save">
     Select manual or automatic sync, set an interval if using automatic, choose which data sources to include, and save your configuration.
   </Step>
   <Step title="Push your data">
-    Click **Upload backup** to push your current local data to the server.
+    Click <Icon src="/images/icons/cloud-upload.svg" alt="Upload backup icon" /> **Upload backup** to push your current local data to the server.
   </Step>
 </Steps>
 
@@ -82,7 +84,7 @@ Configure the sync connection at **Settings → Backup & Sync → WebDAV**:
     path you used on the original device.
   </Step>
   <Step title="Pull from server">
-    Click **Pull from server** to open the list of remote backups, then select
+    Click <Icon src="/images/icons/download.svg" alt="Pull from server icon" /> **Pull from server** to open the list of remote backups, then select
     the snapshot you want to restore.
   </Step>
 </Steps>

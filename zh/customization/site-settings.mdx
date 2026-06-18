@@ -140,12 +140,12 @@ Session Key（格式为 `sk-ant-sid...`）是浏览器在 claude.ai 上使用的
 
 | 操作 | 说明 |
 | --- | --- |
-| 设为当前 | 将指定 Key 设为当前激活账号 |
-| 测试单个 | 发送一个轻量级请求，验证该 Key 是否有效且未达到限额 |
-| 测试全部 | 依次验证所有 Key，每次间隔 500ms 以避免触发限速 |
-| 导出 | 将所有 Key 导出为 JSON 文件备份 |
-| 导入 | 从 JSON 文件恢复 Key 列表 |
-| 删除 | 删除单条记录，不影响 Claude 账号本身 |
+| <Icon src="/images/icons/check.svg" alt="设为当前图标" /> 设为当前 | 将指定 Key 设为当前激活账号 |
+| <Icon src="/images/icons/shield-check.svg" alt="测试单个图标" /> 测试单个 | 发送一个轻量级请求，验证该 Key 是否有效且未达到限额 |
+| <Icon src="/images/icons/sync.svg" alt="测试全部图标" /> 测试全部 | 依次验证所有 Key，每次间隔 500ms 以避免触发限速 |
+| <Icon src="/images/icons/export.svg" alt="导出 Key 图标" /> 导出 | 将所有 Key 导出为 <Icon src="/images/icons/json-file.svg" alt="JSON 文件图标" /> JSON 文件备份 |
+| <Icon src="/images/icons/import.svg" alt="导入 Key 图标" /> 导入 | 从 <Icon src="/images/icons/json-file.svg" alt="JSON 文件图标" /> JSON 文件恢复 Key 列表 |
+| <Icon src="/images/icons/delete.svg" alt="删除 Key 图标" /> 删除 | 删除单条记录，不影响 Claude 账号本身 |
 
 <Warning>
   导出的 JSON 文件包含完整的 Session Key。持有该文件的任何人都可以使用你的账号额度。共享 WebDAV 备份或本地文件时请注意保密。

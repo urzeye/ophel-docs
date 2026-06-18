@@ -24,33 +24,20 @@ Ophel can export any AI conversation to a file, preserving not just the text but
 
 | Method | Description |
 | --- | --- |
-| Floating quick buttons | Click the <Icon src="/images/icons/tools.svg" alt="Toolbox icon" /> toolbox icon, then click <Icon src="/images/icons/export.svg" alt="Export icon" /> **Export** |
-| Keyboard shortcut | `Ctrl+Shift+E` (`Command+Shift+E` on macOS) exports the current conversation as Markdown |
-| Conversations tab | Click the <Icon src="/images/icons/more-horizontal.svg" alt="Three-dot menu icon" /> three-dot menu on a conversation row, choose <Icon src="/images/icons/export.svg" alt="Export icon" /> **Export**, then select Markdown, JSON, or TXT |
+| Floating quick buttons | Click the <Icon src="/images/icons/tools.svg" alt="Toolbox icon" /> toolbox icon, then click <Icon src="/images/icons/export.svg" alt="Export icon" /> **Export** to save <Icon src="/images/icons/markdown.svg" alt="Markdown file icon" /> Markdown |
+| Keyboard shortcut | `Ctrl+Shift+E` (`Command+Shift+E` on macOS) exports the current conversation as <Icon src="/images/icons/markdown.svg" alt="Markdown file icon" /> Markdown |
+| Conversations tab | Click the <Icon src="/images/icons/more-horizontal.svg" alt="Three-dot menu icon" /> three-dot menu on a conversation row, choose <Icon src="/images/icons/export.svg" alt="Export icon" /> **Export**, then select <Icon src="/images/icons/markdown.svg" alt="Markdown file icon" /> Markdown, <Icon src="/images/icons/json-file.svg" alt="JSON file icon" /> JSON, or <Icon src="/images/icons/txt-file.svg" alt="TXT file icon" /> TXT |
 
 After triggering an export, a full-page progress overlay blocks accidental interaction while Ophel loads history, extracts content, packages assets, saves the file, and restores the page.
 
 ## Export formats
 
-<Tabs>
-  <Tab title="Markdown (.md)">
-    Preserves headings, code blocks, and image references. Best for pasting into
-    a note-taking app or documentation tool.
-  </Tab>
-  <Tab title="Markdown zip package (.zip)">
-    Same Markdown output, bundled as a zip archive with all referenced assets
-    preserved in organized subdirectories. Choose this when the conversation
-    contains images, files, or generated artifacts you want to keep alongside
-    the text.
-  </Tab>
-  <Tab title="JSON (.json)">
-    Structured data with all messages, roles, timestamps, and model info. Best
-    for programmatic use or archiving.
-  </Tab>
-  <Tab title="Plain text (.txt)">
-    No formatting — just the raw text. Works in any text editor.
-  </Tab>
-</Tabs>
+| Format | What it preserves | Best for |
+| --- | --- | --- |
+| <Icon src="/images/icons/markdown.svg" alt="Markdown file icon" /> Markdown (`.md`) | Speaker labels, headings, lists, code blocks, and image references | Notes, wikis, documentation, and AI-to-AI handoff |
+| <Icon src="/images/icons/download.svg" alt="Zip package icon" /> Markdown zip package (`.zip`) | The Markdown file plus referenced images, attachments, and generated artifacts in `assets/` | Conversations with files, images, Canvas code, or document artifacts |
+| <Icon src="/images/icons/json-file.svg" alt="JSON file icon" /> JSON (`.json`) | Structured messages with roles, timestamps, model metadata, and content | Programmatic processing, indexing, and archival workflows |
+| <Icon src="/images/icons/txt-file.svg" alt="TXT file icon" /> Plain text (`.txt`) | A clean transcript without Markdown formatting | Searchable text archives and plain text editors |
 
 You can also click <Icon src="/images/icons/tools.svg" alt="Toolbox icon" /> **Toolbox** → <Icon src="/images/icons/copy.svg" alt="Copy Markdown icon" /> **Copy Markdown** to copy the entire conversation to your clipboard without saving a file.
 
@@ -61,7 +48,7 @@ Go to **Settings → Features → Export → Packaging mode** to choose how Mark
 | Mode | Behavior |
 | --- | --- |
 | **Markdown only** | Exports a single `.md` file. Images and attachments appear as text references or external links. |
-| **Zip package** | Bundles the Markdown file together with all assets in a `.zip` archive. This is the default. |
+| **Zip package** | Bundles the Markdown file together with all assets in a `.zip` archive. |
 
 When zip mode is active, Ophel downloads the archive directly instead of a standalone Markdown file.
 
@@ -146,14 +133,11 @@ Configure export behavior in **Settings → Features → Export**:
 
 | Setting | Description | Default |
 | --- | --- | --- |
-| Packaging mode | Markdown only or zip package | Zip package |
-| Default export format | File format used when you click Export | Markdown |
+| Packaging mode | Markdown only or zip package | Markdown only |
 | Custom user name | Replaces "User" in the exported output | (empty) |
 | Custom AI name | Replaces the AI name in the exported output | (empty) |
 | Include filename timestamp | Adds a timestamp to the exported filename | Off |
 | Include thinking/reasoning chains | Exports reasoning steps for platforms that expose them | On |
-| Convert images to Base64 | Embeds images inline instead of linking to them | Off |
-| Export filename template | Custom naming rule for exported files (supports `{title}`, `{date}`) | `{title}` |
 
 ## Copy as Markdown
 

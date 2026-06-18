@@ -24,29 +24,20 @@ Ophel 可以导出任何 AI 对话，不仅保留文本，还能保留图片、�
 
 | 方式 | 说明 |
 | --- | --- |
-| 浮动快捷按钮 | 点击 <Icon src="/images/icons/tools.svg" alt="工具箱图标" /> 工具箱图标，再点 <Icon src="/images/icons/export.svg" alt="导出图标" /> **导出** |
-| 快捷键 | `Ctrl+Shift+E`（Mac：`Command+Shift+E`）导出当前对话为 Markdown |
-| 会话标签页 | 点击会话行右侧的 <Icon src="/images/icons/more-horizontal.svg" alt="三个点菜单图标" /> 三点菜单，选择 <Icon src="/images/icons/export.svg" alt="导出图标" /> **导出**，再选择 Markdown、JSON 或 TXT |
+| 浮动快捷按钮 | 点击 <Icon src="/images/icons/tools.svg" alt="工具箱图标" /> 工具箱图标，再点 <Icon src="/images/icons/export.svg" alt="导出图标" /> **导出**，保存为 <Icon src="/images/icons/markdown.svg" alt="Markdown 文件图标" /> Markdown |
+| 快捷键 | `Ctrl+Shift+E`（Mac：`Command+Shift+E`）导出当前对话为 <Icon src="/images/icons/markdown.svg" alt="Markdown 文件图标" /> Markdown |
+| 会话标签页 | 点击会话行右侧的 <Icon src="/images/icons/more-horizontal.svg" alt="三个点菜单图标" /> 三点菜单，选择 <Icon src="/images/icons/export.svg" alt="导出图标" /> **导出**，再选择 <Icon src="/images/icons/markdown.svg" alt="Markdown 文件图标" /> Markdown、<Icon src="/images/icons/json-file.svg" alt="JSON 文件图标" /> JSON 或 <Icon src="/images/icons/txt-file.svg" alt="TXT 文件图标" /> TXT |
 
 触发导出后，会显示全屏进度遮罩，阻止误操作。Ophel 依次完成加载历史、提取内容、打包资源、保存文件、恢复页面状态。
 
 ## 导出格式
 
-<Tabs>
-  <Tab title="Markdown (.md)">
-    保留标题、代码块和图片引用。适合粘贴到笔记工具或文档系统。
-  </Tab>
-  <Tab title="Markdown zip 资源包 (.zip)">
-    与 Markdown 相同的文本输出，额外将所有引用的资源打包到 zip
-    归档的子目录中。当对话包含图片、文件或 AI 生成的产物时，选择此模式可以完整保留。
-  </Tab>
-  <Tab title="JSON (.json)">
-    结构化数据，包含所有消息、角色、时间戳和模型信息。适合程序化处理或长期存档。
-  </Tab>
-  <Tab title="纯文本 (.txt)">
-    无格式纯文本，适用于任何文本编辑器。
-  </Tab>
-</Tabs>
+| 格式 | 保留内容 | 适合场景 |
+| --- | --- | --- |
+| <Icon src="/images/icons/markdown.svg" alt="Markdown 文件图标" /> Markdown (`.md`) | 发言人标签、标题、列表、代码块和图片引用 | 笔记、知识库、文档整理和再次发给 AI |
+| <Icon src="/images/icons/download.svg" alt="Zip 资源包图标" /> Markdown zip 资源包 (`.zip`) | Markdown 文件，以及 `assets/` 中的图片、附件和生成产物 | 包含文件、图片、Canvas 代码或文档产物的对话 |
+| <Icon src="/images/icons/json-file.svg" alt="JSON 文件图标" /> JSON (`.json`) | 带角色、时间戳、模型元数据和正文的结构化消息 | 程序处理、索引和长期归档 |
+| <Icon src="/images/icons/txt-file.svg" alt="TXT 文件图标" /> 纯文本 (`.txt`) | 不带 Markdown 格式的干净文本记录 | 文本编辑器、全文检索和轻量归档 |
 
 也可以点击 <Icon src="/images/icons/tools.svg" alt="工具箱图标" /> **工具箱** → <Icon src="/images/icons/copy.svg" alt="复制 Markdown 图标" /> **复制 Markdown**，将整个对话以 Markdown 格式复制到剪贴板，无需保存文件。
 
@@ -57,7 +48,7 @@ Ophel 可以导出任何 AI 对话，不仅保留文本，还能保留图片、�
 | 模式 | 行为 |
 | --- | --- |
 | **仅 Markdown** | 导出单个 `.md` 文件，图片和附件以文字引用或外部链接形式出现 |
-| **Zip 资源包** | 将 Markdown 文件与所有资源打包为 `.zip` 归档（默认） |
+| **Zip 资源包** | 将 Markdown 文件与所有资源打包为 `.zip` 归档 |
 
 选择 zip 模式后，导出时直接下载压缩包而非独立的 Markdown 文件。
 
@@ -141,14 +132,11 @@ Gemini Deep Research 报告的导出独立于常规对话导出：
 
 | 设置项 | 说明 | 默认值 |
 | --- | --- | --- |
-| 打包模式 | 仅 Markdown 或 zip 资源包 | Zip 资源包 |
-| 默认导出格式 | 点击导出时使用的文件格式 | Markdown |
+| 打包模式 | 仅 Markdown 或 zip 资源包 | 仅 Markdown |
 | 自定义用户名称 | 导出内容中替代"用户"的名称 | （空） |
 | 自定义 AI 名称 | 导出内容中替代 AI 名称的文字 | （空） |
 | 文件名包含时间戳 | 在导出文件名中添加时间戳后缀 | 关闭 |
 | 包含思维链 | 导出支持推理展开的平台的思考过程 | 开启 |
-| 图片转 Base64 | 将图片内嵌为 Base64 编码而非链接 | 关闭 |
-| 导出文件名模板 | 自定义命名规则（支持 `{title}`、`{date}`） | `{title}` |
 
 ## 复制 Markdown
 

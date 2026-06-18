@@ -140,12 +140,12 @@ After switching, Ophel refreshes the current Claude page to apply the new key.
 
 | Action | Description |
 | --- | --- |
-| Set as current | Make a specific key the active account |
-| Test single | Send a lightweight request to verify the key is valid and not rate-limited |
-| Test all | Validate all keys in sequence, with 500 ms between tests to avoid triggering rate limits |
-| Export | Export all keys as a JSON file for backup |
-| Import | Restore a key list from a JSON file |
-| Delete | Remove a single entry — does not affect the Claude account itself |
+| <Icon src="/images/icons/check.svg" alt="Set current key icon" /> Set as current | Make a specific key the active account |
+| <Icon src="/images/icons/shield-check.svg" alt="Test key icon" /> Test single | Send a lightweight request to verify the key is valid and not rate-limited |
+| <Icon src="/images/icons/sync.svg" alt="Test all keys icon" /> Test all | Validate all keys in sequence, with 500 ms between tests to avoid triggering rate limits |
+| <Icon src="/images/icons/export.svg" alt="Export keys icon" /> Export | Export all keys as a <Icon src="/images/icons/json-file.svg" alt="JSON file icon" /> JSON file for backup |
+| <Icon src="/images/icons/import.svg" alt="Import keys icon" /> Import | Restore a key list from a <Icon src="/images/icons/json-file.svg" alt="JSON file icon" /> JSON file |
+| <Icon src="/images/icons/delete.svg" alt="Delete key icon" /> Delete | Remove a single entry — does not affect the Claude account itself |
 
 <Warning>
   Exported JSON files contain the full Session Keys. Anyone with the file can use your account's quota. Be careful when sharing WebDAV backups or local files that contain exported keys.

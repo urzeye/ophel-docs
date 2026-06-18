@@ -72,7 +72,7 @@ Ophel 从当前 AI 平台的原生侧边栏读取会话列表，将其展示在�
 
 ## 置顶
 
-将重要对话置顶后，它会固定显示在列表最顶部，不受排序规则影响。右键点击会话，或点击会话行右侧的 <Icon src="/images/icons/more-horizontal.svg" alt="三个点菜单图标" /> 三个点菜单，然后选择**置顶**。
+将重要对话置顶后，它会固定显示在列表最顶部，不受排序规则影响。右键点击会话，或点击会话行右侧的 <Icon src="/images/icons/more-horizontal.svg" alt="三个点菜单图标" /> 三个点菜单，然后选择 <Icon src="/images/icons/pin.svg" alt="置顶图标" /> **置顶**。已置顶的会话在同一菜单中显示填充状态的图钉；再次选择 <Icon src="/images/icons/pin.svg" alt="取消置顶图标" /> **取消置顶**即可恢复普通排序。
 
 ## 批量操作
 
@@ -82,14 +82,15 @@ Ophel 从当前 AI 平台的原生侧边栏读取会话列表，将其展示在�
 - <Icon src="/images/icons/copy.svg" alt="复制 Markdown 图标" /> 复制选中会话的 Markdown
 - <Icon src="/images/icons/export.svg" alt="导出图标" /> 导出选中会话
 - <Icon src="/images/icons/delete.svg" alt="删除图标" /> 删除选中会话
+- <Icon src="/images/icons/clear.svg" alt="退出批量操作图标" /> 退出批量操作并清空当前选择
 
 ## 导出对话
 
 你可以通过三种入口导出对话：
 
-- **快捷按钮组**：点击浮动快捷按钮组里的 <Icon src="/images/icons/tools.svg" alt="工具箱图标" /> **工具箱**图标，然后点击 <Icon src="/images/icons/export.svg" alt="导出图标" /> **导出**按钮导出 Markdown。
-- **快捷键**：按 `Ctrl+Shift+E`（Mac：`Command+Shift+E`），将当前对话导出为 Markdown。
-- **会话行菜单**：在会话标签页中，点击目标会话右侧的 <Icon src="/images/icons/more-horizontal.svg" alt="三个点菜单图标" /> 三个点菜单，选择 <Icon src="/images/icons/export.svg" alt="导出图标" /> **导出**，再选择 Markdown、JSON 或 TXT 格式。
+- **快捷按钮组**：点击浮动快捷按钮组里的 <Icon src="/images/icons/tools.svg" alt="工具箱图标" /> **工具箱**图标，然后点击 <Icon src="/images/icons/export.svg" alt="导出图标" /> **导出**按钮导出 <Icon src="/images/icons/markdown.svg" alt="Markdown 文件图标" /> Markdown。
+- **快捷键**：按 `Ctrl+Shift+E`（Mac：`Command+Shift+E`），将当前对话导出为 <Icon src="/images/icons/markdown.svg" alt="Markdown 文件图标" /> Markdown。
+- **会话行菜单**：在会话标签页中，点击目标会话右侧的 <Icon src="/images/icons/more-horizontal.svg" alt="三个点菜单图标" /> 三个点菜单，选择 <Icon src="/images/icons/export.svg" alt="导出图标" /> **导出**，再选择 <Icon src="/images/icons/markdown.svg" alt="Markdown 文件图标" /> Markdown、<Icon src="/images/icons/json-file.svg" alt="JSON 文件图标" /> JSON 或 <Icon src="/images/icons/txt-file.svg" alt="TXT 文件图标" /> TXT 格式。
 
 Markdown 导出可以选择打包为 zip，包含对话中引用的图片、附件和其他资源文件。
 
@@ -133,10 +134,6 @@ Markdown 导出可以选择打包为 zip，包含对话中引用的图片、附�
 
 | 设置项         | 说明                                                        |
 | -------------- | ----------------------------------------------------------- |
-| 默认排序方式   | 按修改时间 / 创建时间 / 标题字母序                          |
-| 显示站点徽标   | 在会话列表中每条旁显示对应 AI 平台的图标                    |
-| 默认导出格式   | 点击导出按钮时优先使用的文件格式                            |
-| 导出文件名模板 | 自定义导出文件的命名规则（支持 `{title}`、`{date}` 等变量） |
 | 文件夹彩虹色   | 为不同文件夹的会话显示不同色调背景                          |
 | 同步时取消置顶 | 从远端拉取同步数据时自动取消本地置顶状态                    |
 | 同步删除到云端 | 在本地删除会话元数据时同步删除远端对应记录                  |

@@ -3,9 +3,9 @@
   "name": "Ophel Atlas",
   "theme": "luma",
   "colors": {
-    "primary": "#4285F4",
+    "primary": "#1967D2",
     "light": "#EBF2FF",
-    "dark": "#1A2B4A"
+    "dark": "#3367D6"
   },
   "logo": {
     "light": "/images/logo-light.svg",
@@ -180,8 +180,13 @@
                 "icon": "star",
                 "pages": [
                   "features/outline",
-                  "features/conversations",
-                  "features/export",
+                  {
+                    "group": "Conversation Management",
+                    "icon": "folder-open",
+                    "root": "features/conversations",
+                    "expanded": true,
+                    "pages": ["features/export"]
+                  },
                   "features/prompts",
                   "features/global-search"
                 ]
@@ -270,8 +275,13 @@
                 "icon": "star",
                 "pages": [
                   "zh/features/outline",
-                  "zh/features/conversations",
-                  "zh/features/export",
+                  {
+                    "group": "会话管理",
+                    "icon": "folder-open",
+                    "root": "zh/features/conversations",
+                    "expanded": true,
+                    "pages": ["zh/features/export"]
+                  },
                   "zh/features/prompts",
                   "zh/features/global-search"
                 ]

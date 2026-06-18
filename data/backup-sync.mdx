@@ -5,6 +5,8 @@ description: "Export your prompts, settings, and conversation metadata as JSON f
 keywords: ["backup", "export data", "import data", "restore settings", "JSON backup", "data management"]
 ---
 
+import { Icon } from "/snippets/icon.jsx"
+
 Ophel stores all your data locally in your browser. The backup and restore tools in **Settings → Backup & Sync** let you export that data as a JSON file for safekeeping, move it to another device, or wipe everything and start over.
 
 ## Export a backup
@@ -13,9 +15,9 @@ Three export types are available. Choose the one that fits what you need to pres
 
 | Export type   | What's included                                                                                          |
 | ------------- | -------------------------------------------------------------------------------------------------------- |
-| Full backup   | Everything: settings, prompts, conversation metadata, folders, tags (and optionally Claude Session Keys) |
-| Prompts only  | Your prompt library                                                                                      |
-| Settings only | All configuration items                                                                                  |
+| <Icon src="/images/icons/backup.svg" alt="Full backup icon" /> Full backup | Everything: settings, prompts, conversation metadata, folders, tags (and optionally Claude Session Keys) |
+| <Icon src="/images/icons/prompt.svg" alt="Prompt library icon" /> Prompts only | Your prompt library |
+| <Icon src="/images/icons/settings.svg" alt="Settings icon" /> Settings only | All configuration items |
 
 <Tip>
 Use **Full backup** before making any large configuration changes or before clearing your data. It's the safest snapshot to fall back to.
@@ -23,7 +25,7 @@ Use **Full backup** before making any large configuration changes or before clea
 
 ## Import a backup
 
-Drag and drop a JSON file onto the import area, or click it to open a file picker. Ophel validates the file format before writing anything. Once the import is confirmed, the page refreshes automatically to apply the new configuration.
+Drag and drop a <Icon src="/images/icons/json-file.svg" alt="JSON file icon" /> JSON file onto the import area, or click it to open a file picker. Ophel validates the file format before writing anything. Once the import is confirmed, the page refreshes automatically to apply the new configuration.
 
 <Warning>
 Importing **overwrites** your existing data. Export a backup of your current state before importing a file from another device or an older snapshot.
@@ -31,7 +33,7 @@ Importing **overwrites** your existing data. Export a backup of your current sta
 
 ## Clear all data
 
-**Settings → Backup & Sync → Clear all data** deletes every piece of data Ophel has stored locally — prompts, conversation metadata, folders, tags, and all settings — and returns the extension to its initial install state.
+Go to **Settings → Backup & Sync** and click <Icon src="/images/icons/delete.svg" alt="Clear data icon" /> **Clear all data**. This deletes every piece of data Ophel has stored locally — prompts, conversation metadata, folders, tags, and all settings — and returns the extension to its initial install state.
 
 <Warning>
 This action is irreversible. Export a full backup before clearing if you want to preserve anything.
