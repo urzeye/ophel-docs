@@ -14,6 +14,20 @@ keywords:
   ]
 ---
 
+export const Icon = ({ src, alt }) => (
+  <img
+    src={src}
+    alt={alt}
+    width="18"
+    height="18"
+    style={{
+      display: "inline-block",
+      verticalAlign: "-0.2em",
+      margin: "0 0.15em",
+    }}
+  />
+)
+
 The Conversations tab gives you a searchable, organized view of every chat on the current AI platform.
 
 ![Conversations tab — folder and tag list](/images/features/conversation-en.png)
@@ -41,24 +55,13 @@ Folders group related conversations with a color-coded label. There are 8 color 
 
 A conversation belongs to one folder at a time. Moving it to another folder updates the local Ophel metadata; it does not modify the original conversation content on the AI platform.
 
-<Steps>
-  <Step title="Open the toolbox menu">
-    Click the **☰** button in the floating group, or right-click a conversation
-    in the list.
-  </Step>
-  <Step title="Click Move to folder">
-    Pick an existing folder from the list, or type a name to create a new one.
-  </Step>
-  <Step title="Confirm">
-    The conversation is moved immediately. You can reassign or remove the folder
-    at any time.
-  </Step>
-</Steps>
+You can move conversations in three ways:
 
-<Tip>
-  You can also move conversations to a folder from the batch action bar when
-  multiple items are selected.
-</Tip>
+- **Quick button group** — click the <Icon src="/images/icons/tools.svg" alt="Toolbox icon" /> toolbox icon in the floating quick button group, then click the <Icon src="/images/icons/folder-move.svg" alt="Move conversation icon" /> **Move Conversation** icon in the popover.
+- **Conversation row menu** — in the Conversations tab, click the <Icon src="/images/icons/more-horizontal.svg" alt="Three-dot menu icon" /> three-dot menu on the conversation row, then choose <Icon src="/images/icons/folder-move.svg" alt="Move conversation icon" /> **Move Conversation**.
+- **Batch mode** — click the <Icon src="/images/icons/batch.svg" alt="Batch mode icon" /> **Batch Mode** button in the Conversations tab toolbar, select one or more conversations, then click the <Icon src="/images/icons/folder-move.svg" alt="Move conversation icon" /> **Move** button in the batch action bar.
+
+After you choose **Move to folder**, select an existing folder. The folder assignment updates immediately in Ophel metadata and does not modify the original conversation content on the AI platform.
 
 ### Drag conversations to folders
 
@@ -78,41 +81,45 @@ Tags are free-form labels — one conversation can have multiple tags. Use them 
 
 ## Pinning conversations
 
-Right-click any conversation, or hover to reveal the action buttons, and click **Pin** to move it to the top of the list. Pins persist across sessions.
+Right-click any conversation, or click the <Icon src="/images/icons/more-horizontal.svg" alt="Three-dot menu icon" /> three-dot menu on its row, then choose **Pin** to move it to the top of the list. Pins persist across sessions.
 
 ## Batch operations
 
-Select multiple conversations using their checkboxes to perform bulk actions:
+Click the <Icon src="/images/icons/batch.svg" alt="Batch mode icon" /> **Batch Mode** button in the Conversations tab toolbar, then select conversations with the row checkboxes. The batch action bar supports:
 
 | Action         | Description                                           |
 | -------------- | ----------------------------------------------------- |
-| Move to folder | Assign all selected conversations to a folder at once |
-| Set tags       | Apply one or more tags to all selected conversations  |
-| Delete         | Remove all selected conversations                     |
+| <Icon src="/images/icons/copy.svg" alt="Copy Markdown icon" /> Copy Markdown | Copy the selected conversation as Markdown |
+| <Icon src="/images/icons/export.svg" alt="Export icon" /> Export | Export the selected conversation as a file |
+| <Icon src="/images/icons/folder-move.svg" alt="Move conversation icon" /> Move | Assign all selected conversations to a folder at once |
+| <Icon src="/images/icons/delete.svg" alt="Delete icon" /> Delete | Remove all selected conversations |
 
 ## Exporting a conversation
 
-Open the toolbox (**☰**) and click **Export**, or press `Alt / ⌥+Shift+E`, to export the current conversation. Three formats are available: Markdown, JSON, and plain text. Markdown exports can optionally be delivered as a zip package that includes images, attachments, and other assets referenced in the conversation.
+You can export a conversation in three ways:
 
-You can also click **Copy as Markdown** from the toolbox to copy the entire conversation to your clipboard without saving a file.
+- **Quick button group** — click the <Icon src="/images/icons/tools.svg" alt="Toolbox icon" /> toolbox icon in the floating quick button group, then click <Icon src="/images/icons/export.svg" alt="Export icon" /> **Export** to export Markdown.
+- **Keyboard shortcut** — press `Ctrl+Shift+E` (`Command+Shift+E` on macOS) to export the current conversation as Markdown.
+- **Conversation row menu** — in the Conversations tab, click the <Icon src="/images/icons/more-horizontal.svg" alt="Three-dot menu icon" /> three-dot menu on a conversation row, choose <Icon src="/images/icons/export.svg" alt="Export icon" /> **Export**, then choose Markdown, JSON, or TXT.
+
+Markdown exports can optionally be delivered as a zip package that includes images, attachments, and other assets referenced in the conversation.
+
+You can also click <Icon src="/images/icons/copy.svg" alt="Copy Markdown icon" /> **Copy Markdown** from the toolbox to copy the entire conversation to your clipboard without saving a file.
 
 For full details on export formats, packaging modes, asset handling, and per-platform capabilities, see the dedicated [Export & Packaging](/features/export) page.
 
-### Open conversations in new tabs
-
-Enable **Settings → Features → Conversations → Open in new tab** to open conversations from the list in a new browser tab instead of navigating within the current tab. This keeps your current conversation in place while you check another one.
-
 ## Keyboard shortcuts
 
-<Note>Mac users: **Alt** = **Option**.</Note>
+<Note>On macOS, **Ctrl** shortcuts use **Command**, and **Alt** shortcuts use **Option**.</Note>
 
-| Shortcut       | Action                              |
-| -------------- | ----------------------------------- |
-| `Ctrl+Shift+O` | New conversation                    |
-| `Alt+Shift+R`  | Refresh conversation list           |
-| `Alt+Shift+L`  | Locate current conversation in list |
-| `Alt+[`        | Previous conversation               |
-| `Alt+]`        | Next conversation                   |
+| Shortcut                                          | Action                              |
+| ------------------------------------------------- | ----------------------------------- |
+| `Ctrl+Shift+O`                                    | New conversation                    |
+| `Alt+Shift+R`                                     | Refresh conversation list           |
+| `Alt+Shift+L`                                     | Locate current conversation in list |
+| `Alt+[`                                           | Previous conversation               |
+| `Alt+]`                                           | Next conversation                   |
+| `Ctrl+Shift+E` (`Command+Shift+E` on macOS)       | Export current conversation         |
 
 All shortcuts are customizable in **Settings → Shortcuts**.
 

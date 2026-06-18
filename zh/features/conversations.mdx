@@ -14,6 +14,20 @@ keywords:
   ]
 ---
 
+export const Icon = ({ src, alt }) => (
+  <img
+    src={src}
+    alt={alt}
+    width="18"
+    height="18"
+    style={{
+      display: "inline-block",
+      verticalAlign: "-0.2em",
+      margin: "0 0.15em",
+    }}
+  />
+)
+
 ![会话标签页 — 文件夹与标签列表](/images/features/conversation-zh.png)
 
 会话标签页整合了你在各 AI 平台的所有历史对话，提供统一的文件夹分类、标签系统、导出功能和云同步，让你彻底告别"找不到上次那个对话"的困境。
@@ -39,17 +53,13 @@ Ophel 从当前 AI 平台的原生侧边栏读取会话列表，将其展示在�
 
 将相关对话归入同一文件夹，实现按项目、主题或时间段的分类管理。
 
-<Steps>
-  <Step title="打开工具箱菜单">
-    点击浮动快捷按钮组中的 **☰** 按钮，或右键单击会话列表中的任意一条对话。
-  </Step>
-  <Step title={'点击"移动到文件夹"'}>
-    从列表中选择一个已有文件夹，或输入名称创建新文件夹。
-  </Step>
-  <Step title="确认归入">
-    对话立即移入该文件夹。你可以随时重新分配或移除文件夹归属。
-  </Step>
-</Steps>
+你可以通过三种入口移动会话：
+
+- **快捷按钮组**：点击浮动快捷按钮组里的 <Icon src="/images/icons/tools.svg" alt="工具箱图标" /> **工具箱**图标，在弹出的工具箱里点击 <Icon src="/images/icons/folder-move.svg" alt="移动会话图标" /> **移动会话**图标。
+- **会话行菜单**：在会话标签页中，点击目标会话右侧的 <Icon src="/images/icons/more-horizontal.svg" alt="三个点菜单图标" /> 三个点菜单，然后选择 <Icon src="/images/icons/folder-move.svg" alt="移动会话图标" /> **移动会话**。
+- **批量操作**：点击会话标签页顶部的 <Icon src="/images/icons/batch.svg" alt="批量操作图标" /> **批量操作**按钮，选择一个或多个会话后，在底部批量操作栏点击 <Icon src="/images/icons/folder-move.svg" alt="移动会话图标" /> **移动**按钮。
+
+选择目标文件夹后，会话会立即归入该文件夹。这个操作只更新 Ophel 本地元数据，不会修改 AI 平台上的实际对话内容。
 
 - 在会话列表侧边的文件夹栏中点击文件夹名称，过滤只显示该文件夹内的对话
 - 文件夹支持 8 种颜色，方便视觉区分不同项目
@@ -74,31 +84,33 @@ Ophel 从当前 AI 平台的原生侧边栏读取会话列表，将其展示在�
 
 ## 置顶
 
-将重要对话置顶后，它会固定显示在列表最顶部，不受排序规则影响。适合正在进行的项目或需要频繁回访的对话。
+将重要对话置顶后，它会固定显示在列表最顶部，不受排序规则影响。右键点击会话，或点击会话行右侧的 <Icon src="/images/icons/more-horizontal.svg" alt="三个点菜单图标" /> 三个点菜单，然后选择**置顶**。
 
 ## 批量操作
 
-长按（或右键）任意会话进入多选模式，框选后可以批量：
+点击会话标签页顶部的 <Icon src="/images/icons/batch.svg" alt="批量操作图标" /> **批量操作**按钮进入多选模式，勾选会话后可以：
 
-- 移动到文件夹
-- 添加或修改标签
-- 设置/取消置顶
-- 删除 Ophel 中的元数据（不影响 AI 平台上的实际对话内容）
+- <Icon src="/images/icons/folder-move.svg" alt="移动会话图标" /> 移动选中会话
+- <Icon src="/images/icons/copy.svg" alt="复制 Markdown 图标" /> 复制选中会话的 Markdown
+- <Icon src="/images/icons/export.svg" alt="导出图标" /> 导出选中会话
+- <Icon src="/images/icons/delete.svg" alt="删除图标" /> 删除选中会话
 
 ## 导出对话
 
-点击工具箱中的**导出**，或按快捷键 `Alt+Shift+E`（Mac：`Option+Shift+E`），将当前对话内容导出为文件。支持 Markdown、JSON 和纯文本三种格式。Markdown 导出可以选择打包为 zip，包含对话中引用的图片、附件和其他资源文件。
+你可以通过三种入口导出对话：
+
+- **快捷按钮组**：点击浮动快捷按钮组里的 <Icon src="/images/icons/tools.svg" alt="工具箱图标" /> **工具箱**图标，然后点击 <Icon src="/images/icons/export.svg" alt="导出图标" /> **导出**按钮导出 Markdown。
+- **快捷键**：按 `Ctrl+Shift+E`（Mac：`Command+Shift+E`），将当前对话导出为 Markdown。
+- **会话行菜单**：在会话标签页中，点击目标会话右侧的 <Icon src="/images/icons/more-horizontal.svg" alt="三个点菜单图标" /> 三个点菜单，选择 <Icon src="/images/icons/export.svg" alt="导出图标" /> **导出**，再选择 Markdown、JSON 或 TXT 格式。
+
+Markdown 导出可以选择打包为 zip，包含对话中引用的图片、附件和其他资源文件。
 
 <Tip>
-  点击工具箱中的**复制 Markdown**，可以直接将当前对话以 Markdown
+  点击工具箱中的 <Icon src="/images/icons/copy.svg" alt="复制 Markdown 图标" /> **复制 Markdown**，可以直接将当前对话以 Markdown
   格式复制到剪贴板，无需保存文件。
 </Tip>
 
 关于导出格式、打包模式、资源处理和各平台支持能力的完整说明，请参阅 [导出与打包](/zh/features/export) 页面。
-
-### 在新标签页中打开会话
-
-启用 **设置 → 功能 → 会话 → 在新标签页中打开** 后，从会话列表中点击对话时会在新浏览器标签页中打开，而不是在当前页跳转。方便在查看其他对话的同时保留当前对话。
 
 ## WebDAV 同步
 
@@ -115,15 +127,17 @@ Ophel 从当前 AI 平台的原生侧边栏读取会话列表，将其展示在�
 
 ## 常用快捷键
 
-| 操作                 | 快捷键         |
-| -------------------- | -------------- |
-| 新建对话（新标签页） | `Ctrl+Shift+O` |
-| 刷新会话列表         | `Alt+Shift+R`  |
-| 定位当前会话         | `Alt+Shift+L`  |
-| 上一个会话           | `Alt+[`        |
-| 下一个会话           | `Alt+]`        |
-| 导出当前对话         | `Ctrl+Shift+E` |
-| 复制最新 AI 回复     | `Ctrl+Shift+C` |
+<Note>Mac 上的 `Ctrl` 快捷键对应 `Command`，`Alt` 对应 `Option`。</Note>
+
+| 操作                 | 快捷键                                  |
+| -------------------- | --------------------------------------- |
+| 新建对话（新标签页） | `Ctrl+Shift+O`（Mac：`Command+Shift+O`） |
+| 刷新会话列表         | `Alt+Shift+R`                           |
+| 定位当前会话         | `Alt+Shift+L`                           |
+| 上一个会话           | `Alt+[`                                 |
+| 下一个会话           | `Alt+]`                                 |
+| 导出当前对话         | `Ctrl+Shift+E`（Mac：`Command+Shift+E`） |
+| 复制最新 AI 回复     | `Ctrl+Shift+C`（Mac：`Command+Shift+C`） |
 
 ## 相关设置
 
