@@ -13,6 +13,8 @@ keywords:
   ]
 ---
 
+import { Icon } from "/snippets/icon.jsx"
+
 When you're running multiple AI conversations across different tabs, keeping track of which tab is which — and knowing when the AI has finished — becomes a real workflow problem. Ophel manages your browser tab titles automatically and can alert you the moment a response is ready, even when you've switched to something else entirely.
 
 ## Auto tab renaming
@@ -32,6 +34,10 @@ Ophel syncs your browser tab title to the current AI conversation, making it eas
 The default format produces titles like `⏳ My conversation->GPT-4o` while generating and `✅ My conversation->GPT-4o` when complete.
 
 The title format editor highlights `{status}`, `{title}`, and `{model}` as token chips and provides buttons to insert them, so you can adjust the template without mistyping a placeholder.
+
+<Tip>
+  Enable <Icon src="/images/icons/new-tab.svg" alt="New tab icon" /> **Open New Chat in New Tab** in **Settings → Features → Tab** to show a panel-header button that opens a fresh chat in a new browser tab. Existing conversations can be opened in a new tab from the <Icon src="/images/icons/more-horizontal.svg" alt="Conversation menu icon" /> conversation row menu.
+</Tip>
 
 ## Generation complete notifications
 
@@ -71,12 +77,6 @@ If you don't want the tab bar to reveal what you're discussing, privacy mode rep
   Privacy mode only affects the browser tab title. It has no effect on
   conversation content or anything inside the Ophel panel.
 </Note>
-
-## Open conversations in new tabs
-
-When enabled, clicking a conversation in the Conversations tab opens it in a new browser tab instead of navigating in the current one. This is useful when you want to keep your current conversation visible while checking another.
-
-**Settings → Features → Conversations → Open in new tab**
 
 ## Model lock
 

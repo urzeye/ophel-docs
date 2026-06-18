@@ -13,6 +13,8 @@ keywords:
   ]
 ---
 
+import { Icon } from "/snippets/icon.jsx"
+
 The Prompt Library saves you from retyping the same instructions every session. You build a personal collection of prompt templates, organize them into categories, and insert any prompt into the AI input box with a single click. Variables let you write reusable templates where certain values are filled in at send time.
 
 ![Prompt Library — prompt list and categories](/images/features/prompt-en.png)
@@ -37,16 +39,16 @@ If the prompt contains variables, a dialog appears first asking you to fill in e
 
 ## Creating prompts
 
-Click the **+** button at the top of the Prompts tab and fill in the following fields:
+Click the <Icon src="/images/icons/prompt.svg" alt="Add prompt icon" /> **+ Add Prompt** button at the bottom of the Prompts tab and fill in the following fields:
 
 | Field    | Description                                                                       |
 | -------- | --------------------------------------------------------------------------------- |
 | Title    | A short label shown in the list                                                   |
 | Content  | The full prompt text; variables can be embedded anywhere                          |
 | Category | Optional group label to keep related prompts together (e.g., "Writing", "Coding") |
-| Pin      | Optional; keeps this prompt at the top of the list                                |
+| Pin      | Optional; <Icon src="/images/icons/pin.svg" alt="Pin icon" /> keeps this prompt at the top of the list |
 
-The prompt appears in the list immediately after saving. You can edit or delete it at any time.
+The prompt appears in the list immediately after saving. Hover over a prompt row to use <Icon src="/images/icons/pin.svg" alt="Pin icon" /> pin, <Icon src="/images/icons/eye.svg" alt="Preview icon" /> preview, <Icon src="/images/icons/copy.svg" alt="Copy icon" /> copy, <Icon src="/images/icons/more-horizontal.svg" alt="More menu icon" /> more, <Icon src="/images/icons/edit.svg" alt="Edit icon" /> edit, or <Icon src="/images/icons/delete.svg" alt="Delete icon" /> delete.
 
 ## Variables
 
@@ -101,19 +103,19 @@ Assign prompts to categories to keep your library organized. A category sidebar 
 
 ## Pins
 
-Click the pin icon on any prompt to float it to the top of the list. Pinned prompts always appear before unpinned ones, regardless of the active category filter.
+Click the <Icon src="/images/icons/pin.svg" alt="Pin icon" /> pin icon on any prompt to float it to the top of the list. Pinned prompts always appear before unpinned ones, regardless of the active category filter.
 
 ## Sorting and search
 
-Use the search box at the top of the Prompts tab to filter by title or content in real time. Pinned prompts always stay at the top of sorted results.
+Use the <Icon src="/images/icons/search.svg" alt="Search icon" /> search box at the top of the Prompts tab to filter by title or content in real time. Pinned prompts always stay at the top of sorted results.
 
 Drag any prompt row to reorder your library. Buttons, inputs, menus, and other interactive controls inside a row remain clickable and do not start a drag.
 
 ## Import and export
 
-**Export** saves your entire prompt library to a JSON file, useful for backup or transferring to another device.
+Click the <Icon src="/images/icons/import.svg" alt="Import and export menu icon" /> import/export button in the Prompts tab toolbar, then choose <Icon src="/images/icons/export.svg" alt="Export icon" /> **Export** to save your entire prompt library to a JSON file. This is useful for backup or transferring to another device.
 
-**Import** reads a JSON file back and gives you three merge options:
+Choose <Icon src="/images/icons/import.svg" alt="Import icon" /> **Import** from the same menu to read a JSON file back and pick one of three merge options:
 
 | Option      | Behavior                                                                     |
 | ----------- | ---------------------------------------------------------------------------- |
@@ -121,13 +123,13 @@ Drag any prompt row to reorder your library. Buttons, inputs, menus, and other i
 | Overwrite   | Imports all prompts; replaces existing prompts that share the same title     |
 | Replace all | Deletes your current library and replaces it entirely with the imported file |
 
-## Prompt Queue
+## <Icon src="/images/icons/prompt-queue.svg" alt="Prompt Queue icon" /> Prompt Queue
 
 The Prompt Queue lets you line up multiple prompts and send them automatically one after another. Ophel waits for the AI to finish each response before sending the next — you do not have to watch and click each time. This is useful for multi-step workflows, batch tasks, or structured interview sequences.
 
 ### Enabling the Queue
 
-Go to **Settings → Features → Prompts → Prompt Queue** and toggle it on. A queue widget appears near the AI input box. Show or hide it at any time with the **Toggle Prompt Queue** shortcut (default: `Alt / ⌥+J`).
+Go to <Icon src="/images/icons/settings.svg" alt="Settings icon" /> **Settings → Features → Prompts → Prompt Queue** and toggle it on. A <Icon src="/images/icons/prompt-queue.svg" alt="Prompt Queue icon" /> queue widget appears near the AI input box. Show or hide it at any time with the **Toggle Prompt Queue** shortcut (default: <Icon src="/images/icons/keyboard.svg" alt="Keyboard shortcut icon" /> `Alt / ⌥+J`).
 
 ### Adding prompts to the Queue
 
@@ -137,13 +139,13 @@ You can also add saved prompts from the Prompt Library:
 
 | Source                                              | Behavior                                                                          |
 | --------------------------------------------------- | --------------------------------------------------------------------------------- |
-| Prompt More menu → **Add to queue**                 | Adds the selected prompt as one queue item                                        |
-| Prompt More menu → **Split lines and add to queue** | Splits the prompt content by line and adds each non-empty line as a separate item |
+| <Icon src="/images/icons/more-horizontal.svg" alt="More menu icon" /> Prompt More menu → <Icon src="/images/icons/add-to-queue.svg" alt="Add to queue icon" /> **Add to queue** | Adds the selected prompt as one queue item |
+| <Icon src="/images/icons/more-horizontal.svg" alt="More menu icon" /> Prompt More menu → <Icon src="/images/icons/split-lines-to-queue.svg" alt="Split lines to queue icon" /> **Split lines and add to queue** | Splits the prompt content by line and adds each non-empty line as a separate item |
 | Double-click a prompt while the AI is generating    | Queues the prompt automatically when Prompt Queue is enabled                      |
 
 Variable prompts open the variable dialog first when you add them from the prompt row menu. After you confirm the variables, the resolved prompt is added to the queue.
 
-For adding many prompts at once, click the **import** button in the queue panel. The dialog has two sources:
+For adding many prompts at once, click the <Icon src="/images/icons/import.svg" alt="Batch add icon" /> **Batch Add** button in the queue panel. The dialog has two sources:
 
 <Tabs>
   <Tab title="Prompt Library">
@@ -165,22 +167,19 @@ A preview shows exactly how the text will be divided before you confirm.
 ### Running the Queue
 
 <Steps>
-  <Step title="Press Start">Ophel begins monitoring the AI page.</Step>
+  <Step title="Add one or more prompts">
+    Add prompts from the queue input, the <Icon src="/images/icons/more-horizontal.svg" alt="More menu icon" /> prompt row menu, or the <Icon src="/images/icons/import.svg" alt="Batch add icon" /> Batch Add dialog.
+  </Step>
   <Step title="Ophel sends prompts automatically">
-    Every second, Ophel checks whether the page is idle — no active generation.
-    When it detects two consecutive idle checks, it sends the next prompt in the
-    queue.
+    If the AI is idle, Ophel starts with the next queued prompt immediately. If
+    the AI is generating, pending prompts wait in the queue until the page is
+    idle.
   </Step>
   <Step title="Manage the queue while it runs">
-    You can pause auto-sending, skip the current item, reorder items by
-    dragging, delete individual items, or clear all remaining items at any time.
+    You can edit a pending item, force-send a single item, remove individual
+    items, or clear the queue with <Icon src="/images/icons/cleanup.svg" alt="Clear queue icon" /> **Clear Queue**.
   </Step>
 </Steps>
-
-<Note>
-  The queue remembers its paused state between interactions. If you pause and
-  navigate away, it remains paused when you return.
-</Note>
 
 ## Settings
 
@@ -190,7 +189,7 @@ Go to **Settings → Features → Prompts** to configure:
 | -------------------- | -------------------------------------------------------------------------- |
 | Double-click to send | Double-clicking a prompt inserts and submits it directly                   |
 | Submit key           | Key used to submit to the AI after insertion — **Enter** or **Ctrl+Enter** |
-| Prompt queue         | Enable or disable the queue overlay feature                                |
+| <Icon src="/images/icons/prompt-queue.svg" alt="Prompt Queue icon" /> Prompt queue | Enable or disable the queue overlay feature |
 
 ## Example templates
 

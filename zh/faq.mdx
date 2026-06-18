@@ -5,7 +5,9 @@ description: "Ophel Atlas 最常见问题的解答，涵盖安装、面板行为
 keywords: ["常见问题", "FAQ", "问答", "帮助", "故障排查基础"]
 ---
 
-本页收录了关于 Ophel Atlas 最常见的问题。如果这里没有你需要的答案，请查看[故障排查](/zh/troubleshooting)页面，或在 [GitHub Issues](https://github.com/urzeye/ophel/issues) 上提交反馈。
+import { Icon } from "/snippets/icon.jsx"
+
+本页收录了关于 Ophel Atlas 最常见的问题。如果这里没有你需要的答案，请查看[故障排查](/troubleshooting)页面，或在 [GitHub Issues](https://github.com/urzeye/ophel/issues) 上提交反馈。
 
 ## 安装与设置
 
@@ -65,7 +67,7 @@ keywords: ["常见问题", "FAQ", "问答", "帮助", "故障排查基础"]
   title="浮动按钮不见了，怎么打开面板？"
   icon="circle-question"
 >
-  按 `Alt / ⌥+P`。无论浮动按鈕是否可见，这个快捷键都能切换面板。
+  按 <Icon src="/images/icons/keyboard.svg" alt="快捷键图标" /> `Alt / ⌥+P`。无论浮动按钮是否可见，这个快捷键都能切换面板。
 </Accordion>
 
 <Accordion
@@ -98,7 +100,7 @@ keywords: ["常见问题", "FAQ", "问答", "帮助", "故障排查基础"]
 </Accordion>
 
   <Accordion title="如何手动刷新大纲？" icon="rotate">
-    按 `Alt / ⌥+R` 强制重新扫描对话并重建大纲条目。也可点击大纲面板头部的刷新按鈕。
+    按 <Icon src="/images/icons/refresh.svg" alt="刷新大纲图标" /> `Alt / ⌥+R` 强制重新扫描对话并重建大纲条目。
   </Accordion>
 </AccordionGroup>
 
@@ -112,7 +114,7 @@ keywords: ["常见问题", "FAQ", "问答", "帮助", "故障排查基础"]
   <Accordion title="WebDAV 同步的是什么内容？" icon="cloud">
     WebDAV 只同步 Ophel 中的**元数据**：你在 Ophel 里设置的文件夹归属、标签、置顶状态和备注。不会上传实际的对话消息（那些内容属于 AI 平台）。你也可以选择在备份中包含提示词库、设置和 Claude Session Key。
 
-    详见 [WebDAV 同步](/zh/data/webdav)。
+    详见 [WebDAV 同步](/data/webdav)。
 
   </Accordion>
 </AccordionGroup>
@@ -123,17 +125,17 @@ keywords: ["常见问题", "FAQ", "问答", "帮助", "故障排查基础"]
   <Accordion title="提示词队列怎么用？" icon="list-ol">
     提示词队列让你把多条提示词排好队，Ophel 会在 AI 每次完成回复后自动发送下一条。使用方法：
 
-    1. 在 **设置 → 功能 → 提示词 → 队列** 中启用
-    2. 按 `Alt / ⌥+J` 打开队列叠加层
+    1. 在 <Icon src="/images/icons/settings.svg" alt="设置图标" /> **设置 → 功能 → 提示词 → 队列** 中启用
+    2. 按 <Icon src="/images/icons/keyboard.svg" alt="快捷键图标" /> `Alt / ⌥+J` 打开队列叠加层
     3. 逐条添加，或用批量导入粘贴一组提示词
-    4. 点击**开始**。Ophel 检测到页面连续两次空闲（约 2 秒）后自动发送下一条
+    4. 加入待发送内容后，Ophel 检测到页面连续两次空闲（约 2 秒）后自动发送下一条
 
-    运行中可以随时暂停、跳过、拖拽排序或清空队列。
+    运行中可以编辑待发送条目、强制发送某一条、删除单条，或清空队列。
 
   </Accordion>
 
   <Accordion title="队列卡住了，没有发送下一条。" icon="hourglass">
-    Ophel 需要连续两次检测到页面空闲（约 2 秒）才会发送。如果 AI 页面使用了 Ophel 无法识别的加载动画，队列可能会卡住。此时点击队列叠加层中的**手动发送下一条**来继续。
+    Ophel 需要连续两次检测到页面空闲（约 2 秒）才会发送。如果 AI 页面使用了 Ophel 无法识别的加载动画，队列可能会卡住。此时按 <Icon src="/images/icons/keyboard.svg" alt="快捷键图标" /> `Alt / ⌥+J` 打开队列叠加层，并对待发送条目使用**强制发送**。
   </Accordion>
 </AccordionGroup>
 
@@ -171,7 +173,7 @@ keywords: ["常见问题", "FAQ", "问答", "帮助", "故障排查基础"]
     不会。Ophel
     完全在你的浏览器本地运行。对话内容、提示词和设置默认保存在你的设备上。如果配置了
     WebDAV 同步，数据只会发送到你指定的 WebDAV 服务器——由你完全控制。Ophel
-    本身不收集或传输任何用户数据。详情请查看[隐私声明](/zh/data/privacy)。
+    本身不收集或传输任何用户数据。详情请查看[隐私声明](/data/privacy)。
   </Accordion>
 </AccordionGroup>
 

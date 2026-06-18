@@ -5,6 +5,8 @@ description: "View and remap every Ophel keyboard shortcut from Settings → Sho
 keywords: ["keyboard shortcuts", "hotkeys", "shortcut customization", "key remapping", "accessibility"]
 ---
 
+import { Icon } from "/snippets/icon.jsx"
+
 Ophel provides keyboard shortcuts for nearly every action — opening the panel, navigating the outline, managing conversations, triggering global search, and more. Every shortcut is customizable: you can remap keys, remove shortcuts you don't use, or disable all shortcuts at once with a single toggle.
 
 ## Viewing and editing shortcuts
@@ -27,72 +29,72 @@ Ophel detects conflicts automatically. If you assign a key combination that is a
   <Accordion title="Panel">
     | Action | Default shortcut |
     | --- | --- |
-    | Toggle panel open/closed | `Alt+P` |
-    | Toggle panel mode (Edge Snap / Floating) | `Alt+M` |
-    | Switch to Outline tab | `Alt+1` |
-    | Switch to Conversations tab | `Alt+2` |
-    | Switch to Prompts tab | `Alt+3` |
-    | Toggle light/dark theme | `Alt+D` |
-    | Open settings | `Alt+,` |
-    | Show shortcut reference | `Alt+\` |
+    | <Icon src="/images/icons/sparkle.svg" alt="Panel icon" /> Toggle panel open/closed | `Alt+P` |
+    | <Icon src="/images/icons/snap-to-edge.svg" alt="Panel mode icon" /> Toggle panel mode (Edge Snap / Floating) | `Alt+M` |
+    | <Icon src="/images/icons/outline.svg" alt="Outline icon" /> Switch to Outline tab | `Alt+1` |
+    | <Icon src="/images/icons/conversation.svg" alt="Conversations icon" /> Switch to Conversations tab | `Alt+2` |
+    | <Icon src="/images/icons/prompt.svg" alt="Prompts icon" /> Switch to Prompts tab | `Alt+3` |
+    | <Icon src="/images/icons/theme-system.svg" alt="Theme icon" /> Toggle light/dark theme | `Alt+D` |
+    | <Icon src="/images/icons/settings.svg" alt="Settings icon" /> Open settings | `Alt+,` |
+    | <Icon src="/images/icons/keyboard.svg" alt="Keyboard icon" /> Show shortcut reference | `Alt+\` |
   </Accordion>
   <Accordion title="Outline">
     | Action | Default shortcut |
     | --- | --- |
-    | Refresh outline | `Alt+R` |
-    | Toggle expand all / collapse all | `Alt+E` |
-    | Expand to heading level 1 | `Alt+Shift+1` |
-    | Expand to heading level 2 | `Alt+Shift+2` |
-    | Expand to heading level 3 | `Alt+Shift+3` |
-    | Expand to heading level 4 | `Alt+Shift+4` |
-    | Expand to heading level 5 | `Alt+Shift+5` |
-    | Expand to heading level 6 | `Alt+Shift+6` |
-    | Jump to previous heading | `Alt+ArrowUp` |
-    | Jump to next heading | `Alt+ArrowDown` |
-    | Toggle Questions filter | `Alt+Q` |
-    | Only Questions mode | `Alt+Shift+Q` |
-    | Toggle Bookmarks filter | `Alt+C` |
-    | Locate current position in outline | `Alt+L` |
-    | Search outline | `Alt+F` |
+    | <Icon src="/images/icons/refresh.svg" alt="Refresh icon" /> Refresh outline | `Alt+R` |
+    | <Icon src="/images/icons/expand-all.svg" alt="Expand all icon" /> Toggle expand all / collapse all | `Alt+E` |
+    | <Icon src="/images/icons/outline.svg" alt="Outline level icon" /> Expand to heading level 1 | `Alt+Shift+1` |
+    | <Icon src="/images/icons/outline.svg" alt="Outline level icon" /> Expand to heading level 2 | `Alt+Shift+2` |
+    | <Icon src="/images/icons/outline.svg" alt="Outline level icon" /> Expand to heading level 3 | `Alt+Shift+3` |
+    | <Icon src="/images/icons/outline.svg" alt="Outline level icon" /> Expand to heading level 4 | `Alt+Shift+4` |
+    | <Icon src="/images/icons/outline.svg" alt="Outline level icon" /> Expand to heading level 5 | `Alt+Shift+5` |
+    | <Icon src="/images/icons/outline.svg" alt="Outline level icon" /> Expand to heading level 6 | `Alt+Shift+6` |
+    | <Icon src="/images/icons/arrow-up.svg" alt="Previous heading icon" /> Jump to previous heading | `Alt+ArrowUp` |
+    | <Icon src="/images/icons/arrow-down.svg" alt="Next heading icon" /> Jump to next heading | `Alt+ArrowDown` |
+    | <Icon src="/images/icons/user-query.svg" alt="Questions icon" /> Toggle Questions filter | `Alt+Q` |
+    | <Icon src="/images/icons/user-query.svg" alt="Only questions icon" /> Only Questions mode | `Alt+Shift+Q` |
+    | <Icon src="/images/icons/star.svg" alt="Bookmark icon" /> Toggle Bookmarks filter | `Alt+C` |
+    | <Icon src="/images/icons/locate.svg" alt="Locate icon" /> Locate current position in outline | `Alt+L` |
+    | <Icon src="/images/icons/search.svg" alt="Search icon" /> Search outline | `Alt+F` |
   </Accordion>
   <Accordion title="Conversations">
     | Action | Default shortcut |
     | --- | --- |
-    | New conversation (in new tab) | `Ctrl+Shift+O` |
-    | Refresh conversation list | `Alt+Shift+R` |
-    | Locate current conversation | `Alt+Shift+L` |
-    | Go to previous conversation | `Alt+[` |
-    | Go to next conversation | `Alt+]` |
+    | <Icon src="/images/icons/conversation.svg" alt="New conversation icon" /> New conversation | `Ctrl+Shift+O` |
+    | <Icon src="/images/icons/refresh.svg" alt="Refresh icon" /> Refresh conversation list | `Alt+Shift+R` |
+    | <Icon src="/images/icons/locate.svg" alt="Locate icon" /> Locate current conversation | `Alt+Shift+L` |
+    | <Icon src="/images/icons/chevron-up.svg" alt="Previous conversation icon" /> Go to previous conversation | `Alt+[` |
+    | <Icon src="/images/icons/chevron-down.svg" alt="Next conversation icon" /> Go to next conversation | `Alt+]` |
   </Accordion>
   <Accordion title="Editing and actions">
     | Action | Default shortcut |
     | --- | --- |
-    | Stop AI generation | `Alt+K` |
-    | Focus the input box | `Alt+I` |
-    | Open global search | `Ctrl+K` |
-    | Export current conversation | `Ctrl+Shift+E` |
-    | Copy latest AI reply | `Ctrl+Shift+C` |
-    | Copy last code block | `Alt+;` |
-    | Toggle scroll lock | `Alt+S` |
-    | Toggle zen mode | `Ctrl+Shift+Z` |
-    | Toggle prompt queue | `Alt+J` |
-    | Show model selector | `Alt+/` |
+    | <Icon src="/images/icons/clear.svg" alt="Stop icon" /> Stop AI generation | `Alt+K` |
+    | <Icon src="/images/icons/edit.svg" alt="Input focus icon" /> Focus the input box | `Alt+I` |
+    | <Icon src="/images/icons/search.svg" alt="Global search icon" /> Open global search | `Ctrl+K` |
+    | <Icon src="/images/icons/export.svg" alt="Export icon" /> Export current conversation | `Ctrl+Shift+E` |
+    | <Icon src="/images/icons/copy.svg" alt="Copy icon" /> Copy latest AI reply | `Ctrl+Shift+C` |
+    | <Icon src="/images/icons/copy.svg" alt="Copy code icon" /> Copy last code block | `Alt+;` |
+    | <Icon src="/images/icons/scroll-lock.svg" alt="Scroll lock icon" /> Toggle scroll lock | `Alt+S` |
+    | <Icon src="/images/icons/eye.svg" alt="Zen mode icon" /> Toggle zen mode | `Ctrl+Shift+Z` |
+    | <Icon src="/images/icons/prompt-queue.svg" alt="Prompt queue icon" /> Toggle prompt queue | `Alt+J` |
+    | <Icon src="/images/icons/model-lock.svg" alt="Model selector icon" /> Show model selector | `Alt+/` |
   </Accordion>
   <Accordion title="Navigation">
     | Action | Default shortcut |
     | --- | --- |
-    | Scroll to top of conversation | `Alt+T` |
-    | Scroll to bottom of conversation | `Alt+B` |
-    | Return to anchor position | `Alt+Z` |
+    | <Icon src="/images/icons/scroll-top.svg" alt="Scroll top icon" /> Scroll to top of conversation | `Alt+T` |
+    | <Icon src="/images/icons/scroll-bottom.svg" alt="Scroll bottom icon" /> Scroll to bottom of conversation | `Alt+B` |
+    | <Icon src="/images/icons/anchor.svg" alt="Anchor icon" /> Return to anchor position | `Alt+Z` |
   </Accordion>
   <Accordion title="Site-specific">
     | Action | Default shortcut |
     | --- | --- |
-    | Open Claude settings | `Ctrl+Alt+C` |
-    | Switch Claude session key | `Ctrl+Alt+S` |
-    | Open Gemini settings | `Ctrl+Alt+G` |
-    | Open theme settings | `Ctrl+Alt+T` |
-    | Open model lock settings | `Ctrl+Alt+L` |
+    | <Icon src="/images/icons/settings.svg" alt="Claude settings icon" /> Open Claude settings | `Ctrl+Alt+C` |
+    | <Icon src="/images/icons/keyboard.svg" alt="Claude key switch icon" /> Switch Claude session key | `Ctrl+Alt+S` |
+    | <Icon src="/images/icons/settings.svg" alt="Gemini settings icon" /> Open Gemini settings | `Ctrl+Alt+G` |
+    | <Icon src="/images/icons/theme-system.svg" alt="Theme settings icon" /> Open theme settings | `Ctrl+Alt+T` |
+    | <Icon src="/images/icons/model-lock.svg" alt="Model lock icon" /> Open model lock settings | `Ctrl+Alt+L` |
   </Accordion>
 </AccordionGroup>
 

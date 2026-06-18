@@ -14,6 +14,8 @@ keywords:
   ]
 ---
 
+import { Icon } from "/snippets/icon.jsx"
+
 Ophel gives you fine-grained control over how AI pages are displayed. You can widen the reading area to use your full monitor, independently adjust your message bubble width, hide page chrome with Zen mode, and reduce ads or redundant page elements with Clean Mode. Layout settings are configured per site so each platform has its own values.
 
 ## Page width
@@ -40,13 +42,13 @@ Zen mode hides platform UI elements outside the conversation — sidebars, navig
 
 <Tabs>
   <Tab title="Keyboard shortcut">
-    Press `Ctrl / ⌘+Shift+Z` to toggle Zen mode.
+    Press <Icon src="/images/icons/keyboard.svg" alt="Keyboard shortcut icon" /> `Ctrl / ⌘+Shift+Z` to toggle Zen mode.
   </Tab>
   <Tab title="Floating button">
-    Click the **Zen** button in the floating button group.
+    Click the <Icon src="/images/icons/eye.svg" alt="Zen mode icon" /> **Zen** button in the floating button group.
   </Tab>
   <Tab title="Settings (persistent)">
-    Enable **Settings → Site Settings → [Select site] → Layout → Zen Mode** to
+    Enable <Icon src="/images/icons/settings.svg" alt="Settings icon" /> **Settings → Site Settings → [Select site] → Layout → Zen Mode** to
     enter Zen mode automatically every time you open that site.
   </Tab>
 </Tabs>
@@ -59,14 +61,14 @@ Zen mode hides platform UI elements outside the conversation — sidebars, navig
 
 ### Zen exit button
 
-When Zen mode is active, a small exit button appears on screen so you can leave Zen mode without using the keyboard shortcut. You can hide this button in **Settings → Site Settings → [Select site] → Layout → Show Zen exit button** if you prefer to rely on the shortcut (`Ctrl / ⌘+Shift+Z`) alone.
+When Zen mode is active, a small <Icon src="/images/icons/eye-closed.svg" alt="Exit Zen mode icon" /> exit button appears on screen so you can leave Zen mode without using the keyboard shortcut. You can hide this button in **Settings → Site Settings → [Select site] → Layout → Show Zen exit button** if you prefer to rely on the shortcut (`Ctrl / ⌘+Shift+Z`) alone.
 
 <Note>
   Zen mode hides elements based on Ophel's knowledge of each platform's DOM
   structure. The effect may be incomplete on some sites.
 </Note>
 
-## Clean Mode
+## <Icon src="/images/icons/clean-mode.svg" alt="Clean Mode icon" /> Clean Mode
 
 Clean Mode hides page clutter such as disclaimers, ads, download prompts, promotional cards, and other non-conversation elements. It is enabled by default and configured per site.
 
@@ -82,11 +84,11 @@ Clean Mode is narrower than Zen mode: it keeps the normal platform layout visibl
 
 ## Panel size and position
 
-You can drag the panel by its title bar to reposition it anywhere on screen. **Double-clicking** the title bar toggles between Edge Snap and Floating mode. Additional size and behavior settings are in **Settings → General → Panel**:
+You can drag the panel by its title bar to reposition it anywhere on screen. **Double-clicking** the title bar toggles between <Icon src="/images/icons/snap-to-edge.svg" alt="Edge Snap icon" /> Edge Snap and <Icon src="/images/icons/floating-mode.svg" alt="Floating mode icon" /> Floating mode. Additional size and behavior settings are in <Icon src="/images/icons/settings.svg" alt="Settings icon" /> **Settings → General → Panel**:
 
 | Setting        | Description                                         | Default   |
 | -------------- | --------------------------------------------------- | --------- |
-| Panel mode     | Edge Snap or Floating                               | Edge Snap |
+| Panel mode     | <Icon src="/images/icons/snap-to-edge.svg" alt="Edge Snap icon" /> Edge Snap or <Icon src="/images/icons/floating-mode.svg" alt="Floating mode icon" /> Floating | Edge Snap |
 | Default side   | Left or right side of the screen                    | Right     |
 | Edge distance  | Distance from the screen edge when in Floating mode | 0 px      |
 | Panel width    | 240–600 px                                          | 320 px    |

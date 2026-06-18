@@ -5,6 +5,8 @@ description: "Search outline nodes, conversations, prompts, and settings in one 
 keywords: ["global search", "search syntax", "fuzzy search", "conversation search", "outline search", "search filters"]
 ---
 
+import { Icon } from "/snippets/icon.jsx"
+
 Global Search brings every piece of content Ophel knows about into a single search field. Instead of switching between tabs to find a heading, conversation, or saved prompt, you open one overlay and search everything at once. Results are grouped by type, and selecting one jumps you directly to that item.
 
 ![Global Search overlay — search box with categorized results](/images/enhancements/global-search-en.png)
@@ -13,8 +15,8 @@ Global Search brings every piece of content Ophel knows about into a single sear
 
 | Method                  | Description                                                                                                                       |
 | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| `Ctrl / ⌘+K`            | Default keyboard shortcut                                                                                                         |
-| Floating button         | Click the search icon in the floating quick-buttons group                                                                         |
+| <Icon src="/images/icons/keyboard.svg" alt="Keyboard shortcut icon" /> `Ctrl / ⌘+K` | Default keyboard shortcut |
+| <Icon src="/images/icons/search.svg" alt="Search icon" /> Floating button | Click the search icon in the floating quick-buttons group |
 | Double Shift            | Press Shift twice in quick succession — optional; enable in **Settings → Global Search**. Works even when the page is not focused |
 
 <Note>
@@ -29,11 +31,11 @@ Global Search covers five result types:
 
 | Type          | What is included                                                               |
 | ------------- | ------------------------------------------------------------------------------ |
-| Outline nodes | All headings and your questions in the current conversation                    |
-| Conversations | Saved conversations across all platforms — searchable by title, tag, or folder |
-| Prompts       | Titles and content from your prompt library                                    |
-| Settings      | Feature names and keywords from the settings page                              |
-| Feature Tips  | Ophel feature discovery tips — type `tip:` to browse them                      |
+| <Icon src="/images/icons/outline.svg" alt="Outline icon" /> Outline nodes | All headings and your questions in the current conversation |
+| <Icon src="/images/icons/conversation.svg" alt="Conversation icon" /> Conversations | Saved conversations across all platforms — searchable by title, tag, or folder |
+| <Icon src="/images/icons/prompt.svg" alt="Prompt icon" /> Prompts | Titles and content from your prompt library |
+| <Icon src="/images/icons/settings.svg" alt="Settings icon" /> Settings | Feature names and keywords from the settings page |
+| <Icon src="/images/icons/features.svg" alt="Feature tips icon" /> Feature Tips | Ophel feature discovery tips — type `tip:` to browse them |
 
 Results are grouped by type. Use the arrow keys to navigate up and down, press **Enter** to jump to the selected result, and press **Esc** to close the overlay.
 

@@ -5,6 +5,8 @@ description: "Step-by-step fixes for the most common Ophel Atlas problems: panel
 keywords: ["troubleshooting", "panel not showing", "outline empty", "debug steps", "fix Ophel", "extension problems"]
 ---
 
+import { Icon } from "/snippets/icon.jsx"
+
 If something isn't working as expected, this page walks you through the most common issues and how to fix them. For problems not covered here, open a report on [GitHub Issues](https://github.com/urzeye/ophel/issues) with your browser version, extension version, and any errors from the browser console.
 
 ## Panel not appearing
@@ -28,7 +30,7 @@ The Ophel side panel should appear automatically when you open a supported AI pl
     others). If the URL doesn't match, Ophel will not inject the panel.
   </Step>
   <Step title="Use the keyboard shortcut as a fallback">
-    If the panel was previously closed, press `Alt / ⌥+P` to
+    If the panel was previously closed, press <Icon src="/images/icons/keyboard.svg" alt="Keyboard shortcut icon" /> `Alt / ⌥+P` to
     reopen it. This toggles the panel regardless of the state of any floating
     buttons.
   </Step>
@@ -40,7 +42,7 @@ The Ophel side panel should appear automatically when you open a supported AI pl
 
 <Steps>
   <Step title="Refresh the outline manually">
-    Press `Alt / ⌥+R` to force the outline to re-scan the
+    Press <Icon src="/images/icons/refresh.svg" alt="Refresh outline icon" /> `Alt / ⌥+R` to force the outline to re-scan the
     conversation. Some AI platforms update the DOM asynchronously, so the
     outline may not populate on its own immediately after the page loads.
   </Step>
@@ -79,7 +81,7 @@ The floating action buttons auto-collapse into a compact pill shape after 5 seco
     buttons will expand automatically.
   </Step>
   <Step title="Use the keyboard shortcut if the pill is not visible">
-    If the buttons are completely missing from the screen, press `Alt+P` (Mac:
+    If the buttons are completely missing from the screen, press <Icon src="/images/icons/keyboard.svg" alt="Keyboard shortcut icon" /> `Alt+P` (Mac:
     `Option+P`) to open the panel. The floating buttons reappear alongside it.
   </Step>
 </Steps>
@@ -121,21 +123,16 @@ If the Ophel panel is positioned over something you need to click on the underly
 
 ## Prompt queue stalled
 
-The Prompt Queue advances to the next prompt by detecting when the AI page becomes idle — specifically, when no active generation spinner is visible for two consecutive polling intervals (roughly 2 seconds).
+The <Icon src="/images/icons/prompt-queue.svg" alt="Prompt Queue icon" /> Prompt Queue advances to the next prompt by detecting when the AI page becomes idle — specifically, when no active generation spinner is visible for two consecutive polling intervals (roughly 2 seconds).
 
 <Steps>
   <Step title="Check whether the AI has actually finished">
     Some platforms briefly show a loading indicator even after generation is
     complete. Wait a few seconds to see if the queue advances on its own.
   </Step>
-  <Step title="Use the manual Send next button">
+  <Step title="Force-send a pending item">
     If the AI platform uses an unusual loading indicator that Ophel cannot
-    detect, the queue may stall. Click the **Send next** button in the queue
-    overlay to manually advance to the next prompt.
-  </Step>
-  <Step title="Check that the queue is not paused">
-    Make sure the queue is in the **Running** state, not **Paused**. If it's
-    paused, click **Resume** in the queue overlay.
+    detect, the queue may stall. Open the queue overlay with <Icon src="/images/icons/keyboard.svg" alt="Keyboard shortcut icon" /> `Alt / ⌥+J`, then use **Force Send** on the pending item you want to send now.
   </Step>
 </Steps>
 
