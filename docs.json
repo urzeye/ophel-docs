@@ -202,7 +202,7 @@
               },
               {
                 "group": "Customization",
-                "icon": "/images/icons/settings.svg",
+                "icon": "/images/icons/paint-bucket.svg",
                 "pages": [
                   "customization/appearance",
                   "customization/shortcuts",
@@ -297,7 +297,7 @@
               },
               {
                 "group": "个性化设置",
-                "icon": "/images/icons/settings.svg",
+                "icon": "/images/icons/paint-bucket.svg",
                 "pages": [
                   "zh/customization/appearance",
                   "zh/customization/shortcuts",
