@@ -7,6 +7,7 @@ keywords: ["themes", "dark mode", "light mode", "custom CSS", "theme presets", "
 ---
 
 import { Icon } from "/snippets/icon.jsx"
+import { ThemePresetGrid } from "/snippets/theme-preset-grid.jsx"
 
 Ophel gives you full control over how the panel looks.
 
@@ -54,36 +55,10 @@ Each mode comes with 12 presets. Click any preset card in **Settings → Appeara
 
 <Tabs>
   <Tab title="Light presets">
-    | Name | Description |
-    | ---- | ----------- |
-    | Google Gradient _(default)_ | Clean white with a blue-green gradient header |
-    | Violet | Soft purple accent palette |
-    | Ocean Blue | Calm sea-blue tones |
-    | Sakura | Delicate pink blossom palette |
-    | Mint | Fresh mint-green highlights |
-    | Nordic Frost | Cool Nordic minimalism |
-    | Lemon Soda | Cheerful yellow-citrus palette |
-    | Ancient Scroll | Warm parchment and sepia tones |
-    | Mono Pro | Minimal black-and-white typography |
-    | Blue-and-White Porcelain | Classic Chinese porcelain blue |
-    | Shortbread | Warm cream and biscuit tones |
-    | Unicorn Dream | Pastel gradient dream theme |
+    <ThemePresetGrid mode="light" locale="en" />
   </Tab>
   <Tab title="Dark presets">
-    | Name | Description |
-    | ---- | ----------- |
-    | Classic Dark _(default)_ | Deep gray panel, timeless and readable |
-    | Midnight Blue | Deep blue night palette |
-    | Dark Forest | Muted green shadows |
-    | Cyberpunk Neon | Electric neon on dark |
-    | Roasted Coffee | Warm brown dark palette |
-    | Sunset Dream | Purple-orange sunset gradient |
-    | Dracula | The beloved Dracula color scheme |
-    | Deep Abyss | Almost-black ultra-deep dark |
-    | Crimson Moon | Dark red and crimson accents |
-    | Retro Terminal | Hacker green-on-black terminal look |
-    | EVA Unit-01 | Purple-and-green mecha-inspired |
-    | Aurora | Cool teal aurora borealis |
+    <ThemePresetGrid mode="dark" locale="en" />
   </Tab>
 </Tabs>
 

@@ -57,7 +57,7 @@ The strip at the very top of the panel gives you fast access to core controls.
 | **Title area**      | Hover to see a random usage tip with shortcuts adapted to your OS and key bindings. Double-click to toggle privacy mode, which hides the tab title. |
 | **Mode toggle**     | Switches between Edge Snap and Floating mode with one click.                                                                                        |
 | **Theme toggle**    | Switches between light and dark mode. Shortcut: `Alt / ⌥+D`.                                                                                        |
-| <Icon src="/images/icons/settings.svg" alt="Settings icon" /> **Settings button** | Opens the settings dialog. Shortcut: `Alt / ⌥+,`.                                                                                                   |
+| <Icon src="/images/icons/settings.svg" alt="Settings icon" /> **Settings button** | Opens the settings dialog. You can also press `Alt / ⌥+,` or click <Icon src="/images/icons/tools.svg" alt="Toolbox icon" /> **Toolbox** → <Icon src="/images/icons/settings.svg" alt="Settings icon" /> **Settings**. |
 
 You can drag the title bar to reposition the panel anywhere on screen when it is in Floating mode. **Double-clicking** the title bar toggles between Edge Snap and Floating mode without opening settings.
 
@@ -70,7 +70,33 @@ The floating button group at the screen edge is your fastest access point to com
 - The group **auto-collapses** into a pill shape after about 5 seconds of inactivity. By default, moving your cursor within **150 px** of it expands it again. The wake distance is configurable: go to **Settings → Quick Buttons → Proximity Wake Radius** (0–300 px). Set it to **0** to enable dwell-hover mode — the group only expands after the cursor rests on the pill for 300 ms, so simply passing through it does not trigger expansion.
 - When the group is collapsed, hover the panel logo for a short dwell to open a temporary panel preview beside the buttons. Moving away hides the preview; clicking the logo still opens or closes the panel persistently.
 - **Long-press and drag** any button to reposition the entire group to a different spot on screen.
-- Click the <Icon src="/images/icons/tools.svg" alt="Toolbox icon" /> **Toolbox** icon to reveal additional actions: <Icon src="/images/icons/export.svg" alt="Export icon" /> **Export**, <Icon src="/images/icons/copy.svg" alt="Copy Markdown icon" /> **Copy Markdown**, <Icon src="/images/icons/folder-move.svg" alt="Move conversation icon" /> **Move Conversation**, <Icon src="/images/icons/tag.svg" alt="Set tag icon" /> **Set Tag**, <Icon src="/images/icons/scroll-lock.svg" alt="Scroll lock icon" /> **Scroll Lock**, <Icon src="/images/icons/model-lock.svg" alt="Model lock icon" /> **Model Lock**, <Icon src="/images/icons/cleanup.svg" alt="Clear invalid bookmarks icon" /> **Clear Invalid Bookmarks**, and <Icon src="/images/icons/settings.svg" alt="Settings icon" /> **Settings**.
+
+Default icons in the button group:
+
+| Icon | Action |
+| ---- | ------ |
+| <Icon src="/images/icons/sparkle.svg" alt="Panel toggle icon" /> **Panel toggle** | Opens or closes the Ophel panel. When the group is collapsed, a short dwell previews the panel temporarily. |
+| <Icon src="/images/icons/tools.svg" alt="Toolbox icon" /> **Toolbox** | Opens additional conversation and page actions. |
+| <Icon src="/images/icons/search.svg" alt="Global search icon" /> **Global search** | Opens global search across outlines, conversations, prompts, and settings. |
+| <Icon src="/images/icons/theme-system.svg" alt="Theme toggle icon" /> **Theme toggle** | Switches between light and dark mode; the icon changes with the current theme state. |
+| <Icon src="/images/icons/eye.svg" alt="Zen mode icon" /> **Zen mode** | Toggles Zen Mode for the current site. Enabling it also enables Clean Mode, and the icon changes to a closed eye. |
+| <Icon src="/images/icons/settings.svg" alt="Settings icon" /> **Settings** | Opens the settings dialog. |
+| <Icon src="/images/icons/scroll-top.svg" alt="Scroll to top icon" /> **Scroll to top** | Loads full history and jumps to the top of the current conversation. |
+| <Icon src="/images/icons/anchor.svg" alt="Return to anchor icon" /> **Return to anchor** | Jumps back to the last saved position and saves the current position as the new anchor. |
+| <Icon src="/images/icons/scroll-bottom.svg" alt="Scroll to bottom icon" /> **Scroll to bottom** | Jumps to the latest message. |
+
+Click <Icon src="/images/icons/tools.svg" alt="Toolbox icon" /> **Toolbox** to reveal these menu icons:
+
+| Icon | Action |
+| ---- | ------ |
+| <Icon src="/images/icons/export.svg" alt="Export icon" /> **Export** | Exports the current conversation. |
+| <Icon src="/images/icons/copy.svg" alt="Copy Markdown icon" /> **Copy Markdown** | Copies the current conversation as Markdown. |
+| <Icon src="/images/icons/folder-move.svg" alt="Move conversation icon" /> **Move conversation** | Selects a target folder and moves the current conversation. |
+| <Icon src="/images/icons/tag.svg" alt="Set tag icon" /> **Set tag** | Adds, removes, or changes tags on the current conversation. |
+| <Icon src="/images/icons/scroll-lock.svg" alt="Scroll lock icon" /> **Scroll lock** | Locks the page scroll position to prevent automatic jumps. |
+| <Icon src="/images/icons/model-lock.svg" alt="Model lock icon" /> **Model lock** | Applies the configured model keyword for the current site; if none is configured, it opens site settings. |
+| <Icon src="/images/icons/cleanup.svg" alt="Clear invalid bookmarks icon" /> **Clear invalid bookmarks** | Removes invalid bookmarks / anchor records from the current conversation. |
+| <Icon src="/images/icons/settings.svg" alt="Settings icon" /> **Settings** | Opens the settings dialog. |
 
 **Additional settings** (`Settings → Quick Buttons`):
 

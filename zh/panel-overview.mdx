@@ -51,7 +51,7 @@ import { Icon } from "/snippets/icon.jsx"
 | 切换面板模式    | `Alt / ⌥+M`，或双击标题栏，或点击标题栏模式切换按钮          |
 | 全局搜索        | `Ctrl / ⌘+K`（或配置的快捷键）                               |
 | 切换亮 / 暗模式 | `Alt / ⌥+D`，或点击浮动按钮中的主题图标                      |
-| 打开设置        | `Alt / ⌥+,`，或点击 <Icon src="/images/icons/tools.svg" alt="工具箱图标" /> 工具箱里的 <Icon src="/images/icons/settings.svg" alt="设置图标" /> 设置项 |
+| 打开设置        | `Alt / ⌥+,`，或点击面板顶部标题栏中的 <Icon src="/images/icons/settings.svg" alt="设置图标" /> 设置图标，或点击 <Icon src="/images/icons/tools.svg" alt="工具箱图标" /> 工具箱里的 <Icon src="/images/icons/settings.svg" alt="设置图标" /> 设置项 |
 
 ## 浮动快捷按钮
 
@@ -61,8 +61,34 @@ import { Icon } from "/snippets/icon.jsx"
 
 - **5 秒无操作**后自动收缩为胶囊形。默认鼠标移近 **150px** 后重新展开——此距离可在 **设置 → 快捷按钮 → 感应唤醒距离** 中调整（0–300px）。设为 **0** 可启用停留悬停模式：鼠标须在胶囊上停留 300ms 后才展开，划过不触发。
 - 按钮组收缩后，鼠标在面板 Logo 上短暂停留，会在按钮旁临时预览面板。鼠标移开后预览自动收起；点击 Logo 仍然是持久打开 / 关闭面板。
-- **长按拖拽**可移动到屏幕任意位置
-- 点击 <Icon src="/images/icons/tools.svg" alt="工具箱图标" /> **工具箱**图标，弹出更多操作：<Icon src="/images/icons/export.svg" alt="导出图标" /> **导出**、<Icon src="/images/icons/copy.svg" alt="复制 Markdown 图标" /> **复制 Markdown**、<Icon src="/images/icons/folder-move.svg" alt="移动会话图标" /> **移动会话**、<Icon src="/images/icons/tag.svg" alt="设置标签图标" /> **设置标签**、<Icon src="/images/icons/scroll-lock.svg" alt="滚动锁定图标" /> **滚动锁定**、<Icon src="/images/icons/model-lock.svg" alt="模型锁定图标" /> **模型锁定**、<Icon src="/images/icons/cleanup.svg" alt="清除无效收藏图标" /> **清除无效收藏**和 <Icon src="/images/icons/settings.svg" alt="设置图标" /> **设置**
+- **长按拖拽**任意按钮可把整组按钮移动到屏幕任意位置。
+
+按钮组中的默认图标：
+
+| 图标 | 作用 |
+| ---- | ---- |
+| <Icon src="/images/icons/sparkle.svg" alt="面板开关图标" /> **面板开关** | 打开 / 关闭 Ophel 面板。按钮组收缩后，短暂停留可临时预览面板。 |
+| <Icon src="/images/icons/tools.svg" alt="工具箱图标" /> **工具箱** | 打开更多会话与页面操作。 |
+| <Icon src="/images/icons/search.svg" alt="全局搜索图标" /> **全局搜索** | 打开全局搜索叠加层，搜索大纲、会话、提示词和设置项。 |
+| <Icon src="/images/icons/theme-system.svg" alt="主题切换图标" /> **主题切换** | 在亮色 / 暗色模式之间切换；图标会随当前主题状态变化。 |
+| <Icon src="/images/icons/eye.svg" alt="禅模式图标" /> **禅模式** | 切换当前站点的禅模式；开启后会同时启用净化模式，图标会变为闭眼状态。 |
+| <Icon src="/images/icons/settings.svg" alt="设置图标" /> **设置** | 打开设置弹窗。 |
+| <Icon src="/images/icons/scroll-top.svg" alt="滚到顶部图标" /> **滚到顶部** | 加载完整历史并跳到当前对话顶部。 |
+| <Icon src="/images/icons/anchor.svg" alt="返回锚点图标" /> **返回锚点** | 跳回上一次保存的位置；跳转前会把当前位置保存为新的锚点。 |
+| <Icon src="/images/icons/scroll-bottom.svg" alt="滚到底部图标" /> **滚到底部** | 跳到最新消息位置。 |
+
+点击 <Icon src="/images/icons/tools.svg" alt="工具箱图标" /> **工具箱**后，会显示这些菜单图标：
+
+| 图标 | 作用 |
+| ---- | ---- |
+| <Icon src="/images/icons/export.svg" alt="导出图标" /> **导出** | 导出当前对话。 |
+| <Icon src="/images/icons/copy.svg" alt="复制 Markdown 图标" /> **复制 Markdown** | 把当前对话复制为 Markdown。 |
+| <Icon src="/images/icons/folder-move.svg" alt="移动会话图标" /> **移动会话** | 选择目标文件夹并移动当前会话。 |
+| <Icon src="/images/icons/tag.svg" alt="设置标签图标" /> **设置标签** | 给当前会话添加、移除或调整标签。 |
+| <Icon src="/images/icons/scroll-lock.svg" alt="滚动锁定图标" /> **滚动锁定** | 锁定页面滚动位置，避免页面自动跳动。 |
+| <Icon src="/images/icons/model-lock.svg" alt="模型锁定图标" /> **模型锁定** | 按当前站点配置固定模型关键字；未配置时会引导到站点设置。 |
+| <Icon src="/images/icons/cleanup.svg" alt="清除无效收藏图标" /> **清除无效收藏** | 清理当前对话中已经失效的收藏 / 锚点记录。 |
+| <Icon src="/images/icons/settings.svg" alt="设置图标" /> **设置** | 打开设置弹窗。 |
 
 **其他设置**（设置 → 快捷按钮）：
 

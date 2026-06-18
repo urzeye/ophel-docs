@@ -7,3 +7,6 @@ landing/dist/
 worker/node_modules/
 worker/.wrangler/
 worker/dist/
+
+*.log
+*.pid
