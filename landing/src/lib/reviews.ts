@@ -651,6 +651,14 @@ export const reviews: Review[] = [
     text: '太好用了，感谢🙏',
     weight: 5,
   },
+  {
+    id: 'Steel-Maestro',
+    name: 'Steel Maestro',
+    avatar:
+      'https://lh3.googleusercontent.com/a-/ALV-UjUqWp1juNONMkqERRF-T1qsyf-bvPFWcqrBehBTtNkoDQ8axvA=s48-w48-h48',
+    text: '相见恨晚的插件，伟大无需多言！超预期的满分，去年找了多次都没有满意的插件，还好今天又搜刮了一遍插件市场。已严肃star并附带一瓶冰红茶表示认可👍',
+    weight: 5,
+  },
 ];
 
 /** Fisher-Yates shuffle, returns a new array. */
