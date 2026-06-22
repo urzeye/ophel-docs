@@ -3,6 +3,23 @@ title: "更新日志"
 description: "Ophel Atlas 的所有重要更改均记录于此。"
 ---
 
+<Update label="v1.1.0">
+
+  ### 🚀 新增功能
+
+  - **快捷引用链（Quick Quote Chains）** — 提示词链现在可直接从快捷引用操作触发，支持链图标选择器、拖拽排序和内嵌引用锚点，确保页面刷新后可靠恢复引用定位。
+
+  ### 🐛 问题修复
+
+  - **层级为 0 时的大纲复制** — 修复当未开启展示用户问题且大纲层级设为 0 时，复制大纲返回空内容的问题，虽然面板上显示了 AI 回复的标题。现在该场景下会复制所有层级（H1-H6）的标题，与面板显示一致。
+  - **提示词队列键盘快捷键** — 提示词队列输入框现在遵守用户的发送快捷键设置（Enter 或 Ctrl+Enter），不再硬编码 Enter 行为。展开的队列面板使用捕获阶段事件处理，避免键盘事件被可编辑元素保护机制拦截，确保 Enter 和 Ctrl+Enter 快捷键在所有平台（包括 Mac）上正常工作。
+  - **提示词队列文本对齐** — 队列项文本现在左对齐显示，而不是居中对齐，提升可读性。
+  - **ChatGLM 生成状态检测** — 修复由历史消息中"本次回答已被终止"静态文本导致的生成状态误判。`isGenerating()` 方法现在排除 `.stop-answer-default` 选择器，该选择器匹配的是历史回复中的静态文本，而非当前生成状态。
+  - **ChatGLM 停止按钮** — Alt+K 快捷键现在可以正确停止生成，通过定位到内层的 `.enter-icon-container` 元素而不是外层容器 div。
+  - **千问 Slate 编辑器状态同步** — 修复从提示词队列插入内容后无法编辑删除的问题。编辑器现在通过 `全选 + 删除 + 插入文本` 并触发完整的事件链（`beforeinput`、`input`、`change`）来正确同步 Slate 的虚拟 DOM，确保 DOM 和 Slate 状态同步更新。
+  - **启动器预览保留逻辑** — 鼠标从面板 Logo 移动到其他快捷按钮（如工具箱）时，面板悬浮预览现在会自动收起，不再遮挡工具箱菜单。(#653)
+</Update>
+
 <Update label="v1.0.60">
 
   ### ✨ 功能优化
@@ -1199,6 +1216,7 @@ description: "Ophel Atlas 的所有重要更改均记录于此。"
   - 开源透明
 
 
+  [1.1.0]: https://github.com/urzeye/ophel/releases/tag/v1.1.0
   [1.0.60]: https://github.com/urzeye/ophel/releases/tag/v1.0.60
   [1.0.59]: https://github.com/urzeye/ophel/releases/tag/v1.0.59
   [1.0.58]: https://github.com/urzeye/ophel/releases/tag/v1.0.58

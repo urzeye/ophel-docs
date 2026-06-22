@@ -3,6 +3,23 @@ title: "Changelog"
 description: "All notable changes to Ophel Atlas are documented here."
 ---
 
+<Update label="v1.1.0">
+
+  ### 🚀 New Features
+
+  - **Quick Quote Chains** — Prompt chains can now be triggered directly from quick quote actions, with chain icon picker, drag-to-reorder, and embedded quote anchors for reliable reference restoration across page refreshes.
+
+  ### 🐛 Bug Fixes
+
+  - **Outline copy at level 0** — Fixed issue where copying the outline returned empty results when user queries were hidden and expand level was set to 0, even though AI response headings were visible in the panel. Now copies all heading levels (H1-H6) in this scenario to match what's displayed.
+  - **Prompt queue keyboard shortcuts** — Prompt queue input now respects the user's send shortcut setting (Enter vs Ctrl+Enter) instead of hardcoding Enter behavior. The expanded queue panel uses capture-phase event handling to prevent keyboard events from being blocked by the editable guard, so Enter and Ctrl+Enter shortcuts work correctly on all platforms including Mac.
+  - **Prompt queue text alignment** — Queue item text now displays left-aligned instead of center-aligned for better readability.
+  - **ChatGLM generation detection** — Fixed false-positive generation status detection caused by historical "answer terminated" messages. The `isGenerating()` method now excludes `.stop-answer-default` selector which matches static text from previous responses rather than the current generation state.
+  - **ChatGLM stop button** — Alt+K shortcut now correctly stops generation by targeting the inner `.enter-icon-container` element instead of the outer container div.
+  - **Qianwen Slate editor sync** — Fixed content insertion from prompt queue where inserted text couldn't be edited or deleted. The editor now properly syncs Slate's virtual DOM by using `selectAll + delete + insertText` with complete event chains (`beforeinput`, `input`, `change`) to ensure both DOM and Slate state update correctly.
+  - **Launcher peek retention** — When the mouse moves from the panel logo to other quick buttons (e.g. toolbox), the launcher peek panel now hides instead of staying open and blocking the toolbox menu. (#653)
+</Update>
+
 <Update label="v1.0.60">
 
   ### ✨ Improvements
@@ -1198,6 +1215,7 @@ description: "All notable changes to Ophel Atlas are documented here."
   - Open source and transparent
 
 
+  [1.1.0]: https://github.com/urzeye/ophel/releases/tag/v1.1.0
   [1.0.60]: https://github.com/urzeye/ophel/releases/tag/v1.0.60
   [1.0.59]: https://github.com/urzeye/ophel/releases/tag/v1.0.59
   [1.0.58]: https://github.com/urzeye/ophel/releases/tag/v1.0.58
