@@ -29,6 +29,7 @@ Ophel can export any AI conversation to a file, preserving not just the text but
 | Floating quick buttons | Click the <Icon src="/images/icons/tools.svg" alt="Toolbox icon" /> toolbox icon, then click <Icon src="/images/icons/export.svg" alt="Export icon" /> **Export** to save <Icon src="/images/icons/markdown.svg" alt="Markdown file icon" /> Markdown |
 | Keyboard shortcut | <Shortcut combo="ctrl+shift+e" /> exports the current conversation as <Icon src="/images/icons/markdown.svg" alt="Markdown file icon" /> Markdown |
 | Conversations tab | Click the <Icon src="/images/icons/more-horizontal.svg" alt="Three-dot menu icon" /> three-dot menu on a conversation row, choose <Icon src="/images/icons/export.svg" alt="Export icon" /> **Export**, then select <Icon src="/images/icons/markdown.svg" alt="Markdown file icon" /> Markdown, <Icon src="/images/icons/json-file.svg" alt="JSON file icon" /> JSON, or <Icon src="/images/icons/txt-file.svg" alt="TXT file icon" /> TXT |
+| Segmented export | Click the three-dot menu on a conversation row, choose **Export segments...** to select and export specific parts of a conversation |
 
 After triggering an export, a full-page progress overlay blocks accidental interaction while Ophel loads history, extracts content, packages assets, saves the file, and restores the page.
 
@@ -37,11 +38,49 @@ After triggering an export, a full-page progress overlay blocks accidental inter
 | Format | What it preserves | Best for |
 | --- | --- | --- |
 | <Icon src="/images/icons/markdown.svg" alt="Markdown file icon" /> Markdown (`.md`) | Speaker labels, headings, lists, code blocks, and image references | Notes, wikis, documentation, and AI-to-AI handoff |
-| <Icon src="/images/icons/download.svg" alt="Zip package icon" /> Markdown zip package (`.zip`) | The Markdown file plus referenced images, attachments, and generated artifacts in `assets/` | Conversations with files, images, Canvas code, or document artifacts |
+| <Icon src="/images/icons/zip-file.svg" alt="Zip package icon" /> Markdown zip package (`.zip`) | The Markdown file plus referenced images, attachments, and generated artifacts in `assets/` | Conversations with files, images, Canvas code, or document artifacts |
 | <Icon src="/images/icons/json-file.svg" alt="JSON file icon" /> JSON (`.json`) | Structured messages with roles, timestamps, model metadata, and content | Programmatic processing, indexing, and archival workflows |
 | <Icon src="/images/icons/txt-file.svg" alt="TXT file icon" /> Plain text (`.txt`) | A clean transcript without Markdown formatting | Searchable text archives and plain text editors |
 
 You can also click <Icon src="/images/icons/tools.svg" alt="Toolbox icon" /> **Toolbox** → <Icon src="/images/icons/copy.svg" alt="Copy Markdown icon" /> **Copy Markdown** to copy the entire conversation to your clipboard without saving a file.
+
+## Segmented export
+
+Segmented export lets you select and export specific parts of a conversation instead of exporting the entire thread. This is useful for long conversations where you only need certain sections, or when you want to organize different topics into separate files.
+
+### How to use segmented export
+
+<Steps>
+  <Step title="Open the segmented export dialog">
+    From the Conversations tab, click the <Icon src="/images/icons/more-horizontal.svg" alt="Three-dot menu icon" /> three-dot menu on any conversation row and choose **Export segments...**
+  </Step>
+  <Step title="Select segments">
+    Ophel automatically detects conversation segments based on user questions. You can:
+    - Search for specific segments using the search box
+    - Select segments individually by clicking checkboxes
+    - Use range selection (e.g., "1-3, 8") to select multiple segments at once
+    - Click **Select visible** to select all segments matching your search
+    - Click **Invert visible** to flip the current selection
+  </Step>
+  <Step title="Choose export mode">
+    Pick one of three output modes:
+    - **ZIP (one Markdown per segment)** — Each selected segment becomes a separate `.md` file inside a zip archive
+    - **Merged Markdown** — All selected segments are combined into a single `.md` file
+    - **Copy Markdown** — Copies the merged Markdown directly to your clipboard
+  </Step>
+  <Step title="Export">
+    Click **Export selected** to download or copy your selection.
+  </Step>
+</Steps>
+
+### Segment detection
+
+Ophel treats each user question as the start of a new segment. A segment includes:
+- The user's question
+- The AI's complete response
+- Any nested back-and-forth exchanges before the next top-level user question
+
+Each segment shows a preview with metadata: number of user messages, number of AI messages, and approximate character count.
 
 ## Packaging mode
 
@@ -105,7 +144,7 @@ Each AI platform exposes different types of content. The table below shows what 
 
 ### Gemini & Gemini Enterprise
 
-- **Canvas code artifacts** — Exports open Canvas artifacts, switches to the code tab, and includes the generated code in the Markdown output.
+- **Canvas code artifacts** — Exports open Canvas artifacts, switches to the code tab, and includes the generated code in the Markdown output. When a Canvas panel is open, **Copy Markdown** and **Download Markdown** buttons appear directly in the Canvas toolbar for quick code export.
 - **Deep Research exports** — Covers owned app conversations, share pages, and generated report share pages. Closed report panels are opened during export and restored afterward.
 - **Deep Research report actions** — When a Deep Research report panel is open, **Copy Markdown** and **Download Markdown** buttons appear in the report toolbar, exporting only the current report without changing the regular conversation export.
 

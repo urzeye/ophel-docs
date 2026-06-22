@@ -29,6 +29,7 @@ Ophel 可以导出任何 AI 对话，不仅保留文本，还能保留图片、�
 | 浮动快捷按钮 | 点击 <Icon src="/images/icons/tools.svg" alt="工具箱图标" /> 工具箱图标，再点 <Icon src="/images/icons/export.svg" alt="导出图标" /> **导出**，保存为 <Icon src="/images/icons/markdown.svg" alt="Markdown 文件图标" /> Markdown |
 | 快捷键 | <Shortcut combo="ctrl+shift+e" /> 导出当前对话为 <Icon src="/images/icons/markdown.svg" alt="Markdown 文件图标" /> Markdown |
 | 会话标签页 | 点击会话行右侧的 <Icon src="/images/icons/more-horizontal.svg" alt="三个点菜单图标" /> 三点菜单，选择 <Icon src="/images/icons/export.svg" alt="导出图标" /> **导出**，再选择 <Icon src="/images/icons/markdown.svg" alt="Markdown 文件图标" /> Markdown、<Icon src="/images/icons/json-file.svg" alt="JSON 文件图标" /> JSON 或 <Icon src="/images/icons/txt-file.svg" alt="TXT 文件图标" /> TXT |
+| 分段导出 | 点击会话行的三点菜单，选择 **导出片段...**，可选择并导出对话的特定部分 |
 
 触发导出后，会显示全屏进度遮罩，阻止误操作。Ophel 依次完成加载历史、提取内容、打包资源、保存文件、恢复页面状态。
 
@@ -37,11 +38,49 @@ Ophel 可以导出任何 AI 对话，不仅保留文本，还能保留图片、�
 | 格式 | 保留内容 | 适合场景 |
 | --- | --- | --- |
 | <Icon src="/images/icons/markdown.svg" alt="Markdown 文件图标" /> Markdown (`.md`) | 发言人标签、标题、列表、代码块和图片引用 | 笔记、知识库、文档整理和再次发给 AI |
-| <Icon src="/images/icons/download.svg" alt="Zip 资源包图标" /> Markdown zip 资源包 (`.zip`) | Markdown 文件，以及 `assets/` 中的图片、附件和生成产物 | 包含文件、图片、Canvas 代码或文档产物的对话 |
+| <Icon src="/images/icons/zip-file.svg" alt="Zip 资源包图标" /> Markdown zip 资源包 (`.zip`) | Markdown 文件，以及 `assets/` 中的图片、附件和生成产物 | 包含文件、图片、Canvas 代码或文档产物的对话 |
 | <Icon src="/images/icons/json-file.svg" alt="JSON 文件图标" /> JSON (`.json`) | 带角色、时间戳、模型元数据和正文的结构化消息 | 程序处理、索引和长期归档 |
 | <Icon src="/images/icons/txt-file.svg" alt="TXT 文件图标" /> 纯文本 (`.txt`) | 不带 Markdown 格式的干净文本记录 | 文本编辑器、全文检索和轻量归档 |
 
 也可以点击 <Icon src="/images/icons/tools.svg" alt="工具箱图标" /> **工具箱** → <Icon src="/images/icons/copy.svg" alt="复制 Markdown 图标" /> **复制 Markdown**，将整个对话以 Markdown 格式复制到剪贴板，无需保存文件。
+
+## 分段导出
+
+分段导出允许你选择并导出对话的特定部分，而非整个对话线程。适用于长对话中只需要某些章节，或希望将不同主题分离为独立文件的场景。
+
+### 如何使用分段导出
+
+<Steps>
+  <Step title="打开分段导出对话框">
+    在会话标签页中，点击任意会话行的 <Icon src="/images/icons/more-horizontal.svg" alt="三个点菜单图标" /> 三点菜单，选择 **导出片段...**
+  </Step>
+  <Step title="选择片段">
+    Ophel 会根据用户提问自动检测对话片段。你可以：
+    - 使用搜索框查找特定片段
+    - 点击复选框单独选择片段
+    - 使用范围选择（如"1-3, 8"）一次选择多个片段
+    - 点击 **选择可见** 选择所有匹配搜索的片段
+    - 点击 **反选可见** 翻转当前选择
+  </Step>
+  <Step title="选择导出模式">
+    选择三种输出模式之一：
+    - **ZIP（每片段一个 Markdown）** — 每个选中片段成为 zip 包内的独立 `.md` 文件
+    - **合并 Markdown** — 所有选中片段合并为单个 `.md` 文件
+    - **复制 Markdown** — 将合并后的 Markdown 直接复制到剪贴板
+  </Step>
+  <Step title="导出">
+    点击 **导出选中** 下载或复制你的选择。
+  </Step>
+</Steps>
+
+### 片段检测
+
+Ophel 将每个用户提问视为新片段的起点。一个片段包括：
+- 用户的问题
+- AI 的完整回复
+- 下一个顶层用户问题之前的任何嵌套往返交流
+
+每个片段显示预览和元数据：用户消息数、AI 消息数和大约字符数。
 
 ## 打包模式
 
@@ -104,7 +143,7 @@ Markdown 文件内的所有引用使用稳定的相对路径，解压到任何�
 
 ### Gemini / Gemini Enterprise
 
-- **Canvas 代码产物** — 导出时自动打开 Canvas 产物，切换到代码标签页，将生成的代码纳入 Markdown 输出。
+- **Canvas 代码产物** — 导出时自动打开 Canvas 产物，切换到代码标签页，将生成的代码纳入 Markdown 输出。当 Canvas 面板打开时，工具栏会直接显示 **复制 Markdown** 和 **下载 Markdown** 按钮，无需打开完整导出对话框即可快速导出代码。
 - **Deep Research 导出** — 覆盖自有对话、对话分享页和报告分享页。导出时自动展开关闭的报告面板，完成后恢复原始状态。
 - **Deep Research 报告操作** — 当 Deep Research 报告面板打开时，工具栏新增 **复制 Markdown** 和 **下载 Markdown** 按钮，仅导出当前报告，不影响常规对话导出。
 
