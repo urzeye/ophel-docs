@@ -183,6 +183,97 @@ A preview shows exactly how the text will be divided before you confirm.
   </Step>
 </Steps>
 
+## Prompt Chains
+
+Prompt chains let you select text from any part of the conversation and trigger a sequence of prompts that reference that selection. When you select text on the page, a lightweight popover appears with built-in actions and any custom chains you've created.
+
+### What are chains?
+
+A **chain** is a sequence of prompts that run one after another. Each step in the chain can reference the selected text using special variables:
+
+- `{{selection}}` — The raw selected text
+- `{{quote}}` — The selected text formatted as a Markdown blockquote
+
+Chains are useful for multi-step workflows like:
+- Select a passage, summarize it, then ask a follow-up question
+- Select code, explain it, then suggest improvements
+- Select text, translate it, then rewrite in a different tone
+
+### Creating a chain
+
+<Steps>
+  <Step title="Open the Chains view">
+    In the Prompts tab, click <Icon src="/images/icons/chain.svg" alt="Chains icon" /> **Chains** at the top to switch from the Prompts list to the Chains view.
+  </Step>
+  <Step title="Click Add Chain">
+    Click the <Icon src="/images/icons/prompt.svg" alt="Add chain icon" /> **+ Add Chain** button and fill in:
+    - **Name** — A short label for this chain
+    - **Description** — What the chain does (optional)
+    - **Icon** — Pick from 40+ preset SVG icons, or leave blank
+    - **Show in selection popover** — Toggle whether this chain appears when you select text
+  </Step>
+  <Step title="Add prompt steps">
+    Click **Add step** to add prompts to the chain. Each step can either:
+    - Reference an existing prompt from your library (recommended)
+    - Use inline text directly (for one-off chains)
+    
+    Steps run in order from top to bottom. Drag steps to reorder them.
+  </Step>
+  <Step title="Preview variables">
+    The editor shows which variables your chain uses. Built-in variables like `{{selection}}` and `{{quote}}` are filled automatically. Any other variables prompt you for input when you run the chain.
+  </Step>
+  <Step title="Save">
+    Click **Save** to add the chain to your library.
+  </Step>
+</Steps>
+
+### Using a chain
+
+<Tabs>
+  <Tab title="From selection popover">
+    Select text anywhere in the conversation. A popover appears with **Copy**, **Quote**, and your enabled chain icons. Click a chain icon to trigger it. If the chain has variables, a dialog prompts you to fill them in first.
+  </Tab>
+  <Tab title="From the Chains list">
+    Click a chain card in the Chains view to execute it. If you haven't selected text first, the chain will use empty values for `{{selection}}` and `{{quote}}`.
+  </Tab>
+</Tabs>
+
+When a chain runs:
+1. All variables are resolved (either automatically from the selection, or by prompting you)
+2. Each step is added to the Prompt Queue in order
+3. The queue sends each prompt one at a time, waiting for the AI to finish before sending the next
+
+<Note>
+  Chains require the **Prompt Queue** feature to be enabled. If you try to run a multi-step chain without it, Ophel will prompt you to turn it on.
+</Note>
+
+### Chain management
+
+Chains appear as cards in the Chains view. Each card shows:
+- The chain icon and name
+- Number of steps
+- Whether it's shown in the selection popover
+- Enable/disable toggle
+
+Click a chain card to execute it. Hover over a chain card to reveal:
+
+| Action | Description |
+| --- | --- |
+| <Icon src="/images/icons/edit.svg" alt="Edit icon" /> Edit | Opens the chain editor to modify steps, icon, or settings |
+| <Icon src="/images/icons/copy.svg" alt="Copy icon" /> Duplicate | Creates a copy of the chain |
+| <Icon src="/images/icons/delete.svg" alt="Delete icon" /> Delete | Removes the chain permanently |
+
+Chains are included in prompt backups and WebDAV sync.
+
+### Built-in actions
+
+Two actions are always available in the selection popover:
+
+- **Copy** — Copies the selected text to your clipboard
+- **Quote** — Inserts the selected text as a blockquote into the input box, letting you add context before sending
+
+A default **Quote Reply** chain is also included, which inserts "Reply based on the quoted text below:" followed by the quoted selection.
+
 ## Settings
 
 Go to **Settings → Features → Prompts** to configure:
@@ -192,6 +283,7 @@ Go to **Settings → Features → Prompts** to configure:
 | Double-click to send | Double-clicking a prompt inserts and submits it directly                   |
 | Submit key           | Key used to submit to the AI after insertion — **Enter** or <Shortcut combo="ctrl+enter" sameOnMac /> |
 | <Icon src="/images/icons/prompt-queue.svg" alt="Prompt Queue icon" /> Prompt queue | Enable or disable the queue overlay feature |
+| Selection quote | Enable or disable the selection popover for chains and quick actions |
 
 ## Example templates
 
