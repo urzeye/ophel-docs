@@ -10,3 +10,4 @@ worker/dist/
 
 *.log
 *.pid
+.playwright-mcp/

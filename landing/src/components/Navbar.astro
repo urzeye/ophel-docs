@@ -1,6 +1,5 @@
 ---
 import type { T } from '../i18n';
-import { CHROME_STORE_URL } from '../i18n';
 
 interface Props {
   t: T['nav'];
@@ -46,6 +45,22 @@ const navLinks = [
       </div>
 
       <div class="flex items-center gap-4">
+        <a
+          href={t.githubHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hidden h-10 w-10 items-center justify-center rounded-full text-[color:var(--ink)] transition-all hover:-translate-y-0.5 hover:bg-[color:var(--surface)] sm:inline-flex"
+          aria-label={t.githubAriaLabel}
+        >
+          <img
+            src="/icons/github.svg"
+            alt=""
+            width="26"
+            height="26"
+            class="[filter:brightness(0)_saturate(100%)]"
+            aria-hidden="true"
+          />
+        </a>
         <a
           href={t.langSwitchHref}
           class="hidden rounded-full border border-[color:var(--line)] bg-white/70 px-3.5 py-2 text-xs font-bold text-[color:var(--ink-muted)] shadow-[0_8px_24px_rgba(28,45,74,0.06)] transition-all hover:border-[color:var(--line-strong)] hover:text-[color:var(--ink)] sm:flex"
