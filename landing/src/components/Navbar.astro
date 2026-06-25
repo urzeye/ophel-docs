@@ -11,25 +11,24 @@ const { t, homeHref = '/' } = Astro.props;
 
 const navLinks = [
   { label: t.features, href: homeHref + '#features' },
+  { label: t.reviews, href: t.reviewsHref },
   { label: t.platforms, href: homeHref + '#platforms' },
   { label: t.changelog, href: t.changelogHref },
   { label: t.docs, href: t.docsHref },
 ];
 ---
 
-<header
-  class="sticky top-0 z-50 w-full border-b border-white/5 bg-background/60 backdrop-blur-xl supports-[backdrop-filter]:bg-background/50"
->
-  <div class="w-full max-w-6xl mx-auto px-6">
-    <div class="flex h-16 items-center justify-between">
+<header class="site-nav">
+  <div class="w-full max-w-[1180px] mx-auto px-5 sm:px-6 lg:px-8">
+    <div class="flex h-[72px] items-center justify-between">
       <div class="flex items-center gap-8">
         <a
           href={homeHref}
-          class="flex items-center gap-2.5 transition-opacity hover:opacity-80"
+          class="flex items-center gap-2.5 rounded-full pr-2 transition-opacity hover:opacity-80"
           aria-label={t.homeLabel}
         >
-          <img src="/logo.png" alt="Ophel logo" width="28" height="28" class="rounded-md" />
-          <span class="text-lg font-bold tracking-tight text-white">Ophel</span>
+          <img src="/logo.png" alt="Ophel logo" width="32" height="32" class="rounded-lg" />
+          <span class="text-lg font-extrabold tracking-tight text-[color:var(--ink)]">Ophel</span>
         </a>
 
         <nav class="hidden md:flex items-center gap-2" aria-label={t.ariaLabel}>
@@ -37,7 +36,7 @@ const navLinks = [
             navLinks.map((link) => (
               <a
                 href={link.href}
-                class="px-3 py-1.5 text-sm font-medium text-zinc-400 rounded-lg hover:text-white hover:bg-white/5 transition-all"
+                class="rounded-full px-3.5 py-2 text-sm font-semibold text-[color:var(--ink-muted)] transition-all hover:bg-[color:var(--surface)] hover:text-[color:var(--ink)]"
               >
                 {link.label}
               </a>
@@ -49,14 +48,14 @@ const navLinks = [
       <div class="flex items-center gap-4">
         <a
           href={t.langSwitchHref}
-          class="hidden sm:flex px-3 py-1.5 text-xs font-medium text-zinc-400 bg-surface border border-surface-border rounded-md hover:text-white hover:bg-surface-hover hover:border-white/20 transition-all"
+          class="hidden rounded-full border border-[color:var(--line)] bg-white/70 px-3.5 py-2 text-xs font-bold text-[color:var(--ink-muted)] shadow-[0_8px_24px_rgba(28,45,74,0.06)] transition-all hover:border-[color:var(--line-strong)] hover:text-[color:var(--ink)] sm:flex"
           aria-label={t.langSwitchAriaLabel}
         >
           {t.langSwitch}
         </a>
         <a
           href={t.installHref}
-          class="relative inline-flex h-9 items-center justify-center rounded-md bg-white px-5 py-2 text-sm font-semibold text-[#000] transition-colors hover:bg-zinc-200"
+          class="relative inline-flex h-10 items-center justify-center rounded-full bg-[color:var(--ink)] px-5 py-2 text-sm font-bold text-white shadow-[0_14px_32px_rgba(20,34,58,0.2)] transition-all hover:-translate-y-0.5 hover:bg-[color:var(--ink-strong)]"
         >
           {t.install}
         </a>

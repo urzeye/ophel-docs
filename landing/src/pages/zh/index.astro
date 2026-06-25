@@ -30,6 +30,7 @@ const FIREFOX_URL_ZH = 'https://addons.mozilla.org/zh-CN/firefox/addon/ophel-ai-
       alternateInstallLabel="查看其他安装方式"
       alternateInstallLink="/zh/download/"
       version={latestVersion}
+      locale="zh"
       browserCtas={{
         chrome: { label: '安装 Chrome 扩展', href: CHROME_STORE_URL },
         edge: { label: '安装 Chrome 扩展', href: CHROME_STORE_URL },
@@ -42,6 +43,7 @@ const FIREFOX_URL_ZH = 'https://addons.mozilla.org/zh-CN/firefox/addon/ophel-ai-
       featuresTitle={t.features.title}
       featuresSubtitle={t.features.desc}
       items={t.features.items}
+      locale="zh"
     />
     <ReviewsMarquee client:load title={t.reviews.title} subtitle={t.reviews.subtitle} />
     <Platforms t={t.platforms} locale="zh" />
