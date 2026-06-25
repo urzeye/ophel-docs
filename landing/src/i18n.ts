@@ -12,6 +12,8 @@ const en = {
   nav: {
     features: 'Features',
     platforms: 'Platforms',
+    reviews: 'Reviews',
+    reviewsHref: '/#reviews',
     changelog: 'Changelog',
     changelogHref: '/changelog/',
     docs: 'Docs',
@@ -155,6 +157,8 @@ const zh = {
   nav: {
     features: '功能',
     platforms: '平台支持',
+    reviews: '评价',
+    reviewsHref: '/zh/#reviews',
     changelog: '更新日志',
     changelogHref: '/zh/changelog/',
     docs: '文档',
@@ -170,7 +174,7 @@ const zh = {
   hero: {
     badge: '浏览器扩展 · 免费使用',
     titleLine1: '让 AI 对话',
-    titleGradient: '可读、可导航、可沉淀',
+    titleGradient: '可阅读、可导航、可沉淀',
     desc: 'Ophel 为 ChatGPT、Gemini、Claude 等 15 个平台注入实时大纲、会话文件夹与 Prompt 词库。告别无限滚动，让每次对话成为可组织的知识。',
     ctaPrimary: '安装 Chrome 扩展',
     ctaSecondary: '查看文档',

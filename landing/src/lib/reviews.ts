@@ -677,24 +677,15 @@ export const reviews: Review[] = [
   },
 ];
 
-/** Fisher-Yates shuffle, returns a new array. */
-function shuffleArray<T>(arr: T[]): T[] {
-  const a = [...arr];
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a;
-}
-
 /**
  * Build two marquee rows from the weighted review pool.
  *
- * To keep the marquee readable, weight is capped at 2 for pool expansion
- * (so high-weight items appear at most twice per loop, not 5 times).
- * Shuffle ensures no consecutive duplicates.
+ * Keep the order deterministic so SSR and client hydration render the same
+ * review sequence. The second row is offset and reversed for visual variety.
  */
 export function buildMarqueeRows(): [Review[], Review[]] {
   const weighted = reviews.flatMap((r) => Array<Review>(Math.min(r.weight, 1)).fill(r));
-  return [shuffleArray(weighted), shuffleArray(weighted)];
+  const midpoint = Math.ceil(weighted.length / 2);
+  const row2 = [...weighted.slice(midpoint), ...weighted.slice(0, midpoint)].reverse();
+  return [weighted, row2];
 }

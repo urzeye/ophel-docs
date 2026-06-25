@@ -36,6 +36,7 @@ const FIREFOX_URL_EN = 'https://addons.mozilla.org/en-US/firefox/addon/ophel-ai-
       alternateInstallLabel="See other install options"
       alternateInstallLink="/download/"
       version={latestVersion}
+      locale="en"
       browserCtas={{
         chrome: { label: 'Install on Chrome', href: CHROME_STORE_URL },
         edge: { label: 'Install on Chrome', href: CHROME_STORE_URL },
@@ -48,6 +49,7 @@ const FIREFOX_URL_EN = 'https://addons.mozilla.org/en-US/firefox/addon/ophel-ai-
       featuresTitle={t.features.title}
       featuresSubtitle={t.features.desc}
       items={t.features.items}
+      locale="en"
     />
     <ReviewsMarquee client:load title={t.reviews.title} subtitle={t.reviews.subtitle} />
     <Platforms t={t.platforms} locale="en" />

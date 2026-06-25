@@ -88,15 +88,17 @@ const iconImgs: Record<string, string> = {
     <div class="relative z-10 w-full max-w-6xl mx-auto px-6 max-w-4xl">
       <header class="text-center mb-16">
         <p
-          class="inline-flex items-center rounded-full border border-neon-cyan/20 bg-neon-cyan/5 px-3 py-1 text-xs font-medium uppercase tracking-widest text-neon-cyan mb-6"
+          class="inline-flex items-center rounded-full border border-[color:var(--line-strong)] bg-[color:var(--surface-tint)] px-3 py-1 text-xs font-bold uppercase tracking-widest text-[color:var(--accent-strong)] mb-6"
         >
           Free · No account required
         </p>
-        <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white mb-6">
+        <h1
+          class="text-4xl sm:text-6xl font-extrabold tracking-tight text-[color:var(--ink-strong)] mb-6"
+        >
           Install Ophel
         </h1>
-        <p class="text-lg text-zinc-400 max-w-2xl mx-auto leading-relaxed">
-          One extension. Works with <strong class="text-white"
+        <p class="text-lg text-[color:var(--text-muted)] max-w-2xl mx-auto leading-relaxed">
+          One extension. Works with <strong class="text-[color:var(--ink-strong)]"
             >{allSupportedSites.length} AI platforms</strong
           >. Available for all major browsers.
         </p>
@@ -105,7 +107,7 @@ const iconImgs: Record<string, string> = {
       <div class="grid gap-6 md:grid-cols-2 mb-16">
         {
           platforms.map((p) => (
-            <SpotlightCard className="p-6 group">
+            <SpotlightCard className="p-6 group border-[color:var(--line)] bg-white/70 shadow-[0_18px_48px_rgba(31,43,64,0.1)] hover:border-[color:var(--line-strong)]">
               <div class="relative z-10 flex gap-4 h-full">
                 <div class="flex-shrink-0 pt-1 group-hover:scale-110 transition-transform">
                   {iconImgs[p.name] ? (
@@ -116,26 +118,30 @@ const iconImgs: Record<string, string> = {
                 </div>
                 <div class="flex flex-col flex-1">
                   <div class="flex items-center gap-3 mb-2">
-                    <h2 class="text-lg font-bold text-zinc-100 group-hover:text-white transition-colors">
+                    <h2 class="text-lg font-bold text-[color:var(--ink)] group-hover:text-[color:var(--ink-strong)] transition-colors">
                       {p.name}
                     </h2>
                     {p.badge && (
-                      <span class="px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-black bg-neon-cyan rounded-full">
+                      <span class="px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-white bg-[color:var(--accent-strong)] rounded-full">
                         {p.badge}
                       </span>
                     )}
                   </div>
-                  <p class="text-sm text-zinc-400 leading-relaxed mb-4 flex-1">{p.desc}</p>
+                  <p class="text-sm text-[color:var(--text-muted)] leading-relaxed mb-4 flex-1">
+                    {p.desc}
+                  </p>
                   <div class="mt-auto">
                     <a
                       href={p.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      class="inline-flex items-center text-sm font-semibold text-neon-cyan hover:text-neon-cyan/80 transition-colors"
+                      class="inline-flex items-center text-sm font-semibold text-[color:var(--accent-strong)] hover:text-[color:var(--ink-strong)] transition-colors"
                     >
                       {p.cta} <span class="ml-1 text-[10px]">↗</span>
                     </a>
-                    <span class="block mt-1.5 text-xs text-zinc-600">{p.note}</span>
+                    <span class="block mt-1.5 text-xs text-[color:var(--text-faint)]">
+                      {p.note}
+                    </span>
                   </div>
                 </div>
               </div>
@@ -145,10 +151,10 @@ const iconImgs: Record<string, string> = {
       </div>
 
       <section class="mb-16">
-        <h2 class="text-xl font-bold text-white mb-6 flex items-center gap-2">
-          <span class="h-px bg-white/20 flex-1"></span>
+        <h2 class="text-xl font-bold text-[color:var(--ink-strong)] mb-6 flex items-center gap-2">
+          <span class="h-px bg-[color:var(--line)] flex-1"></span>
           Supported Platforms
-          <span class="h-px bg-white/20 flex-1"></span>
+          <span class="h-px bg-[color:var(--line)] flex-1"></span>
         </h2>
         <div class="dl-sites-container flex flex-col items-center gap-3">
           <div class="dl-sites-row flex flex-nowrap justify-center gap-3">
@@ -160,11 +166,11 @@ const iconImgs: Record<string, string> = {
                   rel="noopener noreferrer"
                   title={site.href}
                   aria-label={`Open ${site.label}`}
-                  class="inline-flex items-center gap-2.5 px-4 py-2 text-sm font-medium text-zinc-300 bg-surface border border-surface-border rounded-full hover:border-neon-cyan/30 hover:text-white hover:bg-white/[0.03] transition-colors whitespace-nowrap"
+                  class="inline-flex items-center gap-2.5 px-4 py-2 text-sm font-semibold text-[color:var(--ink-muted)] bg-white/70 border border-[color:var(--line)] rounded-full hover:border-[color:var(--line-strong)] hover:text-[color:var(--ink-strong)] hover:bg-white transition-colors whitespace-nowrap"
                 >
                   {site.iconSrc ? (
                     <span
-                      class={`inline-flex items-center justify-center shrink-0 ${site.iconVariant === 'inverted' ? 'w-5 h-5 rounded-full bg-white/10 border border-white/15' : ''}`}
+                      class={`inline-flex items-center justify-center shrink-0 ${site.iconVariant === 'inverted' ? 'w-5 h-5 rounded-full bg-[color:var(--ink)] border border-[color:var(--line)]' : ''}`}
                     >
                       <img
                         src={site.iconSrc}
@@ -192,11 +198,11 @@ const iconImgs: Record<string, string> = {
                   rel="noopener noreferrer"
                   title={site.href}
                   aria-label={`Open ${site.label}`}
-                  class="inline-flex items-center gap-2.5 px-4 py-2 text-sm font-medium text-zinc-300 bg-surface border border-surface-border rounded-full hover:border-neon-cyan/30 hover:text-white hover:bg-white/[0.03] transition-colors whitespace-nowrap"
+                  class="inline-flex items-center gap-2.5 px-4 py-2 text-sm font-semibold text-[color:var(--ink-muted)] bg-white/70 border border-[color:var(--line)] rounded-full hover:border-[color:var(--line-strong)] hover:text-[color:var(--ink-strong)] hover:bg-white transition-colors whitespace-nowrap"
                 >
                   {site.iconSrc ? (
                     <span
-                      class={`inline-flex items-center justify-center shrink-0 ${site.iconVariant === 'inverted' ? 'w-5 h-5 rounded-full bg-white/10 border border-white/15' : ''}`}
+                      class={`inline-flex items-center justify-center shrink-0 ${site.iconVariant === 'inverted' ? 'w-5 h-5 rounded-full bg-[color:var(--ink)] border border-[color:var(--line)]' : ''}`}
                     >
                       <img
                         src={site.iconSrc}
@@ -219,47 +225,49 @@ const iconImgs: Record<string, string> = {
       </section>
 
       <section>
-        <div class="p-8 md:p-10 rounded-2xl bg-surface border border-surface-border">
-          <h2 class="text-2xl font-bold text-white mb-8">Quick Start</h2>
+        <div
+          class="p-8 md:p-10 rounded-2xl bg-white/70 border border-[color:var(--line)] shadow-[0_18px_48px_rgba(31,43,64,0.08)]"
+        >
+          <h2 class="text-2xl font-bold text-[color:var(--ink-strong)] mb-8">Quick Start</h2>
           <ol class="space-y-8">
             <li class="flex gap-5">
               <span
-                class="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full border border-white/10 bg-white/5 text-sm font-bold text-white shadow-[0_0_15px_rgba(0,240,255,0.2)]"
+                class="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full border border-[color:var(--line-strong)] bg-[color:var(--surface-tint)] text-sm font-bold text-[color:var(--accent-strong)]"
                 >1</span
               >
               <div>
-                <strong class="block text-base font-semibold text-white mb-1.5"
+                <strong class="block text-base font-semibold text-[color:var(--ink)] mb-1.5"
                   >Install the extension</strong
                 >
-                <p class="text-sm text-zinc-400 leading-relaxed">
+                <p class="text-sm text-[color:var(--text-muted)] leading-relaxed">
                   Click "Install on Chrome" above and add it to your browser.
                 </p>
               </div>
             </li>
             <li class="flex gap-5">
               <span
-                class="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full border border-white/10 bg-white/5 text-sm font-bold text-white shadow-[0_0_15px_rgba(0,240,255,0.2)]"
+                class="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full border border-[color:var(--line-strong)] bg-[color:var(--surface-tint)] text-sm font-bold text-[color:var(--accent-strong)]"
                 >2</span
               >
               <div>
-                <strong class="block text-base font-semibold text-white mb-1.5"
+                <strong class="block text-base font-semibold text-[color:var(--ink)] mb-1.5"
                   >Open any supported AI site</strong
                 >
-                <p class="text-sm text-zinc-400 leading-relaxed">
+                <p class="text-sm text-[color:var(--text-muted)] leading-relaxed">
                   Visit ChatGPT, Gemini, Claude, or any of the 15 supported platforms.
                 </p>
               </div>
             </li>
             <li class="flex gap-5">
               <span
-                class="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full border border-white/10 bg-white/5 text-sm font-bold text-white shadow-[0_0_15px_rgba(0,240,255,0.2)]"
+                class="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full border border-[color:var(--line-strong)] bg-[color:var(--surface-tint)] text-sm font-bold text-[color:var(--accent-strong)]"
                 >3</span
               >
               <div>
-                <strong class="block text-base font-semibold text-white mb-1.5"
+                <strong class="block text-base font-semibold text-[color:var(--ink)] mb-1.5"
                   >Ophel activates automatically</strong
                 >
-                <p class="text-sm text-zinc-400 leading-relaxed">
+                <p class="text-sm text-[color:var(--text-muted)] leading-relaxed">
                   The panel appears on the right side. Click the toggle button to open it.
                 </p>
               </div>
