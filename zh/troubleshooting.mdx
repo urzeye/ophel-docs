@@ -3,11 +3,12 @@ title: "故障排查 — 常见问题逐步修复指南"
 sidebarTitle: "故障排查"
 icon: "wrench"
 description: "Ophel Atlas 最常见问题的逐步修复方法：面板不显示、大纲为空、提示词队列卡住、Firefox 重启等。"
-keywords: ["故障排查", "面板不显示", "大纲为空", "调试步骤", "修复Ophel", "扩展问题"]
+keywords:
+  ["故障排查", "面板不显示", "大纲为空", "调试步骤", "修复Ophel", "扩展问题"]
 ---
 
-import { Icon } from "/snippets/icon.jsx"
-import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
+import { Icon } from "/snippets/icon.jsx";
+import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx";
 
 如果某些功能没有按预期工作，本页提供最常见问题的修复步骤。如果下面没有覆盖你的问题，请在 [GitHub Issues](https://github.com/urzeye/ophel/issues) 中提交报告，附上浏览器版本、扩展版本，以及浏览器控制台中的错误信息。
 
@@ -23,14 +24,21 @@ import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
     已开启。如果被禁用，启用它并刷新页面。
   </Step>
   <Step title="强制刷新页面">
-    按 <Shortcut combo="ctrl+shift+r" /> 强制完整刷新页面。普通刷新有时不会重新初始化 Ophel 面板。
+    按 <Shortcut combo="ctrl+shift+r" />{" "}
+    强制完整刷新页面。普通刷新有时不会重新初始化 Ophel 面板。
   </Step>
   <Step title="检查是否在支持的网站上">
-    Ophel 只在[支持的 15 个平台](/introduction#支持的平台)上激活。确认当前
-    URL 属于其中之一。
+    Ophel 只在[支持的 15 个平台](/introduction#支持的平台)上激活。确认当前 URL
+    属于其中之一。
   </Step>
   <Step title="用快捷键手动打开">
-    如果面板之前被关闭了，按 <Icon src="/images/icons/keyboard.svg" alt="快捷键图标" /> <Shortcut combo="alt+p" /> 重新打开，无论浮动按钮是否可见，这个快捷键都能切换面板状态。
+    如果面板之前被关闭了，按{" "}
+    <Icon
+      src="/images/icons/keyboard.svg"
+      alt="快捷键图标"
+    />{" "}
+    <Shortcut combo="alt+p" />{" "}
+    重新打开，无论浮动按钮是否可见，这个快捷键都能切换面板状态。
   </Step>
 </Steps>
 
@@ -40,7 +48,12 @@ import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
 
 <Steps>
   <Step title="手动刷新大纲">
-    按 <Icon src="/images/icons/refresh.svg" alt="刷新大纲图标" /> <Shortcut combo="alt+r" /> 强制大纲重新扫描对话。部分 AI 平台异步更新
+    按{" "}
+    <Icon
+      src="/images/icons/refresh.svg"
+      alt="刷新大纲图标"
+    />{" "}
+    <Shortcut combo="alt+r" /> 强制大纲重新扫描对话。部分 AI 平台异步更新
     DOM，大纲可能需要几秒才能填充。
   </Step>
   <Step title="等待 AI 完成回复">
@@ -48,7 +61,8 @@ import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
   </Step>
   <Step title="检查自动更新设置">
     前往 **设置 → 功能 →
-    大纲**，确认**自动更新**已开启。如果关闭，大纲只在手动按 <Shortcut combo="alt+r" /> 时才刷新。
+    大纲**，确认**自动更新**已开启。如果关闭，大纲只在手动按{" "}
+    <Shortcut combo="alt+r" /> 时才刷新。
   </Step>
 </Steps>
 
@@ -73,7 +87,12 @@ import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
     将鼠标移动到胶囊形状约 150px 范围内，按钮会自动展开。
   </Step>
   <Step title="如果胶囊完全不可见">
-    按 <Icon src="/images/icons/keyboard.svg" alt="快捷键图标" /> <Shortcut combo="alt+p" /> 打开面板，浮动按钮会随之重新出现。
+    按{" "}
+    <Icon
+      src="/images/icons/keyboard.svg"
+      alt="快捷键图标"
+    />{" "}
+    <Shortcut combo="alt+p" /> 打开面板，浮动按钮会随之重新出现。
   </Step>
 </Steps>
 
@@ -87,7 +106,9 @@ import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
     秒，面板变半透明并允许鼠标点透背后内容。松开按键后恢复。
   </Step>
   <Step title="将面板移开或切换到吸附模式">
-    拖动面板标题栏移到屏幕另一侧，或切换到**自动吸附**模式（快捷键 <Shortcut combo="alt+m" />），让面板贴边隐藏。
+    拖动面板标题栏移到屏幕另一侧，或切换到**自动吸附**模式（快捷键{" "}
+    <Shortcut combo="alt+m" />
+    ），让面板贴边隐藏。
   </Step>
 </Steps>
 
@@ -113,7 +134,13 @@ import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
     确认 AI 已经完成回复（无旋转/加载指示器）。队列在检测到生成完成前不会发送。
   </Step>
   <Step title="强制发送待处理条目">
-    如果 AI 平台使用了 Ophel 无法识别的加载动画，队列可能会卡住。按 <Icon src="/images/icons/keyboard.svg" alt="快捷键图标" /> <Shortcut combo="alt+j" /> 打开队列叠加层，然后对需要立即发送的条目使用**强制发送**。
+    如果 AI 平台使用了 Ophel 无法识别的加载动画，队列可能会卡住。按{" "}
+    <Icon
+      src="/images/icons/keyboard.svg"
+      alt="快捷键图标"
+    />{" "}
+    <Shortcut combo="alt+j" />{" "}
+    打开队列叠加层，然后对需要立即发送的条目使用**强制发送**。
   </Step>
 </Steps>
 
@@ -138,7 +165,7 @@ Firefox 上通过 `about:debugging` 手动临时加载的扩展，在浏览器�
 <Steps>
   <Step title="使用 Firefox 附加组件商店版本">
     前往 [Firefox
-    附加组件商店](https://addons.mozilla.org/zh-CN/firefox/addon/ophel-ai-chat-enhancer/)
+    附加组件商店](https://addons.mozilla.org/firefox/addon/ophel-ai-chat-enhancer/)
     安装正式版本，支持持久化，不受重启影响。
   </Step>
 </Steps>

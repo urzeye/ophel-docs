@@ -1,29 +1,71 @@
 ---
 title: "Ophel Atlas: Turn AI Chats into Navigable Documents"
 description: "Ophel Atlas is a browser extension that adds real-time outlines, conversation folders, and a prompt library to 15 major AI platforms — no account required."
-keywords: ["browser extension", "AI chat", "outline", "conversation management", "prompt library", "ChatGPT", "Gemini", "Claude", "DeepSeek", "productivity"]
+keywords:
+  [
+    "browser extension",
+    "AI chat",
+    "outline",
+    "conversation management",
+    "prompt library",
+    "ChatGPT",
+    "Gemini",
+    "Claude",
+    "DeepSeek",
+    "productivity",
+  ]
 ---
 
 Ophel Atlas enhances your AI chat experience by turning long, scrollable conversations into structured, navigable documents. Install it on Chrome, Firefox, or as a userscript, then open any supported AI site to get a powerful side panel with outlines, conversation management, and productivity tools — all stored locally in your browser.
 
 <CardGroup cols={2}>
-  <Card title="Quick Install" icon="rocket" href="/installation">
-    Get Ophel running in your browser in under two minutes. Supports Chrome, Edge, Firefox, and Tampermonkey.
+  <Card
+    title="Quick Install"
+    icon="rocket"
+    href="/installation"
+  >
+    Get Ophel running in your browser in under two minutes. Supports Chrome,
+    Edge, Firefox, and Tampermonkey.
   </Card>
-  <Card title="Panel Overview" icon="sidebar" href="/panel-overview">
-    Learn the panel layout, floating buttons, ghost mode, and edge-snap navigation.
+  <Card
+    title="Panel Overview"
+    icon="sidebar"
+    href="/panel-overview"
+  >
+    Learn the panel layout, floating buttons, ghost mode, and edge-snap
+    navigation.
   </Card>
-  <Card title="Smart Outline" icon="list-tree" href="/features/outline">
-    Auto-generated table of contents for every conversation, with bookmarks, scroll tracking, and word counts.
+  <Card
+    title="Smart Outline"
+    icon="list-tree"
+    href="/features/outline"
+  >
+    Auto-generated table of contents for every conversation, with bookmarks,
+    scroll tracking, and word counts.
   </Card>
-  <Card title="Conversation Management" icon="folder-open" href="/features/conversations">
-    Organize chats into folders and tags, with search, filters, and batch actions.
+  <Card
+    title="Conversation Management"
+    icon="folder-open"
+    href="/features/conversations"
+  >
+    Organize chats into folders and tags, with search, filters, and batch
+    actions.
   </Card>
-  <Card title="Prompt Library" icon="wand-magic-sparkles" href="/features/prompts">
-    Build a reusable prompt library with variable templates and an automated prompt queue.
+  <Card
+    title="Prompt Library"
+    icon="wand-magic-sparkles"
+    href="/features/prompts"
+  >
+    Build a reusable prompt library with variable templates and an automated
+    prompt queue.
   </Card>
-  <Card title="Global Search" icon="magnifying-glass" href="/features/global-search">
-    Search across outlines, conversations, prompts, and settings — all from one place.
+  <Card
+    title="Global Search"
+    icon="magnifying-glass"
+    href="/features/global-search"
+  >
+    Search across outlines, conversations, prompts, and settings — all from one
+    place.
   </Card>
 </CardGroup>
 
@@ -31,13 +73,26 @@ Ophel Atlas enhances your AI chat experience by turning long, scrollable convers
 
 <Steps>
   <Step title="Install the extension">
-    Download Ophel Atlas from the [Chrome Web Store](https://chromewebstore.google.com/detail/ophel-ai-%E5%AF%B9%E8%AF%9D%E5%A2%9E%E5%BC%BA%E5%B7%A5%E5%85%B7/lpcohdfbomkgepfladogodgeoppclakd), [Edge Add-ons](https://microsoftedge.microsoft.com/addons/detail/ophel-atlas-ai-chat-navi/ffpenkdeifijngifjmbbpijfpdhlolga), [Firefox Add-ons](https://addons.mozilla.org/zh-CN/firefox/addon/ophel-ai-chat-enhancer/), or [Greasy Fork](https://greasyfork.org/zh-CN/scripts/563646-ophel-ai-chat-page-enhancer) for Tampermonkey. See the [Installation guide](/installation) for manual sideloading options.
+    Download Ophel Atlas from the [Chrome Web
+    Store](https://chromewebstore.google.com/detail/ai-chat-organizer-outline/lpcohdfbomkgepfladogodgeoppclakd),
+    [Edge
+    Add-ons](https://microsoftedge.microsoft.com/addons/detail/ophel-atlas-ai-chat-navi/ffpenkdeifijngifjmbbpijfpdhlolga),
+    [Firefox
+    Add-ons](https://addons.mozilla.org/firefox/addon/ophel-ai-chat-enhancer/),
+    or [Greasy
+    Fork](https://greasyfork.org/scripts/563646-ophel-ai-chat-page-enhancer) for
+    Tampermonkey. See the [Installation guide](/installation) for manual
+    sideloading options.
   </Step>
   <Step title="Open a supported AI site">
-    Visit any of the 15 supported platforms — ChatGPT, Gemini, Claude, Grok, DeepSeek, and more. The Ophel panel appears automatically on the side of the page.
+    Visit any of the 15 supported platforms — ChatGPT, Gemini, Claude, Grok,
+    DeepSeek, and more. The Ophel panel appears automatically on the side of the
+    page.
   </Step>
   <Step title="Explore the panel">
-    Start a conversation and watch the Smart Outline populate in real time. Use the **Conversations** tab to organize chats into folders, and the **Prompts** tab to build your reusable prompt library.
+    Start a conversation and watch the Smart Outline populate in real time. Use
+    the **Conversations** tab to organize chats into folders, and the
+    **Prompts** tab to build your reusable prompt library.
   </Step>
 </Steps>
 
@@ -46,14 +101,51 @@ Ophel Atlas enhances your AI chat experience by turning long, scrollable convers
 Ophel works on 15 platforms out of the box:
 
 <CardGroup cols={3}>
-  <Card title="ChatGPT" icon="/images/icons/chatgpt.png" href="https://chatgpt.com">chatgpt.com</Card>
-  <Card title="Gemini" icon="/images/icons/gemini.png" href="https://gemini.google.com">gemini.google.com</Card>
-  <Card title="Claude" icon="/images/icons/claude.svg" href="https://claude.ai">claude.ai</Card>
-  <Card title="Grok" icon="/images/icons/grok.png" href="https://grok.com">grok.com</Card>
-  <Card title="DeepSeek" icon="/images/icons/deepseek.svg" href="https://chat.deepseek.com">chat.deepseek.com</Card>
-  <Card title="Kimi, Doubao, and more" icon="ellipsis" href="/introduction#supported-platforms">View all 15 platforms</Card>
+  <Card
+    title="ChatGPT"
+    icon="/images/icons/chatgpt.png"
+    href="https://chatgpt.com"
+  >
+    chatgpt.com
+  </Card>
+  <Card
+    title="Gemini"
+    icon="/images/icons/gemini.png"
+    href="https://gemini.google.com"
+  >
+    gemini.google.com
+  </Card>
+  <Card
+    title="Claude"
+    icon="/images/icons/claude.svg"
+    href="https://claude.ai"
+  >
+    claude.ai
+  </Card>
+  <Card
+    title="Grok"
+    icon="/images/icons/grok.png"
+    href="https://grok.com"
+  >
+    grok.com
+  </Card>
+  <Card
+    title="DeepSeek"
+    icon="/images/icons/deepseek.svg"
+    href="https://chat.deepseek.com"
+  >
+    chat.deepseek.com
+  </Card>
+  <Card
+    title="Kimi, Doubao, and more"
+    icon="ellipsis"
+    href="/introduction#supported-platforms"
+  >
+    View all 15 platforms
+  </Card>
 </CardGroup>
 
 <Note>
-  Ophel stores all your data locally in your browser. No account is required and no conversation data is ever uploaded to Ophel's servers.
+  Ophel stores all your data locally in your browser. No account is required and
+  no conversation data is ever uploaded to Ophel's servers.
 </Note>
