@@ -2,7 +2,7 @@ export type Lang = 'en' | 'zh';
 
 /** Chrome Web Store 插件详情页 */
 export const CHROME_STORE_URL =
-  'https://chromewebstore.google.com/detail/ophel-ai-%E5%AF%B9%E8%AF%9D%E5%A2%9E%E5%BC%BA%E5%B7%A5%E5%85%B7/lpcohdfbomkgepfladogodgeoppclakd';
+  'https://chromewebstore.google.com/detail/ai-chat-organizer-outline/lpcohdfbomkgepfladogodgeoppclakd';
 
 /** Microsoft Edge 外接程序详情页 */
 export const EDGE_STORE_URL =
