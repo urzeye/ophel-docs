@@ -2,7 +2,7 @@
 title: "Install Ophel Atlas on Chrome, Edge, Firefox, or as a Userscript"
 sidebarTitle: "Installation"
 icon: "download"
-description: "Install Ophel Atlas from the Chrome Web Store, Edge Add-ons, Firefox Add-ons, Greasy Fork, or sideload it manually from GitHub Releases in four steps or fewer."
+description: "Install Ophel Atlas from the Chrome Web Store, Edge Add-ons, Firefox Add-ons, Greasy Fork, ScriptCat, or sideload it manually from GitHub Releases in four steps or fewer."
 keywords:
   [
     "install Ophel",
@@ -12,12 +12,13 @@ keywords:
     "Firefox addon",
     "userscript",
     "Tampermonkey",
+    "ScriptCat",
     "browser extension setup",
     "download",
   ]
 ---
 
-Ophel Atlas is available as a browser extension for Chrome-based browsers and Firefox, and as a userscript for Tampermonkey. The browser extension is recommended — it offers a fuller feature set, better compatibility, and does not require developer mode after the initial install.
+Ophel Atlas is available as a browser extension for Chrome-based browsers and Firefox, and as a userscript through Greasy Fork or ScriptCat. The browser extension is recommended — it offers a fuller feature set, better compatibility, and does not require developer mode after the initial install.
 
 <Tip>
   Use the browser extension version whenever possible. The userscript version
@@ -270,9 +271,64 @@ Ophel Atlas is available as a browser extension for Chrome-based browsers and Fi
       />
     </span>
   </a>
+  <a
+    href="https://scriptcat.org/script-show-page/6519"
+    target="_blank"
+    style={{
+      display: "flex",
+      flexDirection: "column",
+      gap: "10px",
+      padding: "16px",
+      border: "1px solid rgba(128,128,128,0.2)",
+      borderRadius: "12px",
+      textDecoration: "none",
+      color: "inherit",
+    }}
+  >
+    <span
+      style={{
+        display: "flex",
+        alignItems: "center",
+        gap: "7px",
+        fontWeight: "600",
+        fontSize: "14px",
+        margin: "0",
+        lineHeight: "1.4",
+      }}
+    >
+      <img
+        alt="ScriptCat icon"
+        src="/images/icons/scriptcat.png"
+        style={{
+          display: "block",
+          width: "16px",
+          height: "16px",
+          margin: "0",
+          flexShrink: "0",
+        }}
+      />
+      ScriptCat
+    </span>
+    <span
+      style={{
+        display: "flex",
+        gap: "6px",
+        flexWrap: "wrap",
+        margin: "0",
+        padding: "0",
+        lineHeight: "1",
+      }}
+    >
+      <img
+        alt="ScriptCat install badge"
+        src="https://img.shields.io/badge/ScriptCat-install-1597FF?style=flat"
+        style={{ display: "block", margin: "0", height: "20px" }}
+      />
+    </span>
+  </a>
 </div>
 
-## Install from a store
+## Install from a store or script directory
 
 <Tabs>
   <Tab title="Chrome">
@@ -339,6 +395,29 @@ Ophel Atlas is available as a browser extension for Chrome-based browsers and Fi
       </Step>
       <Step title="Click Install this script">
         Click **Install this script**. Tampermonkey opens a confirmation dialog — click **Install**.
+      </Step>
+      <Step title="Open a supported AI site">
+        Navigate to any [supported platform](/introduction#supported-platforms). The Ophel panel appears automatically.
+      </Step>
+    </Steps>
+
+  </Tab>
+  <Tab title="Userscript (ScriptCat)">
+    Use this method if you prefer ScriptCat as your userscript manager.
+
+    <Warning>
+      The userscript version has feature limitations compared to the browser extension. Install the extension version when possible.
+    </Warning>
+
+    <Steps>
+      <Step title="Install ScriptCat">
+        If you do not already have it, install [ScriptCat](https://scriptcat.org/) for your browser.
+      </Step>
+      <Step title="Open the ScriptCat listing">
+        Go to the [Ophel AI Chat Page Enhancer on ScriptCat](https://scriptcat.org/script-show-page/6519).
+      </Step>
+      <Step title="Install the script">
+        Click the install button on ScriptCat and confirm the installation in ScriptCat.
       </Step>
       <Step title="Open a supported AI site">
         Navigate to any [supported platform](/introduction#supported-platforms). The Ophel panel appears automatically.

@@ -2,7 +2,7 @@
 title: "安装 Ophel Atlas — Chrome、Edge、Firefox 或油猴脚本"
 sidebarTitle: "安装"
 icon: "download"
-description: "从 Chrome 网上应用店、Edge add-ons、Firefox 附加组件商店、Greasy Fork 安装 Ophel Atlas，或从 GitHub Releases 手动加载，四步以内完成。"
+description: "从 Chrome 网上应用店、Edge add-ons、Firefox 附加组件商店、Greasy Fork、ScriptCat 安装 Ophel Atlas，或从 GitHub Releases 手动加载，四步以内完成。"
 keywords:
   [
     "安装Ophel",
@@ -12,12 +12,13 @@ keywords:
     "Firefox扩展",
     "油猴脚本",
     "Tampermonkey",
+    "ScriptCat",
     "浏览器扩展安装",
     "下载",
   ]
 ---
 
-Ophel Atlas 支持 Chrome/Edge 扩展、Firefox 扩展，以及适用于 Tampermonkey 的油猴脚本三种安装方式。推荐优先使用浏览器扩展——功能更完整，兼容性更好，正式安装后无需开发者模式。
+Ophel Atlas 支持 Chrome/Edge 扩展、Firefox 扩展，以及通过 Greasy Fork 或 ScriptCat 安装的油猴脚本。推荐优先使用浏览器扩展——功能更完整，兼容性更好，正式安装后无需开发者模式。
 
 <Tip>
   尽量使用浏览器扩展版本。油猴脚本版本相比扩展有功能限制，在部分平台上的兼容性也较低。
@@ -268,9 +269,64 @@ Ophel Atlas 支持 Chrome/Edge 扩展、Firefox 扩展，以及适用于 Tamperm
       />
     </span>
   </a>
+  <a
+    href="https://scriptcat.org/script-show-page/6519"
+    target="_blank"
+    style={{
+      display: "flex",
+      flexDirection: "column",
+      gap: "10px",
+      padding: "16px",
+      border: "1px solid rgba(128,128,128,0.2)",
+      borderRadius: "12px",
+      textDecoration: "none",
+      color: "inherit",
+    }}
+  >
+    <span
+      style={{
+        display: "flex",
+        alignItems: "center",
+        gap: "7px",
+        fontWeight: "600",
+        fontSize: "14px",
+        margin: "0",
+        lineHeight: "1.4",
+      }}
+    >
+      <img
+        alt="ScriptCat 图标"
+        src="/images/icons/scriptcat.png"
+        style={{
+          display: "block",
+          width: "16px",
+          height: "16px",
+          margin: "0",
+          flexShrink: "0",
+        }}
+      />
+      ScriptCat
+    </span>
+    <span
+      style={{
+        display: "flex",
+        gap: "6px",
+        flexWrap: "wrap",
+        margin: "0",
+        padding: "0",
+        lineHeight: "1",
+      }}
+    >
+      <img
+        alt="ScriptCat 安装徽章"
+        src="https://img.shields.io/badge/ScriptCat-%E5%AE%89%E8%A3%85-1597FF?style=flat"
+        style={{ display: "block", margin: "0", height: "20px" }}
+      />
+    </span>
+  </a>
 </div>
 
-## 商店安装
+## 从商店或脚本目录安装
 
 <Tabs>
   <Tab title="Chrome">
@@ -337,6 +393,29 @@ Ophel Atlas 支持 Chrome/Edge 扩展、Firefox 扩展，以及适用于 Tamperm
       </Step>
       <Step title="点击「安装此脚本」">
         点击 **安装此脚本**。Tampermonkey 弹出确认对话框，点击 **安装**。
+      </Step>
+      <Step title="打开任意支持的 AI 网站">
+        前往任意[支持的平台](/zh/introduction#支持的平台)，Ophel 面板自动出现。
+      </Step>
+    </Steps>
+
+  </Tab>
+  <Tab title="油猴脚本（ScriptCat）">
+    适合偏好 ScriptCat 脚本管理器的用户。
+
+    <Warning>
+      油猴脚本版本功能有限，建议在条件允许时安装扩展版本。
+    </Warning>
+
+    <Steps>
+      <Step title="安装 ScriptCat">
+        如果还没有，先为你的浏览器安装 [ScriptCat](https://scriptcat.org/)。
+      </Step>
+      <Step title="打开 ScriptCat 页面">
+        前往 [ScriptCat 上的 Ophel AI Chat Page Enhancer](https://scriptcat.org/script-show-page/6519)。
+      </Step>
+      <Step title="安装脚本">
+        点击 ScriptCat 页面上的安装按钮，并在 ScriptCat 中确认安装。
       </Step>
       <Step title="打开任意支持的 AI 网站">
         前往任意[支持的平台](/zh/introduction#支持的平台)，Ophel 面板自动出现。

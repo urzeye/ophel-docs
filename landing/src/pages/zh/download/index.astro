@@ -46,6 +46,15 @@ const platforms = [
     note: '需要 Tampermonkey 或 Violentmonkey',
   },
   {
+    name: 'ScriptCat',
+    icon: '🐱',
+    badge: null,
+    desc: '从 ScriptCat 脚本页安装油猴脚本，适合使用 ScriptCat 脚本管理器的用户。',
+    cta: '从 ScriptCat 安装',
+    href: 'https://scriptcat.org/script-show-page/6519',
+    note: '需要 ScriptCat',
+  },
+  {
     name: 'GitHub Releases',
     icon: '📦',
     badge: null,
@@ -65,13 +74,14 @@ const iconImgs: Record<string, string> = {
   Edge: '/icons/edge.svg',
   Firefox: '/icons/firefox.svg',
   油猴脚本: '/icons/tampermonkey.svg',
+  ScriptCat: '/icons/scriptcat.png',
   'GitHub Releases': '/icons/github.svg',
 };
 ---
 
 <BaseLayout
-  title="下载安装 Ophel — Chrome、Firefox、油猴脚本"
-  description="免费安装 Ophel 到 Chrome、Firefox、Edge 或油猴脚本。支持 ChatGPT、Gemini、Claude 等 15 个 AI 平台。"
+  title="下载安装 Ophel — Chrome、Firefox、油猴脚本、ScriptCat"
+  description="免费安装 Ophel 到 Chrome、Firefox、Edge、Tampermonkey 或 ScriptCat。支持 ChatGPT、Gemini、Claude 等 15 个 AI 平台。"
   lang="zh-CN"
   enPath="/download/"
 >
@@ -239,7 +249,7 @@ const iconImgs: Record<string, string> = {
                   安装扩展
                 </strong>
                 <p class="text-sm text-[color:var(--text-muted)] leading-relaxed">
-                  点击上方「安装到 Chrome」并添加到浏览器。
+                  选择上方任一安装方式并添加到浏览器。
                 </p>
               </div>
             </li>

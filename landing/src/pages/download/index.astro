@@ -46,6 +46,15 @@ const platforms = [
     note: 'Requires Tampermonkey or Violentmonkey',
   },
   {
+    name: 'ScriptCat',
+    icon: '🐱',
+    badge: null,
+    desc: 'Install the userscript from ScriptCat. Use this option if you prefer the ScriptCat manager and script directory.',
+    cta: 'Install via ScriptCat',
+    href: 'https://scriptcat.org/script-show-page/6519',
+    note: 'Requires ScriptCat',
+  },
+  {
     name: 'GitHub Releases',
     icon: '📦',
     badge: null,
@@ -65,13 +74,14 @@ const iconImgs: Record<string, string> = {
   Edge: '/icons/edge.svg',
   Firefox: '/icons/firefox.svg',
   Tampermonkey: '/icons/tampermonkey.svg',
+  ScriptCat: '/icons/scriptcat.png',
   'GitHub Releases': '/icons/github.svg',
 };
 ---
 
 <BaseLayout
-  title="Download & Install Ophel — Chrome, Firefox, Tampermonkey"
-  description="Install Ophel free on Chrome, Firefox, Edge, and Tampermonkey. Works with ChatGPT, Gemini, Claude, and 15 AI platforms."
+  title="Download & Install Ophel — Chrome, Firefox, Tampermonkey, ScriptCat"
+  description="Install Ophel free on Chrome, Firefox, Edge, Tampermonkey, or ScriptCat. Works with ChatGPT, Gemini, Claude, and 15 AI platforms."
   lang="en"
   zhPath="/zh/download/"
   withJsonLd={false}
@@ -237,10 +247,10 @@ const iconImgs: Record<string, string> = {
               >
               <div>
                 <strong class="block text-base font-semibold text-[color:var(--ink)] mb-1.5"
-                  >Install the extension</strong
+                  >Install Ophel</strong
                 >
                 <p class="text-sm text-[color:var(--text-muted)] leading-relaxed">
-                  Click "Install on Chrome" above and add it to your browser.
+                  Choose an install option above and add it to your browser.
                 </p>
               </div>
             </li>
