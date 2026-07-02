@@ -675,6 +675,14 @@ export const reviews: Review[] = [
     text: 'nice work',
     weight: 5,
   },
+  {
+    id: 'Ruggiero-Capacchione',
+    name: 'Ruggiero Capacchione',
+    avatar:
+      'https://lh3.googleusercontent.com/a-/ALV-UjVcQaudMe1-I1JllKvYNp9lGAVawmQyEJ3_BT-Cb9gCsga66bqT=s96-w96-h96',
+    text: "Cinque stelle per un'applicazione superlativa, quando sarà tradotta anche in italiano ci sarà bisogno della sesta stella. Five stars for a superlative app. Once it's translated into Italian, a sixth star will be needed. Quinque stellae applicationi praeclarae. Postquam in Italicum linguam conversa erit, sexta stella requiretur.",
+    weight: 5,
+  },
 ];
 
 /**
