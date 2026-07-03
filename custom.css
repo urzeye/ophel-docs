@@ -65,3 +65,13 @@
 .ophel-shortcut-legend-body code {
   font-size: 0.9em;
 }
+
+.ophel-docs-video {
+  background: var(--gray-2, #f8fafc);
+  border: 1px solid var(--gray-6, #d1d5db);
+  border-radius: 12px;
+  display: block;
+  margin: 1rem 0 1.25rem;
+  overflow: hidden;
+  width: 100%;
+}

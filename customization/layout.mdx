@@ -15,8 +15,8 @@ keywords:
   ]
 ---
 
-import { Icon } from "/snippets/icon.jsx"
-import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
+import { Icon } from "/snippets/icon.jsx";
+import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx";
 
 Ophel gives you fine-grained control over how AI pages are displayed. You can widen the reading area to use your full monitor, independently adjust your message bubble width, hide page chrome with Zen mode, and reduce ads or redundant page elements with Clean Mode. Layout settings are configured per site so each platform has its own values.
 
@@ -29,6 +29,30 @@ Many AI platforms cap their content area to a narrow column, leaving wide margin
 - **Unit**: percentage of viewport width
 - **Range**: 50%–100% (sliders are capped at 99% to preserve a sliver of the original platform chrome)
 - Changes apply immediately; no page refresh needed.
+
+### Smart Avoidance
+
+**Settings → Site Settings → Layout → Smart Avoidance**
+
+Smart Avoidance keeps the AI page visible while the Ophel panel is open. On supported sites, Ophel recalculates the chat safe area so messages, code blocks, input boxes, and right-side tool panels are not covered by the floating panel.
+
+<video
+  className="ophel-docs-video"
+  controls
+  muted
+  playsInline
+  preload="metadata"
+  aria-label="Smart Avoidance demo showing the chat area moving away from the Ophel panel"
+>
+  <source
+    src="/images/panel/panel-aware-layout.mp4"
+    type="video/mp4"
+  />
+  Your browser does not support embedded video. Open
+  `/images/panel/panel-aware-layout.mp4` directly.
+</video>
+
+Smart Avoidance works with Page Width and the panel's current side. If keeping the chat area visible requires more space than the page has, Ophel may cap the effective page width even when the Page Width slider is set higher. This is expected: the setting prioritizes keeping the conversation usable instead of letting content sit under the panel.
 
 ## User message width
 
@@ -44,14 +68,29 @@ Zen mode hides platform UI elements outside the conversation — sidebars, navig
 
 <Tabs>
   <Tab title="Keyboard shortcut">
-    Press <Icon src="/images/icons/keyboard.svg" alt="Keyboard shortcut icon" /> <Shortcut combo="ctrl+shift+z" /> to toggle Zen mode.
+    Press{" "}
+    <Icon
+      src="/images/icons/keyboard.svg"
+      alt="Keyboard shortcut icon"
+    />{" "}
+    <Shortcut combo="ctrl+shift+z" /> to toggle Zen mode.
   </Tab>
   <Tab title="Floating button">
-    Click the <Icon src="/images/icons/eye.svg" alt="Zen mode icon" /> **Zen** button in the floating button group.
+    Click the{" "}
+    <Icon
+      src="/images/icons/eye.svg"
+      alt="Zen mode icon"
+    />{" "}
+    **Zen** button in the floating button group.
   </Tab>
   <Tab title="Settings (persistent)">
-    Enable <Icon src="/images/icons/settings.svg" alt="Settings icon" /> **Settings → Site Settings → [Select site] → Layout → Zen Mode** to
-    enter Zen mode automatically every time you open that site.
+    Enable{" "}
+    <Icon
+      src="/images/icons/settings.svg"
+      alt="Settings icon"
+    />{" "}
+    **Settings → Site Settings → [Select site] → Layout → Zen Mode** to enter
+    Zen mode automatically every time you open that site.
   </Tab>
 </Tabs>
 
@@ -88,13 +127,13 @@ Clean Mode is narrower than Zen mode: it keeps the normal platform layout visibl
 
 You can drag the panel by its title bar to reposition it anywhere on screen. **Double-clicking** the title bar toggles between <Icon src="/images/icons/snap-to-edge.svg" alt="Edge Snap icon" /> Edge Snap and <Icon src="/images/icons/floating-mode.svg" alt="Floating mode icon" /> Floating mode. Additional size and behavior settings are in <Icon src="/images/icons/settings.svg" alt="Settings icon" /> **Settings → General → Panel**:
 
-| Setting        | Description                                         | Default   |
-| -------------- | --------------------------------------------------- | --------- |
+| Setting        | Description                                                                                                                                                      | Default   |
+| -------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- |
 | Panel mode     | <Icon src="/images/icons/snap-to-edge.svg" alt="Edge Snap icon" /> Edge Snap or <Icon src="/images/icons/floating-mode.svg" alt="Floating mode icon" /> Floating | Edge Snap |
-| Default side   | Left or right side of the screen                    | Right     |
-| Edge distance  | Distance from the screen edge when in Floating mode | 0 px      |
-| Panel width    | 240–600 px                                          | 320 px    |
-| Panel height   | 50–100 vh                                           | 85 vh     |
-| Snap threshold | Distance from edge that triggers automatic snapping | 30 px     |
+| Default side   | Left or right side of the screen                                                                                                                                 | Right     |
+| Edge distance  | Distance from the screen edge when in Floating mode                                                                                                              | 0 px      |
+| Panel width    | 240–600 px                                                                                                                                                       | 320 px    |
+| Panel height   | 50–100 vh                                                                                                                                                        | 85 vh     |
+| Snap threshold | Distance from edge that triggers automatic snapping                                                                                                              | 30 px     |
 
 When in Edge Snap mode, hover over the corresponding screen edge to pop the panel out for a preview. Drag the title bar away from the edge to switch to Floating mode.
