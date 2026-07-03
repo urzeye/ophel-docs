@@ -3,6 +3,30 @@ title: "Changelog"
 description: "All notable changes to Ophel Atlas are documented here."
 ---
 
+<Update label="v1.1.3">
+
+  ### 🚀 New Features
+
+  - **Smart panel-aware layout** — Added beta Smart Avoidance for All Platforms, so supported sites recalculate their chat safe area while the Ophel floating panel is open and keep messages, code blocks, and input boxes out from under the panel when pages are widened or browser windows are narrow. (#744, #752)
+
+  <!-- release-note-media: panel-aware-layout-video -->
+
+  - **Italian language support** — Ophel Atlas now supports Italian for the interface, extension metadata, and userscript resources, so Italian users can use the panel and settings in their language.
+
+  ### ✨ Improvements
+
+  - **Main panel toolbars and quick buttons** — Unified Outline, Prompts, and Conversations toolbar/search styling and tuned quick-button feedback, so high-frequency controls are clearer across themes.
+  - **Settings and theme management UI** — Refreshed the settings sidebar, theme preset cards, custom style list, and style editor so navigation reads more clearly and theme choices are easier to scan. (#749)
+  - **Panel header and tabs** — Polished the panel header, drag hint, and tab bar styling to reduce visual noise and keep controls aligned with the rest of the interface. (#749)
+  - **Prompt preview category tags** — Prompt previews now show the category as a colored tag matching the prompt category color, with a clearer preview header and content layout.
+
+  ### 🐛 Bug Fixes
+
+  - **Custom tab title formats** — Fixed issue where Qianwen and Z.ai could reuse an already-renamed browser tab title after switching conversations, preventing duplicated title or model fragments when custom tab formats include `{model}`.
+  - **Claude userscript export** — Fixed issue where exporting Claude conversations with thinking blocks could fail in userscript mode while preparing the page for export.
+  - **Kimi Zen Mode** — Fixed issue where Zen Mode no longer hid Kimi's sidebar after the site updated its page layout.
+</Update>
+
 <Update label="v1.1.2">
 
   ### 🚀 New Features
@@ -230,7 +254,7 @@ description: "All notable changes to Ophel Atlas are documented here."
 
   ### 🐛 Bug Fixes
 
-  - **Floating panel settings UX and positioning preview**: Moved the default edge distance margin setting to only display under Floating panel mode, and updated the description across all 11 locales. Also fixed an issue where adjusting default margin/position settings failed to update the panel position in real-time. (#519)
+  - **Floating panel settings UX and positioning preview**: Moved the default edge distance margin setting to only display under Floating panel mode, and updated the description across all 10 locales. Also fixed an issue where adjusting default margin/position settings failed to update the panel position in real-time. (#519)
   - **Fixed ChatGPT outline display and navigation issues**: Resolved cases where the outline was incomplete or clicks failed to navigate to the message in long chats, and fixed routing issues where switching conversations caused the outline to lag, display incorrect entries, or show empty headings. (#402)
   - **Resolved ChatGPT export duplication, scrambling, and truncation issues in long conversations**: Re-engineered the export process to handle virtualization, ensuring all turns are fully loaded, ordered correctly, and deduplicated without missing segments or repeating messages.
   - **AI Studio export missed turns and could loop in long conversations**: Rewrote the export collector to iterate the DOM-resident `ms-chat-turn` list directly so every user prompt and assistant reply (including attachments and the separate "thoughts" turn) is captured in a single pass.
@@ -472,7 +496,7 @@ description: "All notable changes to Ophel Atlas are documented here."
 
   - **Quick button experience upgrade**: Integrated "Zen Mode" and "Global Settings" into the outer quick group with defaults enabled; redesigned intelligent grouping — feature toggles at top, navigation actions fixed at bottom with a separator.
   - **Zen Mode immersive icon animation**: When Zen Mode is enabled, the related icon in quick buttons seamlessly switches to the closed-eye state (EyeClosedIcon) with a minimalist 4-second breathing glow animation, providing visual feedback that matches the "immersive focus" mental model.
-  - **Native page color sync label clarified**: "Sync native page theme" labels unified as "Sync native page colors", clarifying that page light/dark mode always follows Ophel, and this toggle only additionally controls some native element colors; descriptions updated in all 11 languages to reduce confusion.
+  - **Native page color sync label clarified**: "Sync native page theme" labels unified as "Sync native page colors", clarifying that page light/dark mode always follows Ophel, and this toggle only additionally controls some native element colors; descriptions updated in all 10 languages to reduce confusion.
   - **Zen Mode exit button visual overhaul**: Exit button redesigned as a top-centered floating glassmorphism capsule with smooth entrance animation that seamlessly adapts to the global theme system.
   - **Global Toast notification upgrade**: Replaced heavy gradient color blocks with a premium frosted glass card style; built-in smart avoidance mechanism automatically moves down when Zen Mode is active to prevent overlap.
   - **Watermark removal indicator repositioned**: The loading indicator during Gemini image watermark removal moved to the bottom-right corner of the image, reducing obstruction of the top-right action buttons and image content.
@@ -608,7 +632,7 @@ description: "All notable changes to Ophel Atlas are documented here."
 
   ### ✨ Improvements
 
-  - **Export progress notification enhanced**: Unified improved export start toast text clearly reminding "please do not operate the current page during export", with slightly longer display time; synced in 11 languages to reduce accidental operations during long AI Studio and DeepSeek conversation exports.
+  - **Export progress notification enhanced**: Unified improved export start toast text clearly reminding "please do not operate the current page during export", with slightly longer display time; synced in 10 languages to reduce accidental operations during long AI Studio and DeepSeek conversation exports.
   - **Markdown export header typography improved**: Adjusted spacing structure between the title and metadata block at the top of exported documents for better first-screen readability.
 
   ### 🐛 Bug Fixes
@@ -806,7 +830,7 @@ description: "All notable changes to Ophel Atlas are documented here."
 
   ### 🌍 Internationalization
 
-  - **11 language text completed**: Completed and synced `globalSearchTriggerHint` template text, `globalSearchTriggerDoubleShift`, and "Global Search Shortcut" jump item (title/description/button) key values in 11 languages.
+  - **10 language text completed**: Completed and synced `globalSearchTriggerHint` template text, `globalSearchTriggerDoubleShift`, and "Global Search Shortcut" jump item (title/description/button) key values in 10 languages.
 
   ### 🐛 Bug Fixes
 
@@ -831,7 +855,7 @@ description: "All notable changes to Ophel Atlas are documented here."
   - **Gemini cross-browser import invisible conversations**: Upgraded Gemini conversation isolation from numeric `cid` (`/u/n`) to account email priority, with automatic migration from old data (numeric `cid` → email `cid`) on first Gemini open after upgrade, supporting `u/0` to `u/1` cross-browser import scenarios.
   - **Import backup module load error**: Fixed `Cannot find module` error during dynamic import of the validation module in local import and WebDAV restore pipelines; switched to static import for stable availability in build artifacts.
   - **Import failure diagnosis**: Added clear console error logs for import parse and write failures, with actual error message shown in Toast for easier issue identification.
-  - **Import confirm dialog and i18n text**: Improved "backup time/type" info display style in the import confirm dialog; added and completed "Type" and "Open AI pages will be refreshed" key values in 11 languages.
+  - **Import confirm dialog and i18n text**: Improved "backup time/type" info display style in the import confirm dialog; added and completed "Type" and "Open AI pages will be refreshed" key values in 10 languages.
 </Update>
 
 <Update label="v1.0.13">
@@ -897,7 +921,7 @@ description: "All notable changes to Ophel Atlas are documented here."
 
   - Gemini (standard) outline extraction now filters `cdk-visually-hidden` auxiliary headings, fixing language-related hidden headings like "Gemini says" incorrectly appearing in the outline.
   - Gemini (standard) export Markdown now cleans `cdk-visually-hidden` nodes before export to prevent auxiliary hidden headings from appearing in exported files.
-  - Added 11-language key values for `Include thinking chain in export` related text, fixing missing settings text in non-Chinese/English environments.
+  - Added 10-language key values for `Include thinking chain in export` related text, fixing missing settings text in non-Chinese/English environments.
 </Update>
 
 <Update label="v1.0.10">
@@ -944,7 +968,7 @@ description: "All notable changes to Ophel Atlas are documented here."
   - Global search hit reason tags completed: conversations (title/folder/tag), outline (title/type/number), prompts (title/category/content/ID), settings (name/keyword/ID/alias).
   - Global search sort strategy enhanced: sorted by "exact match > prefix match > contains match > combined score > recent use", reducing misclicks and improving first-screen relevance.
   - Prompts now show a one-line hit snippet preview with "Content hit:" prefix and keyword highlighting when matched by content.
-  - Fixed hit reason text garbled in multiple languages; unified 11-language text readability.
+  - Fixed hit reason text garbled in multiple languages; unified 10-language text readability.
   - Global search added "Fuzzy Search" capability (optional toggle) supporting spell-error-tolerant fallback matching, with "fuzzy match" label in results.
   - Fuzzy match results show differentiated highlight style (distinct from exact match) to reduce misidentification cost.
   - Global search "Fuzzy Search" default changed to off; users can enable in "Settings → Global Search" as needed.
@@ -986,7 +1010,7 @@ description: "All notable changes to Ophel Atlas are documented here."
 
   ### 🌍 Internationalization
 
-  - Completed key values for all new global search text in 11 languages, including categories, empty states, prompt behavior, site names, and in-page hints.
+  - Completed key values for all new global search text in 10 languages, including categories, empty states, prompt behavior, site names, and in-page hints.
 </Update>
 
 <Update label="v1.0.7">
@@ -1044,7 +1068,7 @@ description: "All notable changes to Ophel Atlas are documented here."
   ### 🔧 Improvements
 
   - **Config experience**: Moved toolbox settings to the "Basic Settings" page; added "Settings" button inside toolbox to directly open config dialog without navigating to a new tab.
-  - **Internationalization**: Toolbox menu and config items fully support 11-language display.
+  - **Internationalization**: Toolbox menu and config items fully support 10-language display.
   - **Export text**: Optimized "Export" button text to "Export Markdown" for clearer intent.
   - **Settings improvements**: Improved export settings UI interaction, moved "Convert images to Base64" option to the bottom, improved input box experience.
 </Update>
@@ -1123,7 +1147,7 @@ description: "All notable changes to Ophel Atlas are documented here."
 
   ### 🔧 Improvements
 
-  - **All-language text improvement**: Ambiguous "Toggle Panel" text unified across all 11 languages to the clearer "Expand/Collapse Panel" for more explicit interaction intent.
+  - **All-language text improvement**: Ambiguous "Toggle Panel" text unified across all 10 languages to the clearer "Expand/Collapse Panel" for more explicit interaction intent.
   - **Tooltip performance**: Improved tooltip component measurement and positioning algorithm, supporting `disabled` prop for dynamic disabling.
   - **Text truncation**: Unified outline text truncation to 200 characters across all site adapters, removing hardcoded "..." suffix (handled by CSS).
   - **Full node copy**: Enhanced copy functionality to support full text copy of all outline nodes (including regular headings and user queries) with smart full text extraction.
@@ -1264,6 +1288,7 @@ description: "All notable changes to Ophel Atlas are documented here."
   - Open source and transparent
 
 
+  [1.1.3]: https://github.com/urzeye/ophel/releases/tag/v1.1.3
   [1.1.2]: https://github.com/urzeye/ophel/releases/tag/v1.1.2
   [1.1.1]: https://github.com/urzeye/ophel/releases/tag/v1.1.1
   [1.1.0]: https://github.com/urzeye/ophel/releases/tag/v1.1.0
