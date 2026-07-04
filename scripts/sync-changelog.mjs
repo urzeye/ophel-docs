@@ -78,9 +78,17 @@ function parseVersions(raw) {
 	return versions;
 }
 
+// ── Normalize Markdown content for MDX ──────────────────────────────────────
+function normalizeMdxContent(content) {
+	return content.replace(/<!--([\s\S]*?)-->/g, (_, comment) => {
+		const safeComment = comment.replace(/\*\//g, "* /").trim();
+		return `{/* ${safeComment} */}`;
+	});
+}
+
 // ── Convert one version to MDX Update block ─────────────────────────────────
 function versionToUpdate(version) {
-	let body = version.lines.join("\n").trimEnd();
+	let body = normalizeMdxContent(version.lines.join("\n").trimEnd());
 	const indented = body
 		.split("\n")
 		.map((l) => (l.trim() === "" ? "" : "  " + l))
