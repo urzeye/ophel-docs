@@ -24,6 +24,14 @@ Ophel Atlas 支持 Chrome/Edge 扩展、Firefox 扩展，以及通过 Greasy For
   尽量使用浏览器扩展版本。油猴脚本版本相比扩展有功能限制，在部分平台上的兼容性也较低。
 </Tip>
 
+<Note>
+  GitHub Releases 和浏览器商店更新是两个独立步骤。新的 GitHub Release
+  只表示文件已经在 GitHub 发布，但 Chrome 网上应用店、Microsoft Edge
+  add-ons、Firefox 附加组件商店、Greasy Fork 和 ScriptCat
+  都有各自的提交、审核、批准和分发流程。商店和脚本目录版本可能暂时落后于 GitHub
+  Releases，或彼此不同步。如需确认当前已发布版本，请以各商店公开页面显示的版本为准。
+</Note>
+
 ## 下载
 
 <div
@@ -428,6 +436,11 @@ Ophel Atlas 支持 Chrome/Edge 扩展、Firefox 扩展，以及通过 Greasy For
 ## 从 GitHub Releases 手动加载
 
 适用于安装特定版本、测试预发布构建，或不想通过商店安装的情况。
+
+<Warning>
+  不要手动安装 `*-cws-upload.zip` 或
+  `*-edge-addons-upload.zip`。这些文件是维护者提交浏览器商店使用的包，不代表商店版本已经审核通过或完成分发。
+</Warning>
 
 <Tabs>
   <Tab title="Chrome / Edge（手动）">
