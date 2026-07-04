@@ -43,6 +43,10 @@ function mdToHtml(md: string): string {
     )
     .replace(/\*\*(.+?)\*\*/g, '<strong class="font-semibold text-[color:var(--ink)]">$1</strong>')
     .replace(
+      /\[(#[0-9]+)\]\((https:\/\/github\.com\/urzeye\/ophel\/issues\/[0-9]+)\)/g,
+      '<a href="$2" target="_blank" rel="noopener noreferrer" class="text-[color:var(--accent-strong)] hover:text-[color:var(--ink-strong)] hover:underline">$1</a>',
+    )
+    .replace(
       /\(#(\d+)\)/g,
       '(<a href="https://github.com/urzeye/ophel/issues/$1" target="_blank" rel="noopener noreferrer" class="text-[color:var(--accent-strong)] hover:text-[color:var(--ink-strong)] hover:underline">#$1</a>)',
     )
