@@ -31,14 +31,19 @@ Ophel has built-in presets for the most common WebDAV providers:
 
 ## What gets synced
 
-WebDAV sync covers the metadata that Ophel manages locally:
+WebDAV sync backs up the Ophel data stored locally:
 
 - Folders, tags, and pinned state you've set for your conversations
 - Your prompt library
 - Ophel settings
-- Claude Session Keys (optional; included by default — be careful if you share backup files)
+- Claude Session Keys, if you use the Claude multi-account feature
 
 **Not synced:** The actual conversation messages on AI platforms. Those messages belong to each AI service. Ophel has no access to read or upload them.
+
+<Warning>
+  Backup files can contain valid Claude Session Keys when that feature is in
+  use. Keep WebDAV backup files private.
+</Warning>
 
 ## Settings
 
@@ -52,7 +57,6 @@ Configure the sync connection at **Settings → Backup & Sync → WebDAV**:
 | Remote path        | Directory on the server where sync files are stored (default: `ophel`, created automatically) |
 | Sync mode          | **Manual** — click a button to sync; or **Automatic** — sync on a set interval                |
 | Auto sync interval | Minimum time between automatic syncs, in minutes                                              |
-| Data sources       | Which data types to include: settings, conversations, prompts, and/or Claude Session Keys     |
 
 ## Set up WebDAV sync
 
@@ -70,7 +74,7 @@ Configure the sync connection at **Settings → Backup & Sync → WebDAV**:
     Click <Icon src="/images/icons/check.svg" alt="Test connection icon" /> **Test connection** to verify your credentials and server reachability before syncing any data.
   </Step>
   <Step title="Choose a sync mode and save">
-    Select manual or automatic sync, set an interval if using automatic, choose which data sources to include, and save your configuration.
+    Select manual or automatic sync, set an interval if using automatic, and save your configuration.
   </Step>
   <Step title="Push your data">
     Click <Icon src="/images/icons/cloud-upload.svg" alt="Upload backup icon" /> **Upload backup** to push your current local data to the server.

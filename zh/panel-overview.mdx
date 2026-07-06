@@ -34,7 +34,7 @@ import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
     当前对话的实时自动生成目录树。点击任意标题即可跳转。支持折叠/展开、搜索、书签和实时字数统计。
   </Card>
   <Card title="会话" icon="folder-open">
-    汇聚各平台的历史对话列表。用文件夹和标签整理，支持语法过滤搜索，可导出为
+    当前 AI 平台的历史对话列表。用文件夹和标签整理，支持语法过滤搜索，可导出为
     <Icon src="/images/icons/markdown.svg" alt="Markdown 文件图标" /> Markdown、<Icon src="/images/icons/json-file.svg" alt="JSON 文件图标" />
     JSON 或 <Icon src="/images/icons/txt-file.svg" alt="TXT 文件图标" /> 纯文本。
   </Card>
@@ -87,6 +87,7 @@ import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
 | 图标 | 作用 |
 | ---- | ---- |
 | <Icon src="/images/icons/export.svg" alt="导出图标" /> **导出** | 导出当前对话。 |
+| <Icon src="/images/icons/segmented-export.svg" alt="分段导出图标" /> **分段导出** | 选择并导出当前对话的特定片段。 |
 | <Icon src="/images/icons/copy.svg" alt="复制 Markdown 图标" /> **复制 Markdown** | 把当前对话复制为 Markdown。 |
 | <Icon src="/images/icons/folder-move.svg" alt="移动会话图标" /> **移动会话** | 选择目标文件夹并移动当前会话。 |
 | <Icon src="/images/icons/tag.svg" alt="设置标签图标" /> **设置标签** | 给当前会话添加、移除或调整标签。 |
@@ -105,7 +106,7 @@ import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
 
 ## 全局搜索
 
-按 <Shortcut combo="ctrl+k" />，或点击浮动按钮中的 <Icon src="/images/icons/search.svg" alt="全局搜索图标" /> 搜索图标，打开全局搜索叠加层。它将大纲节点、历史对话、提示词库和设置项统一纳入一个搜索框，无需逐个标签翻找。也可以连按两次 `Shift` 触发（需在 **设置 → 全局搜索** 中开启）。
+按 <Shortcut combo="ctrl+k" />，或点击浮动按钮中的 <Icon src="/images/icons/search.svg" alt="全局搜索图标" /> 搜索图标，打开全局搜索叠加层。它将大纲节点、当前平台历史对话、提示词库和设置项统一纳入一个搜索框，无需逐个标签翻找。也可以连按两次 `Shift` 触发（需在 **设置 → 全局搜索** 中开启）。
 
 支持以下语法过滤，多个过滤条件可以组合使用：
 
@@ -169,7 +170,7 @@ import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
 
 | 设置项             | 说明                                                       | 默认值   |
 | ------------------ | ---------------------------------------------------------- | -------- |
-| 面板模式           | 自动吸附（贴边隐藏、悬停弹出）或悬浮（始终可见）           | 自动吸附 |
+| 面板模式           | 自动吸附（贴边隐藏、悬停弹出）或悬浮（始终可见）           | 悬浮     |
 | 默认侧边           | 面板在左侧还是右侧                                         | 右侧     |
 | 面板宽度           | 持久面板宽度，也可在悬浮模式下拖拽面板边缘调整             | 320 px   |
 | 悬停时加宽（Beta） | 鼠标或键盘焦点停在悬浮面板内时临时加宽，离开后恢复常规宽度 | 关闭     |

@@ -33,7 +33,6 @@ WebDAV 同步让你把 Ophel 数据上传到自己的私有服务器，并在多
 | 远端目录   | 同步文件存放的路径（默认 `ophel`，自动创建）      |
 | 同步模式   | 手动（点按钮）或自动（按设定间隔）                |
 | 自动同步间隔 | 自动模式下，两次同步之间的最短间隔（分钟）       |
-| 数据来源   | 选择要同步的数据类型：设置、会话、提示词、Claude Key |
 
 ## 首次设置步骤
 
@@ -51,7 +50,7 @@ WebDAV 同步让你把 Ophel 数据上传到自己的私有服务器，并在多
     点击 <Icon src="/images/icons/check.svg" alt="测试连接图标" /> **测试连接**，验证凭据和服务器可达性后再执行同步。
   </Step>
   <Step title="选择同步模式并保存">
-    选择手动或自动同步，设置自动同步间隔，选择要同步的数据类型，然后保存配置。
+    选择手动或自动同步，设置自动同步间隔，然后保存配置。
   </Step>
   <Step title="上传数据">
     点击 <Icon src="/images/icons/cloud-upload.svg" alt="上传备份图标" /> **上传备份**，将本地数据推送到服务器。
@@ -71,17 +70,21 @@ WebDAV 同步让你把 Ophel 数据上传到自己的私有服务器，并在多
 
 ## 什么数据会被同步？
 
-WebDAV 同步的是 Ophel 在本地维护的**元数据**：
+WebDAV 同步会备份 Ophel 在本地维护的数据：
 
 - 你在 Ophel 中设置的文件夹、标签、置顶状态
 - 提示词库
 - Ophel 设置项
-- Claude Session Key（可选，默认包含，共享备份文件时请注意）
+- Claude Session Key（如果你启用了 Claude 多账号管理）
 
 <Note>
   WebDAV **不会同步** AI 平台上的实际对话消息——那些内容属于各 AI 服务，Ophel
   无权访问和上传。
 </Note>
+
+<Warning>
+  如果你使用 Claude 多账号管理，WebDAV 备份文件可能包含有效的 Session Key。请妥善保管备份文件。
+</Warning>
 
 ## 权限要求
 

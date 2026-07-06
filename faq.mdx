@@ -127,7 +127,7 @@ This page answers the most common questions about Ophel Atlas. If you don't find
   </Accordion>
 
   <Accordion title="What does WebDAV sync actually back up?" icon="cloud">
-    WebDAV sync backs up the **metadata** that Ophel adds to your conversations: titles, folder assignments, tags, pins, and any notes you've added inside Ophel. It does **not** upload the actual conversation messages — those belong to the AI platform and stay there. You can also optionally include your saved prompts, settings, and Claude session keys in the backup.
+    WebDAV sync backs up Ophel data stored locally: conversation titles, folder assignments, tags, pins, saved prompts, settings, and Claude Session Keys if you use the Claude multi-account feature. It does **not** upload the actual conversation messages — those belong to the AI platform and stay there.
   </Accordion>
 </AccordionGroup>
 
@@ -159,7 +159,7 @@ This page answers the most common questions about Ophel Atlas. If you don't find
   </Accordion>
 
   <Accordion title="Is it safe to store session keys in Ophel?" icon="shield-halved">
-    Session keys are stored locally in your browser on your own machine. Ophel does not upload them to any server. If you use WebDAV backup and enable the option to include session keys, be careful about who has access to your backup files — they would contain valid authentication tokens.
+    Session keys are stored locally in your browser on your own machine. Ophel does not upload them to Ophel servers. If you use full backup or WebDAV backup, be careful about who has access to your backup files — they can contain valid authentication tokens.
   </Accordion>
 </AccordionGroup>
 

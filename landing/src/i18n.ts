@@ -54,12 +54,12 @@ const en = {
       {
         icon: '💬',
         title: 'Prompt Library',
-        desc: 'Save your favorite prompts and insert them in one click. Supports categories, search, and team sharing.',
+        desc: 'Save your favorite prompts and insert them in one click. Supports categories, search, import/export, and prompt chains.',
       },
       {
         icon: '🔍',
         title: 'Global Search',
-        desc: 'Syntax-powered search across sites, folders, and history. Supports folder:, tag:, site: filters.',
+        desc: 'Syntax-powered search across the current site, folders, and history. Supports folder:, tag:, and type: filters.',
       },
       {
         icon: '🎨',
@@ -123,10 +123,10 @@ const en = {
       collection: {
         title: 'Data Collection',
         p1: 'Ophel is a purely local browser extension. ',
-        p1Strong:
-          'We do not collect, upload, or transmit any of your conversation content or personal data.',
+        p1Strong: 'We do not collect your conversation content or personal data.',
         p2: "All data (conversation titles, folder structures, prompt library, settings, etc.) is stored in your browser's local ",
-        p2Suffix: ' and is never sent to any server.',
+        p2Suffix:
+          ' by default. If you enable WebDAV sync, backup data is sent only to the server you configure.',
       },
       permissions: {
         title: 'Permissions',
@@ -201,12 +201,12 @@ const zh = {
       {
         icon: '💬',
         title: 'Prompt 词库',
-        desc: '收藏常用提示词，一键插入到对话框。支持分类、搜索，团队共享也不在话下。',
+        desc: '收藏常用提示词，一键插入到对话框。支持分类、搜索、导入导出和链式提示词。',
       },
       {
         icon: '🔍',
         title: '全局搜索',
-        desc: '语法化搜索跨站点、跨文件夹的历史对话。支持 folder:、tag:、site: 等过滤器。',
+        desc: '语法化搜索当前站点、文件夹和历史对话。支持 folder:、tag:、type: 等过滤器。',
       },
       {
         icon: '🎨',
@@ -270,9 +270,9 @@ const zh = {
       collection: {
         title: '数据收集',
         p1: 'Ophel 是一款纯本地运行的浏览器扩展。',
-        p1Strong: '我们不收集、不上传任何您的对话内容或个人数据。',
+        p1Strong: '我们不收集您的对话内容或个人数据。',
         p2: '所有数据（会话标题、文件夹结构、Prompt 词库、设置等）均存储在您本地浏览器的 ',
-        p2Suffix: ' 中，不会上传至任何服务器。',
+        p2Suffix: ' 中。启用 WebDAV 同步时，备份数据只会发送到您配置的服务器。',
       },
       permissions: {
         title: '权限说明',

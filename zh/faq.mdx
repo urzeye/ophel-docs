@@ -114,7 +114,7 @@ import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
   </Accordion>
 
   <Accordion title="WebDAV 同步的是什么内容？" icon="cloud">
-    WebDAV 只同步 Ophel 中的**元数据**：你在 Ophel 里设置的文件夹归属、标签、置顶状态和备注。不会上传实际的对话消息（那些内容属于 AI 平台）。你也可以选择在备份中包含提示词库、设置和 Claude Session Key。
+    WebDAV 会备份 Ophel 在本地存储的数据：会话标题、文件夹归属、标签、置顶状态、提示词库、设置，以及 Claude 多账号功能保存的 Session Key。不会上传实际的对话消息（那些内容属于 AI 平台）。
 
     详见 [WebDAV 同步](/data/webdav)。
 
@@ -149,7 +149,7 @@ import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
   </Accordion>
 
   <Accordion title="Session Key 存储安全吗？" icon="shield-halved">
-    Session Key 存储在你本机的 `chrome.storage.local` 中，Ophel 不会将其上传到任何服务器。如果你启用了 WebDAV 备份并勾选了包含 Session Key 的选项，请注意控制备份文件的访问权限——备份中会包含有效的认证令牌。
+    Session Key 存储在你本机的 `chrome.storage.local` 中，Ophel 不会将其上传到 Ophel 服务器。如果你使用完整备份或 WebDAV 备份，请注意控制备份文件的访问权限——备份中可能包含有效的认证令牌。
   </Accordion>
 </AccordionGroup>
 

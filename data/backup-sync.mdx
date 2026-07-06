@@ -16,13 +16,17 @@ Three export types are available. Choose the one that fits what you need to pres
 
 | Export type   | What's included                                                                                          |
 | ------------- | -------------------------------------------------------------------------------------------------------- |
-| <Icon src="/images/icons/backup.svg" alt="Full backup icon" /> Full backup | Everything: settings, prompts, conversation metadata, folders, tags (and optionally Claude Session Keys) |
+| <Icon src="/images/icons/backup.svg" alt="Full backup icon" /> Full backup | Everything in local storage: settings, prompts, conversation metadata, folders, tags, and Claude Session Keys if you use Claude multi-account features |
 | <Icon src="/images/icons/prompt.svg" alt="Prompt library icon" /> Prompts only | Your prompt library |
 | <Icon src="/images/icons/settings.svg" alt="Settings icon" /> Settings only | All configuration items |
 
 <Tip>
 Use **Full backup** before making any large configuration changes or before clearing your data. It's the safest snapshot to fall back to.
 </Tip>
+
+<Warning>
+Full backups can contain valid Claude Session Keys when that feature is in use. Keep backup files private.
+</Warning>
 
 ## Import a backup
 

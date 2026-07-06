@@ -10,13 +10,13 @@ Ophel 的设计原则是**隐私优先**。本页说明 Ophel 存储哪些数据
 
 ## 数据存储边界
 
-Ophel 使用浏览器扩展本地存储（`chrome.storage.local`）保存所有数据，**不依赖任何外部账号或服务器**。
+Ophel 默认使用浏览器扩展本地存储（`chrome.storage.local`）保存数据，**不依赖任何 Ophel 账号或 Ophel 服务器**。如果你主动启用 WebDAV 同步，备份数据会发送到你配置的 WebDAV 服务器。
 
 本地存储的数据包括：
 
 - **设置（settings）** — 你在 Ophel 中配置的所有偏好项
 - **提示词（prompts）** — 你保存的提示词库
-- **会话元数据（conversations）** — 文件夹归属、标签、置顶状态、备注（不含对话内容）
+- **会话元数据（conversations）** — 文件夹归属、标签、置顶状态（不含对话内容）
 - **文件夹与标签（folders / tags）** — 分类管理数据
 - **阅读历史（readingHistory）** — 各对话的上次阅读位置
 - **Claude Session Keys（claudeSessionKeys）** — 仅在启用 Claude 多账号管理时保存
@@ -24,10 +24,9 @@ Ophel 使用浏览器扩展本地存储（`chrome.storage.local`）保存所有�
 ## Ophel 不会做什么
 
 <Note>
-  Ophel 不会： - 收集、上传或分析你与 AI 的任何对话内容 - 追踪你的浏览行为 -
-  向任何第三方服务器发送你的个人数据 - 要求登录账号 Ophel
-  从不以任何方式访问或存储 AI 平台上的实际消息内容，那些内容属于你与对应 AI
-  服务之间的交互。
+  Ophel 不会收集、上传或分析你与 AI 的任何对话内容，不会追踪你的浏览行为，也不要求登录账号。除非你主动启用 WebDAV
+  同步，Ophel 不会把本地数据发送到你配置之外的服务器。AI 平台上的实际消息内容属于你与对应 AI 服务之间的交互，Ophel
+  不会访问或存储这些消息内容。
 </Note>
 
 ## 可选权限
@@ -48,9 +47,9 @@ WebDAV 连接的凭证（用户名和密码）存储在本机 `chrome.storage.lo
 
 ## Claude Session Keys
 
-Claude Session Keys 存储在你本机的浏览器中，仅用于代表你向 Claude 自己的接口（claude.ai）发送请求。Ophel 不会将它们发送到 Ophel 的服务器或任何第三方。
+Claude Session Keys 存储在你本机的浏览器中，日常使用时仅用于代表你向 Claude 自己的接口（claude.ai）发送请求。Ophel 不会将它们发送到 Ophel 的服务器。
 
-如果你在完整备份中包含了 Session Keys，请妥善保管备份文件——备份中会包含有效的认证令牌。
+如果你使用完整备份或 WebDAV 同步，备份文件可能包含有效的 Session Keys。请妥善保管备份文件。
 
 ## 完整控制
 

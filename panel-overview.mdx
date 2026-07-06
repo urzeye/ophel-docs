@@ -38,8 +38,8 @@ The panel has three tabs along the top. Click a tab label to switch, or use <Sho
     bookmarks, and real-time word counts.
   </Card>
   <Card title="Conversations" icon="folder-open">
-    An aggregated history from all supported AI platforms. Organize
-    conversations into folders and tags, search with syntax filters, and export
+    The current AI platform's conversation history in one organized view.
+    Organize conversations into folders and tags, search with syntax filters, and export
     to <Icon src="/images/icons/markdown.svg" alt="Markdown file icon" />
     Markdown, <Icon src="/images/icons/json-file.svg" alt="JSON file icon" />
     JSON, or <Icon src="/images/icons/txt-file.svg" alt="TXT file icon" /> TXT.
@@ -95,6 +95,7 @@ Click <Icon src="/images/icons/tools.svg" alt="Toolbox icon" /> **Toolbox** to r
 | Icon | Action |
 | ---- | ------ |
 | <Icon src="/images/icons/export.svg" alt="Export icon" /> **Export** | Exports the current conversation. |
+| <Icon src="/images/icons/segmented-export.svg" alt="Segmented export icon" /> **Export segments** | Selects and exports specific parts of the current conversation. |
 | <Icon src="/images/icons/copy.svg" alt="Copy Markdown icon" /> **Copy Markdown** | Copies the current conversation as Markdown. |
 | <Icon src="/images/icons/folder-move.svg" alt="Move conversation icon" /> **Move conversation** | Selects a target folder and moves the current conversation. |
 | <Icon src="/images/icons/tag.svg" alt="Set tag icon" /> **Set tag** | Adds, removes, or changes tags on the current conversation. |
@@ -128,7 +129,7 @@ Click <Icon src="/images/icons/tools.svg" alt="Toolbox icon" /> **Toolbox** to r
 
 ## Global search
 
-Press <Shortcut combo="ctrl+k" />, tap `Shift` twice, or click the <Icon src="/images/icons/search.svg" alt="Global search icon" /> search icon in the floating quick buttons to open global search. It searches across your outline headings, conversation history, prompt library, and settings in a single query. You can also use advanced syntax filters:
+Press <Shortcut combo="ctrl+k" />, tap `Shift` twice, or click the <Icon src="/images/icons/search.svg" alt="Global search icon" /> search icon in the floating quick buttons to open global search. It searches across your outline headings, current platform conversation history, prompt library, and settings in a single query. You can also use advanced syntax filters:
 
 | Filter    | Example        | Effect                              |
 | --------- | -------------- | ----------------------------------- |
@@ -172,7 +173,7 @@ All of these are in **Settings → General → Panel**:
 
 | Setting               | Description                                                                       | Default   |
 | --------------------- | --------------------------------------------------------------------------------- | --------- |
-| Panel mode            | Edge Snap or Floating                                                             | Edge Snap |
+| Panel mode            | Edge Snap or Floating                                                             | Floating  |
 | Default side          | Left or right side of the screen                                                  | Right     |
 | Panel width           | Saved panel width; can also be changed by dragging the Floating panel edge        | 320 px    |
 | Widen on hover (Beta) | Temporarily widens the Floating panel while your cursor or keyboard focus is on it | Off       |

@@ -6,11 +6,11 @@ description: "Ophel stores everything in your browser and collects nothing. No a
 keywords: ["privacy", "local storage", "no account", "data collection", "local-first", "data security"]
 ---
 
-Ophel is designed to work entirely on your device. Every setting, prompt, folder, tag, and piece of conversation metadata you create stays in your browser's local storage. Ophel does not collect, transmit, or store any of your data on external servers.
+Ophel stores your data in your browser by default. Every setting, prompt, folder, tag, and piece of conversation metadata you create stays in local storage unless you enable an optional feature such as WebDAV sync. Ophel does not collect or store your data on Ophel servers.
 
 ## Where your data lives
 
-All Ophel data is written to your browser's local storage. Nothing is uploaded to Ophel's infrastructure. The data stored locally includes:
+All Ophel data is written to your browser's local storage by default. Nothing is uploaded to Ophel's infrastructure. The data stored locally includes:
 
 - Extension settings and preferences
 - Your prompt library
@@ -26,7 +26,7 @@ No account is required to use Ophel. There is no sign-in, no profile, and no syn
 - Ophel does not collect analytics or usage telemetry.
 - Ophel does not display advertisements.
 - Ophel does not read, upload, or have any access to the content of your AI conversations. Conversation messages belong to the AI platform you are using.
-- Ophel does not send your Claude Session Keys to any server other than Claude's own endpoints when you initiate a request.
+- During normal Claude multi-account use, Ophel sends Claude Session Keys only to Claude's own endpoints when you initiate a request. Full backups and WebDAV backups can contain those keys when the feature is in use.
 
 ## Permissions model
 
@@ -48,7 +48,7 @@ If you choose to enable WebDAV sync, your data is transmitted to the WebDAV serv
 
 ## Claude Session Keys
 
-Claude Session Keys are stored locally in your browser and are used only to make requests to Claude's own endpoints on your behalf. Ophel never transmits them to Ophel's servers or any other third party.
+Claude Session Keys are stored locally in your browser and are used to make requests to Claude's own endpoints on your behalf. If you use full backup or WebDAV sync, backup files can contain those keys. Keep backup files private.
 
 ## Exporting and migrating your data
 
