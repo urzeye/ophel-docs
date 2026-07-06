@@ -10,6 +10,8 @@ keywords:
     "clean mode",
     "page width",
     "panel layout",
+    "panel width",
+    "hover width",
     "message width",
     "immersive mode",
   ]
@@ -127,13 +129,25 @@ Clean Mode is narrower than Zen mode: it keeps the normal platform layout visibl
 
 You can drag the panel by its title bar to reposition it anywhere on screen. **Double-clicking** the title bar toggles between <Icon src="/images/icons/snap-to-edge.svg" alt="Edge Snap icon" /> Edge Snap and <Icon src="/images/icons/floating-mode.svg" alt="Floating mode icon" /> Floating mode. Additional size and behavior settings are in <Icon src="/images/icons/settings.svg" alt="Settings icon" /> **Settings → General → Panel**:
 
-| Setting        | Description                                                                                                                                                      | Default   |
-| -------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- |
-| Panel mode     | <Icon src="/images/icons/snap-to-edge.svg" alt="Edge Snap icon" /> Edge Snap or <Icon src="/images/icons/floating-mode.svg" alt="Floating mode icon" /> Floating | Edge Snap |
-| Default side   | Left or right side of the screen                                                                                                                                 | Right     |
-| Edge distance  | Distance from the screen edge when in Floating mode                                                                                                              | 0 px      |
-| Panel width    | 240–600 px                                                                                                                                                       | 320 px    |
-| Panel height   | 50–100 vh                                                                                                                                                        | 85 vh     |
-| Snap threshold | Distance from edge that triggers automatic snapping                                                                                                              | 30 px     |
+| Setting               | Description                                                                                                                                                      | Default   |
+| --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- |
+| Panel mode            | <Icon src="/images/icons/snap-to-edge.svg" alt="Edge Snap icon" /> Edge Snap or <Icon src="/images/icons/floating-mode.svg" alt="Floating mode icon" /> Floating | Edge Snap |
+| Default side          | Left or right side of the screen                                                                                                                                 | Right     |
+| Edge distance         | Distance from the screen edge when in Floating mode                                                                                                              | 0 px      |
+| Panel width           | Saved panel width, 240–600 px                                                                                                                                    | 320 px    |
+| Widen on hover (Beta) | Temporarily widens the Floating panel while your cursor or keyboard focus is on it                                                                                | Off       |
+| Hover width (Beta)    | Temporary panel width used while hovering, 240–600 px                                                                                                            | 520 px    |
+| Panel height          | 50–100 vh                                                                                                                                                        | 85 vh     |
+| Snap threshold        | Distance from edge that triggers automatic snapping                                                                                                              | 30 px     |
 
 When in Edge Snap mode, hover over the corresponding screen edge to pop the panel out for a preview. Drag the title bar away from the edge to switch to Floating mode.
+
+### Resize the Floating panel directly
+
+In Floating mode, a slim resize handle appears on the panel edge facing the page. Drag it to change **Panel width** without opening Settings. If the panel is on the right, drag the left edge; if the panel is on the left, drag the right edge. The new width is saved after you release the pointer.
+
+### Temporary hover width
+
+Enable **Widen on hover** when you want more room for long outline headings, conversation titles, or prompt names only while you are reading the panel. The panel expands to **Hover width** while your cursor or keyboard focus is inside it, then returns to the saved **Panel width** when you leave.
+
+Hover widening only applies to Floating mode on devices with a mouse or trackpad. It does not change Edge Snap previews, launcher previews, or the saved panel width. If Smart Avoidance is enabled, temporary hover widening does not move the AI page; dragging the panel edge to save a new width does.

@@ -8,9 +8,11 @@ keywords:
     "Ophel panel",
     "side panel",
     "tabs overview",
+    "panel tab reordering",
     "quick buttons",
     "ghost mode",
     "edge snap",
+    "panel width",
     "keyboard shortcuts",
     "panel navigation",
   ]
@@ -49,6 +51,8 @@ The panel has three tabs along the top. Click a tab label to switch, or use <Sho
   </Card>
 </CardGroup>
 
+Drag a tab label to reorder the visible tabs. Ophel saves the new order immediately and mirrors it in Settings, so you do not need to open the options page first.
+
 ## Panel header
 
 The strip at the very top of the panel gives you fast access to core controls.
@@ -60,7 +64,7 @@ The strip at the very top of the panel gives you fast access to core controls.
 | **Theme toggle**    | Switches between light and dark mode. Shortcut: <Shortcut combo="alt+d" />.                                                                                        |
 | <Icon src="/images/icons/settings.svg" alt="Settings icon" /> **Settings button** | Opens the settings dialog. You can also press <Shortcut combo="alt+," /> or click <Icon src="/images/icons/tools.svg" alt="Toolbox icon" /> **Toolbox** → <Icon src="/images/icons/settings.svg" alt="Settings icon" /> **Settings**. |
 
-You can drag the title bar to reposition the panel anywhere on screen when it is in Floating mode. **Double-clicking** the title bar toggles between Edge Snap and Floating mode without opening settings.
+You can drag the title bar to reposition the panel anywhere on screen when it is in Floating mode. **Double-clicking** the title bar toggles between Edge Snap and Floating mode without opening settings. In Floating mode, drag the resize handle on the panel edge facing the page to change the saved panel width directly.
 
 ## Floating quick buttons
 
@@ -166,14 +170,16 @@ In Edge Snap mode, dragging the panel title bar pulls it away from the edge, swi
 
 All of these are in **Settings → General → Panel**:
 
-| Setting        | Description                                         | Default   |
-| -------------- | --------------------------------------------------- | --------- |
-| Panel mode     | Edge Snap or Floating                               | Edge Snap |
-| Default side   | Left or right side of the screen                    | Right     |
-| Panel width    | 240–600 px                                          | 320 px    |
-| Panel height   | 50–100 vh                                           | 85 vh     |
-| Edge distance  | Distance from the screen edge when in Floating mode | 0 px      |
-| Snap threshold | Distance from edge that triggers automatic snapping | 30 px     |
+| Setting               | Description                                                                       | Default   |
+| --------------------- | --------------------------------------------------------------------------------- | --------- |
+| Panel mode            | Edge Snap or Floating                                                             | Edge Snap |
+| Default side          | Left or right side of the screen                                                  | Right     |
+| Panel width           | Saved panel width; can also be changed by dragging the Floating panel edge        | 320 px    |
+| Widen on hover (Beta) | Temporarily widens the Floating panel while your cursor or keyboard focus is on it | Off       |
+| Hover width (Beta)    | Temporary width used while **Widen on hover** is active                            | 520 px    |
+| Panel height          | 50–100 vh                                                                         | 85 vh     |
+| Edge distance         | Distance from the screen edge when in Floating mode                               | 0 px      |
+| Snap threshold        | Distance from edge that triggers automatic snapping                                | 30 px     |
 
 ### Quick buttons behavior
 
