@@ -3,6 +3,18 @@ title: "更新日志"
 description: "Ophel Atlas 的所有重要更改均记录于此。"
 ---
 
+<Update label="v1.1.7">
+
+  ### ✨ 功能优化
+
+  - **阅读历史恢复控制** — 自动恢复阅读位置时，现在滚动正文或选择大纲条目会立即停止恢复，让用户导航始终优先，并保存用户选择的新位置。([#797](https://github.com/urzeye/ophel/issues/797))
+
+  ### 🐛 问题修复
+
+  - **Claude 回复后的大纲刷新** — 修复已完成索引的 Claude 长对话在发送新问题后会重新全量扫描并滚动整段会话的问题；新回复现在只会增量更新已有大纲缓存。([#785](https://github.com/urzeye/ophel/issues/785))
+  - **Claude 大纲当前位置高亮** — 修复当前可见问题与前文问题使用相同开头时，大纲可能高亮到前一个问题的问题；当前位置跟随现在会准确对应当前问题。
+</Update>
+
 <Update label="v1.1.6">
 
   ### ✨ 功能优化
@@ -1329,6 +1341,7 @@ description: "Ophel Atlas 的所有重要更改均记录于此。"
   - 开源透明
 
 
+  [1.1.7]: https://github.com/urzeye/ophel/releases/tag/v1.1.7
   [1.1.6]: https://github.com/urzeye/ophel/releases/tag/v1.1.6
   [1.1.5]: https://github.com/urzeye/ophel/releases/tag/v1.1.5
   [1.1.4]: https://github.com/urzeye/ophel/releases/tag/v1.1.4

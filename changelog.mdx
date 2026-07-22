@@ -3,6 +3,18 @@ title: "Changelog"
 description: "All notable changes to Ophel Atlas are documented here."
 ---
 
+<Update label="v1.1.7">
+
+  ### ✨ Improvements
+
+  - **Reading history restoration controls** — Automatic reading-position restoration now yields immediately when scrolling or selecting an outline item, so user navigation always takes priority and the selected position is preserved. ([#797](https://github.com/urzeye/ophel/issues/797))
+
+  ### 🐛 Bug Fixes
+
+  - **Claude outline refresh after replies** — Fixed issue where sending a new message in a previously indexed long Claude conversation could restart the full outline scan and scroll through the conversation again; new replies now update the cached outline incrementally. ([#785](https://github.com/urzeye/ophel/issues/785))
+  - **Claude outline current-position highlight** — Fixed issue where the outline could highlight an earlier question when the visible Claude question began with the same text; current-position tracking now follows the exact question at that conversation position.
+</Update>
+
 <Update label="v1.1.6">
 
   ### ✨ Improvements
@@ -1329,6 +1341,7 @@ description: "All notable changes to Ophel Atlas are documented here."
   - Open source and transparent
 
 
+  [1.1.7]: https://github.com/urzeye/ophel/releases/tag/v1.1.7
   [1.1.6]: https://github.com/urzeye/ophel/releases/tag/v1.1.6
   [1.1.5]: https://github.com/urzeye/ophel/releases/tag/v1.1.5
   [1.1.4]: https://github.com/urzeye/ophel/releases/tag/v1.1.4
