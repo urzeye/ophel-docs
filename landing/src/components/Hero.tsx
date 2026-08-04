@@ -277,6 +277,25 @@ export function Hero({
               {copy.morePlatforms}
             </a>
           </div>
+
+          <div className="mt-4 flex justify-center sm:justify-start">
+            <a
+              className="hero-tooltivity-link"
+              href="https://tooltivity.com/extensions/ophel"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Reviewed and tested by Tooltivity"
+              aria-label="Ophel Atlas: AI Chat Organizer review on Tooltivity (opens in new tab)"
+            >
+              <img
+                src="https://tooltivity.com/api/widgets/embed-image/v1/featured.svg?extension=ophel&theme=light"
+                alt="Tooltivity - Tested and reviewed by Tooltivity"
+                width="180"
+                height="40"
+                className="hero-tooltivity-image"
+              />
+            </a>
+          </div>
         </div>
       </motion.div>
     </section>

@@ -193,6 +193,20 @@
   color: var(--accent-strong);
 }
 
+.hero-tooltivity-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+}
+
+.hero-tooltivity-image {
+  display: block;
+  width: 220px;
+  height: 48px;
+  max-width: 100%;
+}
+
 .hero-stat {
   min-height: 82px;
   border: 1px solid var(--line);
