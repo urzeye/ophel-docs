@@ -51,6 +51,16 @@ Go to **Settings → Permissions**. Each optional permission has a **Revoke** bu
 Revoking `<all_urls>` disables both WebDAV sync and watermark removal at the same time, because both features depend on broad host access. If you only want to disable one of them, turn it off in its own feature settings instead of revoking the permission.
 </Warning>
 
+
+
+## Site Pack host access
+
+Site Packs use **optional host permissions** for each pack origin, not a permanent blanket host grant at install time. When you install a pack or bind a custom HTTPS origin, the browser asks for access to those origins only. Denying the prompt rolls back that install or binding.
+
+For userscript builds, Ophel cannot add `@match` rules automatically; the Site Packs page lists the patterns you must add yourself.
+
+See [Install and manage Site Packs](/site-packs/installation) for the full permission, reauthorization, and custom-origin flow.
+
 ## Frequently asked questions
 
 <AccordionGroup>

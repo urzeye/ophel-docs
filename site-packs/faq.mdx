@@ -1,0 +1,88 @@
+---
+title: "Site Pack FAQ"
+sidebarTitle: "FAQ"
+icon: "circle-question"
+description: "Answers about Site Pack permissions, registry updates, userscript match rules, self-hosted bindings, privacy, and built-in adapter differences."
+keywords:
+  [
+    "Site Pack FAQ",
+    "SitePack permissions",
+    "userscript match",
+    "self-hosted binding",
+    "registry updates",
+    "local JSON import",
+  ]
+---
+
+## How is a Site Pack different from a built-in adapter?
+
+Built-in adapters may contain site-specific TypeScript for complex behaviors. Site Packs are declarative JSON.
+
+Built-in adapters take priority and cannot be overridden by a Site Pack. Selector-only fixes for configured built-in adapters use the signed patch channel instead of a Site Pack.
+
+## Are community packs official Ophel code?
+
+Registry packs are community-contributed manifests reviewed and published through the Ophel registry workflow. They use the same validator and signed distribution chain, but their supported capability set may be narrower than a built-in adapter. The management page shows the pack source and declared capabilities.
+
+## Why does the extension request access to another domain?
+
+Ophel needs optional host permission before it can register content scripts on a Site Pack origin. The request is limited to the pack's referenced HTTPS origins. Denying it rolls back the installation or binding operation.
+
+## Why does the userscript build ask me to edit match rules?
+
+Userscript managers decide where a script may run from `@match` rules. A running script cannot grant itself another match. Ophel therefore shows the exact patterns for you to add in Tampermonkey, Violentmonkey, or ScriptCat.
+
+## Can one pack support self-hosted instances?
+
+Yes. A pack can use an empty `matches` list so it never activates on its own. Bind each HTTPS origin to the pack from **Settings → Site Packs → Custom sites**.
+
+Ophel stores each instance under a key derived from pack ID and origin, so settings, themes, reading history, and conversations do not mix between two deployments of the same pack.
+
+## Do registry packs update automatically?
+
+Registry-origin packs participate in the remote registry update flow. The client checks the signed index, version compatibility, immutable package hash, and runtime schema before applying an update. A failed or invalid download does not replace the last-known-good state.
+
+Local imports do not update automatically. Import a higher-version local JSON file when you want to replace one.
+
+The default check interval is 24 hours.
+
+## What happens when I disable or uninstall a pack?
+
+Disabling keeps the manifest but stops it from activating. Uninstalling removes the manifest and its registration references. User settings and conversation data are retained.
+
+An origin registration is removed only when no enabled pack or custom binding still references it.
+
+## Can a Site Pack run arbitrary JavaScript?
+
+No. Site Packs intentionally reject scripts, expressions, executable callbacks, remote resources, and unrestricted CSS. Complex integrations that require imperative code must be implemented and reviewed as built-in adapters.
+
+There is no remote executable Site Pack / L3 code-plugin path in the current product.
+
+## What page data is sent to the registry?
+
+Installing or updating a registry pack performs static CDN / GitHub GET requests for the signed index and package JSON. Those requests do not include conversation content, prompts, cookies, or page DOM.
+
+The optional AI selector-draft helper in the wizard also performs no automatic upload: it creates a bounded structural prompt only when you copy it, and you choose whether and where to share it.
+
+## Is a local JSON import safe?
+
+Local imports still pass the Site Pack validator, so unknown fields and unsafe declarative values are rejected. They are not authenticated by the signed community registry, however. Review the target domains and capabilities and import only from a source you trust.
+
+## A selector stopped working. What should I do?
+
+1. Confirm the pack is enabled and the origin still matches.
+2. Check for a registry update if the pack came from the online library.
+3. For self-hosted packs, confirm the custom origin binding is still correct.
+4. If the latest pack still fails, open a GitHub issue with the site URL, Ophel version, pack version, and failed selector names.
+5. Remove account details and private conversation content from the report.
+
+## Does Ophel auto-detect self-hosted domains?
+
+No. The current design uses **explicit origin binding**. Packs with empty `matches` stay inactive until you add an exact HTTPS origin under **Custom sites**.
+
+## Related pages
+
+- [Site Pack overview](/site-packs)
+- [Install and manage](/site-packs/installation)
+- [Capabilities reference](/site-packs/capabilities)
+- [Author a Site Pack](/site-packs/authoring)
