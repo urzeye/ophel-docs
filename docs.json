@@ -254,9 +254,9 @@
                   {
                     "group": "Site Extensions",
                     "icon": "puzzle-piece",
-                    "root": "enhancements/site-extensions",
                     "expanded": false,
                     "pages": [
+                      "enhancements/site-extensions",
                       "enhancements/site-extensions/installation",
                       "enhancements/site-extensions/capabilities",
                       "enhancements/site-extensions/authoring",
@@ -378,9 +378,9 @@
                   {
                     "group": "站点拓展",
                     "icon": "puzzle-piece",
-                    "root": "zh/enhancements/site-extensions",
                     "expanded": false,
                     "pages": [
+                      "zh/enhancements/site-extensions",
                       "zh/enhancements/site-extensions/installation",
                       "zh/enhancements/site-extensions/capabilities",
                       "zh/enhancements/site-extensions/authoring",
