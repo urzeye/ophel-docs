@@ -256,7 +256,7 @@
                     "icon": "puzzle-piece",
                     "expanded": false,
                     "pages": [
-                      "enhancements/site-extensions",
+                      "enhancements/site-extensions/index",
                       "enhancements/site-extensions/installation",
                       "enhancements/site-extensions/capabilities",
                       "enhancements/site-extensions/authoring",
@@ -380,7 +380,7 @@
                     "icon": "puzzle-piece",
                     "expanded": false,
                     "pages": [
-                      "zh/enhancements/site-extensions",
+                      "zh/enhancements/site-extensions/index",
                       "zh/enhancements/site-extensions/installation",
                       "zh/enhancements/site-extensions/capabilities",
                       "zh/enhancements/site-extensions/authoring",
