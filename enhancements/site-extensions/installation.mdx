@@ -1,8 +1,8 @@
 ---
-title: "Install and manage Site Packs"
+title: "Install and manage Site Extensions"
 sidebarTitle: "Install & Manage"
 icon: "download"
-description: "Install Site Packs from the online library or local JSON, grant host access, bind self-hosted origins, and keep packs updated."
+description: "Install Site Extensions from the online library or local JSON, grant host access, bind self-hosted origins, and keep packs updated."
 keywords:
   [
     "install Site Pack",
@@ -17,7 +17,7 @@ keywords:
 Open **Settings → Site Packs**. The same management page is available from the extension Options page and the in-page settings dialog.
 
 {/* TODO: replace with product screenshot once available */}
-![Installed Site Packs tab](/images/site-packs/installed-tab.png)
+![Installed Site Extensions tab](/images/enhancements/site-extensions/installed-tab.png)
 
 ## Install from the online pack library
 
@@ -61,7 +61,7 @@ Local imports are validated by the same runtime rules as registry packs, but the
 Install a newer local file when you want to replace one.
 
 {/* TODO: replace with product screenshot once available */}
-![Local JSON import confirmation](/images/site-packs/local-import.png)
+![Local JSON import confirmation](/images/enhancements/site-extensions/local-import.png)
 
 ## Extension permissions
 
@@ -72,7 +72,7 @@ The extension uses optional host permissions and dynamic content-script registra
 - Disabling or uninstalling the last pack that references an origin removes its dynamic registration. If several packs or custom bindings share one origin, Ophel keeps the registration until the final reference is removed.
 
 {/* TODO: replace with product screenshot once available */}
-![Host permission prompt for a Site Pack](/images/site-packs/permission-prompt.png)
+![Host permission prompt for a Site Extension](/images/enhancements/site-extensions/permission-prompt.png)
 
 ## Userscript match rules
 
@@ -88,7 +88,7 @@ When an installed pack or custom origin is outside the script's current coverage
 The exact menu name differs by manager. Keep the rule limited to the site you intend to use; do not replace it with a global match.
 
 {/* TODO: replace with product screenshot once available */}
-![Userscript match-rule helper](/images/site-packs/userscript-match-helper.png)
+![Userscript match-rule helper](/images/enhancements/site-extensions/userscript-match-helper.png)
 
 ## Bind a custom origin
 
@@ -107,7 +107,7 @@ Typical self-hosted packs ship with `matches: []` and show a **Binding needed** 
 The selected pack always activates on that origin. Ophel stores each instance under a key derived from pack ID and origin, so settings, themes, reading history, and conversations do not mix between two deployments of the same pack.
 
 {/* TODO: replace with product screenshot once available */}
-![Custom HTTPS origin binding](/images/site-packs/custom-origin-binding.png)
+![Custom HTTPS origin binding](/images/enhancements/site-extensions/custom-origin-binding.png)
 
 ## Update, disable, or uninstall
 
@@ -145,8 +145,8 @@ If a pack installs but the site is not recognized:
 
 ## Related pages
 
-- [Site Pack overview](/site-packs)
-- [Capabilities reference](/site-packs/capabilities)
-- [Author a Site Pack](/site-packs/authoring)
-- [Site Pack FAQ](/site-packs/faq)
+- [Site Extensions overview](/enhancements/site-extensions)
+- [Capabilities reference](/enhancements/site-extensions/capabilities)
+- [Author a Site Extension](/enhancements/site-extensions/authoring)
+- [Site Extension FAQ](/enhancements/site-extensions/faq)
 - [Permissions](/data/permissions)

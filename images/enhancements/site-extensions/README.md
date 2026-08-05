@@ -1,4 +1,4 @@
-# Site Packs screenshots
+# Site Extensions screenshots
 
 Placeholder directory for docs screenshots. Replace the referenced PNGs later:
 

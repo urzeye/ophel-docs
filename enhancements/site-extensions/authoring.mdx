@@ -1,12 +1,12 @@
 ---
-title: "Author a Site Pack"
+title: "Author a Site Extension"
 sidebarTitle: "Authoring"
 icon: "code"
-description: "Create a declarative Site Pack with the Site Adapter Wizard or JSON, validate it, and contribute it to the Ophel registry."
+description: "Create a declarative Site Pack with the in-product site adapter setup flow or JSON, validate it, and contribute it to the Ophel registry."
 keywords:
   [
     "author Site Pack",
-    "Site Adapter Wizard",
+    "site adapter setup",
     "SitePack JSON",
     "registry contribution",
     "selectors",
@@ -18,17 +18,17 @@ A Site Pack is a declarative JSON manifest. It describes where Ophel may run, wh
 
 You can start from either:
 
-1. the in-product **Site Adapter Wizard**
+1. the in-product **site adapter setup** flow (**Create an adapter for this site**)
 2. the repository example at [`registry/examples/site-pack.example.json`](https://github.com/urzeye/ophel/blob/main/registry/examples/site-pack.example.json)
 
 This guide follows the published [Duck.ai](https://github.com/urzeye/ophel/blob/main/registry/sites/duck-ai.json) pack and the current runtime validator.
 
 {/* TODO: replace with product screenshot once available */}
-![Site Adapter Wizard steps](/images/site-packs/wizard-steps.png)
+![Site adapter setup steps](/images/enhancements/site-extensions/wizard-steps.png)
 
-## Path A: Site Adapter Wizard
+## Path A: Site adapter setup
 
-On an unsupported HTTPS page, open the wizard launcher (**Create an adapter for this site**).
+On an unsupported HTTPS page, open the launcher (**Create an adapter for this site**).
 
 The wizard walks through:
 
@@ -124,7 +124,7 @@ Rules:
 }
 ```
 
-Each capability requires supporting fields. See the [capabilities reference](/site-packs/capabilities). If a feature is not verified, omit the capability.
+Each capability requires supporting fields. See the [capabilities reference](/enhancements/site-extensions/capabilities). If a feature is not verified, omit the capability.
 
 ### Select chat elements
 
@@ -216,7 +216,7 @@ Optional `extraCss` is still filtered by the restricted CSS-value validator. Rem
 
 `panel-avoidance` requires a verified `panelAvoidance` block. At minimum, provide non-empty `widthSelectors`. Optional fields include `scopeSelector`, `obstacleSelectors`, `insetSelectors`, `gap`, and width thresholds.
 
-`themeSync` is optional and is **not** a capability id. Use it only for sites that switch theme through explicit `localStorage` writes and optional `<html>` class toggles. See [Capabilities](/site-packs/capabilities#theme-sync-is-not-a-capability-id).
+`themeSync` is optional and is **not** a capability id. Use it only for sites that switch theme through explicit `localStorage` writes and optional `<html>` class toggles. See [Capabilities](/enhancements/site-extensions/capabilities#theme-sync-is-not-a-capability-id).
 
 ## Security constraints while authoring
 
@@ -256,6 +256,6 @@ Runtime authority:
 
 ## Related pages
 
-- [Capabilities reference](/site-packs/capabilities)
-- [Install and manage](/site-packs/installation)
-- [Site Pack FAQ](/site-packs/faq)
+- [Capabilities reference](/enhancements/site-extensions/capabilities)
+- [Install and manage](/enhancements/site-extensions/installation)
+- [Site Extension FAQ](/enhancements/site-extensions/faq)

@@ -1,8 +1,8 @@
 ---
-title: "Site Packs: add support for more AI chat sites"
+title: "Site Extensions: add support for more AI chat sites"
 sidebarTitle: "Overview"
 icon: "puzzle-piece"
-description: "Site Packs are declarative JSON manifests that teach Ophel Atlas how to recognize additional AI chat sites without running arbitrary code."
+description: "Site Extensions (Site Packs) are declarative JSON manifests that teach Ophel Atlas how to recognize additional AI chat sites without running arbitrary code."
 keywords:
   [
     "Site Packs",
@@ -16,23 +16,23 @@ keywords:
   ]
 ---
 
-Site Packs extend Ophel Atlas beyond the built-in AI platforms. A pack is a reviewed JSON manifest that declares match rules, stable page selectors, and the capabilities those selectors unlock.
+Site Extensions extend Ophel Atlas beyond the built-in AI platforms. In the product and registry this feature is also called **Site Packs**. A pack is a reviewed JSON manifest that declares match rules, stable page selectors, and the capabilities those selectors unlock.
 
-Site Packs are **not plugins with executable code**. They cannot ship JavaScript, expressions, remote scripts, or unrestricted CSS. Ophel loads them through the same runtime validator, optional-permission boundary, and feature-capability system used by the community registry.
+They are **not plugins with executable code**. They cannot ship JavaScript, expressions, remote scripts, or unrestricted CSS. Ophel loads them through the same runtime validator, optional-permission boundary, and feature-capability system used by the community registry.
 
 {/* TODO: replace with product screenshot once available */}
-![Site Packs management page](/images/site-packs/overview.png)
+![Site Extensions management page](/images/enhancements/site-extensions/overview.png)
 
 ## Choose a path
 
 | Goal | Start here |
 | --- | --- |
-| Install a community or self-hosted pack | [Install and manage](/site-packs/installation) |
-| Understand what each capability unlocks | [Capabilities reference](/site-packs/capabilities) |
-| Create or contribute a pack | [Author a Site Pack](/site-packs/authoring) |
-| Permissions, updates, userscript limits | [Site Pack FAQ](/site-packs/faq) |
+| Install a community or self-hosted pack | [Install and manage](/enhancements/site-extensions/installation) |
+| Understand what each capability unlocks | [Capabilities reference](/enhancements/site-extensions/capabilities) |
+| Create or contribute a pack | [Author a Site Extension](/enhancements/site-extensions/authoring) |
+| Permissions, updates, userscript limits | [Site Extension FAQ](/enhancements/site-extensions/faq) |
 
-## What a Site Pack can provide
+## What a Site Extension can provide
 
 A pack only unlocks the controls that match its declared capabilities. Depending on the pack, that may include:
 
@@ -46,9 +46,9 @@ A pack only unlocks the controls that match its declared capabilities. Depending
 
 The management page and site-settings UI hide unsupported controls automatically. A pack should therefore declare only behavior that has been verified on the target site.
 
-## Built-in adapters vs Site Packs
+## Built-in adapters vs Site Extensions
 
-| | Built-in adapters | Site Packs |
+| | Built-in adapters | Site Extensions (Site Packs) |
 | --- | --- | --- |
 | Format | TypeScript adapters shipped with Ophel | Declarative JSON only |
 | Priority | Always win on their domains | Cannot override a built-in site |
@@ -56,7 +56,7 @@ The management page and site-settings UI hide unsupported controls automatically
 | Updates | App releases, plus signed selector patches for configured builtins | Registry updates or local re-import |
 | Trust | Reviewed as product code | Registry signature + local schema validation, or local import from a trusted source |
 
-Selector-only hotfixes for configured built-in adapters use the signed **patch** channel in the same registry. They are not Site Packs and cannot introduce a new site.
+Selector-only hotfixes for configured built-in adapters use the signed **patch** channel in the same registry. They are not Site Extensions and cannot introduce a new site.
 
 ## Trust boundary
 
@@ -65,12 +65,12 @@ Registry packages are downloaded from immutable version paths, checked against a
 Local JSON imports still pass the runtime validator, but they **skip** the registry signature chain and do **not** auto-update. Import only from a source you trust, and review domains and capabilities first.
 
 <Warning>
-Site Packs can change page styles and Ophel behavior on matched origins. Treat unknown local JSON the same way you would treat an unreviewed configuration file.
+Site Extensions can change page styles and Ophel behavior on matched origins. Treat unknown local JSON the same way you would treat an unreviewed configuration file.
 </Warning>
 
 ## Where to manage packs
 
-Open **Settings → Site Packs**. The same page is available from the extension Options page and the in-page settings dialog.
+Open **Settings → Site Packs**. The same management page is available from the extension Options page and the in-page settings dialog.
 
 Tabs in the current UI:
 
@@ -108,6 +108,6 @@ Exact capability sets differ by pack. Install a pack and inspect its declared ca
 
 ## Next steps
 
-1. [Install a pack](/site-packs/installation) from the online library or a local JSON file.
+1. [Install a pack](/enhancements/site-extensions/installation) from the online library or a local JSON file.
 2. For self-hosted apps, bind the exact HTTPS origin under **Custom sites**.
-3. If you are writing a pack, read the [capabilities reference](/site-packs/capabilities) and [authoring guide](/site-packs/authoring).
+3. If you are writing a pack, read the [capabilities reference](/enhancements/site-extensions/capabilities) and [authoring guide](/enhancements/site-extensions/authoring).

@@ -1,12 +1,12 @@
 ---
-title: "编写站点扩展包"
+title: "编写站点拓展"
 sidebarTitle: "编写"
 icon: "code"
-description: "用站点适配器向导或 JSON 创建声明式站点扩展包，完成校验，并贡献到 Ophel registry。"
+description: "用站点适配设置向导或 JSON 创建声明式站点拓展，完成校验，并贡献到 Ophel registry。"
 keywords:
   [
-    "编写站点扩展包",
-    "站点适配器向导",
+    "编写站点拓展",
+    "站点适配设置",
     "SitePack JSON",
     "registry 贡献",
     "选择器",
@@ -14,21 +14,21 @@ keywords:
   ]
 ---
 
-站点扩展包是声明式 JSON 清单。它描述 Ophel 可在何处运行、哪些页面元素代表对话角色，以及哪些能力可以安全暴露。它不能执行 JavaScript，也不能加载远程代码。
+站点拓展是声明式 JSON 清单。它描述 Ophel 可在何处运行、哪些页面元素代表对话角色，以及哪些能力可以安全暴露。它不能执行 JavaScript，也不能加载远程代码。
 
 可以从以下任一路径开始：
 
-1. 产品内的 **站点适配器向导**
+1. 产品内的 **站点适配设置**
 2. 仓库示例 [`registry/examples/site-pack.example.json`](https://github.com/urzeye/ophel/blob/main/registry/examples/site-pack.example.json)
 
-本指南以已发布的 [Duck.ai](https://github.com/urzeye/ophel/blob/main/registry/sites/duck-ai.json) 扩展包与当前运行时校验器为准。
+本指南以已发布的 [Duck.ai](https://github.com/urzeye/ophel/blob/main/registry/sites/duck-ai.json) 站点拓展与当前运行时校验器为准。
 
 {/* TODO: 后续补充产品截图 */}
-![站点适配器向导步骤](/images/site-packs/wizard-steps.png)
+![站点适配设置步骤](/images/enhancements/site-extensions/wizard-steps.png)
 
-## 路径 A：站点适配器向导
+## 路径 A：站点适配设置
 
-在未支持的 HTTPS 页面上，打开向导入口（**为此站点创建适配器**）。
+在未支持的 HTTPS 页面上，打开向导入口（**为此站点创建适配**）。
 
 向导会依次引导：
 
@@ -47,14 +47,14 @@ keywords:
 - 可在页面上点选元素，也可手动编辑选择器
 - 可选 AI 选择器草稿助手，只有在你主动复制时才会生成净化后的提示词
 - 本地保存要求 HTTPS
-- 保存时可能请求主机权限；拒绝后已保存扩展包会保持禁用
+- 保存时可能请求主机权限；拒绝后已保存站点拓展会保持禁用
 - 本地保存成功后需要刷新页面，让适配器模块从干净生命周期启动
 
 向导只是起草工具。发布前请复查每个选择器与能力。
 
 ## 路径 B：手写 JSON
 
-把示例扩展包复制到 `registry/sites/<id>.json`，或从向导导出本地草稿。
+把示例站点拓展复制到 `registry/sites/<id>.json`，或从向导导出本地草稿。
 
 **不要** 在清单内加入 `$schema` 属性。仓库会在外部把 Site Pack JSON 映射到编辑器 schema，而运行时会拒绝未知键。
 
@@ -103,8 +103,8 @@ keywords:
 
 - 最多 10 条 HTTPS 扩展 match 模式
 - 禁止全局匹配与顶层主机通配
-- 禁止与内置站点或现有扩展包重叠
-- 自托管扩展包可使用 `matches: []`，仅在用户绑定精确 HTTPS 源后激活
+- 禁止与内置站点或现有站点拓展重叠
+- 自托管站点拓展可使用 `matches: []`，仅在用户绑定精确 HTTPS 源后激活
 
 ### 诚实声明能力
 
@@ -124,7 +124,7 @@ keywords:
 }
 ```
 
-每项能力都需要配套字段。详见[能力参考](/zh/site-packs/capabilities)。未验证的功能请省略。
+每项能力都需要配套字段。详见[能力参考](/zh/enhancements/site-extensions/capabilities)。未验证的功能请省略。
 
 ### 选择对话元素
 
@@ -216,7 +216,7 @@ keywords:
 
 `panel-avoidance` 需要已验证的 `panelAvoidance` 块。至少提供非空 `widthSelectors`。可选字段包括 `scopeSelector`、`obstacleSelectors`、`insetSelectors`、`gap` 与宽度阈值。
 
-`themeSync` 可选，且**不是**能力 ID。仅当站点通过显式 `localStorage` 写入与可选 `<html>` class 切换主题时使用。见[能力参考](/zh/site-packs/capabilities#主题联动不是能力-id)。
+`themeSync` 可选，且**不是**能力 ID。仅当站点通过显式 `localStorage` 写入与可选 `<html>` class 切换主题时使用。见[能力参考](/zh/enhancements/site-extensions/capabilities#主题联动不是能力-id)。
 
 ## 编写时的安全约束
 
@@ -225,7 +225,7 @@ keywords:
 - 正则有长度限制，并通过 `safe-regex2` 检查
 - 同源路径模板必须以单个 `/` 开头
 - 不得包含令牌、Cookie、账号数据、内部 URL 或用户内容
-- 不得用站点扩展包覆盖内置站点
+- 不得用站点拓展覆盖内置站点
 - 不得新增脚本、表达式、远程资源或破坏性自动化字段
 
 ## 校验与贡献
@@ -242,7 +242,7 @@ pnpm registry:build
 - 冷启动刷新
 - 空闲与生成中状态
 - 若已声明，验证大纲 / 导出 / 提示词插入
-- 对宽度或面板避让扩展包，验证面板打开与关闭
+- 对宽度或面板避让站点拓展，验证面板打开与关闭
 
 使用 [SitePack PR 模板](https://github.com/urzeye/ophel/blob/main/.github/PULL_REQUEST_TEMPLATE/site-pack.md) 提交 JSON，并遵循[审核清单](https://github.com/urzeye/ophel/blob/main/docs/developer/site-adapter/site-pack-review-checklist.md)。
 
@@ -256,6 +256,6 @@ pnpm registry:build
 
 ## 相关页面
 
-- [能力参考](/zh/site-packs/capabilities)
-- [安装与管理](/zh/site-packs/installation)
-- [站点扩展包 FAQ](/zh/site-packs/faq)
+- [能力参考](/zh/enhancements/site-extensions/capabilities)
+- [安装与管理](/zh/enhancements/site-extensions/installation)
+- [站点拓展 FAQ](/zh/enhancements/site-extensions/faq)

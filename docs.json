@@ -85,6 +85,46 @@
     {
       "source": "/zh/data/migration",
       "destination": "/zh/data/backup-sync"
+    },
+    {
+      "source": "/site-packs",
+      "destination": "/enhancements/site-extensions"
+    },
+    {
+      "source": "/site-packs/installation",
+      "destination": "/enhancements/site-extensions/installation"
+    },
+    {
+      "source": "/site-packs/capabilities",
+      "destination": "/enhancements/site-extensions/capabilities"
+    },
+    {
+      "source": "/site-packs/authoring",
+      "destination": "/enhancements/site-extensions/authoring"
+    },
+    {
+      "source": "/site-packs/faq",
+      "destination": "/enhancements/site-extensions/faq"
+    },
+    {
+      "source": "/zh/site-packs",
+      "destination": "/zh/enhancements/site-extensions"
+    },
+    {
+      "source": "/zh/site-packs/installation",
+      "destination": "/zh/enhancements/site-extensions/installation"
+    },
+    {
+      "source": "/zh/site-packs/capabilities",
+      "destination": "/zh/enhancements/site-extensions/capabilities"
+    },
+    {
+      "source": "/zh/site-packs/authoring",
+      "destination": "/zh/enhancements/site-extensions/authoring"
+    },
+    {
+      "source": "/zh/site-packs/faq",
+      "destination": "/zh/enhancements/site-extensions/faq"
     }
   ],
   "search": {
@@ -210,7 +250,19 @@
                 "pages": [
                   "enhancements/reading",
                   "enhancements/content",
-                  "enhancements/tab-notifications"
+                  "enhancements/tab-notifications",
+                  {
+                    "group": "Site Extensions",
+                    "icon": "puzzle-piece",
+                    "root": "enhancements/site-extensions",
+                    "expanded": false,
+                    "pages": [
+                      "enhancements/site-extensions/installation",
+                      "enhancements/site-extensions/capabilities",
+                      "enhancements/site-extensions/authoring",
+                      "enhancements/site-extensions/faq"
+                    ]
+                  }
                 ]
               },
               {
@@ -237,17 +289,6 @@
                 "pages": [
                   "data/privacy",
                   "data/permissions"
-                ]
-              },
-              {
-                "group": "Site Packs",
-                "icon": "puzzle-piece",
-                "pages": [
-                  "site-packs/index",
-                  "site-packs/installation",
-                  "site-packs/capabilities",
-                  "site-packs/authoring",
-                  "site-packs/faq"
                 ]
               },
               {
@@ -333,7 +374,19 @@
                 "pages": [
                   "zh/enhancements/reading",
                   "zh/enhancements/content",
-                  "zh/enhancements/tab-notifications"
+                  "zh/enhancements/tab-notifications",
+                  {
+                    "group": "站点拓展",
+                    "icon": "puzzle-piece",
+                    "root": "zh/enhancements/site-extensions",
+                    "expanded": false,
+                    "pages": [
+                      "zh/enhancements/site-extensions/installation",
+                      "zh/enhancements/site-extensions/capabilities",
+                      "zh/enhancements/site-extensions/authoring",
+                      "zh/enhancements/site-extensions/faq"
+                    ]
+                  }
                 ]
               },
               {
@@ -360,17 +413,6 @@
                 "pages": [
                   "zh/data/privacy",
                   "zh/data/permissions"
-                ]
-              },
-              {
-                "group": "站点扩展包",
-                "icon": "puzzle-piece",
-                "pages": [
-                  "zh/site-packs/index",
-                  "zh/site-packs/installation",
-                  "zh/site-packs/capabilities",
-                  "zh/site-packs/authoring",
-                  "zh/site-packs/faq"
                 ]
               },
               {

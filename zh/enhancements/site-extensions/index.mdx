@@ -1,14 +1,14 @@
 ---
-title: "站点扩展包：为更多 AI 对话站点提供支持"
+title: "站点拓展：为更多 AI 对话站点提供支持"
 sidebarTitle: "概览"
 icon: "puzzle-piece"
-description: "站点扩展包（Site Packs）是声明式 JSON 清单，可在不执行任意代码的前提下，让 Ophel Atlas 识别更多 AI 对话站点。"
+description: "站点拓展（Site Packs）是声明式 JSON 清单，可在不执行任意代码的前提下，让 Ophel Atlas 识别更多 AI 对话站点。"
 keywords:
   [
-    "站点扩展包",
+    "站点拓展",
     "Site Packs",
     "SitePack",
-    "社区扩展包",
+    "社区拓展",
     "自定义 AI 站点",
     "自托管 AI",
     "Open WebUI",
@@ -17,25 +17,25 @@ keywords:
   ]
 ---
 
-站点扩展包把 Ophel Atlas 的支持范围扩展到内置 AI 平台之外。一个扩展包是经过审阅的 JSON 清单，声明匹配规则、稳定的页面选择器，以及这些选择器解锁的能力。
+站点拓展把 Ophel Atlas 的支持范围扩展到内置 AI 平台之外。产品里对应入口是 **设置 → 适配中心**；技术格式仍是声明式 JSON 清单（Site Pack），声明匹配规则、稳定的页面选择器，以及这些选择器解锁的能力。
 
-站点扩展包**不是可执行插件**。它们不能附带 JavaScript、表达式、远程脚本或不受限 CSS。Ophel 会通过与社区 registry 相同的运行时校验器、可选权限边界和功能能力系统加载它们。
+站点拓展**不是可执行插件**。它们不能附带 JavaScript、表达式、远程脚本或不受限 CSS。Ophel 会通过与社区 registry 相同的运行时校验器、可选权限边界和功能能力系统加载它们。
 
 {/* TODO: 后续补充产品截图 */}
-![站点扩展包管理页](/images/site-packs/overview.png)
+![站点拓展管理页](/images/enhancements/site-extensions/overview.png)
 
 ## 选择路径
 
 | 目标 | 从这里开始 |
 | --- | --- |
-| 安装社区或自托管扩展包 | [安装与管理](/zh/site-packs/installation) |
-| 了解每项能力会解锁什么 | [能力参考](/zh/site-packs/capabilities) |
-| 创建或贡献扩展包 | [编写扩展包](/zh/site-packs/authoring) |
-| 权限、更新、油猴限制 | [站点扩展包 FAQ](/zh/site-packs/faq) |
+| 安装社区或自托管站点拓展 | [安装与管理](/zh/enhancements/site-extensions/installation) |
+| 了解每项能力会解锁什么 | [能力参考](/zh/enhancements/site-extensions/capabilities) |
+| 创建或贡献站点拓展 | [编写站点拓展](/zh/enhancements/site-extensions/authoring) |
+| 权限、更新、油猴限制 | [站点拓展 FAQ](/zh/enhancements/site-extensions/faq) |
 
-## 扩展包能提供什么
+## 站点拓展能提供什么
 
-扩展包只会解锁与其声明能力匹配的控件。视具体包而定，可能包括：
+站点拓展只会解锁与其声明能力匹配的控件。视具体包而定，可能包括：
 
 - 会话大纲与用户提问标题
 - 提示词插入与提交行为
@@ -45,11 +45,11 @@ keywords:
 - 宽度、禅模式、清爽模式或面板避让
 - 在提供所需配置时，支持阅读历史、模型锁定或会话列表集成
 
-管理页和站点设置 UI 会自动隐藏不支持的控件。因此扩展包只应声明已在目标站点验证过的行为。
+管理页和站点设置 UI 会自动隐藏不支持的控件。因此站点拓展只应声明已在目标站点验证过的行为。
 
-## 内置适配器 vs 站点扩展包
+## 内置适配器 vs 站点拓展
 
-| | 内置适配器 | 站点扩展包 |
+| | 内置适配器 | 站点拓展 |
 | --- | --- | --- |
 | 形式 | 随 Ophel 发布的 TypeScript 适配器 | 仅声明式 JSON |
 | 优先级 | 在其域名上始终优先 | 不能覆盖内置站点 |
@@ -57,7 +57,7 @@ keywords:
 | 更新方式 | 应用发版，以及已配置内置站点的签名选择器 patch | registry 更新或本地重新导入 |
 | 信任模型 | 作为产品代码审阅 | registry 签名 + 本地 schema 校验，或来自可信来源的本地导入 |
 
-已配置内置适配器的选择器热修走同一 registry 的签名 **patch** 通道。它们不是站点扩展包，也不能用来新增站点。
+已配置内置适配器的选择器热修走同一 registry 的签名 **patch** 通道。它们不是站点拓展，也不能用来新增站点。
 
 ## 信任边界
 
@@ -66,24 +66,24 @@ registry 包从不可变版本路径下载，先对照签名索引与 SHA-256 �
 本地 JSON 导入仍会通过运行时校验器，但会**跳过** registry 签名链，也**不会**自动更新。只从你信任的来源导入，并先检查域名与能力声明。
 
 <Warning>
-站点扩展包可以改变匹配源站上的页面样式与 Ophel 行为。对待未知本地 JSON，应像对待未审阅配置文件一样谨慎。
+站点拓展可以改变匹配源站上的页面样式与 Ophel 行为。对待未知本地 JSON，应像对待未审阅配置文件一样谨慎。
 </Warning>
 
-## 在哪里管理扩展包
+## 在哪里管理站点拓展
 
-打开 **设置 → 站点扩展包**。同一页面也可从扩展 Options 页和页内设置对话框进入。
+打开 **设置 → 适配中心**。同一管理页也可从扩展 Options 页和页内设置对话框进入。
 
 当前 UI 的标签页：
 
 | 标签 | 用途 |
 | --- | --- |
-| **已安装** | 启用、禁用、重新授权、卸载，并打开扩展包指南 |
-| **自定义站点** | 将精确 HTTPS 源绑定到已安装扩展包 |
-| **浏览与更新** | 在线扩展包库、刷新 registry、安装/更新、本地 JSON 导入 |
+| **已安装** | 启用、禁用、重新授权、卸载，并打开使用指南 |
+| **自定义站点** | 将精确 HTTPS 源绑定到已安装站点拓展 |
+| **浏览与更新** | 在线拓展库、刷新 registry、安装/更新、本地 JSON 导入 |
 
 **指南** 按钮会打开产品指南。本套文档上线 ophel.app 后，产品内链接应更新到文档站。
 
-## 社区 registry 中的示例扩展包
+## 社区 registry 中的示例站点拓展
 
 当前 registry 源在 `registry/sites/` 下提供这些社区清单：
 
@@ -105,10 +105,10 @@ registry 包从不可变版本路径下载，先对照签名索引与 SHA-256 �
 - 油猴构建无法自动添加 `@match`；UI 会列出你需要自行添加的规则
 - registry 索引使用 Ed25519 签名；包文件用 SHA-256 固定
 - 失败或无效更新会保留 last-known-good 已安装状态
-- 内置站点 ID 与域名不能被扩展包占用
+- 内置站点 ID 与域名不能被站点拓展占用
 
 ## 下一步
 
-1. 从[在线库或本地 JSON 安装扩展包](/zh/site-packs/installation)。
+1. 从[在线库或本地 JSON 安装站点拓展](/zh/enhancements/site-extensions/installation)。
 2. 对自托管应用，在 **自定义站点** 下绑定精确 HTTPS 源。
-3. 若要编写扩展包，阅读[能力参考](/zh/site-packs/capabilities)与[编写指南](/zh/site-packs/authoring)。
+3. 若要编写站点拓展，阅读[能力参考](/zh/enhancements/site-extensions/capabilities)与[编写指南](/zh/enhancements/site-extensions/authoring)。
