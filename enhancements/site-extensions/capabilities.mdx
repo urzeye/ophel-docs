@@ -1,0 +1,147 @@
+---
+title: "Site Extension capabilities reference"
+sidebarTitle: "Capabilities"
+icon: "list-check"
+description: "Every Site Pack capability Ophel recognizes, the configuration it requires, and the product surface it unlocks."
+keywords:
+  [
+    "Site Pack capabilities",
+    "outline",
+    "export-basic",
+    "prompt-insert",
+    "panel-avoidance",
+    "generation-detect",
+    "SitePack schema",
+  ]
+---
+
+Capabilities are a **UI and runtime contract**, not marketing metadata. Ophel only exposes controls that match the active pack's capability set, and the runtime validator rejects packs that declare a capability without the required fields.
+
+The authoritative capability list lives in `src/adapters/feature-capabilities.ts`. The authoritative field requirements live in `src/adapters/declarative/validate.ts`.
+
+## Capability catalog
+
+| Capability | Required configuration | What it unlocks |
+| --- | --- | --- |
+| `outline` | `selectors.responseContainer` | Conversation outline from assistant headings / structure |
+| `outline-user-queries` | `outline` plus `selectors.userQuery` | User questions as top-level outline entries |
+| `conversation-list` | `conversation` | Conversation list capture / navigation integration |
+| `export-basic` | `export` | Basic conversation export |
+| `model-lock` | `modelSwitcher` | Model lock controls for the pack site |
+| `generation-detect` | `generating` **or** `networkMonitor` | Generating-state detection used by completion UI |
+| `new-chat` | non-empty `selectors.newChatButton` | New conversation action |
+| `stop-generation` | non-empty `selectors.stopButton` | Stop generation action |
+| `width` | non-empty `widthSelectors` | Page width controls |
+| `panel-avoidance` | `panelAvoidance` | Shrink host content into the safe area beside the Ophel panel |
+| `zen` | `zenMode` | Zen mode hide rules / styles |
+| `clean` | `cleanMode` | Clean mode hide rules / styles |
+| `prompt-insert` | non-empty `selectors.textarea` plus `input` | Prompt insertion into the page input |
+| `reading-history` | non-empty `selectors.chatContent` | Reading-history capture for the conversation surface |
+
+There is **no** capability id named `theme-sync`. Host theme sync is a separate config field, `themeSync`, and may imply `supportsHostThemeSync`.
+
+## Capability notes
+
+### Outline family
+
+- `outline` needs a conversation container so Ophel can scope scanning.
+- `outline-user-queries` cannot be declared alone; the validator requires `outline` as well.
+- Prefer stable message roots over translated visible text.
+
+### Prompt insertion
+
+`prompt-insert` needs both:
+
+- one or more textarea / contenteditable selectors
+- an `input` block with `mode` (`textarea` or `contenteditable`) and `submitKey` (`Enter` or `Ctrl+Enter`)
+
+Ophel uses the native value setter for textareas and a validated beforeinput / execCommand path for contenteditable editors. It does not silently fall back to assigning `textContent`.
+
+### Generation detection
+
+Use whichever signal is reliable on the target site:
+
+- `generating.existsSelectors` — visible DOM markers while generating
+- `networkMonitor` — request URL / body rules when DOM state is insufficient
+
+A pack may provide either or both. Declaring `generation-detect` without either is rejected.
+
+### Layout capabilities
+
+| Capability | Typical config | Caution |
+| --- | --- | --- |
+| `width` | `widthSelectors[]` with selector + CSS property | Optional `extraCss` still passes the restricted CSS validator |
+| `zen` | `zenMode.hide` and optional root class / styles | Do not hide the conversation or required input |
+| `clean` | `cleanMode.hide` / styles | Keep rules narrow |
+| `panel-avoidance` | `panelAvoidance.widthSelectors` plus optional obstacles / insets | Must be verified with the panel open at several viewport widths |
+
+### Theme sync is not a capability id
+
+Sites that switch light / dark mode by writing `localStorage` and optionally toggling a class on `<html>` can declare `themeSync`:
+
+```json
+{
+  "themeSync": {
+    "storageKey": "theme",
+    "values": { "dark": "dark", "light": "light", "system": "system" }
+  }
+}
+```
+
+Rules grounded in the current validator:
+
+- `storageKey`, `values.dark`, and `values.light` are required when `themeSync` is present
+- `values.system` is only for sites that store a distinct follow-system value
+- `darkClass` / `lightClass` are optional; both may be omitted when the site listens to `storage` events itself
+- nested object storage uses `valuePath`; flat JSON-encoded strings use `valueFormat: "json"`
+- `valuePath` and `valueFormat` cannot be combined
+- body class, `data-theme`, or click-simulation theme mechanisms are not supported by this field
+- declaring `themeSync` while also setting `supportsHostThemeSync: false` is rejected
+
+## Example: Duck.ai capability set
+
+The published `duck-ai` pack currently declares:
+
+```json
+[
+  "outline",
+  "outline-user-queries",
+  "export-basic",
+  "generation-detect",
+  "new-chat",
+  "stop-generation",
+  "width",
+  "zen",
+  "prompt-insert"
+]
+```
+
+It does **not** declare conversation-list, model-lock, clean, panel-avoidance, or reading-history. The product UI therefore does not present those pack-backed controls for Duck.ai.
+
+## Related configuration groups
+
+These groups are not capabilities themselves, but they often accompany capability declarations:
+
+| Group | Role |
+| --- | --- |
+| `selectors` | Shared page element roots |
+| `input` | Input mode and submit key |
+| `conversation` | Sidebar conversation items and navigation |
+| `session` | Path-based session id / new-chat / share routes |
+| `modelSwitcher` | Model menu selectors and timing |
+| `export` | Message and turn selectors for export |
+| `mermaidSupport` / `quickQuote` | Optional behavior switches |
+| `theme` | Pack accent colors for UI presentation |
+
+Full field, length, regex, CSS, and size limits are defined by:
+
+- editor assist: [`registry/schema/site-pack.schema.json`](https://github.com/urzeye/ophel/blob/main/registry/schema/site-pack.schema.json)
+- runtime authority: [`src/adapters/declarative/validate.ts`](https://github.com/urzeye/ophel/blob/main/src/adapters/declarative/validate.ts)
+
+When the two disagree, the runtime validator wins.
+
+## Related pages
+
+- [Author a Site Extension](/enhancements/site-extensions/authoring)
+- [Install and manage](/enhancements/site-extensions/installation)
+- [Site Extension FAQ](/enhancements/site-extensions/faq)

@@ -1,0 +1,147 @@
+---
+title: "站点拓展能力参考"
+sidebarTitle: "能力参考"
+icon: "list-check"
+description: "Ophel 识别的全部站点拓展能力、所需配置，以及它们解锁的产品界面。"
+keywords:
+  [
+    "站点拓展能力",
+    "outline",
+    "export-basic",
+    "prompt-insert",
+    "panel-avoidance",
+    "generation-detect",
+    "SitePack schema",
+  ]
+---
+
+能力是 **UI 与运行时契约**，不是营销字段。Ophel 只会展示与当前站点拓展能力集合匹配的控件；若声明了能力却缺少必需字段，运行时校验器会拒绝该包。
+
+权威能力列表位于 `src/adapters/feature-capabilities.ts`。权威字段要求位于 `src/adapters/declarative/validate.ts`。
+
+## 能力目录
+
+| 能力 | 必需配置 | 解锁内容 |
+| --- | --- | --- |
+| `outline` | `selectors.responseContainer` | 基于助手标题 / 结构的会话大纲 |
+| `outline-user-queries` | `outline` 加上 `selectors.userQuery` | 用户提问作为大纲顶层条目 |
+| `conversation-list` | `conversation` | 会话列表捕获 / 导航集成 |
+| `export-basic` | `export` | 基础会话导出 |
+| `model-lock` | `modelSwitcher` | 该站点拓展站点的模型锁定控件 |
+| `generation-detect` | `generating` **或** `networkMonitor` | 生成状态检测，供完成态 UI 使用 |
+| `new-chat` | 非空 `selectors.newChatButton` | 新对话操作 |
+| `stop-generation` | 非空 `selectors.stopButton` | 停止生成操作 |
+| `width` | 非空 `widthSelectors` | 页面宽度控制 |
+| `panel-avoidance` | `panelAvoidance` | 将宿主内容收缩到 Ophel 面板旁的安全区域 |
+| `zen` | `zenMode` | 禅模式隐藏规则 / 样式 |
+| `clean` | `cleanMode` | 清爽模式隐藏规则 / 样式 |
+| `prompt-insert` | 非空 `selectors.textarea` 加上 `input` | 向页面输入框插入提示词 |
+| `reading-history` | 非空 `selectors.chatContent` | 针对会话表面的阅读历史捕获 |
+
+**不存在** 名为 `theme-sync` 的能力 ID。宿主主题联动是独立配置字段 `themeSync`，并可能隐含 `supportsHostThemeSync`。
+
+## 能力说明
+
+### 大纲家族
+
+- `outline` 需要会话容器，以便 Ophel 限定扫描范围。
+- `outline-user-queries` 不能单独声明；校验器还要求 `outline`。
+- 优先使用稳定的消息根节点，而不是翻译后的可见文案。
+
+### 提示词插入
+
+`prompt-insert` 需要同时具备：
+
+- 一个或多个 textarea / contenteditable 选择器
+- 含 `mode`（`textarea` 或 `contenteditable`）与 `submitKey`（`Enter` 或 `Ctrl+Enter`）的 `input` 块
+
+对 textarea，Ophel 使用原生 value setter；对 contenteditable，使用经过校验的 beforeinput / execCommand 路径。它不会静默回退到直接赋值 `textContent`。
+
+### 生成检测
+
+使用目标站点上可靠的信号：
+
+- `generating.existsSelectors` — 生成中可见的 DOM 标记
+- `networkMonitor` — DOM 状态不足时的请求 URL / body 规则
+
+站点拓展可以提供其中之一或两者。声明 `generation-detect` 却两者都没有，会被拒绝。
+
+### 布局能力
+
+| 能力 | 典型配置 | 注意 |
+| --- | --- | --- |
+| `width` | 带选择器与 CSS 属性的 `widthSelectors[]` | 可选 `extraCss` 仍会经过受限 CSS 校验 |
+| `zen` | `zenMode.hide` 与可选根 class / 样式 | 不要隐藏会话或必需输入控件 |
+| `clean` | `cleanMode.hide` / 样式 | 保持规则尽量窄 |
+| `panel-avoidance` | `panelAvoidance.widthSelectors` 以及可选障碍 / inset | 必须在多个视口宽度下、面板打开时验证 |
+
+### 主题联动不是能力 ID
+
+通过写入 `localStorage`、并可选切换 `<html>` class 来切换亮暗模式的站点，可以声明 `themeSync`：
+
+```json
+{
+  "themeSync": {
+    "storageKey": "theme",
+    "values": { "dark": "dark", "light": "light", "system": "system" }
+  }
+}
+```
+
+基于当前校验器的规则：
+
+- 存在 `themeSync` 时，`storageKey`、`values.dark`、`values.light` 必填
+- `values.system` 仅适用于站点本身存储独立“跟随系统”值的情况
+- `darkClass` / `lightClass` 可选；若站点自行监听 `storage` 事件，两者都可省略
+- 嵌套对象存储使用 `valuePath`；扁平 JSON 编码字符串使用 `valueFormat: "json"`
+- `valuePath` 与 `valueFormat` 不能同时使用
+- body class、`data-theme` 或点击模拟类主题机制不受此字段支持
+- 声明 `themeSync` 的同时设置 `supportsHostThemeSync: false` 会被拒绝
+
+## 示例：Duck.ai 能力集合
+
+已发布的 `duck-ai` 站点拓展当前声明：
+
+```json
+[
+  "outline",
+  "outline-user-queries",
+  "export-basic",
+  "generation-detect",
+  "new-chat",
+  "stop-generation",
+  "width",
+  "zen",
+  "prompt-insert"
+]
+```
+
+它**没有**声明 conversation-list、model-lock、clean、panel-avoidance 或 reading-history。因此产品 UI 不会为 Duck.ai 展示这些由站点拓展支撑的控件。
+
+## 相关配置分组
+
+这些分组本身不是能力，但常伴随能力声明出现：
+
+| 分组 | 作用 |
+| --- | --- |
+| `selectors` | 共享页面元素根 |
+| `input` | 输入模式与提交键 |
+| `conversation` | 侧边栏会话项与导航 |
+| `session` | 基于路径的会话 id / 新对话 / 分享路由 |
+| `modelSwitcher` | 模型菜单选择器与时序 |
+| `export` | 导出用的消息与轮次选择器 |
+| `mermaidSupport` / `quickQuote` | 可选行为开关 |
+| `theme` | 站点拓展在 UI 中的强调色 |
+
+完整字段、长度、正则、CSS 与体积限制由以下文件定义：
+
+- 编辑器辅助：[`registry/schema/site-pack.schema.json`](https://github.com/urzeye/ophel/blob/main/registry/schema/site-pack.schema.json)
+- 运行时权威：[`src/adapters/declarative/validate.ts`](https://github.com/urzeye/ophel/blob/main/src/adapters/declarative/validate.ts)
+
+两者冲突时，以运行时校验器为准。
+
+## 相关页面
+
+- [编写站点拓展](/zh/enhancements/site-extensions/authoring)
+- [安装与管理](/zh/enhancements/site-extensions/installation)
+- [站点拓展 FAQ](/zh/enhancements/site-extensions/faq)

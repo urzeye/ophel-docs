@@ -51,6 +51,16 @@ Go to **Settings → Permissions**. Each optional permission has a **Revoke** bu
 Revoking `<all_urls>` disables both WebDAV sync and watermark removal at the same time, because both features depend on broad host access. If you only want to disable one of them, turn it off in its own feature settings instead of revoking the permission.
 </Warning>
 
+
+
+## Site Extension host access
+
+Site Extensions use **optional host permissions** for each pack origin, not a permanent blanket host grant at install time. When you install a pack or bind a custom HTTPS origin, the browser asks for access to those origins only. Denying the prompt rolls back that install or binding.
+
+See [Install and manage Site Extensions](/enhancements/site-extensions/installation) for the full permission, reauthorization, and custom-origin flow.
+
+Granting **Advanced Features Access** (`<all_urls>`) also covers the origins of installed Site Extensions, so packs and custom bindings can activate without per-origin prompts. Revoking it returns those origins to per-origin prompts; Site Extensions are not disabled.
+
 ## Frequently asked questions
 
 <AccordionGroup>

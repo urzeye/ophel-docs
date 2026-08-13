@@ -1,0 +1,263 @@
+---
+title: "Author a Site Extension"
+sidebarTitle: "Authoring"
+icon: "code"
+description: "Create a declarative Site Pack with the in-product site adapter setup flow or JSON, validate it, and contribute it to the Ophel registry."
+keywords:
+  [
+    "author Site Pack",
+    "site adapter setup",
+    "SitePack JSON",
+    "registry contribution",
+    "selectors",
+    "pnpm registry:validate",
+  ]
+---
+
+A Site Pack is a declarative JSON manifest. It describes where Ophel may run, which page elements represent chat roles, and which capabilities are safe to expose. It cannot execute JavaScript or load remote code.
+
+You can start from either:
+
+1. the in-product **site adapter setup** flow (**Create an adapter for this site**)
+2. the repository example at [`registry/examples/site-pack.example.json`](https://github.com/urzeye/ophel/blob/main/registry/examples/site-pack.example.json)
+
+This guide follows the published [Duck.ai](https://github.com/urzeye/ophel/blob/main/registry/sites/duck-ai.json) pack and the current runtime validator.
+
+{/* TODO: replace with product screenshot once available */}
+![Site adapter setup steps](/images/enhancements/site-extensions/wizard-steps.png)
+
+## Path A: Site adapter setup
+
+On an unsupported HTTPS page, open the launcher (**Create an adapter for this site**).
+
+The wizard walks through:
+
+1. message input
+2. send button
+3. conversation container
+4. user message
+5. AI response
+6. optional conversation list item
+7. optional new-chat button
+8. live outline preview and capability summary
+9. save / download / open a prefilled GitHub contribution flow
+
+Useful wizard behaviors grounded in the current product:
+
+- pick elements on the page, or edit selectors manually
+- optional AI selector draft helper that only copies a sanitized prompt when you choose to
+- local save requires HTTPS
+- saving may request host permission; denial leaves the saved pack disabled
+- after a successful local save, reload the page so adapter modules start from a clean lifecycle
+
+The wizard is a drafting tool. Review every selector and capability before publishing.
+
+## Path B: hand-written JSON
+
+Copy the example pack to `registry/sites/<id>.json`, or export a local draft from the wizard.
+
+Do **not** add a `$schema` property inside the manifest. The repository maps Site Pack JSON files to the editor schema externally, while the runtime rejects unknown keys.
+
+### Identity and compatibility
+
+```json
+{
+  "schemaVersion": 1,
+  "id": "duck-ai",
+  "version": 1,
+  "minAppVersion": "1.1.8"
+}
+```
+
+| Field | Rule |
+| --- | --- |
+| `schemaVersion` | Currently `1` |
+| `id` | Globally unique, `^[a-z0-9-]{2,40}$`, must not collide with a built-in site ID |
+| `version` | Positive integer. Published registry versions are immutable; the publish build can derive the final number from content |
+| `minAppVersion` | Earliest Ophel SemVer that understands the fields you verified |
+
+### Name and description
+
+```json
+{
+  "name": "Duck.ai",
+  "nameI18n": { "en": "Duck.ai", "zh-CN": "Duck.ai" },
+  "description": "Adds Ophel outlines, export, generation controls, layout tools, and prompt insertion to Duck.ai.",
+  "descriptionI18n": {
+    "en": "Adds Ophel outlines, export, generation controls, layout tools, and prompt insertion to Duck.ai."
+  }
+}
+```
+
+`name` / `description` are fallbacks. `nameI18n` / `descriptionI18n` override them for matching languages. Registry contributions that change user-facing metadata should provide all eleven project languages used by Ophel.
+
+### Match the target site
+
+```json
+{
+  "matches": ["https://duck.ai/*"]
+}
+```
+
+Rules:
+
+- at most ten HTTPS extension match patterns
+- no global matches or top-level host wildcards
+- no overlaps with built-in sites or existing packs
+- self-hosted packs may use `matches: []` and activate only after the user binds an exact HTTPS origin
+
+### Declare capabilities honestly
+
+```json
+{
+  "capabilities": [
+    "outline",
+    "outline-user-queries",
+    "export-basic",
+    "generation-detect",
+    "new-chat",
+    "stop-generation",
+    "width",
+    "zen",
+    "prompt-insert"
+  ]
+}
+```
+
+Each capability requires supporting fields. See the [capabilities reference](/enhancements/site-extensions/capabilities). If a feature is not verified, omit the capability.
+
+### Select chat elements
+
+```json
+{
+  "selectors": {
+    "textarea": ["textarea[name='user-prompt']"],
+    "submitButton": ["[data-testid='duckai-chat-input'] button[type='submit']"],
+    "responseContainer": "section:has([data-testid='duckai-chat-input'])",
+    "userQuery": "[data-testid='user-message']",
+    "assistantResponse": "[data-activeresponse='true'] > :nth-child(2)",
+    "newChatButton": ["[data-testid='duckai-sidebar'] > div > div:has([role='search']) + div button[type='button']"],
+    "stopButton": ["[data-testid='duckai-chat-input'] div:has(> button[type='submit']) + div > button[type='button']"]
+  }
+}
+```
+
+Selector guidance:
+
+- prefer stable `data-testid`, stable IDs, semantic attributes, and short structural relationships
+- avoid generated hashes, utility-only classes, and translated visible text when a stable attribute exists
+- treat positional selectors such as `:nth-child()` as a last resort and document the real-browser evidence in the pull request
+
+### Configure common groups
+
+**Input**
+
+```json
+{
+  "input": {
+    "mode": "textarea",
+    "submitKey": "Enter"
+  }
+}
+```
+
+**Generation**
+
+```json
+{
+  "generating": {
+    "existsSelectors": [
+      "[data-testid='duckai-chat-input'] div:has(> button[type='submit']) + div > button[type='button']"
+    ]
+  }
+}
+```
+
+**Export**
+
+```json
+{
+  "export": {
+    "userQuerySelector": "[data-testid='user-message']",
+    "assistantResponseSelector": "[data-activeresponse='true'] > :nth-child(2)",
+    "turnSelector": null,
+    "useShadowDOM": false
+  }
+}
+```
+
+**Zen mode**
+
+```json
+{
+  "zenMode": {
+    "hide": ["[data-testid='duckai-sidebar']", "[data-testid='duckai-top-toolbar']"]
+  }
+}
+```
+
+**Width**
+
+```json
+{
+  "widthSelectors": [
+    {
+      "selector": "section:has([data-testid='duckai-chat-input']) div:has(> [data-testid='user-message'])",
+      "property": "max-width",
+      "extraCss": "width: 100% !important; box-sizing: border-box !important;"
+    }
+  ]
+}
+```
+
+Optional `extraCss` is still filtered by the restricted CSS-value validator. Remote resource functions, imports, expressions, and JavaScript URLs are rejected after decoding and normalization.
+
+### Panel avoidance and theme sync
+
+`panel-avoidance` requires a verified `panelAvoidance` block. At minimum, provide non-empty `widthSelectors`. Optional fields include `scopeSelector`, `obstacleSelectors`, `insetSelectors`, `gap`, and width thresholds.
+
+`themeSync` is optional and is **not** a capability id. Use it only for sites that switch theme through explicit `localStorage` writes and optional `<html>` class toggles. See [Capabilities](/enhancements/site-extensions/capabilities#theme-sync-is-not-a-capability-id).
+
+## Security constraints while authoring
+
+- serialized Site Pack JSON must stay within 64 KiB
+- ordinary arrays are capped at 50 items
+- regexes are length-limited and checked with `safe-regex2`
+- same-origin path templates must start with a single `/`
+- never include tokens, cookies, account data, internal URLs, or user content
+- never use a Site Pack to override a built-in site
+- never add scripts, expressions, remote resources, or destructive automation fields
+
+## Validate and contribute
+
+From the ophel repository:
+
+```bash
+pnpm registry:validate
+pnpm registry:build
+```
+
+`registry:build` generates a local unsigned build for testing. The signed distribution used by the registry publish workflow is produced by `pnpm registry:build:signed`.
+
+Then verify the declared capabilities on the real site, including:
+
+- cold reload
+- idle and generating states
+- outline / export / prompt insertion if declared
+- panel open and closed, for width or panel-avoidance packs
+
+Submit the JSON with the [SitePack pull request template](https://github.com/urzeye/ophel/blob/main/.github/PULL_REQUEST_TEMPLATE/site-pack.md) and follow the [review checklist](https://github.com/urzeye/ophel/blob/main/docs/developer/site-adapter/site-pack-review-checklist.md).
+
+Editor JSON Schema help:
+
+- [`registry/schema/site-pack.schema.json`](https://github.com/urzeye/ophel/blob/main/registry/schema/site-pack.schema.json)
+
+Runtime authority:
+
+- [`src/adapters/declarative/validate.ts`](https://github.com/urzeye/ophel/blob/main/src/adapters/declarative/validate.ts)
+
+## Related pages
+
+- [Capabilities reference](/enhancements/site-extensions/capabilities)
+- [Install and manage](/enhancements/site-extensions/installation)
+- [Site Extension FAQ](/enhancements/site-extensions/faq)
