@@ -59,6 +59,8 @@ Site Extensions use **optional host permissions** for each pack origin, not a pe
 
 See [Install and manage Site Extensions](/enhancements/site-extensions/installation) for the full permission, reauthorization, and custom-origin flow.
 
+Granting **Advanced Features Access** (`<all_urls>`) also covers the origins of installed Site Extensions, so packs and custom bindings can activate without per-origin prompts. Revoking it returns those origins to per-origin prompts; Site Extensions are not disabled.
+
 ## Frequently asked questions
 
 <AccordionGroup>
