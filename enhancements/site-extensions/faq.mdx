@@ -2,12 +2,11 @@
 title: "Site Extension FAQ"
 sidebarTitle: "FAQ"
 icon: "circle-question"
-description: "Answers about Site Pack permissions, registry updates, userscript match rules, self-hosted bindings, privacy, and built-in adapter differences."
+description: "Answers about Site Pack permissions, registry updates, self-hosted bindings, privacy, and built-in adapter differences."
 keywords:
   [
     "Site Extension FAQ",
     "SitePack permissions",
-    "userscript match",
     "self-hosted binding",
     "registry updates",
     "local JSON import",
@@ -27,10 +26,6 @@ Registry packs are community-contributed manifests reviewed and published throug
 ## Why does the extension request access to another domain?
 
 Ophel needs optional host permission before it can register content scripts on a Site Pack origin. The request is limited to the pack's referenced HTTPS origins. Denying it rolls back the installation or binding operation.
-
-## Why does the userscript build ask me to edit match rules?
-
-Userscript managers decide where a script may run from `@match` rules. A running script cannot grant itself another match. Ophel therefore shows the exact patterns for you to add in Tampermonkey, Violentmonkey, or ScriptCat.
 
 ## Can one pack support self-hosted instances?
 
@@ -56,7 +51,7 @@ An origin registration is removed only when no enabled pack or custom binding st
 
 No. Site Packs intentionally reject scripts, expressions, executable callbacks, remote resources, and unrestricted CSS. Complex integrations that require imperative code must be implemented and reviewed as built-in adapters.
 
-There is no remote executable Site Pack / L3 code-plugin path in the current product.
+There is no remote-executable plugin mechanism in the current product.
 
 ## What page data is sent to the registry?
 

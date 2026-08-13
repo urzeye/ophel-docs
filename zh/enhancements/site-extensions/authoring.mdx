@@ -237,6 +237,8 @@ pnpm registry:validate
 pnpm registry:build
 ```
 
+`registry:build` 生成本地未签名构建，供测试使用；registry 发布流程使用的签名产物由 `pnpm registry:build:signed` 生成。
+
 然后在真实站点上验证已声明能力，包括：
 
 - 冷启动刷新

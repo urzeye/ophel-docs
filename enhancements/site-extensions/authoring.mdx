@@ -237,6 +237,8 @@ pnpm registry:validate
 pnpm registry:build
 ```
 
+`registry:build` generates a local unsigned build for testing. The signed distribution used by the registry publish workflow is produced by `pnpm registry:build:signed`.
+
 Then verify the declared capabilities on the real site, including:
 
 - cold reload

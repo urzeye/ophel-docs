@@ -2,12 +2,11 @@
 title: "站点拓展常见问题"
 sidebarTitle: "FAQ"
 icon: "circle-question"
-description: "关于站点拓展权限、registry 更新、油猴 match 规则、自托管绑定、隐私以及与内置适配器差异的解答。"
+description: "关于站点拓展权限、registry 更新、自托管绑定、隐私以及与内置适配器差异的解答。"
 keywords:
   [
     "站点拓展 FAQ",
     "SitePack 权限",
-    "油猴 match",
     "自托管绑定",
     "registry 更新",
     "本地 JSON 导入",
@@ -27,10 +26,6 @@ registry 站点拓展是经 Ophel registry 流程审阅并发布的社区贡献�
 ## 为什么扩展会请求访问另一个域名？
 
 在站点拓展源上注册 content script 前，Ophel 需要可选主机权限。请求范围仅限站点拓展引用的 HTTPS 源。拒绝后会回滚安装或绑定操作。
-
-## 为什么油猴构建会要求我编辑 match 规则？
-
-油猴管理器根据 `@match` 规则决定脚本可运行的位置。正在运行的脚本无法自行授予新的 match。因此 Ophel 会显示你需要在 Tampermonkey、Violentmonkey 或 ScriptCat 中添加的精确模式。
 
 ## 一个站点拓展能支持多个自托管实例吗？
 
@@ -56,7 +51,7 @@ Ophel 会按站点拓展 ID 与源派生键存储每个实例，因此同一站�
 
 不能。站点拓展会有意拒绝脚本、表达式、可执行回调、远程资源与不受限 CSS。需要命令式代码的复杂集成，必须作为内置适配器实现并审阅。
 
-当前产品中不存在远程可执行 Site Pack / L3 代码插件路径。
+当前产品没有可远程执行的插件机制。
 
 ## 会向 registry 发送哪些页面数据？
 

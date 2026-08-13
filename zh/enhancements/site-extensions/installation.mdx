@@ -9,7 +9,6 @@ keywords:
     "在线拓展库",
     "本地 JSON 导入",
     "自定义源绑定",
-    "油猴 match 规则",
     "自托管 Open WebUI",
   ]
 ---
@@ -74,22 +73,6 @@ https://raw.githubusercontent.com/urzeye/ophel/registry-dist/index.json
 {/* TODO: 后续补充产品截图 */}
 ![站点拓展主机权限提示](/images/enhancements/site-extensions/permission-prompt.png)
 
-## 油猴 match 规则
-
-油猴管理器根据 `@match` 规则决定脚本可在哪些页面运行。正在运行的脚本无法自行授予新的 match。
-
-当已安装站点拓展或自定义源超出脚本当前覆盖范围时，站点拓展页会显示 **添加油猴 match 规则** 及精确模式。
-
-1. 复制所有显示的模式。
-2. 在 Tampermonkey、Violentmonkey 或 ScriptCat 中打开已安装的 Ophel 脚本。
-3. 把这些模式加入管理器的用户 match 设置。
-4. 保存，然后刷新每个目标站点。
-
-各管理器的菜单名称不同。请把规则限制在你要使用的站点，不要改成全局 match。
-
-{/* TODO: 后续补充产品截图 */}
-![油猴 match 规则助手](/images/enhancements/site-extensions/userscript-match-helper.png)
-
 ## 绑定自定义源
 
 自定义源用于自托管或同应用多部署场景，这些域名不在站点拓展静态 `matches` 中。
@@ -101,7 +84,7 @@ https://raw.githubusercontent.com/urzeye/ophel/registry-dist/index.json
    路径和通配符会被拒绝。
 3. 选择一个已安装站点拓展。
 4. 保存绑定。
-5. 在扩展中批准主机权限，或按 UI 所示添加油猴 match 规则。
+5. 在扩展中批准主机权限。
 6. 刷新绑定源。
 
 所选站点拓展会始终在该源上激活。Ophel 会按站点拓展 ID 与源派生键存储每个实例，因此同一站点拓展的两个部署不会混用设置、主题、阅读历史与会话数据。
@@ -126,7 +109,6 @@ https://raw.githubusercontent.com/urzeye/ophel/registry-dist/index.json
 | --- | --- |
 | **可用** | 在当前权限与 match 覆盖下可以激活 |
 | **已禁用** | 已安装但关闭 |
-| **需要 match 规则** | 油猴覆盖不完整 |
 | **不兼容** | 应用版本或 registry 状态无法激活该包 |
 | **自托管** / **需要绑定** | 站点拓展没有静态 matches，需要自定义源 |
 | **已从库中移除** | registry 条目不再可用 |
@@ -137,7 +119,7 @@ https://raw.githubusercontent.com/urzeye/ophel/registry-dist/index.json
 如果站点拓展装上了，但站点仍未被识别：
 
 1. 确认站点拓展已启用。
-2. 在授予权限或添加油猴 match 后，刷新目标标签页。
+2. 在授予权限后，刷新目标标签页。
 3. 检查当前源是否与站点拓展或自定义绑定完全一致，包括协议与主机。
 4. 对自托管站点拓展，确认已存在自定义源绑定。
 5. 若来自在线库，检查是否有更新版本。

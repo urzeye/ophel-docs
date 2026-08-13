@@ -31,7 +31,7 @@ keywords:
 | 安装社区或自托管站点拓展 | [安装与管理](/zh/enhancements/site-extensions/installation) |
 | 了解每项能力会解锁什么 | [能力参考](/zh/enhancements/site-extensions/capabilities) |
 | 创建或贡献站点拓展 | [编写站点拓展](/zh/enhancements/site-extensions/authoring) |
-| 权限、更新、油猴限制 | [站点拓展 FAQ](/zh/enhancements/site-extensions/faq) |
+| 权限、更新与限制 | [站点拓展 FAQ](/zh/enhancements/site-extensions/faq) |
 
 ## 站点拓展能提供什么
 
@@ -81,7 +81,7 @@ registry 包从不可变版本路径下载，先对照签名索引与 SHA-256 �
 | **自定义站点** | 将精确 HTTPS 源绑定到已安装站点拓展 |
 | **浏览与更新** | 在线拓展库、刷新 registry、安装/更新、本地 JSON 导入 |
 
-**指南** 按钮会打开产品指南。本套文档上线 ophel.app 后，产品内链接应更新到文档站。
+设置工具栏上的 **指南** 按钮会打开 ophel.app 上的这套文档。
 
 ## 社区 registry 中的示例站点拓展
 
@@ -102,7 +102,6 @@ registry 包从不可变版本路径下载，先对照签名索引与 SHA-256 �
 - 不允许任意 JavaScript、远程代码或可执行回调
 - 仅支持 HTTPS 源；HTTP 自定义绑定会被拒绝
 - 扩展端使用可选主机权限与动态 content script 注册
-- 油猴构建无法自动添加 `@match`；UI 会列出你需要自行添加的规则
 - registry 索引使用 Ed25519 签名；包文件用 SHA-256 固定
 - 失败或无效更新会保留 last-known-good 已安装状态
 - 内置站点 ID 与域名不能被站点拓展占用

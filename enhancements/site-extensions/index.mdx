@@ -30,7 +30,7 @@ They are **not plugins with executable code**. They cannot ship JavaScript, expr
 | Install a community or self-hosted pack | [Install and manage](/enhancements/site-extensions/installation) |
 | Understand what each capability unlocks | [Capabilities reference](/enhancements/site-extensions/capabilities) |
 | Create or contribute a pack | [Author a Site Extension](/enhancements/site-extensions/authoring) |
-| Permissions, updates, userscript limits | [Site Extension FAQ](/enhancements/site-extensions/faq) |
+| Permissions, updates, and limitations | [Site Extension FAQ](/enhancements/site-extensions/faq) |
 
 ## What a Site Extension can provide
 
@@ -80,7 +80,7 @@ Tabs in the current UI:
 | **Custom sites** | Bind an exact HTTPS origin to an installed pack |
 | **Browse & updates** | Online pack library, refresh registry, install/update, local JSON import |
 
-A **Guide** button opens the product guide. After this documentation ships on ophel.app, that product link should be updated to the docs site.
+A **Guide** button in the settings toolbar opens this documentation on ophel.app.
 
 ## Example packs in the community registry
 
@@ -101,7 +101,6 @@ Exact capability sets differ by pack. Install a pack and inspect its declared ca
 - No arbitrary JavaScript, remote code, or executable callbacks
 - HTTPS origins only; HTTP custom bindings are rejected
 - Optional host permission and dynamic content-script registration in the extension
-- Userscript builds cannot auto-add `@match`; the UI lists the patterns you must add yourself
 - Registry index is Ed25519-signed; package files are SHA-256 pinned
 - Failed or invalid updates keep the last-known-good installed state
 - Built-in site IDs and domains cannot be claimed by a pack
