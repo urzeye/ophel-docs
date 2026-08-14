@@ -75,7 +75,7 @@ const en = {
   },
   platforms: {
     title: '15 Platforms Supported',
-    desc: 'Install once. Works with all your favorite AI assistants.',
+    desc: 'Works with 15 AI assistants out of the box — install adapter packs from Site Packs to extend support to even more sites.',
   },
   reviews: {
     title: 'Loved by Users',
@@ -222,7 +222,7 @@ const zh = {
   },
   platforms: {
     title: '支持 15 个平台',
-    desc: '一次安装，覆盖你常用的所有 AI 助手',
+    desc: '开箱支持 15 个平台，还可在「适配中心」安装适配包、扩展更多站点',
   },
   reviews: {
     title: '用户真实评价',
