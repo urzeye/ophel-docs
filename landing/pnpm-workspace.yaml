@@ -1,4 +1,2 @@
-ignoredBuiltDependencies:
-  - esbuild
-  - sharp
-  - workerd
+packages:
+  - '.'
