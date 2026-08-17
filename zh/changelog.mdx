@@ -3,6 +3,30 @@ title: "更新日志"
 description: "Ophel Atlas 的所有重要更改均记录于此。"
 ---
 
+<Update label="v1.2.1">
+
+  ### 🚀 新增功能
+
+  - **DeepSeek Harness 站点支持** — 在线适配库新增 DeepSeek Harness，安装适配包并绑定自建实例域名后，即可使用大纲（含用户提问）、基础导出、生成检测与停止、对话宽度、禅模式、提示词插入和阅读进度功能。([#825](https://github.com/urzeye/ophel/issues/825))
+  - **OpenCode 分享支持** — 在线适配库新增 OpenCode 分享（opncd.ai），安装适配包后即可在 OpenCode 分享对话页面使用大纲（含用户提问识别）和基础导出功能。([#800](https://github.com/urzeye/ophel/issues/800))
+  - **LongCat AI 站点支持** — 在线适配库新增 LongCat AI（longcat.chat），安装适配包后即可在该站点使用大纲（含用户提问）、导出、生成检测与停止、页面宽度、禅模式、新对话和提示词插入功能。
+  - **HTTP 自建站点支持** — 适配中心现在可以绑定 `http://127.0.0.1:3080` 这类 HTTP 域名，未启用 HTTPS 的自建 AI 站点也能使用 Ophel；页内适配向导和本地适配包导入同样支持 HTTP 域名。
+
+  ### ✨ 功能优化
+
+  - **适配库自动检查更新** — 打开设置-适配中心-"获取与更新"时会自动检查一次适配更新，首次安装的用户进入即可看到在线适配库，不再面对空列表。([#821](https://github.com/urzeye/ophel/issues/821))
+  - **适配包大纲排除** — 适配包现在可以声明需要从大纲中排除的容器，思考链等内容不再把草稿标题混入大纲。([#800](https://github.com/urzeye/ophel/issues/800))
+
+  ### 🐛 问题修复
+
+  - **Claude 新版页面适配** — 适配 Claude.ai 新版 DOM 结构，更新侧边栏会话列表、发送按钮、生成检测、禅模式、宽度调整和智能避让的选择器。（[#834](https://github.com/urzeye/ophel/issues/834) @urzeye, [#820](https://github.com/urzeye/ophel/issues/820) @crazyn2）
+  - **ChatGPT 新版页面适配** — 适配 ChatGPT 新版 DOM 结构：会话能被扫描到却无法加入会话管理、净化模式下无法移除「ChatGPT 也可能会犯错」提示、双击公式提示缺少可复制的源码；现已兼容新版侧边栏链接与公式结构。
+  - **油猴端适配库更新** — 修复油猴脚本因浏览器缓存 CDN 响应，在线适配库长时间停留在旧版本（最长可达一周）的问题；现在每次检查更新都会拉取最新索引。
+  - **适配包前向兼容字段** — registry PR 校验现在对任意嵌套层级的 schema 已声明字段做前向兼容放行，新的选择器或配置子字段可以和使用它的适配包在同一 PR 中提交，无需再拆成两个 PR 分别合入。([#800](https://github.com/urzeye/ophel/issues/800))
+  - **隐藏会话自动恢复** — 修复部分历史会话在会话管理中不可见、即使重新同步也无法恢复的问题；升级后会自动把指向已删除文件夹的会话移回收件箱。
+  - **适配包提示词插入** — 修复向部分站点的富文本输入框插入多行提示词时，文本已成功插入却提示"插入失败"的问题。
+</Update>
+
 <Update label="v1.2.0">
 
   ### 🚀 新增功能
@@ -1368,6 +1392,7 @@ description: "Ophel Atlas 的所有重要更改均记录于此。"
   - 开源透明
 
 
+  [1.2.1]: https://github.com/urzeye/ophel/releases/tag/v1.2.1
   [1.2.0]: https://github.com/urzeye/ophel/releases/tag/v1.2.0
   [1.1.8]: https://github.com/urzeye/ophel/releases/tag/v1.1.8
   [1.1.7]: https://github.com/urzeye/ophel/releases/tag/v1.1.7
