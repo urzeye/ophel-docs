@@ -3,6 +3,21 @@ title: "Changelog"
 description: "All notable changes to Ophel Atlas are documented here."
 ---
 
+<Update label="v1.2.4">
+
+  ### 🚀 New Features
+
+  - **Interactive export dialog** — The export button and the conversation list export menu now open a unified options dialog: pick the format (Markdown / HTML / JSON / TXT / Copy Markdown), toggle thought inclusion and turn numbering, customize the Markdown divider, package as ZIP, or jump to segmented export; a new "Show Export Options Dialog" setting restores one-click export when turned off. ([#841](https://github.com/urzeye/ophel/issues/841))
+  - **HTML export** — Conversations can now be exported as a single self-contained HTML file with responsive layout, light/dark/auto theme switching, syntax-highlighted code blocks with copy buttons, native MathML formulas, a collapsible "Thinking process" section, and light-theme printing. ([#856](https://github.com/urzeye/ophel/issues/856), @Piracola)
+  - **Default export format** — Added a "Default Export Format" setting, so the export shortcut and quick export use a preferred format (Markdown / JSON / TXT / HTML) instead of always Markdown. ([#856](https://github.com/urzeye/ophel/issues/856), @Piracola)
+  - **Site Pack document outline support** — Declarative Site Packs now support document outline navigation (`document-outline` capability and `documentOutline` config), enabling multi-source "Document" tab outlines and scroll navigation for Canvas, Artifacts, and standalone research reports on adapted sites.
+  - **Manus support** — The online adapter library now includes Manus (manus.im); installing the pack enables outlines with user queries, basic export, chat width, Zen Mode, Clean Mode, new chat, and prompt insertion on conversations and shared pages.
+
+  ### ✨ Improvements
+
+  - **Thought block consolidation and duplicate title cleanup** — The export pipeline now automatically merges consecutive thought fragments into a single unified blockquote and safely combines consecutive pure-thought assistant turns (including multi-fragment chains), preventing duplicate model headings across adapted sites; segmented exports are cleaned up the same way. ([#841](https://github.com/urzeye/ophel/issues/841))
+</Update>
+
 <Update label="v1.2.3">
 
   ### 🚀 New Features
@@ -1427,6 +1442,7 @@ description: "All notable changes to Ophel Atlas are documented here."
   - Open source and transparent
 
 
+  [1.2.4]: https://github.com/urzeye/ophel/releases/tag/v1.2.4
   [1.2.3]: https://github.com/urzeye/ophel/releases/tag/v1.2.3
   [1.2.2]: https://github.com/urzeye/ophel/releases/tag/v1.2.2
   [1.2.1]: https://github.com/urzeye/ophel/releases/tag/v1.2.1
