@@ -23,7 +23,7 @@ Ophel adds a layer of interactivity to AI conversation pages: diagrams that some
 
 Some AI platforms display Mermaid code blocks as raw text instead of rendered diagrams. When Ophel detects an unrendered Mermaid block, it renders the diagram in place automatically.
 
-**Settings → Features → Content → Render Mermaid in AI replies** (default: on)
+**Settings → Features → Content → Assistant Mermaid Render** (default: on)
 
 <Note>
   This only activates when the platform itself has not rendered the Mermaid
@@ -63,13 +63,13 @@ Enable **Settings → Features → Content → Add delimiter when copying** if t
 
 Markdown syntax you type in the AI input box — `**bold**`, `` `code` ``, `- list item` — normally appears as plain text in your message bubble after sending. With this feature enabled, Ophel renders Markdown formatting inside your messages so they're easier to read.
 
-**Settings → Features → Content → Render Markdown in user messages** (default: on)
+**Settings → Features → Content → User Query Style Enhancement** (default: on)
 
 ## Markdown table copy
 
 A **Copy** button appears on tables inside AI replies. Clicking it copies the table as standard Markdown table syntax, ready to paste into any Markdown editor.
 
-**Settings → Features → Content → Copy Markdown tables** (default: on)
+**Settings → Features → Content → Table Copy Markdown** (default: on)
 
 ## Conversation export
 
@@ -90,15 +90,15 @@ Export any conversation to a file from <Icon src="/images/icons/tools.svg" alt="
   </Accordion>
 </AccordionGroup>
 
-**Settings → Features → Export** controls export behavior:
+**Settings → Features → Conversations → Export Settings** controls export behavior:
 
-| Setting                       | Description                                                                                                                          |
-| ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| Custom user name              | Replaces "Me" in exported files; leave blank to use the default                                                                      |
-| Custom AI name                | Replaces the AI's name in exported files; leave blank to use the platform name                                                       |
-| Include timestamp in filename | Appends a timestamp to the filename to avoid overwriting existing exports                                                            |
-| Include chain of thought      | Include the AI's reasoning content in exports (Claude, Kimi, Qwen Studio, Yuanbao, Z.ai, ChatGLM, Ima)                              |
-| Packaging mode                | **Markdown only** exports a single `.md` file; **Zip package** bundles the Markdown with referenced images and files as a `.zip` |
+| Setting | Description |
+| --- | --- |
+| Custom User Name | Replaces "Me" in exported files; leave blank to use the default |
+| Custom AI Name | Replaces the AI's name in exported files; leave blank to use the platform name |
+| Add Timestamp to Filename | Appends a timestamp to the filename to avoid overwriting existing exports |
+| Include Thoughts in Export | Include the AI's reasoning content for platforms that expose it (such as Claude, Kimi, and Qwen Studio) |
+| Markdown Export Method | **Markdown only** exports a single `.md` file; **Zip package** bundles the Markdown with referenced images and files as a `.zip` |
 
 <Tip>
   For a detailed explanation of the zip package structure, asset handling per
@@ -112,9 +112,9 @@ Export any conversation to a file from <Icon src="/images/icons/tools.svg" alt="
   <Accordion title="Markdown fix (Gemini, AI Studio, ChatGPT)">
     These platforms sometimes fail to render bold text correctly — `**text**` appears as literal characters instead of formatted output. Ophel includes a patch for each affected platform.
 
-    - **Settings → Site Settings → Gemini → Markdown fix**
-    - **Settings → Site Settings → AI Studio → Markdown fix**
-    - **Settings → Site Settings → ChatGPT → Markdown fix**
+    - **Settings → Site Settings → Gemini → Markdown Bold Fix**
+    - **Settings → Site Settings → AI Studio → Markdown Bold Fix**
+    - **Settings → Site Settings → ChatGPT → Markdown Bold Fix**
 
   </Accordion>
   <Accordion title="Watermark removal (Gemini, AI Studio)">
@@ -122,7 +122,7 @@ Export any conversation to a file from <Icon src="/images/icons/tools.svg" alt="
 
     This feature requires the optional `<all_urls>` permission (used to fetch images and convert them to base64). The browser will prompt for permission the first time you enable it.
 
-    **Settings → Site Settings → Gemini → Remove watermark**
+    **Settings → Site Settings → Gemini → Remove Image Watermark**
 
   </Accordion>
 </AccordionGroup>

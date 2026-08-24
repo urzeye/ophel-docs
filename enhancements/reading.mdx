@@ -19,9 +19,9 @@ When you leave a conversation, Ophel quietly records your scroll position. The n
 
 | Setting | Description | Default |
 | --- | --- | --- |
-| Record reading position | Track scroll position per conversation | On |
-| Auto-restore | Scroll to last position when reopening a conversation | On |
-| Retention period | How long records are kept before automatic cleanup | 30 days |
+| Enable Reading History | Automatically remember the reading position for each conversation | On |
+| Auto-Resume | Jump to the last position when the page loads | On |
+| Retention Period | How many days of reading progress to keep before automatic cleanup | 3 days |
 
 Available retention periods: 1 day / 3 days / 7 days / 30 days / 90 days / Forever.
 
@@ -45,7 +45,9 @@ While the AI is generating, the page automatically scrolls down to follow new ou
 </Tabs>
 
 <Note>
-  Scroll lock is a temporary per-session state and does not persist across page refreshes. If you need it active on every visit to a particular site, toggle it manually after each page load.
+  Scroll lock is a temporary per-session state and does not persist across page
+  refreshes. For a lasting effect, enable **Prevent auto-scroll** in **Settings →
+  Features → Outline → Scroll Settings**.
 </Note>
 
 ## Navigation anchors
@@ -59,10 +61,6 @@ The floating button group provides three scroll shortcuts that also work as a na
 | <Icon src="/images/icons/anchor.svg" alt="Return to anchor icon" /> Return to anchor | <Shortcut combo="alt+z" /> | Returns to the last saved position |
 
 Every time you use **Scroll to top** or **Scroll to bottom**, Ophel saves your current position as an anchor first. Click **Return to anchor** to jump back. Click it again to toggle between the anchor and wherever you are now — useful for cross-referencing two parts of a long conversation.
-
-<Tip>
-  If you want to save your current position as an anchor without scrolling anywhere, enable the <Icon src="/images/icons/manual-anchor.svg" alt="Manual anchor icon" /> **Manual Anchor** button in **Settings → General → Quick Buttons** (hidden by default).
-</Tip>
 
 ## Bookmarks
 

@@ -63,12 +63,12 @@ This page answers the most common questions about Ophel Atlas. If you don't find
 
 <AccordionGroup>
   <Accordion title="What are Site Extensions?" icon="puzzle-piece">
-    Site Packs are declarative JSON manifests that add support for AI chat sites beyond the built-in platforms. They do not run arbitrary JavaScript. Manage them from **Settings -> Site Packs**.
+    Site Packs are declarative JSON manifests that add support for AI chat sites beyond the built-in platforms. They do not run arbitrary JavaScript. Manage them from **Settings → Site Packs**.
 
     Start with the [Site Extensions overview](/enhancements/site-extensions), then see [install and manage](/enhancements/site-extensions/installation) for registry installs, local import, and custom origin binding.
   </Accordion>
   <Accordion title="Can Site Extensions support self-hosted Open WebUI or LibreChat?" icon="server">
-    Yes. Several community packs ship with empty match lists and require an explicit HTTPS origin binding under **Settings -> Site Packs -> Custom sites**. See the [installation guide](/enhancements/site-extensions/installation#bind-a-custom-origin).
+    Yes. Several community packs ship with empty match lists and require an explicit HTTPS origin binding under **Settings → Site Packs → Custom sites**. See the [installation guide](/enhancements/site-extensions/installation#bind-a-custom-origin).
   </Accordion>
 </AccordionGroup>
 
@@ -106,7 +106,7 @@ This page answers the most common questions about Ophel Atlas. If you don't find
   <Accordion title="What is edge snap, and how do I use it?" icon="thumbtack">
     Edge snap lets the panel hide against the screen edge and slide out when you need it. Drag the panel toward a screen edge until it snaps into place. To reveal it, hover over that edge — the panel slides out automatically. To undock it, drag it away from the edge.
 
-    If you prefer to keep the panel floating freely, you can disable edge snap entirely in **Settings → General → Panel**.
+    If you prefer to keep the panel floating freely, switch **Panel mode** to **Floating** in **Settings → General → Panel**.
 
   </Accordion>
 </AccordionGroup>
@@ -115,7 +115,7 @@ This page answers the most common questions about Ophel Atlas. If you don't find
 
 <AccordionGroup>
   <Accordion title="Why is the outline empty even though the conversation has content?" icon="list-tree">
-    Some AI platforms update the DOM asynchronously, so the outline may not populate immediately when the page first loads. Press <Shortcut combo="alt+r" /> to refresh the outline manually. If the outline stays empty after a refresh, check that **Auto update** is enabled in **Settings → Features → Outline**.
+    Some AI platforms update the DOM asynchronously, so the outline may not populate immediately when the page first loads. Press <Shortcut combo="alt+r" /> to refresh the outline manually. If the outline stays empty after a refresh, check that **Auto-update outline during conversation** is enabled in **Settings → Features → Outline**.
   </Accordion>
 
 <Accordion
@@ -123,8 +123,8 @@ This page answers the most common questions about Ophel Atlas. If you don't find
   icon="arrows-up-down"
 >
   The scroll-tracking feature is controlled by a setting. Go to **Settings →
-  Features → Outline** and make sure **Sync outline with scroll** (Follow mode)
-  is set to `current` rather than `manual`.
+  Features → Outline** and make sure **Outline Follow Mode**
+  is set to **Follow Current Position** rather than **Manual Control**.
 </Accordion>
 
   <Accordion title="How do I refresh the outline manually?" icon="rotate">
@@ -209,7 +209,7 @@ This page answers the most common questions about Ophel Atlas. If you don't find
     title="How do I reset everything to defaults?"
     icon="rotate-left"
   >
-    Go to **Settings → Backup & Sync** and click **Clear all data**. This
+    Go to **Settings → Data Management → Local Backup** and click **Clear all data**. This
     removes all Ophel data stored in your browser, including saved prompts,
     conversation metadata, folder and tag definitions, and all settings. The AI
     platform's own conversation history is not affected.

@@ -72,7 +72,7 @@ You can drag the title bar to reposition the panel anywhere on screen when it is
 
 The floating button group at the screen edge is your fastest access point to common actions without opening the full panel.
 
-- The group **auto-collapses** into a pill shape after about 5 seconds of inactivity. By default, moving your cursor within **150 px** of it expands it again. The wake distance is configurable: go to **Settings → Quick Buttons → Proximity Wake Radius** (0–300 px). Set it to **0** to enable dwell-hover mode — the group only expands after the cursor rests on the pill for 300 ms, so simply passing through it does not trigger expansion.
+- The group **auto-collapses** into a pill shape after about 5 seconds of inactivity. By default, moving your cursor within **150 px** of it expands it again. The wake distance is configurable: go to **Settings → General → Shortcuts → Proximity wake distance** (0–300 px). Set it to **0** to enable dwell-hover mode — the group only expands after the cursor rests on the pill for 300 ms, so simply passing through it does not trigger expansion.
 - When the group is collapsed, hover the panel logo for a short dwell to open a temporary panel preview beside the buttons. Moving away hides the preview; clicking the logo still opens or closes the panel persistently.
 - **Long-press and drag** any button to reposition the entire group to a different spot on screen.
 
@@ -104,13 +104,13 @@ Click <Icon src="/images/icons/tools.svg" alt="Toolbox icon" /> **Toolbox** to r
 | <Icon src="/images/icons/cleanup.svg" alt="Clear invalid bookmarks icon" /> **Clear invalid bookmarks** | Removes invalid bookmarks / anchor records from the current conversation. |
 | <Icon src="/images/icons/settings.svg" alt="Settings icon" /> **Settings** | Opens the settings dialog. |
 
-**Additional settings** (`Settings → Quick Buttons`):
+**Additional settings** (`Settings → General → Shortcuts`):
 
 | Setting                     | Description                                                                                                 |
 | --------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| **Proximity Wake Radius**   | Distance (px) at which the cursor wakes up the collapsed pill (default 150). Set to 0 for dwell-hover mode. |
-| **Opacity**                 | Transparency of the button group in its collapsed / idle state.                                             |
-| **Hide when panel is open** | Automatically collapses the quick button group while the panel is open; it reappears when the panel closes. |
+| **Proximity wake distance**   | Distance (px) at which the cursor wakes up the collapsed pill (default 150). Set to 0 for dwell-hover mode. |
+| **Quick buttons opacity**                 | Transparency of the button group in its collapsed / idle state.                                             |
+| **Hide quick buttons when panel is open** | Automatically collapses the quick button group while the panel is open; it reappears when the panel closes. |
 
 ## Keyboard shortcuts
 
@@ -173,18 +173,18 @@ All of these are in **Settings → General → Panel**:
 
 | Setting               | Description                                                                       | Default   |
 | --------------------- | --------------------------------------------------------------------------------- | --------- |
-| Panel mode            | Edge Snap or Floating                                                             | Floating  |
-| Default side          | Left or right side of the screen                                                  | Right     |
-| Panel width           | Saved panel width; can also be changed by dragging the Floating panel edge        | 320 px    |
-| Widen on hover (Beta) | Temporarily widens the Floating panel while your cursor or keyboard focus is on it | Off       |
-| Hover width (Beta)    | Temporary width used while **Widen on hover** is active                            | 520 px    |
-| Panel height          | 50–100 vh                                                                         | 85 vh     |
-| Edge distance         | Distance from the screen edge when in Floating mode                               | 0 px      |
-| Snap threshold        | Distance from edge that triggers automatic snapping                                | 30 px     |
+| Panel mode | Edge Snap or Floating | Floating |
+| Default Side | Left or right side of the screen | Right |
+| Panel Width | Saved panel width (240–600 px); can also be changed by dragging the Floating panel edge | 320 px |
+| Widen on hover (Beta) | Temporarily widens the Floating panel while your cursor or keyboard focus is on it | Off |
+| Hover width (Beta) | Temporary width used while **Widen on hover** is active | 520 px |
+| Panel Height | 50–100 vh | 85 vh |
+| Snap Threshold | How close to the edge a drag triggers snapping, 0–400 px (Edge Snap mode only) | 30 px |
+| Default Margin | Initial distance between the Floating panel and the screen edge, 0–400 px (Floating mode only) | 0 px |
 
 ### Quick buttons behavior
 
-In **Settings → General → Quick Buttons Behavior**, you can also toggle:
+In **Settings → General → Shortcuts → Quick Buttons Behavior**, you can also toggle:
 
 - **Hide quick buttons when panel is open** — the floating button group automatically hides while the panel is open, and reappears when you close the panel.
 

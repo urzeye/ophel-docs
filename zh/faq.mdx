@@ -56,12 +56,12 @@ import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
 
 <AccordionGroup>
   <Accordion title="什么是站点拓展？" icon="puzzle-piece">
-    站点拓展是声明式 JSON 清单，用于在内置平台之外增加 AI 对话站点支持。它们不会运行任意 JavaScript。可在 **设置 -> 适配中心** 中管理。
+    站点拓展是声明式 JSON 清单，用于在内置平台之外增加 AI 对话站点支持。它们不会运行任意 JavaScript。可在 **设置 → 适配中心** 中管理。
 
     先看[站点拓展概览](/zh/enhancements/site-extensions)，再看[安装与管理](/zh/enhancements/site-extensions/installation)了解在线库安装、本地导入与自定义源绑定。
   </Accordion>
   <Accordion title="站点拓展能支持自托管 Open WebUI 或 LibreChat 吗？" icon="server">
-    可以。部分社区拓展使用空匹配列表，需要在 **设置 -> 适配中心 -> 自定义站点** 下显式绑定 HTTPS 源。详见[安装指南](/zh/enhancements/site-extensions/installation#绑定自定义源)。
+    可以。部分社区拓展使用空匹配列表，需要在 **设置 → 适配中心 → 自定义站点** 下显式绑定 HTTPS 源。详见[安装指南](/zh/enhancements/site-extensions/installation#绑定自定义源)。
   </Accordion>
 </AccordionGroup>
 
@@ -95,7 +95,7 @@ import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
 </Accordion>
 
   <Accordion title="面板吸附到边缘后如何取消？" icon="thumbtack">
-    将面板拖向屏幕边缘会自动吸附。悬停到该边缘时面板会弹出。若要取消吸附，拖拽面板离开边缘即可。也可在 **设置 → 通用 → 面板** 中禁用吸附功能。
+    将面板拖向屏幕边缘会自动吸附。悬停到该边缘时面板会弹出。若要取消吸附，拖拽面板离开边缘即可。也可在 **设置 → 基本设置 → 面板** 中将面板模式切换为**悬浮**。
   </Accordion>
 </AccordionGroup>
 
@@ -103,15 +103,14 @@ import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
 
 <AccordionGroup>
   <Accordion title="大纲是空的，但对话有内容。" icon="list-tree">
-    部分 AI 平台异步更新 DOM，页面加载后大纲可能需要几秒才能填充。按 <Shortcut combo="alt+r" /> 手动刷新大纲。如果刷新后仍为空，检查 **设置 → 功能 → 大纲 → 自动更新** 是否已开启。
+    部分 AI 平台异步更新 DOM，页面加载后大纲可能需要几秒才能填充。按 <Shortcut combo="alt+r" /> 手动刷新大纲。如果刷新后仍为空，检查 **设置 → 功能模块 → 大纲 → 对话期间自动更新大纲** 是否已开启。
   </Accordion>
 
 <Accordion
   title="大纲没有同步我的滚动位置。"
   icon="arrows-up-down"
 >
-  确认 **设置 → 功能 → 大纲 → 滚动同步** 已开启（跟随模式设为 `current` 而非
-  `manual`）。
+  确认 **设置 → 功能模块 → 大纲 → 大纲跟随模式** 已设为**跟随当前位置**，而不是**手动控制**。
 </Accordion>
 
   <Accordion title="如何手动刷新大纲？" icon="rotate">
@@ -140,7 +139,7 @@ import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
   <Accordion title="提示词队列怎么用？" icon="list-ol">
     提示词队列让你把多条提示词排好队，Ophel 会在 AI 每次完成回复后自动发送下一条。使用方法：
 
-    1. 在 <Icon src="/images/icons/settings.svg" alt="设置图标" /> **设置 → 功能 → 提示词 → 队列** 中启用
+    1. 在 <Icon src="/images/icons/settings.svg" alt="设置图标" /> **设置 → 功能模块 → 提示词 → 提示词队列** 中启用
     2. 按 <Icon src="/images/icons/keyboard.svg" alt="快捷键图标" /> <Shortcut combo="alt+j" /> 打开队列叠加层
     3. 逐条添加，或用批量导入粘贴一组提示词
     4. 加入待发送内容后，Ophel 检测到页面连续两次空闲（约 2 秒）后自动发送下一条
@@ -170,11 +169,11 @@ import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
 
 <AccordionGroup>
   <Accordion title="为什么 Ophel 需要 &lt;all_urls&gt; 权限？" icon="globe">
-    该权限仅用于两个可选功能：**WebDAV 同步**（访问你自己的 WebDAV 服务器）和**去水印**（抓取并转换图片）。这是完全可选的——如果你不使用这两个功能，可以拒绝或在 **设置 → 权限** 中点击撤销。
+    该权限仅用于两个可选功能：**WebDAV 同步**（访问你自己的 WebDAV 服务器）和**去水印**（抓取并转换图片）。这是完全可选的——如果你不使用这两个功能，可以拒绝或在 **设置 → 权限管理** 中点击撤销。
   </Accordion>
 
   <Accordion title="授予权限后还能撤销吗？" icon="shield-check">
-    可以。前往 **设置 → 权限**，点击对应权限旁的**撤销**按钮。撤销后依赖该权限的功能会被禁用，其他功能不受影响。
+    可以。前往 **设置 → 权限管理**，点击对应权限旁的**撤销**按钮。撤销后依赖该权限的功能会被禁用，其他功能不受影响。
   </Accordion>
 </AccordionGroup>
 
@@ -196,7 +195,7 @@ import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
 
 <AccordionGroup>
   <Accordion title="如何重置所有数据到初始状态？" icon="rotate-left">
-    前往 **设置 → 备份与同步**，点击**清空所有数据**。这将删除浏览器中存储的所有 Ophel 数据，包括提示词、会话元数据、文件夹与标签定义、以及所有设置。AI 平台上的实际对话历史不受影响。
+    前往 **设置 → 数据管理 → 本地备份**，点击**清空所有数据**。这将删除浏览器中存储的所有 Ophel 数据，包括提示词、会话元数据、文件夹与标签定义、以及所有设置。AI 平台上的实际对话历史不受影响。
 
     建议在清空前先导出一份完整备份。
 

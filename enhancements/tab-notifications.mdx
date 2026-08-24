@@ -24,13 +24,13 @@ Ophel syncs your browser tab title to the current AI conversation, making it eas
 
 **Settings → Features → Tab**:
 
-| Setting                         | Description                                                                                       | Default                    |
-| ------------------------------- | ------------------------------------------------------------------------------------------------- | -------------------------- |
-| Auto-rename                     | Sync conversation title to the browser tab                                                        | On                         |
-| Title update interval           | How often to poll for title changes                                                               | 3 s                        |
-| Title format                    | Tab title template using `{title}`, `{status}`, and `{model}` variables                           | `{status}{title}->{model}` |
-| Show status icon                | Display a generating or completed icon in the tab title (`⏳` / `✅`)                             | On                         |
-| Only show checkmark when unread | Show `✅` only while the completed reply has not been viewed; hide it after you return to the tab | Off                        |
+| Setting | Description | Default |
+| --- | --- | --- |
+| Auto Rename Tab | Sync conversation title to the browser tab | On |
+| Detection Interval | How often to poll for title changes (1 / 3 / 5 / 10 / 30 / 60 s) | 3 s |
+| Title Format | Tab title template using `{status}`, `{title}`, and `{model}` variables | `{status}{title}->{model}` |
+| Show Status | Display a generating or completed icon in the tab title (`⏳` / `✅`) | On |
+| Only show checkmark when unread | Show `✅` only while the completed reply has not been viewed; hide it after you return to the tab | Off |
 
 The default format produces titles like `⏳ My conversation->GPT-4o` while generating and `✅ My conversation->GPT-4o` when complete.
 
@@ -46,19 +46,19 @@ When the AI finishes a reply in another tab, Ophel can alert you with a desktop 
 
 **Settings → Features → Alerts**:
 
-| Setting                    | Description                                                          | Default   |
-| -------------------------- | -------------------------------------------------------------------- | --------- |
-| Completion notification    | Send a desktop notification when generation completes                | Off       |
-| Notification sound         | Play an audio cue with the notification                              | On        |
-| Sound preset               | Choose from built-in sound effects                                   | softChime |
-| Volume                     | Notification volume                                                  | 50%       |
-| Repeat count               | How many times to repeat a short sound                               | 3         |
-| Repeat interval            | Time between each repeat                                             | 2 s       |
-| Notify when tab is focused | Also notify when the active tab is already in view                   | Off       |
-| Auto-focus window          | Bring the browser window to the foreground when generation completes | Off       |
+| Setting | Description | Default |
+| --- | --- | --- |
+| Desktop Notification | Send a desktop notification when generation completes | Off |
+| Notification Sound | Play an audio cue with the notification | On |
+| Sound Preset | Choose from built-in sound effects, with preview | softChime |
+| Sound Volume | Notification volume (10%–100%) | 50% |
+| Play Count | How many times to repeat a short sound (1 / 2 / 3 / 5) | 3 |
+| Repeat Interval | Time between each repeat (1 / 2 / 3 / 5 / 10 s) | 2 s |
+| Notify When Focused | Also notify when the active tab is already in view | Off |
+| Auto Focus the Window | Bring the browser window to the foreground when generation completes | Off |
 
 <Note>
-  The first time you enable **Completion notification**, the browser will ask
+  The first time you enable **Desktop Notification**, the browser will ask
   for the **notifications** permission. Choose Allow. If you previously denied
   it, go to **Settings → Permissions** to grant it.
 </Note>
@@ -69,10 +69,10 @@ If you don't want the tab bar to reveal what you're discussing, privacy mode rep
 
 **Settings → Features → Tab**:
 
-| Setting       | Description                                   | Default |
-| ------------- | --------------------------------------------- | ------- |
-| Privacy mode  | Replace the tab title with custom text        | Off     |
-| Privacy title | The text to display instead of the real title | Google  |
+| Setting | Description | Default |
+| --- | --- | --- |
+| Privacy Mode | Replace the tab title with custom text | Off |
+| Decoy Title | The text to display instead of the real title | Google |
 
 <Note>
   Privacy mode only affects the browser tab title. It has no effect on
