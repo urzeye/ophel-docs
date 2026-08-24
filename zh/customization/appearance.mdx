@@ -20,19 +20,17 @@ Ophel 支持三种模式：
 - <Icon src="/images/icons/theme-dark.svg" alt="深色主题图标" /> **深色** — 始终使用暗色主题
 - <Icon src="/images/icons/theme-system.svg" alt="跟随系统图标" /> **跟随系统** — 自动跟随操作系统的外观设置
 
-可通过浮动按钮组中的 <Icon src="/images/icons/theme-system.svg" alt="主题切换图标" /> 主题切换按钮、快捷键 <Icon src="/images/icons/keyboard.svg" alt="快捷键图标" /> <Shortcut combo="alt+d" />，或 <Icon src="/images/icons/settings.svg" alt="设置图标" /> **设置 → 外观** 切换。
+可通过浮动按钮组中的 <Icon src="/images/icons/theme-system.svg" alt="主题切换图标" /> 主题切换按钮、快捷键 <Icon src="/images/icons/keyboard.svg" alt="快捷键图标" /> <Shortcut combo="alt+d" />，或 <Icon src="/images/icons/settings.svg" alt="设置图标" /> **设置 → 外观主题** 切换。
 
 <Tip>
-  开启**跟随站点主题**后，当 AI 平台（如 Gemini、ChatGPT）切换亮/暗模式时，Ophel
-  面板也会随之切换。可在 **设置 → 外观 → 跟随站点主题**
-  中控制，主题模式按站点独立保存。
+  主题模式按站点独立保存：在 Gemini 上切到深色，不会影响你在 ChatGPT 上的选择。
 </Tip>
 
 ### 同步原生页面颜色
 
 开启后，Ophel 会在切换亮/暗模式时，同步调整 AI 平台页面上部分原生元素（如输入框、滚动条）的颜色，使整体视觉更一致。此功能仅对部分站点生效。
 
-**设置路径：设置 → 外观 → 同步原生页面颜色**（默认开启）
+**设置路径：设置 → 外观主题 → 同步原生页面颜色**（默认开启）
 
 <Note>
   当前站点的亮/暗模式始终跟随 Ophel 的设置。此选项仅控制是否额外同步页面原生元素颜色——如果某个站点出现视觉冲突，可关闭此项。
@@ -57,9 +55,9 @@ Ophel 支持三种模式：
   <Step title="打开设置">
     按 <Icon src="/images/icons/keyboard.svg" alt="快捷键图标" /> <Shortcut combo="alt+," />，或点击面板标题栏的 <Icon src="/images/icons/settings.svg" alt="设置图标" /> 设置图标。
   </Step>
-  <Step title="进入外观页面">在设置页面中点击 **外观**。</Step>
+  <Step title="进入外观主题页面">在设置页面中点击 **外观主题**。</Step>
   <Step title="选择并应用">
-    切换顶部的"浅色"或"深色"标签，点击任意预设卡片即可预览并应用。
+    在 **主题预置** 标签下的 **浅色模式** 或 **深色模式** 区域，点击任意预设卡片即可应用。
   </Step>
 </Steps>
 
@@ -67,7 +65,7 @@ Ophel 支持三种模式：
 
 ## 自定义 CSS
 
-在 **设置 → 外观 → 自定义 CSS** 中输入自己的 CSS 规则，实现全面定制。面板运行在 Shadow DOM 中，样式与页面其他部分完全隔离。
+在 **设置 → 外观主题 → 自定义样式** 中输入自己的 CSS 规则，实现全面定制。面板运行在 Shadow DOM 中，样式与页面其他部分完全隔离。
 
 面板的样式使用 `--gh-` 前缀的 CSS 变量。你可以在自定义 CSS 中覆盖任意变量：
 

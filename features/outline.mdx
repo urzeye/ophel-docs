@@ -121,18 +121,18 @@ On platforms that expose a separate document panel — such as Claude's right-si
 | <Shortcut combo="alt+down" />       | Jump to next heading                           |
 | <Shortcut combo="alt+shift+1" /> - <Shortcut combo="alt+shift+6" /> | Expand outline to heading level 1–6            |
 
-All shortcuts are customizable in **Settings → Shortcuts**.
+All shortcuts are customizable in **Settings → Keyboard Shortcuts**.
 
 ## Settings
 
 Go to **Settings → Features → Outline** to configure the outline's behavior.
 
-| Setting              | Description                                                                       |
-| -------------------- | --------------------------------------------------------------------------------- |
-| Auto update          | Whether the outline refreshes automatically after each AI reply                   |
-| Update interval      | How often Ophel checks for changes (seconds)                                      |
-| Follow mode          | Whether the outline tracks your scroll position: `current`, `latest`, or `manual` |
-| Inline bookmark icon | When to show the bookmark star inside the conversation text itself                |
-| Panel bookmark icon  | When to show the bookmark star in the outline panel entries                       |
-| Show word count      | Show character count tooltip on hover                                             |
-| Prevent auto-scroll  | Stop the outline panel from scrolling itself when you navigate                    |
+| Setting | Description | Default |
+| --- | --- | --- |
+| Auto-update outline during conversation | Rebuild the outline after each AI reply; when off, refresh manually with <Shortcut combo="alt+r" /> | On |
+| Update interval (seconds) | How often Ophel checks for changes, 1–60 | 2 |
+| Outline Follow Mode | Follow Current Position / Follow Latest Message / Manual Control | Follow Current Position |
+| Show Word Count | Show the node's approximate word count on hover | Off |
+| Inline Bookmark Icons | When to show the bookmark star inside the conversation text: Always Visible / Hover Only / Hidden | Always Visible |
+| Panel Bookmark Icons | When to show the bookmark star in the outline panel entries | Always Visible |
+| Prevent auto-scroll | Stop the page from auto-scrolling to the bottom while the AI is generating | Off |

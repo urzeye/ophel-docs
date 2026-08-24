@@ -65,8 +65,7 @@ Drag any non-default folder row to reorder your folder list. The default inbox f
 
 Tags are free-form labels — one conversation can have multiple tags. Use them to mark status (`reviewed`, `todo`), topic (`work`, `study`), or any other dimension that folders do not cover.
 
-- Create and manage tags in **Settings → Features → Conversations**
-- Assign tags from <Icon src="/images/icons/tools.svg" alt="Toolbox icon" /> **Toolbox** → <Icon src="/images/icons/tag.svg" alt="Set tag icon" /> **Set Tag**, or from the conversation list context menu
+- Add or change tags from <Icon src="/images/icons/tools.svg" alt="Toolbox icon" /> **Toolbox** → <Icon src="/images/icons/tag.svg" alt="Set tag icon" /> **Set Tags**, or from the conversation list context menu
 - Filter by tag by clicking the tag in the sidebar
 
 ## Pinning conversations
@@ -113,11 +112,11 @@ For full details on export formats, packaging modes, asset handling, and per-pla
 | <Shortcut combo="ctrl+shift+e" />  | Export current conversation         |
 | <Shortcut combo="ctrl+shift+c" />  | Copy latest AI reply                |
 
-All shortcuts are customizable in **Settings → Shortcuts**.
+All shortcuts are customizable in **Settings → Keyboard Shortcuts**.
 
 ## WebDAV sync
 
-Configure a WebDAV server in **Settings → Sync & Backup → WebDAV** to sync Ophel's **conversation metadata** to your own private server.
+Configure a WebDAV server in **Settings → Data Management → WebDAV Sync** to sync Ophel's **conversation metadata** to your own private server.
 
 <Note>
   WebDAV sync transfers only the metadata Ophel stores locally — folder
@@ -125,14 +124,14 @@ Configure a WebDAV server in **Settings → Sync & Backup → WebDAV** to sync O
   conversation content, which belongs to the AI platform.
 </Note>
 
-Both manual sync (click the button) and automatic sync at a set interval are supported. See [WebDAV Sync](/data/webdav) for full setup instructions.
+Once configured, click **Upload** / **Download** to sync manually. See [WebDAV Sync](/data/webdav) for full setup instructions.
 
 ## Settings
 
 Go to **Settings → Features → Conversations** to configure folder and sync behavior.
 
-| Setting                  | Description                                                          |
-| ------------------------ | -------------------------------------------------------------------- |
-| Folder rainbow colors    | Use distinct colored backgrounds for folder-assigned conversations   |
-| Auto unpin on sync       | Remove pins when syncing from a remote source                        |
-| Sync delete to cloud     | Delete remote records when you delete conversations locally          |
+| Setting | Description |
+| --- | --- |
+| Folder Rainbow Colors | Use distinct colored backgrounds for folder-assigned conversations |
+| Sync Unpin Status | Remove pins when syncing from a remote source |
+| Sync Delete Cloud | Delete remote records when you delete conversations locally |

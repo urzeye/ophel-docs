@@ -47,25 +47,24 @@ WebDAV sync backs up the Ophel data stored locally:
 
 ## Settings
 
-Configure the sync connection at **Settings → Backup & Sync → WebDAV**:
+Configure the sync connection at **Settings → Data Management → WebDAV Sync**:
 
-| Field              | Description                                                                                   |
-| ------------------ | --------------------------------------------------------------------------------------------- |
-| Server URL         | Full URL of your WebDAV server — must start with `https://`                                   |
-| Username           | Your WebDAV account username                                                                  |
-| Password           | Your WebDAV account password (stored locally, never sent to Ophel servers or any third party) |
-| Remote path        | Directory on the server where sync files are stored (default: `ophel`, created automatically) |
-| Sync mode          | **Manual** — click a button to sync; or **Automatic** — sync on a set interval                |
-| Auto sync interval | Minimum time between automatic syncs, in minutes                                              |
+| Field | Description |
+| --- | --- |
+| Provider | Presets for common providers (Jianguoyun, InfiniCloud, Nextcloud, and more) or Custom |
+| Server URL | Full URL of your WebDAV server — must start with `https://` |
+| Username | Your WebDAV account username |
+| Password | Your WebDAV account password (stored locally, never sent to Ophel servers or any third party) |
+| Default Directory | Directory on the server where sync files are stored (default: `ophel`, created automatically) |
 
 ## Set up WebDAV sync
 
 <Steps>
   <Step title="Open the WebDAV settings panel">
-    Go to **Settings → Backup & Sync → WebDAV**.
+    Go to **Settings → Data Management → WebDAV Sync**.
   </Step>
   <Step title="Enter your server details">
-    Fill in the Server URL, Username, Password, and Remote path. If the remote path doesn't exist yet, Ophel creates it on first sync.
+    Fill in the Server URL, Username, Password, and Default Directory. If the directory doesn't exist yet, Ophel creates it on first sync.
   </Step>
   <Step title="Grant the required permission">
     WebDAV sync requires the optional `<all_urls>` permission. Your browser will prompt you to grant it the first time you enable the feature.
@@ -73,11 +72,8 @@ Configure the sync connection at **Settings → Backup & Sync → WebDAV**:
   <Step title="Test the connection">
     Click <Icon src="/images/icons/check.svg" alt="Test connection icon" /> **Test connection** to verify your credentials and server reachability before syncing any data.
   </Step>
-  <Step title="Choose a sync mode and save">
-    Select manual or automatic sync, set an interval if using automatic, and save your configuration.
-  </Step>
   <Step title="Push your data">
-    Click <Icon src="/images/icons/cloud-upload.svg" alt="Upload backup icon" /> **Upload backup** to push your current local data to the server.
+    Click <Icon src="/images/icons/cloud-upload.svg" alt="Upload backup icon" /> **Upload** to push your current local data to the server.
   </Step>
 </Steps>
 
@@ -85,21 +81,20 @@ Configure the sync connection at **Settings → Backup & Sync → WebDAV**:
 
 <Steps>
   <Step title="Configure the same WebDAV server">
-    On the new device, enter the same server URL, username, password, and remote
-    path you used on the original device.
+    On the new device, enter the same server URL, username, password, and default
+    directory you used on the original device.
   </Step>
   <Step title="Pull from server">
-    Click <Icon src="/images/icons/download.svg" alt="Pull from server icon" /> **Pull from server** to open the list of remote backups, then select
-    the snapshot you want to restore.
+    Click <Icon src="/images/icons/download.svg" alt="Pull from server icon" /> **Download** to fetch the latest backup, or pick an older
+    snapshot from the **WebDAV Backup List** to restore.
   </Step>
 </Steps>
 
 ## Multi-device usage
 
 <Note>
-  When multiple devices are active at the same time, use **manual sync** rather
-  than automatic sync. Simultaneous automatic syncs from different devices can
-  cause write conflicts on the server.
+  Simultaneous writes from multiple devices can cause conflicts on the server.
+  Download the latest backup before uploading from a second device.
 </Note>
 
 ## Required permission

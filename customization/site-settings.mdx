@@ -9,7 +9,7 @@ keywords: ["model lock", "site settings", "Claude session key", "Gemini watermar
 import { Icon } from "/snippets/icon.jsx"
 import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
 
-Different AI platforms have different page structures, behaviors, and account models. Ophel lets you configure settings independently for each site rather than applying a single global configuration. Go to **Settings → Site Settings** and select a site from the left sidebar to see its available options.
+Different AI platforms have different page structures, behaviors, and account models. Ophel lets you configure settings independently for each site rather than applying a single global configuration. Go to **Settings → Site Settings**: **Page Layout** and **Model Lock** apply to the site you are currently on, while the **Gemini**, **AI Studio**, **ChatGPT**, and **Claude** tabs hold each platform's own options.
 
 ## Model lock
 
@@ -17,10 +17,14 @@ Model lock solves a common annoyance: manually switching back to your preferred 
 
 **To set up model lock:**
 
-1. Open **Settings → Site Settings**
-2. Select the site you want to configure
-3. Find the **Model Lock** section and toggle it on
-4. Enter a keyword from the target model's name (matching is case-insensitive)
+1. Open the target AI platform, then go to **Settings → Site Settings → Model Lock**
+2. Toggle it on
+3. Enter a keyword from the target model's name (matching is case-insensitive)
+
+<Note>
+  The **Model Lock** tab only appears on sites that support it; on unsupported
+  sites (such as DeepSeek) it is not shown.
+</Note>
 
 <Tip>
   You only need part of the model name. Entering `flash` matches `Gemini 2.0 Flash`. If multiple models match, the first match is selected.
@@ -42,50 +46,47 @@ Each site's model lock setting is independent, so you can configure different ta
 | ChatGPT | chatgpt.com |
 | Claude | claude.ai |
 | Grok | grok.com |
+| Doubao | www.doubao.com |
+| Kimi | www.kimi.com |
 | Tongyi Qianwen | www.qianwen.com |
 | Qwen Studio | chat.qwen.ai |
 | Yuanbao | yuanbao.tencent.com |
-| ima | ima.qq.com |
 | Z.ai | chat.z.ai |
+| ChatGLM | chatglm.cn |
+| ima | ima.qq.com |
 
 ## Markdown rendering fixes
 
 Some AI platforms have intermittent Markdown rendering bugs — bold text failing to render is a common example. Ophel provides site-specific toggles to patch these issues without affecting other platforms.
 
-| Site | Setting | Default |
+| Site | Path | Default |
 | --- | --- | --- |
-| Gemini | Markdown fix — fix intermittent bold text rendering failures | On |
-| AI Studio | Markdown fix — fix bold text rendering failures on AI Studio | Off |
-| ChatGPT | Markdown fix — fix intermittent bold text rendering failures | Off |
+| Gemini | Settings → Site Settings → Gemini → Markdown Bold Fix | Off |
+| AI Studio | Settings → Site Settings → AI Studio → Markdown Bold Fix | Off |
+| ChatGPT | Settings → Site Settings → ChatGPT → Markdown Bold Fix | Off |
 
-Enable the fix for a site only if you actually see rendering problems — it is off by default on sites where the issue is less common.
+The fix is off by default on all three platforms — enable it only when you actually see rendering problems.
 
 ## Gemini watermark removal
 
 When you export or screenshot a Gemini conversation, Gemini appends a "Created with Gemini" watermark. Ophel can strip this watermark automatically.
 
-**Settings → Site Settings → Gemini → Remove watermark**
+**Settings → Site Settings → Gemini → Remove Image Watermark**
 
 <Note>
   Watermark removal requires the `<all_urls>` host permission, which Ophel will ask you to grant the first time you enable this setting. This permission lets Ophel intercept and modify the export request before it reaches the page. The setting is off by default.
 </Note>
 
-The same watermark removal option is also available for AI Studio under **Settings → Site Settings → AI Studio → Remove watermark**.
+The same watermark removal option is also available for AI Studio under **Settings → Site Settings → AI Studio → Remove Image Watermark**.
 
-## Additional Gemini settings
+## Gemini Enterprise: policy retry
 
-**Settings → Site Settings → Gemini**:
-
-| Setting | Description | Default |
-| --- | --- | --- |
-| Follow page theme | Automatically sync the Ophel panel theme with Gemini's light/dark mode | On |
-
-**Settings → Site Settings → Gemini Enterprise only**:
+**Settings → Site Settings → Gemini**, in the Gemini Enterprise section:
 
 | Setting | Description | Default |
 | --- | --- | --- |
-| Policy retry | Automatically retry requests blocked by enterprise content policies (for false-positive triggers) | Off |
-| Max retries | Maximum consecutive retries when policy retry is enabled | 3 |
+| Auto-retry on Policy Block | Automatically retry requests blocked by enterprise content policies (for false-positive triggers) | Off |
+| Max Retries | Maximum consecutive retries when enabled, 1–10 | 3 |
 
 ## AI Studio settings
 
@@ -93,16 +94,13 @@ The same watermark removal option is also available for AI Studio under **Settin
 
 | Setting | Description | Default |
 | --- | --- | --- |
-| Collapse left nav | Auto-collapse the left project navigation bar on load | Off |
-| Collapse run settings | Auto-collapse the entire right-side run settings panel | Off |
-| Collapse tools panel | Auto-collapse the "Tools" subsection inside run settings | Off |
-| Collapse advanced options | Auto-collapse the "Advanced" subsection | Off |
-| Enable search tool by default | Auto-enable Google Search when entering Prompt or Free mode | On |
-| Default model | Model ID to auto-switch to when AI Studio loads | (empty) |
-
-<Note>
-  The **Default model** setting on the AI Studio page is separate from the general Model Lock feature. Configure AI Studio's default model here in the site-specific settings, not on the Model Lock section.
-</Note>
+| Collapse Sidebar by Default | Auto-collapse the left navigation bar when opening the page | Off |
+| Collapse Run Settings Panel by Default | Auto-collapse the right run settings panel when opening the page | Off |
+| Collapse Tools Section by Default | Auto-collapse the tools section inside run settings | Off |
+| Collapse Advanced Settings by Default | Auto-collapse the advanced options inside run settings | Off |
+| Enable Search Tool by Default | Auto-enable Google real-time search when opening the page | On |
+| Remove Image Watermark | Remove the watermark from AI Studio generated images (takes effect after a page reload) | Off |
+| Markdown Bold Fix | Fix intermittent bold text rendering failures | Off |
 
 ## Claude session key management
 
@@ -159,20 +157,15 @@ For AI services with daily usage limits, Ophel provides a local counter that sho
 
 The usage monitor runs entirely locally — it does not call any external APIs or rely on usage data from the platform. Ophel counts turns and estimates tokens by observing messages on the page.
 
-**Settings → Features → Usage Monitor**:
+**Settings → Features → Alerts → Local Usage Counter & Estimate**:
 
 | Setting | Description | Default |
 | --- | --- | --- |
-| Enable | Show the usage monitor widget near the input field | Off |
-| Daily limit | Your expected daily usage cap (used for the progress bar) | 100 |
-| Auto reset | Automatically reset the count at midnight | Off |
+| Enable local advanced-model counter and estimate | Show the local counter widget near the input field | Off |
+| Estimated daily conversation limit | Used for the 80% / 100% threshold reminders; local estimate only | 100 |
+| Enable auto reset | Automatically reset the count each day | Off |
 
-When enabled, the widget displays:
-
-- Number of conversation turns today
-- Estimated input token count
-- Estimated output token count
-- A progress bar showing used / daily limit
+When enabled, the widget shows today's send count, input/output character stats, rough token estimates, and progress toward your daily limit.
 
 <Note>
   Token estimates are based on character counting and may differ from the platform's actual billing. Treat them as a rough reference, not an exact measure.

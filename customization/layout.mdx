@@ -26,7 +26,7 @@ Ophel gives you fine-grained control over how AI pages are displayed. You can wi
 
 Many AI platforms cap their content area to a narrow column, leaving wide margins on large screens. Ophel lets you set a custom maximum width to fill more of the screen.
 
-**Settings → Site Settings → [Select site] → Layout → Page Width**
+**Settings → Site Settings → Page Layout → Page Width Control** (applies to the current site)
 
 - **Unit**: percentage of viewport width
 - **Range**: 50%–100% (sliders are capped at 99% to preserve a sliver of the original platform chrome)
@@ -34,7 +34,7 @@ Many AI platforms cap their content area to a narrow column, leaving wide margin
 
 ### Smart Avoidance
 
-**Settings → Site Settings → Layout → Smart Avoidance**
+**Settings → Site Settings → Page Layout → Smart Avoidance** (applies to the current site)
 
 Smart Avoidance keeps the AI page visible while the Ophel panel is open. On supported sites, Ophel recalculates the chat safe area so messages, code blocks, input boxes, and right-side tool panels are not covered by the floating panel.
 
@@ -60,7 +60,7 @@ Smart Avoidance works with Page Width and the panel's current side. If keeping t
 
 Your outgoing message bubbles have their own independent width control, separate from the overall content area. Widening them reduces the whitespace around your messages in conversations that use a wide content area.
 
-**Settings → Site Settings → [Select site] → Layout → User Message Width**
+**Settings → Site Settings → Page Layout → User Query Width** (applies to the current site)
 
 ## Zen mode
 
@@ -91,7 +91,7 @@ Zen mode hides platform UI elements outside the conversation — sidebars, navig
       src="/images/icons/settings.svg"
       alt="Settings icon"
     />{" "}
-    **Settings → Site Settings → [Select site] → Layout → Zen Mode** to enter
+    **Settings → Site Settings → Page Layout → Zen Mode** to enter
     Zen mode automatically every time you open that site.
   </Tab>
 </Tabs>
@@ -104,7 +104,7 @@ Zen mode hides platform UI elements outside the conversation — sidebars, navig
 
 ### Zen exit button
 
-When Zen mode is active, a small <Icon src="/images/icons/eye-closed.svg" alt="Exit Zen mode icon" /> exit button appears on screen so you can leave Zen mode without using the keyboard shortcut. You can hide this button in **Settings → Site Settings → [Select site] → Layout → Show Zen exit button** if you prefer to rely on the shortcut (<Shortcut combo="ctrl+shift+z" />) alone.
+When Zen mode is active, a small <Icon src="/images/icons/eye-closed.svg" alt="Exit Zen mode icon" /> exit button appears on screen so you can leave Zen mode without using the keyboard shortcut. You can hide this button in **Settings → Site Settings → Page Layout → Zen Mode** if you prefer to rely on the shortcut (<Shortcut combo="ctrl+shift+z" />) alone.
 
 <Note>
   Zen mode hides elements based on Ophel's knowledge of each platform's DOM
@@ -115,7 +115,7 @@ When Zen mode is active, a small <Icon src="/images/icons/eye-closed.svg" alt="E
 
 Clean Mode hides page clutter such as disclaimers, ads, download prompts, promotional cards, and other non-conversation elements. It is enabled by default and configured per site.
 
-**Settings → Site Settings → [Select site] → Layout → Clean Mode**
+**Settings → Site Settings → Page Layout → Clean Mode** (applies to the current site)
 
 Clean Mode is narrower than Zen mode: it keeps the normal platform layout visible, but removes elements Ophel recognizes as redundant. Zen mode focuses more aggressively by hiding sidebars and navigation; when Zen mode is enabled, it also includes the clean effect.
 
@@ -131,14 +131,14 @@ You can drag the panel by its title bar to reposition it anywhere on screen. **D
 
 | Setting               | Description                                                                                                                                                      | Default   |
 | --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- |
-| Panel mode            | <Icon src="/images/icons/snap-to-edge.svg" alt="Edge Snap icon" /> Edge Snap or <Icon src="/images/icons/floating-mode.svg" alt="Floating mode icon" /> Floating | Floating  |
-| Default side          | Left or right side of the screen                                                                                                                                 | Right     |
-| Edge distance         | Distance from the screen edge when in Floating mode                                                                                                              | 0 px      |
-| Panel width           | Saved panel width, 240–600 px                                                                                                                                    | 320 px    |
-| Widen on hover (Beta) | Temporarily widens the Floating panel while your cursor or keyboard focus is on it                                                                                | Off       |
-| Hover width (Beta)    | Temporary panel width used while hovering, 240–600 px                                                                                                            | 520 px    |
-| Panel height          | 50–100 vh                                                                                                                                                        | 85 vh     |
-| Snap threshold        | Distance from edge that triggers automatic snapping                                                                                                              | 30 px     |
+| Panel mode | <Icon src="/images/icons/snap-to-edge.svg" alt="Edge Snap icon" /> Edge Snap or <Icon src="/images/icons/floating-mode.svg" alt="Floating mode icon" /> Floating | Floating |
+| Default Side | Left or right side of the screen | Right |
+| Panel Width | Saved panel width, 240–600 px | 320 px |
+| Widen on hover (Beta) | Temporarily widens the Floating panel while your cursor or keyboard focus is on it (expand the Panel Width row to enable) | Off |
+| Hover width (Beta) | Temporary panel width used while hovering, 240–600 px | 520 px |
+| Panel Height | 50–100 vh | 85 vh |
+| Snap Threshold | How close to the edge a drag triggers snapping, 0–400 px (Edge Snap mode only) | 30 px |
+| Default Margin | Initial distance between the Floating panel and the screen edge, 0–400 px (Floating mode only) | 0 px |
 
 When in Edge Snap mode, hover over the corresponding screen edge to pop the panel out for a preview. Drag the title bar away from the edge to switch to Floating mode.
 

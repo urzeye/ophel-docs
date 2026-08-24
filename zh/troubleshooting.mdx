@@ -60,8 +60,8 @@ import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx";
     大纲在每次 AI 回复完成后重建。如果 AI 仍在生成中，大纲不会更新。
   </Step>
   <Step title="检查自动更新设置">
-    前往 **设置 → 功能 →
-    大纲**，确认**自动更新**已开启。如果关闭，大纲只在手动按{" "}
+    前往 **设置 → 功能模块 →
+    大纲**，确认**对话期间自动更新大纲**已开启。如果关闭，大纲只在手动按{" "}
     <Shortcut combo="alt+r" /> 时才刷新。
   </Step>
 </Steps>
@@ -71,8 +71,8 @@ import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx";
 如果滚动时大纲没有高亮当前阅读的章节：
 
 <Steps>
-  <Step title="在设置中启用滚动同步">
-    前往 **设置 → 功能 → 大纲**，将**滚动同步**设置为开启状态。
+  <Step title="检查大纲跟随模式">
+    前往 **设置 → 功能模块 → 大纲**，将**大纲跟随模式**设为**跟随当前位置**。
   </Step>
 </Steps>
 
@@ -151,7 +151,7 @@ import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx";
     确认 WebDAV 服务器地址以 `https://` 开头，末尾有没有斜杠均可，但必须是 HTTPS 协议。
   </Step>
   <Step title="检查权限">
-    WebDAV 依赖可选权限 `<all_urls>`。前往 **设置 → 权限**，确认该权限已授予。
+    WebDAV 依赖可选权限 `<all_urls>`。前往 **设置 → 权限管理**，确认该权限已授予。
   </Step>
   <Step title="测试连接">
     在 WebDAV 设置页面点击**测试连接**，查看错误提示（通常是 401 凭证错误、404 路径错误或 CORS 错误）。
