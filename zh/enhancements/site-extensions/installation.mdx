@@ -103,7 +103,7 @@ https://raw.githubusercontent.com/urzeye/ophel/registry-dist/index.json
 5. 在扩展中批准主机权限。
 6. 刷新绑定源。
 
-所选站点拓展会始终在该源上激活。Ophel 会按站点拓展 ID 与源派生键存储每个实例，因此同一站点拓展的两个部署不会混用设置、主题、阅读历史与会话数据。
+所选站点拓展会始终在该源上激活。Ophel 会按站点拓展 ID 与源派生键存储每个实例，因此同一站点拓展的两个部署不会混用设置、主题、阅读历史与对话数据。
 
 {/* TODO: 后续补充产品截图 */}
 ![自定义 HTTPS 源绑定](/images/enhancements/site-extensions/custom-origin-binding.png)
@@ -114,7 +114,7 @@ https://raw.githubusercontent.com/urzeye/ophel/registry-dist/index.json
 | ---------------------- | -------------------------------------------------------- |
 | **检查更新**           | 将已安装的 registry 站点拓展与最新兼容 registry 版本比较 |
 | **禁用**               | 保留已安装清单，但移出适配器激活与源引用                 |
-| **卸载**               | 移除清单及其注册引用；站点设置与会话数据会保留           |
+| **卸载**               | 移除清单及其注册引用；站点设置与对话数据会保留           |
 | registry 禁用 / 不兼容 | 管理页显示原因，而不是静默激活                           |
 
 当 registry 站点拓展需要更新的 Ophel 版本时，UI 会显示 **需要 Ophel {version} 或更高版本**。
@@ -139,7 +139,7 @@ https://raw.githubusercontent.com/urzeye/ophel/registry-dist/index.json
 3. 检查当前源是否与站点拓展或自定义绑定完全一致，包括协议与主机。
 4. 对自托管站点拓展，确认已存在自定义源绑定。
 5. 若来自在线库，检查是否有更新版本。
-6. 若最新包仍失败，在 GitHub 提交 issue，附带站点 URL、站点拓展版本、Ophel 版本与失效选择器名称，不要包含私密会话内容。
+6. 若最新包仍失败，在 GitHub 提交 issue，附带站点 URL、站点拓展版本、Ophel 版本与失效选择器名称，不要包含私密对话内容。
 
 ## 相关页面
 

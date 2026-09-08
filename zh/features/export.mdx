@@ -28,8 +28,8 @@ Ophel 可以导出任何 AI 对话，不仅保留文本，还能保留图片、�
 | --- | --- |
 | 浮动快捷按钮 | 点击 <Icon src="/images/icons/tools.svg" alt="工具箱图标" /> 工具箱图标，再点 <Icon src="/images/icons/export.svg" alt="导出图标" /> **导出**，保存为 <Icon src="/images/icons/markdown.svg" alt="Markdown 文件图标" /> Markdown |
 | 快捷键 | <Shortcut combo="ctrl+shift+e" /> 导出当前对话为 <Icon src="/images/icons/markdown.svg" alt="Markdown 文件图标" /> Markdown |
-| 会话标签页 | 点击会话行右侧的 <Icon src="/images/icons/more-horizontal.svg" alt="三个点菜单图标" /> 三点菜单，选择 <Icon src="/images/icons/export.svg" alt="导出图标" /> **导出**，再选择 <Icon src="/images/icons/markdown.svg" alt="Markdown 文件图标" /> Markdown、<Icon src="/images/icons/json-file.svg" alt="JSON 文件图标" /> JSON 或 <Icon src="/images/icons/txt-file.svg" alt="TXT 文件图标" /> TXT |
-| 分段导出 | 点击会话行的三点菜单，选择 **导出片段...**，可选择并导出对话的特定部分 |
+| 对话标签页 | 点击对话行右侧的 <Icon src="/images/icons/more-horizontal.svg" alt="三个点菜单图标" /> 三点菜单，选择 <Icon src="/images/icons/export.svg" alt="导出图标" /> **导出**，再选择 <Icon src="/images/icons/markdown.svg" alt="Markdown 文件图标" /> Markdown、<Icon src="/images/icons/json-file.svg" alt="JSON 文件图标" /> JSON 或 <Icon src="/images/icons/txt-file.svg" alt="TXT 文件图标" /> TXT |
+| 分段导出 | 点击对话行的三点菜单，选择 **导出片段...**，可选择并导出对话的特定部分 |
 
 触发导出后，会显示全屏进度遮罩，阻止误操作。Ophel 依次完成加载历史、提取内容、打包资源、保存文件、恢复页面状态。
 
@@ -52,7 +52,7 @@ Ophel 可以导出任何 AI 对话，不仅保留文本，还能保留图片、�
 
 <Steps>
   <Step title="打开分段导出对话框">
-    在会话标签页中，点击任意会话行的 <Icon src="/images/icons/more-horizontal.svg" alt="三个点菜单图标" /> 三点菜单，选择 **导出片段...**
+    在对话标签页中，点击任意对话行的 <Icon src="/images/icons/more-horizontal.svg" alt="三个点菜单图标" /> 三点菜单，选择 **导出片段...**
   </Step>
   <Step title="选择片段">
     Ophel 会根据用户提问自动检测对话片段。你可以：
@@ -84,7 +84,7 @@ Ophel 将每个用户提问视为新片段的起点。一个片段包括：
 
 ## 打包模式
 
-在 **设置 → 功能模块 → 会话 → 导出设置 → Markdown 导出方式** 中选择 Markdown 导出时如何处理资源文件：
+在 **设置 → 功能模块 → 对话 → 导出设置 → Markdown 导出方式** 中选择 Markdown 导出时如何处理资源文件：
 
 | 模式 | 行为 |
 | --- | --- |
@@ -169,7 +169,7 @@ Gemini Deep Research 报告的导出独立于常规对话导出：
 
 ## 导出设置
 
-在 **设置 → 功能模块 → 会话 → 导出设置** 中配置：
+在 **设置 → 功能模块 → 对话 → 导出设置** 中配置：
 
 | 设置项 | 说明 | 默认值 |
 | --- | --- | --- |

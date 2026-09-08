@@ -24,7 +24,7 @@ export const reviews: Review[] = [
     name: 'wu dengdeng',
     avatar:
       'https://lh3.googleusercontent.com/a-/ALV-UjXgKPjFdyxi-it-c9OAR4mcZGbA2eqT__8uANNdLrboatmok4w=s48-w48-h48',
-    text: '这款插件太棒了！Ophel 大大提升了我在 ChatGPT 和 Gemini 上的对话体验。自动生成的大纲让我轻松跳转查找重点内容，再也不用反复滚动。会话管理、标签分类和搜索功能非常实用！最重要的是，作者竟然还开源了！这是什么赛博菩萨？？',
+    text: '这款插件太棒了！Ophel 大大提升了我在 ChatGPT 和 Gemini 上的对话体验。自动生成的大纲让我轻松跳转查找重点内容，再也不用反复滚动。对话管理、标签分类和搜索功能非常实用！最重要的是，作者竟然还开源了！这是什么赛博菩萨？？',
     weight: 5,
   },
   {

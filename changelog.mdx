@@ -38,11 +38,11 @@ description: "All notable changes to Ophel Atlas are documented here."
 
   ### 🚀 New Features
 
-  - **Interactive export dialog** — The export button and the conversation list export menu now open a unified options dialog: pick the format (Markdown / HTML / JSON / TXT / Copy Markdown), toggle thought inclusion and turn numbering, customize the Markdown divider, package as ZIP, or jump to segmented export; a new "Show Export Options Dialog" setting restores one-click export when turned off. ([#841](https://github.com/urzeye/ophel/issues/841))
-  - **HTML export** — Conversations can now be exported as a single self-contained HTML file with responsive layout, light/dark/auto theme switching, syntax-highlighted code blocks with copy buttons, native MathML formulas, a collapsible "Thinking process" section, and light-theme printing. ([#856](https://github.com/urzeye/ophel/issues/856), @Piracola)
+  - **Interactive export dialog** — The export button and the chat list export menu now open a unified options dialog: pick the format (Markdown / HTML / JSON / TXT / Copy Markdown), toggle thought inclusion and turn numbering, customize the Markdown divider, package as ZIP, or jump to segmented export; a new "Show Export Options Dialog" setting restores one-click export when turned off. ([#841](https://github.com/urzeye/ophel/issues/841))
+  - **HTML export** — Chats can now be exported as a single self-contained HTML file with responsive layout, light/dark/auto theme switching, syntax-highlighted code blocks with copy buttons, native MathML formulas, a collapsible "Thinking process" section, and light-theme printing. ([#856](https://github.com/urzeye/ophel/issues/856), @Piracola)
   - **Default export format** — Added a "Default Export Format" setting, so the export shortcut and quick export use a preferred format (Markdown / JSON / TXT / HTML) instead of always Markdown. ([#856](https://github.com/urzeye/ophel/issues/856), @Piracola)
   - **Site Pack document outline support** — Declarative Site Packs now support document outline navigation (`document-outline` capability and `documentOutline` config), enabling multi-source "Document" tab outlines and scroll navigation for Canvas, Artifacts, and standalone research reports on adapted sites.
-  - **Manus support** — The online adapter library now includes Manus (manus.im); installing the pack enables outlines with user queries, basic export, chat width, Zen Mode, Clean Mode, new chat, and prompt insertion on conversations and shared pages.
+  - **Manus support** — The online adapter library now includes Manus (manus.im); installing the pack enables outlines with user queries, basic export, chat width, Zen Mode, Clean Mode, new chat, and prompt insertion on chats and shared pages.
 
   ### ✨ Improvements
 
@@ -69,13 +69,13 @@ description: "All notable changes to Ophel Atlas are documented here."
 
   ### 🚀 New Features
 
-  - **StepFun support** — The online adapter library now includes StepFun (chat.stepfun.com); installing the pack enables outlines with user queries, basic export, generation detection and stop, chat width, Zen Mode, new chat, and prompt insertion on conversations and shared pages. ([#839](https://github.com/urzeye/ophel/issues/839), [#792](https://github.com/urzeye/ophel/issues/792), [#352](https://github.com/urzeye/ophel/issues/352))
+  - **StepFun support** — The online adapter library now includes StepFun (chat.stepfun.com); installing the pack enables outlines with user queries, basic export, generation detection and stop, chat width, Zen Mode, new chat, and prompt insertion on chats and shared pages. ([#839](https://github.com/urzeye/ophel/issues/839), [#792](https://github.com/urzeye/ophel/issues/792), [#352](https://github.com/urzeye/ophel/issues/352))
 
   ### 🐛 Bug Fixes
 
   - **Outline anchor position lost** — Fixed issue where quickly or repeatedly clicking "Return to Anchor", "Go to Top", "Go to Bottom", or clicking the same outline heading twice collapsed the saved anchor onto the current position, so "Return to Anchor" could no longer jump back to the previous location; anchor operations are now serialized, and the anchor is preserved when the target is already reached. ([#848](https://github.com/urzeye/ophel/issues/848))
   - **Adapt to Claude's new page layout** — Claude updated the page structure again, **Fuck you, Claude!** ([#823](https://github.com/urzeye/ophel/issues/823), [#849](https://github.com/urzeye/ophel/issues/849))
-  - **Doubao conversation title sync** — Fixed issue where conversations synced from Doubao showed their titles repeated three times (e.g. a title became "titletitletitle") after the site rolled out its new sidebar conversation list; titles are now read correctly from the new structure. ([#846](https://github.com/urzeye/ophel/issues/846))
+  - **Doubao chat title sync** — Fixed issue where chats synced from Doubao showed their titles repeated three times (e.g. a title became "titletitletitle") after the site rolled out its new sidebar chat list; titles are now read correctly from the new structure. ([#846](https://github.com/urzeye/ophel/issues/846))
   - **Qwen Studio scroll shortcuts** — Adapted to Qwen Studio's new chat scroll container, fixing "Go to Top", "Go to Bottom", and "Return to Anchor" failing after the site updated its page structure.
   - **Adapt to Grok's new DOM structure** — Adapt to Grok's new chat scroll container and theme style selector, and fix the problem of "Go to Top", "Go to Bottom" and "Return to Anchor" on Grok failing and switching between light/dark themes causing the page to freeze and become unresponsive. ([#842](https://github.com/urzeye/ophel/issues/842), [#843](https://github.com/urzeye/ophel/issues/843))
   - **ChatGLM theme switching** — Adapted to ChatGLM's new theme popover structure, fixing light/dark/system theme switching that failed after the site moved the options into a hidden popover the old two-step menu navigation couldn't reach.
@@ -89,7 +89,7 @@ description: "All notable changes to Ophel Atlas are documented here."
   ### 🚀 New Features
 
   - **DeepSeek Harness support** — The online adapter library now includes DeepSeek Harness; install the pack and bind it to your self-hosted instance's domain to enable outlines with user queries, basic export, generation detection and stop, chat width, Zen Mode, prompt insertion, and reading history. ([#825](https://github.com/urzeye/ophel/issues/825))
-  - **OpenCode Share support** — The online adapter library now includes OpenCode Share (opncd.ai); installing the pack enables outlines with user query detection and basic export for shared OpenCode conversations. ([#800](https://github.com/urzeye/ophel/issues/800))
+  - **OpenCode Share support** — The online adapter library now includes OpenCode Share (opncd.ai); installing the pack enables outlines with user query detection and basic export for shared OpenCode chats. ([#800](https://github.com/urzeye/ophel/issues/800))
   - **LongCat AI support** — The online adapter library now includes LongCat AI (longcat.chat); installing the pack enables outlines with user queries, export, generation detection and stop, page width, Zen Mode, new chat, and prompt insertion on the site.
   - **HTTP self-hosted sites** — Site Packs can now be bound to HTTP origins such as `http://192.168.1.10:3000`, so a self-hosted AI site that is not served over HTTPS can still be adapted; the in-page adapter wizard and local pack import accept HTTP origins as well.
 
@@ -100,11 +100,11 @@ description: "All notable changes to Ophel Atlas are documented here."
 
   ### 🐛 Bug Fixes
 
-  - **Claude new layout adaptation** — Adapted to Claude.ai's new DOM structure: updated sidebar conversation list, send button, generation detection, Zen Mode, and panel avoidance selectors, and fixed issue where pinning and then unpinning a conversation showed its title twice in the conversation manager. （[#834](https://github.com/urzeye/ophel/issues/834) @urzeye, [#820](https://github.com/urzeye/ophel/issues/820) @crazyn2）
-  - **ChatGPT page redesign adaptation** — Fixed issues caused by ChatGPT's page redesign: conversations could be scanned but not added to the conversation list, the "ChatGPT can make mistakes" disclaimer stayed visible in Clean Mode, and double-clicking LaTeX formulas reported missing source; sidebar chat links and formula sources are now read from the redesigned structure.
+  - **Claude new layout adaptation** — Adapted to Claude.ai's new DOM structure: updated sidebar chat list, send button, generation detection, Zen Mode, and panel avoidance selectors, and fixed issue where pinning and then unpinning a chat showed its title twice in the chat manager. （[#834](https://github.com/urzeye/ophel/issues/834) @urzeye, [#820](https://github.com/urzeye/ophel/issues/820) @crazyn2）
+  - **ChatGPT page redesign adaptation** — Fixed issues caused by ChatGPT's page redesign: chats could be scanned but not added to the chat list, the "ChatGPT can make mistakes" disclaimer stayed visible in Clean Mode, and double-clicking LaTeX formulas reported missing source; sidebar chat links and formula sources are now read from the redesigned structure.
   - **Userscript adapter library updates** — Fixed issue where the userscript version kept showing an outdated online adapter library (for up to a week) because the browser cached the CDN response; update checks now always fetch the latest index.
   - **Site pack forward-compatible fields** — The registry PR validator now tolerates schema-declared fields at any nesting level when base code has not yet learned them, so a new selector or config sub-field can ship in the same PR as the pack that uses it instead of splitting into two separate PRs. ([#800](https://github.com/urzeye/ophel/issues/800))
-  - **Hidden conversations recovery** — Fixed issue where some conversations stayed invisible in the conversation list even after re-syncing (their folder had been removed earlier); upgrading now automatically moves such conversations back to the inbox.
+  - **Hidden chats recovery** — Fixed issue where some chats stayed invisible in the chat list even after re-syncing (their folder had been removed earlier); upgrading now automatically moves such chats back to the inbox.
   - **Site pack prompt insertion** — Fixed issue where inserting a multi-line prompt into a site's rich text input box (such as LongCat AI) showed an "Insert failed" toast even though the text had been inserted correctly.
 </Update>
 
@@ -143,19 +143,19 @@ description: "All notable changes to Ophel Atlas are documented here."
 
   ### 🐛 Bug Fixes
 
-  - **Claude outline refresh after replies** — Fixed issue where sending a new message in a previously indexed long Claude conversation could restart the full outline scan and scroll through the conversation again; new replies now update the cached outline incrementally. ([#785](https://github.com/urzeye/ophel/issues/785))
-  - **Claude outline current-position highlight** — Fixed issue where the outline could highlight an earlier question when the visible Claude question began with the same text; current-position tracking now follows the exact question at that conversation position.
+  - **Claude outline refresh after replies** — Fixed issue where sending a new message in a previously indexed long Claude chat could restart the full outline scan and scroll through the chat again; new replies now update the cached outline incrementally. ([#785](https://github.com/urzeye/ophel/issues/785))
+  - **Claude outline current-position highlight** — Fixed issue where the outline could highlight an earlier question when the visible Claude question began with the same text; current-position tracking now follows the exact question at that chat position.
 </Update>
 
 <Update label="v1.1.6">
 
   ### ✨ Improvements
 
-  - **Claude page structure adaptation** — Adapted to Claude's updated conversation page DOM, ensuring the outline can read all messages and conversation exports remain complete. ([#781](https://github.com/urzeye/ophel/issues/781))
+  - **Claude page structure adaptation** — Adapted to Claude's updated chat page DOM, ensuring the outline can read all messages and chat exports remain complete. ([#781](https://github.com/urzeye/ophel/issues/781))
 
   ### 🐛 Bug Fixes
 
-  - **Claude Canvas document export** — Fixed issue where Markdown and clipboard exports could omit Claude Canvas document content; exports now collect Canvas documents from the conversation, including virtualized messages, and restore the previously open Canvas afterward.
+  - **Claude Canvas document export** — Fixed issue where Markdown and clipboard exports could omit Claude Canvas document content; exports now collect Canvas documents from the chat, including virtualized messages, and restore the previously open Canvas afterward.
   - **Claude Canvas Smart Avoidance** — Fixed issue where opening a Claude Canvas document could stop Smart Avoidance from reserving space for the Ophel panel, causing the document content to be covered.
   - **Global shortcut URL** — Fixed issue where the global shortcut continued to open Gemini after setting a custom URL. ([#778](https://github.com/urzeye/ophel/issues/778))
 </Update>
@@ -169,14 +169,14 @@ description: "All notable changes to Ophel Atlas are documented here."
 
   ### 🐛 Bug Fixes
 
-  - **Doubao user questions** — Fixed issue where Doubao's updated chat bubble markup could prevent newer user questions from being recognized in the outline, Markdown rendering, export, and related features while keeping older conversations compatible. ([#771](https://github.com/urzeye/ophel/issues/771))
+  - **Doubao user questions** — Fixed issue where Doubao's updated chat bubble markup could prevent newer user questions from being recognized in the outline, Markdown rendering, export, and related features while keeping older chats compatible. ([#771](https://github.com/urzeye/ophel/issues/771))
 </Update>
 
 <Update label="v1.1.4">
 
   ### 🚀 New Features
 
-  - **Panel tab reordering** — Outline, Conversations, and Prompts tabs can now be reordered directly from the panel, keeping the same order in Settings without opening the options page first. ([#764](https://github.com/urzeye/ophel/issues/764))
+  - **Panel tab reordering** — Outline, Chats, and Prompts tabs can now be reordered directly from the panel, keeping the same order in Settings without opening the options page first. ([#764](https://github.com/urzeye/ophel/issues/764))
   - **Panel width controls** — Floating panels now support edge-drag resizing and an optional Beta hover-widening mode; related settings stay under Panel Width, are searchable in Search Everywhere, and avoid page-avoidance jumps while temporarily widening. ([#763](https://github.com/urzeye/ophel/issues/763))
 
   ### ✨ Improvements
@@ -185,7 +185,7 @@ description: "All notable changes to Ophel Atlas are documented here."
 
   ### 🐛 Bug Fixes
 
-  - **Kimi conversation sync** — Fixed issue where Kimi's updated sidebar layout could prevent new or recent chats from appearing in Conversations sync. ([#759](https://github.com/urzeye/ophel/issues/759))
+  - **Kimi chat sync** — Fixed issue where Kimi's updated sidebar layout could prevent new or recent chats from appearing in Chats sync. ([#759](https://github.com/urzeye/ophel/issues/759))
 </Update>
 
 <Update label="v1.1.3">
@@ -200,15 +200,15 @@ description: "All notable changes to Ophel Atlas are documented here."
 
   ### ✨ Improvements
 
-  - **Main panel toolbars and quick buttons** — Unified Outline, Prompts, and Conversations toolbar/search styling and tuned quick-button feedback, so high-frequency controls are clearer across themes.
+  - **Main panel toolbars and quick buttons** — Unified Outline, Prompts, and Chats toolbar/search styling and tuned quick-button feedback, so high-frequency controls are clearer across themes.
   - **Settings and theme management UI** — Refreshed the settings sidebar, theme preset cards, custom style list, and style editor so navigation reads more clearly and theme choices are easier to scan. ([#749](https://github.com/urzeye/ophel/issues/749))
   - **Panel header and tabs** — Polished the panel header, drag hint, and tab bar styling to reduce visual noise and keep controls aligned with the rest of the interface. ([#749](https://github.com/urzeye/ophel/issues/749))
   - **Prompt preview category tags** — Prompt previews now show the category as a colored tag matching the prompt category color, with a clearer preview header and content layout.
 
   ### 🐛 Bug Fixes
 
-  - **Custom tab title formats** — Fixed issue where Qianwen and Z.ai could reuse an already-renamed browser tab title after switching conversations, preventing duplicated title or model fragments when custom tab formats include `{model}`.
-  - **Claude userscript export** — Fixed issue where exporting Claude conversations with thinking blocks could fail in userscript mode while preparing the page for export.
+  - **Custom tab title formats** — Fixed issue where Qianwen and Z.ai could reuse an already-renamed browser tab title after switching chats, preventing duplicated title or model fragments when custom tab formats include `{model}`.
+  - **Claude userscript export** — Fixed issue where exporting Claude chats with thinking blocks could fail in userscript mode while preparing the page for export.
   - **Kimi Zen Mode** — Fixed issue where Zen Mode no longer hid Kimi's sidebar after the site updated its page layout.
 </Update>
 
@@ -216,11 +216,11 @@ description: "All notable changes to Ophel Atlas are documented here."
 
   ### 🚀 New Features
 
-  - **Gemini Canvas document export** — Gemini Canvas export now supports regular document Canvas panels, so article Canvas content is included in conversation exports and Canvas Markdown copy/download actions. ([#736](https://github.com/urzeye/ophel/issues/736))
+  - **Gemini Canvas document export** — Gemini Canvas export now supports regular document Canvas panels, so article Canvas content is included in chat exports and Canvas Markdown copy/download actions. ([#736](https://github.com/urzeye/ophel/issues/736))
 
   ### ✨ Improvements
 
-  - **Long conversation export loading** — Gemini and Qwen Studio exports now load earlier lazy-loaded history before collecting messages, reducing missed content in long conversation exports. ([#739](https://github.com/urzeye/ophel/issues/739))
+  - **Long chat export loading** — Gemini and Qwen Studio exports now load earlier lazy-loaded history before collecting messages, reducing missed content in long chat exports. ([#739](https://github.com/urzeye/ophel/issues/739))
 
   ### 🐛 Bug Fixes
 
@@ -231,21 +231,21 @@ description: "All notable changes to Ophel Atlas are documented here."
 
   ### ✨ Improvements
 
-  - **Long conversation outline performance** — Large outlines now render only visible rows, skip collapsed or filtered nodes, coalesce automatic refresh and scroll updates, reduce layout measurements, and cache ChatGPT/Claude/Gemini word counts, reducing lag in long chats. ([#677](https://github.com/urzeye/ophel/issues/677), [#682](https://github.com/urzeye/ophel/issues/682), [#683](https://github.com/urzeye/ophel/issues/683), [#691](https://github.com/urzeye/ophel/issues/691), [#695](https://github.com/urzeye/ophel/issues/695), [#696](https://github.com/urzeye/ophel/issues/696), [#698](https://github.com/urzeye/ophel/issues/698), [#699](https://github.com/urzeye/ophel/issues/699))
+  - **Long chat outline performance** — Large outlines now render only visible rows, skip collapsed or filtered nodes, coalesce automatic refresh and scroll updates, reduce layout measurements, and cache ChatGPT/Claude/Gemini word counts, reducing lag in long chats. ([#677](https://github.com/urzeye/ophel/issues/677), [#682](https://github.com/urzeye/ophel/issues/682), [#683](https://github.com/urzeye/ophel/issues/683), [#691](https://github.com/urzeye/ophel/issues/691), [#695](https://github.com/urzeye/ophel/issues/695), [#696](https://github.com/urzeye/ophel/issues/696), [#698](https://github.com/urzeye/ophel/issues/698), [#699](https://github.com/urzeye/ophel/issues/699))
   - **Global search outline updates** — Global search now refreshes the outline on open and follows outline manager updates instead of polling every 1200ms, reducing background work while search is open. ([#692](https://github.com/urzeye/ophel/issues/692))
-  - **Conversation sidebar sync** — Sidebar sync now batches conversation additions, updates, deletes, and target-folder changes into one store write, reducing storage churn during history sync. ([#697](https://github.com/urzeye/ophel/issues/697))
+  - **Chat sidebar sync** — Sidebar sync now batches chat additions, updates, deletes, and target-folder changes into one store write, reducing storage churn during history sync. ([#697](https://github.com/urzeye/ophel/issues/697))
   - **Background page work** — Inline bookmark icons now avoid full outline scans for unrelated DOM changes, selected prompts reuse the shared URL-change listener, and tab title checks slow down only while a page is idle in the background while keeping completion notifications available.
-  - **Qianwen long conversation DOM** — Adapted Qianwen chat pages to the new lazy-loaded long conversation structure, so conversation export and outline copy load earlier history before collecting messages.
+  - **Qianwen long chat DOM** — Adapted Qianwen chat pages to the new lazy-loaded long chat structure, so chat export and outline copy load earlier history before collecting messages.
 
   ### 🐛 Bug Fixes
 
   - **Prompt send shortcuts** — Fixed issue where sending from the chat input with Ophel's configured shortcut could lag on Claude, DeepSeek, and similar sites. Double-click prompt sending also now respects Ctrl+Enter send mode without leaving the prompt in the input box or adding a newline. ([#701](https://github.com/urzeye/ophel/issues/701), [#710](https://github.com/urzeye/ophel/issues/710))
-  - **ChatGPT pinned conversations** — Fixed ChatGPT conversation sync for the new sidebar layout, so pinned conversations under the Pinned section are imported, title updates are tracked, and project folders are not treated as chats.
+  - **ChatGPT pinned chats** — Fixed ChatGPT chat sync for the new sidebar layout, so pinned chats under the Pinned section are imported, title updates are tracked, and project folders are not treated as chats.
   - **Codex task page outline** — Codex Cloud task share pages on ChatGPT now include the original prompt and response headings in the Outline instead of showing an empty outline. ([#709](https://github.com/urzeye/ophel/issues/709))
-  - **Gemini conversation sync** — Fixed issue where first-time or empty-library Gemini auto sync could stop after only part of the history, leave the Conversations panel counts empty, or make manual sync wait longer than needed after reaching the bottom. ([#712](https://github.com/urzeye/ophel/issues/712))
+  - **Gemini chat sync** — Fixed issue where first-time or empty-library Gemini auto sync could stop after only part of the history, leave the Chats panel counts empty, or make manual sync wait longer than needed after reaching the bottom. ([#712](https://github.com/urzeye/ophel/issues/712))
   - **Gemini shared chat continuation** — Fixed issue where Purify Mode could hide Gemini's "Continue this chat" button on shared chat pages. ([#703](https://github.com/urzeye/ophel/issues/703))
-  - **Doubao long conversation export** — Fixed issue where Doubao virtual-scroll conversations could export or copy only the currently mounted message window; exports and full-outline copy now scan the conversation before collecting messages.
-  - **Outline scroll highlight stability** — Fixed issue where source scrolling could highlight a user question, previous answer, or hidden child instead of the current visible heading in long conversations. ([#704](https://github.com/urzeye/ophel/issues/704), [#708](https://github.com/urzeye/ophel/issues/708))
+  - **Doubao long chat export** — Fixed issue where Doubao virtual-scroll chats could export or copy only the currently mounted message window; exports and full-outline copy now scan the chat before collecting messages.
+  - **Outline scroll highlight stability** — Fixed issue where source scrolling could highlight a user question, previous answer, or hidden child instead of the current visible heading in long chats. ([#704](https://github.com/urzeye/ophel/issues/704), [#708](https://github.com/urzeye/ophel/issues/708))
 </Update>
 
 <Update label="v1.1.0">
@@ -253,8 +253,8 @@ description: "All notable changes to Ophel Atlas are documented here."
   ### 🚀 New Features
 
   - **Quick Quote Chains** — Prompt chains can now be triggered directly from quick quote actions, with chain icon picker, drag-to-reorder, and embedded quote anchors for reliable reference restoration across page refreshes. ([#623](https://github.com/urzeye/ophel/issues/623))
-  - **Gemini Canvas Markdown actions** — Gemini Canvas panels now include Ophel Copy Markdown and Download Markdown buttons, exporting Canvas code as fenced Markdown without running a full conversation export. ([#663](https://github.com/urzeye/ophel/issues/663))
-  - **Segmented conversation export** — Conversation export now supports choosing message ranges from a searchable picker and saving selected segments as ZIP files, merged Markdown, or clipboard content. ([#665](https://github.com/urzeye/ophel/issues/665))
+  - **Gemini Canvas Markdown actions** — Gemini Canvas panels now include Ophel Copy Markdown and Download Markdown buttons, exporting Canvas code as fenced Markdown without running a full chat export. ([#663](https://github.com/urzeye/ophel/issues/663))
+  - **Segmented chat export** — Chat export now supports choosing message ranges from a searchable picker and saving selected segments as ZIP files, merged Markdown, or clipboard content. ([#665](https://github.com/urzeye/ophel/issues/665))
   - **Update modal** — Ophel now shows release notes once per version and lets users reopen them from About, so update changes are visible in both extension and userscript builds. ([#666](https://github.com/urzeye/ophel/issues/666))
 
   ### ✨ Improvements
@@ -273,7 +273,7 @@ description: "All notable changes to Ophel Atlas are documented here."
   - **ChatGLM stop button** — Alt+K shortcut now correctly stops generation by targeting the inner `.enter-icon-container` element instead of the outer container div.
   - **Qianwen Slate editor sync** — Fixed content insertion from prompt queue where inserted text couldn't be edited or deleted. The editor now properly syncs Slate's virtual DOM by using `selectAll + delete + insertText` with complete event chains (`beforeinput`, `input`, `change`) to ensure both DOM and Slate state update correctly.
   - **Launcher peek retention** — When the mouse moves from the panel logo to other quick buttons (e.g. toolbox), the launcher peek panel now hides instead of staying open and blocking the toolbox menu. ([#653](https://github.com/urzeye/ophel/issues/653))
-  - **Quick Quote export markers** — Fixed issue where invisible quick quote anchors could leave empty outline entries or filter out messages during conversation export and outline copy. ([#669](https://github.com/urzeye/ophel/issues/669))
+  - **Quick Quote export markers** — Fixed issue where invisible quick quote anchors could leave empty outline entries or filter out messages during chat export and outline copy. ([#669](https://github.com/urzeye/ophel/issues/669))
   - **Userscript reset and restore state** — Clear All Data, backup restore, and release-note state now use the shared platform storage keys, preventing incomplete reset or restore behavior in the userscript build. ([#670](https://github.com/urzeye/ophel/issues/670))
 </Update>
 
@@ -287,21 +287,21 @@ description: "All notable changes to Ophel Atlas are documented here."
   ### 🐛 Bug Fixes
 
   - **AI Studio mobile Enter key** — AI Studio on Android and other mobile devices now lets the soft-keyboard Enter key insert a newline instead of triggering an accidental send, while Ophel-driven sends still use the native send button or the safe keyboard fallback. ([#646](https://github.com/urzeye/ophel/issues/646))
-  - **AI Studio mobile history sync** — AI Studio conversation sync now recognizes the mobile Library card layout, so mobile pages no longer report that no sidebar conversations were found when history is available.
-  - **Conversation sync loading** — Conversation sync now uses each adapter's own conversation source to decide when sidebar history has finished loading, waits longer for slow lazy-loaded sidebars, and disables sync-delete when a complete load cannot be confirmed. Doubao and Yuanbao now share the safer base loader. ([#639](https://github.com/urzeye/ophel/issues/639))
+  - **AI Studio mobile history sync** — AI Studio chat sync now recognizes the mobile Library card layout, so mobile pages no longer report that no sidebar chats were found when history is available.
+  - **Chat sync loading** — Chat sync now uses each adapter's own chat source to decide when sidebar history has finished loading, waits longer for slow lazy-loaded sidebars, and disables sync-delete when a complete load cannot be confirmed. Doubao and Yuanbao now share the safer base loader. ([#639](https://github.com/urzeye/ophel/issues/639))
 </Update>
 
 <Update label="v1.0.59">
 
   ### 🚀 New Features
 
-  - **Outline copy** — The Outline toolbar can now copy the currently selected outline depth as Markdown headings by reusing the export pipeline, so virtual-scroll conversations are loaded and restored safely before headings and user queries are copied. ([#539](https://github.com/urzeye/ophel/issues/539))
-  - **Conversations quick open** — Conversation rows can now be opened from the context menu in a new tab, so older sessions can be reopened without replacing the current chat. ([#578](https://github.com/urzeye/ophel/issues/578))
+  - **Outline copy** — The Outline toolbar can now copy the currently selected outline depth as Markdown headings by reusing the export pipeline, so virtual-scroll chats are loaded and restored safely before headings and user queries are copied. ([#539](https://github.com/urzeye/ophel/issues/539))
+  - **Chats quick open** — Chat rows can now be opened from the context menu in a new tab, so older sessions can be reopened without replacing the current chat. ([#578](https://github.com/urzeye/ophel/issues/578))
 
   ### 🐛 Bug Fixes
 
   - **ChatGPT native TOC outline** — ChatGPT outlines now recover the full user-question list when the native TOC only exposes real prompt text after hover, cache the extracted labels per TOC instance, and avoid userscript crashes from cross-realm pointer events. ([#642](https://github.com/urzeye/ophel/issues/642))
-  - **ChatGPT tab status** — ChatGPT tabs no longer show `⏳` while idle when a sidebar conversation title contains "Stop" or "停止". The generation detector now only uses visible stop buttons from the composer area. ([#630](https://github.com/urzeye/ophel/issues/630))
+  - **ChatGPT tab status** — ChatGPT tabs no longer show `⏳` while idle when a sidebar chat title contains "Stop" or "停止". The generation detector now only uses visible stop buttons from the composer area. ([#630](https://github.com/urzeye/ophel/issues/630))
   - **Gemini tab renaming** — Gemini tabs no longer flicker back to the native page title during active replies when automatic tab renaming is enabled.
   - **Gemini watermark removal** — Replaced the legacy Gemini/Nano Banana remover with the SDK-backed implementation and fixed user-uploaded image handling plus generated-image removal regressions. ([#593](https://github.com/urzeye/ophel/issues/593), [#625](https://github.com/urzeye/ophel/issues/625))
   - **Prompt imports** — Prompt Library import now accepts prompt backup files exported from the Backup page, not just the raw prompt-list JSON format.
@@ -312,9 +312,9 @@ description: "All notable changes to Ophel Atlas are documented here."
 
   ### 🐛 Bug Fixes
 
-  - **Conversation title isolation** — Browser tab renaming now keeps Ophel-managed status/model labels separate from raw conversation titles, preventing exported conversation titles and filenames from inheriting tab status, model names, or repeated `->` separators when a page cannot expose its model name.
-  - **Doubao share-page export and outline** — Doubao share links under `/thread/` are now recognized as exportable conversations, and share-page message lists can now feed the Outline tab instead of requiring the regular chat-page virtual list.
-  - **Z.ai share-page outline** — Z.ai share pages now reuse the same conversation content container detection as export, so Outline extraction works when the share DOM does not include the regular `#chat-container` wrapper.
+  - **Chat title isolation** — Browser tab renaming now keeps Ophel-managed status/model labels separate from raw chat titles, preventing exported chat titles and filenames from inheriting tab status, model names, or repeated `->` separators when a page cannot expose its model name.
+  - **Doubao share-page export and outline** — Doubao share links under `/thread/` are now recognized as exportable chats, and share-page message lists can now feed the Outline tab instead of requiring the regular chat-page virtual list.
+  - **Z.ai share-page outline** — Z.ai share pages now reuse the same chat content container detection as export, so Outline extraction works when the share DOM does not include the regular `#chat-container` wrapper.
   - **ChatGLM code-block export** — ChatGLM assistant replies split around code blocks now export the full answer instead of stopping at the first rendered Markdown segment.
   - **Localized untitled exports** — Untitled export titles now follow the current UI language even when an older fallback title was saved in another language.
   - **Qianwen user-query Markdown contrast** — Rendered user-query Markdown on Qianwen now uses a dedicated readable bubble style instead of inheriting low-contrast native question-card colors.
@@ -341,17 +341,17 @@ description: "All notable changes to Ophel Atlas are documented here."
   - **DeepSeek user attachments in exports** — DeepSeek Markdown exports now include images and files from user prompts, including share pages; zip packages resolve downloadable share attachments into `assets/images/` and `assets/files/` with stable Markdown references.
   - **Doubao image and attachment export** — Doubao Markdown exports now include images and files from user prompts plus images from assistant replies. Zip packages preserve downloadable resources under `assets/images/` and `assets/files/`, with generated-image fallback handling for pages that keep only placeholder images in the DOM.
   - **Grok image and attachment export** — Grok Markdown exports now include generated images from assistant replies plus images and files from user prompts. Zip packages preserve downloadable images under `assets/images/` and user files under `assets/files/` with stable Markdown references.
-  - **Gemini Canvas code export** — Gemini conversation and share-page exports now open Canvas artifacts, switch to the code tab without relying on localized labels, and include generated Canvas code in Markdown exports.
+  - **Gemini Canvas code export** — Gemini chat and share-page exports now open Canvas artifacts, switch to the code tab without relying on localized labels, and include generated Canvas code in Markdown exports.
   - **Ima attachment, generated image, and thought export** — Ima Markdown exports now include user-uploaded images and files, preserve AI-generated images in regular Markdown and zip asset packages, and include visible thinking content when "Include Thoughts in Export" is enabled. Empty attachment containers are ignored so plain user prompts no longer export a phantom `attachment` item.
-  - **Kimi share conversation export** — Kimi share pages are now supported in conversation export, outline, and scroll navigation. Exports preserve user-uploaded images in Markdown and zip asset packages, include visible file attachment labels, and keep user prompts aligned with the correct assistant replies.
+  - **Kimi share chat export** — Kimi share pages are now supported in chat export, outline, and scroll navigation. Exports preserve user-uploaded images in Markdown and zip asset packages, include visible file attachment labels, and keep user prompts aligned with the correct assistant replies.
   - **Qianwen attachment and generated image export** — Qianwen Markdown exports now recognize the current share-page question and answer DOM, include user-uploaded images and file cards, and preserve AI-generated images in both regular Markdown and zip asset packages, avoiding empty-message exports on updated pages.
-  - **Qwen Studio attachment, generated image, and thought export** — Qwen Studio Markdown exports now include user-uploaded images and full file-card names, preserve AI-generated images in regular Markdown and zip asset packages, and can export expanded thinking details from regular and share-page conversations when "Include Thoughts in Export" is enabled.
+  - **Qwen Studio attachment, generated image, and thought export** — Qwen Studio Markdown exports now include user-uploaded images and full file-card names, preserve AI-generated images in regular Markdown and zip asset packages, and can export expanded thinking details from regular and share-page chats when "Include Thoughts in Export" is enabled.
   - **Yuanbao attachment, generated image, and thought export** — Yuanbao Markdown exports now include images and files from user prompts, preserve AI-generated images in regular Markdown and zip asset packages, and include visible thinking content when "Include Thoughts in Export" is enabled.
-  - **Z.ai attachment and thought export** — Z.ai conversation and share-page exports now preserve user-uploaded images and files in Markdown and zip packages, deduplicate signed CDN links from API and DOM sources, and include reasoning blocks when "Include Thoughts in Export" is enabled.
+  - **Z.ai attachment and thought export** — Z.ai chat and share-page exports now preserve user-uploaded images and files in Markdown and zip packages, deduplicate signed CDN links from API and DOM sources, and include reasoning blocks when "Include Thoughts in Export" is enabled.
 
   ### ✨ Improvements
 
-  - **Export progress overlay** — Long conversation exports now show a full-page progress overlay with the current export stage, blocking accidental clicks, scrolling, and typing while Ophel loads history, extracts content, packages assets, saves files, and restores the page.
+  - **Export progress overlay** — Long chat exports now show a full-page progress overlay with the current export stage, blocking accidental clicks, scrolling, and typing while Ophel loads history, extracts content, packages assets, saves files, and restores the page.
 </Update>
 
 <Update label="v1.0.55">
@@ -361,15 +361,15 @@ description: "All notable changes to Ophel Atlas are documented here."
   - **ChatGPT Deep Research export** — ChatGPT Markdown zip exports now preserve uploaded images and linked files from user prompts, and include Deep Research reports as a title and link in Markdown. The extension build also allows `oaiusercontent.com` assets so shared-page images can be packaged. ([#579](https://github.com/urzeye/ophel/issues/579))
   - **Claude document artifacts and outline** — Claude Markdown document artifacts can now be exported as linked files in Markdown zip packages under `assets/documents/`, and the Outline tab shows a separate Document source when Claude's right-side document panel is open. ([#588](https://github.com/urzeye/ophel/issues/588))
   - **Claude user attachments in exports** — Claude Markdown zip exports now preserve uploaded images and linked files from user prompts, packaging them under `assets/images/` and `assets/files/` with stable Markdown references. ([#588](https://github.com/urzeye/ophel/issues/588))
-  - **Gemini Deep Research document outline** — The Outline tab now shows a "Chat / Document" source switch when a Gemini Deep Research report is open, letting you browse and jump through the right-side report outline separately from the left-side conversation outline. ([#585](https://github.com/urzeye/ophel/issues/585))
-  - **Gemini Deep Research report panel Markdown shortcuts** — Added Copy Markdown and Download Markdown buttons to the Gemini Deep Research right-side report panel toolbar, exporting only the current report without changing regular conversation exports. ([#579](https://github.com/urzeye/ophel/issues/579))
-  - **Markdown export packages** — Markdown exports can now be delivered as a zip package when a site adapter provides assets, including a manifest and stable relative paths for referenced files. Generated Markdown documents are packaged under `assets/documents/`, images under `assets/images/`, and user-uploaded attachments under `assets/files/`, with uploaded documents resolved the same way as regular Gemini conversations. ([#580](https://github.com/urzeye/ophel/issues/580))
-  - **Gemini Deep Research export** — Gemini Deep Research exports now cover owned app conversations, conversation share pages, and generated report share pages; closed report panels are opened during export and restored afterward, with uploaded file labels included in exported user prompts. ([#573](https://github.com/urzeye/ophel/issues/573))
+  - **Gemini Deep Research document outline** — The Outline tab now shows a "Chat / Document" source switch when a Gemini Deep Research report is open, letting you browse and jump through the right-side report outline separately from the left-side chat outline. ([#585](https://github.com/urzeye/ophel/issues/585))
+  - **Gemini Deep Research report panel Markdown shortcuts** — Added Copy Markdown and Download Markdown buttons to the Gemini Deep Research right-side report panel toolbar, exporting only the current report without changing regular chat exports. ([#579](https://github.com/urzeye/ophel/issues/579))
+  - **Markdown export packages** — Markdown exports can now be delivered as a zip package when a site adapter provides assets, including a manifest and stable relative paths for referenced files. Generated Markdown documents are packaged under `assets/documents/`, images under `assets/images/`, and user-uploaded attachments under `assets/files/`, with uploaded documents resolved the same way as regular Gemini chats. ([#580](https://github.com/urzeye/ophel/issues/580))
+  - **Gemini Deep Research export** — Gemini Deep Research exports now cover owned app chats, chat share pages, and generated report share pages; closed report panels are opened during export and restored afterward, with uploaded file labels included in exported user prompts. ([#573](https://github.com/urzeye/ophel/issues/573))
 
   ### 🐛 Bug Fixes
 
   - **Theme sync regression** — Turning off Sync Native Page Colors no longer prevents supported host pages from following Ophel's light/dark theme toggle. The setting now only controls native color override CSS, while Doubao and Ima remain panel-only because their adapters declare host theme sync unsupported.
-  - **Claude export order and outline cleanup** — Claude assistant exports now keep text and artifact links in their original reply order, and page/sidebar headings such as "Recents" are no longer pulled into the conversation outline. ([#588](https://github.com/urzeye/ophel/issues/588))
+  - **Claude export order and outline cleanup** — Claude assistant exports now keep text and artifact links in their original reply order, and page/sidebar headings such as "Recents" are no longer pulled into the chat outline. ([#588](https://github.com/urzeye/ophel/issues/588))
   - **Inline bookmark visibility** — Page inline bookmark icons now fully respect the hidden setting and no longer depend on the Outline tab's "show user questions" filter, fixing stale or missing stars on virtual-scroll sites such as ChatGPT, DeepSeek, AI Studio, and Doubao. ([#570](https://github.com/urzeye/ophel/issues/570))
 </Update>
 
@@ -381,7 +381,7 @@ description: "All notable changes to Ophel Atlas are documented here."
 
   ### ✨ Improvements
 
-  - **Direct row drag sorting** — Prompt items and conversation folders can now be reordered by long-press dragging the row itself, matching the existing conversation-item interaction without requiring a dedicated drag handle.
+  - **Direct row drag sorting** — Prompt items and chat folders can now be reordered by long-press dragging the row itself, matching the existing chat-item interaction without requiring a dedicated drag handle.
   - **Clearer outline tab icon** — Updated the Outline tab and tab-order settings icon to better communicate the outline hierarchy while keeping the previous document-style icon for empty states.
   - **Prompt floating controls** — Softened the selected-prompt bar styling and aligned it with the prompt queue above the input box.
 
@@ -389,11 +389,11 @@ description: "All notable changes to Ophel Atlas are documented here."
 
   - **Doubao and Ima panel theme switching** — Ophel's panel theme now switches independently on sites that do not support native page theme changes, fixing Doubao getting stuck in dark mode and keeping rendered user-query code blocks readable.
   - **ChatGPT clean mode sponsored cards** — Clean Mode now hides ChatGPT sponsored recommendation cards, including the new ad blocks with "Ad options" menus.
-  - **Doubao outline extraction** — Doubao outlines now recognize the newer `md-box-root` answer DOM, restoring headings for conversations that previously showed an empty outline. ([#565](https://github.com/urzeye/ophel/issues/565))
-  - **Conversation folder selector icon spacing** — Tightened the sync-folder selector padding and gave folder emoji icons a stable centered box so they no longer look clipped in the Conversations toolbar.
+  - **Doubao outline extraction** — Doubao outlines now recognize the newer `md-box-root` answer DOM, restoring headings for chats that previously showed an empty outline. ([#565](https://github.com/urzeye/ophel/issues/565))
+  - **Chat folder selector icon spacing** — Tightened the sync-folder selector padding and gave folder emoji icons a stable centered box so they no longer look clipped in the Chats toolbar.
   - **Attachment-only submit shortcut** — Pressing Enter or Ctrl+Enter can now send messages that contain only images or attachments. ([#555](https://github.com/urzeye/ophel/issues/555))
   - **Temporary panel preview interactions** — Dialogs, menus, dropdowns, and Prompt tab popups opened from the temporary Quick Buttons panel preview now keep the preview available while you interact with them, then close the preview automatically once the interaction ends.
-  - **DeepSeek outline navigation** — Outline jumps to user questions in long DeepSeek conversations now use DeepSeek's native timeline when the message is outside the mounted DOM, avoid stale jump results during rapid clicks, and keep only the current outline item highlighted without showing bookmark-missing notices for normal outline jumps.
+  - **DeepSeek outline navigation** — Outline jumps to user questions in long DeepSeek chats now use DeepSeek's native timeline when the message is outside the mounted DOM, avoid stale jump results during rapid clicks, and keep only the current outline item highlighted without showing bookmark-missing notices for normal outline jumps.
 </Update>
 
 <Update label="v1.0.53">
@@ -406,7 +406,7 @@ description: "All notable changes to Ophel Atlas are documented here."
 
   - **Claude adapter** — Adapted to Claude's recent page redesign: outline no longer picks up screen-reader-only headings, share links with new URL format are now recognized, theme switching works again, model locking and click simulation are compatible with the new UI components.
   - **Doubao virtual scroll navigation** — Adapted Doubao to its new virtual-list chat DOM so outline jumps, return anchors, and top/bottom navigation now use the real `v_list_scroller` container. The outline also keeps an in-memory cache of headings and user prompts that have entered the viewport, preventing previously seen outline items from disappearing when Doubao unloads them from the DOM.
-  - **Kimi conversation navigation** — Fixed the Conversations tab failing to switch Kimi chats when clicking history items from Kimi's sidebar. Kimi chat links are now matched by parsed conversation ID instead of a broad selector, with an SPA route fallback when the native link is not mounted.
+  - **Kimi chat navigation** — Fixed the Chats tab failing to switch Kimi chats when clicking history items from Kimi's sidebar. Kimi chat links are now matched by parsed chat ID instead of a broad selector, with an SPA route fallback when the native link is not mounted.
   - **Ima user prompt extraction** — Restored user-question detection for Ima's updated chat DOM, so prompts inside the new `userBubbleWrap` / `chatMainBubble` structure are included in outline, export, usage stats, and user-query Markdown rendering again.
   - **Formula copy site compatibility** — Added Qwen Studio support for its non-standard formula DOM where LaTeX source is embedded as direct text inside `<math>`. Kimi and Yuanbao now explicitly show an unsupported-site message instead of attempting unreliable extraction from visual-only KaTeX HTML.
   - **Gemini Canvas freeze with table Markdown copy** — Table copy buttons are no longer injected into Gemini Canvas editor tables, preventing ProseMirror DOM update loops that could freeze or crash the page when a Canvas document contains tables. ([#535](https://github.com/urzeye/ophel/issues/535))
@@ -422,8 +422,8 @@ description: "All notable changes to Ophel Atlas are documented here."
 
   ### 🐛 Bug Fixes
 
-  - **Reading history restore scope** — Reading history now saves and resumes positions only on owned conversation pages. Shared pages, new-chat pages, and other site routes no longer trigger auto-resume; page eligibility now lives in each site adapter for clearer maintenance.
-  - **Conversation sync cleanup** — Manual sync now removes conversations that were deleted on the same site/account and opens Gemini's recent chats section when needed before syncing.
+  - **Reading history restore scope** — Reading history now saves and resumes positions only on owned chat pages. Shared pages, new-chat pages, and other site routes no longer trigger auto-resume; page eligibility now lives in each site adapter for clearer maintenance.
+  - **Chat sync cleanup** — Manual sync now removes chats that were deleted on the same site/account and opens Gemini's recent chats section when needed before syncing.
   - **Gemini Library page: fix "Open in New Tab"** — Adapted to the new `/library` path (renamed from `/mystuff`) and adjusted button position to avoid overlap with Gemini's native delete button.
   - **Zen mode exit button text unreadable due to transparency**: Replaced the button background from translucent glass-morphism variables with the theme's primary background color, preventing underlying page text from bleeding through and making both layers unreadable. ([#431](https://github.com/urzeye/ophel/issues/431))
   - **Tab title: prevent `->` duplication** — Fixed a race condition where the auto-rename title format could repeatedly append `->` to the tab title when the model name was temporarily unavailable, resulting in chains like `标题->->->->`.
@@ -435,15 +435,15 @@ description: "All notable changes to Ophel Atlas are documented here."
   ### 🚀 New Features
 
   - **Quick Buttons proximity wake radius** (`Settings → Quick Buttons`): A new slider controls how close the cursor must be before the floating widget auto-expands (default 150 px, matching previous behavior). Set it to **0** for a true dwell-hover mode — the widget only expands after the cursor rests on the water-drop for 300 ms, preventing accidental expansion from the cursor passing through. ([#492](https://github.com/urzeye/ophel/issues/492))
-  - **Drag conversations into folders**: In the Conversations tab, you can now drag a chat onto any folder to move it there. Thanks @t0ny-peng ([#512](https://github.com/urzeye/ophel/issues/512))
+  - **Drag chats into folders**: In the Chats tab, you can now drag a chat onto any folder to move it there. Thanks @t0ny-peng ([#512](https://github.com/urzeye/ophel/issues/512))
 
   ### 🐛 Bug Fixes
 
   - **Floating panel settings UX and positioning preview**: Moved the default edge distance margin setting to only display under Floating panel mode, and updated the description across all 10 locales. Also fixed an issue where adjusting default margin/position settings failed to update the panel position in real-time. ([#519](https://github.com/urzeye/ophel/issues/519))
-  - **Fixed ChatGPT outline display and navigation issues**: Resolved cases where the outline was incomplete or clicks failed to navigate to the message in long chats, and fixed routing issues where switching conversations caused the outline to lag, display incorrect entries, or show empty headings. ([#402](https://github.com/urzeye/ophel/issues/402))
-  - **Resolved ChatGPT export duplication, scrambling, and truncation issues in long conversations**: Re-engineered the export process to handle virtualization, ensuring all turns are fully loaded, ordered correctly, and deduplicated without missing segments or repeating messages.
-  - **AI Studio export missed turns and could loop in long conversations**: Rewrote the export collector to iterate the DOM-resident `ms-chat-turn` list directly so every user prompt and assistant reply (including attachments and the separate "thoughts" turn) is captured in a single pass.
-  - **Fixed conversation title missing or wrong on shared pages across 12 sites**: Added `isSharePage()` detection and page-heading fallbacks so the browser tab title and export Markdown heading work correctly on shared (non-owned) conversation pages.
+  - **Fixed ChatGPT outline display and navigation issues**: Resolved cases where the outline was incomplete or clicks failed to navigate to the message in long chats, and fixed routing issues where switching chats caused the outline to lag, display incorrect entries, or show empty headings. ([#402](https://github.com/urzeye/ophel/issues/402))
+  - **Resolved ChatGPT export duplication, scrambling, and truncation issues in long chats**: Re-engineered the export process to handle virtualization, ensuring all turns are fully loaded, ordered correctly, and deduplicated without missing segments or repeating messages.
+  - **AI Studio export missed turns and could loop in long chats**: Rewrote the export collector to iterate the DOM-resident `ms-chat-turn` list directly so every user prompt and assistant reply (including attachments and the separate "thoughts" turn) is captured in a single pass.
+  - **Fixed chat title missing or wrong on shared pages across 12 sites**: Added `isSharePage()` detection and page-heading fallbacks so the browser tab title and export Markdown heading work correctly on shared (non-owned) chat pages.
 </Update>
 
 <Update label="v1.0.50">
@@ -455,7 +455,7 @@ description: "All notable changes to Ophel Atlas are documented here."
   - Fixed clean mode not hiding new promotional banners on ChatGLM, Ima, and Kimi
   - Fixed code blocks displaying with inconsistent widths when page-width adjustment is enabled on ChatGLM
   - Fixed the `Alt+/` shortcut reporting "model selector not found" on AI Studio
-  - Fixed the outline only showing nearby messages in long conversations on AI Studio and ChatGPT
+  - Fixed the outline only showing nearby messages in long chats on AI Studio and ChatGPT
   - Fixed the copy button disappearing when scrolling inside a code block in user messages
   - Fixed code blocks being hard to distinguish from the message bubble background on some sites (Kimi, DeepSeek, etc.)
   - Fixed the circular theme-switch animation not appearing on ChatGPT
@@ -540,7 +540,7 @@ description: "All notable changes to Ophel Atlas are documented here."
 
   - **WebDAV backup list parsing compatibility**: Fixed inability to read cloud backup file lists when some WebDAV providers (e.g. pCloud) return XML with namespace prefixes.
   - **WebDAV operation interrupted after first authorization**: Fixed the original operation (backup, restore, or test connection) not resuming after confirming the authorization dialog on first WebDAV use.
-  - **Doubao conversation delete confirmation broken**: Adapted to Doubao's new page structure; fixed the delete confirmation dialog not triggering correctly (also fixed for Traditional Chinese UI).
+  - **Doubao chat delete confirmation broken**: Adapted to Doubao's new page structure; fixed the delete confirmation dialog not triggering correctly (also fixed for Traditional Chinese UI).
   - **Quick button initialization position jump**: Fixed the visual jump of quick buttons sliding down from the top to their target position on page refresh.
 
   ### ℹ️ Notes
@@ -579,7 +579,7 @@ description: "All notable changes to Ophel Atlas are documented here."
   - **Community links in settings page**: Added store rating, GitHub, Ko-fi, and Discord quick links in the bottom-left corner, with theme and language switching integrated.
   - **About page visual polish**: Comprehensive refinement of buttons, headings, navigation, and theme cards.
   - **Feature tip tour**: Added feature hint bubbles to the panel and outline tabs to help discover hidden functionality.
-  - **Panel tab icons slightly enlarged**: Outline, conversation, and prompt icons enlarged from 14px to 16px for better clarity.
+  - **Panel tab icons slightly enlarged**: Outline, chat, and prompt icons enlarged from 14px to 16px for better clarity.
 
   ### 🐛 Bug Fixes
 
@@ -606,7 +606,7 @@ description: "All notable changes to Ophel Atlas are documented here."
 
   ### ✨ Improvements
 
-  - **Outline scroll sync performance**: When scrolling the conversation page, outline highlight indicator switched from full React re-render to direct DOM classList operations — only 2 DOM operations per scroll, eliminating useless reconciles across 1000+ OutlineNodeView components. ([#397](https://github.com/urzeye/ophel/issues/397))
+  - **Outline scroll sync performance**: When scrolling the chat page, outline highlight indicator switched from full React re-render to direct DOM classList operations — only 2 DOM operations per scroll, eliminating useless reconciles across 1000+ OutlineNodeView components. ([#397](https://github.com/urzeye/ophel/issues/397))
   - **MutationObserver scope narrowed**: Outline auto-update MutationObserver scope narrowed from `document.body` to the AI reply container level, reducing callbacks triggered by unrelated DOM changes. ([#395](https://github.com/urzeye/ophel/issues/395))
   - **treeKey hash compression**: Outline tree keys now use djb2 hash algorithm, compressing long keys to 8-character hex strings, improving string comparison efficiency for large numbers of headings. ([#395](https://github.com/urzeye/ophel/issues/395))
 
@@ -631,7 +631,7 @@ description: "All notable changes to Ophel Atlas are documented here."
   - **Panel header streamlined**: Removed infrequently used buttons from the header for a cleaner look.
   - **Title bar hover tips**: Random usage tips shown when hovering the panel title bar to help discover hidden features.
   - **Navigation buttons always visible in edge-snap mode**: Scroll-to-top/bottom and anchor quick buttons no longer hide when panel is not overlapping them.
-  - **Conversation list performance**: Large numbers of conversations under a folder no longer cause lag; progressive loading implemented. ([#369](https://github.com/urzeye/ophel/issues/369))
+  - **Chat list performance**: Large numbers of chats under a folder no longer cause lag; progressive loading implemented. ([#369](https://github.com/urzeye/ophel/issues/369))
   - **Global search performance**: Reduced redundant re-rendering of search results for smoother search experience.
   - **Userscript load speed improved**: Significantly faster userscript loading after page refresh.
   - **Theme adaptation refined**: Native theme now only colors the sidebar, no longer affecting the main content area of AI platforms.
@@ -664,7 +664,7 @@ description: "All notable changes to Ophel Atlas are documented here."
 
   ### 📝 Documentation
 
-  - **User docs fully rewritten**: All user guides rewritten in Chinese and English, covering Quick Start, Panel Overview, Quick Buttons, Smart Outline, Conversation Management, Prompt Library, Enhancement Features, Appearance Themes, Backup & Sync, Shortcuts, and FAQ — more complete and easier to follow.
+  - **User docs fully rewritten**: All user guides rewritten in Chinese and English, covering Quick Start, Panel Overview, Quick Buttons, Smart Outline, Chat Management, Prompt Library, Enhancement Features, Appearance Themes, Backup & Sync, Shortcuts, and FAQ — more complete and easier to follow.
 </Update>
 
 <Update label="v1.0.37">
@@ -687,7 +687,7 @@ description: "All notable changes to Ophel Atlas are documented here."
   - **Watermark removal indicator repositioned**: The loading indicator during Gemini image watermark removal moved to the bottom-right corner of the image, reducing obstruction of the top-right action buttons and image content.
   - **Zen Mode site adaptation and exit entry improved**: Unified Zen Mode configuration across sites, adding default hidden elements for more AI sites; enabling it directly hides sidebar, disclaimers, and distraction areas, with a fixed floating "Exit Zen Mode" entry at the top level of the page.
   - **Zen Mode shortcut and collapsed state compatibility**: Added "Toggle Zen Mode" in "Settings → Shortcuts → Interaction Controls" with default shortcut `Ctrl + Shift + Z`; also improved Zen Mode layout behavior on Kimi and other sites with collapsed sidebars.
-  - **Qwen Studio site name unified**: The display name of `chat.qwen.ai` unified to `Qwen Studio` across adapter display names, settings items, conversation hints, README, and issue templates.
+  - **Qwen Studio site name unified**: The display name of `chat.qwen.ai` unified to `Qwen Studio` across adapter display names, settings items, chat hints, README, and issue templates.
 
   ### 🐛 Bug Fixes
 
@@ -706,19 +706,19 @@ description: "All notable changes to Ophel Atlas are documented here."
 
   ### ✨ Improvements
 
-  - **Gemini user query image export**: Exported conversations now include images uploaded in Gemini user queries, preventing export results that only contain text prompts with missing reference images.
+  - **Gemini user query image export**: Exported chats now include images uploaded in Gemini user queries, preventing export results that only contain text prompts with missing reference images.
 
   ### 🐛 Bug Fixes
 
-  - **ChatGPT thinking mode completion timing**: Introduced per-round completion detection logic for ChatGPT `thinking_effort` requests; normal replies continue using network monitoring, while standard/advanced thinking waits for the page to actually enter and exit the generating state before signaling completion, avoiding false "conversation complete" detection during the `stream_handoff` phase. ([#343](https://github.com/urzeye/ophel/issues/343))
-  - **Doubao conversation sync restored**: Adapted to Doubao's new sidebar DOM structure, restoring conversation list recognition, current conversation location, and new conversation entry sync, reducing sidebar feature failures caused by the official page update. ([#342](https://github.com/urzeye/ophel/issues/342))
-  - **Doubao outline and export structure adapted**: Switched to Doubao's new chat message area DOM, restoring outline extraction, latest reply extraction, and conversation export functions, preventing empty outlines or missing export content after the official update. ([#342](https://github.com/urzeye/ophel/issues/342))
+  - **ChatGPT thinking mode completion timing**: Introduced per-round completion detection logic for ChatGPT `thinking_effort` requests; normal replies continue using network monitoring, while standard/advanced thinking waits for the page to actually enter and exit the generating state before signaling completion, avoiding false "chat complete" detection during the `stream_handoff` phase. ([#343](https://github.com/urzeye/ophel/issues/343))
+  - **Doubao chat sync restored**: Adapted to Doubao's new sidebar DOM structure, restoring chat list recognition, current chat location, and new chat entry sync, reducing sidebar feature failures caused by the official page update. ([#342](https://github.com/urzeye/ophel/issues/342))
+  - **Doubao outline and export structure adapted**: Switched to Doubao's new chat message area DOM, restoring outline extraction, latest reply extraction, and chat export functions, preventing empty outlines or missing export content after the official update. ([#342](https://github.com/urzeye/ophel/issues/342))
   - **Gemini image Markdown export restored**: Compatible with Gemini's new generated image structure, correctly preserving generated images in replies when exporting Markdown, no longer losing images due to wrapper changes or temporary `blob:` URLs. ([#339](https://github.com/urzeye/ophel/issues/339))
   - **Gemini watermark removal compatible with new image components**: Watermark removal now supports Gemini's new generated image component structure, compatible with new image cards, copy buttons, and "Download full size image" buttons.
-  - **Gemini conversation image watermark misidentification fix**: Adjusted Gemini watermark size detection logic to prioritize `48px` watermark config when preview image source is detected on `/app` conversation pages. ([#335](https://github.com/urzeye/ophel/issues/335))
+  - **Gemini chat image watermark misidentification fix**: Adjusted Gemini watermark size detection logic to prioritize `48px` watermark config when preview image source is detected on `/app` chat pages. ([#335](https://github.com/urzeye/ophel/issues/335))
   - **Extension update notification z-index fix**: Raised the z-index of the "plugin updated" notification card to prevent it from being covered when the panel or quick overlays are open.
   - **Grok user query width alignment fix**: Fixed Grok user query bubbles being incorrectly centered instead of right-aligned after enabling "User Query Width".
-  - **Grok content area width abnormal shrinkage**: Fixed `--content-max-width` being applied redundantly on nested containers during Grok page width adjustment, causing the latest conversation content to be noticeably narrower than older messages.
+  - **Grok content area width abnormal shrinkage**: Fixed `--content-max-width` being applied redundantly on nested containers during Grok page width adjustment, causing the latest chat content to be noticeably narrower than older messages.
 </Update>
 
 <Update label="v1.0.34">
@@ -817,14 +817,14 @@ description: "All notable changes to Ophel Atlas are documented here."
 
   ### ✨ Improvements
 
-  - **Export progress notification enhanced**: Unified improved export start toast text clearly reminding "please do not operate the current page during export", with slightly longer display time; synced in 10 languages to reduce accidental operations during long AI Studio and DeepSeek conversation exports.
+  - **Export progress notification enhanced**: Unified improved export start toast text clearly reminding "please do not operate the current page during export", with slightly longer display time; synced in 10 languages to reduce accidental operations during long AI Studio and DeepSeek chat exports.
   - **Markdown export header typography improved**: Adjusted spacing structure between the title and metadata block at the top of exported documents for better first-screen readability.
 
   ### 🐛 Bug Fixes
 
-  - **AI Studio virtual scroll export misalignment**: Refactored round pairing and ordering logic for AI Studio exports during virtual scrolling, fixing user queries, thinking content, and AI replies being misaligned or stacked at the bottom of the document in long conversations.
+  - **AI Studio virtual scroll export misalignment**: Refactored round pairing and ordering logic for AI Studio exports during virtual scrolling, fixing user queries, thinking content, and AI replies being misaligned or stacked at the bottom of the document in long chats.
   - **AI Studio export missing content and format issues**: Fixed empty off-screen replies, only exporting thinking without body, truncated user queries, and incomplete extraction of lists, quotes, inline code, code blocks, Markdown, and formulas during virtual scrolling.
-  - **Export title polluted by tab renaming**: Fixed AI Studio export document title incorrectly using the browser tab title rewritten by the extension, now prioritizing the original conversation title; also added protection for Grok and the general export pipeline to avoid being overwritten by the current page title.
+  - **Export title polluted by tab renaming**: Fixed AI Studio export document title incorrectly using the browser tab title rewritten by the extension, now prioritizing the original chat title; also added protection for Grok and the general export pipeline to avoid being overwritten by the current page title.
 </Update>
 
 <Update label="v1.0.26">
@@ -864,7 +864,7 @@ description: "All notable changes to Ophel Atlas are documented here."
 
   ### 🐛 Bug Fixes
 
-  - **QwenAI international version width control**: Fixed "Page Width" and "User Query Width" settings not taking effect on `chat.qwen.ai`, now correctly overriding conversation container and user bubble width styles.
+  - **QwenAI international version width control**: Fixed "Page Width" and "User Query Width" settings not taking effect on `chat.qwen.ai`, now correctly overriding chat container and user bubble width styles.
   - **DeepSeek width control**: Fixed page width control and user query width setting not taking effect on `chat.deepseek.com`, switched to overriding virtual list width variable and stable user message structure. ([#281](https://github.com/urzeye/ophel/issues/281))
 </Update>
 
@@ -876,7 +876,7 @@ description: "All notable changes to Ophel Atlas are documented here."
 
   ### 🐛 Bug Fixes
 
-  - **New conversation shortcut compatibility**: Fixed new conversation shortcut not working on macOS and some sites, and Doubao falling back to full page refresh.
+  - **New chat shortcut compatibility**: Fixed new chat shortcut not working on macOS and some sites, and Doubao falling back to full page refresh.
   - **Advanced model settings search i18n**: Fixed advanced model usage stats related settings titles not being localized in global search results.
 </Update>
 
@@ -901,21 +901,21 @@ description: "All notable changes to Ophel Atlas are documented here."
   - **Gemini refresh false positive completion notification**: Fixed Gemini standard and Gemini Enterprise occasionally incorrectly judging "AI generation complete" and showing completion notifications and playing sounds on page refresh.
   - **ChatGPT model lock compatible with new page**: Adapted to ChatGPT's new model selection menu, fixing the model lock repeatedly opening/closing the model dialog, old model names being mistakenly identified as the current model, and model name in tab title being unstable on the new page.
   - **DeepSeek deep thinking export and outline extraction**: Fixed outline, copy Markdown, and export Markdown incorrectly extracting thinking chain content when DeepSeek deep thinking is enabled; export results now respect the "Include thinking chain in export" setting.
-  - **DeepSeek share conversation export**: Fixed `chat.deepseek.com/share/*` share page export showing "Please open a conversation to export" error, now directly recognizing share conversations and completing export.
-  - **DeepSeek virtual scroll outline out of order**: Fixed AI reply headings occasionally being sorted before their corresponding user queries in DeepSeek long conversation virtual scroll scenarios.
+  - **DeepSeek share chat export**: Fixed `chat.deepseek.com/share/*` share page export showing "Please open a chat to export" error, now directly recognizing share chats and completing export.
+  - **DeepSeek virtual scroll outline out of order**: Fixed AI reply headings occasionally being sorted before their corresponding user queries in DeepSeek long chat virtual scroll scenarios.
 </Update>
 
 <Update label="v1.0.21">
 
   ### 🚀 New Features
 
-  - **Advanced model usage stats and local estimation**: Added local conversation counting and estimation panel for advanced models, with a history usage stats chart on the features page that can be viewed by site and hour, day, or month in counts or rough token estimates. ([#103](https://github.com/urzeye/ophel/issues/103), [#256](https://github.com/urzeye/ophel/issues/256)) by @KanameMadoka520
+  - **Advanced model usage stats and local estimation**: Added local chat counting and estimation panel for advanced models, with a history usage stats chart on the features page that can be viewed by site and hour, day, or month in counts or rough token estimates. ([#103](https://github.com/urzeye/ophel/issues/103), [#256](https://github.com/urzeye/ophel/issues/256)) by @KanameMadoka520
 
   ### 🐛 Bug Fixes
 
   - Fixed userscript failing to load due to a name change; rolled back script name
   - Fixed DeepSeek virtual scroll causing missing outline and export format loss
-  - Fixed DeepSeek not refreshing after deletion and Doubao conversation deletion not syncing to the original site
+  - Fixed DeepSeek not refreshing after deletion and Doubao chat deletion not syncing to the original site
   - Fixed Doubao "Copy Latest Reply" having no content; upgraded multi-site "Copy Latest Reply" to Markdown extraction to preserve headings, bold, tables, formulas, and code blocks; compatible with DeepSeek / AI Studio virtual scroll and Gemini Enterprise Shadow DOM scenarios
 </Update>
 
@@ -923,7 +923,7 @@ description: "All notable changes to Ophel Atlas are documented here."
 
   ### 🚀 New Features
 
-  - **Gemini MyStuff open in new tab**: Added an "Open in New Tab" button to media cards on the Gemini "My Content" page, supporting direct jump to the original conversation location. ([#185](https://github.com/urzeye/ophel/issues/185))
+  - **Gemini MyStuff open in new tab**: Added an "Open in New Tab" button to media cards on the Gemini "My Content" page, supporting direct jump to the original chat location. ([#185](https://github.com/urzeye/ophel/issues/185))
 
   ### ✨ Improvements
 
@@ -948,7 +948,7 @@ description: "All notable changes to Ophel Atlas are documented here."
 
   ### 🐛 Bug Fixes
 
-  - Fixed unstable go-to-top, go-to-bottom, return-to-anchor, outline scroll follow, and highlight state on DeepSeek and Z.ai in some long conversations. ([#241](https://github.com/urzeye/ophel/issues/241))
+  - Fixed unstable go-to-top, go-to-bottom, return-to-anchor, outline scroll follow, and highlight state on DeepSeek and Z.ai in some long chats. ([#241](https://github.com/urzeye/ophel/issues/241))
   - Fixed Gemini page repeatedly resetting tab title to `Google Gemini` in the background, causing flickering conflicts with the auto-rename logic.
   - Fixed shortcut conflict hint falling back to Chinese in non-Chinese languages due to empty text.
   - Fixed Korean shortcut list missing `shortcutShowShortcuts` text.
@@ -971,7 +971,7 @@ description: "All notable changes to Ophel Atlas are documented here."
 
   - Limit user query image sizes when "User query Markdown rendering" is enabled. ([#224](https://github.com/urzeye/ophel/issues/224)) by @tjsky
   - Fixed floating toolbar being pushed outside the visible area after dragging to the screen edge and then resizing the window. ([#221](https://github.com/urzeye/ophel/issues/221))
-  - Fixed Grok conversation sync incorrectly treating command panel Actions as conversations
+  - Fixed Grok chat sync incorrectly treating command panel Actions as chats
   - Fixed Grok pin recognition logic to prevent all pinned/unpinned anomalies after sync
 </Update>
 
@@ -1009,8 +1009,8 @@ description: "All notable changes to Ophel Atlas are documented here."
 
   - **Dynamic trigger hint**: The trigger description at the top of the global search page changed from fixed text to dynamically assembled, reflecting the current user config (double Shift / custom key) in real time.
   - **Delete shortcut scenario compatibility**: When user removes the global search shortcut, the trigger description automatically degrades to show available trigger methods; shows "Not set" if all are disabled.
-  - **Conversation sync result diagnostics enhanced**: After manual sync, new "scanned/added/updated" result hints are shown; clear guidance is provided when no conversations are detected in the sidebar; and update count calculation and metadata backfill write logic are corrected. by @joevalleyfield
-  - **DeepSeek conversation sync enhanced**: Added conversation rename sync, link and CID backfill updates, and pinned conversation recognition with support for distinguishing pinned/normal conversation groups.
+  - **Chat sync result diagnostics enhanced**: After manual sync, new "scanned/added/updated" result hints are shown; clear guidance is provided when no chats are detected in the sidebar; and update count calculation and metadata backfill write logic are corrected. by @joevalleyfield
+  - **DeepSeek chat sync enhanced**: Added chat rename sync, link and CID backfill updates, and pinned chat recognition with support for distinguishing pinned/normal chat groups.
   - **DeepSeek generation state monitoring**: Integrated DeepSeek streaming generation request monitoring for more timely generation start/end state, more accurate tab state and completion notification pipeline.
 
   ### 🌍 Internationalization
@@ -1019,7 +1019,7 @@ description: "All notable changes to Ophel Atlas are documented here."
 
   ### 🐛 Bug Fixes
 
-  - **Settings search missing items**: Added "Shortcuts", "Global Search", "Conversation sync delete" and other previously unsearchable config items to settings search, with support for finding by name and keywords.
+  - **Settings search missing items**: Added "Shortcuts", "Global Search", "Chat sync delete" and other previously unsearchable config items to settings search, with support for finding by name and keywords.
   - **Shortcut settings search stability**: Shortcut entry index now dynamically generated from metadata; no manual maintenance needed when adding/adjusting shortcuts in the future, reducing miss risk.
   - **DeepSeek send button misidentification**: Fixed send button selector incorrectly matching the attachment button, with added fallback to simulate `Enter` / `Ctrl+Enter` when using send shortcut for better compatibility.
   - **ChatGPT Projects export failure**: Fixed "Export Markdown / Copy Markdown" failing in Projects conversations with `Conversation not found` error because project conversations weren't synced to local index; now immediately supplements conversation metadata from the current page before exporting.
@@ -1034,10 +1034,10 @@ description: "All notable changes to Ophel Atlas are documented here."
   ### 🐛 Bug Fixes
 
   - **Backup restore data loss**: Fixed restored backup data being overwritten by empty data from open AI pages that still had old data in memory after restore. Now automatically notifies all open AI pages to refresh after successful restore and skips the first auto-sync to keep restored data clean.
-  - **Backup export/import data structure errors**: Fixed `lastUsedFolderId` and other auxiliary properties being lost on export, and a condition error preventing correct restoration of backups with 2+ conversations on import.
+  - **Backup export/import data structure errors**: Fixed `lastUsedFolderId` and other auxiliary properties being lost on export, and a condition error preventing correct restoration of backups with 2+ chats on import.
   - **Reading history restore structure compatibility**: Fixed `readingHistory` being incorrectly wrapped as `{ readingHistory: ... }` during local import and WebDAV restore; now correctly restores as `{ history, lastCleanupRun }` to prevent reading history loss.
   - **WebDAV restore status writeback fix**: Fixed `lastSyncStatus` remaining at `syncing` after successful download restore; now correctly writes back `lastSyncTime` and `lastSyncStatus: success`.
-  - **Gemini cross-browser import invisible conversations**: Upgraded Gemini conversation isolation from numeric `cid` (`/u/n`) to account email priority, with automatic migration from old data (numeric `cid` → email `cid`) on first Gemini open after upgrade, supporting `u/0` to `u/1` cross-browser import scenarios.
+  - **Gemini cross-browser import invisible chats**: Upgraded Gemini chat isolation from numeric `cid` (`/u/n`) to account email priority, with automatic migration from old data (numeric `cid` → email `cid`) on first Gemini open after upgrade, supporting `u/0` to `u/1` cross-browser import scenarios.
   - **Import backup module load error**: Fixed `Cannot find module` error during dynamic import of the validation module in local import and WebDAV restore pipelines; switched to static import for stable availability in build artifacts.
   - **Import failure diagnosis**: Added clear console error logs for import parse and write failures, with actual error message shown in Toast for easier issue identification.
   - **Import confirm dialog and i18n text**: Improved "backup time/type" info display style in the import confirm dialog; added and completed "Type" and "Open AI pages will be refreshed" key values in 10 languages.
@@ -1047,7 +1047,7 @@ description: "All notable changes to Ophel Atlas are documented here."
 
   ### 🚀 New Features
 
-  - **Zen Mode**: Added Zen Mode setting to hide unnecessary page elements (such as model disclaimers at the bottom) for a purer conversation interface experience.
+  - **Zen Mode**: Added Zen Mode setting to hide unnecessary page elements (such as model disclaimers at the bottom) for a purer chat interface experience.
 
   ### 🐛 Bug Fixes
 
@@ -1092,15 +1092,15 @@ description: "All notable changes to Ophel Atlas are documented here."
 
   ### Improvements
 
-  - Gemini (standard) export now supports auto-expanding thinking chains in conversations and restoring original collapsed state and reading position after export.
+  - Gemini (standard) export now supports auto-expanding thinking chains in chats and restoring original collapsed state and reading position after export.
   - Gemini (standard) thinking chain export now presented as Markdown blockquote (`>`), clearly separated from the body and avoiding duplicate content.
   - Global search settings retrieval now always uses the complete settings set for scoring, improving settings title hit rate in multilingual interfaces.
   - Added `export-include-thoughts` settings index and title mapping to global search for direct location by name and keywords.
-  - Conversation list information density improved: title and tags now on the same line, preventing blank second-line placeholder for conversations without tags.
-  - Removed update time display from conversation list to prioritize title and tag information in the visible space.
+  - Chat list information density improved: title and tags now on the same line, preventing blank second-line placeholder for chats without tags.
+  - Removed update time display from chat list to prioritize title and tag information in the visible space.
   - Multi-tag collapse enhanced: continues to show `+N` when tags exceed displayable count, with hover support to view full tag list (with tag colors and names).
   - Narrow panel adaptation: automatically tightens tag display strategy at narrower widths to ensure title readability.
-  - Conversation action entry improved: right-side action buttons use lighter hover show/hide interaction to reduce interference with main information in default state.
+  - Chat action entry improved: right-side action buttons use lighter hover show/hide interaction to reduce interference with main information in default state.
 
   ### Bug Fixes
 
@@ -1113,7 +1113,7 @@ description: "All notable changes to Ophel Atlas are documented here."
 
   ### New Features
 
-  - Conversation management added "Cloud sync delete" capability, supporting batch trigger to also delete conversations from the site cloud after sync.
+  - Chat management added "Cloud sync delete" capability, supporting batch trigger to also delete chats from the site cloud after sync.
   - Settings page sync delete text and capability description unified to a cross-site model for easier future expansion.
   - Allow disabling double Shift global search shortcut.
 
@@ -1125,9 +1125,9 @@ description: "All notable changes to Ophel Atlas are documented here."
 
   ### Bug Fixes
 
-  - Fixed inaccurate remote failure count in conversation batch delete stats.
+  - Fixed inaccurate remote failure count in chat batch delete stats.
   - Fixed Gemini / Gemini Enterprise UI delete flow stability issues, covering menu trigger, delete click, and completion state detection.
-  - Fixed Gemini Enterprise cloud delete success not removing local conversation in time.
+  - Fixed Gemini Enterprise cloud delete success not removing local chat in time.
   - Fixed AI Studio cloud delete API instability causing rollback; switched to stable UI delete path.
 </Update>
 
@@ -1150,7 +1150,7 @@ description: "All notable changes to Ophel Atlas are documented here."
   - Contextual reminder frequency control and auto-convergence strategy: max once per day, total count limit, auto-dismiss, auto-stops reminding after shortcut usage threshold is reached.
   - Global search context meta text changed to semantic expression (e.g. "Item X · Showing Y/Z"), reducing new user comprehension cost.
   - Global search result area scroll improved: fixed horizontal overflow and beautified vertical scrollbar style for visual consistency.
-  - Global search hit reason tags completed: conversations (title/folder/tag), outline (title/type/number), prompts (title/category/content/ID), settings (name/keyword/ID/alias).
+  - Global search hit reason tags completed: chats (title/folder/tag), outline (title/type/number), prompts (title/category/content/ID), settings (name/keyword/ID/alias).
   - Global search sort strategy enhanced: sorted by "exact match > prefix match > contains match > combined score > recent use", reducing misclicks and improving first-screen relevance.
   - Prompts now show a one-line hit snippet preview with "Content hit:" prefix and keyword highlighting when matched by content.
   - Fixed hit reason text garbled in multiple languages; unified 10-language text readability.
@@ -1171,7 +1171,7 @@ description: "All notable changes to Ophel Atlas are documented here."
 
   ### 🚀 New Features
 
-  - Added Search Everywhere global search dialog, triggered by double Shift / Ctrl(Cmd)+K, covering categories: All, Outline, Conversations, Prompts, Settings.
+  - Added Search Everywhere global search dialog, triggered by double Shift / Ctrl(Cmd)+K, covering categories: All, Outline, Chats, Prompts, Settings.
   - Settings page added "Site Settings → Global Search" config page with prompt Enter behavior config (Smart/Locate only) and trigger method description.
   - Quick button group added "Search" button (enabled by default) below the toolbox button for one-click global search access.
   - Supports settings deep link location (page + sub-tab + row highlight) for precise navigation to specific settings.
@@ -1181,7 +1181,7 @@ description: "All notable changes to Ophel Atlas are documented here."
   ### 🎨 UI & Interaction Upgrades
 
   - Global search category bar and results area layout improved with category counts, All group rate limiting, and "Show more".
-  - Search results unified hit highlight style; conversation result meta info on one line (site/folder/tag).
+  - Search results unified hit highlight style; chat result meta info on one line (site/folder/tag).
   - Outline results enhanced user query and AI reply hierarchy distinction for better readability.
   - Fixed hover highlight jumping during rapid scroll (short-term hover lock).
 
@@ -1189,7 +1189,7 @@ description: "All notable changes to Ophel Atlas are documented here."
 
   - Fixed abnormal search result category height and keyboard up/down navigation not scrolling to visible area.
   - Fixed global search text and category display inconsistency in multiple languages.
-  - Fixed global search results not refreshing in time after conversation switch or outline delayed load.
+  - Fixed global search results not refreshing in time after chat switch or outline delayed load.
   - Fixed inconsistent prompt search Enter behavior across scenarios (no variable: insert directly; with variable: open fill dialog).
   - Fixed folder name emoji double display and dropdown text alignment; extracted shared `SelectDropdown` component for unified dropdown style.
 
@@ -1405,11 +1405,11 @@ description: "All notable changes to Ophel Atlas are documented here."
   - Supports multi-level heading hierarchy
   - Quick navigation to specific content positions
 
-  #### Conversation Management
+  #### Chat Management
 
-  - Organize conversations by folders
-  - Batch conversation operations
-  - Conversation search and location
+  - Organize chats by folders
+  - Batch chat operations
+  - Chat search and location
   - Sync native sidebar pin state
 
   #### Prompt Library

@@ -134,10 +134,7 @@
     "timestamp": true
   },
   "contextual": {
-    "options": [
-      "assistant",
-      "copy"
-    ],
+    "options": ["assistant", "copy"],
     "display": "toc"
   },
   "footer": {
@@ -220,11 +217,7 @@
               {
                 "group": "Get Started",
                 "icon": "rocket",
-                "pages": [
-                  "introduction",
-                  "installation",
-                  "panel-overview"
-                ]
+                "pages": ["introduction", "installation", "panel-overview"]
               },
               {
                 "group": "Core Features",
@@ -232,13 +225,11 @@
                 "pages": [
                   "features/outline",
                   {
-                    "group": "Conversation Management",
+                    "group": "Chat Management",
                     "icon": "folder-open",
                     "root": "features/conversations",
                     "expanded": true,
-                    "pages": [
-                      "features/export"
-                    ]
+                    "pages": ["features/export"]
                   },
                   "features/prompts",
                   "features/global-search"
@@ -278,33 +269,22 @@
               {
                 "group": "Sync & Backup",
                 "icon": "cloud-arrow-up",
-                "pages": [
-                  "data/backup-sync",
-                  "data/webdav"
-                ]
+                "pages": ["data/backup-sync", "data/webdav"]
               },
               {
                 "group": "Privacy & Permissions",
                 "icon": "shield",
-                "pages": [
-                  "data/privacy",
-                  "data/permissions"
-                ]
+                "pages": ["data/privacy", "data/permissions"]
               },
               {
                 "group": "Help",
                 "icon": "circle-question",
-                "pages": [
-                  "faq",
-                  "troubleshooting"
-                ]
+                "pages": ["faq", "troubleshooting"]
               },
               {
                 "group": "Changelog",
                 "icon": "list",
-                "pages": [
-                  "changelog"
-                ]
+                "pages": ["changelog"]
               }
             ]
           },
@@ -314,9 +294,7 @@
             "groups": [
               {
                 "group": "Installation",
-                "pages": [
-                  "installation"
-                ]
+                "pages": ["installation"]
               }
             ]
           },
@@ -326,9 +304,7 @@
             "groups": [
               {
                 "group": "Changelog",
-                "pages": [
-                  "changelog"
-                ]
+                "pages": ["changelog"]
               }
             ]
           }
@@ -356,13 +332,11 @@
                 "pages": [
                   "zh/features/outline",
                   {
-                    "group": "会话管理",
+                    "group": "对话管理",
                     "icon": "folder-open",
                     "root": "zh/features/conversations",
                     "expanded": true,
-                    "pages": [
-                      "zh/features/export"
-                    ]
+                    "pages": ["zh/features/export"]
                   },
                   "zh/features/prompts",
                   "zh/features/global-search"
@@ -402,33 +376,22 @@
               {
                 "group": "同步与备份",
                 "icon": "cloud-arrow-up",
-                "pages": [
-                  "zh/data/backup-sync",
-                  "zh/data/webdav"
-                ]
+                "pages": ["zh/data/backup-sync", "zh/data/webdav"]
               },
               {
                 "group": "隐私与权限",
                 "icon": "shield",
-                "pages": [
-                  "zh/data/privacy",
-                  "zh/data/permissions"
-                ]
+                "pages": ["zh/data/privacy", "zh/data/permissions"]
               },
               {
                 "group": "帮助",
                 "icon": "circle-question",
-                "pages": [
-                  "zh/faq",
-                  "zh/troubleshooting"
-                ]
+                "pages": ["zh/faq", "zh/troubleshooting"]
               },
               {
                 "group": "更新日志",
                 "icon": "list",
-                "pages": [
-                  "zh/changelog"
-                ]
+                "pages": ["zh/changelog"]
               }
             ]
           },
@@ -438,9 +401,7 @@
             "groups": [
               {
                 "group": "安装",
-                "pages": [
-                  "zh/installation"
-                ]
+                "pages": ["zh/installation"]
               }
             ]
           },
@@ -450,9 +411,7 @@
             "groups": [
               {
                 "group": "更新日志",
-                "pages": [
-                  "zh/changelog"
-                ]
+                "pages": ["zh/changelog"]
               }
             ]
           }

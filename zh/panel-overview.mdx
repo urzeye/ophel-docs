@@ -33,7 +33,7 @@ import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
   <Card title="大纲" icon="list-tree">
     当前对话的实时自动生成目录树。点击任意标题即可跳转。支持折叠/展开、搜索、书签和实时字数统计。
   </Card>
-  <Card title="会话" icon="folder-open">
+  <Card title="对话" icon="folder-open">
     当前 AI 平台的历史对话列表。用文件夹和标签整理，支持语法过滤搜索，可导出为
     <Icon src="/images/icons/markdown.svg" alt="Markdown 文件图标" /> Markdown、<Icon src="/images/icons/json-file.svg" alt="JSON 文件图标" />
     JSON 或 <Icon src="/images/icons/txt-file.svg" alt="TXT 文件图标" /> 纯文本。
@@ -73,8 +73,8 @@ import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
 | 图标 | 作用 |
 | ---- | ---- |
 | <Icon src="/images/icons/sparkle.svg" alt="面板开关图标" /> **面板开关** | 打开 / 关闭 Ophel 面板。按钮组收缩后，短暂停留可临时预览面板。 |
-| <Icon src="/images/icons/tools.svg" alt="工具箱图标" /> **工具箱** | 打开更多会话与页面操作。 |
-| <Icon src="/images/icons/search.svg" alt="全局搜索图标" /> **全局搜索** | 打开全局搜索叠加层，搜索大纲、会话、提示词和设置项。 |
+| <Icon src="/images/icons/tools.svg" alt="工具箱图标" /> **工具箱** | 打开更多对话与页面操作。 |
+| <Icon src="/images/icons/search.svg" alt="全局搜索图标" /> **全局搜索** | 打开全局搜索叠加层，搜索大纲、对话、提示词和设置项。 |
 | <Icon src="/images/icons/theme-system.svg" alt="主题切换图标" /> **主题切换** | 在亮色 / 暗色模式之间切换；图标会随当前主题状态变化。 |
 | <Icon src="/images/icons/eye.svg" alt="禅模式图标" /> **禅模式** | 切换当前站点的禅模式；开启后会同时启用净化模式，图标会变为闭眼状态。 |
 | <Icon src="/images/icons/settings.svg" alt="设置图标" /> **设置** | 打开设置弹窗。 |
@@ -89,8 +89,8 @@ import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
 | <Icon src="/images/icons/export.svg" alt="导出图标" /> **导出** | 导出当前对话。 |
 | <Icon src="/images/icons/segmented-export.svg" alt="分段导出图标" /> **分段导出** | 选择并导出当前对话的特定片段。 |
 | <Icon src="/images/icons/copy.svg" alt="复制 Markdown 图标" /> **复制 Markdown** | 把当前对话复制为 Markdown。 |
-| <Icon src="/images/icons/folder-move.svg" alt="移动会话图标" /> **移动会话** | 选择目标文件夹并移动当前会话。 |
-| <Icon src="/images/icons/tag.svg" alt="设置标签图标" /> **设置标签** | 给当前会话添加、移除或调整标签。 |
+| <Icon src="/images/icons/folder-move.svg" alt="移动对话图标" /> **移动对话** | 选择目标文件夹并移动当前对话。 |
+| <Icon src="/images/icons/tag.svg" alt="设置标签图标" /> **设置标签** | 给当前对话添加、移除或调整标签。 |
 | <Icon src="/images/icons/scroll-lock.svg" alt="滚动锁定图标" /> **滚动锁定** | 锁定页面滚动位置，避免页面自动跳动。 |
 | <Icon src="/images/icons/model-lock.svg" alt="模型锁定图标" /> **模型锁定** | 按当前站点配置固定模型关键字；未配置时会引导到站点设置。 |
 | <Icon src="/images/icons/cleanup.svg" alt="清除无效收藏图标" /> **清除无效收藏** | 清理当前对话中已经失效的收藏 / 锚点记录。 |
@@ -112,12 +112,12 @@ import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
 
 | 语法          | 作用范围     | 可用值                                               | 示例                 |
 | ------------- | ------------ | ---------------------------------------------------- | -------------------- |
-| `folder:名称` | 会话         | 任意文件夹名（模糊匹配）                             | `folder:work`        |
-| `tag:名称`    | 会话、提示词 | 任意标签名（模糊匹配）                               | `tag:research`       |
+| `folder:名称` | 对话         | 任意文件夹名（模糊匹配）                             | `folder:work`        |
+| `tag:名称`    | 对话、提示词 | 任意标签名（模糊匹配）                               | `tag:research`       |
 | `type:类型`   | 全部         | `outline` · `conversations` · `prompts` · `settings` | `type:conversations` |
-| `date:天数`   | 会话、提示词 | `Nd`，如 `7d`、`30d`                                 | `date:30d`           |
+| `date:天数`   | 对话、提示词 | `Nd`，如 `7d`、`30d`                                 | `date:30d`           |
 | `level:层级`  | 大纲节点     | `0` – `6`（标题深度）                                | `level:2`            |
-| `is:状态`     | 会话         | `pinned`（已置顶）· `unpinned`（未置顶）             | `is:pinned`          |
+| `is:状态`     | 对话         | `pinned`（已置顶）· `unpinned`（未置顶）             | `is:pinned`          |
 
 <Note>
   在搜索框中输入 `tip:` 可进入功能提示模式，直接列出 Ophel
@@ -191,7 +191,7 @@ import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
   <Card title="智能大纲" icon="list-tree" href="/features/outline">
     在长对话中快速导航
   </Card>
-  <Card title="会话管理" icon="folder-open" href="/features/conversations">
+  <Card title="对话管理" icon="folder-open" href="/features/conversations">
     整理你的聊天记录
   </Card>
   <Card title="提示词库" icon="wand-magic-sparkles" href="/features/prompts">

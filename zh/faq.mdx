@@ -2,7 +2,7 @@
 title: "常见问题解答"
 sidebarTitle: "常见问题"
 icon: "circle-question"
-description: "Ophel Atlas 最常见问题的解答，涵盖安装、面板行为、大纲、会话、提示词队列、权限与隐私。"
+description: "Ophel Atlas 最常见问题的解答，涵盖安装、面板行为、大纲、对话、提示词队列、权限与隐私。"
 keywords: ["常见问题", "FAQ", "问答", "帮助", "故障排查基础"]
 ---
 
@@ -118,15 +118,15 @@ import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
   </Accordion>
 </AccordionGroup>
 
-## 会话
+## 对话
 
 <AccordionGroup>
-  <Accordion title="会话标签页中没有显示我的对话。" icon="folder-open">
-    会话标签页从 AI 平台的原生侧边栏读取数据。如果平台侧边栏未加载，Ophel 就无法获取对话列表。尝试滚动平台侧边栏以加载更多条目，然后再查看会话标签页。
+  <Accordion title="对话标签页中没有显示我的对话。" icon="folder-open">
+    对话标签页从 AI 平台的原生侧边栏读取数据。如果平台侧边栏未加载，Ophel 就无法获取对话列表。尝试滚动平台侧边栏以加载更多条目，然后再查看对话标签页。
   </Accordion>
 
   <Accordion title="WebDAV 同步的是什么内容？" icon="cloud">
-    WebDAV 会备份 Ophel 在本地存储的数据：会话标题、文件夹归属、标签、置顶状态、提示词库、设置，以及 Claude 多账号功能保存的 Session Key。不会上传实际的对话消息（那些内容属于 AI 平台）。
+    WebDAV 会备份 Ophel 在本地存储的数据：对话标题、文件夹归属、标签、置顶状态、提示词库、设置，以及 Claude 多账号功能保存的 Session Key。不会上传实际的对话消息（那些内容属于 AI 平台）。
 
     详见 [WebDAV 同步](/data/webdav)。
 
@@ -157,7 +157,7 @@ import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
 
 <AccordionGroup>
   <Accordion title="什么是 Session Key？" icon="key">
-    Claude Session Key 是你在 claude.ai 浏览器会话中的认证令牌。通过添加多个账号的 Key，当一个账号用量达到限额时可以快速切换。Ophel 会拦截请求并自动注入激活的 Key。
+    Claude Session Key 是你在 claude.ai 浏览器对话中的认证令牌。通过添加多个账号的 Key，当一个账号用量达到限额时可以快速切换。Ophel 会拦截请求并自动注入激活的 Key。
   </Accordion>
 
   <Accordion title="Session Key 存储安全吗？" icon="shield-halved">
@@ -195,7 +195,7 @@ import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
 
 <AccordionGroup>
   <Accordion title="如何重置所有数据到初始状态？" icon="rotate-left">
-    前往 **设置 → 数据管理 → 本地备份**，点击**清空所有数据**。这将删除浏览器中存储的所有 Ophel 数据，包括提示词、会话元数据、文件夹与标签定义、以及所有设置。AI 平台上的实际对话历史不受影响。
+    前往 **设置 → 数据管理 → 本地备份**，点击**清空所有数据**。这将删除浏览器中存储的所有 Ophel 数据，包括提示词、对话元数据、文件夹与标签定义、以及所有设置。AI 平台上的实际对话历史不受影响。
 
     建议在清空前先导出一份完整备份。
 

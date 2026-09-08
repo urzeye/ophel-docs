@@ -16,7 +16,7 @@ Ophel 遵循**最小权限原则**：只申请功能所需的最小权限范围�
 
 | 权限 | 用途 |
 | --- | --- |
-| `storage` | 将设置、提示词、文件夹、标签和会话元数据保存到浏览器本地存储 |
+| `storage` | 将设置、提示词、文件夹、标签和对话元数据保存到浏览器本地存储 |
 | `declarativeNetRequestWithHostAccess` | 在 Claude 页面上应用声明式网络请求规则（用于请求头修改） |
 
 ## 可选权限
@@ -68,9 +68,9 @@ Ophel 遵循**最小权限原则**：只申请功能所需的最小权限范围�
     WebDAV 服务器可以托管在任意 URL，Ophel 无法提前在清单中声明一个固定的主机名。`<all_urls>` 权限允许 Ophel 向你配置的任何服务器地址发起网络请求，请求只会发送到你自己的 WebDAV 服务器。
   </Accordion>
   <Accordion title="cookies 权限实际访问了什么？">
-    `cookies` 权限让 Ophel 读取 Claude 域名上的会话 Cookie，以便你存储和切换多个 Claude 账号（Claude Session Key）。Ophel 不会读取其他网站的 Cookie。
+    `cookies` 权限让 Ophel 读取 Claude 域名上的对话 Cookie，以便你存储和切换多个 Claude 账号（Claude Session Key）。Ophel 不会读取其他网站的 Cookie。
   </Accordion>
   <Accordion title="不授予任何可选权限能正常使用 Ophel 吗？">
-    可以。所有可选权限默认关闭。核心功能——会话整理、提示词库、大纲面板、主题、本地备份/恢复——无需任何可选权限即可正常使用。
+    可以。所有可选权限默认关闭。核心功能——对话整理、提示词库、大纲面板、主题、本地备份/恢复——无需任何可选权限即可正常使用。
   </Accordion>
 </AccordionGroup>

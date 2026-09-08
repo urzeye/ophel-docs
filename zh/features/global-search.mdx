@@ -1,9 +1,9 @@
 ---
-title: "全局搜索 — 统一检索大纲、会话、提示词与设置"
+title: "全局搜索 — 统一检索大纲、对话、提示词与设置"
 sidebarTitle: "全局搜索"
 icon: "search"
 description: "使用默认快捷键打开全局搜索叠加层，支持 type:、folder:、tag:、is:、level:、date: 等语法过滤，搜索当前上下文中的内容。"
-keywords: ["全局搜索", "搜索语法", "模糊搜索", "会话搜索", "大纲搜索", "搜索过滤器"]
+keywords: ["全局搜索", "搜索语法", "模糊搜索", "对话搜索", "大纲搜索", "搜索过滤器"]
 ---
 
 import { Icon } from "/snippets/icon.jsx"
@@ -18,7 +18,7 @@ import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
 | 类型     | 说明                                       |
 | -------- | ------------------------------------------ |
 | <Icon src="/images/icons/outline.svg" alt="大纲图标" /> 大纲节点 | 当前对话中所有标题与你的提问 |
-| <Icon src="/images/icons/conversation.svg" alt="会话图标" /> 会话 | 当前 AI 平台或账号的历史对话（按标题、标签、文件夹） |
+| <Icon src="/images/icons/conversation.svg" alt="对话图标" /> 对话 | 当前 AI 平台或账号的历史对话（按标题、标签、文件夹） |
 | <Icon src="/images/icons/prompt.svg" alt="提示词图标" /> 提示词 | 提示词库中的标题和内容 |
 | <Icon src="/images/icons/settings.svg" alt="设置图标" /> 设置项 | 设置页面中的功能名称和关键词 |
 | <Icon src="/images/icons/features.svg" alt="功能提示图标" /> 功能提示 | Ophel 功能发现小贴士 — 输入 `tip:` 可浏览 |
@@ -32,11 +32,11 @@ import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
 | 语法          | 作用范围     | 可用值                                               | 示例                 |
 | ------------- | ------------ | ---------------------------------------------------- | -------------------- |
 | `type:类型`   | 全部         | `outline` · `conversations` · `prompts` · `settings` | `type:conversations` |
-| `folder:名称` | 会话         | 任意文件夹名（模糊匹配）                             | `folder:工作`        |
-| `tag:名称`    | 会话、提示词 | 任意标签名（模糊匹配）                               | `tag:研究`           |
-| `is:状态`     | 会话         | `pinned`（已置顶）· `unpinned`（未置顶）             | `is:pinned`          |
+| `folder:名称` | 对话         | 任意文件夹名（模糊匹配）                             | `folder:工作`        |
+| `tag:名称`    | 对话、提示词 | 任意标签名（模糊匹配）                               | `tag:研究`           |
+| `is:状态`     | 对话         | `pinned`（已置顶）· `unpinned`（未置顶）             | `is:pinned`          |
 | `level:层级`  | 大纲节点     | `0` – `6`（标题深度）                                | `level:2`            |
-| `date:天数`   | 会话、提示词 | `Nd`，最大 999 天，如 `7d`、`30d`                    | `date:30d`           |
+| `date:天数`   | 对话、提示词 | `Nd`，最大 999 天，如 `7d`、`30d`                    | `date:30d`           |
 
 <Note>
   在搜索框中输入 `tip:`
@@ -50,7 +50,7 @@ import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
 folder:工作 tag:研究 模型
 ```
 
-这会找到「工作」文件夹中带「研究」标签、且标题包含「模型」的会话。
+这会找到「工作」文件夹中带「研究」标签、且标题包含「模型」的对话。
 
 ## 模糊搜索
 
@@ -82,7 +82,7 @@ folder:工作 tag:研究 模型
 ## 搜索技巧
 
 <AccordionGroup>
-  <Accordion title="按文件夹查找会话">
+  <Accordion title="按文件夹查找对话">
     输入 `folder:` 加上文件夹名的一部分。开启模糊搜索后不需要输入完整名称。
 
     ```text
@@ -90,7 +90,7 @@ folder:工作 tag:研究 模型
     ```
 
   </Accordion>
-  <Accordion title="按标签查找会话">
+  <Accordion title="按标签查找对话">
     输入 `tag:` 加上标签名。
 
     ```text
@@ -99,7 +99,7 @@ folder:工作 tag:研究 模型
 
   </Accordion>
   <Accordion title="按置顶状态过滤">
-    输入 `is:pinned` 只看已置顶会话，或 `is:unpinned` 排除置顶会话。
+    输入 `is:pinned` 只看已置顶对话，或 `is:unpinned` 排除置顶对话。
 
     ```text
     is:pinned 项目
@@ -107,7 +107,7 @@ folder:工作 tag:研究 模型
 
   </Accordion>
   <Accordion title="按时间过滤">
-    输入 `date:Nd` 将结果限制在最近 N 天内更新的会话或提示词。例如 `date:7d` 返回最近一周的内容。
+    输入 `date:Nd` 将结果限制在最近 N 天内更新的对话或提示词。例如 `date:7d` 返回最近一周的内容。
 
     ```text
     date:30d 重构

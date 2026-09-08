@@ -2,7 +2,7 @@
 title: "Frequently asked questions about Ophel Atlas extension"
 sidebarTitle: "FAQ"
 icon: "circle-question"
-description: "Answers to common questions about installing Ophel Atlas, using the panel, outline, conversations, prompts, Claude session keys, permissions, and privacy."
+description: "Answers to common questions about installing Ophel Atlas, using the panel, outline, chats, prompts, Claude session keys, permissions, and privacy."
 keywords:
   [
     "FAQ",
@@ -114,8 +114,8 @@ This page answers the most common questions about Ophel Atlas. If you don't find
 ## Outline
 
 <AccordionGroup>
-  <Accordion title="Why is the outline empty even though the conversation has content?" icon="list-tree">
-    Some AI platforms update the DOM asynchronously, so the outline may not populate immediately when the page first loads. Press <Shortcut combo="alt+r" /> to refresh the outline manually. If the outline stays empty after a refresh, check that **Auto-update outline during conversation** is enabled in **Settings → Features → Outline**.
+  <Accordion title="Why is the outline empty even though the chat has content?" icon="list-tree">
+    Some AI platforms update the DOM asynchronously, so the outline may not populate immediately when the page first loads. Press <Shortcut combo="alt+r" /> to refresh the outline manually. If the outline stays empty after a refresh, check that **Auto-update outline during chat** is enabled in **Settings → Features → Outline**.
   </Accordion>
 
 <Accordion
@@ -128,19 +128,19 @@ This page answers the most common questions about Ophel Atlas. If you don't find
 </Accordion>
 
   <Accordion title="How do I refresh the outline manually?" icon="rotate">
-    Press <Icon src="/images/icons/refresh.svg" alt="Refresh outline icon" /> <Shortcut combo="alt+r" /> at any time to force the outline to re-scan the conversation and rebuild its entries.
+    Press <Icon src="/images/icons/refresh.svg" alt="Refresh outline icon" /> <Shortcut combo="alt+r" /> at any time to force the outline to re-scan the chat and rebuild its entries.
   </Accordion>
 </AccordionGroup>
 
-## Conversations
+## Chats
 
 <AccordionGroup>
-  <Accordion title="Why aren't my conversations showing in the Conversations tab?" icon="folder-open">
-    The Conversations tab reads from the AI platform's own sidebar. If the platform's sidebar hasn't fully loaded, Ophel cannot see the conversations. Try scrolling the native sidebar on the AI platform to trigger it to load more items, then check the Conversations tab again.
+  <Accordion title="Why aren't my chats showing in the Chats tab?" icon="folder-open">
+    The Chats tab reads from the AI platform's own sidebar. If the platform's sidebar hasn't fully loaded, Ophel cannot see the chats. Try scrolling the native sidebar on the AI platform to trigger it to load more items, then check the Chats tab again.
   </Accordion>
 
   <Accordion title="What does WebDAV sync actually back up?" icon="cloud">
-    WebDAV sync backs up Ophel data stored locally: conversation titles, folder assignments, tags, pins, saved prompts, settings, and Claude Session Keys if you use the Claude multi-account feature. It does **not** upload the actual conversation messages — those belong to the AI platform and stay there.
+    WebDAV sync backs up Ophel data stored locally: chat titles, folder assignments, tags, pins, saved prompts, settings, and Claude Session Keys if you use the Claude multi-account feature. It does **not** upload the actual chat messages — those belong to the AI platform and stay there.
   </Accordion>
 </AccordionGroup>
 
@@ -192,10 +192,10 @@ This page answers the most common questions about Ophel Atlas. If you don't find
 
 <AccordionGroup>
   <Accordion
-    title="Does Ophel send my conversation data anywhere?"
+    title="Does Ophel send my chat data anywhere?"
     icon="lock"
   >
-    No. Ophel runs entirely in your browser. Your conversation data, prompts,
+    No. Ophel runs entirely in your browser. Your chat data, prompts,
     and settings stay on your device by default. If you configure WebDAV sync,
     data is sent only to the WebDAV server you specify — which you control.
     Ophel itself does not collect or transmit any user data.
@@ -211,7 +211,7 @@ This page answers the most common questions about Ophel Atlas. If you don't find
   >
     Go to **Settings → Data Management → Local Backup** and click **Clear all data**. This
     removes all Ophel data stored in your browser, including saved prompts,
-    conversation metadata, folder and tag definitions, and all settings. The AI
-    platform's own conversation history is not affected.
+    chat metadata, folder and tag definitions, and all settings. The AI
+    platform's own chat history is not affected.
   </Accordion>
 </AccordionGroup>

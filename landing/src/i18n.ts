@@ -30,25 +30,25 @@ const en = {
   },
   hero: {
     badge: 'Browser Extension · Free',
-    titleLine1: 'Make AI Conversations',
+    titleLine1: 'Make AI Chats',
     titleGradient: 'Readable, Navigable, Lasting',
-    desc: 'Ophel enhances ChatGPT, Gemini, Claude and 15 platforms with real-time outlines, conversation folders, and a prompt library. End infinite scrolling — turn every chat into organized knowledge.',
+    desc: 'Ophel enhances ChatGPT, Gemini, Claude and 15 platforms with real-time outlines, chat folders, and a prompt library. End infinite scrolling — turn every chat into organized knowledge.',
     ctaPrimary: 'Install Chrome Extension',
     ctaSecondary: 'View Docs',
     note: 'Supports Chrome · Edge · Firefox · Tampermonkey',
   },
   features: {
     title: 'Core Features',
-    desc: 'Designed for power AI users — so every conversation leaves lasting value',
+    desc: 'Designed for power AI users — so every chat leaves lasting value',
     items: [
       {
         icon: '📋',
         title: 'Real-time Outline',
-        desc: 'Auto-extracts heading structure from AI replies and generates a clickable navigation outline. Jump anywhere, no matter how long the conversation.',
+        desc: 'Auto-extracts heading structure from AI replies and generates a clickable navigation outline. Jump anywhere, no matter how long the chat.',
       },
       {
         icon: '📁',
-        title: 'Conversation Folders',
+        title: 'Chat Folders',
         desc: 'Organize scattered chats into custom folders with tags, search, and bulk operations — so your knowledge is always findable.',
       },
       {
@@ -69,7 +69,7 @@ const en = {
       {
         icon: '☁️',
         title: 'WebDAV Cloud Sync',
-        desc: 'Back up and sync your conversation data via WebDAV protocol, keeping everything consistent across devices.',
+        desc: 'Back up and sync your chat data via WebDAV protocol, keeping everything consistent across devices.',
       },
     ],
   },
@@ -82,8 +82,8 @@ const en = {
     subtitle: 'Real feedback from power users across the globe',
   },
   footer: {
-    tagline: 'Readable, navigable, lasting AI conversations.',
-    desc: 'Readable, navigable, lasting AI conversations.',
+    tagline: 'Readable, navigable, lasting AI chats.',
+    desc: 'Readable, navigable, lasting AI chats.',
     product: 'Product',
     resources: 'Resources',
     support: 'Support',
@@ -112,7 +112,7 @@ const en = {
   meta: {
     title: 'Ophel — AI Chat Organizer & Outline Navigator',
     description:
-      'Ophel transforms AI chats into readable, navigable knowledge. Real-time outlines, conversation folders & prompt library for ChatGPT, Gemini, Claude and more.',
+      'Ophel transforms AI chats into readable, navigable knowledge. Real-time outlines, chat folders & prompt library for ChatGPT, Gemini, Claude and more.',
   },
   privacy: {
     title: 'Privacy Policy — Ophel',
@@ -123,15 +123,15 @@ const en = {
       collection: {
         title: 'Data Collection',
         p1: 'Ophel is a purely local browser extension. ',
-        p1Strong: 'We do not collect your conversation content or personal data.',
-        p2: "All data (conversation titles, folder structures, prompt library, settings, etc.) is stored in your browser's local ",
+        p1Strong: 'We do not collect your chat content or personal data.',
+        p2: "All data (chat titles, folder structures, prompt library, settings, etc.) is stored in your browser's local ",
         p2Suffix:
           ' by default. If you enable WebDAV sync, backup data is sent only to the server you configure.',
       },
       permissions: {
         title: 'Permissions',
         activeTab: 'Used to inject UI enhancements into supported AI sites.',
-        storage: 'Used to save your settings, conversation info, and prompt library locally.',
+        storage: 'Used to save your settings, chat info, and prompt library locally.',
         notifications:
           '(Optional): Used to send desktop notifications when background tasks complete.',
         noNetwork:
@@ -179,7 +179,7 @@ const zh = {
     badge: '浏览器扩展 · 免费使用',
     titleLine1: '让 AI 对话',
     titleGradient: '可阅读、可导航、可沉淀',
-    desc: 'Ophel 为 ChatGPT、Gemini、Claude 等 15 个平台注入实时大纲、会话文件夹与 Prompt 词库。告别无限滚动，让每次对话成为可组织的知识。',
+    desc: 'Ophel 为 ChatGPT、Gemini、Claude 等 15 个平台注入实时大纲、对话文件夹与 Prompt 词库。告别无限滚动，让每次对话成为可组织的知识。',
     ctaPrimary: '安装 Chrome 扩展',
     ctaSecondary: '查看文档',
     note: '支持 Chrome · Edge · Firefox · 油猴脚本',
@@ -195,7 +195,7 @@ const zh = {
       },
       {
         icon: '📁',
-        title: '会话文件夹管理',
+        title: '对话文件夹管理',
         desc: '把散落的对话整理进自定义文件夹，支持标签、搜索、批量操作，让知识有迹可循。',
       },
       {
@@ -216,7 +216,7 @@ const zh = {
       {
         icon: '☁️',
         title: 'WebDAV 云同步',
-        desc: '通过 WebDAV 协议备份和同步你的会话数据，在多设备之间保持一致。',
+        desc: '通过 WebDAV 协议备份和同步你的对话数据，在多设备之间保持一致。',
       },
     ],
   },
@@ -257,9 +257,9 @@ const zh = {
     ariaLabel: '页脚导航',
   },
   meta: {
-    title: 'Ophel — AI 对话大纲 · 会话管理 · Prompt 词库',
+    title: 'Ophel — AI 对话大纲 · 对话管理 · Prompt 词库',
     description:
-      'Ophel 为 ChatGPT、Gemini、Claude 等 15 个 AI 平台注入实时大纲、会话文件夹与 Prompt 词库，让对话可读、可导航、可沉淀。',
+      'Ophel 为 ChatGPT、Gemini、Claude 等 15 个 AI 平台注入实时大纲、对话文件夹与 Prompt 词库，让对话可读、可导航、可沉淀。',
   },
   privacy: {
     title: '隐私政策 — Ophel',
@@ -271,13 +271,13 @@ const zh = {
         title: '数据收集',
         p1: 'Ophel 是一款纯本地运行的浏览器扩展。',
         p1Strong: '我们不收集您的对话内容或个人数据。',
-        p2: '所有数据（会话标题、文件夹结构、Prompt 词库、设置等）均存储在您本地浏览器的 ',
+        p2: '所有数据（对话标题、文件夹结构、Prompt 词库、设置等）均存储在您本地浏览器的 ',
         p2Suffix: ' 中。启用 WebDAV 同步时，备份数据只会发送到您配置的服务器。',
       },
       permissions: {
         title: '权限说明',
         activeTab: '用于向支持的 AI 站点注入界面增强功能。',
-        storage: '用于在本地保存您的设置、会话信息和 Prompt 词库。',
+        storage: '用于在本地保存您的设置、对话信息和 Prompt 词库。',
         notifications: '（可选）：用于在后台任务完成时发送桌面通知。',
         noNetwork: 'Ophel 不申请任何网络请求权限（除非您主动启用 WebDAV 同步功能）。',
       },

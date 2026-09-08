@@ -23,20 +23,20 @@ The authoritative capability list lives in `src/adapters/feature-capabilities.ts
 
 | Capability | Required configuration | What it unlocks |
 | --- | --- | --- |
-| `outline` | `selectors.responseContainer` | Conversation outline from assistant headings / structure |
+| `outline` | `selectors.responseContainer` | Chat outline from assistant headings / structure |
 | `outline-user-queries` | `outline` plus `selectors.userQuery` | User questions as top-level outline entries |
-| `conversation-list` | `conversation` | Conversation list capture / navigation integration |
-| `export-basic` | `export` | Basic conversation export |
+| `conversation-list` | `conversation` | Chat list capture / navigation integration |
+| `export-basic` | `export` | Basic chat export |
 | `model-lock` | `modelSwitcher` | Model lock controls for the pack site |
 | `generation-detect` | `generating` **or** `networkMonitor` | Generating-state detection used by completion UI |
-| `new-chat` | non-empty `selectors.newChatButton` | New conversation action |
+| `new-chat` | non-empty `selectors.newChatButton` | New chat action |
 | `stop-generation` | non-empty `selectors.stopButton` | Stop generation action |
 | `width` | non-empty `widthSelectors` | Page width controls |
 | `panel-avoidance` | `panelAvoidance` | Shrink host content into the safe area beside the Ophel panel |
 | `zen` | `zenMode` | Zen mode hide rules / styles |
 | `clean` | `cleanMode` | Clean mode hide rules / styles |
 | `prompt-insert` | non-empty `selectors.textarea` plus `input` | Prompt insertion into the page input |
-| `reading-history` | non-empty `selectors.chatContent` | Reading-history capture for the conversation surface |
+| `reading-history` | non-empty `selectors.chatContent` | Reading-history capture for the chat surface |
 
 There is **no** capability id named `theme-sync`. Host theme sync is a separate config field, `themeSync`, and may imply `supportsHostThemeSync`.
 
@@ -44,7 +44,7 @@ There is **no** capability id named `theme-sync`. Host theme sync is a separate 
 
 ### Outline family
 
-- `outline` needs a conversation container so Ophel can scope scanning.
+- `outline` needs a chat container so Ophel can scope scanning.
 - `outline-user-queries` cannot be declared alone; the validator requires `outline` as well.
 - Prefer stable message roots over translated visible text.
 
@@ -71,7 +71,7 @@ A pack may provide either or both. Declaring `generation-detect` without either 
 | Capability | Typical config | Caution |
 | --- | --- | --- |
 | `width` | `widthSelectors[]` with selector + CSS property | Optional `extraCss` still passes the restricted CSS validator |
-| `zen` | `zenMode.hide` and optional root class / styles | Do not hide the conversation or required input |
+| `zen` | `zenMode.hide` and optional root class / styles | Do not hide the chat or required input |
 | `clean` | `cleanMode.hide` / styles | Keep rules narrow |
 | `panel-avoidance` | `panelAvoidance.widthSelectors` plus optional obstacles / insets | Must be verified with the panel open at several viewport widths |
 
@@ -126,7 +126,7 @@ These groups are not capabilities themselves, but they often accompany capabilit
 | --- | --- |
 | `selectors` | Shared page element roots |
 | `input` | Input mode and submit key |
-| `conversation` | Sidebar conversation items and navigation |
+| `conversation` | Sidebar chat items and navigation |
 | `session` | Path-based session id / new-chat / share routes |
 | `modelSwitcher` | Model menu selectors and timing |
 | `export` | Message and turn selectors for export |

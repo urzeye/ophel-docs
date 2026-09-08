@@ -18,7 +18,7 @@ All data is stored locally in your browser using Chrome's `storage.local` API, i
 
 - Extension settings and preferences
 - Prompt templates you create
-- Conversation organization data (folders, tags)
+- Chat organization data (folders, tags)
 - Reading history positions
 - Theme preferences
 
@@ -28,7 +28,7 @@ Your locally stored data is used solely to:
 
 - Provide personalized extension functionality
 - Restore your settings across browser sessions
-- Enable features like prompt library and conversation management
+- Enable features like prompt library and chat management
 
 ### Third-Party Services
 
@@ -47,7 +47,7 @@ Ophel requests only the minimum permissions necessary for its functionality:
 
 ### Data Security
 
-All data remains on your local device. We have no access to your data, conversations, or any information you enter on AI platforms.
+All data remains on your local device. We have no access to your data, chats, or any information you enter on AI platforms.
 
 ### Contact
 
@@ -70,7 +70,7 @@ Ophel 是一款浏览器扩展，旨在增强您在 AI 对话平台上的使用�
 
 - 扩展设置和偏好
 - 您创建的提示词模板
-- 会话组织数据（文件夹、标签）
+- 对话组织数据（文件夹、标签）
 - 阅读历史位置
 - 主题偏好
 
@@ -79,8 +79,8 @@ Ophel 是一款浏览器扩展，旨在增强您在 AI 对话平台上的使用�
 您本地存储的数据仅用于：
 
 - 提供个性化的扩展功能
-- 在浏览器会话之间恢复您的设置
-- 启用提示词库和会话管理等功能
+- 在浏览器对话之间恢复您的设置
+- 启用提示词库和对话管理等功能
 
 ### 第三方服务
 

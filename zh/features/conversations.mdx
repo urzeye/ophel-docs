@@ -1,16 +1,16 @@
 ---
-title: "会话管理 — 整理与导出 AI 对话"
-sidebarTitle: "会话管理"
+title: "对话管理 — 整理与导出 AI 对话"
+sidebarTitle: "对话管理"
 icon: "folder-open"
 description: "使用文件夹、标签、置顶和批量操作来整理当前 AI 平台的对话，支持 Markdown / JSON / 纯文本导出与 WebDAV 同步。"
 keywords:
   [
-    "会话文件夹",
+    "对话文件夹",
     "AI对话历史",
     "标签",
-    "会话搜索",
+    "对话搜索",
     "导出对话",
-    "会话管理",
+    "对话管理",
     "置顶",
   ]
 ---
@@ -18,23 +18,23 @@ keywords:
 import { Icon } from "/snippets/icon.jsx"
 import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
 
-![会话标签页 — 文件夹与标签列表](/images/features/conversation-zh.png)
+![对话标签页 — 文件夹与标签列表](/images/features/conversation-zh.png)
 
-会话标签页会读取当前 AI 平台的历史对话，提供统一的文件夹分类、标签系统、导出功能和云同步，让你更快找到上次那个对话。
+对话标签页会读取当前 AI 平台的历史对话，提供统一的文件夹分类、标签系统、导出功能和云同步，让你更快找到上次那个对话。
 
-## 会话同步原理
+## 对话同步原理
 
-Ophel 实时监听 AI 平台的原生侧边栏，当你在平台上新建、重命名或删除对话时，Ophel 的会话列表会自动同步更新。你在 Ophel 中添加的元数据（文件夹归属、标签、置顶）存储在本地，叠加显示在平台数据之上。
+Ophel 实时监听 AI 平台的原生侧边栏，当你在平台上新建、重命名或删除对话时，Ophel 的对话列表会自动同步更新。你在 Ophel 中添加的元数据（文件夹归属、标签、置顶）存储在本地，叠加显示在平台数据之上。
 
-左上角工具栏里的文件夹下拉框是**同步目标文件夹**。选中某个文件夹后，后续新同步到的会话会默认加入这个文件夹；无论是你手动点击同步发现的新会话，还是之后从平台侧边栏检测到的新会话，都会使用这个默认归属。已有会话不会因此自动移动，除非你手动移动它们。
+左上角工具栏里的文件夹下拉框是**同步目标文件夹**。选中某个文件夹后，后续新同步到的对话会默认加入这个文件夹；无论是你手动点击同步发现的新对话，还是之后从平台侧边栏检测到的新对话，都会使用这个默认归属。已有对话不会因此自动移动，除非你手动移动它们。
 
 <Note>Ophel **不会**上传或修改你的实际对话内容，仅读取平台已显示的信息。</Note>
 
-## 会话列表
+## 对话列表
 
-Ophel 从当前 AI 平台的原生侧边栏读取会话列表，将其展示在统一列表中。你可以：
+Ophel 从当前 AI 平台的原生侧边栏读取对话列表，将其展示在统一列表中。你可以：
 
-- 点击任意会话跳转到该对话页面
+- 点击任意对话跳转到该对话页面
 - 在搜索框输入关键词快速过滤（搜索范围包括标题、标签）
 - 查看每个对话的 Ophel 元数据：所属文件夹、标签、置顶状态
 - 按修改时间、创建时间或标题排序
@@ -43,21 +43,21 @@ Ophel 从当前 AI 平台的原生侧边栏读取会话列表，将其展示在�
 
 将相关对话归入同一文件夹，实现按项目、主题或时间段的分类管理。
 
-你可以通过三种入口移动会话：
+你可以通过三种入口移动对话：
 
-- **快捷按钮组**：点击浮动快捷按钮组里的 <Icon src="/images/icons/tools.svg" alt="工具箱图标" /> **工具箱**图标，在弹出的工具箱里点击 <Icon src="/images/icons/folder-move.svg" alt="移动会话图标" /> **移动会话**图标。
-- **会话行菜单**：在会话标签页中，点击目标会话右侧的 <Icon src="/images/icons/more-horizontal.svg" alt="三个点菜单图标" /> 三个点菜单，然后选择 <Icon src="/images/icons/folder-move.svg" alt="移动会话图标" /> **移动会话**。
-- **批量操作**：点击会话标签页顶部的 <Icon src="/images/icons/batch.svg" alt="批量操作图标" /> **批量操作**按钮，选择一个或多个会话后，在底部批量操作栏点击 <Icon src="/images/icons/folder-move.svg" alt="移动会话图标" /> **移动**按钮。
+- **快捷按钮组**：点击浮动快捷按钮组里的 <Icon src="/images/icons/tools.svg" alt="工具箱图标" /> **工具箱**图标，在弹出的工具箱里点击 <Icon src="/images/icons/folder-move.svg" alt="移动对话图标" /> **移动对话**图标。
+- **对话行菜单**：在对话标签页中，点击目标对话右侧的 <Icon src="/images/icons/more-horizontal.svg" alt="三个点菜单图标" /> 三个点菜单，然后选择 <Icon src="/images/icons/folder-move.svg" alt="移动对话图标" /> **移动对话**。
+- **批量操作**：点击对话标签页顶部的 <Icon src="/images/icons/batch.svg" alt="批量操作图标" /> **批量操作**按钮，选择一个或多个对话后，在底部批量操作栏点击 <Icon src="/images/icons/folder-move.svg" alt="移动对话图标" /> **移动**按钮。
 
-选择目标文件夹后，会话会立即归入该文件夹。这个操作只更新 Ophel 本地元数据，不会修改 AI 平台上的实际对话内容。
+选择目标文件夹后，对话会立即归入该文件夹。这个操作只更新 Ophel 本地元数据，不会修改 AI 平台上的实际对话内容。
 
-- 在会话列表侧边的文件夹栏中点击文件夹名称，过滤只显示该文件夹内的对话
+- 在对话列表侧边的文件夹栏中点击文件夹名称，过滤只显示该文件夹内的对话
 - 文件夹支持 8 种颜色，方便视觉区分不同项目
-- 一个会话同一时间属于一个文件夹；移动文件夹只更新 Ophel 本地元数据，不修改 AI 平台上的实际对话内容
+- 一个对话同一时间属于一个文件夹；移动文件夹只更新 Ophel 本地元数据，不修改 AI 平台上的实际对话内容
 
-### 拖拽移动会话
+### 拖拽移动对话
 
-拖拽任意会话整行到目标文件夹，即可把该会话移入该文件夹。拖拽悬停时目标文件夹会高亮，松手后列表立即更新。
+拖拽任意对话整行到目标文件夹，即可把该对话移入该文件夹。拖拽悬停时目标文件夹会高亮，松手后列表立即更新。
 
 ### 拖拽排序文件夹
 
@@ -68,22 +68,22 @@ Ophel 从当前 AI 平台的原生侧边栏读取会话列表，将其展示在�
 标签是跨文件夹的多维分类方式，特别适合"一个对话属于多个维度"的场景（如既属于"工作项目"文件夹，也带有"调研"和"Python"标签）。
 
 - 点击 <Icon src="/images/icons/tools.svg" alt="工具箱图标" /> **工具箱** → <Icon src="/images/icons/tag.svg" alt="设置标签图标" /> **设置标签**，为当前对话添加或修改标签
-- 在会话列表顶部的标签栏中点击标签名称快速过滤
+- 在对话列表顶部的标签栏中点击标签名称快速过滤
 - 标签名称完全自定义，无数量限制
 - 多个标签之间可以组合过滤
 
 ## 置顶
 
-将重要对话置顶后，它会固定显示在列表最顶部，不受排序规则影响。右键点击会话，或点击会话行右侧的 <Icon src="/images/icons/more-horizontal.svg" alt="三个点菜单图标" /> 三个点菜单，然后选择 <Icon src="/images/icons/pin.svg" alt="置顶图标" /> **置顶**。已置顶的会话在同一菜单中显示填充状态的图钉；再次选择 <Icon src="/images/icons/pin.svg" alt="取消置顶图标" /> **取消置顶**即可恢复普通排序。
+将重要对话置顶后，它会固定显示在列表最顶部，不受排序规则影响。右键点击对话，或点击对话行右侧的 <Icon src="/images/icons/more-horizontal.svg" alt="三个点菜单图标" /> 三个点菜单，然后选择 <Icon src="/images/icons/pin.svg" alt="置顶图标" /> **置顶**。已置顶的对话在同一菜单中显示填充状态的图钉；再次选择 <Icon src="/images/icons/pin.svg" alt="取消置顶图标" /> **取消置顶**即可恢复普通排序。
 
 ## 批量操作
 
-点击会话标签页顶部的 <Icon src="/images/icons/batch.svg" alt="批量操作图标" /> **批量操作**按钮进入多选模式，勾选会话后可以：
+点击对话标签页顶部的 <Icon src="/images/icons/batch.svg" alt="批量操作图标" /> **批量操作**按钮进入多选模式，勾选对话后可以：
 
-- <Icon src="/images/icons/folder-move.svg" alt="移动会话图标" /> 移动选中会话
-- <Icon src="/images/icons/copy.svg" alt="复制 Markdown 图标" /> 复制选中会话的 Markdown
-- <Icon src="/images/icons/export.svg" alt="导出图标" /> 导出选中会话
-- <Icon src="/images/icons/delete.svg" alt="删除图标" /> 删除选中会话
+- <Icon src="/images/icons/folder-move.svg" alt="移动对话图标" /> 移动选中对话
+- <Icon src="/images/icons/copy.svg" alt="复制 Markdown 图标" /> 复制选中对话的 Markdown
+- <Icon src="/images/icons/export.svg" alt="导出图标" /> 导出选中对话
+- <Icon src="/images/icons/delete.svg" alt="删除图标" /> 删除选中对话
 - <Icon src="/images/icons/clear.svg" alt="退出批量操作图标" /> 退出批量操作并清空当前选择
 
 ## 导出对话
@@ -92,7 +92,7 @@ Ophel 从当前 AI 平台的原生侧边栏读取会话列表，将其展示在�
 
 - **快捷按钮组**：点击浮动快捷按钮组里的 <Icon src="/images/icons/tools.svg" alt="工具箱图标" /> **工具箱**图标，然后点击 <Icon src="/images/icons/export.svg" alt="导出图标" /> **导出**按钮导出 <Icon src="/images/icons/markdown.svg" alt="Markdown 文件图标" /> Markdown。
 - **快捷键**：按 <Shortcut combo="ctrl+shift+e" />，将当前对话导出为 <Icon src="/images/icons/markdown.svg" alt="Markdown 文件图标" /> Markdown。
-- **会话行菜单**：在会话标签页中，点击目标会话右侧的 <Icon src="/images/icons/more-horizontal.svg" alt="三个点菜单图标" /> 三个点菜单，选择 <Icon src="/images/icons/export.svg" alt="导出图标" /> **导出**，再选择 <Icon src="/images/icons/markdown.svg" alt="Markdown 文件图标" /> Markdown、<Icon src="/images/icons/json-file.svg" alt="JSON 文件图标" /> JSON 或 <Icon src="/images/icons/txt-file.svg" alt="TXT 文件图标" /> TXT 格式。
+- **对话行菜单**：在对话标签页中，点击目标对话右侧的 <Icon src="/images/icons/more-horizontal.svg" alt="三个点菜单图标" /> 三个点菜单，选择 <Icon src="/images/icons/export.svg" alt="导出图标" /> **导出**，再选择 <Icon src="/images/icons/markdown.svg" alt="Markdown 文件图标" /> Markdown、<Icon src="/images/icons/json-file.svg" alt="JSON 文件图标" /> JSON 或 <Icon src="/images/icons/txt-file.svg" alt="TXT 文件图标" /> TXT 格式。
 
 Markdown 导出可以选择打包为 zip，包含对话中引用的图片、附件和其他资源文件。
 
@@ -105,7 +105,7 @@ Markdown 导出可以选择打包为 zip，包含对话中引用的图片、附�
 
 ## WebDAV 同步
 
-在 **设置 → 数据管理 → WebDAV 同步** 中配置 WebDAV 服务器，将 Ophel 的**会话元数据**同步到你自己的私有服务器。
+在 **设置 → 数据管理 → WebDAV 同步** 中配置 WebDAV 服务器，将 Ophel 的**对话元数据**同步到你自己的私有服务器。
 
 <Note>
   WebDAV 同步的是 Ophel
@@ -123,19 +123,19 @@ Markdown 导出可以选择打包为 zip，包含对话中引用的图片、附�
 | 操作             | 快捷键                             |
 | ---------------- | ---------------------------------- |
 | 新建对话         | <Shortcut combo="ctrl+shift+o" />  |
-| 刷新会话列表     | <Shortcut combo="alt+shift+r" />   |
-| 定位当前会话     | <Shortcut combo="alt+shift+l" />   |
-| 上一个会话       | <Shortcut combo="alt+[" />         |
-| 下一个会话       | <Shortcut combo="alt+]" />         |
+| 刷新对话列表     | <Shortcut combo="alt+shift+r" />   |
+| 定位当前对话     | <Shortcut combo="alt+shift+l" />   |
+| 上一个对话       | <Shortcut combo="alt+[" />         |
+| 下一个对话       | <Shortcut combo="alt+]" />         |
 | 导出当前对话     | <Shortcut combo="ctrl+shift+e" />  |
 | 复制最新 AI 回复 | <Shortcut combo="ctrl+shift+c" />  |
 
 ## 相关设置
 
-**设置 → 功能模块 → 会话**：
+**设置 → 功能模块 → 对话**：
 
 | 设置项 | 说明 |
 | --- | --- |
-| 文件夹彩虹色 | 为不同文件夹的会话显示不同色调背景 |
+| 文件夹彩虹色 | 为不同文件夹的对话显示不同色调背景 |
 | 同步时更新取消置顶 | 从远端拉取同步数据时自动取消本地置顶状态 |
-| 删除时同步删除云端 | 在本地删除会话元数据时同步删除远端对应记录 |
+| 删除时同步删除云端 | 在本地删除对话元数据时同步删除远端对应记录 |

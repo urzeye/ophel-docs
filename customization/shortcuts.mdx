@@ -9,7 +9,7 @@ keywords: ["keyboard shortcuts", "hotkeys", "shortcut customization", "key remap
 import { Icon } from "/snippets/icon.jsx"
 import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
 
-Ophel provides keyboard shortcuts for nearly every action — opening the panel, navigating the outline, managing conversations, triggering global search, and more. Every shortcut is customizable: you can remap keys, remove shortcuts you don't use, or disable all shortcuts at once with a single toggle.
+Ophel provides keyboard shortcuts for nearly every action — opening the panel, navigating the outline, managing chats, triggering global search, and more. Every shortcut is customizable: you can remap keys, remove shortcuts you don't use, or disable all shortcuts at once with a single toggle.
 
 ## Viewing and editing shortcuts
 
@@ -32,7 +32,7 @@ Ophel checks for conflicts before saving. If a new key combination is already in
     | <Icon src="/images/icons/sparkle.svg" alt="Panel icon" /> Toggle panel open/closed | <Shortcut combo="alt+p" /> |
     | <Icon src="/images/icons/snap-to-edge.svg" alt="Panel mode icon" /> Toggle panel mode (Edge Snap / Floating) | <Shortcut combo="alt+m" /> |
     | <Icon src="/images/icons/outline.svg" alt="Outline icon" /> Switch to Outline tab | <Shortcut combo="alt+1" /> |
-    | <Icon src="/images/icons/conversation.svg" alt="Conversations icon" /> Switch to Conversations tab | <Shortcut combo="alt+2" /> |
+    | <Icon src="/images/icons/conversation.svg" alt="Chats icon" /> Switch to Chats tab | <Shortcut combo="alt+2" /> |
     | <Icon src="/images/icons/prompt.svg" alt="Prompts icon" /> Switch to Prompts tab | <Shortcut combo="alt+3" /> |
     | <Icon src="/images/icons/theme-system.svg" alt="Theme icon" /> Toggle light/dark theme | <Shortcut combo="alt+d" /> |
     | <Icon src="/images/icons/settings.svg" alt="Settings icon" /> Open settings | <Shortcut combo="alt+," /> |
@@ -57,14 +57,14 @@ Ophel checks for conflicts before saving. If a new key combination is already in
     | <Icon src="/images/icons/locate.svg" alt="Locate icon" /> Locate current position in outline | <Shortcut combo="alt+l" /> |
     | <Icon src="/images/icons/search.svg" alt="Search icon" /> Search outline | <Shortcut combo="alt+f" /> |
   </Accordion>
-  <Accordion title="Conversations">
+  <Accordion title="Chats">
     | Action | Default shortcut |
     | --- | --- |
-    | <Icon src="/images/icons/conversation.svg" alt="New conversation icon" /> New conversation | <Shortcut combo="ctrl+shift+o" /> |
-    | <Icon src="/images/icons/refresh.svg" alt="Refresh icon" /> Refresh conversation list | <Shortcut combo="alt+shift+r" /> |
-    | <Icon src="/images/icons/locate.svg" alt="Locate icon" /> Locate current conversation | <Shortcut combo="alt+shift+l" /> |
-    | <Icon src="/images/icons/chevron-up.svg" alt="Previous conversation icon" /> Go to previous conversation | <Shortcut combo="alt+[" /> |
-    | <Icon src="/images/icons/chevron-down.svg" alt="Next conversation icon" /> Go to next conversation | <Shortcut combo="alt+]" /> |
+    | <Icon src="/images/icons/conversation.svg" alt="New chat icon" /> New chat | <Shortcut combo="ctrl+shift+o" /> |
+    | <Icon src="/images/icons/refresh.svg" alt="Refresh icon" /> Refresh chat list | <Shortcut combo="alt+shift+r" /> |
+    | <Icon src="/images/icons/locate.svg" alt="Locate icon" /> Locate current chat | <Shortcut combo="alt+shift+l" /> |
+    | <Icon src="/images/icons/chevron-up.svg" alt="Previous chat icon" /> Go to previous chat | <Shortcut combo="alt+[" /> |
+    | <Icon src="/images/icons/chevron-down.svg" alt="Next chat icon" /> Go to next chat | <Shortcut combo="alt+]" /> |
   </Accordion>
   <Accordion title="Editing and actions">
     | Action | Default shortcut |
@@ -72,7 +72,7 @@ Ophel checks for conflicts before saving. If a new key combination is already in
     | <Icon src="/images/icons/clear.svg" alt="Stop icon" /> Stop AI generation | <Shortcut combo="alt+k" /> |
     | <Icon src="/images/icons/edit.svg" alt="Input focus icon" /> Focus the input box | <Shortcut combo="alt+i" /> |
     | <Icon src="/images/icons/search.svg" alt="Global search icon" /> Open global search | <Shortcut combo="ctrl+k" /> |
-    | <Icon src="/images/icons/export.svg" alt="Export icon" /> Export current conversation | <Shortcut combo="ctrl+shift+e" /> |
+    | <Icon src="/images/icons/export.svg" alt="Export icon" /> Export current chat | <Shortcut combo="ctrl+shift+e" /> |
     | <Icon src="/images/icons/copy.svg" alt="Copy icon" /> Copy latest AI reply | <Shortcut combo="ctrl+shift+c" /> |
     | <Icon src="/images/icons/copy.svg" alt="Copy code icon" /> Copy last code block | <Shortcut combo="alt+;" /> |
     | <Icon src="/images/icons/scroll-lock.svg" alt="Scroll lock icon" /> Toggle scroll lock | <Shortcut combo="alt+s" /> |
@@ -83,8 +83,8 @@ Ophel checks for conflicts before saving. If a new key combination is already in
   <Accordion title="Navigation">
     | Action | Default shortcut |
     | --- | --- |
-    | <Icon src="/images/icons/scroll-top.svg" alt="Scroll top icon" /> Scroll to top of conversation | <Shortcut combo="alt+t" /> |
-    | <Icon src="/images/icons/scroll-bottom.svg" alt="Scroll bottom icon" /> Scroll to bottom of conversation | <Shortcut combo="alt+b" /> |
+    | <Icon src="/images/icons/scroll-top.svg" alt="Scroll top icon" /> Scroll to top of chat | <Shortcut combo="alt+t" /> |
+    | <Icon src="/images/icons/scroll-bottom.svg" alt="Scroll bottom icon" /> Scroll to bottom of chat | <Shortcut combo="alt+b" /> |
     | <Icon src="/images/icons/anchor.svg" alt="Anchor icon" /> Return to anchor position | <Shortcut combo="alt+z" /> |
   </Accordion>
   <Accordion title="Site-specific">

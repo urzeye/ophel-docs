@@ -69,7 +69,7 @@ The fix is off by default on all three platforms — enable it only when you act
 
 ## Gemini watermark removal
 
-When you export or screenshot a Gemini conversation, Gemini appends a "Created with Gemini" watermark. Ophel can strip this watermark automatically.
+When you export or screenshot a Gemini chat, Gemini appends a "Created with Gemini" watermark. Ophel can strip this watermark automatically.
 
 **Settings → Site Settings → Gemini → Remove Image Watermark**
 
@@ -104,7 +104,7 @@ The same watermark removal option is also available for AI Studio under **Settin
 
 ## Claude session key management
 
-Claude accounts have usage rate limits. When one account hits its cap, you normally have to wait for a reset. If you have multiple Claude accounts, Ophel can store Session Keys for all of them and let you switch instantly — keeping the conversation going without logging out and back in.
+Claude accounts have usage rate limits. When one account hits its cap, you normally have to wait for a reset. If you have multiple Claude accounts, Ophel can store Session Keys for all of them and let you switch instantly — keeping the chat going without logging out and back in.
 
 A Session Key (`sk-ant-sid...` format) is the authentication token your browser session uses on claude.ai. Ophel injects the specified key into requests so you can switch accounts without a full logout cycle. Keys are stored locally in your browser and are never sent to Ophel's servers.
 
@@ -153,7 +153,7 @@ After switching, Ophel refreshes the current Claude page to apply the new key.
 
 ## Usage monitor
 
-For AI services with daily usage limits, Ophel provides a local counter that shows how many conversation turns you have used today and roughly how many tokens were consumed.
+For AI services with daily usage limits, Ophel provides a local counter that shows how many chat turns you have used today and roughly how many tokens were consumed.
 
 The usage monitor runs entirely locally — it does not call any external APIs or rely on usage data from the platform. Ophel counts turns and estimates tokens by observing messages on the page.
 
@@ -162,7 +162,7 @@ The usage monitor runs entirely locally — it does not call any external APIs o
 | Setting | Description | Default |
 | --- | --- | --- |
 | Enable local advanced-model counter and estimate | Show the local counter widget near the input field | Off |
-| Estimated daily conversation limit | Used for the 80% / 100% threshold reminders; local estimate only | 100 |
+| Estimated daily chat limit | Used for the 80% / 100% threshold reminders; local estimate only | 100 |
 | Enable auto reset | Automatically reset the count each day | Off |
 
 When enabled, the widget shows today's send count, input/output character stats, rough token estimates, and progress toward your daily limit.
