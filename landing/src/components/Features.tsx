@@ -23,13 +23,13 @@ const text = {
         title: 'Long answers become a map',
         desc: 'Ophel reads headings in real time and builds a clickable outline beside the chat.',
         image: '/images/product/outline-en.png',
-        alt: 'Ophel outline panel next to a long AI conversation',
+        alt: 'Ophel outline panel next to a long AI chat',
       },
       {
-        title: 'Conversations stop scattering',
+        title: 'Chats stop scattering',
         desc: 'Folders, tags, search, and batch operations turn AI history into a reusable workspace.',
         image: '/images/product/conversation-en.png',
-        alt: 'Ophel conversation folder management panel',
+        alt: 'Ophel chat folder management panel',
       },
       {
         title: 'Prompts become shared assets',
@@ -53,7 +53,7 @@ const text = {
         title: '对话不再散落',
         desc: '文件夹、标签、搜索和批量操作，把 AI 历史整理成可复用工作区。',
         image: '/images/product/conversation-zh.png',
-        alt: 'Ophel 会话文件夹管理面板',
+        alt: 'Ophel 对话文件夹管理面板',
       },
       {
         title: 'Prompt 变成资产',

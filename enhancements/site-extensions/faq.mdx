@@ -31,7 +31,7 @@ Ophel needs optional host permission before it can register content scripts on a
 
 Yes. A pack can use an empty `matches` list so it never activates on its own. Bind each HTTPS origin to the pack from **Settings → Site Packs → Custom sites**.
 
-Ophel stores each instance under a key derived from pack ID and origin, so settings, themes, reading history, and conversations do not mix between two deployments of the same pack.
+Ophel stores each instance under a key derived from pack ID and origin, so settings, themes, reading history, and chats do not mix between two deployments of the same pack.
 
 ## Do registry packs update automatically?
 
@@ -43,7 +43,7 @@ The default check interval is 24 hours.
 
 ## What happens when I disable or uninstall a pack?
 
-Disabling keeps the manifest but stops it from activating. Uninstalling removes the manifest and its registration references. User settings and conversation data are retained.
+Disabling keeps the manifest but stops it from activating. Uninstalling removes the manifest and its registration references. User settings and chat data are retained.
 
 An origin registration is removed only when no enabled pack or custom binding still references it.
 
@@ -55,7 +55,7 @@ There is no remote-executable plugin mechanism in the current product.
 
 ## What page data is sent to the registry?
 
-Installing or updating a registry pack performs static CDN / GitHub GET requests for the signed index and package JSON. Those requests do not include conversation content, prompts, cookies, or page DOM.
+Installing or updating a registry pack performs static CDN / GitHub GET requests for the signed index and package JSON. Those requests do not include chat content, prompts, cookies, or page DOM.
 
 The optional AI selector-draft helper in the wizard also performs no automatic upload: it creates a bounded structural prompt only when you copy it, and you choose whether and where to share it.
 
@@ -69,7 +69,7 @@ Local imports still pass the Site Pack validator, so unknown fields and unsafe d
 2. Check for a registry update if the pack came from the online library.
 3. For self-hosted packs, confirm the custom origin binding is still correct.
 4. If the latest pack still fails, open a GitHub issue with the site URL, Ophel version, pack version, and failed selector names.
-5. Remove account details and private conversation content from the report.
+5. Remove account details and private chat content from the report.
 
 ## Does Ophel auto-detect self-hosted domains?
 

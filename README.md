@@ -2,7 +2,7 @@
 
 This repository contains the public documentation, landing site, and routing worker for [Ophel Atlas](https://github.com/urzeye/ophel).
 
-Ophel Atlas is a browser extension and userscript that turns AI chat conversations into structured, navigable knowledge. This repo documents how to install, configure, troubleshoot, and understand the product.
+Ophel Atlas is a browser extension and userscript that turns AI chats into structured, navigable knowledge. This repo documents how to install, configure, troubleshoot, and understand the product.
 
 ## What is in this repo
 

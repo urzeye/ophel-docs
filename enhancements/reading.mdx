@@ -2,31 +2,31 @@
 title: "Reading history, scroll lock, and position restore"
 sidebarTitle: "Reading & Scroll"
 icon: "history"
-description: "Automatically save and restore your reading position per conversation, lock the page during AI generation, and jump around long threads with one-click anchors."
+description: "Automatically save and restore your reading position per chat, lock the page during AI generation, and jump around long threads with one-click anchors."
 keywords: ["reading history", "scroll lock", "position restore", "reading progress", "page anchors", "scroll position"]
 ---
 
 import { Icon } from "/snippets/icon.jsx"
 import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
 
-Ophel tracks where you are in each conversation so you never have to scroll back to find your place. Pair that with scroll lock to stay on the part you're reading while the AI is still generating, and a set of quick navigation anchors to jump around long threads instantly.
+Ophel tracks where you are in each chat so you never have to scroll back to find your place. Pair that with scroll lock to stay on the part you're reading while the AI is still generating, and a set of quick navigation anchors to jump around long threads instantly.
 
 ## Reading history
 
-When you leave a conversation, Ophel quietly records your scroll position. The next time you return, it scrolls you back to exactly where you left off.
+When you leave a chat, Ophel quietly records your scroll position. The next time you return, it scrolls you back to exactly where you left off.
 
 **Settings → Features → Reading History**:
 
 | Setting | Description | Default |
 | --- | --- | --- |
-| Enable Reading History | Automatically remember the reading position for each conversation | On |
+| Enable Reading History | Automatically remember the reading position for each chat | On |
 | Auto-Resume | Jump to the last position when the page loads | On |
 | Retention Period | How many days of reading progress to keep before automatic cleanup | 3 days |
 
 Available retention periods: 1 day / 3 days / 7 days / 30 days / 90 days / Forever.
 
 <Tip>
-  To re-read a conversation from the top on a single visit without disabling auto-restore, append `?ophel_skip_restore=1` to the URL when opening it. Ophel skips the restore for that visit only.
+  To re-read a chat from the top on a single visit without disabling auto-restore, append `?ophel_skip_restore=1` to the URL when opening it. Ophel skips the restore for that visit only.
 </Tip>
 
 ## Scroll lock
@@ -60,10 +60,10 @@ The floating button group provides three scroll shortcuts that also work as a na
 | <Icon src="/images/icons/scroll-bottom.svg" alt="Scroll to bottom icon" /> Scroll to bottom | <Shortcut combo="alt+b" /> | Jumps to the latest message |
 | <Icon src="/images/icons/anchor.svg" alt="Return to anchor icon" /> Return to anchor | <Shortcut combo="alt+z" /> | Returns to the last saved position |
 
-Every time you use **Scroll to top** or **Scroll to bottom**, Ophel saves your current position as an anchor first. Click **Return to anchor** to jump back. Click it again to toggle between the anchor and wherever you are now — useful for cross-referencing two parts of a long conversation.
+Every time you use **Scroll to top** or **Scroll to bottom**, Ophel saves your current position as an anchor first. Click **Return to anchor** to jump back. Click it again to toggle between the anchor and wherever you are now — useful for cross-referencing two parts of a long chat.
 
 ## Bookmarks
 
-Ophel lets you bookmark specific messages in a conversation for quick access later. Bookmarked items appear in the outline panel so you can jump to them from the sidebar.
+Ophel lets you bookmark specific messages in a chat for quick access later. Bookmarked items appear in the outline panel so you can jump to them from the sidebar.
 
 To remove bookmarks that point to content that no longer exists, open the <Icon src="/images/icons/tools.svg" alt="Toolbox icon" /> **Toolbox** and select <Icon src="/images/icons/cleanup.svg" alt="Clear invalid bookmarks icon" /> **Clear Invalid Bookmarks**.

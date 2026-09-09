@@ -33,13 +33,13 @@ The panel has three tabs along the top. Click a tab label to switch, or use <Sho
 
 <CardGroup cols={3}>
   <Card title="Outline" icon="list-tree">
-    A live, auto-generated table of contents for the current conversation. Click
+    A live, auto-generated table of contents for the current chat. Click
     any heading to jump to it instantly. Supports collapse, expand, search,
     bookmarks, and real-time word counts.
   </Card>
-  <Card title="Conversations" icon="folder-open">
-    The current AI platform's conversation history in one organized view.
-    Organize conversations into folders and tags, search with syntax filters, and export
+  <Card title="Chats" icon="folder-open">
+    The current AI platform's chat history in one organized view.
+    Organize chats into folders and tags, search with syntax filters, and export
     to <Icon src="/images/icons/markdown.svg" alt="Markdown file icon" />
     Markdown, <Icon src="/images/icons/json-file.svg" alt="JSON file icon" />
     JSON, or <Icon src="/images/icons/txt-file.svg" alt="TXT file icon" /> TXT.
@@ -81,12 +81,12 @@ Default icons in the button group:
 | Icon | Action |
 | ---- | ------ |
 | <Icon src="/images/icons/sparkle.svg" alt="Panel toggle icon" /> **Panel toggle** | Opens or closes the Ophel panel. When the group is collapsed, a short dwell previews the panel temporarily. |
-| <Icon src="/images/icons/tools.svg" alt="Toolbox icon" /> **Toolbox** | Opens additional conversation and page actions. |
-| <Icon src="/images/icons/search.svg" alt="Global search icon" /> **Global search** | Opens global search across outlines, conversations, prompts, and settings. |
+| <Icon src="/images/icons/tools.svg" alt="Toolbox icon" /> **Toolbox** | Opens additional chat and page actions. |
+| <Icon src="/images/icons/search.svg" alt="Global search icon" /> **Global search** | Opens global search across outlines, chats, prompts, and settings. |
 | <Icon src="/images/icons/theme-system.svg" alt="Theme toggle icon" /> **Theme toggle** | Switches between light and dark mode; the icon changes with the current theme state. |
 | <Icon src="/images/icons/eye.svg" alt="Zen mode icon" /> **Zen mode** | Toggles Zen Mode for the current site. Enabling it also enables Clean Mode, and the icon changes to a closed eye. |
 | <Icon src="/images/icons/settings.svg" alt="Settings icon" /> **Settings** | Opens the settings dialog. |
-| <Icon src="/images/icons/scroll-top.svg" alt="Scroll to top icon" /> **Scroll to top** | Loads full history and jumps to the top of the current conversation. |
+| <Icon src="/images/icons/scroll-top.svg" alt="Scroll to top icon" /> **Scroll to top** | Loads full history and jumps to the top of the current chat. |
 | <Icon src="/images/icons/anchor.svg" alt="Return to anchor icon" /> **Return to anchor** | Jumps back to the last saved position and saves the current position as the new anchor. |
 | <Icon src="/images/icons/scroll-bottom.svg" alt="Scroll to bottom icon" /> **Scroll to bottom** | Jumps to the latest message. |
 
@@ -94,14 +94,14 @@ Click <Icon src="/images/icons/tools.svg" alt="Toolbox icon" /> **Toolbox** to r
 
 | Icon | Action |
 | ---- | ------ |
-| <Icon src="/images/icons/export.svg" alt="Export icon" /> **Export** | Exports the current conversation. |
-| <Icon src="/images/icons/segmented-export.svg" alt="Segmented export icon" /> **Export segments** | Selects and exports specific parts of the current conversation. |
-| <Icon src="/images/icons/copy.svg" alt="Copy Markdown icon" /> **Copy Markdown** | Copies the current conversation as Markdown. |
-| <Icon src="/images/icons/folder-move.svg" alt="Move conversation icon" /> **Move conversation** | Selects a target folder and moves the current conversation. |
-| <Icon src="/images/icons/tag.svg" alt="Set tag icon" /> **Set tag** | Adds, removes, or changes tags on the current conversation. |
+| <Icon src="/images/icons/export.svg" alt="Export icon" /> **Export** | Exports the current chat. |
+| <Icon src="/images/icons/segmented-export.svg" alt="Segmented export icon" /> **Export segments** | Selects and exports specific parts of the current chat. |
+| <Icon src="/images/icons/copy.svg" alt="Copy Markdown icon" /> **Copy Markdown** | Copies the current chat as Markdown. |
+| <Icon src="/images/icons/folder-move.svg" alt="Move chat icon" /> **Move chat** | Selects a target folder and moves the current chat. |
+| <Icon src="/images/icons/tag.svg" alt="Set tag icon" /> **Set tag** | Adds, removes, or changes tags on the current chat. |
 | <Icon src="/images/icons/scroll-lock.svg" alt="Scroll lock icon" /> **Scroll lock** | Locks the page scroll position to prevent automatic jumps. |
 | <Icon src="/images/icons/model-lock.svg" alt="Model lock icon" /> **Model lock** | Applies the configured model keyword for the current site; if none is configured, it opens site settings. |
-| <Icon src="/images/icons/cleanup.svg" alt="Clear invalid bookmarks icon" /> **Clear invalid bookmarks** | Removes invalid bookmarks / anchor records from the current conversation. |
+| <Icon src="/images/icons/cleanup.svg" alt="Clear invalid bookmarks icon" /> **Clear invalid bookmarks** | Removes invalid bookmarks / anchor records from the current chat. |
 | <Icon src="/images/icons/settings.svg" alt="Settings icon" /> **Settings** | Opens the settings dialog. |
 
 **Additional settings** (`Settings → General → Shortcuts`):
@@ -121,7 +121,7 @@ Click <Icon src="/images/icons/tools.svg" alt="Toolbox icon" /> **Toolbox** to r
 | Open / close panel          | <Shortcut combo="alt+p" />               |
 | Toggle panel mode           | <Shortcut combo="alt+m" />               |
 | Switch to Outline tab       | <Shortcut combo="alt+1" />               |
-| Switch to Conversations tab | <Shortcut combo="alt+2" />               |
+| Switch to Chats tab | <Shortcut combo="alt+2" />               |
 | Switch to Prompts tab       | <Shortcut combo="alt+3" />               |
 | Global search               | <Shortcut combo="ctrl+k" /> or double `Shift` |
 | Toggle light / dark         | <Shortcut combo="alt+d" />               |
@@ -129,7 +129,7 @@ Click <Icon src="/images/icons/tools.svg" alt="Toolbox icon" /> **Toolbox** to r
 
 ## Global search
 
-Press <Shortcut combo="ctrl+k" />, tap `Shift` twice, or click the <Icon src="/images/icons/search.svg" alt="Global search icon" /> search icon in the floating quick buttons to open global search. It searches across your outline headings, current platform conversation history, prompt library, and settings in a single query. You can also use advanced syntax filters:
+Press <Shortcut combo="ctrl+k" />, tap `Shift` twice, or click the <Icon src="/images/icons/search.svg" alt="Global search icon" /> search icon in the floating quick buttons to open global search. It searches across your outline headings, current platform chat history, prompt library, and settings in a single query. You can also use advanced syntax filters:
 
 | Filter    | Example        | Effect                              |
 | --------- | -------------- | ----------------------------------- |
@@ -196,7 +196,7 @@ In **Settings → General → Shortcuts → Quick Buttons Behavior**, you can al
     word counts.
   </Card>
   <Card
-    title="Conversation management"
+    title="Chat management"
     icon="folder-open"
     href="/features/conversations"
   >

@@ -104,7 +104,7 @@ Typical self-hosted packs ship with `matches: []` and show a **Binding needed** 
 5. Approve host permission in the extension.
 6. Reload the bound origin.
 
-The selected pack always activates on that origin. Ophel stores each instance under a key derived from pack ID and origin, so settings, themes, reading history, and conversations do not mix between two deployments of the same pack.
+The selected pack always activates on that origin. Ophel stores each instance under a key derived from pack ID and origin, so settings, themes, reading history, and chats do not mix between two deployments of the same pack.
 
 {/* TODO: replace with product screenshot once available */}
 ![Custom HTTPS origin binding](/images/enhancements/site-extensions/custom-origin-binding.png)
@@ -115,7 +115,7 @@ The selected pack always activates on that origin. Ophel stores each instance un
 | --- | --- |
 | **Check for updates** | Compares an installed registry pack with the latest compatible registry version |
 | **Disable** | Keeps the pack installed but removes it from adapter activation and origin references |
-| **Uninstall** | Removes the manifest and its registration references. Site settings and conversation data are retained |
+| **Uninstall** | Removes the manifest and its registration references. Site settings and chat data are retained |
 | Registry disabled / incompatible | The management page shows the reason instead of silently activating the pack |
 
 When a registry pack requires a newer Ophel version, the UI shows **Requires Ophel {version} or newer**.
@@ -140,7 +140,7 @@ If a pack installs but the site is not recognized:
 3. Check that the current origin matches the pack or custom binding exactly, including scheme and host.
 4. For self-hosted packs, confirm a custom origin binding exists.
 5. If the pack is from the online library, check for a newer version.
-6. If the latest pack still fails, open a GitHub issue with the site URL, pack version, Ophel version, and failed selector names — without private conversation content.
+6. If the latest pack still fails, open a GitHub issue with the site URL, pack version, Ophel version, and failed selector names — without private chat content.
 
 ## Related pages
 

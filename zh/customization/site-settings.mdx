@@ -3,7 +3,7 @@ title: "站点专属设置 — 模型锁定、Markdown 修复与 Claude"
 sidebarTitle: "站点设置"
 icon: "/images/icons/site-settings.svg"
 description: "按站点独立配置模型锁定、Markdown 渲染修复、Gemini 去水印、Claude Session Key 管理与使用量监控。"
-keywords: ["模型锁定", "站点设置", "Claude会话密钥", "Gemini去水印", "按站点配置", "AI模型"]
+keywords: ["模型锁定", "站点设置", "Claude对话密钥", "Gemini去水印", "按站点配置", "AI模型"]
 ---
 
 import { Icon } from "/snippets/icon.jsx"
@@ -33,7 +33,7 @@ import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
 每个站点的模型锁定配置相互独立，可以为不同平台设置不同的目标模型。也可以从 <Icon src="/images/icons/tools.svg" alt="工具箱图标" /> **工具箱** → <Icon src="/images/icons/model-lock.svg" alt="模型锁定图标" /> **模型锁定** 快速切换当前站点的模型锁定状态。
 
 <Note>
-  如果你在会话中手动切换到其他模型，模型锁定只在下次页面加载时重新生效，不会覆盖本次会话中的手动选择。
+  如果你在对话中手动切换到其他模型，模型锁定只在下次页面加载时重新生效，不会覆盖本次对话中的手动选择。
 </Note>
 
 **支持的站点：**
@@ -112,7 +112,7 @@ Session Key（格式为 `sk-ant-sid...`）是浏览器在 claude.ai 上使用的
 
 <Tabs>
   <Tab title="自动导入（推荐）">
-    点击**导入当前会话**。Ophel 直接从浏览器 Cookie 中读取当前已登录的 Claude 账号的 Session Key，无需手动复制。
+    点击**导入当前对话**。Ophel 直接从浏览器 Cookie 中读取当前已登录的 Claude 账号的 Session Key，无需手动复制。
 
     <Note>
       自动导入需要 claude.ai 的 Cookie 访问权限，Ophel 会在需要时提示你授予。

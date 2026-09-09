@@ -65,7 +65,7 @@ const text = {
     localFirst: 'Local-first data',
     morePlatforms: '+ 10 more',
     screenshotAlt:
-      'Ophel Atlas side panel generating a real-time outline beside an AI conversation',
+      'Ophel Atlas side panel generating a real-time outline beside an AI chat',
     stats: [
       ['15', 'AI platforms'],
       ['3', 'navigation layers'],

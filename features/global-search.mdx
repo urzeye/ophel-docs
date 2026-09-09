@@ -2,14 +2,14 @@
 title: "Global Search: find anything across Ophel in seconds"
 sidebarTitle: "Global Search"
 icon: "search"
-description: "Search outline nodes, conversations, prompts, and settings in one overlay — with syntax filters, fuzzy matching, and instant jump-to-result navigation."
-keywords: ["global search", "search syntax", "fuzzy search", "conversation search", "outline search", "search filters"]
+description: "Search outline nodes, chats, prompts, and settings in one overlay — with syntax filters, fuzzy matching, and instant jump-to-result navigation."
+keywords: ["global search", "search syntax", "fuzzy search", "chat search", "outline search", "search filters"]
 ---
 
 import { Icon } from "/snippets/icon.jsx"
 import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
 
-Global Search brings the content available in the current Ophel context into a single search field. Instead of switching between tabs to find a heading, conversation on the current AI platform, or saved prompt, you open one overlay and search from one place. Results are grouped by type, and selecting one jumps you directly to that item.
+Global Search brings the content available in the current Ophel context into a single search field. Instead of switching between tabs to find a heading, chat on the current AI platform, or saved prompt, you open one overlay and search from one place. Results are grouped by type, and selecting one jumps you directly to that item.
 
 ![Global Search overlay — search box with categorized results](/images/enhancements/global-search-en.png)
 
@@ -33,8 +33,8 @@ Global Search covers five result types:
 
 | Type          | What is included                                                               |
 | ------------- | ------------------------------------------------------------------------------ |
-| <Icon src="/images/icons/outline.svg" alt="Outline icon" /> Outline nodes | All headings and your questions in the current conversation |
-| <Icon src="/images/icons/conversation.svg" alt="Conversation icon" /> Conversations | Saved conversations for the current AI platform or account — searchable by title, tag, or folder |
+| <Icon src="/images/icons/outline.svg" alt="Outline icon" /> Outline nodes | All headings and your questions in the current chat |
+| <Icon src="/images/icons/conversation.svg" alt="Chat icon" /> Chats | Saved chats for the current AI platform or account — searchable by title, tag, or folder |
 | <Icon src="/images/icons/prompt.svg" alt="Prompt icon" /> Prompts | Titles and content from your prompt library |
 | <Icon src="/images/icons/settings.svg" alt="Settings icon" /> Settings | Feature names and keywords from the settings page |
 | <Icon src="/images/icons/features.svg" alt="Feature tips icon" /> Feature Tips | Ophel feature discovery tips — type `tip:` to browse them |
@@ -48,11 +48,11 @@ Add a `key:value` prefix to narrow results. Multiple filters can be combined wit
 | Filter       | Applies to            | Values                                        | Example           |
 | ------------ | --------------------- | --------------------------------------------- | ----------------- |
 | `type:`      | All                   | `outline` · `conversations` · `prompts` · `settings` | `type:conversations` |
-| `folder:`    | Conversations         | Any folder name (partial match)               | `folder:work`     |
-| `tag:`       | Conversations, Prompts | Any tag name (partial match)                 | `tag:research`    |
-| `is:`        | Conversations         | `pinned` · `unpinned`                         | `is:pinned`       |
+| `folder:`    | Chats                 | Any folder name (partial match)               | `folder:work`     |
+| `tag:`       | Chats, Prompts        | Any tag name (partial match)                 | `tag:research`    |
+| `is:`        | Chats                 | `pinned` · `unpinned`                         | `is:pinned`       |
 | `level:`     | Outline nodes         | `0` – `6` (heading depth)                     | `level:2`         |
-| `date:`      | Conversations, Prompts | `Nd` — up to 999 days (e.g. `7d`, `30d`)     | `date:30d`        |
+| `date:`      | Chats, Prompts        | `Nd` — up to 999 days (e.g. `7d`, `30d`)     | `date:30d`        |
 
 <Note>
   Type `tip:` in the search box to switch into Feature Tips mode. This is not a
@@ -66,7 +66,7 @@ You can combine filters with each other and with plain keywords. For example:
 folder:work tag:research model
 ```
 
-This finds conversations in the "work" folder that also have the "research" tag and whose title contains "model".
+This finds chats in the "work" folder that also have the "research" tag and whose title contains "model".
 
 ## Fuzzy search
 
@@ -91,7 +91,7 @@ Change this behavior in **Settings → Global Search → Search Everywhere promp
 ## Search tips
 
 <AccordionGroup>
-  <Accordion title="Find a conversation by folder">
+  <Accordion title="Find a chat by folder">
     Type `folder:` followed by part of the folder name. You do not need to type the full name — partial matches work when fuzzy search is on.
 
     ```text
@@ -99,7 +99,7 @@ Change this behavior in **Settings → Global Search → Search Everywhere promp
     ```
 
   </Accordion>
-  <Accordion title="Find all conversations with a specific tag">
+  <Accordion title="Find all chats with a specific tag">
     Type `tag:` followed by the tag name.
 
     ```text
@@ -108,7 +108,7 @@ Change this behavior in **Settings → Global Search → Search Everywhere promp
 
   </Accordion>
   <Accordion title="Filter by pin state">
-    Use `is:pinned` to see only pinned conversations, or `is:unpinned` to exclude them.
+    Use `is:pinned` to see only pinned chats, or `is:unpinned` to exclude them.
 
     ```text
     is:pinned project
@@ -116,7 +116,7 @@ Change this behavior in **Settings → Global Search → Search Everywhere promp
 
   </Accordion>
   <Accordion title="Filter by recency">
-    Use `date:Nd` to limit results to conversations or prompts updated within the last N days. For example, `date:7d` returns items from the past week.
+    Use `date:Nd` to limit results to chats or prompts updated within the last N days. For example, `date:7d` returns items from the past week.
 
     ```text
     date:30d refactor
@@ -124,7 +124,7 @@ Change this behavior in **Settings → Global Search → Search Everywhere promp
 
   </Accordion>
   <Accordion title="Filter by heading level">
-    Use `level:n` (0–6) to find outline nodes at a specific heading depth. Level 1 is an `<h1>`, level 2 is `<h2>`, and so on. Level 0 matches your own questions in the conversation.
+    Use `level:n` (0–6) to find outline nodes at a specific heading depth. Level 1 is an `<h1>`, level 2 is `<h2>`, and so on. Level 0 matches your own questions in the chat.
 
     ```text
     level:2 overview
@@ -134,8 +134,8 @@ Change this behavior in **Settings → Global Search → Search Everywhere promp
   <Accordion title="Jump to a settings page">
     Type a feature or setting name directly. For example, typing `theme` surfaces the Appearance settings entry; typing `shortcut` brings up the Shortcuts page.
   </Accordion>
-  <Accordion title="Find an outline heading in the current conversation">
-    Open Global Search while reading a conversation and type part of a heading. Selecting the result scrolls the conversation to that heading and highlights the matching outline entry.
+  <Accordion title="Find an outline heading in the current chat">
+    Open Global Search while reading a chat and type part of a heading. Selecting the result scrolls the chat to that heading and highlights the matching outline entry.
   </Accordion>
 </AccordionGroup>
 
