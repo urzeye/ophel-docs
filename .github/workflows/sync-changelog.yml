@@ -2,8 +2,8 @@ name: Sync Changelog
 
 on:
   schedule:
-    # 每天北京时间 04:00 (UTC 20:00 前一天)
-    - cron: "0 20 * * *"
+    # 每周一北京时间 04:00 (UTC 20:00 前一天)
+    - cron: "0 20 * * 1"
   workflow_dispatch:
 
 permissions:
