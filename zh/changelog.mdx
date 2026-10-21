@@ -3,6 +3,139 @@ title: "更新日志"
 description: "Ophel Atlas 的所有重要更改均记录于此。"
 ---
 
+<Update label="v1.2.12">
+
+  **⚠️ 公告 — 我们的 GitHub 账号仍处于封禁状态，申诉仍在进行中。恢复之前，GitHub 仓库、问题反馈页面以及适配中心的在线适配库可能暂时无法访问。如遇到任何问题，请前往 [Discord](https://discord.gg/rmPzb6Cx9u) 反馈。**
+
+  **📢 公告 — ChatGPT 新版网页界面正与旧版并行灰度，并逐步取代旧版。本版本已适配新版界面，但新版页面自身功能尚不完善，插件可能无法获取完整的对话大纲。**
+
+  ### 🐛 问题修复
+
+  - **ChatGPT 新版界面适配** — 修复 ChatGPT 新版页面上的页面宽度、禅模式、对话大纲、主题切换和会话导出问题。 ([#971](https://github.com/urzeye/ophel/issues/971), @urzeye, @mrpops2ko)
+  - **DeepSeek 大纲条目跑到顶部** — 修复在 DeepSeek 中不刷新页面连续发送多条消息后，点击大纲里的某条消息时它会突然跑到大纲列表顶部的问题。 ([#972](https://github.com/urzeye/ophel/issues/972))
+  - **导出对话页面跳到顶部** — 修复在 DeepSeek、Claude、Grok、AI Studio 导出对话时页面会先滚动到顶部的问题，现在直接获取完整对话内容，页面保持原位。 ([#973](https://github.com/urzeye/ophel/issues/973))
+</Update>
+
+<Update label="v1.2.11">
+
+  > 🇨🇳 **国庆快乐！祝各位节日愉快，阖家安康！**
+
+  **⚠️ 公告 — 我们的 GitHub 账号暂时被误封禁，目前正在积极申诉。恢复之前，GitHub 仓库、问题反馈页面以及适配中心的在线适配库可能暂时无法访问。如遇到任何问题，请前往 [Discord](https://discord.gg/rmPzb6Cx9u) 反馈。**
+
+  **📢 公告 — ChatGPT 近期正在分批灰度全新网页架构，侧边栏历史记录、输入框及聊天窗口的底层结构发生重大调整，导致插件现有识别规则全面失效。由于开发者手头的所有账号均未命中灰度，缺乏动态交互排查环境，目前暂时无法开展适配。需等待开发者账号被灰度到、官方全量推送新版，或有命中灰度的用户协助借号调试后才能恢复支持。如您手头有已灰度的账号并愿意协助调试，欢迎前往 [Discord](https://discord.gg/rmPzb6Cx9u) 联系我们。**
+
+  ### ✨ 功能优化
+
+  - **对话管理体验优化** — 优化对话筛选、搜索、批量操作与拖拽排序体验，对话管理更清晰顺畅。 ([#965](https://github.com/urzeye/ophel/issues/965))
+  - **大纲标签页优化** — 层级滑块支持按住拖动调整，窄面板下工具栏自动精简，优化行对齐细节，导出按钮的流光提示点击后不再重复出现。 ([#966](https://github.com/urzeye/ophel/issues/966))
+  - **提示词标签页优化** — 优化提示词分类筛选、变量标识与空列表引导提示，管理和查找提示词更便捷。 ([#967](https://github.com/urzeye/ophel/issues/967))
+
+  ### 🐛 问题修复
+
+  - **纯文件提问大纲与导出缺失** — 修复仅发送图片或文件而未输入文字的提问在 DeepSeek、Claude 大纲中缺失，以及 AI Studio 导出时整条丢失的问题；现在大纲正常以附件文件名展示此类提问，附件也会随提问一并导出。 ([#970](https://github.com/urzeye/ophel/issues/970))
+</Update>
+
+<Update label="v1.2.10">
+
+  **⚠️ 公告 — 我们的 GitHub 账号暂时被误封禁，目前正在积极申诉。恢复之前，GitHub 仓库、问题反馈页面以及适配中心的在线适配库可能暂时无法访问。如遇到任何问题，请前往 [Discord](https://discord.gg/rmPzb6Cx9u) 反馈。**
+
+  **📢 公告 — ChatGPT 近期正在分批灰度全新网页架构，侧边栏历史记录、输入框及聊天窗口的底层结构发生重大调整，导致插件现有识别规则全面失效。由于开发者手头的所有账号均未命中灰度，缺乏动态交互排查环境，目前暂时无法开展适配。需等待开发者账号被灰度到、官方全量推送新版，或有命中灰度的用户协助借号调试后才能恢复支持。如您手头有已灰度的账号并愿意协助调试，欢迎前往 [Discord](https://discord.gg/rmPzb6Cx9u) 联系我们。**
+
+  ### ✨ 功能优化
+
+  - **AI Studio、Grok 长对话大纲、导出与阅读历史** — 长对话来回滚动时大纲标题始终保持完整，点击即可准确定位；导出对话一次性获取完整内容无需逐屏翻页，思考过程、附件与图片一并保留；刷新后自动回到上次阅读位置。 ([#962](https://github.com/urzeye/ophel/issues/962), [#963](https://github.com/urzeye/ophel/issues/963))
+  - **切换对话无需刷新页面** — 在「对话」标签页切换不同对话时原地完成，不再重新加载整页，跳转更快且当前阅读状态不丢失。 ([#960](https://github.com/urzeye/ophel/issues/960))
+  - **面板展开时隐藏快捷按钮** — 默认开启「面板展开时隐藏快捷按钮组」，展开主面板时自动隐藏浮动按钮组以保持界面整洁，收起面板时恢复显示。 ([#964](https://github.com/urzeye/ophel/issues/964))
+
+  ### 🐛 问题修复
+
+  - **Grok 用户提问丢失** — 适配 Grok 新版对话页面，大纲恢复正常显示用户提问，复制大纲与导出对话也一并恢复包含完整提问内容。 ([#961](https://github.com/urzeye/ophel/issues/961))
+  - **Grok 侧边栏收起时同步对话** — 修复 Grok 侧边栏收起时同步对话误报未检测到对话的问题，同步时会自动展开侧边栏获取列表。 ([#963](https://github.com/urzeye/ophel/issues/963))
+  - **Gemini 自动隐藏输入框** — 适配 Gemini 新版页面结构，恢复「自动隐藏输入框」功能：输入框闲置时自动收起，光标靠近底部或聚焦输入框时重新滑出。 ([#959](https://github.com/urzeye/ophel/issues/959))
+</Update>
+
+<Update label="v1.2.9">
+
+  ### ✨ 功能优化
+
+  - **Claude、DeepSeek 大纲抽取、导出、阅读历史优化** — 长对话来回滚动时大纲标题始终保持完整并支持跳转定位，导出对话无需逐屏翻页，思考过程、公式与代码内容完整保留；刷新后自动回到上次阅读的位置。 ([#953](https://github.com/urzeye/ophel/issues/953), [#954](https://github.com/urzeye/ophel/issues/954))
+  - **长对话与流式回复性能** — 减少各站点在长对话和 AI 持续输出期间的后台扫描与重复计算，缓解滚动与输入时的卡顿。 ([#947](https://github.com/urzeye/ophel/issues/947))
+  - **Claude 文档画布与文件侧栏避让** — 在 Claude 上打开文档预览画布或 Artifacts 文件侧栏时，Ophel 面板不再遮挡其内容，标题、关闭按钮与文件列表保持完整可见、可正常点击。 ([#956](https://github.com/urzeye/ophel/issues/956))
+  - **DeepSeek 文档预览与 Canvas 避让** — 在 DeepSeek 上打开文档预览或 Canvas 预览面板时，Ophel 面板不再遮挡其内容，标题、关闭按钮与预览内容保持完整可见、可正常点击。 ([#958](https://github.com/urzeye/ophel/issues/958))
+  - **去顶部与快速跳转** — 在对话内容已完整加载的站点（如 DeepSeek、豆包、Claude）上点击「去顶部」立即完成，无需额外等待；去顶部后立刻点击「返回锚点」或「去底部」也能立即响应，不再忽略点击。 ([#948](https://github.com/urzeye/ophel/issues/948))
+
+  ### 🐛 问题修复
+
+  - **「显示用户提问」开关** — 修复在没有用户提问的页面中开关状态显示错误且点击看似无响应的问题，现在始终显示真实状态并即时生效。 ([#951](https://github.com/urzeye/ophel/issues/951))
+  - **定位后大纲无法收起** — 修复使用「定位当前」临时展开大纲后无法自动收起的问题，现在高亮结束后准确恢复折叠状态。 ([#952](https://github.com/urzeye/ophel/issues/952))
+  - **Z.ai 海外版清洁模式** — 修复海外用户开启清洁模式或禅模式后聊天区域异常消失变空白的问题，现在页面内容正常显示。 ([#955](https://github.com/urzeye/ophel/issues/955))
+</Update>
+
+<Update label="v1.2.8">
+
+  **⚠️ 公告 — 我们的 GitHub 账号暂时被误封禁，目前正在积极申诉。恢复之前，GitHub 仓库、问题反馈页面以及适配中心的在线适配库可能暂时无法访问。如遇到任何问题，请前往 [Discord](https://discord.gg/rmPzb6Cx9u) 反馈。**
+
+  **📢 公告 — ChatGPT 近期正在分批灰度全新网页架构，侧边栏历史记录、输入框及聊天窗口的底层结构发生重大调整，导致插件现有识别规则全面失效。由于开发者手头的所有账号均未命中灰度，缺乏动态交互排查环境，目前暂时无法开展适配。需等待开发者账号被灰度到、官方全量推送新版，或有命中灰度的用户协助借号调试后才能恢复支持。如您手头有已灰度的账号并愿意协助调试，欢迎前往 [Discord](https://discord.gg/rmPzb6Cx9u) 联系我们。**
+
+  ### 🚀 新增功能
+
+  - **自动隐藏输入框（Gemini）** — Gemini 站点设置新增「自动隐藏输入框」开关。开启后输入框以浮层形式呈现，闲置时自动滑出，让对话内容利用释放的空间；指针靠近视口底部、插入提示词或使用聚焦快捷键（Alt + I）时重新显示。([#930](https://github.com/urzeye/ophel/issues/930))
+  - **豆包页面主题联动** — 豆包现在支持与 Ophel 及页面原生主题切换双向联动，支持浅色、深色与跟随系统，页面外观、输入框与面板保持无缝同步。([#932](https://github.com/urzeye/ophel/issues/932))
+
+  ### ✨ 功能优化
+
+  - **大纲页导出按钮** — 大纲工具栏新增高亮的「导出」按钮，一键打开导出对话框，无需再经过工具箱或会话菜单；「复制大纲」入口移入导出对话框，与「复制 Markdown」并排展示。 ([#936](https://github.com/urzeye/ophel/issues/936))
+  - **复制大纲包含完整提问内容** — 「复制大纲」现在会复制每条用户提问的完整文本，不再截断为预览片段，长提问不再缺失，结果与逐条复制大纲项保持一致。([#939](https://github.com/urzeye/ophel/issues/939))
+  - **自动吸附面板边缘误触与闪烁** — 面板现在需要指针在边缘把手或触发区停留片刻才会滑出，快速划过边缘或滑向另一台显示器不再误触弹出；鼠标从吸附侧直接离开窗口时面板也会短暂保持展开，修复窗口未最大化或多显示器场景下反复弹出又收起的闪烁问题。([#937](https://github.com/urzeye/ophel/issues/937))
+  - **工具箱菜单被面板遮挡** — 修复自动吸附模式下点击快捷工具栏的工具箱图标会导致面板弹出并盖住菜单的问题；菜单打开期间现在始终位于已展开面板之上，工具栏在任意位置都能正常操作。([#934](https://github.com/urzeye/ophel/issues/934))
+  - **单标签页显示与排版保护** — 当仅启用单个功能时（如仅开启大纲或站点能力受限），面板自动隐藏顶部 Tab 切换栏，释放约 38px 纵向高度；同时在界面排版设置中限制至少保留一个标签页，防止全部关闭导致空壳面板。([#940](https://github.com/urzeye/ophel/issues/940))
+  - **净化模式底部间距保持** — 净化模式在隐藏输入框下方的 AI 生成声明与免责提示时，完整保留站点原有的文档流高度与间距，避免输入框紧贴视口底部，还原原生视觉比例。([#929](https://github.com/urzeye/ophel/issues/929))
+  - **ChatGPT 长对话大纲性能** — 优化长对话下的大纲同步与条目索引计算，消除大纲刷新时对页面深层节点的重复全量扫描，缓解主线程掉帧与操作卡顿。 ([#935](https://github.com/urzeye/ophel/issues/935))
+  - **长对话插入与清除提示词性能** — 优化长对话页面（如 ChatGPT）上的后台检查逻辑，消除对整页内容的重复扫描，插入、清除提示词不再卡顿数秒，输入操作恢复即时响应。([#942](https://github.com/urzeye/ophel/issues/942))
+
+  ### 🐛 问题修复
+
+  - **ChatGPT 长对话大纲错位** — 修复 ChatGPT 长对话滚动时，部分回答标题在大纲中被错误归入相邻问题或次序错乱的问题。 ([#935](https://github.com/urzeye/ophel/issues/935))
+  - **禅模式与净化模式状态隔离** — 修复开启禅模式会自动开启净化模式并在退出后依然保持开启的问题，现在会完整保留用户原本的净化模式开关偏好。([#926](https://github.com/urzeye/ophel/issues/926))
+  - **豆包与 DeepSeek 置顶会话识别** — 修复两个站点侧边栏改版后无法识别置顶会话的问题，对话管理中的置顶状态恢复正确同步。([#933](https://github.com/urzeye/ophel/issues/933))
+  - **Gemini Canvas 与深度研究导出** — 适配 Gemini 新版内联 Canvas 预览与深度研究结构，确保导出内容完整对齐。 ([#941](https://github.com/urzeye/ophel/issues/941))
+  - **ChatGPT 对话在对话标签页中异常消失** — 修复在 ChatGPT 上切换标签页或置顶对话后，对话列表可能异常清空且文件夹计数全部显示为 0 的问题，并解决主动同步无法刷新显示的情况。 ([#943](https://github.com/urzeye/ophel/issues/943))
+</Update>
+
+<Update label="v1.2.7">
+
+  **⚠️ 公告 — 我们的 GitHub 账号暂时被误封禁，目前正在积极申诉。恢复之前，GitHub 仓库、问题反馈页面以及适配中心的在线适配库可能暂时无法访问。如遇到任何问题，请前往 [Discord](https://discord.gg/rmPzb6Cx9u) 反馈。**
+
+  ### 🚀 新增功能
+
+  - **站点开关** — 支持在适配中心、页面设置或扩展弹窗中单独停用任一内置站点或适配包，停用后不再加载面板与增强功能。([#908](https://github.com/urzeye/ophel/issues/908))
+  - **跨站点对话搜索** — 全局搜索现在也能搜到其他已适配站点的对话，结果带来源站点图标和「站外」标注，点击后在新标签页打开。([#888](https://github.com/urzeye/ophel/issues/888))
+  - **Gemini Spark 对话同步** — Gemini Spark（gemini.google.com/spark）的任务对话现在可以同步进对话管理，置顶状态一并保留，点击即可打开对应对话。([#902](https://github.com/urzeye/ophel/issues/902))
+
+  ### ✨ 功能优化
+
+  - **长对话与流式回复性能** — 优化 Gemini 及各站点在长对话、持续流式回复和滚动时的后台计算，减少无谓的页面测量与扫描，缓解页面卡顿。
+  - **导出样式** — 新增「导出样式」设置（导出弹窗中也可单次选择），简洁样式会移除导出文件中的装饰 emoji；提示词队列与导出文案现在完整跟随所选界面语言。
+  - **更新提示方式** — 版本更新后不再弹出全屏更新日志，改为右下角一次性提醒，面板 Logo 显示红点；悬停可预览要点，点击查看完整日志。([#887](https://github.com/urzeye/ophel/issues/887))
+  - **悬浮提示** — 提示靠近屏幕边缘时自动翻转，点击或按 Esc 立即关闭；列表项只在标题被截断时显示，减少遮挡相邻内容。([#885](https://github.com/urzeye/ophel/issues/885))
+  - **多入口站点的快捷访问** — 绑定多个域名的站点（如 Kimi 的 kimi.com 和 kimi.ai）在弹窗「快速访问」中现在只占一个格子，可切换入口并记住上次选择。([#895](https://github.com/urzeye/ophel/issues/895))
+  - **功能提示「适配中心」入口** — 大纲功能提示里的「适配中心」现在可点击，直接打开设置中的在线适配库。
+  - **顶栏拖拽提示** — 穿透模式提示改为按住顶栏片刻才显示，点击或拖动时不再闪出遮挡标题。
+  - **Claude 对话切 Key 体验** — 切换 Session Key 时优先仅刷新当前发起请求的标签页，不再重载其他打开的 Claude 标签页，避免打断其他对话与未保存草稿。
+
+  ### 🐛 问题修复
+
+  - **Gemini 侧边栏适配** — 适配 Gemini 新版侧边栏结构，对话管理和全局搜索中的 Gemini 对话列表恢复加载。
+  - **提示词队列遮挡站点弹窗** — 修复队列悬浮胶囊和面板遮挡站点自身弹窗的问题，现在检测到站点弹窗打开时会自动隐藏，弹窗关闭后恢复显示。
+  - **ChatGPT 页内收藏图标** — 修复页内收藏在长对话中反复触发展开提问文本，导致标签页内存持续上涨的问题。([#889](https://github.com/urzeye/ophel/issues/889))
+  - **Kimi 国际站支持** — 现在识别 Kimi 国际站 kimi.ai，大纲、导出、禅模式等功能在 kimi.ai 与 kimi.com 上均可使用。([#890](https://github.com/urzeye/ophel/issues/890))
+  - **弹窗界面语言** — 修复扩展弹窗始终显示浏览器语言的问题，现在会跟随设置中的界面语言。([#897](https://github.com/urzeye/ophel/issues/897))
+  - **DeepSeek 深度思考大纲识别** — 修复 DeepSeek R1 深度思考流式输出期间，思考过程被误识别为用户提问塞入大纲导致大纲闪烁的问题。
+  - **大纲字数统计跨轮次虚高** — 修复 ChatGPT、Claude、Gemini、Grok、Z.ai 等站点中，大纲章节字数跨轮次累加导致字数虚高或异常为 0 的问题。
+  - **Grok 提示词多行与特殊字符** — 修复在 Grok 插入包含 `<`、`>`、`&` 等字符的提示词时内容被解析为 HTML 或丢失，以及多行换行分段丢失的问题。
+  - **提示词拖动排序** — 修复提示词库中拖动排序失效的问题，现在任意平台筛选下都可自由拖动排序，仅「最近使用」视图和搜索时保持禁用。
+</Update>
+
 <Update label="v1.2.6">
 
   ### 🚀 新增功能
@@ -12,7 +145,7 @@ description: "Ophel Atlas 的所有重要更改均记录于此。"
 
   ### 🐛 问题修复
 
-  - **适配 Claude 隐身会话** — 修复 Claude 隐身会话（claude.ai/new?incognito=）中导出和复制对话提示“Conversation not found”失败的问题，导出文件以首条提问作为标题，智能避让在隐身会话页恢复生效。([#879](https://github.com/urzeye/ophel/issues/879))
+  - **适配 Claude 隐身对话** — 修复 Claude 隐身对话（claude.ai/new?incognito=）中导出和复制对话提示“Conversation not found”失败的问题，导出文件以首条提问作为标题，智能避让在隐身对话页恢复生效。([#879](https://github.com/urzeye/ophel/issues/879))
 </Update>
 
 <Update label="v1.2.5">
@@ -21,7 +154,7 @@ description: "Ophel Atlas 的所有重要更改均记录于此。"
 
   - **Notion AI 支持** — 在线适配库新增 Notion AI（app.notion.com），安装适配包后即可在对话页和分享页使用大纲（含用户提问）、基础导出、对话宽度、禅模式、新对话和提示词插入功能。([#873](https://github.com/urzeye/ophel/issues/873))
   - **知乎直答支持** — 在线适配库新增知乎直答（zhida.zhihu.com），安装适配包后即可在对话页和分享页使用大纲（含用户提问）、基础导出、对话宽度、禅模式、新对话和提示词插入功能。
-  - **ChatGPT 长会话性能优化** — ChatGPT 站点设置新增三个渲染优化开关：代码块批量挂载（默认开启，打开或切换长会话时合并挂载代码编辑器，减少页面卡顿）、流式渲染优化（默认开启，生成回答期间暂停消息区域动画与过渡，降低渲染开销）、禁用毛玻璃效果（可选，减少长会话滚动掉帧，会轻微改变页面视觉）。([#868](https://github.com/urzeye/ophel/issues/868))
+  - **ChatGPT 长对话性能优化** — ChatGPT 站点设置新增三个渲染优化开关：代码块批量挂载（默认开启，打开或切换长对话时合并挂载代码编辑器，减少页面卡顿）、流式渲染优化（默认开启，生成回答期间暂停消息区域动画与过渡，降低渲染开销）、禁用毛玻璃效果（可选，减少长对话滚动掉帧，会轻微改变页面视觉）。([#868](https://github.com/urzeye/ophel/issues/868))
 
   ### ✨ 功能优化
 
@@ -29,9 +162,9 @@ description: "Ophel Atlas 的所有重要更改均记录于此。"
 
   ### 🐛 问题修复
 
-  - **适配 ChatGPT 新 DOM 结构** — 适配 ChatGPT 改版后的提问导航条与离屏空壳占位结构，修复刷新后大纲缺失完整用户提问列表，以及长会话导出静默跳过未挂载轮次、无法采集完整对话的问题。([#871](https://github.com/urzeye/ophel/issues/871), [#872](https://github.com/urzeye/ophel/issues/872))
+  - **适配 ChatGPT 新 DOM 结构** — 适配 ChatGPT 改版后的提问导航条与离屏空壳占位结构，修复刷新后大纲缺失完整用户提问列表，以及长对话导出静默跳过未挂载轮次、无法采集完整对话的问题。([#871](https://github.com/urzeye/ophel/issues/871), [#872](https://github.com/urzeye/ophel/issues/872))
   - **适配豆包新版输入框** — 适配豆包改版后的 TipTap 输入框，提示词插入、队列发送、生成中/停止检测和模型锁定在新输入区域及新版发送/停止按钮上恢复正常。([#867](https://github.com/urzeye/ophel/issues/867))
-  - **长会话与资产导出稳定性** — 适配 ChatGPT、豆包、DeepSeek、AI Studio 等虚拟滚动长会话导出，等待节点挂载、校验轮次连续性并定向补抓缺口，避免漏段、重复或乱序；检测到异常或超时将明确提示，ZIP 图片下载卡住时自动降级为外链，防止导出中断。([#865](https://github.com/urzeye/ophel/issues/865))
+  - **长对话与资产导出稳定性** — 适配 ChatGPT、豆包、DeepSeek、AI Studio 等虚拟滚动长对话导出，等待节点挂载、校验轮次连续性并定向补抓缺口，避免漏段、重复或乱序；检测到异常或超时将明确提示，ZIP 图片下载卡住时自动降级为外链，防止导出中断。([#865](https://github.com/urzeye/ophel/issues/865))
 </Update>
 
 <Update label="v1.2.4">
@@ -1473,6 +1606,12 @@ description: "Ophel Atlas 的所有重要更改均记录于此。"
   - 开源透明
 
 
+  [1.2.12]: https://github.com/urzeye/ophel/releases/tag/v1.2.12
+  [1.2.11]: https://github.com/urzeye/ophel/releases/tag/v1.2.11
+  [1.2.10]: https://github.com/urzeye/ophel/releases/tag/v1.2.10
+  [1.2.9]: https://github.com/urzeye/ophel/releases/tag/v1.2.9
+  [1.2.8]: https://github.com/urzeye/ophel/releases/tag/v1.2.8
+  [1.2.7]: https://github.com/urzeye/ophel/releases/tag/v1.2.7
   [1.2.6]: https://github.com/urzeye/ophel/releases/tag/v1.2.6
   [1.2.5]: https://github.com/urzeye/ophel/releases/tag/v1.2.5
   [1.2.4]: https://github.com/urzeye/ophel/releases/tag/v1.2.4
