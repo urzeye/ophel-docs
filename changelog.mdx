@@ -3,6 +3,32 @@ title: "Changelog"
 description: "All notable changes to Ophel Atlas are documented here."
 ---
 
+<Update label="v1.3.0">
+
+  ### 🚀 New Features
+
+  - **Hide Ophel on specific pages** — Site Settings can now hide the panel and quick buttons on pages that match a path rule, so you no longer have to disable a whole site for a few pages. ([#995](https://github.com/urzeye/ophel/issues/995), [#998](https://github.com/urzeye/ophel/issues/998))
+  - **Turn off Global Search** — Features settings has a new "Enable Global Search" switch; when it's off, Ctrl/⌘+K goes back to the website's own feature. Also fixed outline results in the search popup running their title into the text after it. ([#1005](https://github.com/urzeye/ophel/issues/1005))
+  - **Export other chats from the list** — Export in a chat's menu now works for chats you haven't opened; on some sites Ophel opens the chat for you first. ([#1007](https://github.com/urzeye/ophel/issues/1007))
+  - **Qwen Studio conversation management and full export** — Qwen Studio conversations now sync into Conversation Manager, and export or outline generation can use the full conversation history. ([#1011](https://github.com/urzeye/ophel/issues/1011), [#1016](https://github.com/urzeye/ophel/issues/1016))
+
+  ### ✨ Improvements
+
+  - **Settings reorganized** — Once you pick a site in Site Settings, all of its settings are on one page; the settings menu goes from 10 entries to 8, with repeated descriptions removed and plainer wording. ([#987](https://github.com/urzeye/ophel/issues/987), [#988](https://github.com/urzeye/ophel/issues/988), [#989](https://github.com/urzeye/ophel/issues/989), [#996](https://github.com/urzeye/ophel/issues/996), [#999](https://github.com/urzeye/ophel/issues/999), [#1006](https://github.com/urzeye/ophel/issues/1006))
+  - **Panel look and theme contrast** — The panel, settings and dialogs are restyled: low-contrast text in the preset themes is fixed, and hover hints now use the app's own tooltip. ([#989](https://github.com/urzeye/ophel/issues/989), [#991](https://github.com/urzeye/ophel/issues/991))
+  - **Phone and tablet support** — On phones, the panel slides in from the side; on tablets, tap the edge handle to expand a docked panel. ([#990](https://github.com/urzeye/ophel/issues/990))
+  - **Conversation sync and prompt queue** — Conversation sync says which folder it syncs into; the prompt queue accepts prompts with variables, and the chained prompt editor can search prompts. ([#1000](https://github.com/urzeye/ophel/issues/1000), [#1001](https://github.com/urzeye/ophel/issues/1001))
+
+  ### 🐛 Bug Fixes
+
+  - **Doubao scroll to top not sticking** — Fixed an issue where clicking Scroll to Top right after refreshing a Doubao chat reached the top and then jumped back to the bottom. ([#983](https://github.com/urzeye/ophel/issues/983))
+  - **Shortcut recording conflict** — Fixed an issue where a key combination pressed while recording a shortcut in settings also triggered the website's own action; Esc now only cancels the recording instead of closing settings. ([#988](https://github.com/urzeye/ophel/issues/988), [#989](https://github.com/urzeye/ophel/issues/989))
+  - **Desktop notifications not showing on Firefox** — Fixed an issue on Firefox-based browsers where desktop notifications did not appear when AI replies finished. ([#1003](https://github.com/urzeye/ophel/issues/1003), [#1004](https://github.com/urzeye/ophel/issues/1004))
+  - **No notifications with Auto Rename Tab off** — Fixed an issue where desktop notifications and the notification sound did not fire when AI replies finished with Auto Rename Tab turned off; switching chats also no longer changes the tab title in that case. ([#1012](https://github.com/urzeye/ophel/issues/1012))
+  - **Export error on new chat pages** — Fixed an issue where exporting from a new chat page showed "Export failed"; it now shows "Please open the chat first". ([#1013](https://github.com/urzeye/ophel/issues/1013))
+  - **Advanced Model Usage Estimate misplaced** — Fixed an issue on Gemini, AI Studio and Doubao where the usage estimate panel was squeezed to the right of the input box with vertical text; it now sits above the input box again. ([#986](https://github.com/urzeye/ophel/issues/986))
+</Update>
+
 <Update label="v1.2.13">
 
   ### ✨ Improvements
@@ -1618,6 +1644,7 @@ description: "All notable changes to Ophel Atlas are documented here."
   - Open source and transparent
 
 
+  [1.3.0]: https://github.com/urzeye/ophel/releases/tag/v1.3.0
   [1.2.13]: https://github.com/urzeye/ophel/releases/tag/v1.2.13
   [1.2.12]: https://github.com/urzeye/ophel/releases/tag/v1.2.12
   [1.2.11]: https://github.com/urzeye/ophel/releases/tag/v1.2.11

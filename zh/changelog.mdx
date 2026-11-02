@@ -3,6 +3,32 @@ title: "更新日志"
 description: "Ophel Atlas 的所有重要更改均记录于此。"
 ---
 
+<Update label="v1.3.0">
+
+  ### 🚀 新增功能
+
+  - **在指定页面隐藏 Ophel** — 站点设置新增「在指定页面隐藏 Ophel」，按路径规则隐藏面板和快捷按钮，不用再为个别页面停用整个站点。 ([#995](https://github.com/urzeye/ophel/issues/995), [#998](https://github.com/urzeye/ophel/issues/998))
+  - **可关闭全局搜索** — 「功能模块」设置里新增「启用全局搜索」开关，关闭后 Ctrl/⌘+K 交还给网站自身功能；同时修复搜索弹窗里大纲结果文字挤在一起的问题。 ([#1005](https://github.com/urzeye/ophel/issues/1005))
+  - **在对话列表里导出其他对话** — 对话菜单里的「导出」现在也能导出没打开的对话，不用先手动打开；部分站点会先自动打开该对话再导出。 ([#1007](https://github.com/urzeye/ophel/issues/1007))
+  - **Qwen Studio 对话管理与完整导出** — Qwen Studio 现在支持同步和管理对话，并可基于完整对话历史导出内容、生成大纲。 ([#1011](https://github.com/urzeye/ophel/issues/1011), [#1016](https://github.com/urzeye/ophel/issues/1016))
+
+  ### ✨ 功能优化
+
+  - **设置页整理** — 站点设置选好站点后，该站点的所有设置都在同一页；设置菜单从 10 项减到 8 项，并删去重复说明、改用日常用语。 ([#987](https://github.com/urzeye/ophel/issues/987), [#988](https://github.com/urzeye/ophel/issues/988), [#989](https://github.com/urzeye/ophel/issues/989), [#996](https://github.com/urzeye/ophel/issues/996), [#999](https://github.com/urzeye/ophel/issues/999), [#1006](https://github.com/urzeye/ophel/issues/1006))
+  - **界面观感与主题对比度** — 面板、设置页和弹窗的样式做了整理，预设主题里对比度不足的文字已修正，悬浮提示统一为应用内样式。 ([#989](https://github.com/urzeye/ophel/issues/989), [#991](https://github.com/urzeye/ophel/issues/991))
+  - **手机与平板适配** — 在手机上，面板改为从侧边滑出；在平板上，吸附到边缘的面板点一下边缘把手就能展开。 ([#990](https://github.com/urzeye/ophel/issues/990))
+  - **对话同步与提示词队列** — 对话同步会写明同步到哪个文件夹；提示词队列支持带变量的提示词，链式提示词编辑器新增提示词搜索。 ([#1000](https://github.com/urzeye/ophel/issues/1000), [#1001](https://github.com/urzeye/ophel/issues/1001))
+
+  ### 🐛 问题修复
+
+  - **豆包去顶部失效** — 修复豆包对话页刷新后直接点「去顶部」，到顶后又被拉回底部的问题。 ([#983](https://github.com/urzeye/ophel/issues/983))
+  - **录制快捷键冲突** — 修复在设置里录制快捷键时，组合键同时触发网站自身功能的问题；录制时按 Esc 现在只取消录制，不再关掉设置窗口。 ([#988](https://github.com/urzeye/ophel/issues/988), [#989](https://github.com/urzeye/ophel/issues/989))
+  - **Firefox 桌面通知不显示** — 修复 Firefox 系浏览器中开启「发送桌面通知」后，AI 回复完成时系统通知不弹出的问题。 ([#1003](https://github.com/urzeye/ophel/issues/1003), [#1004](https://github.com/urzeye/ophel/issues/1004))
+  - **关闭自动重命名后收不到通知** — 修复关闭「自动重命名标签页」后，AI 回复完成时不弹桌面通知、不播放通知声音的问题；此时切换对话也不再改写标签页标题。 ([#1012](https://github.com/urzeye/ophel/issues/1012))
+  - **新对话页导出报错** — 修复在新对话页导出时提示「导出失败」的问题，现在会提示「请先打开要导出的对话」。 ([#1013](https://github.com/urzeye/ophel/issues/1013))
+  - **高级模型用量估算显示错位** — 修复 Gemini、AI Studio、豆包上用量估算面板被挤到输入框右侧、文字竖排的问题，面板恢复到输入框上方。 ([#986](https://github.com/urzeye/ophel/issues/986))
+</Update>
+
 <Update label="v1.2.13">
 
   ### ✨ 功能优化
@@ -1620,6 +1646,7 @@ description: "Ophel Atlas 的所有重要更改均记录于此。"
   - 开源透明
 
 
+  [1.3.0]: https://github.com/urzeye/ophel/releases/tag/v1.3.0
   [1.2.13]: https://github.com/urzeye/ophel/releases/tag/v1.2.13
   [1.2.12]: https://github.com/urzeye/ophel/releases/tag/v1.2.12
   [1.2.11]: https://github.com/urzeye/ophel/releases/tag/v1.2.11
