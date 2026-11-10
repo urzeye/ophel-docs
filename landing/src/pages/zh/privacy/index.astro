@@ -50,43 +50,48 @@ const p = t.privacy;
       </p>
     </div>
   </main>
-  <Footer t={t.footer} />
+  <Footer t={t.footer} homeHref="/zh/" />
 </BaseLayout>
 
 <style>
   .prose-page {
-    padding: 64px 24px;
+    padding: 72px 24px 96px;
   }
 
   .prose-inner {
-    max-width: 720px;
+    max-width: 68ch;
     margin: 0 auto;
   }
 
   h1 {
-    font-size: 36px;
-    font-weight: 700;
-    letter-spacing: -0.02em;
+    font-family: var(--font-display);
+    font-size: clamp(2.25rem, 4vw, 3rem);
+    font-weight: 800;
+    color: var(--ink-strong);
+    letter-spacing: -0.025em;
     margin-bottom: 8px;
   }
 
   .updated {
-    font-size: 14px;
-    color: var(--color-text-muted);
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--text-faint);
     margin-bottom: 48px;
   }
 
   h2 {
-    font-size: 20px;
-    font-weight: 600;
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--ink-strong);
     margin: 40px 0 12px;
-    padding-top: 40px;
-    border-top: 1px solid var(--color-border);
+    padding-top: 32px;
+    border-top: 1px solid var(--line);
   }
 
   p {
-    font-size: 15px;
-    color: var(--color-text-muted);
+    font-size: 1rem;
+    color: var(--text-muted);
     line-height: 1.8;
     margin-bottom: 16px;
   }
@@ -97,26 +102,30 @@ const p = t.privacy;
   }
 
   li {
-    font-size: 15px;
-    color: var(--color-text-muted);
+    font-size: 1rem;
+    color: var(--text-muted);
     line-height: 1.8;
     margin-bottom: 8px;
   }
 
   strong {
-    color: var(--color-text);
+    color: var(--ink-strong);
+    font-weight: 700;
   }
 
   code {
-    font-size: 13px;
+    font-size: 0.85em;
     padding: 2px 6px;
-    border-radius: 4px;
-    background: rgba(255, 255, 255, 0.08);
-    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    border-radius: 5px;
+    background: var(--surface-tint);
+    color: var(--accent-strong);
+    font-family: var(--font-mono);
+    font-weight: 600;
   }
 
   a {
-    color: var(--color-primary);
+    color: var(--accent-strong);
+    font-weight: 600;
     text-decoration: underline;
     text-underline-offset: 3px;
   }

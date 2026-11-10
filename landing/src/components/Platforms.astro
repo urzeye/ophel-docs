@@ -1,7 +1,10 @@
 ---
 import type { T } from '../i18n';
-
-import { getSupportedPlatforms, type SupportedPlatformLocale } from '../lib/supported-platforms';
+import {
+  getSupportedPlatforms,
+  getSitePacks,
+  type SupportedPlatformLocale,
+} from '../lib/supported-platforms';
 
 interface Props {
   t: T['platforms'];
@@ -10,9 +13,35 @@ interface Props {
 
 const { t, locale = 'en' } = Astro.props;
 
-const allPlatforms = getSupportedPlatforms(locale);
-const platformRow1 = allPlatforms.slice(0, 6);
-const platformRow2 = allPlatforms.slice(6);
+const builtInPlatforms = getSupportedPlatforms(locale);
+const sitePacks = getSitePacks(locale);
+
+const copy =
+  locale === 'zh'
+    ? {
+        tier1Title: '16 个内置站点',
+        tier1Badge: '开箱即用',
+        newTag: '新增',
+        tier2Title: '16 个热插拔站点适配包',
+        tier2Badge: '适配中心一键启用 · 持续扩充',
+        selfHostedTag: '自部署',
+        docsLinkText: '适配包与自定义域名说明 →',
+        docsHref: 'https://ophel.app/docs/zh/enhancements/site-extensions',
+        contributeText: '提交新站点适配包 →',
+        contributeHref: 'https://github.com/urzeye/ophel/tree/main/registry/sites',
+      }
+    : {
+        tier1Title: '16 Built-in Platforms',
+        tier1Badge: 'Zero setup',
+        newTag: 'NEW',
+        tier2Title: '16 Hot-Swappable Site Packs',
+        tier2Badge: 'One-click in Site Packs · Expanding',
+        selfHostedTag: 'Self-hosted',
+        docsLinkText: 'Site Packs & custom domain guide →',
+        docsHref: 'https://ophel.app/docs/enhancements/site-extensions',
+        contributeText: 'Contribute a Site Pack →',
+        contributeHref: 'https://github.com/urzeye/ophel/tree/main/registry/sites',
+      };
 ---
 
 <section class="platforms" id="platforms">
@@ -22,55 +51,105 @@ const platformRow2 = allPlatforms.slice(6);
       <p class="section-desc">{t.desc}</p>
     </div>
 
-    <div class="platform-rows-container">
-      <div class="platform-row">
+    <!-- Tier 1: 16 Built-in Platforms -->
+    <div class="atlas-tier-compact">
+      <div class="flex flex-wrap items-center justify-between gap-2 mb-3.5">
+        <div class="flex items-center gap-2.5">
+          <h3 class="font-display text-lg font-extrabold text-[color:var(--ink-strong)]">
+            {copy.tier1Title}
+          </h3>
+          <span
+            class="rounded-full border border-[color:var(--line-strong)] bg-[color:var(--surface-tint)] px-2.5 py-0.5 font-mono text-[11px] font-bold text-[color:var(--accent-strong)]"
+          >
+            {copy.tier1Badge}
+          </span>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4">
         {
-          platformRow1.map((platform) => (
+          builtInPlatforms.map((platform) => (
             <a
-              class="platform-chip"
+              class={`builtin-site-tile group ${platform.isNew ? 'builtin-site-tile-new' : ''}`}
               href={platform.href}
               target="_blank"
               rel="noopener noreferrer"
-              title={platform.href}
-              aria-label={`${platform.label} (${platform.href})`}
+              title={`${platform.label} (${platform.domain})`}
             >
               <span
                 class={`platform-chip-icon ${platform.iconVariant === 'inverted' ? 'platform-chip-icon-inverted' : ''}`}
                 aria-hidden="true"
               >
-                {platform.iconSrc ? (
-                  <img src={platform.iconSrc} alt={`${platform.label} logo`} loading="lazy" />
-                ) : (
-                  <span>{platform.emoji}</span>
-                )}
+                <img src={platform.iconSrc} alt="" width="18" height="18" loading="lazy" />
               </span>
-              <span class="platform-chip-label">{platform.label}</span>
+              <div class="min-w-0 flex-1 flex items-center justify-between gap-1.5">
+                <span class="truncate text-sm font-bold text-[color:var(--ink-strong)] group-hover:text-[color:var(--accent-strong)]">
+                  {platform.label}
+                </span>
+                {platform.isNew ? (
+                  <span class="shrink-0 rounded-full bg-[color:var(--accent-strong)] px-1.5 py-0.2 font-mono text-[10px] font-bold text-white">
+                    {copy.newTag}
+                  </span>
+                ) : (
+                  <span class="hidden xl:inline shrink-0 font-mono text-[11px] text-[color:var(--text-faint)]">
+                    {platform.domain}
+                  </span>
+                )}
+              </div>
             </a>
           ))
         }
       </div>
-      <div class="platform-row">
+    </div>
+
+    <!-- Tier 2: 16 Hot-Swappable Site Packs (Compact Distilled Grid) -->
+    <div class="atlas-tier-compact mt-8 pt-7 border-t border-[color:var(--line)]">
+      <div class="flex flex-wrap items-center justify-between gap-3 mb-3.5">
+        <div class="flex flex-wrap items-center gap-2.5">
+          <h3 class="font-display text-lg font-extrabold text-[color:var(--ink-strong)]">
+            {copy.tier2Title}
+          </h3>
+          <span
+            class="rounded-full border border-[rgba(200,122,8,0.32)] bg-[rgba(200,122,8,0.1)] px-2.5 py-0.5 font-mono text-[11px] font-bold text-[#945700]"
+          >
+            {copy.tier2Badge}
+          </span>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-4">
+          <a
+            href={copy.docsHref}
+            class="font-mono text-xs font-bold text-[color:var(--accent-strong)] underline decoration-[color:var(--line-strong)] underline-offset-4 transition-colors hover:text-[color:var(--ink-strong)]"
+          >
+            {copy.docsLinkText}
+          </a>
+          <a
+            href={copy.contributeHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="font-mono text-xs font-semibold text-[color:var(--ink-muted)] underline decoration-[color:var(--line)] underline-offset-4 transition-colors hover:text-[color:var(--ink-strong)]"
+          >
+            {copy.contributeText}
+          </a>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4">
         {
-          platformRow2.map((platform) => (
+          sitePacks.map((pack) => (
             <a
-              class="platform-chip"
-              href={platform.href}
+              href={pack.href}
               target="_blank"
               rel="noopener noreferrer"
-              title={platform.href}
-              aria-label={`${platform.label} (${platform.href})`}
+              class="sitepack-row group"
+              title={`${pack.label} (${pack.domain})`}
             >
-              <span
-                class={`platform-chip-icon ${platform.iconVariant === 'inverted' ? 'platform-chip-icon-inverted' : ''}`}
-                aria-hidden="true"
-              >
-                {platform.iconSrc ? (
-                  <img src={platform.iconSrc} alt={`${platform.label} logo`} loading="lazy" />
-                ) : (
-                  <span>{platform.emoji}</span>
-                )}
+              <span class="truncate text-sm font-bold text-[color:var(--ink-strong)] transition-colors group-hover:text-[color:var(--accent-strong)]">
+                {pack.label}
               </span>
-              <span class="platform-chip-label">{platform.label}</span>
+              <span class="shrink-0 font-mono text-[11px] text-[color:var(--text-faint)]">
+                {pack.category === 'self-hosted' ? copy.selfHostedTag : pack.domain}
+              </span>
             </a>
           ))
         }

@@ -2,136 +2,145 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Navbar from '../../../components/Navbar.astro';
 import Footer from '../../../components/Footer.astro';
-import { translations, CHROME_STORE_URL, EDGE_STORE_URL } from '../../../i18n';
+import {
+  translations,
+  CHROME_STORE_URL,
+  EDGE_STORE_URL,
+  FIREFOX_STORE_URL,
+  GITHUB_RELEASES_URL,
+  GREASYFORK_URL,
+  SCRIPTCAT_URL,
+} from '../../../i18n';
 import { SpotlightCard } from '../../../components/ui/SpotlightCard';
-import { getSupportedPlatforms } from '../../../lib/supported-platforms';
+import {
+  getSupportedPlatforms,
+  getSitePacks,
+  BUILTIN_PLATFORM_COUNT,
+  SITE_PACK_COUNT,
+} from '../../../lib/supported-platforms';
 
 const t = translations.zh;
 
 const platforms = [
   {
     name: 'Chrome',
-    icon: '🌐',
+    icon: '/icons/chrome.svg',
     badge: '推荐',
-    desc: '从 Chrome 网上应用店安装，适用于 Chrome、Edge、Brave、Arc 及所有基于 Chromium 的浏览器。',
+    desc: '从 Chrome 网上应用店安装，适用于 Chrome、Brave、Arc、Vivaldi 及所有 Chromium 内核浏览器。',
     cta: '安装到 Chrome',
     href: CHROME_STORE_URL,
-    note: '需要 Chrome 88+',
+    note: '需要 Chrome 88+ · 支持商店自动更新',
   },
   {
-    name: 'Edge',
-    icon: '🔷',
+    name: 'Microsoft Edge',
+    icon: '/icons/edge.svg',
     badge: null,
-    desc: '从 Microsoft Edge 外接程序商店直接安装，专为 Edge 浏览器适配。',
+    desc: '从 Microsoft Edge 外接程序商店直接安装，无需跨区即可在 Edge 中高速下载。',
     cta: '安装到 Edge',
     href: EDGE_STORE_URL,
-    note: '需要 Edge 88+',
+    note: '需要 Edge 88+ · 官方商店直装',
   },
   {
     name: 'Firefox',
-    icon: '🦊',
+    icon: '/icons/firefox.svg',
     badge: null,
-    desc: '从 Firefox 附加组件商店安装，功能与 Chrome 扩展完全一致。',
+    desc: '从 Mozilla Firefox 附加组件商店安装，具备与 Chrome 版完全一致的功能与本地隐私保护。',
     cta: '安装到 Firefox',
-    href: 'https://addons.mozilla.org/firefox/addon/ophel-ai-chat-enhancer/',
-    note: '需要 Firefox 109+',
+    href: FIREFOX_STORE_URL,
+    note: '需要 Firefox 109+ · 官方 AMO 签名',
   },
   {
-    name: '油猴脚本',
-    icon: '🐵',
+    name: 'Safari',
+    icon: '/icons/safari.svg',
+    badge: 'macOS',
+    desc: '从 GitHub Releases 下载 macOS 桌面端 Safari 扩展构建包，通过 Safari 开发者功能加载使用。',
+    cta: '前往 GitHub Releases 下载',
+    href: GITHUB_RELEASES_URL,
+    note: '支持 macOS Safari · 见 Releases 安装说明',
+  },
+  {
+    name: 'Tampermonkey 油猴脚本',
+    icon: '/icons/tampermonkey.svg',
     badge: null,
-    desc: '通过 Greasy Fork 安装油猴脚本，适用于任何支持 Tampermonkey 或 Violentmonkey 的浏览器。',
+    desc: '通过 Greasy Fork 安装油猴脚本版本，适用于任何安装了 Tampermonkey 或 Violentmonkey 的浏览器。',
     cta: '从 Greasy Fork 安装',
-    href: 'https://greasyfork.org/scripts/563646-ophel-ai-chat-page-enhancer',
+    href: GREASYFORK_URL,
     note: '需要 Tampermonkey 或 Violentmonkey',
   },
   {
-    name: 'ScriptCat',
-    icon: '🐱',
+    name: 'ScriptCat 脚本猫',
+    icon: '/icons/scriptcat.png',
     badge: null,
-    desc: '从 ScriptCat 脚本页安装油猴脚本，适合使用 ScriptCat 脚本管理器的用户。',
+    desc: '从 ScriptCat 脚本站一键安装，适合偏好使用脚本猫管理器的国内用户。',
     cta: '从 ScriptCat 安装',
-    href: 'https://scriptcat.org/script-show-page/6519',
-    note: '需要 ScriptCat',
+    href: SCRIPTCAT_URL,
+    note: '需要 ScriptCat 脚本猫管理器',
   },
   {
-    name: 'GitHub Releases',
-    icon: '📦',
-    badge: null,
-    desc: '从 GitHub Releases 下载最新版 .zip 或 .xpi 安装包，用于手动安装或自托管部署。',
-    cta: '前往 Releases',
-    href: 'https://github.com/urzeye/ophel/releases',
-    note: '提供 ZIP 与 XPI 安装包',
+    name: 'GitHub Releases (ZIP / XPI / Safari / User.js)',
+    icon: '/icons/github.svg',
+    badge: '离线与手动安装',
+    desc: '直接从 GitHub Releases 下载最新发布的 Chrome (.zip)、Firefox (.xpi)、Safari 资源包及油猴脚本。',
+    cta: '打开 GitHub Releases',
+    href: GITHUB_RELEASES_URL,
+    note: '第一时间获取最新构建包',
   },
 ];
 
 const allSupportedSites = getSupportedPlatforms('zh');
-const supportedSitesRow1 = allSupportedSites.slice(0, 6);
-const supportedSitesRow2 = allSupportedSites.slice(6);
-
-const iconImgs: Record<string, string> = {
-  Chrome: '/icons/chrome.svg',
-  Edge: '/icons/edge.svg',
-  Firefox: '/icons/firefox.svg',
-  油猴脚本: '/icons/tampermonkey.svg',
-  ScriptCat: '/icons/scriptcat.png',
-  'GitHub Releases': '/icons/github.svg',
-};
+const allSitePacks = getSitePacks('zh');
 ---
 
 <BaseLayout
-  title="下载安装 Ophel — Chrome、Firefox、油猴脚本、ScriptCat"
-  description="免费安装 Ophel 到 Chrome、Firefox、Edge、Tampermonkey 或 ScriptCat。支持 ChatGPT、Gemini、Claude 等 15 个 AI 平台。"
+  title="下载安装 Ophel — Chrome、Edge、Firefox、Safari、油猴脚本"
+  description="免费安装 Ophel 到 Chrome、Edge、Firefox、Safari、Tampermonkey 或 ScriptCat。支持 16 个内置 AI 平台与 16 个热插拔站点适配包。"
   lang="zh-CN"
   enPath="/download/"
 >
   <Navbar t={t.nav} homeHref="/zh/" />
-  <main class="relative min-h-screen py-24 bg-background">
-    <!-- 背景流光 -->
-    <div class="pointer-events-none absolute inset-0 bg-grid-white opacity-[0.03]"></div>
-    <div
-      class="pointer-events-none absolute top-[10%] left-1/2 w-[800px] h-[500px] -translate-x-1/2 bg-neon-cyan/10 blur-[120px] rounded-full"
-    >
-    </div>
-
-    <div class="relative z-10 w-full max-w-6xl mx-auto px-6 max-w-4xl">
-      <header class="text-center mb-16">
-        <p
-          class="inline-flex items-center rounded-full border border-[color:var(--line-strong)] bg-[color:var(--surface-tint)] px-3 py-1 text-xs font-bold uppercase tracking-widest text-[color:var(--accent-strong)] mb-6"
-        >
-          免费 · 无需注册
-        </p>
+  <main class="relative min-h-screen py-18 sm:py-24 bg-background">
+    <div class="relative z-10 w-full max-w-[1040px] mx-auto px-5 sm:px-6">
+      <header class="text-center mb-14">
         <h1
-          class="text-4xl sm:text-6xl font-extrabold tracking-tight text-[color:var(--ink-strong)] mb-6"
+          class="font-display text-4xl sm:text-6xl font-extrabold tracking-tight text-[color:var(--ink-strong)] mb-5"
         >
-          安装 Ophel
+          安装 Ophel Atlas
         </h1>
-        <p class="text-lg text-[color:var(--text-muted)] max-w-2xl mx-auto leading-relaxed">
-          一个扩展，支持 <strong class="text-[color:var(--ink-strong)]"
-            >{allSupportedSites.length} 个 AI 平台</strong
-          >，覆盖主流浏览器。
+        <p
+          class="text-base sm:text-lg text-[color:var(--text-muted)] max-w-2xl mx-auto leading-relaxed"
+        >
+          开源免费（GPLv3），无需注册账号。开箱支持{' '}
+          <strong class="text-[color:var(--ink-strong)]">
+            {BUILTIN_PLATFORM_COUNT} 个内置 AI 平台
+          </strong>{' '}
+          与{' '}
+          <strong class="text-[color:var(--ink-strong)]">
+            {SITE_PACK_COUNT} 个热插拔站点适配包
+          </strong>
+          。
         </p>
       </header>
 
-      <div class="grid gap-6 md:grid-cols-2 mb-16">
+      <div class="grid gap-5 md:grid-cols-2 mb-16">
         {
-          platforms.map((p) => (
-            <SpotlightCard className="p-6 group border-[color:var(--line)] bg-white/70 shadow-[0_18px_48px_rgba(31,43,64,0.1)] hover:border-[color:var(--line-strong)]">
+          platforms.map((p, idx) => (
+            <SpotlightCard
+              spotlightColor="rgba(13, 122, 117, 0.1)"
+              className={`p-6 group border-[color:var(--line)] bg-white/80 shadow-[0_14px_36px_rgba(24,33,49,0.08)] hover:border-[color:var(--line-strong)] ${
+                idx === platforms.length - 1 ? 'md:col-span-2' : ''
+              }`}
+            >
               <div class="relative z-10 flex gap-4 h-full">
-                <div class="flex-shrink-0 pt-1 group-hover:scale-110 transition-transform">
-                  {iconImgs[p.name] ? (
-                    <img src={iconImgs[p.name]} alt={p.name} width="36" height="36" />
-                  ) : (
-                    <span class="text-3xl">{p.icon}</span>
-                  )}
+                <div class="flex-shrink-0 pt-1 group-hover:scale-105 transition-transform">
+                  <img src={p.icon} alt="" width="36" height="36" />
                 </div>
                 <div class="flex flex-col flex-1">
-                  <div class="flex items-center gap-3 mb-2">
-                    <h2 class="text-lg font-bold text-[color:var(--ink)] group-hover:text-[color:var(--ink-strong)] transition-colors">
+                  <div class="flex flex-wrap items-center gap-2.5 mb-2">
+                    <h2 class="font-display text-lg font-extrabold text-[color:var(--ink)] group-hover:text-[color:var(--ink-strong)] transition-colors">
                       {p.name}
                     </h2>
                     {p.badge && (
-                      <span class="px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-white bg-[color:var(--accent-strong)] rounded-full">
+                      <span class="px-2.5 py-0.5 font-mono text-[11px] font-bold text-white bg-[color:var(--accent-strong)] rounded-full">
                         {p.badge}
                       </span>
                     )}
@@ -144,11 +153,11 @@ const iconImgs: Record<string, string> = {
                       href={p.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      class="inline-flex items-center text-sm font-semibold text-[color:var(--accent-strong)] hover:text-[color:var(--ink-strong)] transition-colors"
+                      class="inline-flex items-center text-sm font-bold text-[color:var(--accent-strong)] hover:text-[color:var(--ink-strong)] transition-colors"
                     >
-                      {p.cta} <span class="ml-1 text-[10px]">↗</span>
+                      {p.cta} <span class="ml-1 text-xs">↗</span>
                     </a>
-                    <span class="block mt-1.5 text-xs text-[color:var(--text-faint)]">
+                    <span class="block mt-1.5 font-mono text-xs text-[color:var(--text-faint)]">
                       {p.note}
                     </span>
                   </div>
@@ -159,145 +168,136 @@ const iconImgs: Record<string, string> = {
         }
       </div>
 
-      <section class="mb-16">
+      <section class="mb-14">
         <div
-          class="rounded-2xl border border-[color:var(--line)] bg-white/70 p-6 shadow-[0_18px_48px_rgba(31,43,64,0.08)]"
+          class="rounded-2xl border border-[color:var(--line)] bg-white/80 p-6 shadow-[0_14px_36px_rgba(24,33,49,0.06)]"
         >
-          <p
-            class="mb-2 text-xs font-bold uppercase tracking-widest text-[color:var(--accent-strong)]"
-          >
-            商店版本状态
-          </p>
-          <h2 class="mb-3 text-xl font-bold text-[color:var(--ink-strong)]">
-            商店版本可能晚于 GitHub Releases
+          <h2 class="mb-2.5 font-display text-xl font-extrabold text-[color:var(--ink-strong)]">
+            商店审核进度与 GitHub Releases 说明
           </h2>
           <p class="text-sm leading-relaxed text-[color:var(--text-muted)]">
-            GitHub Releases、浏览器商店提交、商店审核和分发是不同步骤。Chrome 网上应用店、Microsoft
-            Edge add-ons、Firefox 附加组件商店、Greasy Fork 和 ScriptCat
-            可能在不同时间发布新版本。如需确认当前已发布版本，请以各公开页面显示的版本为准。
+            每次版本发布时，GitHub Releases 会第一时间提供全平台构建包（含 Chrome、Firefox、Safari
+            及油猴脚本）。Chrome 网上应用店、Microsoft Edge 商店与 Firefox
+            附加组件商店由于需要经过各自的审核队列，上线时间可能比 GitHub 晚 1–3 天。
           </p>
         </div>
       </section>
 
-      <section class="mb-16">
-        <h2 class="text-xl font-bold text-[color:var(--ink-strong)] mb-6 flex items-center gap-2">
-          <span class="h-px bg-[color:var(--line)] flex-1"></span>
-          支持的平台
-          <span class="h-px bg-[color:var(--line)] flex-1"></span>
+      <section class="mb-14">
+        <h2 class="font-display text-xl font-extrabold text-[color:var(--ink-strong)] mb-4">
+          {BUILTIN_PLATFORM_COUNT} 个内置 AI 平台（开箱即用）
         </h2>
-        <div class="dl-sites-container flex flex-col items-center gap-3">
-          <div class="dl-sites-row flex flex-nowrap justify-center gap-3">
-            {
-              supportedSitesRow1.map((site) => (
-                <a
-                  href={site.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  title={site.href}
-                  aria-label={`打开 ${site.label}`}
-                  class="inline-flex items-center gap-2.5 px-4 py-2 text-sm font-semibold text-[color:var(--ink-muted)] bg-white/70 border border-[color:var(--line)] rounded-full hover:border-[color:var(--line-strong)] hover:text-[color:var(--ink-strong)] hover:bg-white transition-colors"
+        <div class="flex flex-wrap gap-2.5">
+          {
+            allSupportedSites.map((site) => (
+              <a
+                href={site.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                title={site.domain}
+                class="inline-flex items-center gap-2 px-3.5 py-2 text-sm font-bold text-[color:var(--ink-muted)] bg-white/80 border border-[color:var(--line)] rounded-full hover:border-[color:var(--line-strong)] hover:text-[color:var(--ink-strong)] hover:bg-white transition-colors"
+              >
+                <span
+                  class={`inline-flex items-center justify-center shrink-0 ${
+                    site.iconVariant === 'inverted'
+                      ? 'w-5 h-5 rounded-full bg-[color:var(--ink-strong)]'
+                      : ''
+                  }`}
                 >
-                  {site.iconSrc ? (
-                    <span
-                      class={`inline-flex items-center justify-center shrink-0 ${site.iconVariant === 'inverted' ? 'w-5 h-5 rounded-full bg-[color:var(--ink)] border border-[color:var(--line)]' : ''}`}
-                    >
-                      <img
-                        src={site.iconSrc}
-                        alt=""
-                        width="18"
-                        height="18"
-                        class={`shrink-0 ${site.iconVariant === 'inverted' ? 'w-4 h-4 [filter:brightness(0)_invert(1)]' : ''}`}
-                        loading="lazy"
-                      />
-                    </span>
-                  ) : (
-                    <span class="shrink-0">{site.emoji}</span>
-                  )}
-                  <span>{site.label}</span>
-                </a>
-              ))
-            }
-          </div>
-          <div class="dl-sites-row flex flex-nowrap justify-center gap-3">
-            {
-              supportedSitesRow2.map((site) => (
-                <a
-                  href={site.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  title={site.href}
-                  aria-label={`打开 ${site.label}`}
-                  class="inline-flex items-center gap-2.5 px-4 py-2 text-sm font-semibold text-[color:var(--ink-muted)] bg-white/70 border border-[color:var(--line)] rounded-full hover:border-[color:var(--line-strong)] hover:text-[color:var(--ink-strong)] hover:bg-white transition-colors"
-                >
-                  {site.iconSrc ? (
-                    <span
-                      class={`inline-flex items-center justify-center shrink-0 ${site.iconVariant === 'inverted' ? 'w-5 h-5 rounded-full bg-[color:var(--ink)] border border-[color:var(--line)]' : ''}`}
-                    >
-                      <img
-                        src={site.iconSrc}
-                        alt=""
-                        width="18"
-                        height="18"
-                        class={`shrink-0 ${site.iconVariant === 'inverted' ? 'w-4 h-4 [filter:brightness(0)_invert(1)]' : ''}`}
-                        loading="lazy"
-                      />
-                    </span>
-                  ) : (
-                    <span class="shrink-0">{site.emoji}</span>
-                  )}
-                  <span>{site.label}</span>
-                </a>
-              ))
-            }
-          </div>
+                  <img
+                    src={site.iconSrc}
+                    alt=""
+                    width="18"
+                    height="18"
+                    class={`shrink-0 ${
+                      site.iconVariant === 'inverted'
+                        ? 'w-3.5 h-3.5 [filter:brightness(0)_invert(1)]'
+                        : ''
+                    }`}
+                    loading="lazy"
+                  />
+                </span>
+                <span>{site.label}</span>
+              </a>
+            ))
+          }
+        </div>
+
+        <h2 class="font-display text-xl font-extrabold text-[color:var(--ink-strong)] mt-10 mb-4">
+          {SITE_PACK_COUNT} 个热插拔站点适配包（适配中心一键启用）
+        </h2>
+        <div class="flex flex-wrap gap-2">
+          {
+            allSitePacks.map((pack) => (
+              <a
+                href={pack.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                title={pack.domain}
+                class="inline-flex items-center gap-2 px-3.5 py-1.5 text-xs font-bold text-[color:var(--ink-muted)] bg-white/65 border border-[color:var(--line)] rounded-full hover:border-[color:var(--line-strong)] hover:text-[color:var(--ink-strong)] hover:bg-white transition-colors"
+              >
+                <span>{pack.label}</span>
+                <span class="font-mono text-[10px] text-[color:var(--text-faint)]">
+                  {pack.domain}
+                </span>
+              </a>
+            ))
+          }
         </div>
       </section>
 
       <section>
         <div
-          class="p-8 md:p-10 rounded-2xl bg-white/70 border border-[color:var(--line)] shadow-[0_18px_48px_rgba(31,43,64,0.08)]"
+          class="p-8 md:p-10 rounded-2xl bg-white/80 border border-[color:var(--line)] shadow-[0_14px_36px_rgba(24,33,49,0.06)]"
         >
-          <h2 class="text-2xl font-bold text-[color:var(--ink-strong)] mb-8">快速开始</h2>
-          <ol class="space-y-8">
-            <li class="flex gap-5">
+          <h2 class="font-display text-2xl font-extrabold text-[color:var(--ink-strong)] mb-8">
+            三步快速上手
+          </h2>
+          <ol class="space-y-6">
+            <li class="flex gap-4">
               <span
-                class="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full border border-[color:var(--line-strong)] bg-[color:var(--surface-tint)] text-sm font-bold text-[color:var(--accent-strong)]"
-                >1</span
+                class="flex-shrink-0 flex items-center justify-center w-7 h-7 rounded-full border border-[color:var(--line-strong)] bg-[color:var(--surface-tint)] font-mono text-xs font-bold text-[color:var(--accent-strong)]"
               >
+                1
+              </span>
               <div>
-                <strong class="block text-base font-semibold text-[color:var(--ink)] mb-1.5">
-                  安装扩展
+                <strong class="block text-base font-bold text-[color:var(--ink-strong)] mb-1">
+                  安装对应浏览器的 Ophel 扩展
                 </strong>
                 <p class="text-sm text-[color:var(--text-muted)] leading-relaxed">
-                  选择上方任一安装方式并添加到浏览器。
+                  选择上方任一渠道（Chrome、Edge、Firefox、Safari
+                  或油猴脚本）完成安装，无需注册账号。
                 </p>
               </div>
             </li>
-            <li class="flex gap-5">
+            <li class="flex gap-4">
               <span
-                class="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full border border-[color:var(--line-strong)] bg-[color:var(--surface-tint)] text-sm font-bold text-[color:var(--accent-strong)]"
-                >2</span
+                class="flex-shrink-0 flex items-center justify-center w-7 h-7 rounded-full border border-[color:var(--line-strong)] bg-[color:var(--surface-tint)] font-mono text-xs font-bold text-[color:var(--accent-strong)]"
               >
+                2
+              </span>
               <div>
-                <strong class="block text-base font-semibold text-[color:var(--ink)] mb-1.5"
-                  >打开支持的 AI 网站</strong
-                >
+                <strong class="block text-base font-bold text-[color:var(--ink-strong)] mb-1">
+                  打开任意受支持的 AI 网站（或在适配中心启用适配包）
+                </strong>
                 <p class="text-sm text-[color:var(--text-muted)] leading-relaxed">
-                  访问 ChatGPT、Gemini、Claude 或其他 15 个支持平台中的任意一个。
+                  访问 ChatGPT、Gemini、Claude、Gemini Notebook、DeepSeek 等 16
+                  个内置平台，或在「设置 → 适配中心」开启更多站点。
                 </p>
               </div>
             </li>
-            <li class="flex gap-5">
+            <li class="flex gap-4">
               <span
-                class="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full border border-[color:var(--line-strong)] bg-[color:var(--surface-tint)] text-sm font-bold text-[color:var(--accent-strong)]"
-                >3</span
+                class="flex-shrink-0 flex items-center justify-center w-7 h-7 rounded-full border border-[color:var(--line-strong)] bg-[color:var(--surface-tint)] font-mono text-xs font-bold text-[color:var(--accent-strong)]"
               >
+                3
+              </span>
               <div>
-                <strong class="block text-base font-semibold text-[color:var(--ink)] mb-1.5"
-                  >Ophel 自动激活</strong
-                >
+                <strong class="block text-base font-bold text-[color:var(--ink-strong)] mb-1">
+                  使用实时大纲、文件夹与全局搜索
+                </strong>
                 <p class="text-sm text-[color:var(--text-muted)] leading-relaxed">
-                  面板会出现在页面右侧，点击切换按钮即可展开。
+                  Ophel 面板会自动停靠在对话页面右侧；随时按下 Ctrl/⌘ + K 即可唤起全局语法搜索。
                 </p>
               </div>
             </li>
@@ -306,18 +306,5 @@ const iconImgs: Record<string, string> = {
       </section>
     </div>
   </main>
-  <Footer t={t.footer} />
+  <Footer t={t.footer} homeHref="/zh/" />
 </BaseLayout>
-
-<style>
-  @media (max-width: 768px) {
-    .dl-sites-container {
-      flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    .dl-sites-row {
-      display: contents;
-    }
-  }
-</style>

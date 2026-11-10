@@ -72,18 +72,11 @@ const versions = parseVersions(rawContent).slice(0, 20); // 最多显示 20 个�
   enPath="/changelog/"
 >
   <Navbar t={t.nav} homeHref="/zh/" />
-  <main class="relative min-h-screen py-24 bg-background">
-    <!-- 背景流光 -->
-    <div class="pointer-events-none absolute inset-0 bg-grid-white opacity-[0.03]"></div>
-    <div
-      class="pointer-events-none absolute top-0 left-1/2 w-[600px] h-[300px] -translate-x-1/2 bg-neon-cyan/5 blur-[100px] rounded-full"
-    >
-    </div>
-
-    <div class="relative z-10 w-full max-w-6xl mx-auto px-6 max-w-3xl">
-      <header class="mb-16">
+  <main class="relative min-h-screen py-20 bg-background">
+    <div class="relative z-10 w-full max-w-3xl mx-auto px-6">
+      <header class="mb-14">
         <h1
-          class="text-4xl sm:text-5xl font-extrabold tracking-tight text-[color:var(--ink-strong)] mb-4"
+          class="font-display text-4xl sm:text-5xl font-extrabold tracking-tight text-[color:var(--ink-strong)] mb-4"
         >
           更新日志
         </h1>

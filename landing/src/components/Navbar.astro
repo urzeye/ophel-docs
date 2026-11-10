@@ -10,32 +10,47 @@ const { t, homeHref = '/' } = Astro.props;
 
 const navLinks = [
   { label: t.features, href: homeHref + '#features' },
-  { label: t.reviews, href: t.reviewsHref },
   { label: t.platforms, href: homeHref + '#platforms' },
+  { label: t.reviews, href: t.reviewsHref },
   { label: t.changelog, href: t.changelogHref },
   { label: t.docs, href: t.docsHref },
 ];
 ---
 
 <header class="site-nav">
-  <div class="w-full max-w-[1180px] mx-auto px-5 sm:px-6 lg:px-8">
-    <div class="flex h-[72px] items-center justify-between">
-      <div class="flex items-center gap-8">
+  <div class="mx-auto w-full max-w-[1200px] px-4 sm:px-6 lg:px-8">
+    <div class="flex h-[68px] items-center justify-between gap-3">
+      <div class="flex items-center gap-6 lg:gap-8">
         <a
           href={homeHref}
-          class="flex items-center gap-2.5 rounded-full pr-2 transition-opacity hover:opacity-80"
+          class="group inline-flex items-center gap-2.5 rounded-full pr-2 transition-opacity hover:opacity-85"
           aria-label={t.homeLabel}
         >
-          <img src="/logo.png" alt="Ophel logo" width="32" height="32" class="rounded-lg" />
-          <span class="text-lg font-extrabold tracking-tight text-[color:var(--ink)]">Ophel</span>
+          <img
+            src="/logo.png"
+            alt="Ophel logo"
+            width="32"
+            height="32"
+            class="rounded-lg transition-transform duration-200 group-hover:rotate-6"
+          />
+          <span
+            class="font-display text-lg font-extrabold tracking-tight text-[color:var(--ink-strong)]"
+          >
+            Ophel
+          </span>
+          <span
+            class="hidden rounded-full border border-[color:var(--line-strong)] bg-[color:var(--surface-tint)] px-2 py-0.5 font-mono text-[11px] font-semibold text-[color:var(--accent-strong)] sm:inline-block"
+          >
+            Atlas
+          </span>
         </a>
 
-        <nav class="hidden md:flex items-center gap-2" aria-label={t.ariaLabel}>
+        <nav class="hidden md:flex items-center gap-1" aria-label={t.ariaLabel}>
           {
             navLinks.map((link) => (
               <a
                 href={link.href}
-                class="rounded-full px-3.5 py-2 text-sm font-semibold text-[color:var(--ink-muted)] transition-all hover:bg-[color:var(--surface)] hover:text-[color:var(--ink)]"
+                class="rounded-full px-3.5 py-1.5 text-sm font-semibold text-[color:var(--ink-muted)] transition-colors hover:bg-[color:var(--surface)] hover:text-[color:var(--ink-strong)]"
               >
                 {link.label}
               </a>
@@ -44,37 +59,54 @@ const navLinks = [
         </nav>
       </div>
 
-      <div class="flex items-center gap-4">
+      <div class="flex items-center gap-2 sm:gap-3">
         <a
           href={t.githubHref}
           target="_blank"
           rel="noopener noreferrer"
-          class="hidden h-10 w-10 items-center justify-center rounded-full text-[color:var(--ink)] transition-all hover:-translate-y-0.5 hover:bg-[color:var(--surface)] sm:inline-flex"
+          class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-transparent text-[color:var(--ink)] transition-all hover:-translate-y-0.5 hover:border-[color:var(--line)] hover:bg-[color:var(--surface)]"
           aria-label={t.githubAriaLabel}
         >
           <img
             src="/icons/github.svg"
             alt=""
-            width="26"
-            height="26"
+            width="20"
+            height="20"
             class="[filter:brightness(0)_saturate(100%)]"
             aria-hidden="true"
           />
         </a>
         <a
           href={t.langSwitchHref}
-          class="hidden rounded-full border border-[color:var(--line)] bg-white/70 px-3.5 py-2 text-xs font-bold text-[color:var(--ink-muted)] shadow-[0_8px_24px_rgba(28,45,74,0.06)] transition-all hover:border-[color:var(--line-strong)] hover:text-[color:var(--ink)] sm:flex"
+          class="inline-flex h-9 items-center rounded-full border border-[color:var(--line)] bg-white/75 px-3 text-xs font-bold text-[color:var(--ink-muted)] transition-all hover:border-[color:var(--line-strong)] hover:bg-white hover:text-[color:var(--ink-strong)]"
           aria-label={t.langSwitchAriaLabel}
         >
           {t.langSwitch}
         </a>
         <a
           href={t.installHref}
-          class="relative inline-flex h-10 items-center justify-center rounded-full bg-[color:var(--ink)] px-5 py-2 text-sm font-bold text-white shadow-[0_14px_32px_rgba(20,34,58,0.2)] transition-all hover:-translate-y-0.5 hover:bg-[color:var(--ink-strong)]"
+          class="inline-flex h-9 items-center justify-center rounded-full bg-[color:var(--ink-strong)] px-4 text-xs sm:text-sm font-bold text-[color:var(--paper-strong)] shadow-[0_10px_24px_rgba(12,21,36,0.18)] transition-all hover:-translate-y-0.5 hover:bg-[color:var(--accent-strong)] active:translate-y-0"
         >
           {t.install}
         </a>
       </div>
     </div>
+
+    <!-- Mobile quick-nav rail -->
+    <nav
+      class="flex md:hidden items-center gap-1.5 overflow-x-auto border-t border-[color:var(--line)] py-2 no-scrollbar"
+      aria-label={t.ariaLabel}
+    >
+      {
+        navLinks.map((link) => (
+          <a
+            href={link.href}
+            class="shrink-0 rounded-full px-3 py-1 text-xs font-semibold text-[color:var(--ink-muted)] transition-colors hover:bg-[color:var(--surface)] hover:text-[color:var(--ink-strong)]"
+          >
+            {link.label}
+          </a>
+        ))
+      }
+    </nav>
   </div>
 </header>

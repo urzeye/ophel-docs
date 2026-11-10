@@ -1,5 +1,11 @@
 ---
-import { translations, CHROME_STORE_URL } from '../../i18n';
+import {
+  translations,
+  CHROME_STORE_URL,
+  EDGE_STORE_URL,
+  FIREFOX_STORE_URL,
+  GITHUB_RELEASES_URL,
+} from '../../i18n';
 import { getLatestVersion } from '../../lib/changelog';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Navbar from '../../components/Navbar.astro';
@@ -11,11 +17,15 @@ import Footer from '../../components/Footer.astro';
 
 const t = translations.zh;
 const latestVersion = getLatestVersion();
-
-const FIREFOX_URL_ZH = 'https://addons.mozilla.org/firefox/addon/ophel-ai-chat-enhancer/';
 ---
 
-<BaseLayout title={t.meta.title} description={t.meta.description} lang="zh-CN" enPath="/">
+<BaseLayout
+  title={t.meta.title}
+  description={t.meta.description}
+  lang="zh-CN"
+  enPath="/"
+  withJsonLd={true}
+>
   <Navbar t={t.nav} homeHref="/zh/" />
   <main>
     <Hero
@@ -27,14 +37,15 @@ const FIREFOX_URL_ZH = 'https://addons.mozilla.org/firefox/addon/ophel-ai-chat-e
       secondaryCta={t.hero.ctaSecondary}
       primaryLink={CHROME_STORE_URL}
       secondaryLink="https://ophel.app/docs/zh/introduction"
-      alternateInstallLabel="查看其他安装方式"
+      alternateInstallLabel="全部 6 种安装渠道"
       alternateInstallLink="/zh/download/"
       version={latestVersion}
       locale="zh"
       browserCtas={{
         chrome: { label: '安装 Chrome 扩展', href: CHROME_STORE_URL },
-        edge: { label: '安装 Chrome 扩展', href: CHROME_STORE_URL },
-        firefox: { label: '安装到 Firefox', href: FIREFOX_URL_ZH },
+        edge: { label: '安装 Edge 扩展', href: EDGE_STORE_URL },
+        firefox: { label: '安装到 Firefox', href: FIREFOX_STORE_URL },
+        safari: { label: '下载 Safari 扩展', href: GITHUB_RELEASES_URL },
         default: { label: t.hero.ctaPrimary, href: CHROME_STORE_URL },
       }}
     />
@@ -45,8 +56,8 @@ const FIREFOX_URL_ZH = 'https://addons.mozilla.org/firefox/addon/ophel-ai-chat-e
       items={t.features.items}
       locale="zh"
     />
-    <ReviewsMarquee client:load title={t.reviews.title} subtitle={t.reviews.subtitle} />
     <Platforms t={t.platforms} locale="zh" />
+    <ReviewsMarquee client:load title={t.reviews.title} subtitle={t.reviews.subtitle} />
   </main>
-  <Footer t={t.footer} />
+  <Footer t={t.footer} homeHref="/zh/" />
 </BaseLayout>

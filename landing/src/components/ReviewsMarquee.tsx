@@ -1,16 +1,15 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { buildMarqueeRows, type Review } from '../lib/reviews';
 
-// ─── Colour palette for letter-fallback avatars ───────────────────────────
 const AVATAR_COLORS = [
-  '#6366f1',
-  '#8b5cf6',
-  '#ec4899',
-  '#f59e0b',
-  '#10b981',
-  '#3b82f6',
-  '#ef4444',
-  '#14b8a6',
+  '#0f766e',
+  '#1d4ed8',
+  '#b45309',
+  '#047857',
+  '#4338ca',
+  '#be123c',
+  '#0369a1',
+  '#6d28d9',
 ];
 
 function avatarColor(name: string): string {
@@ -19,14 +18,12 @@ function avatarColor(name: string): string {
   return AVATAR_COLORS[Math.abs(hash) % AVATAR_COLORS.length];
 }
 
-// ─── Single review card ───────────────────────────────────────────────────
 function ReviewCard({ review }: { review: Review }) {
   const [avatarError, setAvatarError] = useState(false);
   const showFallback = !review.avatar || avatarError;
 
   return (
     <div className="reviews-card" aria-label={`Review by ${review.name}`}>
-      {/* Header: avatar + name + stars */}
       <div className="reviews-card-header">
         {showFallback ? (
           <div
@@ -49,34 +46,35 @@ function ReviewCard({ review }: { review: Review }) {
         )}
         <div className="reviews-meta">
           <span className="reviews-name">{review.name}</span>
-          <span className="reviews-stars" aria-label="5 stars">
+          <span className="reviews-stars" aria-label="5 out of 5 stars">
             ★★★★★
           </span>
         </div>
       </div>
 
-      {/* Review text — 4-line clamp */}
       <p className="reviews-text">{review.text}</p>
     </div>
   );
 }
 
-// ─── Marquee row ──────────────────────────────────────────────────────────
 interface MarqueeRowProps {
   items: Review[];
   direction: 'left' | 'right';
-  duration: number; // seconds
+  duration: number;
+  paused: boolean;
 }
 
-function MarqueeRow({ items, direction, duration }: MarqueeRowProps) {
-  // Duplicate for seamless loop
+function MarqueeRow({ items, direction, duration, paused }: MarqueeRowProps) {
   const track = [...items, ...items];
 
   return (
     <div className="reviews-row-outer" aria-hidden="true">
       <div
         className={`reviews-track reviews-track-${direction}`}
-        style={{ animationDuration: `${duration}s` }}
+        style={{
+          animationDuration: `${duration}s`,
+          animationPlayState: paused ? 'paused' : undefined,
+        }}
       >
         {track.map((review, i) => (
           <ReviewCard key={`${review.id}-${i}`} review={review} />
@@ -86,28 +84,41 @@ function MarqueeRow({ items, direction, duration }: MarqueeRowProps) {
   );
 }
 
-// ─── Public component ─────────────────────────────────────────────────────
 interface ReviewsMarqueeProps {
   title: string;
   subtitle: string;
 }
 
 export function ReviewsMarquee({ title, subtitle }: ReviewsMarqueeProps) {
-  // useMemo keeps the shuffle stable across React re-renders
   const [row1, row2] = useMemo(() => buildMarqueeRows(), []);
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const [isOffscreen, setIsOffscreen] = useState(false);
+
+  useEffect(() => {
+    const node = sectionRef.current;
+    if (!node) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        setIsOffscreen(!entries[0]?.isIntersecting);
+      },
+      { threshold: 0.05 },
+    );
+    io.observe(node);
+    return () => io.disconnect();
+  }, []);
 
   return (
-    <section className="reviews-section" id="reviews" aria-label="User reviews">
-      {/* Section heading */}
+    <section ref={sectionRef} className="reviews-section" id="reviews" aria-label="User reviews">
       <div className="reviews-heading">
-        <h2 className="text-3xl font-bold tracking-tight sm:text-4xl text-white mb-4">{title}</h2>
-        <p className="text-lg text-zinc-400">{subtitle}</p>
+        <h2 className="font-display text-3xl font-extrabold tracking-tight sm:text-4xl text-[#f3efe6] mb-3">
+          {title}
+        </h2>
+        <p className="text-base sm:text-lg text-[#a4b8ca]">{subtitle}</p>
       </div>
 
-      {/* Marquee rows */}
       <div className="reviews-marquee-wrapper">
-        <MarqueeRow items={row1} direction="left" duration={350} />
-        <MarqueeRow items={row2} direction="right" duration={420} />
+        <MarqueeRow items={row1} direction="left" duration={340} paused={isOffscreen} />
+        <MarqueeRow items={row2} direction="right" duration={400} paused={isOffscreen} />
       </div>
     </section>
   );

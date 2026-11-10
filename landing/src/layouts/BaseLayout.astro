@@ -6,19 +6,15 @@ interface Props {
   title?: string;
   description?: string;
   ogImage?: string;
-  /** 当前页面语言，默认 zh-CN；英文版上线后传 'en' */
   lang?: string;
-  /** 当前页面对应的英文路径（用于 hreflang），默认为当前路径 */
   enPath?: string;
-  /** 当前页面对应的中文路径（用于 hreflang），默认 /zh + 当前路径 */
   zhPath?: string;
-  /** 是否输出 JSON-LD SoftwareApplication 结构化数据，仅首页需要 */
   withJsonLd?: boolean;
 }
 
 const {
-  title = 'Ophel — AI Chat Organizer & Outline Navigator',
-  description = 'Ophel transforms AI chats into readable, navigable knowledge. Real-time outlines, conversation folders & prompt library for ChatGPT, Gemini, Claude and 15 platforms.',
+  title = 'Ophel Atlas — AI Chat Outline, Folder Organizer & Prompt Workbench',
+  description = 'Ophel transforms AI chats into readable, navigable knowledge. Real-time outlines, chat folders & prompt library across 16 built-in platforms and 16 hot-swappable Site Packs.',
   ogImage = '/og-image.png',
   lang = 'en',
   enPath,
@@ -28,7 +24,6 @@ const {
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-// hreflang — 英文版上线前用占位 URL；上线后两个版本均会真实存在
 const enURL = new URL(enPath ?? Astro.url.pathname.replace(/^\/zh(\/|$)/, '/'), Astro.site);
 const zhURL = new URL(
   zhPath ?? `/zh${Astro.url.pathname === '/' ? '/' : Astro.url.pathname}`,
@@ -42,11 +37,11 @@ const jsonLd = {
   alternateName: 'Ophel Atlas',
   applicationCategory: 'BrowserApplication',
   applicationSubCategory: 'ProductivityApplication',
-  operatingSystem: 'Chrome, Firefox, Edge',
-  softwareVersion: getLatestVersion() || '1.0.50',
+  operatingSystem: 'Chrome, Edge, Firefox, Safari, Tampermonkey',
+  softwareVersion: getLatestVersion() || '1.3.2',
   url: 'https://ophel.app',
   description:
-    'Transform AI conversations into readable, navigable, and reusable knowledge. Supports ChatGPT, Gemini, Claude, and 15 platforms.',
+    'Transform AI conversations into readable, navigable, and reusable knowledge across 16 built-in platforms (including ChatGPT, Gemini, Claude, Gemini Notebook) and 16 hot-swappable Site Packs.',
   screenshot: 'https://ophel.app/og-image.png',
   offers: {
     '@type': 'Offer',
@@ -61,28 +56,30 @@ const jsonLd = {
   sameAs: [
     'https://github.com/urzeye/ophel',
     'https://chromewebstore.google.com/detail/ai-chat-organizer-outline/lpcohdfbomkgepfladogodgeoppclakd',
+    'https://microsoftedge.microsoft.com/addons/detail/ophel-atlas-ai-chat-navi/ffpenkdeifijngifjmbbpijfpdhlolga',
     'https://addons.mozilla.org/firefox/addon/ophel-ai-chat-enhancer/',
     'https://greasyfork.org/scripts/563646-ophel-ai-chat-page-enhancer',
   ],
 };
+
+const fontUrl =
+  'https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Public+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&display=swap';
 ---
 
 <!doctype html>
-<html lang={lang} class="dark">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
-    <!-- 让浏览器立即用深色背景渲染，避免白闪 (CLS) -->
-    <meta name="color-scheme" content="dark" />
-    <meta name="theme-color" content="#0a0a0f" />
+    <meta name="color-scheme" content="light" />
+    <meta name="theme-color" content="#f5efe4" />
 
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="google-site-verification" content="qlpmLkZCADw3RM8CMlxMIe_4xXFMX3GVT-1WGf2vpX8" />
     <link rel="canonical" href={canonicalURL} />
 
-    <!-- hreflang — 多语言占位（英文版上线后两个链接均指向真实页面） -->
     <link rel="alternate" hreflang="x-default" href={enURL} />
     <link rel="alternate" hreflang="en" href={enURL} />
     <link rel="alternate" hreflang="zh-CN" href={zhURL} />
@@ -118,31 +115,15 @@ const jsonLd = {
     <link rel="icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 
-    <!-- Google Fonts — 异步加载，避免阻塞渲染 (FCP/LCP) -->
+    <!-- Google Fonts — 异步加载，避免阻塞渲染 -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <!-- preload CSS 文件本身，让浏览器提前发现字体请求 -->
-    <link
-      rel="preload"
-      as="style"
-      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700&display=swap"
-    />
-    <!-- media=print 技巧：CSS 不阻塞渲染，onload 后切换为 all -->
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700&display=swap"
-      media="print"
-      onload="this.media='all'"
-    />
-    <!-- 无 JS 兜底 -->
+    <link rel="preload" as="style" href={fontUrl} />
+    <link rel="stylesheet" href={fontUrl} media="print" onload="this.media='all'" />
     <noscript>
-      <link
-        rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700&display=swap"
-      />
+      <link rel="stylesheet" href={fontUrl} />
     </noscript>
 
-    <!-- JSON-LD 结构化数据（仅首页） -->
     {withJsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
   </head>
   <body>

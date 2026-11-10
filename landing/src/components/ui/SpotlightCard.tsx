@@ -1,5 +1,5 @@
-import React, { useRef, useState, type MouseEvent } from "react";
-import { cn } from "../../lib/utils";
+import React, { useRef, useState, type MouseEvent } from 'react';
+import { cn } from '../../lib/utils';
 
 interface SpotlightCardProps extends React.HTMLAttributes<HTMLDivElement> {
   spotlightColor?: string;
@@ -8,7 +8,7 @@ interface SpotlightCardProps extends React.HTMLAttributes<HTMLDivElement> {
 export function SpotlightCard({
   children,
   className,
-  spotlightColor = "rgba(0, 240, 255, 0.15)",
+  spotlightColor = 'rgba(0, 240, 255, 0.15)',
   ...props
 }: SpotlightCardProps) {
   const divRef = useRef<HTMLDivElement>(null);
@@ -49,8 +49,8 @@ export function SpotlightCard({
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       className={cn(
-        "relative overflow-hidden rounded-xl border border-surface-border bg-surface shadow-2xl transition-colors hover:border-white/20",
-        className
+        'relative overflow-hidden rounded-xl border border-surface-border bg-surface shadow-2xl transition-colors hover:border-white/20',
+        className,
       )}
       {...props}
     >
