@@ -9,7 +9,7 @@ keywords: ["model lock", "site settings", "Claude session key", "Gemini watermar
 import { Icon } from "/snippets/icon.jsx"
 import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
 
-Different AI platforms have different page structures, behaviors, and account models. Ophel lets you configure settings independently for each site rather than applying a single global configuration. Go to **Settings → Site Settings**: **Page Layout** and **Model Lock** apply to the site you are currently on, while the **Gemini**, **AI Studio**, **ChatGPT**, and **Claude** tabs hold each platform's own options.
+Different AI platforms have different page structures, behaviors, and account models. Ophel lets you configure settings independently for each site rather than applying a single global configuration. Go to **Settings → Site Settings** and pick a site in the **Configure site** selector at the top (the site you are currently on is preselected and marked as current). All of that site's settings then appear on one page: **Page Layout** and **Model Lock**, the **Hide Ophel on specific pages** rules, and — for Gemini, AI Studio, ChatGPT, and Claude — a **Site-specific** section with that platform's own options.
 
 ## Model lock
 
@@ -54,6 +54,21 @@ Each site's model lock setting is independent, so you can configure different ta
 | Z.ai | chat.z.ai |
 | ChatGLM | chatglm.cn |
 | ima | ima.qq.com |
+
+## Hide Ophel on specific pages
+
+Sometimes you want Ophel on a site, just not on every page of it — for example, on ChatGPT's `/canvas` pages or Claude's `/artifacts` pages. Instead of disabling the whole site, add a path rule and Ophel stays out of the way there.
+
+**Settings → Site Settings → Hide Ophel on specific pages**
+
+- Enter the part of the URL after the domain, such as `/artifact/*` — `*` matches anything. You can also paste a full URL, or click **Use current page** to fill in the page you are on.
+- Turn on **Use regular expression** for more complex matching, for example `^/(artifact|share)/`.
+- On matching pages, the panel and quick buttons are hidden and Ophel's shortcuts do not fire. Everything comes back as soon as you leave those pages.
+
+<Tip>
+  If a rule covers the page you are currently on, Ophel tells you before you add
+  it — it will disappear from that page immediately.
+</Tip>
 
 ## Markdown rendering fixes
 

@@ -1,8 +1,8 @@
 ---
-title: "Install Ophel Atlas on Chrome, Edge, Firefox, or as a Userscript"
+title: "Install Ophel Atlas on Chrome, Edge, Firefox, Safari, or as a Userscript"
 sidebarTitle: "Installation"
 icon: "download"
-description: "Install Ophel Atlas from the Chrome Web Store, Edge Add-ons, Firefox Add-ons, Greasy Fork, ScriptCat, or sideload it manually from GitHub Releases in four steps or fewer."
+description: "Install Ophel Atlas from the Chrome Web Store, Edge Add-ons, Firefox Add-ons, Greasy Fork, ScriptCat, load it as a temporary extension in Safari on macOS, or sideload it manually from GitHub Releases in four steps or fewer."
 keywords:
   [
     "install Ophel",
@@ -18,7 +18,7 @@ keywords:
   ]
 ---
 
-Ophel Atlas is available as a browser extension for Chrome-based browsers and Firefox, and as a userscript through Greasy Fork or ScriptCat. The browser extension is recommended — it offers a fuller feature set, better compatibility, and does not require developer mode after the initial install.
+Ophel Atlas is available as a browser extension for Chrome-based browsers and Firefox, as an experimental temporary extension for Safari on macOS, and as a userscript through Greasy Fork or ScriptCat. The browser extension is recommended — it offers a fuller feature set, better compatibility, and does not require developer mode after the initial install.
 
 <Tip>
   Use the browser extension version whenever possible. The userscript version
@@ -336,6 +336,61 @@ Ophel Atlas is available as a browser extension for Chrome-based browsers and Fi
       />
     </span>
   </a>
+  <a
+    href="https://github.com/urzeye/ophel/releases"
+    target="_blank"
+    style={{
+      display: "flex",
+      flexDirection: "column",
+      gap: "10px",
+      padding: "16px",
+      border: "1px solid rgba(128,128,128,0.2)",
+      borderRadius: "12px",
+      textDecoration: "none",
+      color: "inherit",
+    }}
+  >
+    <span
+      style={{
+        display: "flex",
+        alignItems: "center",
+        gap: "7px",
+        fontWeight: "600",
+        fontSize: "14px",
+        margin: "0",
+        lineHeight: "1.4",
+      }}
+    >
+      <img
+        alt="Safari icon"
+        src="https://cdn.simpleicons.org/safari/006CFF"
+        style={{
+          display: "block",
+          width: "16px",
+          height: "16px",
+          margin: "0",
+          flexShrink: "0",
+        }}
+      />
+      Safari (macOS)
+    </span>
+    <span
+      style={{
+        display: "flex",
+        gap: "6px",
+        flexWrap: "wrap",
+        margin: "0",
+        padding: "0",
+        lineHeight: "1",
+      }}
+    >
+      <img
+        alt="Safari experimental badge"
+        src="https://img.shields.io/badge/Safari-experimental%20%C2%B7%20GitHub%20Releases-006CFF?style=flat"
+        style={{ display: "block", margin: "0", height: "20px" }}
+      />
+    </span>
+  </a>
 </div>
 
 ## Install from a store or script directory
@@ -497,6 +552,39 @@ Use this method if you want to install a specific version, test a pre-release bu
         Drag the `.user.js` file into your browser window, or open the Tampermonkey dashboard and use **Import from file**. Confirm the install when prompted.
       </Step>
     </Steps>
+  </Tab>
+  <Tab title="Safari (macOS)">
+    Safari support is experimental. It is provided as a temporary extension for local use on macOS — there is no Safari App Store listing, and no signed macOS or iOS app. You do not need Xcode or a paid Apple Developer account.
+
+    <Steps>
+      <Step title="Download the release archive">
+        Go to [GitHub Releases](https://github.com/urzeye/ophel/releases) and download the latest `ophel-atlas-vX.X.X-safari.zip`.
+      </Step>
+      <Step title="Enable developer features in Safari">
+        In Safari, go to **Settings → Advanced** and turn on **Show features for web developers**.
+      </Step>
+      <Step title="Add the temporary extension">
+        Go to **Settings → Developer → Add Temporary Extension…** and approve the unsigned-extension prompt. Select the downloaded zip, or extract it and select the folder containing `manifest.json`.
+      </Step>
+      <Step title="Enable Ophel and allow site access">
+        In **Settings → Extensions**, enable Ophel, allow access to the AI sites you use, then reload those pages.
+      </Step>
+    </Steps>
+
+    <Warning>
+      Temporary extensions expire after 24 hours and are also removed when Safari
+      quits — add the extension again to keep using it. This is not a permanent
+      install. See [Apple's temporary installation
+      instructions](https://developer.apple.com/documentation/safariservices/running-your-safari-web-extension)
+      for details.
+    </Warning>
+
+    <Note>
+      On Safari, desktop notifications, automatic tab-title updates when a reply
+      finishes, and Gemini watermark removal are not available. Other core
+      features — outline, chat management, prompts, themes, export — work as on
+      other browsers.
+    </Note>
   </Tab>
 </Tabs>
 

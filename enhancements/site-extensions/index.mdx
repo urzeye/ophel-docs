@@ -82,17 +82,28 @@ Tabs in the current UI:
 
 A **Guide** button in the settings toolbar opens this documentation on ophel.app.
 
-## Example packs in the community registry
+## Packs in the community registry
 
-The registry source currently ships these community manifests under `registry/sites/`:
+The community registry currently ships 16 packs under `registry/sites/`:
 
 | Pack ID | Typical target | Match style |
 | --- | --- | --- |
-| `duck-ai` | [duck.ai](https://duck.ai) | Static `https://duck.ai/*` |
-| `lobechat` | [app.lobehub.com](https://app.lobehub.com) | Static `https://app.lobehub.com/*` |
+| `perplexity` | [Perplexity](https://www.perplexity.ai) | Static `https://www.perplexity.ai/*` |
+| `duck-ai` | [Duck.ai](https://duck.ai) | Static `https://duck.ai/*` |
+| `longcat` | [LongCat AI](https://longcat.chat) | Static `https://longcat.chat/*` |
+| `manus` | [Manus](https://manus.im) | Static `https://manus.im/*` |
+| `genspark` | [Genspark](https://www.genspark.ai) | Static `https://www.genspark.ai/*` |
+| `stepfun` | [StepFun](https://chat.stepfun.com) | Static `https://chat.stepfun.com/*` |
+| `proton-lumo` | [Proton Lumo](https://lumo.proton.me) | Static `https://lumo.proton.me/*` |
+| `notion-ai` | [Notion AI](https://www.notion.com) | Static `https://app.notion.com/ai*` and `https://app.notion.com/chat*` |
+| `opencode-share` | [OpenCode Share](https://opncd.ai) | Static `https://opncd.ai/*` |
+| `wenxin` | [百度文心](https://wenxin.baidu.com) | Static `https://wenxin.baidu.com/*` |
+| `zhida` | [知乎直答](https://zhida.zhihu.com) | Static `https://zhida.zhihu.com/*` |
+| `lobechat` | [LobeChat](https://app.lobehub.com) | Static `https://app.lobehub.com/*` |
 | `librechat` | Self-hosted LibreChat | Empty `matches`; bind a custom origin |
 | `nextchat` | Self-hosted NextChat | Empty `matches`; bind a custom origin |
 | `open-webui` | Self-hosted Open WebUI | Empty `matches`; bind a custom origin |
+| `deepseek-harness` | Self-hosted DeepSeek Harness | Empty `matches`; bind a custom origin |
 
 Exact capability sets differ by pack. Install a pack and inspect its declared capabilities, or open the JSON in the [ophel registry](https://github.com/urzeye/ophel/tree/main/registry/sites) for the source of truth.
 

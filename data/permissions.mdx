@@ -6,7 +6,7 @@ description: "Every permission Ophel requests explained — what each one enable
 keywords: ["browser permissions", "extension permissions", "optional permissions", "permission management", "extension security"]
 ---
 
-Ophel requests only the permissions it needs to operate. Required permissions are declared in the extension manifest and granted when you install Ophel. Optional permissions are never granted silently — your browser asks you the first time a feature that needs one is activated, and you can revoke any of them later from **Settings → Permissions**.
+Ophel requests only the permissions it needs to operate. Required permissions are declared in the extension manifest and granted when you install Ophel. Optional permissions are never granted silently — your browser asks you the first time a feature that needs one is activated, and you can revoke any of them later from **Settings → Data & Permissions → Permissions**.
 
 ![Ophel Permissions settings panel](/images/panel/permission.png)
 
@@ -34,12 +34,12 @@ These permissions are off by default. Ophel requests each one through a browser 
 You do not need to grant optional permissions manually in advance. When you turn on a feature that requires one — for example, enabling WebDAV sync or the completion notification — your browser displays a standard permission prompt. Click **Allow** to grant it.
 
 <Note>
-If you dismissed a browser permission prompt by accident, go to **Settings → Permissions** and use the grant controls there to trigger it again.
+If you dismissed a browser permission prompt by accident, go to **Settings → Data & Permissions → Permissions** and use the grant controls there to trigger it again.
 </Note>
 
 ## Revoking a permission
 
-Go to **Settings → Permissions**. Each optional permission has a **Revoke** button. After you revoke a permission, any features that depend on it are automatically disabled — you do not need to turn them off individually.
+Go to **Settings → Data & Permissions → Permissions**. Each optional permission has a **Revoke** button. After you revoke a permission, any features that depend on it are automatically disabled — you do not need to turn them off individually.
 
 | Permission revoked  | Features automatically disabled                                        |
 | ------------------- | ---------------------------------------------------------------------- |

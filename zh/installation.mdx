@@ -1,8 +1,8 @@
 ---
-title: "安装 Ophel Atlas — Chrome、Edge、Firefox 或油猴脚本"
+title: "安装 Ophel Atlas — Chrome、Edge、Firefox、Safari 或油猴脚本"
 sidebarTitle: "安装"
 icon: "download"
-description: "从 Chrome 网上应用店、Edge add-ons、Firefox 附加组件商店、Greasy Fork、ScriptCat 安装 Ophel Atlas，或从 GitHub Releases 手动加载，四步以内完成。"
+description: "从 Chrome 网上应用店、Edge add-ons、Firefox 附加组件商店、Greasy Fork、ScriptCat 安装 Ophel Atlas，在 macOS Safari 上以临时扩展方式运行，或从 GitHub Releases 手动加载，四步以内完成。"
 keywords:
   [
     "安装Ophel",
@@ -18,7 +18,7 @@ keywords:
   ]
 ---
 
-Ophel Atlas 支持 Chrome/Edge 扩展、Firefox 扩展，以及通过 Greasy Fork 或 ScriptCat 安装的油猴脚本。推荐优先使用浏览器扩展——功能更完整，兼容性更好，正式安装后无需开发者模式。
+Ophel Atlas 支持 Chrome/Edge 扩展、Firefox 扩展、macOS Safari 临时扩展（实验性），以及通过 Greasy Fork 或 ScriptCat 安装的油猴脚本。推荐优先使用浏览器扩展——功能更完整，兼容性更好，正式安装后无需开发者模式。
 
 <Tip>
   尽量使用浏览器扩展版本。油猴脚本版本相比扩展有功能限制，在部分平台上的兼容性也较低。
@@ -332,6 +332,61 @@ Ophel Atlas 支持 Chrome/Edge 扩展、Firefox 扩展，以及通过 Greasy For
       />
     </span>
   </a>
+  <a
+    href="https://github.com/urzeye/ophel/releases"
+    target="_blank"
+    style={{
+      display: "flex",
+      flexDirection: "column",
+      gap: "10px",
+      padding: "16px",
+      border: "1px solid rgba(128,128,128,0.2)",
+      borderRadius: "12px",
+      textDecoration: "none",
+      color: "inherit",
+    }}
+  >
+    <span
+      style={{
+        display: "flex",
+        alignItems: "center",
+        gap: "7px",
+        fontWeight: "600",
+        fontSize: "14px",
+        margin: "0",
+        lineHeight: "1.4",
+      }}
+    >
+      <img
+        alt="Safari 图标"
+        src="https://cdn.simpleicons.org/safari/006CFF"
+        style={{
+          display: "block",
+          width: "16px",
+          height: "16px",
+          margin: "0",
+          flexShrink: "0",
+        }}
+      />
+      Safari（macOS）
+    </span>
+    <span
+      style={{
+        display: "flex",
+        gap: "6px",
+        flexWrap: "wrap",
+        margin: "0",
+        padding: "0",
+        lineHeight: "1",
+      }}
+    >
+      <img
+        alt="Safari 实验性徽章"
+        src="https://img.shields.io/badge/Safari-%E5%AE%9E%E9%AA%8C%E6%80%A7%20%C2%B7%20GitHub%20Releases-006CFF?style=flat"
+        style={{ display: "block", margin: "0", height: "20px" }}
+      />
+    </span>
+  </a>
 </div>
 
 ## 从商店或脚本目录安装
@@ -497,6 +552,32 @@ Ophel Atlas 支持 Chrome/Edge 扩展、Firefox 扩展，以及通过 Greasy For
         将 `.user.js` 文件拖入浏览器窗口，或打开 Tampermonkey 管理面板并使用**从文件导入**。出现确认提示后完成安装。
       </Step>
     </Steps>
+  </Tab>
+  <Tab title="Safari（macOS）">
+    Safari 支持目前为实验性适配，仅以 macOS 本地临时扩展的形式提供——不上架 Safari 商店，也不提供已签名的 macOS 或 iOS 应用。无需 Xcode 或付费 Apple 开发者账号。
+
+    <Steps>
+      <Step title="下载发布包">
+        前往 [GitHub Releases](https://github.com/urzeye/ophel/releases)，下载最新的 `ophel-atlas-vX.X.X-safari.zip`。
+      </Step>
+      <Step title="开启 Safari 开发者功能">
+        在 Safari「设置 → 高级」中启用「显示网页开发者功能」。
+      </Step>
+      <Step title="添加临时扩展">
+        打开「设置 → 开发者 → 添加临时扩展…」，按提示允许未签名扩展。选择下载的 zip，或解压后选择包含 `manifest.json` 的文件夹。
+      </Step>
+      <Step title="启用 Ophel 并允许访问站点">
+        在「设置 → 扩展」中启用 Ophel，允许访问你常用的 AI 站点，然后刷新页面。
+      </Step>
+    </Steps>
+
+    <Warning>
+      临时扩展会在 24 小时后或退出 Safari 时被移除，需要重新添加，不能像商店版一样长期安装。详见 [Apple 的临时安装说明](https://developer.apple.com/documentation/safariservices/running-your-safari-web-extension)。
+    </Warning>
+
+    <Note>
+      Safari 版暂不支持桌面通知、回复完成后的标签页标题自动更新，以及 Gemini 图片去水印；大纲、对话管理、提示词、主题、导出等核心功能与其他浏览器一致。
+    </Note>
   </Tab>
 </Tabs>
 

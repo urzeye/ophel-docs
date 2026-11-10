@@ -19,7 +19,7 @@ Global Search brings the content available in the current Ophel context into a s
 | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
 | <Icon src="/images/icons/keyboard.svg" alt="Keyboard shortcut icon" /> <Shortcut combo="ctrl+k" /> | Default keyboard shortcut |
 | <Icon src="/images/icons/search.svg" alt="Search icon" /> Floating button | Click the search icon in the floating quick-buttons group |
-| Double Shift            | Press Shift twice in quick succession — optional; enable in **Settings → Global Search**. Works even when the page is not focused |
+| Double Shift            | Press Shift twice in quick succession — optional; enable in **Settings → Features → Global Search**. Works even when the page is not focused |
 
 <Note>
   Double Shift must be enabled in settings before it works. Unlike other
@@ -72,7 +72,7 @@ This finds chats in the "work" folder that also have the "research" tag and whos
 
 When fuzzy search is enabled, Ophel allows partial matches — searching `rans` finds `translate`. When it is off, only exact substring matches are returned.
 
-Toggle fuzzy search in **Settings → Global Search**.
+Toggle fuzzy search in **Settings → Features → Global Search**.
 
 <Tip>
   Disable fuzzy search when you want precise results — for example, when
@@ -86,7 +86,7 @@ When you press Enter on a **prompt** result, Ophel adapts to the context:
 - **Smart insert** (default) — if an AI input box is available on the current page, the prompt is inserted directly into it
 - **Locate only** — Ophel switches to the Prompts tab and highlights the entry, without inserting
 
-Change this behavior in **Settings → Global Search → Search Everywhere prompt Enter behavior**.
+Change this behavior in **Settings → Features → Global Search → Search Everywhere prompt Enter behavior**.
 
 ## Search tips
 
@@ -141,10 +141,11 @@ Change this behavior in **Settings → Global Search → Search Everywhere promp
 
 ## Settings
 
-Go to **Settings → Global Search** to configure:
+Go to **Settings → Features → Global Search** to configure:
 
 | Setting | Description |
 | --- | --- |
+| Enable Global Search | Master switch for Global Search. When off, every way of opening it is disabled and <Shortcut combo="ctrl+k" /> goes back to the website's own feature |
 | Double Shift to open Global Search | Enable double-pressing Shift to open search |
 | Enable fuzzy search | Allow partial matches when on; exact substring matches only when off |
 | Search Everywhere prompt Enter behavior | What happens when you press Enter on a prompt result: Smart (Recommended) or Locate Only |

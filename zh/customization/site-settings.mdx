@@ -9,7 +9,7 @@ keywords: ["模型锁定", "站点设置", "Claude对话密钥", "Gemini去水�
 import { Icon } from "/snippets/icon.jsx"
 import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
 
-各 AI 平台在页面结构、行为和账号模型上各有差异。Ophel 支持为每个站点独立配置，而不是强制使用统一的全局设置。进入 **设置 → 站点设置**：**页面布局** 与 **模型锁定** 作用于当前打开的站点，**Gemini**、**AI Studio**、**ChatGPT**、**Claude** 四个标签页则保存各平台的专属选项。
+各 AI 平台在页面结构、行为和账号模型上各有差异。Ophel 支持为每个站点独立配置，而不是强制使用统一的全局设置。进入 **设置 → 站点设置**，在顶部的「配置站点」选择器里选一个站点（默认选中你当前所在的站点并带「当前站点」标记），该站点的所有设置就会集中展示在同一页：**页面布局**、**模型锁定**、「在指定页面隐藏 Ophel」规则，以及 Gemini、AI Studio、ChatGPT、Claude 各自的**站点专属**选项。
 
 ## 模型锁定
 
@@ -54,6 +54,20 @@ import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
 | Z.ai | chat.z.ai |
 | ChatGLM | chatglm.cn |
 | ima | ima.qq.com |
+
+## 在指定页面隐藏 Ophel
+
+有时你想用某个站点的 Ophel，但不想让它出现在这个站点的所有页面上——比如 Claude 的 `/artifact` 页面。不用再为个别页面停用整个站点，加一条路径规则即可。
+
+**设置 → 站点设置 → 在指定页面隐藏 Ophel**
+
+- 填写网址中域名后面的部分，例如 `/artifact/*`，`*` 代表任意内容；也可以直接粘贴完整网址，或点击「填入当前页面」自动带上当前网址。
+- 更复杂的匹配可以开启「使用正则表达式」，例如 `^/(artifact|share)/`。
+- 在命中的页面上，Ophel 的面板和快捷按钮不会显示，快捷键也不生效；离开这些页面后自动恢复。
+
+<Tip>
+  如果规则包含你当前所在的页面，添加前 Ophel 会提示你——添加后它会立即从这个页面消失。
+</Tip>
 
 ## Markdown 渲染修复
 

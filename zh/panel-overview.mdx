@@ -45,6 +45,11 @@ import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
 
 拖拽顶部标签文字即可调整可见标签页顺序。Ophel 会立即保存新顺序，并同步到设置页中的同一排序。
 
+<Note>
+  并非每个站点都支持所有标签页。在不支持对话管理的站点（如 Gemini
+  Notebook）上，**对话**标签会自动隐藏，设置里的全局对话开关也会标注当前站点不支持。只启用一个标签页时，顶部标签栏会自动隐藏，腾出纵向空间。
+</Note>
+
 <Note>如果面板没有自动出现，按 <Shortcut combo="alt+p" /> 手动打开。</Note>
 
 ## 基础操作
@@ -106,7 +111,7 @@ import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
 
 ## 全局搜索
 
-按 <Shortcut combo="ctrl+k" />，或点击浮动按钮中的 <Icon src="/images/icons/search.svg" alt="全局搜索图标" /> 搜索图标，打开全局搜索叠加层。它将大纲节点、当前平台历史对话、提示词库和设置项统一纳入一个搜索框，无需逐个标签翻找。也可以连按两次 `Shift` 触发（需在 **设置 → 全局搜索** 中开启）。
+按 <Shortcut combo="ctrl+k" />，或点击浮动按钮中的 <Icon src="/images/icons/search.svg" alt="全局搜索图标" /> 搜索图标，打开全局搜索叠加层。它将大纲节点、当前平台历史对话、提示词库和设置项统一纳入一个搜索框，无需逐个标签翻找。也可以连按两次 `Shift` 触发（需在 **设置 → 功能模块 → 全局搜索** 中开启）。
 
 支持以下语法过滤，多个过滤条件可以组合使用：
 

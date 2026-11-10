@@ -83,17 +83,28 @@ registry 包从不可变版本路径下载，先对照签名索引与 SHA-256 �
 
 设置工具栏上的 **指南** 按钮会打开 ophel.app 上的这套文档。
 
-## 社区 registry 中的示例站点拓展
+## 社区 registry 中的站点拓展
 
-当前 registry 源在 `registry/sites/` 下提供这些社区清单：
+社区 registry 目前在 `registry/sites/` 下提供 16 个适配包：
 
 | 包 ID | 典型目标 | 匹配方式 |
 | --- | --- | --- |
-| `duck-ai` | [duck.ai](https://duck.ai) | 静态 `https://duck.ai/*` |
-| `lobechat` | [app.lobehub.com](https://app.lobehub.com) | 静态 `https://app.lobehub.com/*` |
+| `perplexity` | [Perplexity](https://www.perplexity.ai) | 静态 `https://www.perplexity.ai/*` |
+| `duck-ai` | [Duck.ai](https://duck.ai) | 静态 `https://duck.ai/*` |
+| `longcat` | [LongCat AI](https://longcat.chat) | 静态 `https://longcat.chat/*` |
+| `manus` | [Manus](https://manus.im) | 静态 `https://manus.im/*` |
+| `genspark` | [Genspark](https://www.genspark.ai) | 静态 `https://www.genspark.ai/*` |
+| `stepfun` | [StepFun](https://chat.stepfun.com) | 静态 `https://chat.stepfun.com/*` |
+| `proton-lumo` | [Proton Lumo](https://lumo.proton.me) | 静态 `https://lumo.proton.me/*` |
+| `notion-ai` | [Notion AI](https://www.notion.com) | 静态 `https://app.notion.com/ai*` 与 `https://app.notion.com/chat*` |
+| `opencode-share` | [OpenCode Share](https://opncd.ai) | 静态 `https://opncd.ai/*` |
+| `wenxin` | [百度文心](https://wenxin.baidu.com) | 静态 `https://wenxin.baidu.com/*` |
+| `zhida` | [知乎直答](https://zhida.zhihu.com) | 静态 `https://zhida.zhihu.com/*` |
+| `lobechat` | [LobeChat](https://app.lobehub.com) | 静态 `https://app.lobehub.com/*` |
 | `librechat` | 自托管 LibreChat | 空 `matches`；需绑定自定义源 |
 | `nextchat` | 自托管 NextChat | 空 `matches`；需绑定自定义源 |
 | `open-webui` | 自托管 Open WebUI | 空 `matches`；需绑定自定义源 |
+| `deepseek-harness` | 自托管 DeepSeek Harness | 空 `matches`；需绑定自定义源 |
 
 各包的能力集合不同。安装后查看其声明能力，或直接打开 [ophel registry](https://github.com/urzeye/ophel/tree/main/registry/sites) 中的 JSON 作为事实来源。
 
