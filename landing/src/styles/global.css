@@ -268,22 +268,23 @@
 }
 
 .hero-tooltivity-link {
-  display: inline-flex;
-  align-items: center;
-  max-width: 100%;
-  opacity: 0.92;
-  transition: opacity 150ms ease;
-}
-
-.hero-tooltivity-link:hover {
-  opacity: 1;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+  opacity: 0;
+  pointer-events: none;
 }
 
 .hero-tooltivity-image {
   display: block;
-  width: 184px;
-  height: 40px;
-  max-width: 100%;
+  width: 1px;
+  height: 1px;
 }
 
 /* ─── Hero Product Stage ─── */

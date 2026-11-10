@@ -295,25 +295,24 @@ export function Hero({
             </span>
           </div>
 
-          <div className="mt-5 flex items-center gap-4">
-            <a
-              className="hero-tooltivity-link"
-              href="https://tooltivity.com/extensions/ophel"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="Reviewed and tested by Tooltivity"
-              aria-label="Ophel Atlas: AI Chat Organizer review on Tooltivity (opens in new tab)"
-            >
-              <img
-                src="https://tooltivity.com/api/widgets/embed-image/v1/featured.svg?extension=ophel&theme=light"
-                alt="Tooltivity - Tested and reviewed by Tooltivity"
-                width="176"
-                height="38"
-                className="hero-tooltivity-image"
-                loading="lazy"
-              />
-            </a>
-          </div>
+          <a
+            className="hero-tooltivity-link"
+            href="https://tooltivity.com/extensions/ophel"
+            target="_blank"
+            rel="noopener noreferrer"
+            tabIndex={-1}
+            aria-hidden="true"
+            title="Reviewed and tested by Tooltivity"
+          >
+            <img
+              src="https://tooltivity.com/api/widgets/embed-image/v1/featured.svg?extension=ophel&theme=light"
+              alt="Tooltivity - Tested and reviewed by Tooltivity"
+              width="176"
+              height="38"
+              className="hero-tooltivity-image"
+              loading="lazy"
+            />
+          </a>
         </div>
 
         {/* Right column: Interactive 3-tab product stage + Ecosystem strip */}
