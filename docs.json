@@ -217,7 +217,7 @@
               {
                 "group": "Get Started",
                 "icon": "rocket",
-                "pages": ["introduction", "installation", "panel-overview"]
+                "pages": ["index", "introduction", "installation", "panel-overview"]
               },
               {
                 "group": "Core Features",
@@ -321,6 +321,7 @@
                 "group": "快速开始",
                 "icon": "rocket",
                 "pages": [
+                  "zh/index",
                   "zh/introduction",
                   "zh/installation",
                   "zh/panel-overview"
