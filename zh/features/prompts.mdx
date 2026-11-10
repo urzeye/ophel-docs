@@ -102,13 +102,12 @@ import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
 
 点击提示词标签页工具栏的 <Icon src="/images/icons/import.svg" alt="导入导出菜单图标" /> 导入/导出按钮，选择 <Icon src="/images/icons/export.svg" alt="导出图标" /> **导出**，将整个提示词库保存为 JSON 文件。这对备份或转移到其他设备很有用。
 
-从同一菜单选择 <Icon src="/images/icons/import.svg" alt="导入图标" /> **导入**读取 JSON 文件，选择三种合并选项之一：
+从同一菜单选择 <Icon src="/images/icons/import.svg" alt="导入图标" /> **导入**读取 JSON 文件，选择两种导入方式之一：
 
 | 选项 | 行为 |
 | --- | --- |
-| 添加新项 | 仅导入标题不存在的提示词——跳过重复项 |
-| 覆盖 | 导入所有提示词；替换标题相同的现有提示词 |
-| 全部替换 | 删除当前库并完全替换为导入的文件 |
+| 合并 | 更新 ID 相同的提示词并追加新提示词；其他现有提示词保留 |
+| 覆盖 | 清空当前提示词库，整体替换为导入的文件 |
 
 ## <Icon src="/images/icons/prompt-queue.svg" alt="提示词队列图标" /> 提示词队列
 

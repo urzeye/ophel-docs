@@ -117,13 +117,12 @@ Drag any prompt row to reorder your library. Buttons, inputs, menus, and other i
 
 Click the <Icon src="/images/icons/import.svg" alt="Import and export menu icon" /> import/export button in the Prompts tab toolbar, then choose <Icon src="/images/icons/export.svg" alt="Export icon" /> **Export** to save your entire prompt library to a JSON file. This is useful for backup or transferring to another device.
 
-Choose <Icon src="/images/icons/import.svg" alt="Import icon" /> **Import** from the same menu to read a JSON file back and pick one of three merge options:
+Choose <Icon src="/images/icons/import.svg" alt="Import icon" /> **Import** from the same menu to read a JSON file back and pick one of two import modes:
 
-| Option      | Behavior                                                                     |
-| ----------- | ---------------------------------------------------------------------------- |
-| Add new     | Imports only prompts whose title does not already exist — skips duplicates   |
-| Overwrite   | Imports all prompts; replaces existing prompts that share the same title     |
-| Replace all | Deletes your current library and replaces it entirely with the imported file |
+| Option    | Behavior                                                                                |
+| --------- | --------------------------------------------------------------------------------------- |
+| Merge     | Updates prompts that share the same ID and appends new ones; other prompts are kept      |
+| Overwrite | Clears your current library and replaces it entirely with the imported file              |
 
 ## <Icon src="/images/icons/prompt-queue.svg" alt="Prompt Queue icon" /> Prompt Queue
 

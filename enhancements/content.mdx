@@ -23,7 +23,7 @@ Ophel adds a layer of interactivity to AI chat pages: diagrams that some platfor
 
 Some AI platforms display Mermaid code blocks as raw text instead of rendered diagrams. When Ophel detects an unrendered Mermaid block, it renders the diagram in place automatically.
 
-**Settings → Features → Content → Assistant Mermaid Render** (default: on)
+**Settings → Features → Content → Assistant Mermaid Render** (default: off)
 
 <Note>
   This only activates when the platform itself has not rendered the Mermaid
@@ -73,37 +73,12 @@ A **Copy** button appears on tables inside AI replies. Clicking it copies the ta
 
 ## Chat export
 
-Export any chat to a file from <Icon src="/images/icons/tools.svg" alt="Toolbox icon" /> **Toolbox** → <Icon src="/images/icons/export.svg" alt="Export icon" /> **Export**. The quick button exports <Icon src="/images/icons/markdown.svg" alt="Markdown file icon" /> Markdown; the Chats tab row menu also lets you choose <Icon src="/images/icons/json-file.svg" alt="JSON file icon" /> JSON or <Icon src="/images/icons/txt-file.svg" alt="TXT file icon" /> TXT.
-
-<AccordionGroup>
-  <Accordion title="Markdown (.md)">
-    Exports the full chat with speaker labels and message content
-    formatted as Markdown. Useful for pasting into notes apps, wikis, or
-    documentation.
-  </Accordion>
-  <Accordion title="JSON (.json)">
-    Exports structured data including metadata. Useful for programmatic
-    processing or archiving.
-  </Accordion>
-  <Accordion title="Plain text (.txt)">
-    Exports a clean, unformatted transcript.
-  </Accordion>
-</AccordionGroup>
-
-**Settings → Features → Chats → Export Settings** controls export behavior:
-
-| Setting | Description |
-| --- | --- |
-| Custom User Name | Replaces "Me" in exported files; leave blank to use the default |
-| Custom AI Name | Replaces the AI's name in exported files; leave blank to use the platform name |
-| Add Timestamp to Filename | Appends a timestamp to the filename to avoid overwriting existing exports |
-| Include Thoughts in Export | Include the AI's reasoning content for platforms that expose it (such as Claude, Kimi, and Qwen Studio) |
-| Markdown Export Method | **Markdown only** exports a single `.md` file; **Zip package** bundles the Markdown with referenced images and files as a `.zip` |
+Export any chat from <Icon src="/images/icons/tools.svg" alt="Toolbox icon" /> **Toolbox** → <Icon src="/images/icons/export.svg" alt="Export icon" /> **Export**, the Outline toolbar, the Chats tab row menu, or the <Icon src="/images/icons/keyboard.svg" alt="Keyboard icon" /> export shortcut. Every entry opens the **Export Chat** dialog, where you can pick <Icon src="/images/icons/markdown.svg" alt="Markdown file icon" /> Markdown, HTML, <Icon src="/images/icons/json-file.svg" alt="JSON file icon" /> JSON, <Icon src="/images/icons/txt-file.svg" alt="TXT file icon" /> TXT, or copy the chat as Markdown straight to the clipboard.
 
 <Tip>
-  For a detailed explanation of the zip package structure, asset handling per
-  platform, and advanced export capabilities (Deep Research reports, Canvas code,
-  document artifacts), see the dedicated [Export](/features/export) page.
+  For the full export walkthrough — formats, zip package structure,
+  per-platform asset handling, segmented export, and all export settings — see
+  the dedicated [Export](/features/export) page.
 </Tip>
 
 ## Platform-specific fixes

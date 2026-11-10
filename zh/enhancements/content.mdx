@@ -64,7 +64,7 @@ AI 回复中的表格会额外出现一个"复制"按钮。点击后，表格内
 
 <Note>此功能只在平台本身未渲染 Mermaid 时生效，不会干扰已有渲染结果。</Note>
 
-**设置 → 功能模块 → 内容交互 → AI 回复 Mermaid 渲染**（默认开启）
+**设置 → 功能模块 → 内容交互 → AI 回复 Mermaid 渲染**（默认关闭）
 
 ## Markdown 修复（Gemini / AI Studio / ChatGPT）
 
@@ -86,18 +86,8 @@ Gemini 和 AI Studio 在导出/截图某些内容时会附加水印。开启后�
 
 ## 导出选项
 
-在当前对话页，可以点击 <Icon src="/images/icons/tools.svg" alt="工具箱图标" /> **工具箱** → <Icon src="/images/icons/export.svg" alt="导出图标" /> **导出**，将对话保存为 <Icon src="/images/icons/markdown.svg" alt="Markdown 文件图标" /> Markdown。对话标签页的行菜单还可以选择 <Icon src="/images/icons/json-file.svg" alt="JSON 文件图标" /> JSON 或 <Icon src="/images/icons/txt-file.svg" alt="TXT 文件图标" /> TXT。
-
-**设置 → 功能模块 → 对话 → 导出设置**：
-
-| 设置项 | 说明 |
-| --- | --- |
-| 自定义用户名称 | 导出文件中替代"我"的名称，留空则使用默认 |
-| 自定义 AI 名称 | 导出文件中替代 AI 名称的文字，留空则使用平台名 |
-| 导出文件名包含时间戳 | 导出时为文件名添加时间戳后缀，防止同名覆盖 |
-| 导出包含思维链 | 导出时包含支持平台的 AI 推理过程（如 Claude、Kimi、Qwen Studio 等） |
-| Markdown 导出方式 | **仅 Markdown** 导出单个 `.md` 文件；**Zip 资源包** 将 Markdown 连同引用的图片和附件打包为 `.zip` |
+在当前对话页，可以从 <Icon src="/images/icons/tools.svg" alt="工具箱图标" /> **工具箱** → <Icon src="/images/icons/export.svg" alt="导出图标" /> **导出**、大纲工具栏、对话标签页行菜单或导出快捷键发起导出。所有入口都会打开「导出对话」弹窗，可选择 <Icon src="/images/icons/markdown.svg" alt="Markdown 文件图标" /> Markdown、HTML、<Icon src="/images/icons/json-file.svg" alt="JSON 文件图标" /> JSON、<Icon src="/images/icons/txt-file.svg" alt="TXT 文件图标" /> TXT，或直接把对话以 Markdown 复制到剪贴板。
 
 <Tip>
-  Zip 打包的目录结构、各平台资源导出能力以及高级导出功能（Deep Research 报告、Canvas 代码、文档 Artifact）的详细说明，请参阅专门的[导出功能](/zh/features/export)页面。
+  完整的导出说明——格式对比、Zip 打包目录结构、各平台资源导出能力、分段导出和全部导出设置——请参阅专门的[导出功能](/zh/features/export)页面。
 </Tip>
