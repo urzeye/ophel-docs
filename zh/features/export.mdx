@@ -26,12 +26,24 @@ Ophel 可以导出任何 AI 对话，不仅保留文本，还能保留图片、�
 
 | 方式 | 说明 |
 | --- | --- |
-| 浮动快捷按钮 | 点击 <Icon src="/images/icons/tools.svg" alt="工具箱图标" /> 工具箱图标，再点 <Icon src="/images/icons/export.svg" alt="导出图标" /> **导出**，保存为 <Icon src="/images/icons/markdown.svg" alt="Markdown 文件图标" /> Markdown |
-| 快捷键 | <Shortcut combo="ctrl+shift+e" /> 导出当前对话为 <Icon src="/images/icons/markdown.svg" alt="Markdown 文件图标" /> Markdown |
-| 对话标签页 | 点击对话行右侧的 <Icon src="/images/icons/more-horizontal.svg" alt="三个点菜单图标" /> 三点菜单，选择 <Icon src="/images/icons/export.svg" alt="导出图标" /> **导出**，再选择 <Icon src="/images/icons/markdown.svg" alt="Markdown 文件图标" /> Markdown、<Icon src="/images/icons/json-file.svg" alt="JSON 文件图标" /> JSON 或 <Icon src="/images/icons/txt-file.svg" alt="TXT 文件图标" /> TXT |
-| 分段导出 | 点击对话行的三点菜单，选择 **导出片段...**，可选择并导出对话的特定部分 |
+| 大纲工具栏 | 点击大纲标签页工具栏中高亮的 <Icon src="/images/icons/export.svg" alt="导出图标" /> **导出对话** 按钮 |
+| 浮动快捷按钮 | 点击 <Icon src="/images/icons/tools.svg" alt="工具箱图标" /> 工具箱图标，再点 <Icon src="/images/icons/export.svg" alt="导出图标" /> **导出** |
+| 快捷键 | <Shortcut combo="ctrl+shift+e" /> 导出当前对话 |
+| 对话标签页 | 点击对话行右侧的 <Icon src="/images/icons/more-horizontal.svg" alt="三个点菜单图标" /> 三点菜单，选择 **导出**——没打开过的对话也能导出（部分站点会先帮你打开，菜单里显示为「打开并导出...」）。批量模式下只选中一个对话时，也会出现导出按钮 |
 
-触发导出后，会显示全屏进度遮罩，阻止误操作。Ophel 依次完成加载历史、提取内容、打包资源、保存文件、恢复页面状态。
+默认情况下，以上入口都会打开「导出对话」弹窗。如果你更想按保存的默认值一键导出，可以关闭 **设置 → 功能模块 → 对话 → 导出设置 → 导出前显示选项弹窗**。
+
+导出开始后，会显示全屏进度遮罩，阻止误操作。Ophel 依次完成加载历史、提取内容、打包资源、保存文件、恢复页面状态。
+
+## 「导出对话」弹窗
+
+弹窗顶部会显示要导出的对话标题——从列表里导出未打开的对话时特别有用。弹窗内容包括：
+
+- **格式** — <Icon src="/images/icons/markdown.svg" alt="Markdown 文件图标" /> Markdown、HTML、<Icon src="/images/icons/json-file.svg" alt="JSON 文件图标" /> JSON、<Icon src="/images/icons/txt-file.svg" alt="TXT 文件图标" /> Text，以及直接进剪贴板的 <Icon src="/images/icons/copy.svg" alt="复制 Markdown 图标" /> **复制 Markdown**。导出当前页面的对话时，这里还会出现 <Icon src="/images/icons/copy-outline.svg" alt="复制大纲图标" /> **复制大纲**——复制的是结构化 Markdown 大纲，而不是完整对话。
+- **导出选项** — 导出包含思考过程、导出时为消息编号（JSON 不支持）、Markdown 分割线、**打包为 ZIP 压缩包（含附件）**（仅 Markdown）、**使用简洁样式（去除装饰 emoji）**。旁边的齿轮按钮可直达完整的[导出设置](#导出设置)。复制大纲不使用这些选项。
+- **分段导出...** — 左下角的链接，可对当前对话进行[分段导出](#分段导出)。
+
+最后点击 **导出**（或 **复制**）完成。
 
 ## 导出格式
 
@@ -39,10 +51,11 @@ Ophel 可以导出任何 AI 对话，不仅保留文本，还能保留图片、�
 | --- | --- | --- |
 | <Icon src="/images/icons/markdown.svg" alt="Markdown 文件图标" /> Markdown (`.md`) | 发言人标签、标题、列表、代码块和图片引用 | 笔记、知识库、文档整理和再次发给 AI |
 | <Icon src="/images/icons/zip-file.svg" alt="Zip 资源包图标" /> Markdown zip 资源包 (`.zip`) | Markdown 文件，以及 `assets/` 中的图片、附件和生成产物 | 包含文件、图片、Canvas 代码或文档产物的对话 |
+| HTML (`.html`) | 自包含的单文件网页，渲染好 Markdown、发言人标签和可选的对话序号 | 阅读、打印，以及分享给不用 Markdown 的人 |
 | <Icon src="/images/icons/json-file.svg" alt="JSON 文件图标" /> JSON (`.json`) | 带角色、时间戳、模型元数据和正文的结构化消息 | 程序处理、索引和长期归档 |
 | <Icon src="/images/icons/txt-file.svg" alt="TXT 文件图标" /> 纯文本 (`.txt`) | 不带 Markdown 格式的干净文本记录 | 文本编辑器、全文检索和轻量归档 |
 
-也可以点击 <Icon src="/images/icons/tools.svg" alt="工具箱图标" /> **工具箱** → <Icon src="/images/icons/copy.svg" alt="复制 Markdown 图标" /> **复制 Markdown**，将整个对话以 Markdown 格式复制到剪贴板，无需保存文件。
+在「导出对话」弹窗中选择 **复制 Markdown**，可将整个对话以 Markdown 格式复制到剪贴板，无需保存文件。
 
 ## 分段导出
 
@@ -52,7 +65,7 @@ Ophel 可以导出任何 AI 对话，不仅保留文本，还能保留图片、�
 
 <Steps>
   <Step title="打开分段导出对话框">
-    在对话标签页中，点击任意对话行的 <Icon src="/images/icons/more-horizontal.svg" alt="三个点菜单图标" /> 三点菜单，选择 **导出片段...**
+    先打开当前对话的[「导出对话」弹窗](#导出对话弹窗)——比如点击大纲工具栏的 <Icon src="/images/icons/export.svg" alt="导出图标" /> **导出对话** 按钮——然后点击左下角的 **分段导出...**。
   </Step>
   <Step title="选择片段">
     Ophel 会根据用户提问自动检测对话片段。你可以：
@@ -179,19 +192,20 @@ Gemini Deep Research 报告的导出独立于常规对话导出：
 
 | 设置项 | 说明 | 默认值 |
 | --- | --- | --- |
-| 默认导出格式 | 工具箱与快捷键导出时使用的格式 | Markdown |
+| 导出前显示选项弹窗 | 每次导出都打开「导出对话」弹窗；关闭后按下面的默认值直接导出 | 开启 |
+| 默认导出格式 | 快捷导出使用、并在弹窗中预选的格式：Markdown、JSON、TXT 或 HTML | Markdown |
 | Markdown 导出方式 | 仅 Markdown 或 zip 资源包 | 仅 Markdown |
 | 导出文件名包含时间戳 | 在导出文件名中添加时间戳后缀 | 关闭 |
 | 导出包含思维链 | 导出支持推理展开的平台的思考过程 | 开启 |
 | 导出显示对话序号 | 在导出内容中为每轮对话添加序号 | 关闭 |
-| 导出前显示选项弹窗 | 导出前弹出格式与内容选项 | 开启 |
 | Markdown 分割线 | 每轮对话之间的分隔符 | `---` |
+| 导出样式 | 标准或简洁——简洁样式会去除导出文件中的装饰 emoji | 标准 |
 | 自定义用户名称 | 导出内容中替代"用户"的名称 | （空） |
 | 自定义 AI 名称 | 导出内容中替代 AI 名称的文字 | （空） |
 
 ## 复制 Markdown
 
-点击 <Icon src="/images/icons/tools.svg" alt="工具箱图标" /> **工具箱** → <Icon src="/images/icons/copy.svg" alt="复制 Markdown 图标" /> **复制 Markdown**，整个对话以 Markdown 格式复制到剪贴板。当你只需要把内容粘贴到笔记、邮件或另一个 AI 对话中时，比导出文件更方便快捷。
+打开[「导出对话」弹窗](#导出对话弹窗)，选择 <Icon src="/images/icons/copy.svg" alt="复制 Markdown 图标" /> **复制 Markdown**，再点击 **复制**，整个对话就会以 Markdown 格式进入剪贴板。当你只需要把内容粘贴到笔记、邮件或另一个 AI 对话中时，比导出文件更方便快捷。
 
 ## 分享页导出
 

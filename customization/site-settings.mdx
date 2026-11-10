@@ -11,6 +11,8 @@ import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
 
 Different AI platforms have different page structures, behaviors, and account models. Ophel lets you configure settings independently for each site rather than applying a single global configuration. Go to **Settings → Site Settings** and pick a site in the **Configure site** selector at the top (the site you are currently on is preselected and marked as current). All of that site's settings then appear on one page: **Page Layout** and **Model Lock**, the **Hide Ophel on specific pages** rules, and — for Gemini, AI Studio, ChatGPT, and Claude — a **Site-specific** section with that platform's own options.
 
+In the paths below, "Site Settings → *site name*" means: open Site Settings and select that site in the selector. Platform-own options live in the **Site-specific** section at the bottom of the page.
+
 ## Model lock
 
 Model lock solves a common annoyance: manually switching back to your preferred model every time you open an AI platform. Once configured, Ophel checks the model selector after the page loads and switches to your target model automatically. If the target model isn't available on your account, Ophel leaves the current selection untouched.
@@ -70,6 +72,15 @@ Sometimes you want Ophel on a site, just not on every page of it — for example
   it — it will disappear from that page immediately.
 </Tip>
 
+## Disable Ophel on a site entirely
+
+If you never want Ophel on a site, you can turn it off there instead of hiding individual pages:
+
+- On the site itself: open **Settings → Site Settings** with that site selected and click the power icon next to the page title, then confirm — the page reloads without Ophel.
+- Anywhere else: toggle the site off in **Settings → Site Packs → Built-in sites**, or from the extension popup's quick access grid.
+
+Re-enable the site from the same places to bring Ophel back.
+
 ## Markdown rendering fixes
 
 Some AI platforms have intermittent Markdown rendering bugs — bold text failing to render is a common example. Ophel provides site-specific toggles to patch these issues without affecting other platforms.
@@ -81,6 +92,16 @@ Some AI platforms have intermittent Markdown rendering bugs — bold text failin
 | ChatGPT | Settings → Site Settings → ChatGPT → Markdown Bold Fix | Off |
 
 The fix is off by default on all three platforms — enable it only when you actually see rendering problems.
+
+## ChatGPT performance
+
+**Settings → Site Settings → ChatGPT** includes three rendering optimizations for long conversations:
+
+| Setting | Description | Default |
+| --- | --- | --- |
+| Load Code Blocks in Batches | Mounts code editors in batches when opening or switching long chats, reducing page freezes | On |
+| Reduce Animations While Generating | Pauses message-area animations and transitions while a response is being generated | On |
+| Disable Backdrop Blur | Turns off the page's background blur effect to reduce scroll frame drops in long chats, at the cost of a slight visual change | Off |
 
 ## Gemini watermark removal
 

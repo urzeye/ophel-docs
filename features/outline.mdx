@@ -42,16 +42,18 @@ If you scroll the outline panel itself and lose track of where you are, click th
 
 ## Filter and toolbar controls
 
-The outline toolbar gives you quick controls for filtering, expansion, copying, locating, and scrolling.
+The outline toolbar gives you quick controls for filtering, expansion, locating, scrolling, and exporting. On narrow panels, less-used buttons collapse automatically to keep the search box usable.
 
 | Button             | What it shows                                                                            |
 | ------------------ | ---------------------------------------------------------------------------------------- |
 | <Icon src="/images/icons/user-query.svg" alt="User questions icon" /> **Questions toggle** | Shows or hides your messages as outline entries — useful for reviewing the chat flow |
 | <Icon src="/images/icons/star.svg" alt="Bookmarks icon" /> **Bookmarks only** | Shows only entries you have starred |
 | <Icon src="/images/icons/expand-all.svg" alt="Expand all icon" /> / <Icon src="/images/icons/collapse-all.svg" alt="Collapse all icon" /> **Expand / collapse all** | Expands or collapses the visible outline tree |
-| <Icon src="/images/icons/copy-outline.svg" alt="Copy outline icon" /> **Copy outline** | Copies a Markdown outline for the current source |
 | <Icon src="/images/icons/locate.svg" alt="Locate current position icon" /> **Locate current position** | Scrolls the outline panel back to the item matching your current reading position |
-| <Icon src="/images/icons/scroll-top.svg" alt="Scroll to outline top icon" /> / <Icon src="/images/icons/scroll-bottom.svg" alt="Scroll to outline bottom icon" /> **Scroll top / bottom** | Jumps within the outline list without moving the chat page |
+| <Icon src="/images/icons/scroll-top.svg" alt="Scroll to outline top icon" /> / <Icon src="/images/icons/scroll-bottom.svg" alt="Scroll to outline bottom icon" /> **Scroll top / bottom** | One button that flips direction with the outline's scroll state — jumps within the outline list without moving the chat page |
+| <Icon src="/images/icons/export.svg" alt="Export icon" /> **Export Chat** | Opens the [Export Chat dialog](/features/export#the-export-chat-dialog) for the current chat. The button is highlighted until you use it once |
+
+Below the buttons, a **level slider** (dots 0–6) sets how deep the tree expands — click a dot or drag across it. Each dot's tooltip shows how many headings exist at that level. The slider is disabled while the bookmarks filter is on.
 
 You can also switch filters with keyboard shortcuts:
 
@@ -75,16 +77,7 @@ Hover over any outline entry to reveal the <Icon src="/images/icons/star.svg" al
 
 ## Expand by level
 
-You can expand the tree to a specific heading depth without manually clicking every node.
-
-<Steps>
-  <Step title="Right-click any outline node">
-    A context menu appears with expand-to-level options.
-  </Step>
-  <Step title="Choose a depth, or use a keyboard shortcut">
-    Press <Shortcut combo="alt+shift+1" /> through <Shortcut combo="alt+shift+6" /> to expand to heading levels 1–6 directly.
-  </Step>
-</Steps>
+You can expand the tree to a specific heading depth without manually clicking every node. Drag the [level slider](#filter-and-toolbar-controls) under the toolbar to the depth you want, or press <Shortcut combo="alt+shift+1" /> through <Shortcut combo="alt+shift+6" /> to expand to heading levels 1–6 directly.
 
 Press <Shortcut combo="alt+e" /> to toggle all nodes expanded or collapsed at once.
 
@@ -98,7 +91,7 @@ Outline entries show a <Icon src="/images/icons/copy.svg" alt="Copy icon" /> cop
 
 ## Copy full outline
 
-Click the <Icon src="/images/icons/copy-outline.svg" alt="Copy outline icon" /> **Copy outline** button in the Outline toolbar to copy a structured Markdown outline for the current source. For chats, the copy follows the current user-question toggle and heading level. For document outlines, it follows the visible outline tree. For virtualized long chats, Ophel loads the full history first, then restores the page position when it finishes.
+Click the <Icon src="/images/icons/export.svg" alt="Export icon" /> **Export Chat** button in the Outline toolbar, then choose <Icon src="/images/icons/copy-outline.svg" alt="Copy outline icon" /> **Copy outline** in the dialog and click **Copy**. This copies a structured Markdown outline for the current source — for chats, the copy follows the current user-question toggle and heading level; for document outlines, it follows the visible outline tree. For virtualized long chats, Ophel loads the full history first, then restores the page position when it finishes.
 
 ## Document outline sources
 

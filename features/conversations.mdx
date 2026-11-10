@@ -78,23 +78,24 @@ Click the <Icon src="/images/icons/batch.svg" alt="Batch mode icon" /> **Batch M
 
 | Action         | Description                                           |
 | -------------- | ----------------------------------------------------- |
-| <Icon src="/images/icons/copy.svg" alt="Copy Markdown icon" /> Copy Markdown | Copy the selected chat as Markdown |
-| <Icon src="/images/icons/export.svg" alt="Export icon" /> Export | Export the selected chat as a file |
+| <Icon src="/images/icons/export.svg" alt="Export icon" /> Export | Export the selected chat — shown only when exactly one chat is selected |
 | <Icon src="/images/icons/folder-move.svg" alt="Move chat icon" /> Move | Assign all selected chats to a folder at once |
+| <Icon src="/images/icons/tag.svg" alt="Tag icon" /> Tag | Add or change tags on all selected chats |
 | <Icon src="/images/icons/delete.svg" alt="Delete icon" /> Delete | Remove all selected chats |
 | <Icon src="/images/icons/clear.svg" alt="Exit batch mode icon" /> Exit | Leave batch mode and clear the current selection |
 
 ## Exporting a chat
 
-You can export a chat in three ways:
+You can export a chat in several ways — by default each one opens the [Export Chat dialog](/features/export#the-export-chat-dialog) with format and content options:
 
-- **Quick button group** — click the <Icon src="/images/icons/tools.svg" alt="Toolbox icon" /> toolbox icon in the floating quick button group, then click <Icon src="/images/icons/export.svg" alt="Export icon" /> **Export** to export <Icon src="/images/icons/markdown.svg" alt="Markdown file icon" /> Markdown.
-- **Keyboard shortcut** — press <Shortcut combo="ctrl+shift+e" /> to export the current chat as <Icon src="/images/icons/markdown.svg" alt="Markdown file icon" /> Markdown.
-- **Chat row menu** — in the Chats tab, click the <Icon src="/images/icons/more-horizontal.svg" alt="Three-dot menu icon" /> three-dot menu on a chat row, choose <Icon src="/images/icons/export.svg" alt="Export icon" /> **Export**, then select <Icon src="/images/icons/markdown.svg" alt="Markdown file icon" /> Markdown, <Icon src="/images/icons/json-file.svg" alt="JSON file icon" /> JSON, or <Icon src="/images/icons/txt-file.svg" alt="TXT file icon" /> TXT.
+- **Outline toolbar** — click the highlighted <Icon src="/images/icons/export.svg" alt="Export icon" /> **Export Chat** button in the Outline tab toolbar.
+- **Quick button group** — click the <Icon src="/images/icons/tools.svg" alt="Toolbox icon" /> toolbox icon in the floating quick button group, then click <Icon src="/images/icons/export.svg" alt="Export icon" /> **Export**.
+- **Keyboard shortcut** — press <Shortcut combo="ctrl+shift+e" /> to export the current chat.
+- **Chat row menu** — in the Chats tab, click the <Icon src="/images/icons/more-horizontal.svg" alt="Three-dot menu icon" /> three-dot menu on any chat row and choose <Icon src="/images/icons/export.svg" alt="Export icon" /> **Export**. This works for chats you have not opened too; on some sites the entry reads **Open and export...** and Ophel opens the chat for you first.
 
 Markdown exports can optionally be delivered as a zip package that includes images, attachments, and other assets referenced in the chat.
 
-You can also click <Icon src="/images/icons/tools.svg" alt="Toolbox icon" /> **Toolbox** → <Icon src="/images/icons/copy.svg" alt="Copy Markdown icon" /> **Copy Markdown** to copy the entire chat to your clipboard without saving a file.
+To copy instead of saving a file, choose **Copy Markdown** in the Export Chat dialog — the entire chat goes to your clipboard.
 
 For full details on export formats, packaging modes, asset handling, and per-platform capabilities, see the dedicated [Export & Packaging](/features/export) page.
 

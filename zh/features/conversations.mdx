@@ -80,28 +80,29 @@ Ophel 从当前 AI 平台的原生侧边栏读取对话列表，将其展示在�
 
 点击对话标签页顶部的 <Icon src="/images/icons/batch.svg" alt="批量操作图标" /> **批量操作**按钮进入多选模式，勾选对话后可以：
 
+- <Icon src="/images/icons/export.svg" alt="导出图标" /> 导出选中对话（只在恰好选中一个对话时显示）
 - <Icon src="/images/icons/folder-move.svg" alt="移动对话图标" /> 移动选中对话
-- <Icon src="/images/icons/copy.svg" alt="复制 Markdown 图标" /> 复制选中对话的 Markdown
-- <Icon src="/images/icons/export.svg" alt="导出图标" /> 导出选中对话
+- <Icon src="/images/icons/tag.svg" alt="设置标签图标" /> 给选中对话批量设置标签
 - <Icon src="/images/icons/delete.svg" alt="删除图标" /> 删除选中对话
 - <Icon src="/images/icons/clear.svg" alt="退出批量操作图标" /> 退出批量操作并清空当前选择
 
 ## 导出对话
 
-你可以通过三种入口导出对话：
+你可以通过多个入口导出对话——默认都会打开[「导出对话」弹窗](/zh/features/export#导出对话弹窗)，在其中选择格式和内容选项：
 
-- **快捷按钮组**：点击浮动快捷按钮组里的 <Icon src="/images/icons/tools.svg" alt="工具箱图标" /> **工具箱**图标，然后点击 <Icon src="/images/icons/export.svg" alt="导出图标" /> **导出**按钮导出 <Icon src="/images/icons/markdown.svg" alt="Markdown 文件图标" /> Markdown。
-- **快捷键**：按 <Shortcut combo="ctrl+shift+e" />，将当前对话导出为 <Icon src="/images/icons/markdown.svg" alt="Markdown 文件图标" /> Markdown。
-- **对话行菜单**：在对话标签页中，点击目标对话右侧的 <Icon src="/images/icons/more-horizontal.svg" alt="三个点菜单图标" /> 三个点菜单，选择 <Icon src="/images/icons/export.svg" alt="导出图标" /> **导出**，再选择 <Icon src="/images/icons/markdown.svg" alt="Markdown 文件图标" /> Markdown、<Icon src="/images/icons/json-file.svg" alt="JSON 文件图标" /> JSON 或 <Icon src="/images/icons/txt-file.svg" alt="TXT 文件图标" /> TXT 格式。
+- **大纲工具栏**：点击大纲标签页工具栏中高亮的 <Icon src="/images/icons/export.svg" alt="导出图标" /> **导出对话**按钮。
+- **快捷按钮组**：点击浮动快捷按钮组里的 <Icon src="/images/icons/tools.svg" alt="工具箱图标" /> **工具箱**图标，然后点击 <Icon src="/images/icons/export.svg" alt="导出图标" /> **导出**。
+- **快捷键**：按 <Shortcut combo="ctrl+shift+e" /> 导出当前对话。
+- **对话行菜单**：在对话标签页中，点击目标对话右侧的 <Icon src="/images/icons/more-horizontal.svg" alt="三个点菜单图标" /> 三个点菜单，选择 <Icon src="/images/icons/export.svg" alt="导出图标" /> **导出**。没打开过的对话也能导出；部分站点该菜单项会显示为「打开并导出...」，Ophel 会先帮你打开对话再导出。
 
 Markdown 导出可以选择打包为 zip，包含对话中引用的图片、附件和其他资源文件。
 
 <Tip>
-  点击 <Icon src="/images/icons/tools.svg" alt="工具箱图标" /> **工具箱** → <Icon src="/images/icons/copy.svg" alt="复制 Markdown 图标" /> **复制 Markdown**，可以直接将当前对话以 Markdown
-  格式复制到剪贴板，无需保存文件。
+  不想保存文件时，在「导出对话」弹窗中选择 **复制 Markdown**，可以直接将当前对话以 Markdown
+  格式复制到剪贴板。
 </Tip>
 
-关于导出格式、打包模式、资源处理和各平台支持能力的完整说明，请参阅 [导出与打包](/features/export) 页面。
+关于导出格式、打包模式、资源处理和各平台支持能力的完整说明，请参阅 [导出与打包](/zh/features/export) 页面。
 
 ## WebDAV 同步
 
@@ -114,7 +115,7 @@ Markdown 导出可以选择打包为 zip，包含对话中引用的图片、附�
   无法导出。
 </Note>
 
-配置完成后点击 **上传** / **下载** 即可手动同步。详见 [WebDAV 同步](/data/webdav)。
+配置完成后点击 **上传** / **下载** 即可手动同步。详见 [WebDAV 同步](/zh/data/webdav)。
 
 ## 常用快捷键
 

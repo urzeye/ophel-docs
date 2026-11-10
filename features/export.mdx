@@ -26,12 +26,24 @@ Ophel can export any AI chat to a file, preserving not just the text but also im
 
 | Method | Description |
 | --- | --- |
-| Floating quick buttons | Click the <Icon src="/images/icons/tools.svg" alt="Toolbox icon" /> toolbox icon, then click <Icon src="/images/icons/export.svg" alt="Export icon" /> **Export** to save <Icon src="/images/icons/markdown.svg" alt="Markdown file icon" /> Markdown |
-| Keyboard shortcut | <Shortcut combo="ctrl+shift+e" /> exports the current chat as <Icon src="/images/icons/markdown.svg" alt="Markdown file icon" /> Markdown |
-| Chats tab | Click the <Icon src="/images/icons/more-horizontal.svg" alt="Three-dot menu icon" /> three-dot menu on a chat row, choose <Icon src="/images/icons/export.svg" alt="Export icon" /> **Export**, then select <Icon src="/images/icons/markdown.svg" alt="Markdown file icon" /> Markdown, <Icon src="/images/icons/json-file.svg" alt="JSON file icon" /> JSON, or <Icon src="/images/icons/txt-file.svg" alt="TXT file icon" /> TXT |
-| Segmented export | Click the three-dot menu on a chat row, choose **Export segments...** to select and export specific parts of a chat |
+| Outline toolbar | Click the highlighted <Icon src="/images/icons/export.svg" alt="Export icon" /> **Export Chat** button in the Outline tab toolbar |
+| Floating quick buttons | Click the <Icon src="/images/icons/tools.svg" alt="Toolbox icon" /> toolbox icon, then click <Icon src="/images/icons/export.svg" alt="Export icon" /> **Export** |
+| Keyboard shortcut | <Shortcut combo="ctrl+shift+e" /> exports the current chat |
+| Chats tab | Click the <Icon src="/images/icons/more-horizontal.svg" alt="Three-dot menu icon" /> three-dot menu on a chat row and choose **Export** — this also works for chats you have not opened (on some sites Ophel opens the chat for you first, shown as **Open and export...**). In batch mode, selecting exactly one chat reveals an export button too |
 
-After triggering an export, a full-page progress overlay blocks accidental interaction while Ophel loads history, extracts content, packages assets, saves the file, and restores the page.
+By default, every entry above opens the **Export Chat** dialog. If you prefer one-click exports with your saved defaults, turn off **Settings → Features → Chats → Export Settings → Show Export Options Dialog**.
+
+After the export starts, a full-page progress overlay blocks accidental interaction while Ophel loads history, extracts content, packages assets, saves the file, and restores the page.
+
+## The Export Chat dialog
+
+The dialog shows the title of the chat being exported — handy when you export a chat from the list without opening it. It offers:
+
+- **Formats** — <Icon src="/images/icons/markdown.svg" alt="Markdown file icon" /> Markdown, HTML, <Icon src="/images/icons/json-file.svg" alt="JSON file icon" /> JSON, <Icon src="/images/icons/txt-file.svg" alt="TXT file icon" /> Text, and <Icon src="/images/icons/copy.svg" alt="Copy Markdown icon" /> **Copy Markdown** (straight to the clipboard). When you are exporting the chat on the current page, a <Icon src="/images/icons/copy-outline.svg" alt="Copy outline icon" /> **Copy outline** option also appears here — it copies the structured Markdown outline instead of the full chat.
+- **Export options** — Include Thoughts, Show Turn Numbers (not available for JSON), Markdown Divider, **Package as ZIP (with attachments)** for Markdown, and **Use clean style** (no decorative emojis). A gear button jumps to the full [export settings](#export-settings). Copying an outline ignores these options.
+- **Export segments...** — a link at the bottom left switches to [segmented export](#segmented-export) for the current chat.
+
+Click **Export** (or **Copy**) to finish.
 
 ## Export formats
 
@@ -39,10 +51,11 @@ After triggering an export, a full-page progress overlay blocks accidental inter
 | --- | --- | --- |
 | <Icon src="/images/icons/markdown.svg" alt="Markdown file icon" /> Markdown (`.md`) | Speaker labels, headings, lists, code blocks, and image references | Notes, wikis, documentation, and AI-to-AI handoff |
 | <Icon src="/images/icons/zip-file.svg" alt="Zip package icon" /> Markdown zip package (`.zip`) | The Markdown file plus referenced images, attachments, and generated artifacts in `assets/` | Chats with files, images, Canvas code, or document artifacts |
+| HTML (`.html`) | A self-contained, formatted web page with rendered Markdown, speaker labels, and optional turn numbers | Reading, printing, and sharing with people who do not use Markdown |
 | <Icon src="/images/icons/json-file.svg" alt="JSON file icon" /> JSON (`.json`) | Structured messages with roles, timestamps, model metadata, and content | Programmatic processing, indexing, and archival workflows |
 | <Icon src="/images/icons/txt-file.svg" alt="TXT file icon" /> Plain text (`.txt`) | A clean transcript without Markdown formatting | Searchable text archives and plain text editors |
 
-You can also click <Icon src="/images/icons/tools.svg" alt="Toolbox icon" /> **Toolbox** → <Icon src="/images/icons/copy.svg" alt="Copy Markdown icon" /> **Copy Markdown** to copy the entire chat to your clipboard without saving a file.
+Choosing **Copy Markdown** in the Export Chat dialog copies the entire chat to your clipboard without saving a file.
 
 ## Segmented export
 
@@ -52,7 +65,7 @@ Segmented export lets you select and export specific parts of a chat instead of 
 
 <Steps>
   <Step title="Open the segmented export dialog">
-    From the Chats tab, click the <Icon src="/images/icons/more-horizontal.svg" alt="Three-dot menu icon" /> three-dot menu on any chat row and choose **Export segments...**
+    Open the [Export Chat dialog](#the-export-chat-dialog) for the current chat — for example from the <Icon src="/images/icons/export.svg" alt="Export icon" /> **Export Chat** button in the Outline toolbar — then click **Export segments...** at the bottom left.
   </Step>
   <Step title="Select segments">
     Ophel automatically detects chat segments based on user questions. You can:
@@ -180,19 +193,20 @@ Configure export behavior in **Settings → Features → Chats → Export Settin
 
 | Setting | Description | Default |
 | --- | --- | --- |
-| Default Export Format | Format used by toolbox and shortcut exports | Markdown |
+| Show Export Options Dialog | Open the Export Chat dialog on every export; when off, export immediately with the defaults below | On |
+| Default Export Format | Format used by quick exports and preselected in the dialog: Markdown, JSON, TXT, or HTML | Markdown |
 | Markdown Export Method | Markdown only or zip package | Markdown only |
 | Add Timestamp to Filename | Adds a timestamp to the exported filename | Off |
 | Include Thoughts in Export | Exports reasoning steps for platforms that expose them | On |
 | Show Turn Numbers in Export | Numbers each chat turn in the output | Off |
-| Show Export Options Dialog | Shows format and content options before exporting | On |
 | Markdown Divider | Separator inserted between chat turns | `---` |
+| Export Style | Standard or Clean — Clean removes decorative emojis from exported files | Standard |
 | Custom User Name | Replaces "User" in the exported output | (empty) |
 | Custom AI Name | Replaces the AI name in the exported output | (empty) |
 
 ## Copy as Markdown
 
-Click <Icon src="/images/icons/tools.svg" alt="Toolbox icon" /> **Toolbox** → <Icon src="/images/icons/copy.svg" alt="Copy Markdown icon" /> **Copy Markdown** to copy the entire chat to your clipboard in Markdown format. This is faster than exporting a file when you just need to paste the content into a note, email, or another AI chat.
+Open the [Export Chat dialog](#the-export-chat-dialog) and choose <Icon src="/images/icons/copy.svg" alt="Copy Markdown icon" /> **Copy Markdown**, then click **Copy**. The whole chat lands on your clipboard in Markdown format — faster than exporting a file when you just need to paste the content into a note, email, or another AI chat.
 
 ## Export from share pages
 

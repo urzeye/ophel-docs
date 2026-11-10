@@ -40,16 +40,18 @@ import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
 
 ## 过滤与工具栏按钮
 
-大纲工具栏提供过滤、展开、复制、定位和列表滚动按钮：
+大纲工具栏提供过滤、展开、定位、列表滚动和导出按钮。面板较窄时，不常用的按钮会自动收起，保证搜索框可用。
 
 | 按钮 | 作用 |
 | --- | --- |
 | <Icon src="/images/icons/user-query.svg" alt="用户问题图标" /> **用户问题开关** | 显示或隐藏你的消息节点，适合快速回顾对话脉络 |
 | <Icon src="/images/icons/star.svg" alt="书签图标" /> **仅书签** | 只显示你手动标星的节点 |
 | <Icon src="/images/icons/expand-all.svg" alt="展开全部图标" /> / <Icon src="/images/icons/collapse-all.svg" alt="折叠全部图标" /> **展开 / 折叠全部** | 展开或折叠当前可见的大纲树 |
-| <Icon src="/images/icons/copy-outline.svg" alt="复制大纲图标" /> **复制大纲** | 复制当前来源的大纲 Markdown |
 | <Icon src="/images/icons/locate.svg" alt="定位当前节点图标" /> **定位当前位置** | 将大纲列表滚回当前阅读位置对应的节点 |
-| <Icon src="/images/icons/scroll-top.svg" alt="滚动到大纲顶部图标" /> / <Icon src="/images/icons/scroll-bottom.svg" alt="滚动到大纲底部图标" /> **滚到顶部 / 底部** | 只在大纲列表内跳转，不移动对话页面 |
+| <Icon src="/images/icons/scroll-top.svg" alt="滚动到大纲顶部图标" /> / <Icon src="/images/icons/scroll-bottom.svg" alt="滚动到大纲底部图标" /> **滚到顶部 / 底部** | 同一个按钮随大纲滚动位置切换方向，只在大纲列表内跳转，不移动对话页面 |
+| <Icon src="/images/icons/export.svg" alt="导出图标" /> **导出对话** | 打开当前对话的[「导出对话」弹窗](/zh/features/export#导出对话弹窗)。首次使用前按钮会保持高亮提示 |
+
+按钮下方还有一个**层级滑块**（0–6 共七个圆点），点击或拖动即可把大纲树展开到对应深度，圆点提示里会显示该层级的标题数量。开启书签过滤时滑块暂时不可用。
 
 ## 书签
 
@@ -64,7 +66,7 @@ import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
 
 ## 按层级展开
 
-使用快捷键 <Shortcut combo="alt+shift+1" /> 到 <Shortcut combo="alt+shift+6" />，可以一键折叠到对应标题层级（比如只展开到 H2）。<Shortcut combo="alt+e" /> 在全部展开和全部折叠之间切换。
+拖动工具栏下方的[层级滑块](#过滤与工具栏按钮)到目标层级，或使用快捷键 <Shortcut combo="alt+shift+1" /> 到 <Shortcut combo="alt+shift+6" />，可以一键折叠到对应标题层级（比如只展开到 H2）。<Shortcut combo="alt+e" /> 在全部展开和全部折叠之间切换。
 
 ## 字数统计与节点复制
 
@@ -72,7 +74,7 @@ import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
 
 ## 复制完整大纲
 
-点击大纲工具栏里的 <Icon src="/images/icons/copy-outline.svg" alt="复制大纲图标" /> **复制大纲**按钮，即可复制当前来源的结构化 Markdown 大纲。对话来源会遵循当前用户问题开关和标题层级；文档来源会遵循当前可见的大纲树。遇到虚拟滚动长对话时，Ophel 会先加载完整历史，复制完成后再恢复页面位置。
+点击大纲工具栏里的 <Icon src="/images/icons/export.svg" alt="导出图标" /> **导出对话**按钮，在弹窗中选择 <Icon src="/images/icons/copy-outline.svg" alt="复制大纲图标" /> **复制大纲**，再点击 **复制**，即可复制当前来源的结构化 Markdown 大纲。对话来源会遵循当前用户问题开关和标题层级；文档来源会遵循当前可见的大纲树。遇到虚拟滚动长对话时，Ophel 会先加载完整历史，复制完成后再恢复页面位置。
 
 ## 文档大纲源切换
 
