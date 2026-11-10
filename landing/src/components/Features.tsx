@@ -200,12 +200,92 @@ export function Features({ featuresTitle, featuresSubtitle, items, locale = 'en'
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const stageContainerRef = useRef<HTMLDivElement | null>(null);
   const chapterRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const pendingSeekRef = useRef<number | null>(null);
+  const seekLockUntilRef = useRef<number>(0);
 
   const [activeChapter, setActiveChapter] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
   const [viewMode, setViewMode] = useState<'video' | 'still'>('video');
   const [reducedMotion, setReducedMotion] = useState(false);
+
+  const applyVideoSeek = (video: HTMLVideoElement, targetSec: number) => {
+    const seekable = video.seekable;
+    let canSeekDirectly = false;
+    for (let i = 0; i < seekable.length; i++) {
+      if (targetSec >= seekable.start(i) && targetSec <= seekable.end(i) + 0.25) {
+        canSeekDirectly = true;
+        break;
+      }
+    }
+
+    if (canSeekDirectly || video.src.startsWith('blob:')) {
+      try {
+        video.currentTime = targetSec;
+        if (Math.abs(video.currentTime - targetSec) <= 1.2) {
+          pendingSeekRef.current = null;
+        } else {
+          pendingSeekRef.current = targetSec;
+        }
+      } catch {
+        pendingSeekRef.current = targetSec;
+      }
+    } else {
+      pendingSeekRef.current = targetSec;
+    }
+  };
+
+  // Preload video into an in-memory Blob URL so seeking works 100% locally
+  // even when Cloudflare / reverse proxies return HTTP 200 instead of 206 Partial Content
+  useEffect(() => {
+    let revokedUrl: string | null = null;
+    const controller = new AbortController();
+
+    const probe = document.createElement('video');
+    const canPlayWebm =
+      probe.canPlayType('video/webm; codecs="vp09.01.10.08"') !== '' ||
+      probe.canPlayType('video/webm; codecs="vp9"') !== '';
+    const mediaUrl = canPlayWebm ? '/media/ophel-demo.webm' : '/media/ophel-demo.mp4';
+
+    fetch(mediaUrl, { signal: controller.signal })
+      .then((res) => (res.ok ? res.blob() : Promise.reject(new Error('Failed to fetch video'))))
+      .then((blob) => {
+        if (controller.signal.aborted) return;
+        const blobUrl = URL.createObjectURL(blob);
+        revokedUrl = blobUrl;
+        const video = videoRef.current;
+        if (!video) return;
+
+        const desiredTime =
+          pendingSeekRef.current !== null ? pendingSeekRef.current : video.currentTime;
+        const wasPaused = video.paused;
+
+        video.src = blobUrl;
+        const onLoadedMetadata = () => {
+          video.removeEventListener('loadedmetadata', onLoadedMetadata);
+          if (desiredTime > 0) {
+            video.currentTime = desiredTime;
+            setCurrentTime(desiredTime);
+          }
+          pendingSeekRef.current = null;
+          if (!wasPaused && !reducedMotion && viewMode === 'video') {
+            video.play().catch(() => {});
+          }
+        };
+        video.addEventListener('loadedmetadata', onLoadedMetadata);
+        video.load();
+      })
+      .catch(() => {
+        // Fallback to native <source> tags if fetch fails
+      });
+
+    return () => {
+      controller.abort();
+      if (revokedUrl) {
+        URL.revokeObjectURL(revokedUrl);
+      }
+    };
+  }, []);
 
   // Detect prefers-reduced-motion on mount
   useEffect(() => {
@@ -249,48 +329,29 @@ export function Features({ featuresTitle, featuresSubtitle, items, locale = 'en'
     return () => io.disconnect();
   }, [reducedMotion, viewMode]);
 
-  // Sync active chapter when user scrolls through chapter cards on desktop
-  useEffect(() => {
-    const nodes = chapterRefs.current.filter(Boolean) as HTMLButtonElement[];
-    if (nodes.length === 0) return;
-
-    const io = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            const idx = Number((entry.target as HTMLElement).dataset.chapterIndex);
-            if (!Number.isNaN(idx)) {
-              setActiveChapter((prev) => {
-                if (prev !== idx && videoRef.current && viewMode === 'video') {
-                  const targetChapter = chapters[idx];
-                  if (
-                    targetChapter &&
-                    (videoRef.current.currentTime < targetChapter.startSec ||
-                      videoRef.current.currentTime > targetChapter.endSec)
-                  ) {
-                    videoRef.current.currentTime = targetChapter.startSec;
-                  }
-                }
-                return idx;
-              });
-            }
-          }
-        }
-      },
-      {
-        rootMargin: '-28% 0px -45% 0px',
-        threshold: 0.25,
-      },
-    );
-
-    nodes.forEach((n) => io.observe(n));
-    return () => io.disconnect();
-  }, [chapters, viewMode]);
+  const handleProgress = () => {
+    const video = videoRef.current;
+    if (!video || pendingSeekRef.current === null) return;
+    applyVideoSeek(video, pendingSeekRef.current);
+  };
 
   const handleTimeUpdate = () => {
     const video = videoRef.current;
     if (!video) return;
+
+    if (pendingSeekRef.current !== null) {
+      applyVideoSeek(video, pendingSeekRef.current);
+      if (pendingSeekRef.current !== null) {
+        return;
+      }
+    }
+
     const t = video.currentTime;
+    if (Date.now() < seekLockUntilRef.current) {
+      setCurrentTime(t);
+      return;
+    }
+
     setCurrentTime(t);
 
     const matchedIndex = chapters.findIndex((c) => t >= c.startSec && t < c.endSec);
@@ -302,12 +363,15 @@ export function Features({ featuresTitle, featuresSubtitle, items, locale = 'en'
   const selectChapter = (idx: number) => {
     const target = chapters[idx];
     if (!target) return;
+    seekLockUntilRef.current = Date.now() + 650;
     setActiveChapter(idx);
-    if (videoRef.current) {
-      videoRef.current.currentTime = target.startSec;
-      setCurrentTime(target.startSec);
+    setCurrentTime(target.startSec);
+
+    const video = videoRef.current;
+    if (video) {
+      applyVideoSeek(video, target.startSec);
       if (viewMode === 'video' && !reducedMotion) {
-        videoRef.current.play().catch(() => {});
+        video.play().catch(() => {});
         setIsPlaying(true);
       }
     }
@@ -329,6 +393,8 @@ export function Features({ featuresTitle, featuresSubtitle, items, locale = 'en'
   const restartVideo = () => {
     const video = videoRef.current;
     if (!video) return;
+    pendingSeekRef.current = null;
+    seekLockUntilRef.current = Date.now() + 400;
     setViewMode('video');
     video.currentTime = 0;
     setCurrentTime(0);
@@ -526,6 +592,8 @@ export function Features({ featuresTitle, featuresSubtitle, items, locale = 'en'
                   playsInline
                   loop
                   preload="auto"
+                  onProgress={handleProgress}
+                  onCanPlay={handleProgress}
                   onTimeUpdate={handleTimeUpdate}
                   onPlay={() => setIsPlaying(true)}
                   onPause={() => setIsPlaying(false)}
