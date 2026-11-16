@@ -177,9 +177,8 @@ const en = {
   uninstall: {
     metaTitle: 'Uninstall Feedback — Ophel Atlas',
     metaDesc: 'Tell us why you uninstalled Ophel so we know what to improve next.',
-    kicker: 'Sorry to see you go',
     heading: 'What made you uninstall Ophel?',
-    sub: 'It only takes a few seconds. Your choice decides what we improve next — thank you for your time.',
+    sub: 'Sorry to see you go. It only takes a few seconds — your choice decides what we improve next. Thank you for your time.',
     reasonTitle: '1. Pick the main reason',
     reasons: {
       'missing-site': "Doesn't support the sites or services I use",
@@ -361,9 +360,8 @@ const zh = {
   uninstall: {
     metaTitle: '卸载反馈 — Ophel Atlas',
     metaDesc: '告诉我们你卸载 Ophel 的原因，帮助我们确定之后的改进方向。',
-    kicker: '很遗憾看到你离开',
     heading: '是什么让你卸载了 Ophel？',
-    sub: '只需要几秒钟，你的选择将决定我们之后改进的方向，感谢你的时间。',
+    sub: '很遗憾看到你离开。只需要几秒钟，你的选择将决定我们之后改进的方向，感谢你的时间。',
     reasonTitle: '1. 选一个主要原因',
     reasons: {
       'missing-site': '不支持我在用的站点或服务',
@@ -418,9 +416,8 @@ export const uninstallSurveyI18n: Record<UninstallSurveyLang, UninstallSurveyStr
   'zh-TW': {
     metaTitle: '移除意見回饋 — Ophel Atlas',
     metaDesc: '告訴我們你移除 Ophel 的原因，幫助我們決定之後的改進方向。',
-    kicker: '很遺憾看到你離開',
     heading: '是什麼讓你移除了 Ophel？',
-    sub: '只需要幾秒鐘，你的選擇將決定我們之後改進的方向，感謝你的時間。',
+    sub: '很遺憾看到你離開。只需要幾秒鐘，你的選擇將決定我們之後改進的方向，感謝你的時間。',
     reasonTitle: '1. 選一個主要原因',
     reasons: {
       'missing-site': '不支援我在用的網站或服務',
@@ -447,9 +444,8 @@ export const uninstallSurveyI18n: Record<UninstallSurveyLang, UninstallSurveyStr
   ja: {
     metaTitle: 'アンインストールのご意見 — Ophel Atlas',
     metaDesc: 'Ophel をアンインストールした理由を教えてください。今後の改善に活かします。',
-    kicker: 'ご満足いただけず、残念です',
     heading: 'Ophel をアンインストールした理由を教えてください',
-    sub: '数秒で完了します。あなたの選択が今後の改善の方向を決めます。お時間をいただきありがとうございます。',
+    sub: 'ご満足いただけず残念です。数秒で完了します。あなたの選択が今後の改善の方向を決めます。お時間をいただきありがとうございます。',
     reasonTitle: '1. 主な理由を一つ選んでください',
     reasons: {
       'missing-site': '使っているサイトやサービスに対応していない',
@@ -478,9 +474,8 @@ export const uninstallSurveyI18n: Record<UninstallSurveyLang, UninstallSurveyStr
   ko: {
     metaTitle: '제거 설문 — Ophel Atlas',
     metaDesc: 'Ophel을 삭제한 이유를 알려주시면 다음 개선 방향을 정하는 데 도움이 됩니다.',
-    kicker: '떠나신다니 아쉽습니다',
     heading: 'Ophel을 삭제하신 이유가 무엇인가요?',
-    sub: '몇 초면 충분합니다. 당신의 선택이 앞으로의 개선 방향을 결정합니다. 시간 내주셔서 감사합니다.',
+    sub: '떠나신다니 아쉽습니다. 몇 초면 충분합니다. 당신의 선택이 앞으로의 개선 방향을 결정합니다. 시간 내주셔서 감사합니다.',
     reasonTitle: '1. 가장 큰 이유를 선택해 주세요',
     reasons: {
       'missing-site': '제가 사용하는 사이트나 서비스를 지원하지 않아요',
@@ -509,9 +504,8 @@ export const uninstallSurveyI18n: Record<UninstallSurveyLang, UninstallSurveyStr
   it: {
     metaTitle: 'Feedback di disinstallazione — Ophel Atlas',
     metaDesc: 'Dicci perché hai disinstallato Ophel, così sapremo cosa migliorare.',
-    kicker: 'Ci dispiace vederti andare via',
     heading: 'Cosa ti ha spinto a disinstallare Ophel?',
-    sub: 'Bastano pochi secondi. La tua scelta decide cosa miglioreremo — grazie per il tuo tempo.',
+    sub: 'Ci dispiace vederti andare via. Bastano pochi secondi: la tua scelta decide cosa miglioreremo. Grazie per il tuo tempo.',
     reasonTitle: '1. Scegli il motivo principale',
     reasons: {
       'missing-site': 'Non supporta i siti o i servizi che uso',
@@ -541,9 +535,8 @@ export const uninstallSurveyI18n: Record<UninstallSurveyLang, UninstallSurveyStr
     metaTitle: 'Deinstallations-Feedback — Ophel Atlas',
     metaDesc:
       'Sag uns, warum du Ophel deinstalliert hast, damit wir wissen, was wir als Nächstes verbessern.',
-    kicker: 'Schade, dass du gehst',
     heading: 'Was hat dich dazu bewogen, Ophel zu deinstallieren?',
-    sub: 'Es dauert nur ein paar Sekunden. Deine Wahl entscheidet, was wir als Nächstes verbessern — danke für deine Zeit.',
+    sub: 'Schade, dass du gehst. Es dauert nur ein paar Sekunden — deine Wahl entscheidet, was wir als Nächstes verbessern. Danke für deine Zeit.',
     reasonTitle: '1. Wähle den Hauptgrund',
     reasons: {
       'missing-site': 'Unterstützt die Websites oder Dienste nicht, die ich nutze',
@@ -572,9 +565,8 @@ export const uninstallSurveyI18n: Record<UninstallSurveyLang, UninstallSurveyStr
   es: {
     metaTitle: 'Comentarios de desinstalación — Ophel Atlas',
     metaDesc: 'Cuéntanos por qué desinstalaste Ophel para saber qué mejorar.',
-    kicker: 'Lamentamos verte partir',
     heading: '¿Qué te hizo desinstalar Ophel?',
-    sub: 'Solo te tomará unos segundos. Tu elección decide qué mejoraremos a continuación — gracias por tu tiempo.',
+    sub: 'Lamentamos verte partir. Solo te tomará unos segundos; tu elección decide qué mejoraremos a continuación. Gracias por tu tiempo.',
     reasonTitle: '1. Elige el motivo principal',
     reasons: {
       'missing-site': 'No es compatible con los sitios o servicios que uso',
@@ -603,9 +595,8 @@ export const uninstallSurveyI18n: Record<UninstallSurveyLang, UninstallSurveyStr
   fr: {
     metaTitle: 'Avis de désinstallation — Ophel Atlas',
     metaDesc: 'Dites-nous pourquoi vous avez désinstallé Ophel pour nous aider à nous améliorer.',
-    kicker: 'Nous sommes tristes de vous voir partir',
     heading: "Qu'est-ce qui vous a poussé à désinstaller Ophel ?",
-    sub: 'Cela ne prend que quelques secondes. Votre choix déterminera nos prochaines améliorations — merci pour votre temps.',
+    sub: 'Nous sommes tristes de vous voir partir. Cela ne prend que quelques secondes — votre choix déterminera nos prochaines améliorations. Merci pour votre temps.',
     reasonTitle: '1. Choisissez la raison principale',
     reasons: {
       'missing-site': "Ne prend pas en charge les sites ou services que j'utilise",
@@ -635,9 +626,8 @@ export const uninstallSurveyI18n: Record<UninstallSurveyLang, UninstallSurveyStr
   pt: {
     metaTitle: 'Feedback de desinstalação — Ophel Atlas',
     metaDesc: 'Conte por que você desinstalou o Ophel para sabermos o que melhorar.',
-    kicker: 'Lamentamos ver você partir',
     heading: 'O que fez você desinstalar o Ophel?',
-    sub: 'Leva só alguns segundos. Sua escolha decide o que vamos melhorar a seguir — obrigado pelo seu tempo.',
+    sub: 'Lamentamos ver você partir. Leva só alguns segundos — sua escolha decide o que vamos melhorar a seguir. Obrigado pelo seu tempo.',
     reasonTitle: '1. Escolha o motivo principal',
     reasons: {
       'missing-site': 'Não é compatível com os sites ou serviços que eu uso',
@@ -666,9 +656,8 @@ export const uninstallSurveyI18n: Record<UninstallSurveyLang, UninstallSurveyStr
   ru: {
     metaTitle: 'Отзыв об удалении — Ophel Atlas',
     metaDesc: 'Расскажите, почему вы удалили Ophel, чтобы мы знали, что улучшить.',
-    kicker: 'Жаль, что вы уходите',
     heading: 'Что заставило вас удалить Ophel?',
-    sub: 'Это займёт всего несколько секунд. Ваш выбор определит, что мы улучшим дальше, — спасибо за ваше время.',
+    sub: 'Жаль, что вы уходите. Это займёт всего несколько секунд — ваш выбор определит, что мы улучшим дальше. Спасибо за ваше время.',
     reasonTitle: '1. Выберите главную причину',
     reasons: {
       'missing-site': 'Не поддерживает сайты и сервисы, которыми я пользуюсь',

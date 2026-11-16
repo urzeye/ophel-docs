@@ -45,34 +45,55 @@ const langOptions: { value: UninstallSurveyLang; label: string }[] = [
 
     <div class="card">
       <section id="survey-view">
-        <p class="kicker" data-i18n="kicker">{en.kicker}</p>
         <h1 data-i18n="heading">{en.heading}</h1>
         <p class="sub" data-i18n="sub">{en.sub}</p>
 
         <form id="survey-form">
-          <h2 data-i18n="reasonTitle">{en.reasonTitle}</h2>
-          <div class="reasons" id="reasons">
-            {
-              reasonKeys.map((key) => (
-                <label class="reason">
-                  <input type="radio" name="reason" value={key} required />
-                  <span>{en.reasons[key]}</span>
-                </label>
-              ))
-            }
-          </div>
+          <section class="question">
+            <h2 id="reason-title" data-i18n="reasonTitle">{en.reasonTitle}</h2>
+            <div class="reasons" id="reasons" role="radiogroup" aria-labelledby="reason-title">
+              {
+                reasonKeys.map((key) => (
+                  <label class="reason">
+                    <input type="radio" name="reason" value={key} required />
+                    <span>{en.reasons[key]}</span>
+                  </label>
+                ))
+              }
+            </div>
+          </section>
 
-          <h2 data-i18n="detailTitle">{en.detailTitle}</h2>
-          <textarea id="detail" rows="3" maxlength="1000" placeholder={en.detailPlaceholder}
-          ></textarea>
+          <section class="question">
+            <h2 id="detail-title" data-i18n="detailTitle">{en.detailTitle}</h2>
+            <textarea
+              id="detail"
+              rows="3"
+              maxlength="1000"
+              placeholder={en.detailPlaceholder}
+              aria-labelledby="detail-title"></textarea>
+          </section>
 
           <button type="submit" class="submit-btn" id="submit-btn">{en.submit}</button>
-          <p class="form-error" id="form-error" hidden></p>
+          <p class="form-error" id="form-error" role="alert" hidden></p>
+          <noscript>
+            <p class="form-error">
+              This survey needs JavaScript to submit. 此问卷需要启用 JavaScript 才能提交。
+            </p>
+          </noscript>
         </form>
       </section>
 
       <section id="thanks-view" hidden>
-        <h1 data-i18n="thanksTitle">{en.thanksTitle}</h1>
+        <div class="success-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor">
+            <path
+              d="M4.5 12.5l5 5 10-11"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"></path>
+          </svg>
+        </div>
+        <h1 id="thanks-title" tabindex="-1" data-i18n="thanksTitle">{en.thanksTitle}</h1>
         <p class="sub" data-i18n="thanksBody">{en.thanksBody}</p>
         <a class="submit-btn" id="reinstall-link" href="/download/">{en.reinstall}</a>
       </section>
@@ -146,6 +167,8 @@ const langOptions: { value: UninstallSurveyLang; label: string }[] = [
       el('survey-view').hidden = true;
       el('thanks-view').hidden = false;
       el('skip-btn').hidden = true;
+      // 焦点移到感谢标题，读屏与键盘用户能感知视图切换
+      el('thanks-title').focus({ preventScroll: true });
     }
 
     el('lang-select').addEventListener('change', (event) => applyLang(event.target.value));
@@ -220,80 +243,104 @@ const langOptions: { value: UninstallSurveyLang; label: string }[] = [
     font-size: 20px;
     font-weight: 800;
     color: var(--ink-strong);
-    margin-bottom: 24px;
+    margin-bottom: 20px;
   }
 
   .brand img {
     border-radius: 7px;
   }
 
+  @keyframes card-in {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+  }
+
   .card {
     width: 100%;
     max-width: 560px;
     background: var(--paper-strong);
-    border: 1px solid var(--line);
     border-radius: 12px;
     box-shadow: var(--shadow-card);
-    padding: 32px 32px 20px;
-  }
-
-  .kicker {
-    font-family: var(--font-mono);
-    font-size: 12px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin: 0 0 8px;
+    padding: 36px 36px 24px;
+    animation: card-in 0.32s cubic-bezier(0.16, 1, 0.3, 1) both;
   }
 
   h1 {
     font-size: 26px;
     font-weight: 800;
     color: var(--ink-strong);
-    margin: 0 0 8px;
+    margin: 0 0 10px;
   }
 
   .sub {
     color: var(--text-muted);
-    font-size: 14px;
-    line-height: 1.6;
-    margin: 0 0 8px;
+    font-size: 15px;
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  .question {
+    margin-top: 30px;
   }
 
   h2 {
     font-size: 15px;
     font-weight: 700;
     color: var(--ink-strong);
-    margin: 22px 0 8px;
+    margin: 0 0 10px;
   }
 
   .reasons {
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: 4px;
   }
 
   .reason {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 10px;
-    padding: 7px 10px;
-    border-radius: 6px;
-    font-size: 14px;
+    padding: 9px 12px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    font-size: 15px;
+    line-height: 1.5;
     color: var(--ink);
     cursor: pointer;
+    transition:
+      background-color 0.14s ease,
+      border-color 0.14s ease;
   }
 
   .reason:hover {
     background: var(--surface-hover);
   }
 
+  /* 选中态：浅青底 + 青边；默认态已有 1px 透明边，切换不位移 */
+  .reason:has(input:checked) {
+    background: var(--surface-tint);
+    border-color: var(--accent);
+  }
+
+  .reason:has(input:focus-visible) {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
   .reason input {
     width: 16px;
     height: 16px;
     flex: none;
+    margin-top: 3px;
     accent-color: var(--accent);
     cursor: pointer;
+  }
+
+  .reason span {
+    overflow-wrap: break-word;
+    min-width: 0;
   }
 
   textarea {
@@ -304,29 +351,36 @@ const langOptions: { value: UninstallSurveyLang; label: string }[] = [
     background: var(--paper);
     padding: 10px 12px;
     font: inherit;
-    font-size: 14px;
+    font-size: 16px;
+    line-height: 1.55;
     color: var(--ink);
     resize: vertical;
     min-height: 72px;
+    transition: border-color 0.14s ease;
+  }
+
+  textarea::placeholder {
+    color: var(--text-faint);
   }
 
   textarea:focus {
     outline: 2px solid var(--accent);
+    outline-offset: 0;
     border-color: transparent;
   }
 
   .submit-btn {
     display: block;
     width: 100%;
-    margin-top: 20px;
-    padding: 12px;
+    margin-top: 26px;
+    padding: 13px;
     border: none;
     border-radius: 8px;
     background: var(--accent);
     color: #fff;
     font: inherit;
     font-weight: 700;
-    font-size: 15px;
+    font-size: 16px;
     text-align: center;
     text-decoration: none;
     cursor: pointer;
@@ -342,19 +396,66 @@ const langOptions: { value: UninstallSurveyLang; label: string }[] = [
     cursor: default;
   }
 
+  .submit-btn:focus-visible,
+  .skip-btn:focus-visible,
+  select:focus-visible,
+  .brand:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
   .form-error {
-    margin: 10px 0 0;
+    margin: 12px 0 0;
     color: #b42318;
-    font-size: 13px;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  /* 感谢态：本页唯一的主动效时刻 */
+  @keyframes thanks-in {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+  }
+
+  @keyframes mark-pop {
+    from {
+      opacity: 0;
+      transform: scale(0.55);
+    }
+  }
+
+  #thanks-view {
+    text-align: center;
+    padding: 8px 0 4px;
+    animation: thanks-in 0.32s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .success-mark {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 14px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    color: var(--ok);
+    background: rgba(24, 121, 78, 0.12);
+    animation: mark-pop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
   }
 
   #thanks-view h1 {
-    margin-bottom: 10px;
+    margin-bottom: 12px;
+  }
+
+  #thanks-view .sub {
+    max-width: 40ch;
+    margin: 0 auto;
   }
 
   .card-footer {
-    margin-top: 24px;
-    padding-top: 16px;
+    margin-top: 28px;
+    padding-top: 18px;
     border-top: 1px solid var(--line);
     display: flex;
     align-items: flex-end;
@@ -367,7 +468,7 @@ const langOptions: { value: UninstallSurveyLang; label: string }[] = [
     font-size: 13px;
     color: var(--text-faint);
     line-height: 1.6;
-    max-width: 34ch;
+    max-width: 38ch;
     margin: 0;
   }
 
@@ -400,12 +501,34 @@ const langOptions: { value: UninstallSurveyLang; label: string }[] = [
     border: 1px solid var(--line);
     border-radius: 6px;
     background: var(--paper);
-    padding: 6px 8px;
+    padding: 7px 10px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .card,
+    #thanks-view,
+    .success-mark {
+      animation: none;
+    }
+
+    .reason,
+    textarea,
+    .submit-btn {
+      transition: none;
+    }
   }
 
   @media (max-width: 640px) {
+    .uninstall-page {
+      padding: 32px 14px 48px;
+    }
+
     .card {
-      padding: 24px 20px 16px;
+      padding: 26px 20px 20px;
+    }
+
+    h1 {
+      font-size: 23px;
     }
   }
 </style>
