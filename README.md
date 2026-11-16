@@ -126,6 +126,29 @@ Deploy the worker:
 pnpm --dir worker deploy
 ```
 
+## Uninstall survey
+
+When a user removes the extension, the browser opens `https://ophel.app/uninstall/`
+(via `chrome.runtime.setUninstallURL`, set in the main `ophel` repo's background
+script with version/browser/language/days-since-install query params).
+
+The page lives at `landing/src/pages/uninstall/index.astro` and submits
+responses directly to PostHog — no worker or extra backend is involved.
+
+To enable submissions:
+
+1. Create a PostHog project and copy its Project API Key (`phc_...`; this public
+   key is designed to be exposed client-side).
+2. Paste the key into `POSTHOG_API_KEY` at the top of
+   `landing/src/pages/uninstall/index.astro`, and set `POSTHOG_HOST` to match
+   the project region (`us.i.posthog.com` or `eu.i.posthog.com`).
+3. Redeploy the landing site.
+
+Responses arrive as `uninstall_survey_submitted` events in PostHog with
+`reason`, `comment`, `v`, `browser`, `ui_language`, and `days_since_install`
+properties. Each submission uses a random `distinct_id`; no user identifier is
+collected.
+
 ## Recommended workflow
 
 For documentation-only edits:

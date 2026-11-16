@@ -10,6 +10,7 @@ interface Props {
   enPath?: string;
   zhPath?: string;
   withJsonLd?: boolean;
+  robots?: string;
 }
 
 const {
@@ -20,6 +21,7 @@ const {
   enPath,
   zhPath,
   withJsonLd = false,
+  robots,
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -79,6 +81,7 @@ const fontUrl =
     <meta name="description" content={description} />
     <meta name="google-site-verification" content="qlpmLkZCADw3RM8CMlxMIe_4xXFMX3GVT-1WGf2vpX8" />
     <link rel="canonical" href={canonicalURL} />
+    {robots && <meta name="robots" content={robots} />}
 
     <link rel="alternate" hreflang="x-default" href={enURL} />
     <link rel="alternate" hreflang="en" href={enURL} />

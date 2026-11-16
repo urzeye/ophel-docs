@@ -1,0 +1,385 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { translations } from '../../i18n';
+
+// ── PostHog 配置 ──────────────────────────────────────────────
+// 在 PostHog 后台 Project Settings 复制 Project API Key（phc_ 开头，
+// 该公钥设计为可在客户端公开），替换下面的占位值即可启用提交。
+const POSTHOG_API_KEY = 'phc_q4eou3AFBafHUebahDH3DbGPEwA4fwwe8iEVcVUo7Exy';
+// 按项目所在区域选择：https://us.i.posthog.com 或 https://eu.i.posthog.com
+const POSTHOG_HOST = 'https://us.i.posthog.com';
+
+const en = translations.en.uninstall;
+const surveyStrings = { en, zh: translations.zh.uninstall };
+const reasonKeys = Object.keys(en.reasons) as (keyof typeof en.reasons)[];
+---
+
+<BaseLayout
+  title={en.metaTitle}
+  description={en.metaDesc}
+  lang="en"
+  enPath="/uninstall/"
+  zhPath="/uninstall/"
+  robots="noindex, nofollow"
+>
+  <main class="uninstall-page">
+    <a class="brand" href="/" data-home-link>
+      <img src="/logo.png" alt="" width="30" height="30" />
+      <span>Ophel</span>
+    </a>
+
+    <div class="card">
+      <section id="survey-view">
+        <p class="kicker" data-i18n="kicker">{en.kicker}</p>
+        <h1 data-i18n="heading">{en.heading}</h1>
+        <p class="sub" data-i18n="sub">{en.sub}</p>
+
+        <form id="survey-form">
+          <h2 data-i18n="reasonTitle">{en.reasonTitle}</h2>
+          <div class="reasons" id="reasons">
+            {
+              reasonKeys.map((key) => (
+                <label class="reason">
+                  <input type="radio" name="reason" value={key} required />
+                  <span>{en.reasons[key]}</span>
+                </label>
+              ))
+            }
+          </div>
+
+          <h2 data-i18n="detailTitle">{en.detailTitle}</h2>
+          <textarea id="detail" rows="3" maxlength="1000" placeholder={en.detailPlaceholder}
+          ></textarea>
+
+          <button type="submit" class="submit-btn" id="submit-btn">{en.submit}</button>
+          <p class="form-error" id="form-error" hidden></p>
+        </form>
+      </section>
+
+      <section id="thanks-view" hidden>
+        <h1 data-i18n="thanksTitle">{en.thanksTitle}</h1>
+        <p class="sub" data-i18n="thanksBody">{en.thanksBody}</p>
+        <a class="submit-btn" id="reinstall-link" href="/download/">{en.reinstall}</a>
+      </section>
+
+      <div class="card-footer">
+        <p data-i18n="footerNote">{en.footerNote}</p>
+        <div class="footer-actions">
+          <button type="button" class="skip-btn" id="skip-btn">{en.skip}</button>
+          <select id="lang-select" aria-label="Language">
+            <option value="zh">简体中文</option>
+            <option value="en">English</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script define:vars={{ surveyStrings, posthogApiKey: POSTHOG_API_KEY, posthogHost: POSTHOG_HOST }}
+  >
+    const params = new URLSearchParams(window.location.search);
+    let lang = String(params.get('l') || navigator.language || 'en')
+      .toLowerCase()
+      .startsWith('zh')
+      ? 'zh'
+      : 'en';
+
+    const el = (id) => document.getElementById(id);
+    const strings = () => surveyStrings[lang] || surveyStrings.en;
+
+    function applyLang(next) {
+      lang = next;
+      const s = strings();
+      document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+      document.title = s.metaTitle;
+      document.querySelectorAll('[data-i18n]').forEach((node) => {
+        const value = s[node.getAttribute('data-i18n')];
+        if (typeof value === 'string') node.textContent = value;
+      });
+      document.querySelectorAll('#reasons .reason').forEach((label) => {
+        const input = label.querySelector('input');
+        const span = label.querySelector('span');
+        const value = s.reasons[input.value];
+        if (typeof value === 'string') span.textContent = value;
+      });
+      el('detail').placeholder = s.detailPlaceholder;
+      el('submit-btn').textContent = s.submit;
+      el('skip-btn').textContent = s.skip;
+      el('reinstall-link').textContent = s.reinstall;
+      el('reinstall-link').href = lang === 'zh' ? '/zh/download/' : '/download/';
+      el('form-error').textContent = s.error;
+      el('lang-select').value = lang;
+      document.querySelector('[data-home-link]').href = lang === 'zh' ? '/zh/' : '/';
+
+      const nextParams = new URLSearchParams(window.location.search);
+      nextParams.set('l', lang === 'zh' ? 'zh-CN' : 'en');
+      window.history.replaceState(null, '', `${window.location.pathname}?${nextParams.toString()}`);
+    }
+
+    function showThanks() {
+      el('survey-view').hidden = true;
+      el('thanks-view').hidden = false;
+      el('skip-btn').hidden = true;
+    }
+
+    el('lang-select').addEventListener('change', (event) => applyLang(event.target.value));
+    el('skip-btn').addEventListener('click', showThanks);
+
+    el('survey-form').addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const reason = new FormData(event.target).get('reason');
+      if (!reason) return;
+
+      const s = strings();
+      const btn = el('submit-btn');
+      const errorEl = el('form-error');
+      btn.disabled = true;
+      btn.textContent = s.submitting;
+      errorEl.hidden = true;
+
+      const properties = {
+        $lib: 'web/uninstall-survey',
+        v: params.get('v') || undefined,
+        browser: params.get('b') || undefined,
+        ui_language: lang === 'zh' ? 'zh-CN' : 'en',
+        reason,
+        comment: el('detail').value.trim() || undefined,
+      };
+      const days = parseInt(params.get('d') || '', 10);
+      if (Number.isFinite(days)) properties.days_since_install = days;
+
+      try {
+        if (!posthogApiKey || posthogApiKey.indexOf('REPLACE') !== -1) {
+          throw new Error('PostHog API key is not configured');
+        }
+        const response = await fetch(`${posthogHost}/i/v0/e/`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            api_key: posthogApiKey,
+            event: 'uninstall_survey_submitted',
+            distinct_id: `survey-${crypto.randomUUID()}`,
+            properties,
+          }),
+        });
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        showThanks();
+      } catch (error) {
+        console.error('[Ophel] Uninstall survey submit failed:', error);
+        errorEl.hidden = false;
+        btn.disabled = false;
+        btn.textContent = s.submit;
+      }
+    });
+
+    applyLang(lang);
+  </script>
+</BaseLayout>
+
+<style>
+  .uninstall-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 20px 64px;
+  }
+
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--ink-strong);
+    margin-bottom: 24px;
+  }
+
+  .brand img {
+    border-radius: 7px;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 560px;
+    background: var(--paper-strong);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    box-shadow: var(--shadow-card);
+    padding: 32px 32px 20px;
+  }
+
+  .kicker {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 8px;
+  }
+
+  h1 {
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--ink-strong);
+    margin: 0 0 8px;
+  }
+
+  .sub {
+    color: var(--text-muted);
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 0 0 8px;
+  }
+
+  h2 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--ink-strong);
+    margin: 22px 0 8px;
+  }
+
+  .reasons {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .reason {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 7px 10px;
+    border-radius: 6px;
+    font-size: 14px;
+    color: var(--ink);
+    cursor: pointer;
+  }
+
+  .reason:hover {
+    background: var(--surface-hover);
+  }
+
+  .reason input {
+    width: 16px;
+    height: 16px;
+    flex: none;
+    accent-color: var(--accent);
+    cursor: pointer;
+  }
+
+  textarea {
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: var(--paper);
+    padding: 10px 12px;
+    font: inherit;
+    font-size: 14px;
+    color: var(--ink);
+    resize: vertical;
+    min-height: 72px;
+  }
+
+  textarea:focus {
+    outline: 2px solid var(--accent);
+    border-color: transparent;
+  }
+
+  .submit-btn {
+    display: block;
+    width: 100%;
+    margin-top: 20px;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: var(--accent);
+    color: #fff;
+    font: inherit;
+    font-weight: 700;
+    font-size: 15px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.15s ease;
+  }
+
+  .submit-btn:hover {
+    background: var(--accent-strong);
+  }
+
+  .submit-btn:disabled {
+    opacity: 0.6;
+    cursor: default;
+  }
+
+  .form-error {
+    margin: 10px 0 0;
+    color: #b42318;
+    font-size: 13px;
+  }
+
+  #thanks-view h1 {
+    margin-bottom: 10px;
+  }
+
+  .card-footer {
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .card-footer p {
+    font-size: 13px;
+    color: var(--text-faint);
+    line-height: 1.6;
+    max-width: 34ch;
+    margin: 0;
+  }
+
+  .footer-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .skip-btn {
+    background: none;
+    border: none;
+    padding: 4px;
+    font: inherit;
+    font-size: 13px;
+    color: var(--text-faint);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    cursor: pointer;
+  }
+
+  .skip-btn:hover {
+    color: var(--ink);
+  }
+
+  select {
+    font: inherit;
+    font-size: 13px;
+    color: var(--ink);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    background: var(--paper);
+    padding: 6px 8px;
+  }
+
+  @media (max-width: 640px) {
+    .card {
+      padding: 24px 20px 16px;
+    }
+  }
+</style>

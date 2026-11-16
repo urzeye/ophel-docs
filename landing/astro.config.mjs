@@ -15,6 +15,8 @@ export default defineConfig({
 
   integrations: [
     sitemap({
+      // 卸载问卷页不进入 sitemap（页面自身带 noindex）
+      filter: (page) => !page.includes('/uninstall'),
       // 多语言 sitemap：/zh/* 页面标注为 zh-CN，其余为 en-US
       i18n: {
         defaultLocale: 'en',
