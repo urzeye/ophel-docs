@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { translations } from '../../i18n';
+import { uninstallSurveyI18n, type UninstallSurveyLang } from '../../i18n';
 
 // ── PostHog 配置 ──────────────────────────────────────────────
 // 在 PostHog 后台 Project Settings 复制 Project API Key（phc_ 开头，
@@ -9,9 +9,24 @@ const POSTHOG_API_KEY = 'phc_q4eou3AFBafHUebahDH3DbGPEwA4fwwe8iEVcVUo7Exy';
 // 按项目所在区域选择：https://us.i.posthog.com 或 https://eu.i.posthog.com
 const POSTHOG_HOST = 'https://us.i.posthog.com';
 
-const en = translations.en.uninstall;
-const surveyStrings = { en, zh: translations.zh.uninstall };
+const en = uninstallSurveyI18n.en;
+const surveyStrings = uninstallSurveyI18n;
 const reasonKeys = Object.keys(en.reasons) as (keyof typeof en.reasons)[];
+
+// 语言选择器：标签用各语言原生名
+const langOptions: { value: UninstallSurveyLang; label: string }[] = [
+  { value: 'zh-CN', label: '简体中文' },
+  { value: 'zh-TW', label: '繁體中文' },
+  { value: 'en', label: 'English' },
+  { value: 'ja', label: '日本語' },
+  { value: 'ko', label: '한국어' },
+  { value: 'it', label: 'Italiano' },
+  { value: 'de', label: 'Deutsch' },
+  { value: 'es', label: 'Español' },
+  { value: 'fr', label: 'Français' },
+  { value: 'pt', label: 'Português' },
+  { value: 'ru', label: 'Русский' },
+];
 ---
 
 <BaseLayout
@@ -67,8 +82,7 @@ const reasonKeys = Object.keys(en.reasons) as (keyof typeof en.reasons)[];
         <div class="footer-actions">
           <button type="button" class="skip-btn" id="skip-btn">{en.skip}</button>
           <select id="lang-select" aria-label="Language">
-            <option value="zh">简体中文</option>
-            <option value="en">English</option>
+            {langOptions.map((option) => <option value={option.value}>{option.label}</option>)}
           </select>
         </div>
       </div>
@@ -78,11 +92,23 @@ const reasonKeys = Object.keys(en.reasons) as (keyof typeof en.reasons)[];
   <script define:vars={{ surveyStrings, posthogApiKey: POSTHOG_API_KEY, posthogHost: POSTHOG_HOST }}
   >
     const params = new URLSearchParams(window.location.search);
-    let lang = String(params.get('l') || navigator.language || 'en')
-      .toLowerCase()
-      .startsWith('zh')
-      ? 'zh'
-      : 'en';
+
+    // l 参数来自 chrome.i18n.getUILanguage()（BCP-47 标签），映射到 11 种支持语言
+    function resolveLang(raw) {
+      const tag = String(raw || '').toLowerCase();
+      if (tag.startsWith('zh')) {
+        return tag.includes('tw') ||
+          tag.includes('hk') ||
+          tag.includes('mo') ||
+          tag.includes('hant')
+          ? 'zh-TW'
+          : 'zh-CN';
+      }
+      const prefix = tag.split('-')[0];
+      return Object.prototype.hasOwnProperty.call(surveyStrings, prefix) ? prefix : 'en';
+    }
+
+    let lang = resolveLang(params.get('l') || navigator.language);
 
     const el = (id) => document.getElementById(id);
     const strings = () => surveyStrings[lang] || surveyStrings.en;
@@ -90,7 +116,7 @@ const reasonKeys = Object.keys(en.reasons) as (keyof typeof en.reasons)[];
     function applyLang(next) {
       lang = next;
       const s = strings();
-      document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+      document.documentElement.lang = lang;
       document.title = s.metaTitle;
       document.querySelectorAll('[data-i18n]').forEach((node) => {
         const value = s[node.getAttribute('data-i18n')];
@@ -106,13 +132,13 @@ const reasonKeys = Object.keys(en.reasons) as (keyof typeof en.reasons)[];
       el('submit-btn').textContent = s.submit;
       el('skip-btn').textContent = s.skip;
       el('reinstall-link').textContent = s.reinstall;
-      el('reinstall-link').href = lang === 'zh' ? '/zh/download/' : '/download/';
+      el('reinstall-link').href = lang.startsWith('zh') ? '/zh/download/' : '/download/';
       el('form-error').textContent = s.error;
       el('lang-select').value = lang;
-      document.querySelector('[data-home-link]').href = lang === 'zh' ? '/zh/' : '/';
+      document.querySelector('[data-home-link]').href = lang.startsWith('zh') ? '/zh/' : '/';
 
       const nextParams = new URLSearchParams(window.location.search);
-      nextParams.set('l', lang === 'zh' ? 'zh-CN' : 'en');
+      nextParams.set('l', lang);
       window.history.replaceState(null, '', `${window.location.pathname}?${nextParams.toString()}`);
     }
 
@@ -141,7 +167,7 @@ const reasonKeys = Object.keys(en.reasons) as (keyof typeof en.reasons)[];
         $lib: 'web/uninstall-survey',
         v: params.get('v') || undefined,
         browser: params.get('b') || undefined,
-        ui_language: lang === 'zh' ? 'zh-CN' : 'en',
+        ui_language: lang,
         reason,
         comment: el('detail').value.trim() || undefined,
       };

@@ -391,3 +391,308 @@ const zh = {
 
 export const translations = { en, zh };
 export type T = typeof en;
+
+// ── 卸载问卷（独立页面，与扩展一致的 11 种语言） ─────────────────
+// 与扩展 src/locales 的语言集保持对齐；新增语言时两边同步。
+export type UninstallSurveyLang =
+  | 'zh-CN'
+  | 'zh-TW'
+  | 'en'
+  | 'ja'
+  | 'ko'
+  | 'it'
+  | 'de'
+  | 'es'
+  | 'fr'
+  | 'pt'
+  | 'ru';
+
+// en/zh 站点文案是 as const 字面量类型，多语言问卷需要放宽为普通字符串
+type DeepString<T> = { [K in keyof T]: T[K] extends string ? string : DeepString<T[K]> };
+
+export type UninstallSurveyStrings = DeepString<T['uninstall']>;
+
+export const uninstallSurveyI18n: Record<UninstallSurveyLang, UninstallSurveyStrings> = {
+  en: en.uninstall,
+  'zh-CN': zh.uninstall,
+  'zh-TW': {
+    metaTitle: '移除意見回饋 — Ophel Atlas',
+    metaDesc: '告訴我們你移除 Ophel 的原因，幫助我們決定之後的改進方向。',
+    kicker: '很遺憾看到你離開',
+    heading: '是什麼讓你移除了 Ophel？',
+    sub: '只需要幾秒鐘，你的選擇將決定我們之後改進的方向，感謝你的時間。',
+    reasonTitle: '1. 選一個主要原因',
+    reasons: {
+      'missing-site': '不支援我在用的網站或服務',
+      'below-expectations': '功能沒達到預期',
+      'too-many-errors': '出錯或卡住的情況太多',
+      'update-broke': '更新後出現問題',
+      'switched-tool': '改用其他工具了',
+      'no-longer-needed': '不再需要了',
+      performance: '影響瀏覽器效能',
+      'privacy-concern': '擔心隱私或帳號安全',
+      other: '其他原因',
+    },
+    detailTitle: '2. 補充說明（選填）',
+    detailPlaceholder: '例如：哪個操作出錯、希望支援哪個網站',
+    submit: '送出意見回饋',
+    submitting: '送出中…',
+    skip: '略過',
+    thanksTitle: '感謝你的意見回饋',
+    thanksBody: '每一則回饋我們都會認真閱讀。如果哪天想再給 Ophel 一次機會，我們一直都在。',
+    reinstall: '重新安裝 Ophel',
+    error: '送出失敗，請稍後再試。',
+    footerNote: '我們知道它還不夠好，只是不清楚問題出在哪。你的選擇能幫我們找到方向。',
+  },
+  ja: {
+    metaTitle: 'アンインストールのご意見 — Ophel Atlas',
+    metaDesc: 'Ophel をアンインストールした理由を教えてください。今後の改善に活かします。',
+    kicker: 'ご満足いただけず、残念です',
+    heading: 'Ophel をアンインストールした理由を教えてください',
+    sub: '数秒で完了します。あなたの選択が今後の改善の方向を決めます。お時間をいただきありがとうございます。',
+    reasonTitle: '1. 主な理由を一つ選んでください',
+    reasons: {
+      'missing-site': '使っているサイトやサービスに対応していない',
+      'below-expectations': '機能が期待に届かなかった',
+      'too-many-errors': 'エラーやフリーズが多すぎる',
+      'update-broke': 'アップデート後に問題が起きた',
+      'switched-tool': '別のツールに乗り換えた',
+      'no-longer-needed': '必要なくなった',
+      performance: 'ブラウザの動作が重くなった',
+      'privacy-concern': 'プライバシーやアカウントの安全性が心配',
+      other: 'その他の理由',
+    },
+    detailTitle: '2. 補足があればご記入ください（任意）',
+    detailPlaceholder: '例：どの操作で失敗したか、対応してほしいサイトなど',
+    submit: 'フィードバックを送信',
+    submitting: '送信中…',
+    skip: 'スキップ',
+    thanksTitle: 'フィードバックありがとうございます',
+    thanksBody:
+      'いただいた声にはすべて目を通しています。また Ophel を試してみたいと思ったら、いつでもお待ちしています。',
+    reinstall: 'Ophel を再インストール',
+    error: '送信に失敗しました。しばらくしてからもう一度お試しください。',
+    footerNote:
+      'Ophel がまだ十分でないことは分かっています。足りない場所を知るために、あなたの選択が道標になります。',
+  },
+  ko: {
+    metaTitle: '제거 설문 — Ophel Atlas',
+    metaDesc: 'Ophel을 삭제한 이유를 알려주시면 다음 개선 방향을 정하는 데 도움이 됩니다.',
+    kicker: '떠나신다니 아쉽습니다',
+    heading: 'Ophel을 삭제하신 이유가 무엇인가요?',
+    sub: '몇 초면 충분합니다. 당신의 선택이 앞으로의 개선 방향을 결정합니다. 시간 내주셔서 감사합니다.',
+    reasonTitle: '1. 가장 큰 이유를 선택해 주세요',
+    reasons: {
+      'missing-site': '제가 사용하는 사이트나 서비스를 지원하지 않아요',
+      'below-expectations': '기능이 기대에 미치지 못했어요',
+      'too-many-errors': '오류나 멈춤이 너무 많아요',
+      'update-broke': '업데이트 후 문제가 생겼어요',
+      'switched-tool': '다른 도구로 바꿨어요',
+      'no-longer-needed': '더 이상 필요하지 않아요',
+      performance: '브라우저 성능이 느려졌어요',
+      'privacy-concern': '개인정보나 계정 보안이 걱정돼요',
+      other: '기타 이유',
+    },
+    detailTitle: '2. 추가로 남길 말 (선택 사항)',
+    detailPlaceholder: '예: 어떤 작업이 실패했는지, 어떤 사이트를 지원했으면 하는지',
+    submit: '의견 보내기',
+    submitting: '보내는 중…',
+    skip: '건너뛰기',
+    thanksTitle: '의견 감사합니다',
+    thanksBody:
+      '보내주신 의견은 모두 꼼꼼히 읽고 있습니다. 언젠가 Ophel을 다시 써보고 싶으시면 그때도 여기 있겠습니다.',
+    reinstall: 'Ophel 다시 설치',
+    error: '전송에 실패했습니다. 잠시 후 다시 시도해 주세요.',
+    footerNote:
+      '아직 부족하다는 건 알지만 어디가 문제인지 모릅니다. 당신의 선택이 방향을 찾아줍니다.',
+  },
+  it: {
+    metaTitle: 'Feedback di disinstallazione — Ophel Atlas',
+    metaDesc: 'Dicci perché hai disinstallato Ophel, così sapremo cosa migliorare.',
+    kicker: 'Ci dispiace vederti andare via',
+    heading: 'Cosa ti ha spinto a disinstallare Ophel?',
+    sub: 'Bastano pochi secondi. La tua scelta decide cosa miglioreremo — grazie per il tuo tempo.',
+    reasonTitle: '1. Scegli il motivo principale',
+    reasons: {
+      'missing-site': 'Non supporta i siti o i servizi che uso',
+      'below-expectations': 'Le funzionalità non hanno soddisfatto le mie aspettative',
+      'too-many-errors': 'Troppi errori o blocchi',
+      'update-broke': 'Qualcosa si è rotto dopo un aggiornamento',
+      'switched-tool': 'Sono passato a un altro strumento',
+      'no-longer-needed': 'Non mi serve più',
+      performance: 'Rallentava il browser',
+      'privacy-concern': "Preoccupazioni su privacy o sicurezza dell'account",
+      other: 'Altro motivo',
+    },
+    detailTitle: '2. Vuoi aggiungere altro? (facoltativo)',
+    detailPlaceholder: 'Es. quale azione non riusciva, o quale sito vorresti vedere supportato',
+    submit: 'Invia feedback',
+    submitting: 'Invio in corso…',
+    skip: 'Salta',
+    thanksTitle: 'Grazie per il feedback',
+    thanksBody:
+      "Leggiamo ogni singola risposta. Se mai vorrai dare a Ophel un'altra possibilità, saremo qui.",
+    reinstall: 'Reinstalla Ophel',
+    error: 'Invio non riuscito — riprova tra poco.',
+    footerNote:
+      'Sappiamo che Ophel non è ancora abbastanza buono — dobbiamo solo capire dove. La tua scelta ci indica la direzione giusta.',
+  },
+  de: {
+    metaTitle: 'Deinstallations-Feedback — Ophel Atlas',
+    metaDesc:
+      'Sag uns, warum du Ophel deinstalliert hast, damit wir wissen, was wir als Nächstes verbessern.',
+    kicker: 'Schade, dass du gehst',
+    heading: 'Was hat dich dazu bewogen, Ophel zu deinstallieren?',
+    sub: 'Es dauert nur ein paar Sekunden. Deine Wahl entscheidet, was wir als Nächstes verbessern — danke für deine Zeit.',
+    reasonTitle: '1. Wähle den Hauptgrund',
+    reasons: {
+      'missing-site': 'Unterstützt die Websites oder Dienste nicht, die ich nutze',
+      'below-expectations': 'Die Funktionen haben meine Erwartungen nicht erfüllt',
+      'too-many-errors': 'Zu viele Fehler oder Abstürze',
+      'update-broke': 'Nach einem Update ist etwas kaputtgegangen',
+      'switched-tool': 'Ich bin zu einem anderen Tool gewechselt',
+      'no-longer-needed': 'Ich brauche es nicht mehr',
+      performance: 'Es hat meinen Browser verlangsamt',
+      'privacy-concern': 'Sorgen um Datenschutz oder Kontosicherheit',
+      other: 'Anderer Grund',
+    },
+    detailTitle: '2. Möchtest du noch etwas ergänzen? (optional)',
+    detailPlaceholder: 'Z. B. welche Aktion fehlgeschlagen ist oder welche Website du dir wünschst',
+    submit: 'Feedback senden',
+    submitting: 'Wird gesendet…',
+    skip: 'Überspringen',
+    thanksTitle: 'Danke für dein Feedback',
+    thanksBody:
+      'Wir lesen jede einzelne Antwort. Falls du Ophel irgendwann noch einmal eine Chance geben möchtest – wir sind hier.',
+    reinstall: 'Ophel neu installieren',
+    error: 'Senden fehlgeschlagen – bitte versuche es gleich noch einmal.',
+    footerNote:
+      'Wir wissen, dass Ophel noch nicht gut genug ist – wir müssen nur wissen, wo es hakt. Deine Wahl zeigt uns die Richtung.',
+  },
+  es: {
+    metaTitle: 'Comentarios de desinstalación — Ophel Atlas',
+    metaDesc: 'Cuéntanos por qué desinstalaste Ophel para saber qué mejorar.',
+    kicker: 'Lamentamos verte partir',
+    heading: '¿Qué te hizo desinstalar Ophel?',
+    sub: 'Solo te tomará unos segundos. Tu elección decide qué mejoraremos a continuación — gracias por tu tiempo.',
+    reasonTitle: '1. Elige el motivo principal',
+    reasons: {
+      'missing-site': 'No es compatible con los sitios o servicios que uso',
+      'below-expectations': 'Las funciones no cumplieron mis expectativas',
+      'too-many-errors': 'Demasiados errores o bloqueos',
+      'update-broke': 'Algo dejó de funcionar tras una actualización',
+      'switched-tool': 'Cambié a otra herramienta',
+      'no-longer-needed': 'Ya no lo necesito',
+      performance: 'Ralentizaba mi navegador',
+      'privacy-concern': 'Preocupación por la privacidad o la seguridad de mi cuenta',
+      other: 'Otra razón',
+    },
+    detailTitle: '2. ¿Algo más que añadir? (opcional)',
+    detailPlaceholder: 'P. ej.: qué acción falló o qué sitio te gustaría que fuera compatible',
+    submit: 'Enviar comentarios',
+    submitting: 'Enviando…',
+    skip: 'Omitir',
+    thanksTitle: 'Gracias por tus comentarios',
+    thanksBody:
+      'Leemos todas y cada una de las respuestas. Si alguna vez quieres darle otra oportunidad a Ophel, aquí estaremos.',
+    reinstall: 'Reinstalar Ophel',
+    error: 'No se pudo enviar — inténtalo de nuevo en un momento.',
+    footerNote:
+      'Sabemos que Ophel aún no es lo suficientemente bueno; solo necesitamos saber dónde falla. Tu elección nos señala el camino.',
+  },
+  fr: {
+    metaTitle: 'Avis de désinstallation — Ophel Atlas',
+    metaDesc: 'Dites-nous pourquoi vous avez désinstallé Ophel pour nous aider à nous améliorer.',
+    kicker: 'Nous sommes tristes de vous voir partir',
+    heading: "Qu'est-ce qui vous a poussé à désinstaller Ophel ?",
+    sub: 'Cela ne prend que quelques secondes. Votre choix déterminera nos prochaines améliorations — merci pour votre temps.',
+    reasonTitle: '1. Choisissez la raison principale',
+    reasons: {
+      'missing-site': "Ne prend pas en charge les sites ou services que j'utilise",
+      'below-expectations': "Les fonctionnalités n'ont pas répondu à mes attentes",
+      'too-many-errors': "Trop d'erreurs ou de blocages",
+      'update-broke': "Quelque chose s'est cassé après une mise à jour",
+      'switched-tool': 'Je suis passé à un autre outil',
+      'no-longer-needed': "Je n'en ai plus besoin",
+      performance: 'Cela ralentissait mon navigateur',
+      'privacy-concern': 'Inquiétudes concernant la confidentialité ou la sécurité du compte',
+      other: 'Autre raison',
+    },
+    detailTitle: '2. Autre chose à ajouter ? (facultatif)',
+    detailPlaceholder:
+      'Par ex. : quelle action a échoué, ou quel site vous aimeriez voir pris en charge',
+    submit: 'Envoyer mon avis',
+    submitting: 'Envoi en cours…',
+    skip: 'Ignorer',
+    thanksTitle: 'Merci pour votre retour',
+    thanksBody:
+      'Nous lisons chaque réponse avec attention. Si un jour vous souhaitez redonner sa chance à Ophel, nous serons là.',
+    reinstall: 'Réinstaller Ophel',
+    error: "Échec de l'envoi — veuillez réessayer dans un instant.",
+    footerNote:
+      "Nous savons qu'Ophel n'est pas encore assez bon — il nous manque juste de savoir où. Votre choix nous montre la direction.",
+  },
+  pt: {
+    metaTitle: 'Feedback de desinstalação — Ophel Atlas',
+    metaDesc: 'Conte por que você desinstalou o Ophel para sabermos o que melhorar.',
+    kicker: 'Lamentamos ver você partir',
+    heading: 'O que fez você desinstalar o Ophel?',
+    sub: 'Leva só alguns segundos. Sua escolha decide o que vamos melhorar a seguir — obrigado pelo seu tempo.',
+    reasonTitle: '1. Escolha o motivo principal',
+    reasons: {
+      'missing-site': 'Não é compatível com os sites ou serviços que eu uso',
+      'below-expectations': 'Os recursos não atenderam às minhas expectativas',
+      'too-many-errors': 'Erros ou travamentos demais',
+      'update-broke': 'Algo quebrou depois de uma atualização',
+      'switched-tool': 'Mudei para outra ferramenta',
+      'no-longer-needed': 'Não preciso mais',
+      performance: 'Estava deixando meu navegador lento',
+      'privacy-concern': 'Preocupações com privacidade ou segurança da conta',
+      other: 'Outro motivo',
+    },
+    detailTitle: '2. Quer acrescentar algo? (opcional)',
+    detailPlaceholder: 'Ex.: qual ação falhou ou qual site você gostaria que fosse compatível',
+    submit: 'Enviar feedback',
+    submitting: 'Enviando…',
+    skip: 'Pular',
+    thanksTitle: 'Obrigado pelo feedback',
+    thanksBody:
+      'Lemos cada resposta com atenção. Se um dia quiser dar outra chance ao Ophel, estaremos aqui.',
+    reinstall: 'Reinstalar o Ophel',
+    error: 'Falha no envio — tente novamente em instantes.',
+    footerNote:
+      'Sabemos que o Ophel ainda não é bom o suficiente — só precisamos saber onde. Sua escolha nos aponta a direção certa.',
+  },
+  ru: {
+    metaTitle: 'Отзыв об удалении — Ophel Atlas',
+    metaDesc: 'Расскажите, почему вы удалили Ophel, чтобы мы знали, что улучшить.',
+    kicker: 'Жаль, что вы уходите',
+    heading: 'Что заставило вас удалить Ophel?',
+    sub: 'Это займёт всего несколько секунд. Ваш выбор определит, что мы улучшим дальше, — спасибо за ваше время.',
+    reasonTitle: '1. Выберите главную причину',
+    reasons: {
+      'missing-site': 'Не поддерживает сайты и сервисы, которыми я пользуюсь',
+      'below-expectations': 'Возможности не оправдали ожиданий',
+      'too-many-errors': 'Слишком много ошибок и зависаний',
+      'update-broke': 'Что-то сломалось после обновления',
+      'switched-tool': 'Перешёл на другой инструмент',
+      'no-longer-needed': 'Больше не нужен',
+      performance: 'Замедлял работу браузера',
+      'privacy-concern': 'Опасения о конфиденциальности или безопасности аккаунта',
+      other: 'Другая причина',
+    },
+    detailTitle: '2. Хотите что-то добавить? (необязательно)',
+    detailPlaceholder:
+      'Например: какое действие не сработало или какой сайт вы хотели бы видеть поддерживаемым',
+    submit: 'Отправить отзыв',
+    submitting: 'Отправка…',
+    skip: 'Пропустить',
+    thanksTitle: 'Спасибо за отзыв',
+    thanksBody:
+      'Мы внимательно читаем каждый отзыв. Если однажды захотите дать Ophel ещё один шанс — мы будем здесь.',
+    reinstall: 'Установить Ophel снова',
+    error: 'Не удалось отправить — попробуйте ещё раз чуть позже.',
+    footerNote:
+      'Мы знаем, что Ophel пока недостаточно хорош, — просто не знаем, где именно. Ваш выбор поможет нам найти верное направление.',
+  },
+};
