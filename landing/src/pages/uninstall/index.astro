@@ -171,8 +171,14 @@ const langOptions: { value: UninstallSurveyLang; label: string }[] = [
         reason,
         comment: el('detail').value.trim() || undefined,
       };
-      const days = parseInt(params.get('d') || '', 10);
-      if (Number.isFinite(days)) properties.days_since_install = days;
+      // i 是安装日的 epoch day（静态值，打开页面时换算最准）；d 是旧版写入的相对天数，仅作回退
+      const installDay = parseInt(params.get('i') || '', 10);
+      const fallbackDays = parseInt(params.get('d') || '', 10);
+      if (Number.isFinite(installDay)) {
+        properties.days_since_install = Math.max(0, Math.floor(Date.now() / 86400000) - installDay);
+      } else if (Number.isFinite(fallbackDays)) {
+        properties.days_since_install = fallbackDays;
+      }
 
       try {
         if (!posthogApiKey || posthogApiKey.indexOf('REPLACE') !== -1) {
