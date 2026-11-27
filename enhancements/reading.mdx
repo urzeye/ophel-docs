@@ -1,69 +1,51 @@
 ---
-title: "Reading history, scroll lock, and position restore"
+title: "Reading & Scroll"
 sidebarTitle: "Reading & Scroll"
-icon: "history"
-description: "Automatically save and restore your reading position per chat, lock the page during AI generation, and jump around long threads with one-click anchors."
-keywords: ["reading history", "scroll lock", "position restore", "reading progress", "page anchors", "scroll position"]
+description: "Resume reading positions automatically, lock page auto-scroll while AI replies stream, and bounce between scroll anchors."
 ---
 
-import { Icon } from "/snippets/icon.jsx"
-import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
+import { Shortcut } from "/snippets/shortcut.jsx"
 
-Ophel tracks where you are in each chat so you never have to scroll back to find your place. Pair that with scroll lock to stay on the part you're reading while the AI is still generating, and a set of quick navigation anchors to jump around long threads instantly.
+Ophel helps you keep your place inside long threads—whether you are reading an earlier paragraph while the AI keeps generating, jumping to the bottom and back, or returning to a thread hours later.
 
-## Reading history
+## Reading history and auto-resume
 
-Once enabled, Ophel quietly records your scroll position when you leave a chat. The next time you return, it scrolls you back to exactly where you left off.
+When enabled, Ophel remembers your scroll position for each chat and brings you back to that spot the next time you open it.
 
-**Settings → Features → Reading History**:
+- **Availability**: Works on 15 built-in sites (all except Gemini Notebook) and Site Packs that declare `reading-history` (such as DeepSeek Harness).
+- **Skip once**: Append `?ophel_skip_restore=1` to a chat URL if you want to open that thread at its default position without restoring the saved offset.
 
-| Setting | Description | Default |
-| --- | --- | --- |
-| Enable Reading History | Automatically remember the reading position for each chat | Off |
-| Auto-Resume | Jump to the last position when the page loads | On |
-| Retention Period | How many days of reading progress to keep before automatic cleanup | 3 days |
+Open **Settings → Features → Reading History**:
 
-Available retention periods: 1 day / 3 days / 7 days / 30 days / 90 days / Forever.
-
-<Tip>
-  To re-read a chat from the top on a single visit without disabling auto-restore, append `?ophel_skip_restore=1` to the URL when opening it. Ophel skips the restore for that visit only.
-</Tip>
+| Setting | Options | Default | What it does |
+| --- | --- | --- | --- |
+| **Enable Reading History** | On / Off | Off | Saves your scroll position per chat in local storage. |
+| **Auto-Resume** | On / Off | On | Automatically scrolls back to your saved position when reopening a chat. |
+| **Retention Period** | 1 / 3 / 7 / 30 / 90 days / Forever | 3 days | Automatically cleans up older scroll records after this duration. |
 
 ## Scroll lock
 
-While the AI is generating, the page automatically scrolls down to follow new output. If you're reading something earlier in the thread, this is disruptive. Scroll lock freezes the page's scroll position for the duration of generation; once the AI finishes, normal scrolling resumes.
+Most AI sites keep forcing the page to the bottom as a reply streams. Scroll lock stops that behavior so you can read earlier answers undisturbed:
 
-**How to toggle:**
-
-<Tabs>
-  <Tab title="Keyboard shortcut">
-    Press <Shortcut combo="alt+s" /> to toggle scroll lock on or off.
-  </Tab>
-  <Tab title="Toolbox menu">
-    Click the <Icon src="/images/icons/tools.svg" alt="Toolbox icon" /> toolbox icon in the floating button group, then select <Icon src="/images/icons/scroll-lock.svg" alt="Scroll lock icon" /> **Scroll Lock**.
-  </Tab>
-</Tabs>
+- **Quick temporary toggle**: Press <Shortcut combo="alt+s" /> or click **Toolbox → Scroll Lock** in the floating quick buttons.
+- **Persistent setting**: Turn on **Prevent auto-scroll** under **Settings → Features → Outline** (default **Off**) to keep scroll lock active by default.
 
 <Note>
-  Scroll lock is a temporary per-session state and does not persist across page
-  refreshes. For a lasting effect, enable **Prevent auto-scroll** in **Settings →
-  Features → Outline → Scroll Settings**.
+Scroll lock is unavailable on minimal-mode sites such as Gemini Notebook.
 </Note>
 
 ## Navigation anchors
 
-The floating button group provides three scroll shortcuts that also work as a navigation system:
+Jump across long pages without losing where you were reading:
 
-| Button | Keyboard shortcut | What it does |
+| Action | Shortcut | Behavior |
 | --- | --- | --- |
-| <Icon src="/images/icons/scroll-top.svg" alt="Scroll to top icon" /> Scroll to top | <Shortcut combo="alt+t" /> | Loads full history and jumps to the top |
-| <Icon src="/images/icons/scroll-bottom.svg" alt="Scroll to bottom icon" /> Scroll to bottom | <Shortcut combo="alt+b" /> | Jumps to the latest message |
-| <Icon src="/images/icons/anchor.svg" alt="Return to anchor icon" /> Return to anchor | <Shortcut combo="alt+z" /> | Returns to the last saved position |
+| **Scroll to Top** | <Shortcut combo="alt+t" /> | Saves your current scroll position as an anchor, then jumps to the top of the conversation. |
+| **Scroll to Bottom** | <Shortcut combo="alt+b" /> | Saves your current scroll position as an anchor, then jumps to the bottom. |
+| **Return to Anchor** | <Shortcut combo="alt+z" /> | Jumps back to the saved anchor. Pressing it again toggles back and forth between the two positions. |
 
-Every time you use **Scroll to top** or **Scroll to bottom**, Ophel saves your current position as an anchor first. Click **Return to anchor** to jump back. Click it again to toggle between the anchor and wherever you are now — useful for cross-referencing two parts of a long chat.
+The same three actions are also available in the panel footer and floating quick buttons.
 
 ## Bookmarks
 
-Ophel lets you bookmark specific messages in a chat for quick access later. Bookmarked items appear in the outline panel so you can jump to them from the sidebar.
-
-To remove bookmarks that point to content that no longer exists, open the <Icon src="/images/icons/tools.svg" alt="Toolbox icon" /> **Toolbox** and select <Icon src="/images/icons/cleanup.svg" alt="Clear invalid bookmarks icon" /> **Clear Invalid Bookmarks**.
+For persistent markers that stay saved across reloads, star headings or prompts directly in the page or panel. See [Smart Outline — Bookmarks](/features/outline#bookmarks).

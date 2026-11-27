@@ -1,220 +1,113 @@
 ---
-title: "Chat Export: Markdown, JSON, zip packages, and asset preservation"
+title: "Chat Export"
 sidebarTitle: "Export"
-icon: "/images/icons/export.svg"
-description: "Export AI chats in Markdown, JSON, plain text, or zip packages — with per-platform support for images, attachments, code artifacts, Deep Research reports, and thinking chains."
-keywords:
-  [
-    "chat export",
-    "Markdown export",
-    "zip package export",
-    "export images",
-    "export attachments",
-    "Deep Research export",
-    "Canvas export",
-    "artifact export",
-    "thinking chain export",
-  ]
+description: "Export complete chats or selected turns to Markdown, ZIP packages with attachments, shareable PNG/JPG images, HTML, JSON, or TXT."
 ---
 
-import { Icon } from "/snippets/icon.jsx"
-import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
+import { Shortcut } from "/snippets/shortcut.jsx"
 
-Ophel can export any AI chat to a file, preserving not just the text but also images, uploaded files, generated assets, code artifacts, and reasoning chains — depending on what the platform exposes. You control the output format, what gets included, and how files are packaged.
+Ophel lets you export an entire conversation—or just the turns you pick—into clean documents, attachment ZIP archives, or styled shareable images.
 
 ## How to export
 
-| Method | Description |
-| --- | --- |
-| Outline toolbar | Click the highlighted <Icon src="/images/icons/export.svg" alt="Export icon" /> **Export Chat** button in the Outline tab toolbar |
-| Floating quick buttons | Click the <Icon src="/images/icons/tools.svg" alt="Toolbox icon" /> toolbox icon, then click <Icon src="/images/icons/export.svg" alt="Export icon" /> **Export** |
-| Keyboard shortcut | <Shortcut combo="ctrl+shift+e" /> exports the current chat |
-| Chats tab | Click the <Icon src="/images/icons/more-horizontal.svg" alt="Three-dot menu icon" /> three-dot menu on a chat row and choose **Export** — this also works for chats you have not opened (on some sites Ophel opens the chat for you first, shown as **Open and export...**). In batch mode, selecting exactly one chat reveals an export button too |
+Open the **Export Chat** dialog in any of four ways:
 
-By default, every entry above opens the **Export Chat** dialog. If you prefer one-click exports with your saved defaults, turn off **Settings → Features → Chats → Export Settings → Show Export Options Dialog**.
+- Press <Shortcut combo="ctrl+shift+e" />.
+- Click the **Export** icon in the **Outline** tab toolbar.
+- Click **Toolbox → Export** in the floating quick buttons.
+- Open the `⋯` menu on any chat in the **Chats** tab (for non-open chats, Ophel opens the thread and exports it).
 
-After the export starts, a full-page progress overlay blocks accidental interaction while Ophel loads history, extracts content, packages assets, saves the file, and restores the page.
+<Tip>
+If you prefer one-click downloads without the dialog, turn off **Show Export Options Dialog** under **Settings → Features → Chats → Export Settings** and set your **Default Export Format**. For quick copying without opening the dialog, use <Shortcut combo="ctrl+shift+c" /> (copy latest reply) or <Shortcut combo="alt+;" /> (copy last code block).
+</Tip>
 
-## The Export Chat dialog
+## Supported export formats
 
-The dialog shows the title of the chat being exported — handy when you export a chat from the list without opening it. It offers:
-
-- **Formats** — <Icon src="/images/icons/markdown.svg" alt="Markdown file icon" /> Markdown, HTML, <Icon src="/images/icons/json-file.svg" alt="JSON file icon" /> JSON, <Icon src="/images/icons/txt-file.svg" alt="TXT file icon" /> Text, and <Icon src="/images/icons/copy.svg" alt="Copy Markdown icon" /> **Copy Markdown** (straight to the clipboard). When you are exporting the chat on the current page, a <Icon src="/images/icons/copy-outline.svg" alt="Copy outline icon" /> **Copy outline** option also appears here — it copies the structured Markdown outline instead of the full chat.
-- **Export options** — Include Thoughts, Show Turn Numbers (not available for JSON), Markdown Divider, **Package as ZIP (with attachments)** for Markdown, and **Use clean style** (no decorative emojis). A gear button jumps to the full [export settings](#export-settings). Copying an outline ignores these options.
-- **Export segments...** — a link at the bottom left switches to [segmented export](#segmented-export) for the current chat.
-
-Click **Export** (or **Copy**) to finish.
-
-## Export formats
-
-| Format | What it preserves | Best for |
+| Format | Output | Best for |
 | --- | --- | --- |
-| <Icon src="/images/icons/markdown.svg" alt="Markdown file icon" /> Markdown (`.md`) | Speaker labels, headings, lists, code blocks, and image references | Notes, wikis, documentation, and AI-to-AI handoff |
-| <Icon src="/images/icons/zip-file.svg" alt="Zip package icon" /> Markdown zip package (`.zip`) | The Markdown file plus referenced images, attachments, and generated artifacts in `assets/` | Chats with files, images, Canvas code, or document artifacts |
-| HTML (`.html`) | A self-contained, formatted web page with rendered Markdown, speaker labels, and optional turn numbers | Reading, printing, and sharing with people who do not use Markdown |
-| <Icon src="/images/icons/json-file.svg" alt="JSON file icon" /> JSON (`.json`) | Structured messages with roles, timestamps, model metadata, and content | Programmatic processing, indexing, and archival workflows |
-| <Icon src="/images/icons/txt-file.svg" alt="TXT file icon" /> Plain text (`.txt`) | A clean transcript without Markdown formatting | Searchable text archives and plain text editors |
+| **Markdown** | `.md` or `.zip` | Obsidian, Notion, GitHub, and personal knowledge bases. When packaging is set to **ZIP**, Ophel bundles `assets/images/`, `assets/files/`, and `assets/documents/` alongside the Markdown file. |
+| **Shareable Image** | `.png`, `.jpg`, or `.zip` | Sharing clean conversations on social media, docs, or chat apps, with full preview, layout, theme, and watermark controls. |
+| **HTML** | `.html` | Standalone web page you can open offline or print to PDF in any browser. |
+| **JSON** | `.json` | Structured metadata + turn array for scripts, archiving, or downstream processing. |
+| **Plain Text** | `.txt` | Lightweight stripped text without Markdown formatting. |
+| **Clipboard actions** | Markdown / Outline | Copy the entire chat as Markdown or copy just the heading outline straight from the export dialog. |
 
-Choosing **Copy Markdown** in the Export Chat dialog copies the entire chat to your clipboard without saving a file.
+### Normalized Markdown headings
+
+When exporting or copying Markdown (and when copying outlines with questions enabled), Ophel automatically normalizes heading levels:
+
+- Conversation metadata is placed in a clean quote block (`> **...**`).
+- Each turn uses a top-level `#` heading.
+- If a message itself contains top-level `#` headings, Ophel shifts all headings inside that message down by one level (`H1`–`H5` → `H2`–`H6`, and `H6` becomes a bold paragraph) so your exported document keeps a valid nested outline. Headings inside fenced code blocks, indented code blocks, quotes, or lists are left untouched.
+
+## Export as shareable image
+
+Choose **Image** in the Export dialog (or in **Segmented Export**) to open the interactive image preview studio:
+
+- **Layout**:
+  - **Single long image** (default): Renders the full selection into one tall image (up to `16,000 px` height / `16M` pixels).
+  - **Split automatically**: Splits long chats cleanly at block or text-line boundaries—avoiding cuts through images, diagrams, math formulas, or table rows (up to **64 pages**). Multi-page exports download as a single `.zip`, and each page can also be downloaded, copied (PNG), or opened full-size individually.
+- **Format, resolution, and theme**:
+  - Format: **PNG** (default; supports direct clipboard copy for single images) or **JPG**.
+  - Resolution: **Standard · 1×** or **High · 2×** (default).
+  - Theme: **Follow theme** (default), **Light**, or **Dark**.
+- **Layout and appearance**:
+  - Width: **640 px** (Narrow), **800 px** (default), or **1000 px** (Wide).
+  - Font size: **14 px** (Small), **16 px** (Medium, default), or **18 px** (Large).
+  - Appearance: **Paper** (default), **Card**, or **Shadow**.
+- **Content controls**: Toggle **Show title** (with inline title editing and one-click reset), **Show source**, **Show export time**, **Include questions**, and **Brand signature** (all default **On**). Embedded images, Mermaid diagrams, and math formulas render automatically.
+- **Custom watermark**: Off by default; supports up to 120 characters, **Footer** or **Tile** mode, automatic or custom color (with 5 presets), opacity (`5%–100%`, default `12%`), font size (`12–64 px`, default `24 px`), plus tile rotation (`-90°` to `90°`, default `-30°`), X/Y spacing (`20–400 px`, default `100 px`), and staggered rows (default **On**).
+- **Preview controls & shortcuts**: Pan and zoom (`Fit`, `50%`, `75%`, `100%`); press <Shortcut combo="ctrl+s" /> to save, <Shortcut combo="ctrl+c" /> to copy, `0` / `+` / `-` to zoom, and `Esc` to close. Preferences are remembered automatically, with a reset button and undo.
 
 ## Segmented export
 
-Segmented export lets you select and export specific parts of a chat instead of exporting the entire thread. This is useful for long chats where you only need certain sections, or when you want to organize different topics into separate files.
+Click **Segmented Export** in the Export dialog to pick only the turns you want:
 
-### How to use segmented export
-
-<Steps>
-  <Step title="Open the segmented export dialog">
-    Open the [Export Chat dialog](#the-export-chat-dialog) for the current chat — for example from the <Icon src="/images/icons/export.svg" alt="Export icon" /> **Export Chat** button in the Outline toolbar — then click **Export segments...** at the bottom left.
-  </Step>
-  <Step title="Select segments">
-    Ophel automatically detects chat segments based on user questions. You can:
-    - Search for specific segments using the search box
-    - Select segments individually by clicking checkboxes
-    - Use range selection (e.g., "1-3, 8") to select multiple segments at once
-    - Click **Select visible** to select all segments matching your search
-    - Click **Invert visible** to flip the current selection
-  </Step>
-  <Step title="Choose export mode">
-    Pick one of three output modes:
-    - **ZIP (one Markdown per segment)** — Each selected segment becomes a separate `.md` file inside a zip archive
-    - **Merged Markdown** — All selected segments are combined into a single `.md` file
-    - **Copy Markdown** — Copies the merged Markdown directly to your clipboard
-  </Step>
-  <Step title="Export">
-    Click **Export selected** to download or copy your selection.
-  </Step>
-</Steps>
-
-### Segment detection
-
-Ophel treats each user question as the start of a new segment. A segment includes:
-- The user's question
-- The AI's complete response
-- Any nested back-and-forth exchanges before the next top-level user question
-
-Each segment shows a preview with metadata: number of user messages, number of AI messages, and approximate character count.
-
-## Packaging mode
-
-Go to **Settings → Features → Chats → Export Settings → Markdown Export Method** to choose how Markdown exports handle assets:
-
-| Mode | Behavior |
-| --- | --- |
-| **Markdown only** | Exports a single `.md` file. Images and attachments appear as text references or external links. |
-| **Zip package** | Bundles the Markdown file together with all assets in a `.zip` archive. |
-
-When zip mode is active, Ophel downloads the archive directly instead of a standalone Markdown file.
-
-### Zip package structure
-
-```
-chat-title.zip
-├── chat-title.md
-└── assets/
-    ├── images/       ← Generated and embedded images
-    ├── files/        ← User-uploaded attachments (PDFs, documents, etc.)
-    └── documents/    ← Exported artifacts (Claude documents, Gemini Canvas code)
-```
-
-All references inside the Markdown file use stable relative paths, so the zip extracts cleanly into any folder.
+- Filter turns by keyword, check individual turns, use **Select all** / **Invert**, or enter ranges such as `1-3, 8`.
+- Choose from **4 output modes**:
+  1. **ZIP (one Markdown per segment)**
+  2. **Merge into one Markdown**
+  3. **Copy as Markdown**
+  4. **Export as image** (opens the shareable image studio with only your selected turns)
 
 ## Platform export capabilities
 
-Each AI platform exposes different types of content. The table below shows what Ophel can preserve per platform.
-
-| Platform | User attachments | Generated images | Thinking chains | Artifacts & reports |
-| --- | :---: | :---: | :---: | --- |
-| **ChatGPT** | ✅ | ✅ | — | Deep Research reports |
-| **Gemini** | ✅ | ✅ | ✅ | Canvas code, Deep Research reports |
-| **Gemini Enterprise** | ✅ | ✅ | ✅ | Canvas code, Deep Research reports |
-| **Gemini Notebook** | — | — | — | Active column content |
-| **AI Studio** | ✅ | — | — | — |
-| **Claude** | ✅ | — | ✅ | Document artifacts |
-| **Grok** | ✅ | ✅ | — | — |
-| **DeepSeek** | ✅ | — | — | — |
-| **Doubao** | ✅ | ✅ | — | — |
-| **Kimi** | ✅ | — | ✅ | Share page exports |
-| **Qwen Studio** | ✅ | ✅ | ✅ | — |
-| **Qianwen** | ✅ | ✅ | — | — |
-| **Yuanbao** | ✅ | ✅ | ✅ | — |
-| **Z.ai** | ✅ | — | ✅ | — |
-| **ChatGLM** | ✅ | ✅ | ✅ | — |
-| **ima** | ✅ | ✅ | ✅ | — |
+| Platform | Collection method | Image / attachment ZIP | Thought / reasoning blocks | Notes |
+| --- | --- | --- | --- | --- |
+| **ChatGPT** | API-first | Yes | Filtered out | Complete history via API |
+| **Gemini** | DOM (auto-loads history) | Yes | Yes | Uses watermark-free images when Gemini watermark removal is enabled; supports Deep Research & Canvas export |
+| **Gemini Enterprise** | Shadow DOM | No | No | Standard text/Markdown export |
+| **Claude** | API-first | Yes | Yes | Exports full branch + thinking blocks; supports Artifact documents |
+| **Google AI Studio** | API-first (RPC, DOM fallback) | Yes | Yes | Fetches Drive attachments via extension fetch channel |
+| **Grok** | API-first | Yes | No | Exports final card attachments; works on share pages |
+| **Gemini Notebook** | DOM snapshot | No | No | Exports the active source column (Sources / Chat / Studio) |
+| **DeepSeek** | API-first | Yes | Yes | Includes reasoning blocks and attachments |
+| **Doubao / Dola** | DOM scroll capture | Yes | No | Same exporter on `doubao.com` and `dola.com` |
+| **Kimi** | DOM | Yes | Yes | Preserves full tables on copy and export |
+| **Qwen Studio** | API-first | Yes | Yes | Full history pagination |
+| **Qianwen** | DOM (auto-loads history) | Yes | Yes | — |
+| **Yuanbao** | DOM | Yes | Yes | — |
+| **ChatGLM** | DOM (+ Share API) | Yes | Yes | Supports share-page API export |
+| **ima** | DOM | Yes | Yes | — |
+| **Z.ai** | DOM | Yes | Yes | — |
 
 <Note>
-  This table reflects what Ophel can extract from each platform's current page
-  structure. If a platform redesigns its DOM, some capabilities may need adapter
-  updates before they work again.
+On Gemini, when viewing a **Deep Research** report, Ophel automatically handles expanding and exporting the report content (and adds Copy / Download Markdown actions on the report view).
 </Note>
-
-## Platform-specific export details
-
-### ChatGPT
-
-- **Generated images** — AI-generated image-only replies are included in both Markdown and zip exports.
-- **Deep Research reports** — When a Deep Research report is available, the export includes the report title and a link. In zip mode, linked report files are preserved under `assets/files/`.
-- **User attachments** — Uploaded images and linked files from user prompts are packaged in zip mode.
-
-### Gemini & Gemini Enterprise
-
-- **Canvas code artifacts** — Exports open Canvas artifacts, switches to the code tab, and includes the generated code in the Markdown output. When a Canvas panel is open, **Copy Markdown** and **Download Markdown** buttons appear directly in the Canvas toolbar for quick code export.
-- **Deep Research exports** — Covers owned app chats, share pages, and generated report share pages. Closed report panels are opened during export and restored afterward.
-- **Deep Research report actions** — When a Deep Research report panel is open, **Copy Markdown** and **Download Markdown** buttons appear in the report toolbar, exporting only the current report without changing the regular chat export.
-
-### Gemini Notebook
-
-- **Per-column export** — Export works on the column you are currently viewing. The chat column and each Studio panel document (such as notes or reports) are exported separately, so open the column you want before exporting.
-- **Document outline** — The outline can switch between the chat and the current document, and the export follows the active column.
-
-### Claude
-
-- **Document artifacts** — Markdown document artifacts are exported as linked files under `assets/documents/` in zip packages.
-- **Thinking chains** — Expanded Claude thinking blocks are included when "Include Thoughts in Export" is enabled.
-- **Attachments** — Uploaded images and linked files from user prompts are packaged in zip mode, preserving the original reply order of text and artifact links.
-
-### Kimi
-
-- **Share page export** — Kimi share pages are supported for export, outline extraction, and scroll navigation.
-- **Thought chains** — Visible thinking content is included when "Include Thoughts in Export" is enabled.
-- **User images** — Uploaded images are preserved in Markdown and zip exports.
-
-### Deep Research report export (Gemini)
-
-Gemini Deep Research reports are handled separately from regular chat exports:
-
-- The Outline tab shows a **Chat / Document** source switch when a report is open, letting you browse the report outline independently from the chat outline.
-- The report panel toolbar includes **Copy Markdown** and **Download Markdown** buttons for exporting only the report content.
-- During a full chat export, Ophel opens the report panel if it is closed, extracts the content, and restores the panel state afterward.
 
 ## Export settings
 
-Configure export behavior in **Settings → Features → Chats → Export Settings**:
+Open **Settings → Features → Chats → Export Settings**:
 
-| Setting | Description | Default |
-| --- | --- | --- |
-| Show Export Options Dialog | Open the Export Chat dialog on every export; when off, export immediately with the defaults below | On |
-| Default Export Format | Format used by quick exports and preselected in the dialog: Markdown, JSON, TXT, or HTML | Markdown |
-| Markdown Export Method | Markdown only or zip package | Markdown only |
-| Add Timestamp to Filename | Adds a timestamp to the exported filename | Off |
-| Include Thoughts in Export | Exports reasoning steps for platforms that expose them | On |
-| Show Turn Numbers in Export | Numbers each chat turn in the output | Off |
-| Markdown Divider | Separator inserted between chat turns | `---` |
-| Export Style | Standard or Clean — Clean removes decorative emojis from exported files | Standard |
-| Custom User Name | Replaces "User" in the exported output | (empty) |
-| Custom AI Name | Replaces the AI name in the exported output | (empty) |
-
-## Copy as Markdown
-
-Open the [Export Chat dialog](#the-export-chat-dialog) and choose <Icon src="/images/icons/copy.svg" alt="Copy Markdown icon" /> **Copy Markdown**, then click **Copy**. The whole chat lands on your clipboard in Markdown format — faster than exporting a file when you just need to paste the content into a note, email, or another AI chat.
-
-## Export from share pages
-
-Ophel supports exporting from share pages on most platforms. The browser tab title and export filename use the page heading when the chat title is not exposed on a share page. Platform-specific share page support:
-
-- **Gemini** — owned app chats, chat share pages, and report share pages
-- **Kimi** — share page chats with images and file labels
-- **Doubao** — share links under `/thread/`
-- **Z.ai** — chat and share pages
-- **ChatGLM** — share pages with thinking content
-- **Qwen Studio** — regular and share page chats with thinking details
+| Setting | Options | Default | Location |
+| --- | --- | --- | --- |
+| **Show Export Options Dialog** | On / Off | On | Main card |
+| **Default Export Format** | Markdown / JSON / TXT / HTML / Image | Markdown | Main card |
+| **Markdown Export Method** | Markdown only / ZIP package | Markdown only | Main card |
+| **Include Thoughts in Export** | On / Off | On | Main card |
+| **Show Turn Numbers in Export** | On / Off | Off | **Advanced options** |
+| **Add Timestamp to Filename** | On / Off | Off | **Advanced options** |
+| **Markdown Divider** | Custom text | `---` | **Advanced options** |
+| **Custom User Name** | Custom text | *(empty)* | **Advanced options** |
+| **Custom AI Name** | Custom text | *(empty)* | **Advanced options** |
+| **Export Style** | Standard / Clean (no decorative emoji) | Standard | **Advanced options** |

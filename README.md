@@ -72,8 +72,8 @@ Run landing checks:
 
 ```bash
 pnpm --dir landing typecheck
-pnpm --dir landing lint:check
 pnpm --dir landing format:check
+pnpm --dir landing build
 ```
 
 ## Changelog sync

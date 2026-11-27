@@ -1,45 +1,37 @@
 ---
-title: "Export, import, and restore your Ophel backup data"
+title: "Backup & Restore"
 sidebarTitle: "Backup & Restore"
-icon: "/images/icons/backup-restore.svg"
-description: "Export your prompts, settings, and chat metadata as JSON for safekeeping, import on another device, or reset to defaults."
-keywords: ["backup", "export data", "import data", "restore settings", "JSON backup", "data management"]
+description: "Export local JSON backups, restore by file upload or pasted JSON with live preview, and reset local Ophel data."
 ---
 
-import { Icon } from "/snippets/icon.jsx"
+All Ophel data is stored locally in your browser. Open **Settings → Data & Permissions → Local Backup** to export portable JSON backups or restore data on a new browser or device.
 
-Ophel stores all your data locally in your browser. The backup and restore tools in **Settings → Data & Permissions → Local Backup** let you export that data as a JSON file for safekeeping, move it to another device, or wipe everything and start over.
+## Export a local backup
 
-## Export a backup
+Choose one of three export scopes:
 
-Three export types are available. Choose the one that fits what you need to preserve:
-
-| Export type   | What's included                                                                                          |
-| ------------- | -------------------------------------------------------------------------------------------------------- |
-| <Icon src="/images/icons/backup.svg" alt="Full backup icon" /> Full backup | Everything in local storage: settings, prompts, chat metadata, folders, tags, and Claude Session Keys if you use Claude multi-account features |
-| <Icon src="/images/icons/prompt.svg" alt="Prompt library icon" /> Prompts only | Your prompt library |
-| <Icon src="/images/icons/settings.svg" alt="Settings icon" /> Settings only | All configuration items |
-
-<Tip>
-Use **Full backup** before making any large configuration changes or before clearing your data. It's the safest snapshot to fall back to.
-</Tip>
+| Export type | What is included |
+| --- | --- |
+| **Full Backup (Recommended)** | Settings, Prompt Library, Prompt Chains, folders, tags, chat metadata (titles, URLs, pins), reading history, Claude Session Keys, bookmarks, usage monitor history, and installed Site Packs with custom site bindings. *(Excludes WebDAV scheduler runtime state and remote registry cache; does not contain AI chat message bodies.)* |
+| **Prompts Only** | Prompt Library and Prompt Chains. |
+| **Settings Only** | All Ophel preferences and layout/theme configurations. |
 
 <Warning>
-Full backups can contain valid Claude Session Keys when that feature is in use. Keep backup files private.
+If you store Claude Session Keys in Ophel, a **Full Backup** contains those keys in plain JSON. Keep backup files private and never share them publicly.
 </Warning>
 
-## Import a backup
+## Restore from a backup
 
-Drag and drop a <Icon src="/images/icons/json-file.svg" alt="JSON file icon" /> JSON file onto the import area, or click it to open a file picker. Ophel validates the file format before writing anything. Once the import is confirmed, the page refreshes automatically to apply the new configuration.
+1. Open **Settings → Data & Permissions → Local Backup**.
+2. Drag and drop a backup `.json` file, click to browse, or expand **Paste JSON text** to paste raw backup JSON directly.
+3. Review the live summary preview showing what the backup contains, then confirm the restore. Ophel applies the data and reloads affected tabs automatically.
 
-<Warning>
-Importing **overwrites** your existing data. Export a backup of your current state before importing a file from another device or an older snapshot.
-</Warning>
+<Note>
+**Overwrite vs. merge**: Restoring from **Local Backup** overwrites the categories present in that backup file. If you want to **merge** prompts without erasing existing ones, use the import button directly inside the **Prompts** tab instead. If you want to merge Claude Session Keys, use JSON import inside **Settings → Site Settings → Claude**.
+</Note>
+
+- **Reauthorizing Site Packs**: If your backup includes installed Site Packs or custom self-hosted URLs, open **Settings → Site Packs** after restoring and use the **Reauthorize restored site packs** section to re-approve their browser host permissions.
 
 ## Clear all data
 
-Go to **Settings → Data & Permissions → Local Backup** and click <Icon src="/images/icons/delete.svg" alt="Clear data icon" /> **Clear all data**. This deletes every piece of data Ophel has stored locally — prompts, chat metadata, folders, tags, and all settings — and returns the extension to its initial install state.
-
-<Warning>
-This action is irreversible. Export a full backup before clearing if you want to preserve anything.
-</Warning>
+At the bottom of **Local Backup**, **Clear All Data** permanently deletes all local Ophel settings, folders, tags, prompts, bookmarks, reading history, and keys after a confirmation prompt, returning Ophel to a fresh install state. Your actual chats on AI websites are untouched.

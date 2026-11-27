@@ -1,124 +1,88 @@
 ---
-title: "站点拓展：为更多 AI 对话站点提供支持"
+title: "适配中心概览"
 sidebarTitle: "概览"
-icon: "puzzle-piece"
-description: "站点拓展（Site Packs）是声明式 JSON 清单，可在不执行任意代码的前提下，让 Ophel Atlas 识别更多 AI 对话站点。"
-keywords:
-  [
-    "站点拓展",
-    "Site Packs",
-    "SitePack",
-    "社区拓展",
-    "自定义 AI 站点",
-    "自托管 AI",
-    "Open WebUI",
-    "LobeChat",
-    "LibreChat",
-  ]
+description: "通过适配中心一键安装社区站点适配包，或绑定你自己部署的 AI 服务，让 Ophel 支持更多平台。"
 ---
 
-站点拓展把 Ophel Atlas 的支持范围扩展到内置 AI 平台之外。产品里对应入口是 **设置 → 适配中心**；技术格式仍是声明式 JSON 清单（Site Pack），声明匹配规则、稳定的页面选择器，以及这些选择器解锁的能力。
+除了开箱即用的 16 个内置平台，你还可以通过 **适配中心（Site Packs）** 为更多 AI 网站开启 Ophel——比如 Perplexity、WorkBuddy、Notion AI、Manus、Open WebUI、LibreChat——不用等扩展整体发版。
 
-站点拓展**不是可执行插件**。它们不能附带 JavaScript、表达式、远程脚本或不受限 CSS。Ophel 会通过与社区 registry 相同的运行时校验器、可选权限边界和功能能力系统加载它们。
+所有内置站点开关、已安装适配包、自建站点地址和在线更新都集中在 **设置 → 适配中心** 管理。
 
-{/* TODO: 后续补充产品截图 */}
-![站点拓展管理页](/images/enhancements/site-extensions/overview.png)
+![Ophel 设置中的适配中心界面](/images/enhancements/site-extensions/overview.png)
 
-## 选择路径
+## 内置站点 vs 站点适配包
 
-| 目标 | 从这里开始 |
-| --- | --- |
-| 安装社区或自托管站点拓展 | [安装与管理](/zh/enhancements/site-extensions/installation) |
-| 了解每项能力会解锁什么 | [能力参考](/zh/enhancements/site-extensions/capabilities) |
-| 创建或贡献站点拓展 | [编写站点拓展](/zh/enhancements/site-extensions/authoring) |
-| 权限、更新与限制 | [站点拓展 FAQ](/zh/enhancements/site-extensions/faq) |
-
-## 站点拓展能提供什么
-
-站点拓展只会解锁与其声明能力匹配的控件。视具体包而定，可能包括：
-
-- 对话大纲与用户提问标题
-- 提示词插入与提交行为
-- 基础对话导出
-- 生成中与停止按钮检测
-- 新对话操作
-- 宽度、禅模式、净化模式或面板避让
-- 在提供所需配置时，支持阅读历史、模型锁定或对话列表集成
-
-管理页和站点设置 UI 会自动隐藏不支持的控件。因此站点拓展只应声明已在目标站点验证过的行为。
-
-## 内置适配器 vs 站点拓展
-
-| | 内置适配器 | 站点拓展 |
+| 对比维度 | 内置站点（16 个） | 站点适配包（社区库共 18 个） |
 | --- | --- | --- |
-| 形式 | 随 Ophel 发布的 TypeScript 适配器 | 仅声明式 JSON |
-| 优先级 | 在其域名上始终优先 | 不能覆盖内置站点 |
-| 适用范围 | 复杂或站点私有行为 | 选择器与配置驱动的集成 |
-| 更新方式 | 应用发版，以及已配置内置站点的签名选择器 patch | registry 更新或本地重新导入 |
-| 信任模型 | 作为产品代码审阅 | registry 签名 + 本地 schema 校验，或来自可信来源的本地导入 |
+| **启用方式** | 安装即用（仅 Gemini Enterprise 新用户默认停用） | 在 **获取与更新** 一键安装，或从本地导入 JSON 文件 |
+| **功能深度** | 完整定制适配器（支持历史接口、多账号隔离、对话列表同步与站点专属设置） | 纯声明式配置，覆盖大纲、基础导出、提示词插入、宽屏、禅/净化模式、生成检测、主题同步等 |
+| **自部署服务** | 固定官方域名 | 支持绑定任意精确的 `http://` 或 `https://` 地址（含局域网自建服务） |
+| **更新方式** | 随 Ophel 扩展更新（支持远程选择器热修补丁） | 从签名在线适配库自动更新（每 24 小时检查一次） |
 
-已配置内置适配器的选择器热修走同一 registry 的签名 **patch** 通道。它们不是站点拓展，也不能用来新增站点。
+<Note>
+站点适配包是纯 JSON 配置，不能包含任何 JavaScript 代码，也不能覆盖正在启用的内置站点（如果你先在「内置站点」里停用某内置平台，则允许用适配包接管）。
+</Note>
 
-## 信任边界
+## 适配中心的四个标签页
 
-registry 包从不可变版本路径下载，先对照签名索引与 SHA-256 包摘要校验，再在本地二次验证后才激活。
+打开 **设置 → 适配中心**，顶部有四个标签页（右上角另提供 **使用指南** 按钮）：
 
-本地 JSON 导入仍会通过运行时校验器，但会**跳过** registry 签名链，也**不会**自动更新。只从你信任的来源导入，并先检查域名与能力声明。
+1. **内置站点**：一键启用或停用 16 个内置平台，并快捷跳转对应站点设置。
+2. **已安装**：查看、启停、更新或卸载已安装的适配包。
+3. **自定义站点**：为已安装的适配包绑定你自己部署的站点地址（例如 `https://chat.company.internal` 或 `http://192.168.1.10:3000`）。
+4. **获取与更新**：搜索并安装在线适配库中的适配包、从本地导入 JSON 文件、手动检查更新，以及底部默认折叠的 **内置配置补丁**（用于调试内置站点热修补丁）。
 
-<Warning>
-站点拓展可以改变匹配源站上的页面样式与 Ophel 行为。对待未知本地 JSON，应像对待未审阅配置文件一样谨慎。
-</Warning>
+## 社区在线适配库清单
 
-## 在哪里管理站点拓展
+当前社区适配库共收录 **18 个站点适配包**（14 个自带默认域名 + 4 个纯自部署应用）：
 
-打开 **设置 → 适配中心**。同一管理页也可从扩展 Options 页和页内设置对话框进入。
+### 开箱即用站点（14 个）
 
-当前 UI 的标签页：
-
-| 标签 | 用途 |
-| --- | --- |
-| **已安装** | 启用、禁用、重新授权、卸载，并打开使用指南 |
-| **自定义站点** | 将精确 HTTPS 源绑定到已安装站点拓展 |
-| **获取与更新** | 在线拓展库、刷新 registry、安装/更新、本地 JSON 导入 |
-
-设置工具栏上的 **指南** 按钮会打开 ophel.app 上的这套文档。
-
-## 社区 registry 中的站点拓展
-
-社区 registry 目前在 `registry/sites/` 下提供 16 个适配包：
-
-| 包 ID | 典型目标 | 匹配方式 |
+| 适配包 | 默认匹配域名 | 主要支持能力 |
 | --- | --- | --- |
-| `perplexity` | [Perplexity](https://www.perplexity.ai) | 静态 `https://www.perplexity.ai/*` |
-| `duck-ai` | [Duck.ai](https://duck.ai) | 静态 `https://duck.ai/*` |
-| `longcat` | [LongCat AI](https://longcat.chat) | 静态 `https://longcat.chat/*` |
-| `manus` | [Manus](https://manus.im) | 静态 `https://manus.im/*` |
-| `genspark` | [Genspark](https://www.genspark.ai) | 静态 `https://www.genspark.ai/*` |
-| `stepfun` | [StepFun](https://chat.stepfun.com) | 静态 `https://chat.stepfun.com/*` |
-| `proton-lumo` | [Proton Lumo](https://lumo.proton.me) | 静态 `https://lumo.proton.me/*` |
-| `notion-ai` | [Notion AI](https://www.notion.com) | 静态 `https://app.notion.com/ai*` 与 `https://app.notion.com/chat*` |
-| `opencode-share` | [OpenCode Share](https://opncd.ai) | 静态 `https://opncd.ai/*` |
-| `wenxin` | [百度文心](https://wenxin.baidu.com) | 静态 `https://wenxin.baidu.com/*` |
-| `zhida` | [知乎直答](https://zhida.zhihu.com) | 静态 `https://zhida.zhihu.com/*` |
-| `lobechat` | [LobeChat](https://app.lobehub.com) | 静态 `https://app.lobehub.com/*` |
-| `librechat` | 自托管 LibreChat | 空 `matches`；需绑定自定义源 |
-| `nextchat` | 自托管 NextChat | 空 `matches`；需绑定自定义源 |
-| `open-webui` | 自托管 Open WebUI | 空 `matches`；需绑定自定义源 |
-| `deepseek-harness` | 自托管 DeepSeek Harness | 空 `matches`；需绑定自定义源 |
+| **Perplexity** | `www.perplexity.ai` | 大纲、导出、提示词、宽屏、禅模式、主题同步 |
+| **WorkBuddy** | `www.workbuddy.cn/app`、`www.workbuddy.ai/app` | 大纲、导出、提示词、生成检测、面板避让、宽屏、禅/净化模式、主题同步 |
+| **Notion AI** | `app.notion.com/ai*`、`app.notion.com/chat*` | 大纲、导出、提示词、宽屏、禅模式 |
+| **Manus** | `manus.im` | 大纲、导出、提示词、宽屏、禅/净化模式、Mermaid 渲染 |
+| **Genspark** | `www.genspark.ai` | 大纲、导出、提示词、生成检测、宽屏、禅/净化模式 |
+| **Duck.ai** | `duck.ai` | 大纲、导出、提示词、生成检测、宽屏、禅模式 |
+| **Proton Lumo** | `lumo.proton.me` | 大纲、导出、提示词、生成检测、宽屏、禅/净化模式 |
+| **LobeChat** | `app.lobehub.com` *（也支持绑定自建域名）* | 大纲、导出、提示词、生成检测、面板避让、禅模式、主题同步 |
+| **阶跃 AI（StepFun）** | `chat.stepfun.com` | 大纲、导出、提示词、生成检测、面板避让、宽屏、禅模式、主题同步 |
+| **LongCat AI** | `longcat.chat` | 大纲、导出、提示词、生成检测、宽屏、禅模式 |
+| **百度文心** | `wenxin.baidu.com` | 大纲、导出、提示词、宽屏、禅模式 |
+| **知乎直答** | `zhida.zhihu.com` | 大纲、导出、提示词、宽屏、禅模式、主题同步 |
+| **OpenCode 分享页** | `opncd.ai` | 只读分享页：大纲、导出、Mermaid 渲染 |
+| **Muse** *（需要 Ophel v1.3.7+）* | `muse.ai` | 精简增强模式：大纲、导出、提示词、宽屏、禅模式（主对话与旁聊） |
 
-各包的能力集合不同。安装后查看其声明能力，或直接打开 [ophel registry](https://github.com/urzeye/ophel/tree/main/registry/sites) 中的 JSON 作为事实来源。
+### 自部署应用（4 个 — 安装后绑定你的站点地址）
 
-## 一页看懂安全模型
+| 适配包 | 主要支持能力 |
+| --- | --- |
+| **Open WebUI** | 大纲、导出、提示词、生成检测、禅模式 |
+| **LibreChat** | 大纲、导出、提示词、生成检测、禅模式 |
+| **NextChat** | 大纲、导出、提示词、禅模式 |
+| **DeepSeek Harness** | 大纲、导出、提示词、生成检测、宽屏、禅模式、阅读历史 |
 
-- 不允许任意 JavaScript、远程代码或可执行回调
-- 仅支持 HTTPS 源；HTTP 自定义绑定会被拒绝
-- 扩展端使用可选主机权限与动态 content script 注册
-- registry 索引使用 Ed25519 签名；包文件用 SHA-256 固定
-- 失败或无效更新会保留 last-known-good 已安装状态
-- 内置站点 ID 与域名不能被站点拓展占用
+## 安全保障
+
+- **不执行远程代码**：适配包只是受约束的 JSON 配置文件（单文件上限 64 KiB），无法夹带脚本。
+- **签名与完整性校验**：在线适配库索引使用 Ed25519 数字签名，每个适配包下载后都会校验 SHA-256 摘要；校验失败时会自动保留你原本能正常使用的旧版本。
+- **按站授权**：扩展端只会为该适配包实际需要的站点域名申请权限，卸载后自动回收不再使用的托管域名权限。
 
 ## 下一步
 
-1. 从[在线库或本地 JSON 安装站点拓展](/zh/enhancements/site-extensions/installation)。
-2. 对自托管应用，在 **自定义站点** 下绑定精确 HTTPS 源。
-3. 若要编写站点拓展，阅读[能力参考](/zh/enhancements/site-extensions/capabilities)与[编写指南](/zh/enhancements/site-extensions/authoring)。
+<CardGroup cols={2}>
+  <Card title="安装与管理" icon="download" href="/zh/enhancements/site-extensions/installation">
+    查看在线安装、本地导入、绑定自部署站点地址与权限管理的详细步骤。
+  </Card>
+  <Card title="常见问题" icon="circle-question" href="/zh/enhancements/site-extensions/faq">
+    解答自动更新、数据隔离、权限以及网站改版失效的排查办法。
+  </Card>
+  <Card title="能力参考（作者向）" icon="list-check" href="/zh/enhancements/site-extensions/capabilities">
+    查看全部 15 项适配包能力标识与配置约束。
+  </Card>
+  <Card title="编写适配包（作者向）" icon="code" href="/zh/enhancements/site-extensions/authoring">
+    编写声明式 JSON 适配包、本地导入验证并向社区适配库提交。
+  </Card>
+</CardGroup>

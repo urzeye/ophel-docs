@@ -1,210 +1,144 @@
 ---
-title: "面板概览 — Ophel 侧边面板基础操作"
+title: "面板概览"
 sidebarTitle: "面板概览"
-icon: "/images/icons/panel-overview.svg"
-description: "了解 Ophel 侧边面板的三个标签页、标签排序、浮动快捷按钮、幽灵穿透与面板吸附功能。"
-keywords:
-  [
-    "Ophel面板",
-    "侧边栏",
-    "标签页",
-    "面板标签排序",
-    "快捷按钮",
-    "幽灵模式",
-    "边缘吸附",
-    "面板宽度",
-    "键盘快捷键",
-    "面板导航",
-  ]
+description: "了解 Ophel Atlas 侧边面板的三个标签页、标题栏操作、浮动快捷按钮、悬浮与自动吸附模式、穿透点击及扩展工具栏弹窗。"
 ---
 
 import { Icon } from "/snippets/icon.jsx"
 import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
 
-安装成功后，打开任意[支持的 AI 网站](/zh/introduction#支持的平台)，Ophel 会自动激活，在页面右侧显示侧边面板，并在屏幕边缘出现一组浮动快捷按钮。
+打开任意支持的 AI 网站后，Ophel 会在页面侧边挂载操作面板。首次安装并确认本地使用声明后，会自动启动 4 步聚光灯引导，带你快速认识 **大纲**、**对话**、**提示词** 和 **设置** 按钮。
 
 <Note>
-  在手机上，面板改为从侧边滑入的浮层；在平板上，点击边缘把手可以展开已停靠的面板。
+在触屏设备或窄屏窗口（宽度 `≤ 767px`）下，面板会自动切换为带遮罩的侧滑抽屉；悬浮与自动吸附模式仅适用于桌面宽屏。
 </Note>
 
-## 面板的三个标签页
+<ShortcutLegend lang="zh" />
 
-![Ophel 侧边面板 — 三个标签页概览](/images/panel/panel-tabs.png)
+## 三个核心标签页
 
-点击面板顶部的标签栏切换，或使用 <Shortcut combo="alt+1" /> / <Shortcut combo="alt+2" /> / <Shortcut combo="alt+3" />：
+![Ophel 侧边面板与大纲视图](/images/features/outline-zh.png)
 
-<CardGroup cols={3}>
-  <Card title="大纲" icon="list-tree">
-    当前对话的实时自动生成目录树。点击任意标题即可跳转。支持折叠/展开、搜索、书签和实时字数统计。
-  </Card>
-  <Card title="对话" icon="folder-open">
-    当前 AI 平台的历史对话列表。用文件夹和标签整理，支持语法过滤搜索，可导出为
-    <Icon src="/images/icons/markdown.svg" alt="Markdown 文件图标" /> Markdown、<Icon src="/images/icons/json-file.svg" alt="JSON 文件图标" />
-    HTML、JSON 或 <Icon src="/images/icons/txt-file.svg" alt="TXT 文件图标" /> 纯文本。
-  </Card>
-  <Card title="提示词" icon="wand-magic-sparkles">
-    你的个人提示词收藏库。点击插入到输入框；双击立即插入并发送。支持变量替换、分类和置顶。
-  </Card>
-</CardGroup>
+| 标签页 | 快捷键 | 作用 |
+| --- | --- | --- |
+| <Icon src="/images/icons/outline.svg" alt="大纲图标" /> **大纲** | <Shortcut combo="alt+1" /> | 实时提取用户提问与 AI 标题，支持折叠、搜大纲、收藏与跳转。 |
+| <Icon src="/images/icons/conversation.svg" alt="对话图标" /> **对话** | <Shortcut combo="alt+2" /> | 用文件夹、标签和置顶管理已同步对话，支持批量操作与导出。 |
+| <Icon src="/images/icons/prompt.svg" alt="提示词图标" /> **提示词** | <Shortcut combo="alt+3" /> | 管理可复用提示词模板、变量填空、链式提示词与队列发送。 |
 
-拖拽顶部标签文字即可调整可见标签页顺序。Ophel 会立即保存新顺序，并同步到设置页中的同一排序。
-
-<Note>
-  并非每个站点都支持所有标签页。在不支持对话管理的站点（如 Gemini
-  Notebook）上，**对话**标签会自动隐藏，设置里的全局对话开关也会标注当前站点不支持。只启用一个标签页时，顶部标签栏会自动隐藏，腾出纵向空间。
-</Note>
-
-<Note>如果面板没有自动出现，按 <Shortcut combo="alt+p" /> 手动打开。</Note>
-
-## 基础操作
-
-| 操作            | 方法                                                         |
-| --------------- | ------------------------------------------------------------ |
-| 切换标签页      | 点击顶部标签栏，或按 <Shortcut combo="alt+1" /> / <Shortcut combo="alt+2" /> / <Shortcut combo="alt+3" /> |
-| 打开 / 关闭面板 | <Shortcut combo="alt+p" />，或点击浮动按钮组中的面板开关图标                |
-| 切换面板模式    | <Shortcut combo="alt+m" />，或双击标题栏，或点击标题栏模式切换按钮          |
-| 全局搜索        | <Shortcut combo="ctrl+k" />（或配置的快捷键）                               |
-| 切换亮 / 暗模式 | <Shortcut combo="alt+d" />，或点击浮动按钮中的主题图标                      |
-| 打开设置        | <Shortcut combo="alt+," />，或点击面板顶部标题栏中的 <Icon src="/images/icons/settings.svg" alt="设置图标" /> 设置图标，或点击 <Icon src="/images/icons/tools.svg" alt="工具箱图标" /> 工具箱里的 <Icon src="/images/icons/settings.svg" alt="设置图标" /> 设置项 |
-
-## 浮动快捷按钮
-
-![浮动快捷按钮组 — 展开状态与收缩胶囊](/images/panel/floating-buttons.png)
-
-屏幕侧边的浮动按钮组是 Ophel 最常用的快速入口：
-
-- **5 秒无操作**后自动收缩为胶囊形。默认鼠标移近 **150px** 后重新展开——此距离可在 **设置 → 基本设置 → 快捷按钮 → 感应唤醒距离** 中调整（0–300px）。设为 **0** 可启用停留悬停模式：鼠标须在胶囊上停留 300ms 后才展开，划过不触发。
-- 按钮组收缩后，鼠标在面板 Logo 上短暂停留，会在按钮旁临时预览面板。鼠标移开后预览自动收起；点击 Logo 仍然是持久打开 / 关闭面板。
-- **长按拖拽**任意按钮可把整组按钮移动到屏幕任意位置。
-
-按钮组中的默认图标：
-
-| 图标 | 作用 |
-| ---- | ---- |
-| <Icon src="/images/icons/sparkle.svg" alt="面板开关图标" /> **面板开关** | 打开 / 关闭 Ophel 面板。按钮组收缩后，短暂停留可临时预览面板。 |
-| <Icon src="/images/icons/tools.svg" alt="工具箱图标" /> **工具箱** | 打开更多对话与页面操作。 |
-| <Icon src="/images/icons/search.svg" alt="全局搜索图标" /> **全局搜索** | 打开全局搜索叠加层，搜索大纲、对话、提示词和设置项。 |
-| <Icon src="/images/icons/theme-system.svg" alt="主题切换图标" /> **主题切换** | 在亮色 / 暗色模式之间切换；图标会随当前主题状态变化。 |
-| <Icon src="/images/icons/eye.svg" alt="禅模式图标" /> **禅模式** | 切换当前站点的禅模式。禅模式开启期间自带净化效果，但不会改动你的净化模式开关；图标会变为闭眼状态。 |
-| <Icon src="/images/icons/settings.svg" alt="设置图标" /> **设置** | 打开设置弹窗。 |
-| <Icon src="/images/icons/scroll-top.svg" alt="滚到顶部图标" /> **滚到顶部** | 加载完整历史并跳到当前对话顶部。 |
-| <Icon src="/images/icons/anchor.svg" alt="返回锚点图标" /> **返回锚点** | 跳回上一次保存的位置；跳转前会把当前位置保存为新的锚点。 |
-| <Icon src="/images/icons/scroll-bottom.svg" alt="滚到底部图标" /> **滚到底部** | 跳到最新消息位置。 |
-
-点击 <Icon src="/images/icons/tools.svg" alt="工具箱图标" /> **工具箱**后，会显示这些菜单图标：
-
-| 图标 | 作用 |
-| ---- | ---- |
-| <Icon src="/images/icons/export.svg" alt="导出图标" /> **导出** | 导出当前对话。 |
-| <Icon src="/images/icons/folder-move.svg" alt="移动对话图标" /> **移动对话** | 选择目标文件夹并移动当前对话。 |
-| <Icon src="/images/icons/tag.svg" alt="设置标签图标" /> **设置标签** | 给当前对话添加、移除或调整标签。 |
-| <Icon src="/images/icons/scroll-lock.svg" alt="滚动锁定图标" /> **滚动锁定** | 锁定页面滚动位置，避免页面自动跳动。 |
-| <Icon src="/images/icons/model-lock.svg" alt="模型锁定图标" /> **模型锁定** | 按当前站点配置固定模型关键字；未配置时会引导到站点设置。 |
-| <Icon src="/images/icons/cleanup.svg" alt="清除无效收藏图标" /> **清除无效收藏** | 清理当前对话中已经失效的收藏 / 锚点记录。 |
-| <Icon src="/images/icons/settings.svg" alt="设置图标" /> **设置** | 打开设置弹窗。 |
-
-**其他设置**（设置 → 基本设置 → 快捷按钮）：
-
-| 设置项 | 说明 |
-| --- | --- |
-| **感应唤醒距离** | 鼠标距胶囊多远时唤醒展开（默认 150px）。设为 0 启用停留悬停模式。 |
-| **快捷按钮不透明度** | 调整按钮组在折叠 / 空闲状态下的透明度（40%–100%）。 |
-| **面板展开时隐藏快捷按钮组** | 面板打开时自动折叠快捷按钮组，关闭面板后恢复显示。 |
-
-## 全局搜索
-
-按 <Shortcut combo="ctrl+k" />，或点击浮动按钮中的 <Icon src="/images/icons/search.svg" alt="全局搜索图标" /> 搜索图标，打开全局搜索叠加层。它将大纲节点、当前平台历史对话、提示词库和设置项统一纳入一个搜索框，无需逐个标签翻找。也可以连按两次 `Shift` 触发（需在 **设置 → 功能模块 → 全局搜索** 中开启）。
-
-支持以下语法过滤，多个过滤条件可以组合使用：
-
-| 语法          | 作用范围     | 可用值                                               | 示例                 |
-| ------------- | ------------ | ---------------------------------------------------- | -------------------- |
-| `folder:名称` | 对话         | 任意文件夹名（模糊匹配）                             | `folder:work`        |
-| `tag:名称`    | 对话、提示词 | 任意标签名（模糊匹配）                               | `tag:research`       |
-| `type:类型`   | 全部         | `outline` · `conversations` · `prompts` · `settings` | `type:conversations` |
-| `date:天数`   | 对话、提示词 | `Nd`，如 `7d`、`30d`                                 | `date:30d`           |
-| `level:层级`  | 大纲节点     | `0` – `6`（标题深度）                                | `level:2`            |
-| `is:状态`     | 对话         | `pinned`（已置顶）· `unpinned`（未置顶）             | `is:pinned`          |
-
-<Note>
-  在搜索框中输入 `tip:` 可进入功能提示模式，直接列出 Ophel
-  功能发现小贴士，而非执行普通搜索。
-</Note>
-
-## 幽灵穿透（Ghost Pass-Through）
-
-![幽灵穿透模式 — 面板半透明允许鼠标穿透](/images/panel/ghost-mode.webp)
-
-面板遮住了你需要点击的内容？不必先关闭面板：
-
-按住 <Shortcut combo="ctrl" />，保持约 **0.2 秒**（只按这一个键），面板会变半透明并允许鼠标穿透，你可以直接点击背后的 AI 页面内容。松开键后面板恢复正常。
-
-## 面板吸附到边缘
-
-![面板吸附到屏幕边缘 — 悬停弹出预览](/images/panel/edge-snap.webp)
-
-面板有两种工作模式，可在 **设置 → 基本设置 → 面板 → 面板模式** 中切换：
-
-| 模式     | 行为                                                       |
-| -------- | ---------------------------------------------------------- |
-| 自动吸附 | 面板紧贴屏幕边缘，通常处于隐藏状态；鼠标悬停边缘时弹出预览 |
-| 悬浮     | 面板悬浮在页面上方，固定可见，可自由拖动位置               |
-
-你也可以通过以下方式快速切换，无需打开设置：
-
-- 直接点击面板标题栏右侧的 **模式切换按钮**（图钉/吸附图标）
-- **双击**面板顶部标题栏（Logo 或品牌名区域）
-- 快捷键 <Shortcut combo="alt+m" />（可在 **设置 → 快捷键位** 中自定义）
-
-<Tip>
-  在自动吸附模式下，拖拽面板标题栏可将面板拖离边缘，此时按住拖动到对侧边缘可改变吸附方向。
-</Tip>
+- **自定义排序或隐藏**：可以直接在面板标签栏拖拽调整顺序，或在 **设置 → 基本设置 → 面板标签** 中拖拽排序或关闭不需要的标签（至少保留 1 个；只剩 1 个时会自动隐藏标签栏以节省空间）。
+- **无对话列表的站点**：Gemini Notebook、智谱清言、腾讯 ima、通义千问、Z.ai 以及当前所有社区适配包均没有侧栏历史列表，会自动隐藏「对话」标签页。
 
 ## 面板标题栏
 
-面板标题栏（Header）提供以下操作：
+面板顶部栏用于快速控制面板形态与常用入口：
 
-| 元素         | 操作                                                                    |
-| ------------ | ----------------------------------------------------------------------- |
-| 标题区域     | 鼠标悬停显示随机使用小贴士；双击快速切换面板显示模式（悬浮 ↔ 自动吸附） |
-| 模式切换按钮 | 在「自动吸附」和「悬浮」模式之间一键切换（快捷键 <Shortcut combo="alt+m" />）          |
-| 主题切换按钮 | 切换亮/暗模式（<Shortcut combo="alt+d" />）                                            |
-| <Icon src="/images/icons/settings.svg" alt="设置图标" /> 设置按钮 | 打开设置弹窗（<Shortcut combo="alt+," />）                                             |
+| 区域 / 按钮 | 操作说明 |
+| --- | --- |
+| **左侧 Ophel 标题** | 点击打开当前版本的更新日志；升级后未查看时会显示红点提示。 |
+| **标题栏空白区** | 按住拖动可移动面板位置；**双击**可在 **悬浮模式** 与 **自动吸附** 之间切换（仅桌面端有效）；长按约 0.45 秒会显示穿透点击提示。 |
+| <Icon src="/images/icons/snap-to-edge.svg" alt="模式切换图标" /> **模式切换** | 切换悬浮模式 / 自动吸附（<Shortcut combo="alt+m" />）。 |
+| <Icon src="/images/icons/theme-dark.svg" alt="主题切换图标" /> **主题切换** | 切换浅色 / 深色主题（<Shortcut combo="alt+d" />）。 |
+| <Icon src="/images/icons/new-tab.svg" alt="新标签页图标" /> **新标签页** | 在新标签页打开当前站点首页（需在 **设置 → 功能模块 → 标签页** 中开启「新标签页打开按钮」才会显示）。 |
+| <Icon src="/images/icons/settings.svg" alt="设置图标" /> **设置** | 打开设置弹窗（<Shortcut combo="alt+," />）。 |
+| <Icon src="/images/icons/minimize.svg" alt="收起图标" /> **收起** | 将面板收进浮动快捷按钮（<Shortcut combo="alt+p" />）。 |
 
-## 面板基本设置
+## 浮动快捷按钮
 
-以下设置均在 **设置 → 基本设置 → 面板** 中调整：
+![Ophel 浮动快捷按钮](/images/panel/floating-buttons.png)
 
-| 设置项 | 说明 | 默认值 |
+收起面板时（或关闭「面板展开时隐藏快捷按钮」时），屏幕边缘会显示一列浮动快捷按钮：
+
+- **自动收起为星芒水滴**：鼠标离开感应区域 **3 秒**后（或移出浏览器窗口 1.5 秒后），按钮组自动收缩成一颗水滴图标。
+- **近距离感应展开**：鼠标靠近感应半径（默认 **150 px**，范围 `0–300 px`）时自动展开；设为 `0` 时，需要把鼠标悬停在水滴上 **300 ms** 才会展开。
+- **悬停预览面板**：水滴收起状态下，将鼠标悬停在 Ophel 图标上 **300 ms**，可临时预览面板内容。
+- **自由拖动位置**：长按约 0.2 秒即可拖到屏幕任意位置，系统会按相对视口比例记住位置。
+
+按钮顺序、启停、透明度（`40%–100%`）、感应半径与「面板展开时隐藏快捷按钮」（默认 **开启**）均可在 **设置 → 基本设置 → 快捷按钮** 中调整。
+
+### 默认快捷按钮
+
+| 按钮 | 功能 | 默认状态 |
 | --- | --- | --- |
-| 面板模式 | 自动吸附（贴边隐藏、悬停弹出）或悬浮（始终可见） | 悬浮 |
-| 默认侧边 | 面板在左侧还是右侧 | 右侧 |
-| 面板宽度 | 持久面板宽度（240–600 px），也可在悬浮模式下拖拽面板边缘调整 | 320 px |
-| 悬停时加宽（Beta） | 鼠标或键盘焦点停在悬浮面板内时临时加宽，离开后恢复常规宽度 | 关闭 |
-| 悬停宽度（Beta） | 开启「悬停时加宽」后临时使用的面板宽度 | 520 px |
-| 面板高度 | 面板高度占视口的比例（50–100 vh） | 85 vh |
-| 吸附触发距离 | 拖拽面板距边缘多近时触发吸附（0–400 px，仅自动吸附模式显示） | 30 px |
-| 默认边距 | 悬浮面板距屏幕边缘的初始距离（0–400 px，仅悬浮模式显示） | 0 px |
+| <Icon src="/images/icons/panel-overview.svg" alt="面板图标" /> **展开/收起面板** | 显示或隐藏主面板（<Shortcut combo="alt+p" />） | 开启 |
+| <Icon src="/images/icons/floating-toolbar.svg" alt="工具箱图标" /> **工具箱** | 展开快捷工具箱菜单 | 开启 |
+| <Icon src="/images/icons/search.svg" alt="搜索图标" /> **全局搜索** | 打开全局搜索（<Shortcut combo="ctrl+k" />） | 开启 |
+| <Icon src="/images/icons/theme-light.svg" alt="主题图标" /> **切换主题** | 切换浅色 / 深色主题（<Shortcut combo="alt+d" />） | 开启 |
+| <Icon src="/images/icons/eye.svg" alt="禅模式图标" /> **禅模式** | 切换专注无干扰模式（<Shortcut combo="ctrl+shift+z" />） | 开启 |
+| <Icon src="/images/icons/settings.svg" alt="设置图标" /> **设置** | 打开设置窗口（<Shortcut combo="alt+," />） | 开启 |
+| <Icon src="/images/icons/scroll-top.svg" alt="顶部图标" /> **去顶部** | 跳到对话顶部并记录原位置锚点（<Shortcut combo="alt+t" />） | 开启 |
+| <Icon src="/images/icons/anchor.svg" alt="锚点图标" /> **返回锚点** | 回到跳转前的阅读位置（<Shortcut combo="alt+z" />） | 开启 |
+| <Icon src="/images/icons/scroll-bottom.svg" alt="底部图标" /> **去底部** | 跳到对话底部并记录原位置锚点（<Shortcut combo="alt+b" />） | 开启 |
 
-## 快捷按钮行为
+### 工具箱菜单
 
-**设置 → 基本设置 → 快捷按钮** 的 **快捷按钮行为** 卡片中可配置：
+可在 **设置 → 基本设置 → 工具箱** 中开关每一项（默认全部开启）：
 
-- **面板展开时隐藏快捷按钮组** — 面板展开后自动隐藏浮动按钮组，面板关闭后自动恢复。
+| 菜单项 | 功能 |
+| --- | --- |
+| <Icon src="/images/icons/export.svg" alt="导出图标" /> **导出** | 打开导出对话弹窗（<Shortcut combo="ctrl+shift+e" />）。 |
+| <Icon src="/images/icons/folder-move.svg" alt="移动图标" /> **移动** | 将当前对话移动到指定文件夹。 |
+| <Icon src="/images/icons/tag.svg" alt="标签图标" /> **设置标签** | 为当前对话添加或移除标签。 |
+| <Icon src="/images/icons/scroll-lock.svg" alt="滚动锁定图标" /> **锁定滚动** | 阻止 AI 生成回答时页面自动滚到底部（<Shortcut combo="alt+s" />）。Gemini Notebook 等精简模式站点不显示此项。 |
+| <Icon src="/images/icons/model-lock.svg" alt="模型锁定图标" /> **模型锁定** | 快速开关当前站点的自动锁定模型功能。 |
+| <Icon src="/images/icons/cleanup.svg" alt="清理图标" /> **清理无效收藏** | 清除原节点已不存在的失效书签。 |
+| <Icon src="/images/icons/settings.svg" alt="设置图标" /> **设置** | 打开设置弹窗（始终显示，不可关闭）。 |
+
+## 悬浮模式与自动吸附
+
+![Ophel 自动吸附演示](/images/panel/edge-snap.webp)
+
+可以通过标题栏模式按钮、双击标题栏空白处，或按 <Shortcut combo="alt+m" /> 在两种模式间切换：
+
+- **悬浮模式（默认）**：面板常驻在页面左侧或右侧，拖动面板内侧边缘可在 **240–600 px** 之间自由调宽。开启 **智能避让** 后，页面会自动留出安全区，避免正文被面板遮挡。
+- **自动吸附**：把面板拖到屏幕边缘（吸附触发距离内）即可自动收起贴边；需要时把鼠标停在边缘把手（或隐藏触发边）**300 ms** 即可滑出，移开后自动收回。
+
+### 面板尺寸与位置设置
+
+以下选项位于 **设置 → 基本设置 → 面板**：
+
+| 设置项 | 范围 / 选项 | 默认值 | 说明 |
+| --- | --- | --- | --- |
+| **面板模式** | 悬浮模式 / 自动吸附 | 悬浮模式 | 处于自动吸附模式时，点击此行可展开 **边缘触发方式**（显示把手[默认] / 完全隐藏）。 |
+| **默认侧边** | 左侧 / 右侧 | 右侧 | 面板展开与吸附的默认一侧。 |
+| **面板宽度** | 240–600 px | 320 px | 处于悬浮模式时，点击此行可展开 **悬停临时加宽（Beta）**（默认 **关闭**）与 **悬停宽度**（240–600 px，默认 **520 px**）。悬停预览不会触发页面避让。 |
+| **面板高度** | 50–100 vh | 85 vh | 面板占浏览器可视高度的百分比。 |
+| **自动吸附触发距离** | 0–400 px | 30 px | 仅自动吸附模式显示，拖动到距屏幕边缘该距离内自动吸附。 |
+| **默认边距** | 0–400 px | 0 px | 仅悬浮模式显示，面板与屏幕边缘的间距。 |
+
+## 穿透点击模式（幽灵模式）
+
+![Ophel 穿透点击演示](/images/panel/ghost-mode.webp)
+
+如果面板或浮动按钮恰好盖住了原页面的按钮或链接，**单独按住 <Shortcut combo="ctrl" /> 约 0.2 秒**，Ophel 界面会立即变为半透明，鼠标点击会直接穿透到下方网页。松开按键即可恢复正常交互。
+
+## 全局搜索快捷入口
+
+随时按 <Shortcut combo="ctrl+k" />（或点击浮动搜索按钮）即可跨大纲、已同步对话（含其他平台）、提示词和设置项搜索。也可以在 **设置 → 功能模块 → 全局搜索** 中开启 **双击 Shift** 唤起。
+
+常用语法示例：`type:prompts`、`folder:工作`、`date:30d`。完整语法见[全局搜索](/zh/features/global-search)。
+
+## 扩展工具栏弹窗（Popup）
+
+使用浏览器扩展时，点击浏览器右上角的 Ophel 图标可打开快捷弹窗：
+
+- 查看当前站点状态（已支持 / 已停用 / 未支持），并在多域名站点间快速切换（如 Kimi `.com`/`.ai`、豆包 / Dola）。
+- 一键停用或重新启用当前站点，或直接发起新对话。
+- 在 **快速访问** 网格中点击直达常用 AI 站点（支持拖拽自定义排序）。
+- 一键复制 **最近使用的 3 条提示词**。
 
 ## 下一步
 
 <CardGroup cols={2}>
-  <Card title="智能大纲" icon="list-tree" href="/features/outline">
-    在长对话中快速导航
+  <Card title="实时大纲" icon="/images/icons/outline.svg" href="/zh/features/outline">
+    用大纲树、书签和锚点高效阅读长对话。
   </Card>
-  <Card title="对话管理" icon="folder-open" href="/features/conversations">
-    整理你的聊天记录
+  <Card title="对话管理" icon="/images/icons/folder.svg" href="/zh/features/conversations">
+    用文件夹、标签和安全清理机制管理对话。
   </Card>
-  <Card title="提示词库" icon="wand-magic-sparkles" href="/features/prompts">
-    保存和复用常用提示词
+  <Card title="提示词词库" icon="/images/icons/prompt.svg" href="/zh/features/prompts">
+    创建变量模板、提示词队列与链式提示词。
   </Card>
-  <Card title="快捷键" icon="keyboard" href="/customization/shortcuts">
-    完整快捷键列表
+  <Card title="快捷键位" icon="/images/icons/keyboard.svg" href="/zh/customization/shortcuts">
+    查看并自定义全部 46 个快捷键。
   </Card>
 </CardGroup>

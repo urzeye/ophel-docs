@@ -1,113 +1,62 @@
 ---
-title: "WebDAV 同步 — 跨设备同步配置指南"
+title: "WebDAV 同步与定时自动备份"
 sidebarTitle: "WebDAV 同步"
-icon: "cloud"
-description: "配置 WebDAV 服务器将 Ophel 数据同步到 Nextcloud、坚果云、群晖 NAS 等，实现跨设备同步。"
-keywords:
-  ["WebDAV同步", "跨设备同步", "自建服务器同步", "数据同步", "WebDAV服务器"]
+description: "通过坚果云、InfiniCLOUD、Nextcloud、群晖 Synology、pCloud、Seafile 或自建 WebDAV 服务器实现跨设备备份、全量列表恢复与定时自动备份。"
 ---
 
-import { Icon } from "/snippets/icon.jsx"
+WebDAV 同步让你把 Ophel 配置与整理数据直接备份到你自己掌控的网盘或 NAS，全程由浏览器直连你的服务器，不经过任何 Ophel 中转节点。
 
-WebDAV 同步让你把 Ophel 数据上传到自己的私有服务器，并在多台设备之间保持一致。Ophel 内置了常用服务商的连接预设：
+## 支持的服务商预设
 
-| 服务商           | 说明                                       |
-| ---------------- | ------------------------------------------ |
-| **坚果云**       | 需在网页端生成应用密码，不能直接用登录密码 |
-| **InfiniCloud**  | 固定 URL，开箱即用                         |
-| **pCloud**       | 固定 URL，开箱即用                         |
-| **Nextcloud**    | 自托管，需填写自己的服务器地址             |
-| **Synology NAS** | 需先在套件中心安装 WebDAV Server 套件      |
-| **Seafile**      | 自托管，需填写自己的服务器地址             |
-| **自定义**       | 其他任意 WebDAV 内容服务器                 |
+在 **设置 → 数据与权限 → WebDAV 同步** 中内置了 **7 种预设**：
 
-## 配置 WebDAV
+| 服务商 | 常见 WebDAV 地址 | 配置要点 |
+| --- | --- | --- |
+| **坚果云（Nutstore）** | `https://dav.jianguoyun.com/dav/` | 在坚果云网页端「账户信息 → 安全选项 → 第三方应用管理」生成应用密码，不要填登录密码。 |
+| **InfiniCLOUD** | `https://connect.infini.cloud/dav` | 开启 Apps Connection 后使用生成的专用应用密码。 |
+| **pCloud** | `https://webdav.pcloud.com`（欧洲区为 `ewebdav.pcloud.com`） | 使用账号或应用密码连接。 |
+| **Nextcloud** | `https://你的域名/remote.php/dav/files/用户名/` | 建议在「个人设置 → 安全」中创建应用密码。 |
+| **群晖 Synology NAS** | `https://你的NAS地址/webdav/` | 在 DSM 套件中心启用 WebDAV Server。 |
+| **Seafile** | 你的 Seafile SeafDAV 地址 | 需在服务端启用 SeafDAV。 |
+| **自定义** | 任意 `https://` 或 `http://` WebDAV 地址 | 同时支持 `https://` 与 `http://`；公网服务强烈建议使用 `https://` 保护凭证，内网 NAS 可使用 `http://`。 |
 
-**设置 → 数据与权限 → WebDAV 同步**：
+## 备份包含哪些数据
 
-| 配置项 | 说明 |
-| --- | --- |
-| 服务商 | 常用服务商预设（坚果云、InfiniCloud、Nextcloud 等）或自定义 |
-| 服务器地址 | WebDAV 服务器的完整 URL（以 `https://` 开头） |
-| 用户名 | WebDAV 账号用户名 |
-| 密码 | WebDAV 账号密码（存储在本机，不上传给任何第三方） |
-| 默认目录 | 同步文件存放的路径（默认 `ophel`，自动创建） |
+- **手动备份**：固定上传一份**完整备份**（设置、提示词、链式提示词、文件夹、标签、对话元数据、阅读历史、Claude Session Keys、书签、用量统计历史，以及已安装的站点适配包与自定义地址绑定）。
+- **定时自动备份**：同样为完整备份，但默认**排除阅读历史**，避免频繁滚动导致文件膨胀。
+- AI 平台上的聊天正文不会被上传。
+- **默认备份目录**：`ophel`（首次备份时若目录不存在会自动创建）。
+- **恢复保护**：从 WebDAV 恢复数据时，Ophel 会**自动保留本机已保存的 WebDAV 服务器与账号密码**，不会把本机同步配置覆盖掉。
 
-## 首次设置步骤
+## 首次配置与手动备份
 
 <Steps>
-  <Step title="打开 WebDAV 设置面板">
-    前往 **设置 → 数据与权限 → WebDAV 同步**。
+  <Step title="打开 WebDAV 同步设置">
+    进入 **设置 → 数据与权限 → WebDAV 同步**。
   </Step>
   <Step title="填写服务器信息">
-    输入服务器地址、用户名、密码和默认目录。如果目录不存在，Ophel 会在首次同步时自动创建。
+    选择预设（或自定义），填入服务器地址（公网推荐 `https://`，内网可使用 `http://`）、用户名、应用密码以及备份目录（默认 `ophel`）。
   </Step>
-  <Step title="授予所需权限">
-    WebDAV 同步依赖可选权限 `<all_urls>`。首次启用时浏览器会弹出授权请求，请选择**允许**。
+  <Step title="测试连接并授权（扩展版）">
+    点击 **测试连接**。Chrome、Edge 和 Firefox 扩展会按需申请主机访问权限（`<all_urls>`）；macOS Safari 会引导你在系统设置中允许访问该 WebDAV 域名；油猴脚本通过 `GM_xmlhttpRequest` 直连，无额外弹窗。
   </Step>
-  <Step title="测试连接">
-    点击 <Icon src="/images/icons/check.svg" alt="测试连接图标" /> **测试连接**，验证凭据和服务器可达性后再执行同步。
-  </Step>
-  <Step title="上传数据">
-    点击 <Icon src="/images/icons/cloud-upload.svg" alt="上传备份图标" /> **上传**，将本地数据推送到服务器。
+  <Step title="保存并立即备份">
+    保存配置后，点击 **立即备份** 上传第一份快照。
   </Step>
 </Steps>
+
+## 定时自动备份
+
+在 **设置 → 数据与权限 → WebDAV 同步** 中开启 **定时自动备份** 后，无需每次手动上传：
+
+- **备份间隔**：可选 **每小时（60 分钟）**、**每 6 小时（360 分钟）** 或 **每天（1440 分钟，默认）**。开启或更改目标服务器后会立即调度首次备份。
+- **精简快照**：定时自动备份默认**排除阅读历史**。
+- **按设备保留最近 7 份**：自动备份文件名格式为 `ophel_backup_auto_{设备ID}_{时间戳}.json`，每台设备独立保留**最近 7 份**自动备份，多台设备同时开启也不会互相覆盖。
+- **仅手动恢复**：定时备份绝不会在后台静默覆盖你的本地数据。若某次定时上传失败（单次请求超时 25 秒），状态栏会显示上次同步失败状态；点击 **测试连接** 或 **立即备份** 可查看具体报错详情。
+- **扩展与油猴调度差异**：Chrome、Edge 和 Firefox 扩展由后台 `chrome.alarms` 定时触发；油猴脚本通过多标签协作锁在页面内轮询触发，需要至少保持一个受支持的 AI 页面处于打开状态。
 
 ## 在新设备上恢复
 
-<Steps>
-  <Step title="配置相同的 WebDAV 服务器">
-    在新设备上填入与原设备相同的服务器地址、用户名、密码和默认目录。
-  </Step>
-  <Step title="从服务器拉取数据">
-    点击 <Icon src="/images/icons/download.svg" alt="从服务器拉取图标" /> **下载** 拉取最新备份；也可以在 **WebDAV 备份列表** 中选择历史快照恢复。
-  </Step>
-</Steps>
-
-## 什么数据会被同步？
-
-WebDAV 同步会备份 Ophel 在本地维护的数据：
-
-- 你在 Ophel 中设置的文件夹、标签、置顶状态
-- 提示词库
-- Ophel 设置项
-- Claude Session Key（如果你启用了 Claude 多账号管理）
-
-<Note>
-  WebDAV **不会同步** AI 平台上的实际对话消息——那些内容属于各 AI 服务，Ophel
-  无权访问和上传。
-</Note>
-
-<Warning>
-  如果你使用 Claude 多账号管理，WebDAV 备份文件可能包含有效的 Session Key。请妥善保管备份文件。
-</Warning>
-
-## 权限要求
-
-<Warning>
-  WebDAV 同步依赖可选权限 `<all_urls>`。首次启用时浏览器会弹出权限请求，请选择**允许**。可在 **设置 → 数据与权限 → 权限管理** 中随时查看或撤销。
-</Warning>
-
-## 多设备同步注意事项
-
-- 多端同时写入可能产生冲突，建议在上传前先下载最新备份
-- 同步前请确保服务器地址以 `https://` 开头（不支持 HTTP 明文传输）
-
-## 常用 WebDAV 服务商配置说明
-
-<AccordionGroup>
-  <Accordion title="坚果云">
-    首先在坚果云网页端的「安全选项」中生成「第三方应用密码」，用应用密码而非登录密码填写密码字段。URL
-    已自动填充为 `https://dav.jianguoyun.com/dav/`。
-  </Accordion>
-  <Accordion title="Nextcloud">
-    将服务器地址填写为
-    `https://你的域名/remote.php/dav/files/用户名/`，用户名和密码即为 Nextcloud
-    登录凭证。
-  </Accordion>
-  <Accordion title="Synology NAS">
-    先在群晖套件中心安装 **WebDAV Server** 套件并启用 HTTPS。服务器地址格式为
-    `https://你的NAS地址/webdav/`。
-  </Accordion>
-  <Accordion title="其他服务商">选择「自定义」并填写服务器地址。</Accordion>
-</AccordionGroup>
+1. 在新设备上填入相同的 WebDAV 服务器、账号密码与备份目录。
+2. 点击 **恢复**，浏览远端目录中的**全部备份文件列表**（包含手动备份与各设备的自动备份）。
+3. 挑选目标备份确认恢复即可，本机 WebDAV 连接配置会原样保留。

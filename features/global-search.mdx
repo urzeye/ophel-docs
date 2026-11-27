@@ -1,151 +1,62 @@
 ---
-title: "Global Search: find anything across Ophel in seconds"
+title: "Global Search"
 sidebarTitle: "Global Search"
-icon: "search"
-description: "Search outline nodes, chats, prompts, and settings in one overlay — with syntax filters, fuzzy matching, and instant jump-to-result navigation."
-keywords: ["global search", "search syntax", "fuzzy search", "chat search", "outline search", "search filters"]
+description: "Search across your current outline, synced chats from any platform, prompts, settings, and tips with query operators and optional fuzzy matching."
 ---
 
-import { Icon } from "/snippets/icon.jsx"
-import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
+import { Shortcut } from "/snippets/shortcut.jsx"
 
-Global Search brings the content available in the current Ophel context into a single search field. Instead of switching between tabs to find a heading, chat on the current AI platform, or saved prompt, you open one overlay and search from one place. Results are grouped by type, and selecting one jumps you directly to that item.
+Global Search lets you jump to headings, saved chats, prompt templates, or settings pages from a single command palette.
 
-![Global Search overlay — search box with categorized results](/images/enhancements/global-search-en.png)
+![Ophel Global Search overlay](/images/enhancements/global-search-en.png)
 
 ## How to open Global Search
 
-| Method                  | Description                                                                                                                       |
-| ----------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| <Icon src="/images/icons/keyboard.svg" alt="Keyboard shortcut icon" /> <Shortcut combo="ctrl+k" /> | Default keyboard shortcut |
-| <Icon src="/images/icons/search.svg" alt="Search icon" /> Floating button | Click the search icon in the floating quick-buttons group |
-| Double Shift            | Press Shift twice in quick succession — optional; enable in **Settings → Features → Global Search**. Works even when the page is not focused |
+- Press <Shortcut combo="ctrl+k" /> (customizable in **Settings → Keyboard Shortcuts**).
+- Click the **Global Search** icon in the floating quick buttons.
+- **Double-press `Shift`** (optional, off by default): Enable **Double Shift to open Global Search** in settings, then tap `Shift` twice within 360 ms anywhere on a supported AI tab—whether your cursor is inside the chat input or on the page—without opening the Ophel panel first. Pressing any other key in between cancels the trigger so normal typing is unaffected.
 
-<Note>
-  Double Shift must be enabled in settings before it works. Unlike other
-  shortcuts, it does not require the page to be focused, making it useful when
-  you are interacting with another part of the browser.
-</Note>
+## What you can search
 
-## Search scope
+Switch result categories using `Tab` / `Shift+Tab` or click a category tab:
 
-Global Search covers five result types:
+| Category | What it searches | Selection behavior |
+| --- | --- | --- |
+| **All** | Combined top results across categories | Runs the matched item's default action. |
+| **Outline** | Headings and user questions in the active chat | Scrolls straight to that node. |
+| **Chats** | Synced chats on the current platform **and other supported platforms** (external results show the site icon) | Opens current-site chats in place; opens external-site chats in a new tab. |
+| **Prompts** | Titles, content, categories, and tags in your Prompt Library | Inserts the prompt (or opens the variable dialog), or locates it in the **Prompts** tab depending on your Enter behavior setting. |
+| **Settings** | Every Ophel setting page and option (including legacy aliases) | Opens the exact settings section and scrolls to the option. |
+| **Tips** | Built-in feature tips and shortcuts | Browse shortcuts and tips directly in the palette. |
 
-| Type          | What is included                                                               |
-| ------------- | ------------------------------------------------------------------------------ |
-| <Icon src="/images/icons/outline.svg" alt="Outline icon" /> Outline nodes | All headings and your questions in the current chat |
-| <Icon src="/images/icons/conversation.svg" alt="Chat icon" /> Chats | Saved chats for the current AI platform or account — searchable by title, tag, or folder. Chats from your other supported sites also match; they show the site icon and an **External** badge, and open in a new tab when selected |
-| <Icon src="/images/icons/prompt.svg" alt="Prompt icon" /> Prompts | Titles and content from your prompt library |
-| <Icon src="/images/icons/settings.svg" alt="Settings icon" /> Settings | Feature names and keywords from the settings page |
-| <Icon src="/images/icons/features.svg" alt="Feature tips icon" /> Feature Tips | Ophel feature discovery tips — type `tip:` to browse them |
+<Tip>
+Hover a prompt result for ~0.5 s (or highlight it with arrow keys for ~0.7 s) to preview the full prompt content before inserting it.
+</Tip>
 
-Results are grouped by type. Use the arrow keys to navigate up and down, press **Enter** to jump to the selected result, and press **Esc** to close the overlay.
+## Query syntax filters
 
-## Syntax filters
+Combine free keywords with up to 6 structured operators. As you type, Ophel suggests matching values, shows active filter chips (up to 4 displayed), and flags syntax typos or conflicts. Click `?` in the search bar anytime to view the syntax reference.
 
-Add a `key:value` prefix to narrow results. Multiple filters can be combined with each other and with plain keywords.
-
-| Filter       | Applies to            | Values                                        | Example           |
-| ------------ | --------------------- | --------------------------------------------- | ----------------- |
-| `type:`      | All                   | `outline` · `conversations` · `prompts` · `settings` | `type:conversations` |
-| `folder:`    | Chats                 | Any folder name (partial match)               | `folder:work`     |
-| `tag:`       | Chats, Prompts        | Any tag name (partial match)                 | `tag:research`    |
-| `is:`        | Chats                 | `pinned` · `unpinned`                         | `is:pinned`       |
-| `level:`     | Outline nodes         | `0` – `6` (heading depth)                     | `level:2`         |
-| `date:`      | Chats, Prompts        | `Nd` — up to 999 days (e.g. `7d`, `30d`)     | `date:30d`        |
-
-<Note>
-  Type `tip:` in the search box to switch into Feature Tips mode. This is not a
-  syntax filter — it bypasses normal search and lists Ophel feature discovery
-  tips instead.
-</Note>
-
-You can combine filters with each other and with plain keywords. For example:
-
-```text
-folder:work tag:research model
-```
-
-This finds chats in the "work" folder that also have the "research" tag and whose title contains "model".
+| Operator | Applies to | Accepted values | Example |
+| --- | --- | --- | --- |
+| `type:` | All | `outline`, `conversations`, `prompts`, `settings` | `type:prompts review` |
+| `folder:` | Chats | Folder name (partial match; includes `inbox`) | `folder:work roadmap` |
+| `tag:` | Chats, Prompts | Tag name (partial match; repeat for AND logic) | `tag:sql tag:prod` |
+| `is:` | Chats | `pinned`, `unpinned` | `is:pinned architecture` |
+| `level:` | Outline | `0`–`6` (`0` = user questions, `1`–`6` = H1–H6) | `level:0 docker` |
+| `date:` | Chats, Prompts | `Nd` (recent `N` days, e.g. `7d`, `30d`) | `date:7d migration` |
 
 ## Fuzzy search
 
-When fuzzy search is enabled, Ophel allows partial matches — searching `rans` finds `translate`. When it is off, only exact substring matches are returned.
-
-Toggle fuzzy search in **Settings → Features → Global Search**.
-
-<Tip>
-  Disable fuzzy search when you want precise results — for example, when
-  searching for a specific variable name or a prompt title you know exactly.
-</Tip>
-
-## Selecting a prompt result
-
-When you press Enter on a **prompt** result, Ophel adapts to the context:
-
-- **Smart insert** (default) — if an AI input box is available on the current page, the prompt is inserted directly into it
-- **Locate only** — Ophel switches to the Prompts tab and highlights the entry, without inserting
-
-Change this behavior in **Settings → Features → Global Search → Search Everywhere prompt Enter behavior**.
-
-## Search tips
-
-<AccordionGroup>
-  <Accordion title="Find a chat by folder">
-    Type `folder:` followed by part of the folder name. You do not need to type the full name — partial matches work when fuzzy search is on.
-
-    ```text
-    folder:client
-    ```
-
-  </Accordion>
-  <Accordion title="Find all chats with a specific tag">
-    Type `tag:` followed by the tag name.
-
-    ```text
-    tag:todo
-    ```
-
-  </Accordion>
-  <Accordion title="Filter by pin state">
-    Use `is:pinned` to see only pinned chats, or `is:unpinned` to exclude them.
-
-    ```text
-    is:pinned project
-    ```
-
-  </Accordion>
-  <Accordion title="Filter by recency">
-    Use `date:Nd` to limit results to chats or prompts updated within the last N days. For example, `date:7d` returns items from the past week.
-
-    ```text
-    date:30d refactor
-    ```
-
-  </Accordion>
-  <Accordion title="Filter by heading level">
-    Use `level:n` (0–6) to find outline nodes at a specific heading depth. Level 1 is an `<h1>`, level 2 is `<h2>`, and so on. Level 0 matches your own questions in the chat.
-
-    ```text
-    level:2 overview
-    ```
-
-  </Accordion>
-  <Accordion title="Jump to a settings page">
-    Type a feature or setting name directly. For example, typing `theme` surfaces the Appearance settings entry; typing `shortcut` brings up the Shortcuts page.
-  </Accordion>
-  <Accordion title="Find an outline heading in the current chat">
-    Open Global Search while reading a chat and type part of a heading. Selecting the result scrolls the chat to that heading and highlights the matching outline entry.
-  </Accordion>
-</AccordionGroup>
+By default, Global Search uses exact substring matching. Turn on **Enable fuzzy search** to match typos and partial characters (for example, `kafk` or `promtp`).
 
 ## Settings
 
-Go to **Settings → Features → Global Search** to configure:
+Open **Settings → Features → Global Search**:
 
-| Setting | Description |
-| --- | --- |
-| Enable Global Search | Master switch for Global Search. When off, every way of opening it is disabled and <Shortcut combo="ctrl+k" /> goes back to the website's own feature |
-| Double Shift to open Global Search | Enable double-pressing Shift to open search |
-| Enable fuzzy search | Allow partial matches when on; exact substring matches only when off |
-| Search Everywhere prompt Enter behavior | What happens when you press Enter on a prompt result: Smart (Recommended) or Locate Only |
+| Setting | Options | Default | What it does |
+| --- | --- | --- | --- |
+| **Enable Global Search** | On / Off | On | Master switch for Global Search. |
+| **Double Shift to open Global Search** | On / Off | Off | Opens Global Search when pressing `Shift` twice quickly inside a supported tab. |
+| **Enable fuzzy search** | On / Off | Off | Enables typo-tolerant fuzzy matching. |
+| **Prompt Enter behavior** | Smart insert / Locate only | Smart insert | **Smart insert** fills variables or inserts directly into the chat input; **Locate only** opens the **Prompts** tab and highlights the prompt. |

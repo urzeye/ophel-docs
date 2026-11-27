@@ -1,77 +1,42 @@
 ---
-title: "Ophel browser permissions: what they are and why"
+title: "Permissions"
 sidebarTitle: "Permissions"
-icon: "/images/icons/permissions-management.svg"
-description: "Every permission Ophel requests explained — what each one enables, when the browser prompts you, and what gets disabled when you revoke it."
-keywords: ["browser permissions", "extension permissions", "optional permissions", "permission management", "extension security"]
+description: "What every required and optional browser permission in Ophel Atlas does, how Safari and Userscript differ, and how to grant or revoke permissions."
 ---
 
-Ophel requests only the permissions it needs to operate. Required permissions are declared in the extension manifest and granted when you install Ophel. Optional permissions are never granted silently — your browser asks you the first time a feature that needs one is activated, and you can revoke any of them later from **Settings → Data & Permissions → Permissions**.
+Ophel requests only the baseline permissions needed to run on supported AI sites, and asks for optional permissions only when you enable a feature that requires them.
 
-![Ophel Permissions settings panel](/images/panel/permission.png)
+Manage optional permissions anytime under **Settings → Data & Permissions → Permissions** (extension builds; hidden on userscript builds).
 
 ## Required permissions
 
-These permissions are always active. Ophel cannot function without them.
+These permissions are declared in `manifest.json` when you install the extension:
 
-| Permission                              | Purpose                                                                                         |
-| --------------------------------------- | ----------------------------------------------------------------------------------------------- |
-| `storage`                               | Save your settings, prompts, folders, tags, and chat metadata in browser local storage  |
-| `alarms`                                | Schedule periodic checks for Site Extension registry updates                            |
-| `declarativeNetRequestWithHostAccess`   | Apply declarative network request rules on Claude pages (used for header modifications)         |
+| Permission | Browsers | Purpose |
+| --- | --- | --- |
+| `storage` *(+ `unlimitedStorage` on Safari)* | All extensions | Saves your settings, folders, tags, prompts, bookmarks, reading history, and installed Site Packs locally. |
+| `alarms` | All extensions | Runs background schedules for WebDAV automatic backups and 24-hour Site Pack index checks. |
+| `declarativeNetRequestWithHostAccess` | Chrome, Edge, Firefox *(not used on Safari)* | Sets `Referer`, `Origin`, and CORS headers **only for extension background fetches** to `*.googleusercontent.com` and `*.google.com` (explicitly excluding normal page requests) so Gemini image watermark removal and attachment downloads work reliably. |
+| `host_permissions` (28 built-in domains & asset CDNs) | All extensions | Lets Ophel mount on the 16 built-in AI platforms and download embedded images/attachments from their official CDNs during ZIP export or watermark removal. |
+| `scripting` *(added at build time)* | All extensions | Registers main-world helper scripts and dynamically registers content scripts for Site Packs you install. |
 
-## Optional permissions
+## Optional permissions (requested on demand)
 
-These permissions are off by default. Ophel requests each one through a browser prompt the first time you use a feature that depends on it.
+Optional permissions start **off** and are requested only when you trigger the feature that needs them:
 
-| Permission      | What it enables                                                      |
-| --------------- | -------------------------------------------------------------------- |
-| `notifications` | Desktop notification when AI response generation completes           |
-| `cookies`       | Reading and switching Claude Session Keys for multi-account support  |
-| `<all_urls>`    | WebDAV sync requests to your own server, and watermark removal       |
-
-## Granting a permission
-
-You do not need to grant optional permissions manually in advance. When you turn on a feature that requires one — for example, enabling WebDAV sync or the completion notification — your browser displays a standard permission prompt. Click **Allow** to grant it.
+| Permission | Requested when | What happens if you revoke it |
+| --- | --- | --- |
+| `notifications` *(not on Safari)* | Enabling **Desktop Notification** in **Settings → Features → Alerts** | Turns off the completion alert switch automatically (both desktop notifications and completion sounds stop; tab status icons and auto-focus still work). |
+| `cookies` | Clicking **Import from browser** or switching accounts in **Settings → Site Settings → Claude** | Ophel can no longer read or update your `claude.ai` `sessionKey` cookie. |
+| `<all_urls>` *(host access)* | Enabling **WebDAV Sync** (Chrome/Edge/Firefox) or **Gemini Image Watermark Removal** | Turns off Gemini watermark removal and blocks WebDAV cross-host requests. Installed Site Packs stay installed and fall back to per-origin host prompts. |
+| **Per-origin Site Pack host access** | Installing a Site Pack or binding a custom self-hosted URL | Ophel stops injecting on that site until re-authorized. Uninstalling a pack or deleting a binding revokes unused managed origins automatically. |
 
 <Note>
-If you dismissed a browser permission prompt by accident, go to **Settings → Data & Permissions → Permissions** and use the grant controls there to trigger it again.
+Granting `<all_urls>` also covers installed Site Pack origins and cross-origin attachment fetching during export without requiring separate prompts per origin.
 </Note>
 
-## Revoking a permission
+## Granting and revoking permissions
 
-Go to **Settings → Data & Permissions → Permissions**. Each optional permission has a **Revoke** button. After you revoke a permission, any features that depend on it are automatically disabled — you do not need to turn them off individually.
-
-| Permission revoked  | Features automatically disabled                                        |
-| ------------------- | ---------------------------------------------------------------------- |
-| `notifications`     | Desktop completion notifications                                       |
-| `cookies`           | Claude Session Key reading and switching                               |
-| `<all_urls>`        | WebDAV sync, watermark removal                                         |
-
-<Warning>
-Revoking `<all_urls>` disables both WebDAV sync and watermark removal at the same time, because both features depend on broad host access. If you only want to disable one of them, turn it off in its own feature settings instead of revoking the permission.
-</Warning>
-
-
-
-## Site Extension host access
-
-Site Extensions use **optional host permissions** for each pack origin, not a permanent blanket host grant at install time. When you install a pack or bind a custom HTTPS origin, the browser asks for access to those origins only. Denying the prompt rolls back that install or binding.
-
-See [Install and manage Site Extensions](/enhancements/site-extensions/installation) for the full permission, reauthorization, and custom-origin flow.
-
-Granting **Advanced Features Access** (`<all_urls>`) also covers the origins of installed Site Extensions, so packs and custom bindings can activate without per-origin prompts. Revoking it returns those origins to per-origin prompts; Site Extensions are not disabled.
-
-## Frequently asked questions
-
-<AccordionGroup>
-  <Accordion title="Why does WebDAV sync need <all_urls>?">
-    WebDAV servers can be hosted at any URL — there is no fixed hostname Ophel can request permission for in advance. The `<all_urls>` permission allows Ophel to make a network request to whatever server address you configure. The request goes only to your own WebDAV server.
-  </Accordion>
-  <Accordion title="What does the cookies permission actually access?">
-    The `cookies` permission lets Ophel read session cookies on Claude's domain so you can store and switch between multiple Claude accounts (Claude Session Keys). Ophel does not read cookies on any other site.
-  </Accordion>
-  <Accordion title="Can I use Ophel without granting any optional permissions?">
-    Yes. All optional permissions are off by default. Core features — chat organization, prompt library, outline panel, themes, and local backup/restore — work without any optional permission.
-  </Accordion>
-</AccordionGroup>
+- **Chrome / Edge / Firefox**: Open **Settings → Data & Permissions → Permissions** to see live grant status and click **Allow** or **Revoke** on each optional permission. When triggered from an AI page's Settings modal, Ophel opens a small browser permission window so the native browser prompt can appear cleanly.
+- **Safari (macOS, Experimental)**: Safari does not allow extensions to toggle website access via `chrome.permissions.request()`. Instead, open **Safari → Settings → Extensions → Ophel Atlas** and allow the AI sites (or WebDAV server host) you want to use.
+- **Userscript**: Userscript managers handle host matching through script `@match` / `@connect` headers rather than browser extension permission dialogs, so the **Permissions** tab is hidden.

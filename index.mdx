@@ -1,152 +1,84 @@
 ---
 title: "Ophel Atlas: Turn AI Chats into Navigable Documents"
 sidebarTitle: "Home"
-description: "Ophel Atlas is a browser extension that adds real-time outlines, chat folders, and a prompt library to 16 major AI platforms — no account required."
-keywords:
-  [
-    "browser extension",
-    "AI chat",
-    "outline",
-    "chat management",
-    "prompt library",
-    "ChatGPT",
-    "Gemini",
-    "Claude",
-    "DeepSeek",
-    "productivity",
-  ]
+description: "Browser extension and userscript that adds a real-time outline, chat folders, prompt templates, multi-format export, and global search to 16+ AI chat platforms."
 ---
 
-Ophel Atlas enhances your AI chat experience by turning long, scrollable chats into structured, navigable documents. Install it on Chrome, Firefox, or as a userscript, then open any supported AI site to get a powerful side panel with outlines, chat management, and productivity tools — all stored locally in your browser.
+import { Shortcut } from "/snippets/shortcut.jsx"
+
+Ophel Atlas adds a structured side panel to your AI chat tabs. Instead of scrolling back through hundreds of lines to find one answer or reusing prompts from a scratchpad, you get a live table of contents, folder-and-tag organization, reusable prompt templates, and local-first backups.
+
+All data stays in your browser by default. No account or API key is required.
 
 <CardGroup cols={2}>
-  <Card
-    title="Quick Install"
-    icon="rocket"
-    href="/installation"
-  >
-    Get Ophel running in your browser in under two minutes. Supports Chrome,
-    Edge, Firefox, Safari (macOS), and Tampermonkey.
+  <Card title="Smart Outline" icon="/images/icons/outline.svg" href="/features/outline">
+    Turn user prompts and AI headings into a live, collapsible table of contents with bookmarks, search, and jump anchors.
   </Card>
-  <Card
-    title="Panel Overview"
-    icon="sidebar"
-    href="/panel-overview"
-  >
-    Learn the panel layout, floating buttons, ghost mode, and edge-snap
-    navigation.
+  <Card title="Chats & Export" icon="/images/icons/folder.svg" href="/features/conversations">
+    Organize chats with folders, tags, and pins, and export to Markdown, ZIP with images, HTML, JSON, TXT, or shareable images.
   </Card>
-  <Card
-    title="Smart Outline"
-    icon="list-tree"
-    href="/features/outline"
-  >
-    Auto-generated table of contents for every chat, with bookmarks,
-    scroll tracking, and word counts.
+  <Card title="Prompt Library" icon="/images/icons/prompt.svg" href="/features/prompts">
+    Save templates with fill-in variables, run multi-step prompt chains, queue prompts sequentially, and quote selected text.
   </Card>
-  <Card
-    title="Chat Management"
-    icon="folder-open"
-    href="/features/conversations"
-  >
-    Organize chats into folders and tags, with search, filters, and batch
-    actions.
+  <Card title="Global Search" icon="/images/icons/search.svg" href="/features/global-search">
+    Search across outlines, saved chats (including other platforms), prompts, and settings with query filters.
   </Card>
-  <Card
-    title="Prompt Library"
-    icon="wand-magic-sparkles"
-    href="/features/prompts"
-  >
-    Build a reusable prompt library with variable templates and an automated
-    prompt queue.
+  <Card title="Site Packs" icon="puzzle-piece" href="/enhancements/site-extensions">
+    Extend Ophel beyond the 16 built-in sites with community Site Packs or bind your own self-hosted AI web apps.
   </Card>
-  <Card
-    title="Global Search"
-    icon="magnifying-glass"
-    href="/features/global-search"
-  >
-    Search across outlines, chats, prompts, and settings — all from one
-    place.
+  <Card title="Themes & Layout" icon="/images/icons/appearance.svg" href="/customization/appearance">
+    Pick from 24 built-in themes, write custom CSS, widen pages, enable Zen or Clean Mode, and let pages avoid the panel.
   </Card>
 </CardGroup>
 
 ## Get started in 3 steps
 
 <Steps>
-  <Step title="Install the extension">
-    Download Ophel Atlas from the [Chrome Web
-    Store](https://chromewebstore.google.com/detail/ai-chat-organizer-outline/lpcohdfbomkgepfladogodgeoppclakd),
-    [Edge
-    Add-ons](https://microsoftedge.microsoft.com/addons/detail/ophel-atlas-ai-chat-navi/ffpenkdeifijngifjmbbpijfpdhlolga),
-    [Firefox
-    Add-ons](https://addons.mozilla.org/firefox/addon/ophel-ai-chat-enhancer/),
-    or [Greasy
-    Fork](https://greasyfork.org/scripts/563646-ophel-ai-chat-page-enhancer) for
-    Tampermonkey. See the [Installation guide](/installation) for manual
-    sideloading options.
+  <Step title="Install Ophel Atlas">
+    Install the browser extension for Chrome, Edge, Firefox, or macOS Safari (experimental), or use the userscript on Greasy Fork / ScriptCat. See the [Installation guide](/installation) for direct links and platform differences.
   </Step>
   <Step title="Open a supported AI site">
-    Visit any of the 16 supported platforms — ChatGPT, Gemini, Claude, Grok,
-    DeepSeek, and more. The Ophel panel appears automatically on the side of the
-    page.
+    Visit ChatGPT, Gemini, Claude, DeepSeek, or any other supported platform. On first launch, accept the local-use disclaimer to start a short 4-step panel tour covering Outline, Chats, Prompts, and Settings.
   </Step>
-  <Step title="Explore the panel">
-    Start a chat and watch the Smart Outline populate in real time. Use
-    the **Chats** tab to organize chats into folders, and the
-    **Prompts** tab to build your reusable prompt library.
+  <Step title="Work from the side panel">
+    Use the live outline to jump around long replies, file chats into folders and tags, insert prompt templates, or press <Shortcut combo="ctrl+k" /> to open Global Search.
   </Step>
 </Steps>
 
-## Supported AI platforms
+## Supported platforms
 
-Ophel works on 16 platforms out of the box — install adapter packs from the [Site Packs](/enhancements/site-extensions) section to hot-swap support for even more sites:
+Ophel works out of the box on **16 built-in platforms** (including multi-domain sites such as Doubao/Dola, Kimi `.com`/`.ai`, and Z.ai):
 
 <CardGroup cols={3}>
-  <Card
-    title="ChatGPT"
-    icon="/images/icons/chatgpt.png"
-    href="https://chatgpt.com"
-  >
+  <Card title="ChatGPT" icon="/images/icons/chatgpt.png" href="https://chatgpt.com">
     chatgpt.com
   </Card>
-  <Card
-    title="Gemini"
-    icon="/images/icons/gemini.png"
-    href="https://gemini.google.com"
-  >
+  <Card title="Gemini" icon="/images/icons/gemini.png" href="https://gemini.google.com">
     gemini.google.com
   </Card>
-  <Card
-    title="Claude"
-    icon="/images/icons/claude.svg"
-    href="https://claude.ai"
-  >
+  <Card title="Claude" icon="/images/icons/claude.svg" href="https://claude.ai">
     claude.ai
   </Card>
-  <Card
-    title="Grok"
-    icon="/images/icons/grok.png"
-    href="https://grok.com"
-  >
-    grok.com
-  </Card>
-  <Card
-    title="DeepSeek"
-    icon="/images/icons/deepseek.svg"
-    href="https://chat.deepseek.com"
-  >
+  <Card title="DeepSeek" icon="/images/icons/deepseek.svg" href="https://chat.deepseek.com">
     chat.deepseek.com
   </Card>
-  <Card
-    title="Kimi, Doubao, and more"
-    icon="ellipsis"
-    href="/introduction#supported-platforms"
-  >
-    View all 16 platforms
+  <Card title="Grok" icon="/images/icons/grok.png" href="https://grok.com">
+    grok.com
+  </Card>
+  <Card title="Gemini Notebook" icon="/images/icons/gemini-notebook.png" href="https://notebook.google.com">
+    notebook.google.com
   </Card>
 </CardGroup>
 
-<Note>
-  Ophel stores all your data locally in your browser. No account is required and
-  no chat data is ever uploaded to Ophel's servers.
-</Note>
+Plus **Google AI Studio**, **Gemini Enterprise** (disabled by default for new installs), **Doubao / Dola**, **Kimi**, **Qwen Studio**, **Qianwen**, **Yuanbao**, **Z.ai**, **ChatGLM**, and **ima**. See the [full platform list](/introduction#supported-platforms) or browse community [Site Packs](/enhancements/site-extensions) for 18 additional sites and self-hosted apps.
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Introduction" icon="book-open" href="/introduction">
+    Full platform table, capabilities overview, and privacy principles.
+  </Card>
+  <Card title="Panel Overview" icon="/images/icons/panel-overview.svg" href="/panel-overview">
+    Learn the side panel tabs, floating quick buttons, modes, and pass-through clicks.
+  </Card>
+</CardGroup>

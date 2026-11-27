@@ -1,103 +1,55 @@
 ---
-title: "Content enhancements: Mermaid, formulas, and Markdown"
+title: "Content Enhancements"
 sidebarTitle: "Content"
-icon: "file-text"
-description: "Render Mermaid diagrams and formulas, copy LaTeX or MathML source, format your own messages in Markdown, copy tables in one click, and export chats."
-keywords:
-  [
-    "Mermaid diagrams",
-    "LaTeX formulas",
-    "MathML source",
-    "Markdown rendering",
-    "table copy",
-    "chat export",
-    "content rendering",
-  ]
+description: "Render Markdown in your own prompts, render Mermaid diagrams, double-click formulas to copy LaTeX or MathML, and copy tables as Markdown."
 ---
 
-import { Icon } from "/snippets/icon.jsx"
-
-Ophel adds a layer of interactivity to AI chat pages: diagrams that some platforms leave as raw code get rendered automatically, formulas become copyable with a double-click, your own messages display Markdown formatting, and any chat can be exported in multiple formats.
+Ophel enhances how messages, math formulas, tables, and diagrams behave inside AI chats. All global content options live under **Settings → Features → Content**.
 
 ## Mermaid diagram rendering
 
-Some AI platforms display Mermaid code blocks as raw text instead of rendered diagrams. When Ophel detects an unrendered Mermaid block, it renders the diagram in place automatically.
+Some AI sites output Mermaid diagrams only as plain code blocks. When **Assistant Mermaid Render** is enabled (default **Off**), Ophel renders Mermaid code blocks in AI replies into interactive SVG diagrams whenever the host site does not render them natively.
 
-**Settings → Features → Content → Assistant Mermaid Render** (default: off)
+- Zoom smoothly between **50% and 300%**.
+- Open diagrams full-screen for inspection.
+- Export diagrams as **2× PNG** images.
 
-<Note>
-  This only activates when the platform itself has not rendered the Mermaid
-  block. It will not interfere with native diagram rendering.
-</Note>
+## User prompt Markdown rendering
 
-## Formula rendering and source copy
+Most chat platforms display your own sent messages as plain unformatted text. With **User Query Markdown Rendering** enabled (default **On**), Ophel formats headings, lists, math formulas, and fenced code blocks (with one-click copy buttons) right inside your message bubbles.
 
-When an AI reply contains math, Ophel recognizes LaTeX delimiters and renders the formulas inline. To copy the source from any supported rendered formula, double-click it — Ophel copies the selected source format to your clipboard immediately.
+## Formula source copy
 
-**Settings → Features → Content → Double-click to copy formula** (default: on)
+When an AI platform renders math formulas, **Double-click to copy formula** (default **On**) lets you double-click any rendered formula to copy its underlying source straight to your clipboard.
 
-### Formula copy format
+Expand **Advanced options** at the bottom of the Content card to configure:
 
-Choose whether double-clicking a formula copies:
-
-- **LaTeX source** — best for Markdown notes, TeX editors, Obsidian, Typora, and most AI prompts
-- **MathML source** — best for accessibility workflows, web documents, and tools that preserve structured math markup
-
-**Settings → Features → Content → Formula copy format** (default: LaTeX source)
-
-<Note>
-  Some sites expose only visual formula HTML and no stable source. In that case,
-  Ophel shows a message instead of copying an unreliable result.
-</Note>
-
-### LaTeX delimiters
-
-When the copy format is **LaTeX source**, Ophel can add delimiters before placing the text on the clipboard:
-
-- Inline formulas use `$ ... $`
-- Block formulas use `$$ ... $$`
-
-Enable **Settings → Features → Content → Add delimiter when copying** if the destination expects complete Markdown-style math snippets.
-
-## User message Markdown rendering
-
-Markdown syntax you type in the AI input box — `**bold**`, `` `code` ``, `- list item` — normally appears as plain text in your message bubble after sending. With this feature enabled, Ophel renders Markdown formatting inside your messages so they're easier to read.
-
-**Settings → Features → Content → User Query Style Enhancement** (default: on)
+- **Formula copy format**: **LaTeX** (default) or **MathML**.
+- **Keep delimiters when copying** (default **On**): Wraps copied LaTeX in `$ ... $` for inline formulas or `$$ ... $$` for display formulas.
 
 ## Markdown table copy
 
-A **Copy** button appears on tables inside AI replies. Clicking it copies the table as standard Markdown table syntax, ready to paste into any Markdown editor.
+With **Table Copy Markdown** enabled (default **On**), Ophel adds a copy button to the top-right corner of rendered tables in AI replies so you can copy them cleanly as Markdown tables.
 
-**Settings → Features → Content → Table Copy Markdown** (default: on)
+## Settings summary
 
-## Chat export
+Open **Settings → Features → Content**:
 
-Export any chat from <Icon src="/images/icons/tools.svg" alt="Toolbox icon" /> **Toolbox** → <Icon src="/images/icons/export.svg" alt="Export icon" /> **Export**, the Outline toolbar, the Chats tab row menu, or the <Icon src="/images/icons/keyboard.svg" alt="Keyboard icon" /> export shortcut. Every entry opens the **Export Chat** dialog, where you can pick <Icon src="/images/icons/markdown.svg" alt="Markdown file icon" /> Markdown, HTML, <Icon src="/images/icons/json-file.svg" alt="JSON file icon" /> JSON, <Icon src="/images/icons/txt-file.svg" alt="TXT file icon" /> TXT, or copy the chat as Markdown straight to the clipboard.
+| Setting | Options | Default | Location |
+| --- | --- | --- | --- |
+| **Assistant Mermaid Render** | On / Off | Off | Main card |
+| **User Query Markdown Rendering** | On / Off | On | Main card |
+| **Double-click to copy formula** | On / Off | On | Main card |
+| **Table Copy Markdown** | On / Off | On | Main card |
+| **Formula copy format** | LaTeX / MathML | LaTeX | **Advanced options** |
+| **Keep delimiters when copying** | On / Off | On | **Advanced options** |
 
-<Tip>
-  For the full export walkthrough — formats, zip package structure,
-  per-platform asset handling, segmented export, and all export settings — see
-  the dedicated [Export](/features/export) page.
-</Tip>
+## Related site-specific enhancements
 
-## Platform-specific fixes
+Site-level fixes and optimizations live under **Settings → Site Settings** instead of global Content settings:
 
-<AccordionGroup>
-  <Accordion title="Markdown fix (Gemini, AI Studio, ChatGPT)">
-    These platforms sometimes fail to render bold text correctly — `**text**` appears as literal characters instead of formatted output. Ophel includes a patch for each affected platform.
+- **Markdown bold fix** (Gemini, AI Studio, ChatGPT)
+- **Generated-image watermark removal** (Gemini) & **background watermark blocker** (AI Studio)
+- **Long-chat rendering optimizations** (ChatGPT)
 
-    - **Settings → Site Settings → Gemini → Markdown Bold Fix**
-    - **Settings → Site Settings → AI Studio → Markdown Bold Fix**
-    - **Settings → Site Settings → ChatGPT → Markdown Bold Fix**
-
-  </Accordion>
-  <Accordion title="Watermark removal (Gemini, AI Studio)">
-    Gemini and AI Studio can attach "Created with Gemini" watermarks when exporting or screenshotting certain content. Enabling this removes those watermarks.
-
-    This feature requires the optional `<all_urls>` permission (used to fetch images and convert them to base64). The browser will prompt for permission the first time you enable it.
-
-    **Settings → Site Settings → Gemini → Remove Image Watermark**
-
-  </Accordion>
-</AccordionGroup>
+See [Site Settings](/customization/site-settings) for details, or [Chat Export](/features/export) for exporting conversations and assets.

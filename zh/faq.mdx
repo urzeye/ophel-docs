@@ -1,204 +1,80 @@
 ---
-title: "常见问题解答"
+title: "常见问题（FAQ）"
 sidebarTitle: "常见问题"
-icon: "circle-question"
-description: "Ophel Atlas 最常见问题的解答，涵盖安装、面板行为、大纲、对话、提示词队列、权限与隐私。"
-keywords: ["常见问题", "FAQ", "问答", "帮助", "故障排查基础"]
+description: "快速解答支持的 AI 平台、扩展与油猴/Safari 差异、文件夹结构、多账号隔离、数据备份与设置查找等高频疑问。"
 ---
 
-import { Icon } from "/snippets/icon.jsx"
-import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
+import { Shortcut } from "/snippets/shortcut.jsx"
 
-本页收录了关于 Ophel Atlas 最常见的问题。如果这里没有你需要的答案，请查看[故障排查](/zh/troubleshooting)页面，或在 [GitHub Issues](https://github.com/urzeye/ophel/issues) 上提交反馈。
+如果遇到具体故障（如面板不显示、大纲为空、队列卡住、WebDAV 报错），请直接查看[故障排查](/zh/troubleshooting)。
 
-## 安装与设置
+## 平台与安装
 
 <AccordionGroup>
-  <Accordion title="Ophel 支持哪些 AI 平台？" icon="robot">
-    Ophel 支持 16 个 AI 平台：
-
-    | 平台                  | 网址                                                     |
-    | --------------------- | -------------------------------------------------------- |
-    | **Gemini**            | [gemini.google.com](https://gemini.google.com)           |
-    | **Gemini Enterprise** | [business.gemini.google](https://business.gemini.google) |
-    | **AI Studio**         | [aistudio.google.com](https://aistudio.google.com)       |
-    | **Gemini Notebook**   | [notebook.google.com](https://notebook.google.com)       |
-    | **ChatGPT**           | [chatgpt.com](https://chatgpt.com)                       |
-    | **Claude**            | [claude.ai](https://claude.ai)                           |
-    | **Grok**              | [grok.com](https://grok.com)                             |
-    | **DeepSeek**          | [chat.deepseek.com](https://chat.deepseek.com)           |
-    | **豆包**              | [www.doubao.com](https://www.doubao.com)                 |
-    | **Kimi**              | [www.kimi.com](https://www.kimi.com)                     |
-    | **Qwen Studio**       | [chat.qwen.ai](https://chat.qwen.ai)                     |
-    | **通义千问**          | [www.qianwen.com](https://www.qianwen.com)               |
-    | **元宝**              | [yuanbao.tencent.com](https://yuanbao.tencent.com)       |
-    | **Z.ai**              | [chat.z.ai](https://chat.z.ai)                           |
-    | **ChatGLM**           | [chatglm.cn](https://chatglm.cn)                         |
-    | **ima**               | [ima.qq.com](https://ima.qq.com)                         |
-
+  <Accordion title="Ophel 支持哪些 AI 平台？">
+    开箱内置 **16 个主流平台**（含豆包/Dola、Kimi `.com`/`.ai`、Z.ai 等多域名站点），另在适配中心提供 **18 个社区站点适配包**（包含 Open WebUI、LibreChat、NextChat 等自部署应用）。完整清单见[产品简介 — 支持的平台](/zh/introduction#支持的平台)与[适配中心概览](/zh/enhancements/site-extensions)。
   </Accordion>
 
-  <Accordion title="安装后如何启用扩展？" icon="puzzle-piece">
-    安装完成后，在浏览器中打开任意支持的 AI 平台，Ophel 面板应会自动出现在侧边。如果没有出现，请确认扩展已在浏览器工具栏中开启（点击拼图图标确认 Ophel 已启用），然后用 <Shortcut combo="ctrl+shift+r" /> 强制刷新页面。
+  <Accordion title="浏览器扩展、macOS Safari 和油猴脚本该怎么选？">
+    - **Chrome / Edge / Firefox 扩展**：能力最完整，包含按需权限管理、浏览器全局快捷键 <Shortcut combo="alt+o" />、后台 `alarms` 定时自动备份、Claude 从浏览器导入 Cookie 以及 AI Studio 预加载优化。
+    - **油猴脚本**（Tampermonkey / Violentmonkey / ScriptCat）：适用于任何装有脚本管理器的浏览器，核心功能、WebDAV、桌面通知与 Gemini 去水印都可用；不含浏览器全局快捷键与 Claude 浏览器 Cookie 导入。
+    - **Safari（macOS 实验版）**：受限于临时扩展机制（24 小时或退出 Safari 自动失效），不支持系统桌面通知、自动聚焦窗口与 Gemini 图片去水印。
 
-    某些网址需要你明确授权扩展运行。如果扩展弹窗中出现「点击启用」提示，点击并允许访问当前站点即可。
-
+    完整对照见[安装指南 — 各平台能力对比](/zh/installation#各平台能力对比)。
   </Accordion>
 
-  <Accordion title="浏览器扩展和油猴脚本有什么区别？" icon="layer-group">
-    **浏览器扩展**（支持 Chrome、Edge 和 Firefox，另有 macOS Safari 实验性临时扩展，见 [GitHub Releases](https://github.com/urzeye/ophel/releases)）是推荐选项，功能完整、性能更好、兼容性更高。
-
-    **油猴脚本**在 Tampermonkey 等脚本管理器中运行，无需安装浏览器扩展，适合无法安装扩展的场景，但部分功能可能受限。
-
+  <Accordion title="Ophel 免费开源吗？需要填 API Key 吗？">
+    免费且按 **GPLv3** 协议开源在 [GitHub](https://github.com/urzeye/ophel)。不需要注册账号，也不需要填写任何 API Key，直接增强你平时使用的 AI 网页。
   </Accordion>
 </AccordionGroup>
 
-## 站点拓展
+## 功能与使用
 
 <AccordionGroup>
-  <Accordion title="什么是站点拓展？" icon="puzzle-piece">
-    站点拓展是声明式 JSON 清单，用于在内置平台之外增加 AI 对话站点支持。它们不会运行任意 JavaScript。可在 **设置 → 适配中心** 中管理。
-
-    先看[站点拓展概览](/zh/enhancements/site-extensions)，再看[安装与管理](/zh/enhancements/site-extensions/installation)了解在线库安装、本地导入与自定义源绑定。
+  <Accordion title="为什么部分站点看不到「对话」标签页？">
+    只有提供侧栏历史对话列表的 **11 个内置平台** 会显示「对话」标签页（ChatGPT、Gemini、Gemini Enterprise、AI Studio、Claude、Grok、DeepSeek、豆包/Dola、Kimi、Qwen Studio、腾讯元宝）。其余 5 个内置平台（Gemini Notebook、智谱清言、腾讯 ima、通义千问、Z.ai）以及当前社区适配包会自动隐藏该标签并跳过同步。
   </Accordion>
-  <Accordion title="站点拓展能支持自托管 Open WebUI 或 LibreChat 吗？" icon="server">
-    可以。部分社区拓展使用空匹配列表，需要在 **设置 → 适配中心 → 自定义站点** 下显式绑定 HTTPS 源。详见[安装指南](/zh/enhancements/site-extensions/installation#绑定自定义源)。
+
+  <Accordion title="文件夹支持多级嵌套吗？">
+    当前文件夹为单层平级结构，配合不限数量的彩色 **标签** 和 **置顶** 使用。用文件夹区分大项目、用标签做多维标记，拖拽归类和全局搜索（`folder:`、`tag:`）都会更高效。
+  </Accordion>
+
+  <Accordion title="切换账号、工作空间或域名时，对话记录会串台吗？">
+    不会。Ophel 会按登录账号或工作空间隔离本地对话（例如 ChatGPT 个人与团队空间、Claude 不同组织）；对于多域名内置站点（豆包与 Dola、Kimi `.com` 与 `.ai`、Z.ai `chat.z.ai` 与 `zchat.z.ai`），设置项共享，本地对话、书签与阅读历史按域名隔离。
+  </Accordion>
+
+  <Accordion title="在 Ophel 里删除对话，会把 AI 网站上的原对话也删掉吗？">
+    默认**会**——**设置 → 功能模块 → 对话** 中的 **删除对话时同步删除站点上的对话** 默认为开启，删除时会同时删除支持平台上的原对话且无法恢复。如果你只想删掉 Ophel 本地记录，请关闭此开关。（注意：「缺失对话审阅」弹窗中的清理始终只删本地记录，不会动原站点。）
+  </Accordion>
+
+  <Accordion title="以前能看到的某些设置项为什么找不到了？">
+    为了保持设置页清爽，**大纲**、**导出**、**标签页**、**提醒**、**内容交互** 卡片中的低频选项收进了各自卡片底部的 **高级选项** 折叠区；快捷键中的「切换面板标签」和「展开到指定层级」同样默认折叠。也可以直接按 <Shortcut combo="ctrl+k" /> 在全局搜索中按名字（兼容旧名称）直达对应设置。
+  </Accordion>
+
+  <Accordion title="为什么设置侧栏里没有「外观主题」或「权限管理」？">
+    - **外观主题**：如果你直接打开独立的扩展选项页（没有挂载在 AI 网页内），该入口会自动隐藏；请在任意受支持的 AI 页面中点击面板设置按钮进入。
+    - **权限管理**：油猴版由脚本管理器通过 `@match` / `@connect` 控制权限，不显示扩展权限管理页。
   </Accordion>
 </AccordionGroup>
 
-## 面板与导航
+## 数据、同步与隐私
 
 <AccordionGroup>
-  <Accordion title="面板没有出现在 AI 页面上。" icon="table-columns">
-    按以下顺序排查：
-
-    1. 确认扩展已安装并启用（检查浏览器工具栏）
-    2. 用 <Shortcut combo="ctrl+shift+r" /> 强制刷新页面
-    3. 确认当前站点在[支持的平台列表](/zh/introduction#支持的平台)中
-    4. 如果面板被关闭了，按 <Shortcut combo="alt+p" /> 重新打开
-
+  <Accordion title="数据存在哪里？换电脑或换浏览器怎么迁移？">
+    全部数据默认保存在你的浏览器本地存储（扩展用 `chrome.storage.local`，油猴用脚本管理器本地存储）。换设备时可在 **设置 → 数据与权限 → 本地备份** 导出完整 JSON 文件，或配置 [WebDAV 同步与定时自动备份](/zh/data/webdav)。
   </Accordion>
 
-<Accordion
-  title="浮动按钮不见了，怎么打开面板？"
-  icon="circle-question"
->
-  按 <Icon src="/images/icons/keyboard.svg" alt="快捷键图标" /> <Shortcut combo="alt+p" />。无论浮动按钮是否可见，这个快捷键都能切换面板。
-</Accordion>
+  <Accordion title="Ophel 会把我的聊天内容上传到服务器吗？">
+    不会。对话正文始终留在 AI 平台，Ophel 没有收集对话的后端服务器。关于所有可能触发的可选网络请求（自建 WebDAV、在线适配库签名检查、自愿提交的卸载问卷），见[隐私说明](/zh/data/privacy)。
+  </Accordion>
 
-<Accordion
-  title="如何使用幽灵穿透模式？"
-  icon="arrow-pointer"
->
-  幽灵穿透让面板暂时透明并允许鼠标点击穿过，方便操作面板背后的页面内容。按住
-  <Shortcut combo="ctrl" /> 约 0.2
-  秒，面板会变透明并允许穿透。松开按键后恢复正常。
-</Accordion>
-
-  <Accordion title="面板吸附到边缘后如何取消？" icon="thumbtack">
-    将面板拖向屏幕边缘会自动吸附。悬停到该边缘时面板会弹出。若要取消吸附，拖拽面板离开边缘即可。也可在 **设置 → 基本设置 → 面板** 中将面板模式切换为**悬浮**。
+  <Accordion title="如何清空全部数据恢复出厂设置？">
+    前往 **设置 → 数据与权限 → 本地备份**，点击底部的 **清除全部数据** 并确认即可。该操作仅清空 Ophel 本地数据，不会影响 AI 网站上的历史对话。
   </Accordion>
 </AccordionGroup>
 
-## 大纲
+## 遇到具体问题？
 
-<AccordionGroup>
-  <Accordion title="大纲是空的，但对话有内容。" icon="list-tree">
-    部分 AI 平台异步更新 DOM，页面加载后大纲可能需要几秒才能填充。按 <Shortcut combo="alt+r" /> 手动刷新大纲。如果刷新后仍为空，检查 **设置 → 功能模块 → 大纲 → 对话期间自动更新大纲** 是否已开启。
-  </Accordion>
-
-<Accordion
-  title="大纲没有同步我的滚动位置。"
-  icon="arrows-up-down"
->
-  确认 **设置 → 功能模块 → 大纲 → 大纲跟随模式** 已设为**跟随当前位置**，而不是**手动控制**。
-</Accordion>
-
-  <Accordion title="如何手动刷新大纲？" icon="rotate">
-    按 <Icon src="/images/icons/refresh.svg" alt="刷新大纲图标" /> <Shortcut combo="alt+r" /> 强制重新扫描对话并重建大纲条目。
-  </Accordion>
-</AccordionGroup>
-
-## 对话
-
-<AccordionGroup>
-  <Accordion title="对话标签页中没有显示我的对话。" icon="folder-open">
-    对话标签页从 AI 平台的原生侧边栏读取数据。如果平台侧边栏未加载，Ophel 就无法获取对话列表。尝试滚动平台侧边栏以加载更多条目，然后再查看对话标签页。
-  </Accordion>
-
-  <Accordion title="WebDAV 同步的是什么内容？" icon="cloud">
-    WebDAV 会备份 Ophel 在本地存储的数据：对话标题、文件夹归属、标签、置顶状态、提示词库、设置，以及 Claude 多账号功能保存的 Session Key。不会上传实际的对话消息（那些内容属于 AI 平台）。
-
-    详见 [WebDAV 同步](/zh/data/webdav)。
-
-  </Accordion>
-</AccordionGroup>
-
-## 提示词与队列
-
-<AccordionGroup>
-  <Accordion title="提示词队列怎么用？" icon="list-ol">
-    提示词队列让你把多条提示词排好队，Ophel 会在 AI 每次完成回复后自动发送下一条。使用方法：
-
-    1. 在 <Icon src="/images/icons/settings.svg" alt="设置图标" /> **设置 → 功能模块 → 提示词 → 提示词队列** 中启用
-    2. 按 <Icon src="/images/icons/keyboard.svg" alt="快捷键图标" /> <Shortcut combo="alt+j" /> 打开队列叠加层
-    3. 逐条添加，或用批量导入粘贴一组提示词
-    4. 加入待发送内容后，Ophel 检测到页面连续两次空闲（约 2 秒）后自动发送下一条
-
-    运行中可以编辑待发送条目、强制发送某一条、删除单条，或清空队列。
-
-  </Accordion>
-
-  <Accordion title="队列卡住了，没有发送下一条。" icon="hourglass">
-    Ophel 需要连续两次检测到页面空闲（约 2 秒）才会发送。如果 AI 页面使用了 Ophel 无法识别的加载动画，队列可能会卡住。此时按 <Icon src="/images/icons/keyboard.svg" alt="快捷键图标" /> <Shortcut combo="alt+j" /> 打开队列叠加层，并对待发送条目使用**强制发送**。
-  </Accordion>
-</AccordionGroup>
-
-## Claude
-
-<AccordionGroup>
-  <Accordion title="什么是 Session Key？" icon="key">
-    Claude Session Key 是你在 claude.ai 浏览器对话中的认证令牌。通过添加多个账号的 Key，当一个账号用量达到限额时可以快速切换。Ophel 会拦截请求并自动注入激活的 Key。
-  </Accordion>
-
-  <Accordion title="Session Key 存储安全吗？" icon="shield-halved">
-    Session Key 存储在你本机的 `chrome.storage.local` 中，Ophel 不会将其上传到 Ophel 服务器。如果你使用完整备份或 WebDAV 备份，请注意控制备份文件的访问权限——备份中可能包含有效的认证令牌。
-  </Accordion>
-</AccordionGroup>
-
-## 权限
-
-<AccordionGroup>
-  <Accordion title="为什么 Ophel 需要 &lt;all_urls&gt; 权限？" icon="globe">
-    该权限仅用于两个可选功能：**WebDAV 同步**（访问你自己的 WebDAV 服务器）和**去水印**（抓取并转换图片）。这是完全可选的——如果你不使用这两个功能，可以拒绝或在 **设置 → 数据与权限 → 权限管理** 中点击撤销。
-  </Accordion>
-
-  <Accordion title="授予权限后还能撤销吗？" icon="shield-check">
-    可以。前往 **设置 → 数据与权限 → 权限管理**，点击对应权限旁的**撤销**按钮。撤销后依赖该权限的功能会被禁用，其他功能不受影响。
-  </Accordion>
-</AccordionGroup>
-
-## 隐私
-
-<AccordionGroup>
-  <Accordion
-    title="Ophel 会上传我的对话内容吗？"
-    icon="lock"
-  >
-    不会。Ophel
-    完全在你的浏览器本地运行。对话内容、提示词和设置默认保存在你的设备上。如果配置了
-    WebDAV 同步，数据只会发送到你指定的 WebDAV 服务器——由你完全控制。Ophel
-    本身不收集或传输任何用户数据。详情请查看[隐私声明](/zh/data/privacy)。
-  </Accordion>
-</AccordionGroup>
-
-## 通用
-
-<AccordionGroup>
-  <Accordion title="如何重置所有数据到初始状态？" icon="rotate-left">
-    前往 **设置 → 数据与权限 → 本地备份**，点击**清空所有数据**。这将删除浏览器中存储的所有 Ophel 数据，包括提示词、对话元数据、文件夹与标签定义、以及所有设置。AI 平台上的实际对话历史不受影响。
-
-    建议在清空前先导出一份完整备份。
-
-  </Accordion>
-</AccordionGroup>
+<Card title="故障排查" icon="wrench" href="/zh/troubleshooting">
+  按症状一步步排查面板不出现、大纲为空、快捷按钮消失、同步失败、WebDAV 报错与 Safari/Firefox 临时扩展失效。
+</Card>

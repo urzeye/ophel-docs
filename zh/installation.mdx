@@ -1,586 +1,206 @@
 ---
-title: "安装 Ophel Atlas — Chrome、Edge、Firefox、Safari 或油猴脚本"
+title: "安装指南"
 sidebarTitle: "安装"
-icon: "download"
-description: "从 Chrome 网上应用店、Edge add-ons、Firefox 附加组件商店、Greasy Fork、ScriptCat 安装 Ophel Atlas，在 macOS Safari 上以临时扩展方式运行，或从 GitHub Releases 手动加载，四步以内完成。"
-keywords:
-  [
-    "安装Ophel",
-    "Chrome扩展",
-    "Edge扩展",
-    "Edge add-ons",
-    "Firefox扩展",
-    "油猴脚本",
-    "Tampermonkey",
-    "ScriptCat",
-    "浏览器扩展安装",
-    "下载",
-  ]
+description: "在 Chrome、Edge、Firefox、macOS Safari（实验版）或油猴脚本管理器中安装 Ophel Atlas，并对比各平台能力差异。"
 ---
 
-Ophel Atlas 支持 Chrome/Edge 扩展、Firefox 扩展、macOS Safari 临时扩展（实验性），以及通过 Greasy Fork 或 ScriptCat 安装的油猴脚本。推荐优先使用浏览器扩展——功能更完整，兼容性更好，正式安装后无需开发者模式。
+import { Shortcut } from "/snippets/shortcut.jsx"
+
+Ophel Atlas 由同一套源码构建为**浏览器扩展**与**油猴脚本**两种形态，你可以按自己的浏览器环境选择。
 
 <Tip>
-  尽量使用浏览器扩展版本。油猴脚本版本相比扩展有功能限制，在部分平台上的兼容性也较低。
+优先推荐使用浏览器扩展（Chrome / Edge / Firefox），能获得完整能力，包括按需权限管理、浏览器全局快捷键以及从浏览器 Cookie 导入 Claude Session Key。如果你受限无法安装扩展，或使用其他支持油猴脚本的浏览器，可选择油猴版。
 </Tip>
 
+## 下载渠道
+
+<CardGroup cols={2}>
+  <Card title="Chrome 网上应用店" icon="/images/icons/chrome.svg" href="https://chromewebstore.google.com/detail/ai-chat-organizer-outline/lpcohdfbomkgepfladogodgeoppclakd">
+    推荐。适用于 Chrome、Brave、Arc、Vivaldi 等所有 Chromium 内核浏览器，支持商店自动更新。
+  </Card>
+  <Card title="Microsoft Edge 外接程序" icon="/images/icons/edge-addons.svg" href="https://microsoftedge.microsoft.com/addons/detail/ophel-atlas-ai-chat-navi/ffpenkdeifijngifjmbbpijfpdhlolga">
+    Edge 官方商店直装，无需跨区即可下载与自动更新。
+  </Card>
+  <Card title="Firefox 附加组件商店（AMO）" icon="/images/icons/firefox.svg" href="https://addons.mozilla.org/firefox/addon/ophel-ai-chat-enhancer/">
+    需要 Firefox 109+。官方签名版本，与 Chrome 版功能完全一致。
+  </Card>
+  <Card title="Greasy Fork（油猴脚本）" icon="/images/icons/greasy-fork.svg" href="https://greasyfork.org/scripts/563646-ophel-ai-chat-page-enhancer">
+    搭配 Tampermonkey 或 Violentmonkey 使用，适合任意支持油猴脚本的浏览器。
+  </Card>
+  <Card title="ScriptCat（脚本猫）" icon="/images/icons/scriptcat.png" href="https://scriptcat.org/script-show-page/6519">
+    适合使用脚本猫（ScriptCat）管理器的用户一键安装。
+  </Card>
+  <Card title="GitHub Releases" icon="/images/icons/github.svg" href="https://github.com/urzeye/ophel/releases">
+    第一时间获取 Chrome、Firefox、macOS Safari（实验版）和油猴脚本构建包。
+  </Card>
+</CardGroup>
+
 <Note>
-  GitHub Releases 和浏览器商店更新是两个独立步骤。新的 GitHub Release
-  只表示文件已经在 GitHub 发布，但 Chrome 网上应用店、Microsoft Edge
-  add-ons、Firefox 附加组件商店、Greasy Fork 和 ScriptCat
-  都有各自的提交、审核、批准和分发流程。商店和脚本目录版本可能暂时落后于 GitHub
-  Releases，或彼此不同步。如需确认当前已发布版本，请以各商店公开页面显示的版本为准。
+每次发版后 GitHub Releases 会立即上线；Chrome、Edge 和 Firefox 商店需要各自审核，通常比 GitHub 晚 1–3 天。
 </Note>
 
-## 下载
+## 各平台能力对比
 
-<div
-  style={{
-    display: "grid",
-    gridTemplateColumns: "repeat(2,1fr)",
-    gap: "16px",
-    margin: "0 0 32px",
-  }}
->
-  <a
-    href="https://chromewebstore.google.com/detail/ai-chat-organizer-outline/lpcohdfbomkgepfladogodgeoppclakd"
-    target="_blank"
-    style={{
-      display: "flex",
-      flexDirection: "column",
-      gap: "10px",
-      padding: "16px",
-      border: "1px solid rgba(128,128,128,0.2)",
-      borderRadius: "12px",
-      textDecoration: "none",
-      color: "inherit",
-    }}
-  >
-    <span
-      style={{
-        display: "flex",
-        alignItems: "center",
-        gap: "7px",
-        fontWeight: "600",
-        fontSize: "14px",
-        margin: "0",
-        lineHeight: "1.4",
-      }}
-    >
-      <img
-        alt="Chrome 图标"
-        src="/images/icons/chrome.svg"
-        style={{
-          display: "block",
-          width: "16px",
-          height: "16px",
-          margin: "0",
-          flexShrink: "0",
-        }}
-      />
-      Chrome
-    </span>
-    <span
-      style={{
-        display: "flex",
-        gap: "6px",
-        flexWrap: "wrap",
-        margin: "0",
-        padding: "0",
-        lineHeight: "1",
-      }}
-    >
-      <img
-        alt="Chrome 网上应用店用户数徽章"
-        src="https://img.shields.io/chrome-web-store/users/lpcohdfbomkgepfladogodgeoppclakd?logo=google-chrome&logoColor=white&label=%E7%94%A8%E6%88%B7%E6%95%B0&color=4285F4"
-        style={{ display: "block", margin: "0", height: "20px" }}
-      />
-      <img
-        alt="Chrome 网上应用店评分徽章"
-        src="https://img.shields.io/chrome-web-store/stars/lpcohdfbomkgepfladogodgeoppclakd?logo=google-chrome&logoColor=white&color=4285F4"
-        style={{ display: "block", margin: "0", height: "20px" }}
-      />
-    </span>
-  </a>
-  <a
-    href="https://microsoftedge.microsoft.com/addons/detail/ophel-atlas-ai-chat-navi/ffpenkdeifijngifjmbbpijfpdhlolga"
-    target="_blank"
-    style={{
-      display: "flex",
-      flexDirection: "column",
-      gap: "10px",
-      padding: "16px",
-      border: "1px solid rgba(128,128,128,0.2)",
-      borderRadius: "12px",
-      textDecoration: "none",
-      color: "inherit",
-    }}
-  >
-    <span
-      style={{
-        display: "flex",
-        alignItems: "center",
-        gap: "7px",
-        fontWeight: "600",
-        fontSize: "14px",
-        margin: "0",
-        lineHeight: "1.4",
-      }}
-    >
-      <img
-        src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciICB2aWV3Qm94PSIwIDAgNDggNDgiIHdpZHRoPSI5NnB4IiBoZWlnaHQ9Ijk2cHgiPjxwYXRoIGZpbGw9IiMxZTg4ZTUiIGQ9Ik00MC42OSwzNS40MmMtOS4xNSwxMS44OC0yMS40MSw4LjgtMjYuMjMsNi4xIGMtNy4zNS00LjExLTEyLjUtMTMuNjgtOS40NC0yMy4yNWMwLjktMi44MiwyLjI3LTUuMjMsMy45OC03LjIzYzEuNjcsMC4xMywzLjY1LDAuMTMsNi0wLjA0YzE0LTEsMTgsMTEsMTcsMTQgYy0wLjUxLDEuNTMtMi4zMiwyLjAyLTMuOTcsMi4xM2MwLjE2LTAuMjIsMC4zNi0wLjU0LDAuNjQtMS4wMmMwLjg3LTEuNTQsMC45OC00LjQ5LTEuNzMtNi4yN2MtMi42MS0xLjctNS40My0wLjY1LTYuODgsMS4yOCBjLTEuNDUsMS45Mi0wLjg4LDQuODEtMC4zNyw2LjA5YzIuMiw1LjUyLDYuMjYsNi45NSw5LjAyLDcuNzhjMi43NiwwLjgzLDYuODYsMC43MSw5LjA1LTAuMTljMi4xOC0wLjkxLDIuOC0xLjQzLDMuMjItMC45NyBDNDEuNDEsMzQuMjksNDEuMTEsMzQuODIsNDAuNjksMzUuNDJ6Ii8+PHBhdGggZmlsbD0iIzBkNDdhMSIgZD0iTTQwLjczMiwzNS40MmMtMy40OCw0LjUyLTcuNDEsNi44Ny0xMS4yMSw3LjkxIGMtMC4wMywwLjAxLTAuMDYsMC4wMS0wLjA4LDAuMDJjLTIuMiwwLjQyLTMuOTUsMC4wOC01Ljg1LTAuMjljLTMuMDktMC42LTcuMzUtNC4wMS04LjM4LTEwLjE4Yy0wLjg4LTUuMzEsMS42My05LjgxLDUuNTktMTIuNTQgYy0wLjI2LDAuMjQtMC40OSwwLjUtMC43LDAuNzhjLTEuNDUsMS45Mi0wLjg4LDQuODEtMC4zNyw2LjA5YzIuMiw1LjUyLDYuMjYsNi45NSw5LjAyLDcuNzhjMi43NiwwLjgzLDYuODYsMC43MSw5LjA1LTAuMTkgYzIuMTgtMC45MSwyLjgtMS40MywzLjIyLTAuOTdDNDEuNDUyLDM0LjI5LDQxLjE1MiwzNC44Miw0MC43MzIsMzUuNDJ6Ii8+PHBhdGggZmlsbD0iIzAwZTVmZiIgZD0iTTI2Ljk0LDQuMjVjMC4wMiwwLjI2LDAuMDMsMC41NCwwLjAzLDAuODFjMCwzLjc4LTEuNzUsNy4xNC00LjQ4LDkuMzIgYy0xLjAyLTAuNTItMi4yMS0wLjk0LTMuNjUtMS4yMmMtNC4wNy0wLjc4LTEwLjYzLDEuMS0xMy4zLDUuNzdjLTAuODgsMS41My0xLjI1LDMuMS0xLjQxLDQuNTVjMC4wNC0xLjcxLDAuMzMtMy40NiwwLjg5LTUuMjEgQzguMzEsOC4wMSwxNy44NiwzLjA1LDI2Ljk0LDQuMjV6Ii8+PHBhdGggZmlsbD0iIzAwZTY3NiIgZD0iTTQxLjQsMjcuODljLTIuNzYsMi43OC02LjI3LDIuODYtOC42NywyLjczIGMtMi40MS0wLjEyLTMuNTktMC44Mi00LjY5LTEuNWMtMS4xMS0wLjY5LTAuNDgtMS4zNy0wLjM3LTEuNTJjMC4xMS0wLjE1LDAuMzgtMC40MSwxLTEuNDljMC4yOS0wLjUxLDAuNS0xLjE4LDAuNTQtMS45MSBjNC42Mi0zLjQzLDcuOTYtOC40OSw5LjE2LTE0LjM0YzIuOTIsMi45NSw0LjMsNi4yMSw0Ljc5LDcuNjFDNDQuMDQsMTkuOTksNDQuNzEsMjQuNTYsNDEuNCwyNy44OXoiLz48cGF0aCBmaWxsPSIjMWRlOWI2IiBkPSJNMzguMzcsOS44NXYwLjAxYy0xLjIsNS44NS00LjU0LDEwLjkxLTkuMTYsMTQuMzRjMC4wMy0wLjQyLDAtMC44Ny0wLjEtMS4zMiBjMC0wLjAyLTAuMDEtMC4wNC0wLjAxLTAuMDVjLTAuMjUtMS40Ny0wLjk5LTMuMzMtMi4yMi00Ljc3Yy0xLjIyLTEuNDQtMi41Mi0yLjczLTQuMzktMy42OGMyLjczLTIuMTgsNC40OC01LjU0LDQuNDgtOS4zMiBjMC0wLjI3LTAuMDEtMC41NS0wLjAzLTAuODFjMC40LDAuMDUsMC43OSwwLjExLDEuMTksMC4xOUMzMi43NCw1LjMzLDM2LjA0LDcuNDksMzguMzcsOS44NXoiLz48L3N2Zz4="
-        style={{
-          display: "block",
-          width: "16px",
-          height: "16px",
-          margin: "0",
-          flexShrink: "0",
-        }}
-        alt="Edge 图标"
-      />
-      Edge
-    </span>
-    <span
-      style={{
-        display: "flex",
-        gap: "6px",
-        flexWrap: "wrap",
-        margin: "0",
-        padding: "0",
-        lineHeight: "1",
-      }}
-    >
-      <img
-        alt="Edge add-ons 安装徽章"
-        src="https://img.shields.io/badge/Edge_add--ons-%E5%AE%89%E8%A3%85-0078D7?logo=microsoft-edge&logoColor=white&style=flat"
-        style={{ display: "block", margin: "0", height: "20px" }}
-      />
-    </span>
-  </a>
-  <a
-    href="https://addons.mozilla.org/firefox/addon/ophel-ai-chat-enhancer/"
-    target="_blank"
-    style={{
-      display: "flex",
-      flexDirection: "column",
-      gap: "10px",
-      padding: "16px",
-      border: "1px solid rgba(128,128,128,0.2)",
-      borderRadius: "12px",
-      textDecoration: "none",
-      color: "inherit",
-    }}
-  >
-    <span
-      style={{
-        display: "flex",
-        alignItems: "center",
-        gap: "7px",
-        fontWeight: "600",
-        fontSize: "14px",
-        margin: "0",
-        lineHeight: "1.4",
-      }}
-    >
-      <img
-        alt="Firefox 图标"
-        src="https://cdn.simpleicons.org/firefox/FF7139"
-        style={{
-          display: "block",
-          width: "16px",
-          height: "16px",
-          margin: "0",
-          flexShrink: "0",
-        }}
-      />
-      Firefox
-    </span>
-    <span
-      style={{
-        display: "flex",
-        gap: "6px",
-        flexWrap: "wrap",
-        margin: "0",
-        padding: "0",
-        lineHeight: "1",
-      }}
-    >
-      <img
-        alt="Firefox 附加组件用户数徽章"
-        src="https://img.shields.io/amo/users/ophel-ai-chat-enhancer?logo=firefox&logoColor=white&label=%E7%94%A8%E6%88%B7%E6%95%B0&color=FF7139"
-        style={{ display: "block", margin: "0", height: "20px" }}
-      />
-      <img
-        alt="Firefox 附加组件评分徽章"
-        src="https://img.shields.io/amo/stars/ophel-ai-chat-enhancer?logo=firefox&logoColor=white&color=FF7139"
-        style={{ display: "block", margin: "0", height: "20px" }}
-      />
-    </span>
-  </a>
-  <a
-    href="https://greasyfork.org/scripts/563646-ophel-ai-chat-page-enhancer"
-    target="_blank"
-    style={{
-      display: "flex",
-      flexDirection: "column",
-      gap: "10px",
-      padding: "16px",
-      border: "1px solid rgba(128,128,128,0.2)",
-      borderRadius: "12px",
-      textDecoration: "none",
-      color: "inherit",
-    }}
-  >
-    <span
-      style={{
-        display: "flex",
-        alignItems: "center",
-        gap: "7px",
-        fontWeight: "600",
-        fontSize: "14px",
-        margin: "0",
-        lineHeight: "1.4",
-      }}
-    >
-      <img
-        alt="Greasy Fork 图标"
-        src="https://cdn.simpleicons.org/greasyfork/4C4C4C"
-        style={{
-          display: "block",
-          width: "16px",
-          height: "16px",
-          margin: "0",
-          flexShrink: "0",
-        }}
-      />
-      Greasy Fork
-    </span>
-    <span
-      style={{
-        display: "flex",
-        gap: "6px",
-        flexWrap: "wrap",
-        margin: "0",
-        padding: "0",
-        lineHeight: "1",
-      }}
-    >
-      <img
-        alt="Greasy Fork 安装数徽章"
-        src="https://img.shields.io/greasyfork/dt/563646?logo=tampermonkey&logoColor=white&label=%E5%AE%89%E8%A3%85%E6%95%B0&color=4C4C4C"
-        style={{ display: "block", margin: "0", height: "20px" }}
-      />
-      <img
-        alt="Greasy Fork 评分数徽章"
-        src="https://img.shields.io/greasyfork/rating-count/563646?logo=tampermonkey&logoColor=white&label=%E8%AF%84%E5%88%86%E6%95%B0&color=4C4C4C"
-        style={{ display: "block", margin: "0", height: "20px" }}
-      />
-    </span>
-  </a>
-  <a
-    href="https://scriptcat.org/script-show-page/6519"
-    target="_blank"
-    style={{
-      display: "flex",
-      flexDirection: "column",
-      gap: "10px",
-      padding: "16px",
-      border: "1px solid rgba(128,128,128,0.2)",
-      borderRadius: "12px",
-      textDecoration: "none",
-      color: "inherit",
-    }}
-  >
-    <span
-      style={{
-        display: "flex",
-        alignItems: "center",
-        gap: "7px",
-        fontWeight: "600",
-        fontSize: "14px",
-        margin: "0",
-        lineHeight: "1.4",
-      }}
-    >
-      <img
-        alt="ScriptCat 图标"
-        src="/images/icons/scriptcat.png"
-        style={{
-          display: "block",
-          width: "16px",
-          height: "16px",
-          margin: "0",
-          flexShrink: "0",
-        }}
-      />
-      ScriptCat
-    </span>
-    <span
-      style={{
-        display: "flex",
-        gap: "6px",
-        flexWrap: "wrap",
-        margin: "0",
-        padding: "0",
-        lineHeight: "1",
-      }}
-    >
-      <img
-        alt="ScriptCat 安装徽章"
-        src="https://img.shields.io/badge/ScriptCat-%E5%AE%89%E8%A3%85-1597FF?style=flat"
-        style={{ display: "block", margin: "0", height: "20px" }}
-      />
-    </span>
-  </a>
-  <a
-    href="https://github.com/urzeye/ophel/releases"
-    target="_blank"
-    style={{
-      display: "flex",
-      flexDirection: "column",
-      gap: "10px",
-      padding: "16px",
-      border: "1px solid rgba(128,128,128,0.2)",
-      borderRadius: "12px",
-      textDecoration: "none",
-      color: "inherit",
-    }}
-  >
-    <span
-      style={{
-        display: "flex",
-        alignItems: "center",
-        gap: "7px",
-        fontWeight: "600",
-        fontSize: "14px",
-        margin: "0",
-        lineHeight: "1.4",
-      }}
-    >
-      <img
-        alt="Safari 图标"
-        src="https://cdn.simpleicons.org/safari/006CFF"
-        style={{
-          display: "block",
-          width: "16px",
-          height: "16px",
-          margin: "0",
-          flexShrink: "0",
-        }}
-      />
-      Safari（macOS）
-    </span>
-    <span
-      style={{
-        display: "flex",
-        gap: "6px",
-        flexWrap: "wrap",
-        margin: "0",
-        padding: "0",
-        lineHeight: "1",
-      }}
-    >
-      <img
-        alt="Safari 实验性徽章"
-        src="https://img.shields.io/badge/Safari-%E5%AE%9E%E9%AA%8C%E6%80%A7%20%C2%B7%20GitHub%20Releases-006CFF?style=flat"
-        style={{ display: "block", margin: "0", height: "20px" }}
-      />
-    </span>
-  </a>
-</div>
+安装前可以先看下不同浏览器和油猴版本的真实差异：
 
-## 从商店或脚本目录安装
+| 能力 | Chrome / Edge | Firefox | Safari（macOS 实验版） | 油猴脚本 |
+| --- | --- | --- | --- | --- |
+| 核心功能（大纲、对话、提示词、导出、全局搜索、主题、布局） | 完整支持 | 完整支持 | 完整支持 | 完整支持 |
+| 适配中心与自部署站点绑定 | 完整支持（按站点弹窗授权） | 完整支持（按站点弹窗授权） | 完整支持（在 Safari 设置中授权网站访问） | 完整支持（免权限弹窗，按白名单运行） |
+| WebDAV 手动备份与定时自动备份 | 完整支持（后台 `alarms` 定时） | 完整支持（后台 `alarms` 定时） | 完整支持（需在 Safari 设置中允许目标服务器域名） | 完整支持（定时备份需保持至少一个支持页面打开） |
+| 回复完成桌面通知 | 按需申请 `notifications` 权限（默认关） | 按需申请 `notifications` 权限（默认关） | 不支持（页面提示音与标签状态图标仍可用） | 通过 `GM_notification` 支持（默认开） |
+| 生成完成后自动聚焦置顶窗口 | 支持 | 支持 | 不支持 | 部分支持（仅 `window.focus()`，无法还原最小化窗口） |
+| Gemini 生成图片去水印 | 按需申请 `<all_urls>` 权限 | 按需申请 `<all_urls>` 权限 | 不支持 | 支持 |
+| Claude Session Key 多账号切换 | 完整支持（含从浏览器导入与跨标签生成检测） | 完整支持（含从浏览器导入与跨标签生成检测） | 完整支持（手动/JSON 管理，支持 Cookie 权限） | 部分支持（支持手动/JSON 与在 `claude.ai` 切换；不支持浏览器导入与跨标签检测） |
+| 浏览器全局快捷键（<Shortcut combo="alt+o" />） | 支持 | 支持 | 支持 | 不支持（页面内全部快捷键均正常可用） |
+| AI Studio 预加载优化（启动折叠与背景水印屏蔽） | 支持 | 支持 | 支持 | 不支持（油猴无预加载入口） |
+| 重启浏览器后保留 | 持久保留 | 持久保留（通过 AMO 安装） | **临时扩展（24 小时或退出 Safari 即失效）** | 持久保留 |
+
+## 从商店或脚本站安装
 
 <Tabs>
-  <Tab title="Chrome">
-    从 Chrome 网上应用店安装，无需开发者模式。
-
+  <Tab title="Chrome / Chromium 浏览器">
     <Steps>
-      <Step title="打开 Chrome 网上应用店页面">
-        前往 [Ophel Atlas 在 Chrome 网上应用店的页面](https://chromewebstore.google.com/detail/ai-chat-organizer-outline/lpcohdfbomkgepfladogodgeoppclakd)。
+      <Step title="打开 Chrome 网上应用店">
+        访问 [Ophel Atlas 商店页面](https://chromewebstore.google.com/detail/ai-chat-organizer-outline/lpcohdfbomkgepfladogodgeoppclakd)。
       </Step>
-      <Step title="点击「添加至 Chrome」">
-        点击 **添加至 Chrome**，在权限提示中确认。
+      <Step title="添加扩展">
+        点击 **添加至 Chrome**（或对应浏览器名称），在弹窗中确认安装。
       </Step>
-      <Step title="打开任意支持的 AI 网站">
-        前往任意[支持的平台](/zh/introduction#支持的平台)，例如 [chatgpt.com](https://chatgpt.com) 或 [claude.ai](https://claude.ai)。Ophel 侧边面板会自动出现在页面右侧。
+      <Step title="打开 AI 网站">
+        打开任意[支持的平台](/zh/introduction#支持的平台)。如果页面之前已经打开，刷新一次即可看到面板。
       </Step>
     </Steps>
-
   </Tab>
-  <Tab title="Edge">
-    直接从 Microsoft Edge add-ons 安装。
 
+  <Tab title="Microsoft Edge">
     <Steps>
-      <Step title="打开 Edge add-ons 页面">
-        前往 [Ophel Atlas 在 Edge add-ons 的页面](https://microsoftedge.microsoft.com/addons/detail/ophel-atlas-ai-chat-navi/ffpenkdeifijngifjmbbpijfpdhlolga)。
+      <Step title="打开 Edge 外接程序商店">
+        访问 [Ophel Atlas Edge 商店页面](https://microsoftedge.microsoft.com/addons/detail/ophel-atlas-ai-chat-navi/ffpenkdeifijngifjmbbpijfpdhlolga)。
       </Step>
-      <Step title="点击「获取」">
-        点击 **获取**，在权限提示中确认。
+      <Step title="安装扩展">
+        点击 **获取**，然后点击 **添加扩展**。
       </Step>
-      <Step title="打开任意支持的 AI 网站">
-        前往任意[支持的平台](/zh/introduction#支持的平台)，例如 [chatgpt.com](https://chatgpt.com) 或 [claude.ai](https://claude.ai)。Ophel 侧边面板会自动出现在页面右侧。
+      <Step title="打开 AI 网站">
+        打开或刷新任意[支持的平台](/zh/introduction#支持的平台)。
       </Step>
     </Steps>
-
   </Tab>
+
   <Tab title="Firefox">
-    从 Firefox 附加组件商店安装，支持自动更新。
-
     <Steps>
-      <Step title="打开 Firefox 附加组件页面">
-        前往 [Firefox 附加组件商店的 Ophel AI Chat Enhancer 页面](https://addons.mozilla.org/firefox/addon/ophel-ai-chat-enhancer/)。
+      <Step title="打开 Firefox 附加组件商店">
+        访问 [Ophel Atlas Firefox 商店页面](https://addons.mozilla.org/firefox/addon/ophel-ai-chat-enhancer/)（需要 Firefox 109 或更高版本）。
       </Step>
-      <Step title="点击「添加至 Firefox」">
-        点击 **添加至 Firefox**，在权限提示中确认。
+      <Step title="添加到 Firefox">
+        点击 **添加到 Firefox** 并确认权限提示。
       </Step>
-      <Step title="打开任意支持的 AI 网站">
-        前往任意[支持的平台](/zh/introduction#支持的平台)，Ophel 面板自动出现。
+      <Step title="打开 AI 网站">
+        打开或刷新任意[支持的平台](/zh/introduction#支持的平台)。
       </Step>
     </Steps>
-
   </Tab>
-  <Tab title="油猴脚本（Tampermonkey）">
-    适合无法安装浏览器扩展，或偏好 Tampermonkey 工作流的用户。
 
-    <Warning>
-      油猴脚本版本功能有限，建议在条件允许时安装扩展版本。
-    </Warning>
-
+  <Tab title="油猴脚本（Greasy Fork / ScriptCat）">
     <Steps>
-      <Step title="安装 Tampermonkey">
-        如果还没有，先为你的浏览器安装 [Tampermonkey](https://www.tampermonkey.net/)。
+      <Step title="安装脚本管理器">
+        在浏览器中安装 [Tampermonkey（篡改猴）](https://www.tampermonkey.net/)、[Violentmonkey（暴力猴）](https://violentmonkey.github.io/) 或 [ScriptCat（脚本猫）](https://docs.scriptcat.org/)。
       </Step>
-      <Step title="打开 Greasy Fork 页面">
-        前往 [Greasy Fork 上的 Ophel AI Chat Page Enhancer](https://greasyfork.org/scripts/563646-ophel-ai-chat-page-enhancer)。
+      <Step title="安装 Ophel 脚本">
+        前往 [Greasy Fork](https://greasyfork.org/scripts/563646-ophel-ai-chat-page-enhancer) 或 [ScriptCat](https://scriptcat.org/script-show-page/6519)，点击安装并在脚本管理器中确认。
       </Step>
-      <Step title="点击「安装此脚本」">
-        点击 **安装此脚本**。Tampermonkey 弹出确认对话框，点击 **安装**。
-      </Step>
-      <Step title="打开任意支持的 AI 网站">
-        前往任意[支持的平台](/zh/introduction#支持的平台)，Ophel 面板自动出现。
+      <Step title="打开 AI 网站">
+        打开或刷新任意[支持的平台](/zh/introduction#支持的平台)。
       </Step>
     </Steps>
 
-  </Tab>
-  <Tab title="油猴脚本（ScriptCat）">
-    适合偏好 ScriptCat 脚本管理器的用户。
-
-    <Warning>
-      油猴脚本版本功能有限，建议在条件允许时安装扩展版本。
-    </Warning>
-
-    <Steps>
-      <Step title="安装 ScriptCat">
-        如果还没有，先为你的浏览器安装 [ScriptCat](https://scriptcat.org/)。
-      </Step>
-      <Step title="打开 ScriptCat 页面">
-        前往 [ScriptCat 上的 Ophel AI Chat Page Enhancer](https://scriptcat.org/script-show-page/6519)。
-      </Step>
-      <Step title="安装脚本">
-        点击 ScriptCat 页面上的安装按钮，并在 ScriptCat 中确认安装。
-      </Step>
-      <Step title="打开任意支持的 AI 网站">
-        前往任意[支持的平台](/zh/introduction#支持的平台)，Ophel 面板自动出现。
-      </Step>
-    </Steps>
-
+    <Note>
+    油猴版通过按版本固定的 `@require` / `@resource` 加载资源并附带 `#sha256=` 完整性校验；访问非支持页面时会在初始化前直接退出，不影响其他网页。
+    </Note>
   </Tab>
 </Tabs>
 
-## 从 GitHub Releases 手动加载
+## 从 GitHub Releases 手动安装
 
-适用于安装特定版本、测试预发布构建，或不想通过商店安装的情况。
+如果你想抢先体验刚发布的新版本、离线安装，或试用 macOS Safari 实验版，可以从 [GitHub Releases](https://github.com/urzeye/ophel/releases) 下载对应构建包。
 
 <Warning>
-  不要手动安装 `*-cws-upload.zip` 或
-  `*-edge-addons-upload.zip`。这些文件是维护者提交浏览器商店使用的包，不代表商店版本已经审核通过或完成分发。
+请**不要**手动加载 `*-cws-upload.zip` 或 `*-edge-addons-upload.zip`。这两个压缩包专供应用商店上传，移除了本地加载所需的清单信息。
 </Warning>
 
 <Tabs>
-  <Tab title="Chrome / Edge（手动）">
+  <Tab title="Chrome / Edge">
     <Steps>
-      <Step title="下载发布包">
-        前往 [GitHub Releases](https://github.com/urzeye/ophel/releases)，下载最新的 `ophel-vX.X.X-chrome.zip`。
+      <Step title="下载并解压">
+        下载 `ophel-atlas-vX.X.X-chrome.zip` 并解压到一个固定目录（不要删除解压目录，否则扩展会失效）。
       </Step>
-      <Step title="解压到本地文件夹">
-        将 zip 文件解压到本地某个固定文件夹（不要放在临时目录）。
-      </Step>
-      <Step title="打开扩展管理页面">
-        Chrome 地址栏输入 `chrome://extensions`（Edge 输入 `edge://extensions`），打开扩展管理。
-      </Step>
-      <Step title="开启开发者模式">
-        打开右上角的**开发者模式**开关。
+      <Step title="打开扩展管理页">
+        地址栏输入 `chrome://extensions`（Chrome）或 `edge://extensions`（Edge），打开右上角 **开发者模式**。
       </Step>
       <Step title="加载已解压的扩展程序">
-        点击**加载已解压的扩展程序**，选择刚才解压的文件夹。
+        点击 **加载已解压的扩展程序**，选择包含 `manifest.json` 的解压文件夹。
       </Step>
     </Steps>
+  </Tab>
 
+  <Tab title="Firefox">
     <Warning>
-      手动加载的扩展不会自动更新。如需更新，请重复以上步骤，用新版本替换旧文件夹。
+    GitHub Releases 提供的是未签名 ZIP 包（`ophel-atlas-vX.X.X-firefox.zip`），通过 `about:debugging` 临时加载会在重启 Firefox 后自动卸载。日常使用请直接从 [Firefox 附加组件商店（AMO）](https://addons.mozilla.org/firefox/addon/ophel-ai-chat-enhancer/) 安装。
     </Warning>
 
-  </Tab>
-  <Tab title="Firefox（手动临时加载）">
     <Steps>
-      <Step title="下载发布包">
-        前往 [GitHub Releases](https://github.com/urzeye/ophel/releases)，下载最新的 `ophel-vX.X.X-firefox.zip`。
+      <Step title="下载并解压">
+        下载 `ophel-atlas-vX.X.X-firefox.zip` 并解压。
       </Step>
-      <Step title="打开 Firefox 调试页面">
-        地址栏输入 `about:debugging#/runtime/this-firefox`。
+      <Step title="打开调试页">
+        地址栏访问 `about:debugging#/runtime/this-firefox`。
       </Step>
-      <Step title="点击「临时载入附加组件」">
-        点击**临时载入附加组件**，选择下载的 zip 文件。
-      </Step>
-    </Steps>
-
-    <Note>
-      Firefox 临时加载的扩展在浏览器重启后会失效，需重新加载。如需永久安装，请使用 Firefox 附加组件商店版本。
-    </Note>
-
-  </Tab>
-  <Tab title="油猴脚本（手动）">
-    <Steps>
-      <Step title="安装 Tampermonkey">
-        如果还没有，先为你的浏览器安装 [Tampermonkey](https://www.tampermonkey.net/)。
-      </Step>
-      <Step title="下载用户脚本文件">
-        前往 [GitHub Releases](https://github.com/urzeye/ophel/releases)，下载最新的 `.user.js` 文件。
-      </Step>
-      <Step title="安装脚本">
-        将 `.user.js` 文件拖入浏览器窗口，或打开 Tampermonkey 管理面板并使用**从文件导入**。出现确认提示后完成安装。
+      <Step title="临时载入附加组件">
+        点击 **临时载入附加组件…**，选择解压目录中的 `manifest.json`。
       </Step>
     </Steps>
   </Tab>
-  <Tab title="Safari（macOS）">
-    Safari 支持目前为实验性适配，仅以 macOS 本地临时扩展的形式提供——不上架 Safari 商店，也不提供已签名的 macOS 或 iOS 应用。无需 Xcode 或付费 Apple 开发者账号。
+
+  <Tab title="Safari（macOS 实验版）">
+    <Warning>
+    桌面端 Safari 目前属于**实验适配**，仅支持以本地临时扩展方式运行：**24 小时后或退出 Safari 时会自动移除**。目前没有已签名的 Safari App Store 版本，也不支持 iOS Safari。
+    </Warning>
 
     <Steps>
-      <Step title="下载发布包">
-        前往 [GitHub Releases](https://github.com/urzeye/ophel/releases)，下载最新的 `ophel-atlas-vX.X.X-safari.zip`。
+      <Step title="下载并解压">
+        从 GitHub Releases 下载 `ophel-atlas-vX.X.X-safari.zip` 并解压。无需安装 Xcode，也不需要付费 Apple 开发者账号。
       </Step>
-      <Step title="开启 Safari 开发者功能">
-        在 Safari「设置 → 高级」中启用「显示网页开发者功能」。
+      <Step title="开启开发者功能">
+        打开 **Safari → 设置 → 高级**，勾选 **显示网页开发者功能**。
       </Step>
       <Step title="添加临时扩展">
-        打开「设置 → 开发者 → 添加临时扩展…」，按提示允许未签名扩展。选择下载的 zip，或解压后选择包含 `manifest.json` 的文件夹。
+        进入 **Safari → 设置 → 开发者**（或顶部 **开发** 菜单），点击 **添加临时扩展…**，选择包含 `manifest.json` 的解压目录。
       </Step>
-      <Step title="启用 Ophel 并允许访问站点">
-        在「设置 → 扩展」中启用 Ophel，允许访问你常用的 AI 站点，然后刷新页面。
+      <Step title="允许网站访问">
+        打开 **Safari → 设置 → 扩展**，勾选启用 **Ophel Atlas**，并允许其访问你使用的 AI 站点。
       </Step>
     </Steps>
+  </Tab>
 
-    <Warning>
-      临时扩展会在 24 小时后或退出 Safari 时被移除，需要重新添加，不能像商店版一样长期安装。详见 [Apple 的临时安装说明](https://developer.apple.com/documentation/safariservices/running-your-safari-web-extension)。
-    </Warning>
-
-    <Note>
-      Safari 版暂不支持桌面通知、回复完成后的标签页标题自动更新，以及 Gemini 图片去水印；大纲、对话管理、提示词、主题、导出等核心功能与其他浏览器一致。
-    </Note>
+  <Tab title="油猴脚本">
+    <Steps>
+      <Step title="下载脚本文件">
+        从 GitHub Releases 下载 `ophel-atlas-vX.X.X.user.js`。
+      </Step>
+      <Step title="导入脚本管理器">
+        将 `.user.js` 文件拖入浏览器窗口，或在脚本管理器面板中手动导入安装。
+      </Step>
+    </Steps>
   </Tab>
 </Tabs>
 
-## 安装后的下一步
+## 下一步
 
-安装完成后，打开任意[支持的 AI 网站](/zh/introduction#支持的平台)，参阅[面板概览](/zh/panel-overview)了解侧边面板的基础操作和浮动按钮的使用方式。
+<CardGroup cols={2}>
+  <Card title="面板概览" icon="/images/icons/panel-overview.svg" href="/zh/panel-overview">
+    熟悉侧边面板标签页、浮动快捷按钮、停靠模式与穿透点击。
+  </Card>
+  <Card title="权限管理" icon="/images/icons/permissions.svg" href="/zh/data/permissions">
+    查看每一项必需与可选浏览器权限的实际用途。
+  </Card>
+</CardGroup>

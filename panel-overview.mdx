@@ -1,226 +1,144 @@
 ---
-title: "Navigate the Ophel panel: tabs, buttons, and modes"
+title: "Panel Overview"
 sidebarTitle: "Panel Overview"
-icon: "/images/icons/panel-overview.svg"
-description: "Learn how Ophel's side panel is organized — three tabs, a header toolbar, floating quick buttons, ghost pass-through mode, edge snap, and keyboard shortcuts."
-keywords:
-  [
-    "Ophel panel",
-    "side panel",
-    "tabs overview",
-    "panel tab reordering",
-    "quick buttons",
-    "ghost mode",
-    "edge snap",
-    "panel width",
-    "keyboard shortcuts",
-    "panel navigation",
-  ]
+description: "Learn the Ophel Atlas side panel, tabs, header controls, floating quick buttons, edge snap and floating modes, pass-through clicks, and browser popup."
 ---
 
 import { Icon } from "/snippets/icon.jsx"
 import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
 
-After you install Ophel Atlas and open any supported AI site, the panel activates automatically. A side panel appears on the right edge of the screen, and a small group of floating quick-action buttons appear nearby. This page explains how each part of the panel works so you can navigate it efficiently from day one.
+When you open a supported AI platform, Ophel mounts a side panel inside your tab. On first install, accepting the local-use disclaimer starts a 4-step spotlight tour that walks you through **Outline**, **Chats**, **Prompts**, and **Settings**.
 
 <Note>
-  On phones, the panel slides in from the side as an overlay instead of docking
-  next to the page. On tablets, tap the edge handle to expand a docked panel.
+On touch screens and narrow viewports (`≤ 767px`), the panel switches to a slide-over drawer with a backdrop. Floating vs. Edge Snap mode applies to desktop layouts.
 </Note>
 
-If the panel does not appear, press <Shortcut combo="alt+p" /> to open it.
+<ShortcutLegend lang="en" />
 
 ## The three tabs
 
-![Ophel side panel — three tabs overview](/images/panel/panel-tabs.png)
+![Ophel side panel showing the Outline tab](/images/features/outline-en.png)
 
-The panel has three tabs along the top. Click a tab label to switch, or use <Shortcut combo="alt+1" />, <Shortcut combo="alt+2" />, <Shortcut combo="alt+3" />.
+| Tab | Shortcut | What it does |
+| --- | --- | --- |
+| <Icon src="/images/icons/outline.svg" alt="Outline icon" /> **Outline** | <Shortcut combo="alt+1" /> | Live table of contents for your prompts and AI headings, plus bookmarks and search. |
+| <Icon src="/images/icons/conversation.svg" alt="Chats icon" /> **Chats** | <Shortcut combo="alt+2" /> | Synced chats organized by folders, tags, and pins, with batch actions and export. |
+| <Icon src="/images/icons/prompt.svg" alt="Prompts icon" /> **Prompts** | <Shortcut combo="alt+3" /> | Reusable prompt templates, variable fill-in, prompt chains, and queue triggers. |
 
-<CardGroup cols={3}>
-  <Card title="Outline" icon="list-tree">
-    A live, auto-generated table of contents for the current chat. Click
-    any heading to jump to it instantly. Supports collapse, expand, search,
-    bookmarks, and real-time word counts.
-  </Card>
-  <Card title="Chats" icon="folder-open">
-    The current AI platform's chat history in one organized view.
-    Organize chats into folders and tags, search with syntax filters, and export
-    to <Icon src="/images/icons/markdown.svg" alt="Markdown file icon" />
-    Markdown, HTML, <Icon src="/images/icons/json-file.svg" alt="JSON file icon" />
-    JSON, or <Icon src="/images/icons/txt-file.svg" alt="TXT file icon" /> TXT.
-  </Card>
-  <Card title="Prompts" icon="wand-magic-sparkles">
-    Your personal prompt library. Click a prompt to insert it into the chat
-    input box; double-click to insert and send immediately. Supports variable
-    substitution, categories, and pinning.
-  </Card>
-</CardGroup>
-
-Drag a tab label to reorder the visible tabs. Ophel saves the new order immediately and mirrors it in Settings, so you do not need to open the options page first.
-
-<Note>
-  Not every site supports every tab. On sites without chat management (such as
-  Gemini Notebook), the **Chats** tab is hidden automatically, and the global
-  Chats switch in Settings is marked as unsupported for the current site. When
-  only one tab is enabled, the tab bar hides itself to free up vertical space.
-</Note>
+- **Reorder or hide tabs**: Drag tabs directly in the panel tab bar, or configure order and visibility under **Settings → General → Tab Order**. At least one tab must remain enabled. When only one tab is visible, the tab bar hides automatically to save space.
+- **Sites without chat lists**: Platforms that do not expose a sidebar chat list (Gemini Notebook, ChatGLM, ima, Qianwen, Z.ai, and current Site Packs) hide the **Chats** tab automatically.
 
 ## Panel header
 
-The strip at the very top of the panel gives you fast access to core controls.
+The top bar of the panel gives you quick access to window controls:
 
-| Element             | Action                                                                                                                                              |
-| ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Title area**      | Hover to see a random usage tip with shortcuts adapted to your OS and key bindings. Double-click to toggle privacy mode, which hides the tab title. |
-| **Mode toggle**     | Switches between Edge Snap and Floating mode with one click.                                                                                        |
-| **Theme toggle**    | Switches between light and dark mode. Shortcut: <Shortcut combo="alt+d" />.                                                                                        |
-| <Icon src="/images/icons/settings.svg" alt="Settings icon" /> **Settings button** | Opens the settings dialog. You can also press <Shortcut combo="alt+," /> or click <Icon src="/images/icons/tools.svg" alt="Toolbox icon" /> **Toolbox** → <Icon src="/images/icons/settings.svg" alt="Settings icon" /> **Settings**. |
-
-You can drag the title bar to reposition the panel anywhere on screen when it is in Floating mode. **Double-clicking** the title bar toggles between Edge Snap and Floating mode without opening settings. In Floating mode, drag the resize handle on the panel edge facing the page to change the saved panel width directly.
+| Area / Button | Action |
+| --- | --- |
+| **Ophel title (left)** | Click to view release notes for the current version. Shows an unread dot after an update. |
+| **Header blank area** | Drag to move the panel. **Double-click** to toggle between **Floating** and **Edge Snap** mode (desktop only). Hold briefly to see the pass-through click hint. |
+| <Icon src="/images/icons/snap-to-edge.svg" alt="Panel mode icon" /> **Mode toggle** | Switch between **Floating** and **Edge Snap** mode (<Shortcut combo="alt+m" />). |
+| <Icon src="/images/icons/theme-dark.svg" alt="Theme icon" /> **Theme toggle** | Switch between light and dark themes (<Shortcut combo="alt+d" />). |
+| <Icon src="/images/icons/new-tab.svg" alt="New tab icon" /> **New tab** | Opens the current platform's homepage in a new tab. Only appears when **Open New Chat in New Tab** is enabled in **Settings → Features → Tab Settings**. |
+| <Icon src="/images/icons/settings.svg" alt="Settings icon" /> **Settings** | Open the Ophel settings modal (<Shortcut combo="alt+," />). |
+| <Icon src="/images/icons/minimize.svg" alt="Collapse icon" /> **Collapse** | Collapse the panel into the floating quick buttons (<Shortcut combo="alt+p" />). |
 
 ## Floating quick buttons
 
-![Floating quick buttons — expanded state and collapsed pill](/images/panel/floating-buttons.png)
+![Ophel floating quick buttons](/images/panel/floating-buttons.png)
 
-The floating button group at the screen edge is your fastest access point to common actions without opening the full panel.
+When the panel is collapsed (or whenever **Hide quick buttons when panel is open** is turned off), Ophel displays a floating column of quick buttons on screen.
 
-- The group **auto-collapses** into a pill shape after about 5 seconds of inactivity. By default, moving your cursor within **150 px** of it expands it again. The wake distance is configurable: go to **Settings → General → Shortcuts → Proximity wake distance** (0–300 px). Set it to **0** to enable dwell-hover mode — the group only expands after the cursor rests on the pill for 300 ms, so simply passing through it does not trigger expansion.
-- When the group is collapsed, hover the panel logo for a short dwell to open a temporary panel preview beside the buttons. Moving away hides the preview; clicking the logo still opens or closes the panel persistently.
-- **Long-press and drag** any button to reposition the entire group to a different spot on screen.
+- **Auto-collapse into a droplet**: After your pointer leaves the proximity area for **3 seconds** (or leaves the window for 1.5 seconds), the strip collapses into a single Ophel droplet.
+- **Proximity wake**: Move your cursor within the wake distance (default **150 px**, range `0–300 px`) to expand the strip. Setting distance to `0` requires hovering the droplet for **300 ms** instead.
+- **Hover preview**: Hover the collapsed Ophel droplet for **300 ms** to peek at the panel without permanently expanding it.
+- **Reposition**: Press and hold (~0.2 s) to drag the floating strip anywhere on screen; its relative position is saved.
 
-Default icons in the button group:
+Configure button order, visibility, opacity (`40%–100%`), proximity radius, and **Hide quick buttons when panel is open** (default **On**) under **Settings → General → Shortcuts**.
 
-| Icon | Action |
-| ---- | ------ |
-| <Icon src="/images/icons/sparkle.svg" alt="Panel toggle icon" /> **Panel toggle** | Opens or closes the Ophel panel. When the group is collapsed, a short dwell previews the panel temporarily. |
-| <Icon src="/images/icons/tools.svg" alt="Toolbox icon" /> **Toolbox** | Opens additional chat and page actions. |
-| <Icon src="/images/icons/search.svg" alt="Global search icon" /> **Global search** | Opens global search across outlines, chats, prompts, and settings. |
-| <Icon src="/images/icons/theme-system.svg" alt="Theme toggle icon" /> **Theme toggle** | Switches between light and dark mode; the icon changes with the current theme state. |
-| <Icon src="/images/icons/eye.svg" alt="Zen mode icon" /> **Zen mode** | Toggles Zen Mode for the current site. Zen Mode includes the Clean Mode effect while it is on, but does not change your Clean Mode setting. The icon changes to a closed eye. |
-| <Icon src="/images/icons/settings.svg" alt="Settings icon" /> **Settings** | Opens the settings dialog. |
-| <Icon src="/images/icons/scroll-top.svg" alt="Scroll to top icon" /> **Scroll to top** | Loads full history and jumps to the top of the current chat. |
-| <Icon src="/images/icons/anchor.svg" alt="Return to anchor icon" /> **Return to anchor** | Jumps back to the last saved position and saves the current position as the new anchor. |
-| <Icon src="/images/icons/scroll-bottom.svg" alt="Scroll to bottom icon" /> **Scroll to bottom** | Jumps to the latest message. |
+### Default quick buttons
 
-Click <Icon src="/images/icons/tools.svg" alt="Toolbox icon" /> **Toolbox** to reveal these menu icons:
+| Button | Action | Default |
+| --- | --- | --- |
+| <Icon src="/images/icons/panel-overview.svg" alt="Panel icon" /> **Panel** | Expand or collapse the main panel (<Shortcut combo="alt+p" />) | On |
+| <Icon src="/images/icons/floating-toolbar.svg" alt="Toolbox icon" /> **Toolbox** | Open the quick toolbox menu | On |
+| <Icon src="/images/icons/search.svg" alt="Search icon" /> **Global Search** | Open Global Search (<Shortcut combo="ctrl+k" />) | On |
+| <Icon src="/images/icons/theme-light.svg" alt="Theme icon" /> **Theme** | Toggle light / dark theme (<Shortcut combo="alt+d" />) | On |
+| <Icon src="/images/icons/eye.svg" alt="Zen mode icon" /> **Zen Mode** | Toggle Zen Mode (<Shortcut combo="ctrl+shift+z" />) | On |
+| <Icon src="/images/icons/settings.svg" alt="Settings icon" /> **Settings** | Open Settings (<Shortcut combo="alt+," />) | On |
+| <Icon src="/images/icons/scroll-top.svg" alt="Scroll top icon" /> **Scroll to Top** | Jump to the top of the chat and save an anchor (<Shortcut combo="alt+t" />) | On |
+| <Icon src="/images/icons/anchor.svg" alt="Anchor icon" /> **Return to Anchor** | Jump back to your previous scroll position (<Shortcut combo="alt+z" />) | On |
+| <Icon src="/images/icons/scroll-bottom.svg" alt="Scroll bottom icon" /> **Scroll to Bottom** | Jump to the bottom of the chat and save an anchor (<Shortcut combo="alt+b" />) | On |
 
-| Icon | Action |
-| ---- | ------ |
-| <Icon src="/images/icons/export.svg" alt="Export icon" /> **Export** | Exports the current chat. |
-| <Icon src="/images/icons/folder-move.svg" alt="Move chat icon" /> **Move chat** | Selects a target folder and moves the current chat. |
-| <Icon src="/images/icons/tag.svg" alt="Set tag icon" /> **Set tag** | Adds, removes, or changes tags on the current chat. |
-| <Icon src="/images/icons/scroll-lock.svg" alt="Scroll lock icon" /> **Scroll lock** | Locks the page scroll position to prevent automatic jumps. |
-| <Icon src="/images/icons/model-lock.svg" alt="Model lock icon" /> **Model lock** | Applies the configured model keyword for the current site; if none is configured, it opens site settings. |
-| <Icon src="/images/icons/cleanup.svg" alt="Clear invalid bookmarks icon" /> **Clear invalid bookmarks** | Removes invalid bookmarks / anchor records from the current chat. |
-| <Icon src="/images/icons/settings.svg" alt="Settings icon" /> **Settings** | Opens the settings dialog. |
+### Toolbox menu
 
-**Additional settings** (`Settings → General → Shortcuts`):
+Customize which items appear in the Toolbox under **Settings → General → Toolbox** (all enabled by default):
 
-| Setting                     | Description                                                                                                 |
-| --------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| **Proximity wake distance**   | Distance (px) at which the cursor wakes up the collapsed pill (default 150). Set to 0 for dwell-hover mode. |
-| **Quick buttons opacity**                 | Transparency of the button group in its collapsed / idle state.                                             |
-| **Hide quick buttons when panel is open** | Automatically collapses the quick button group while the panel is open; it reappears when the panel closes. |
+| Item | Action |
+| --- | --- |
+| <Icon src="/images/icons/export.svg" alt="Export icon" /> **Export** | Open the chat export dialog (<Shortcut combo="ctrl+shift+e" />). |
+| <Icon src="/images/icons/folder-move.svg" alt="Move icon" /> **Move** | Move the current chat into a folder. |
+| <Icon src="/images/icons/tag.svg" alt="Tag icon" /> **Set Tag** | Add or remove tags on the current chat. |
+| <Icon src="/images/icons/scroll-lock.svg" alt="Scroll lock icon" /> **Scroll Lock** | Prevent the page from auto-scrolling to the bottom during streaming (<Shortcut combo="alt+s" />). Hidden on minimal-mode sites like Gemini Notebook. |
+| <Icon src="/images/icons/model-lock.svg" alt="Model lock icon" /> **Model Lock** | Toggle automatic model locking for the current site. |
+| <Icon src="/images/icons/cleanup.svg" alt="Cleanup icon" /> **Cleanup** | Remove invalid ("ghost") bookmarks whose headings no longer exist. |
+| <Icon src="/images/icons/settings.svg" alt="Settings icon" /> **Settings** | Open Settings (always visible; cannot be turned off). |
 
-## Keyboard shortcuts
+## Floating and Edge Snap modes
 
-<ShortcutLegend />
+![Ophel edge snap animation](/images/panel/edge-snap.webp)
 
-| Action                      | Default shortcut                         |
-| --------------------------- | ---------------------------------------- |
-| Open / close panel          | <Shortcut combo="alt+p" />               |
-| Toggle panel mode           | <Shortcut combo="alt+m" />               |
-| Switch to Outline tab       | <Shortcut combo="alt+1" />               |
-| Switch to Chats tab | <Shortcut combo="alt+2" />               |
-| Switch to Prompts tab       | <Shortcut combo="alt+3" />               |
-| Global search               | <Shortcut combo="ctrl+k" />, or double `Shift` (off by default; enable in **Settings → Features → Global Search**) |
-| Toggle light / dark         | <Shortcut combo="alt+d" />               |
-| Open settings               | <Shortcut combo="alt+," />               |
+Switch between modes with the header mode button, by double-clicking the header bar, or by pressing <Shortcut combo="alt+m" />:
 
-## Global search
-
-Press <Shortcut combo="ctrl+k" />, tap `Shift` twice (off by default; enable **Double Shift to open Global Search** in **Settings → Features → Global Search**), or click the <Icon src="/images/icons/search.svg" alt="Global search icon" /> search icon in the floating quick buttons to open global search. It searches across your outline headings, current platform chat history, prompt library, and settings in a single query. You can also use advanced syntax filters:
-
-| Filter    | Example        | Effect                              |
-| --------- | -------------- | ----------------------------------- |
-| `folder:` | `folder:work`  | Limit to a specific folder          |
-| `tag:`    | `tag:research` | Limit to a specific tag             |
-| `type:`   | `type:prompt`  | Limit to a content type             |
-| `date:`   | `date:2025-01` | Limit to a date range               |
-| `level:`  | `level:2`      | Limit to a heading level in Outline |
-| `is:`     | `is:pinned`    | Limit to pinned items               |
-
-## Ghost pass-through mode
-
-![Ghost mode — semi-transparent panel with click-through enabled](/images/panel/ghost-mode.webp)
-
-The panel sometimes sits over content you need to click on the AI page. Instead of closing the panel, use ghost mode:
-
-Hold <Shortcut combo="ctrl" /> for about 0.2 seconds on its own. The panel turns semi-transparent and mouse clicks pass directly through it to the page behind. Release the key to return to normal mode.
-
-<Tip>
-  Ghost mode is useful when the AI response contains a button or link that the
-  panel overlaps. You do not need to close or move the panel — just hold the
-  modifier key, click, then release.
-</Tip>
-
-## Edge snap and floating mode
-
-![Panel edge snap — hover to peek preview](/images/panel/edge-snap.webp)
-
-The panel operates in one of two modes. Switch between them using the **mode toggle button** in the panel header, or go to **Settings → General → Panel → Panel Mode**.
-
-| Mode          | Behavior                                                                                                                     |
-| ------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| **Edge Snap** | The panel hugs the screen edge and stays hidden. Hover over the edge to peek at the panel content.                           |
-| **Floating**  | The panel floats above the page, stays fully visible at all times, and can be freely repositioned by dragging the title bar. |
-
-In Edge Snap mode, dragging the panel title bar pulls it away from the edge, switching it to Floating mode. While dragging, move it to the opposite side of the screen to change the snap direction.
+- **Floating (default)**: The panel stays visible on the left or right side of the page. Drag its inner edge to resize between **240 px** and **600 px**. When **Smart Avoidance** is enabled, the page shifts cleanly so the panel does not cover text.
+- **Edge Snap**: Drag the panel near the left or right edge (within the snap threshold) to tuck it off-screen. Hover the edge handle (or screen edge when hidden) for **300 ms** to slide it back out.
 
 ### Panel size and position settings
 
-All of these are in **Settings → General → Panel**:
+Find these controls under **Settings → General → Panel**:
 
-| Setting               | Description                                                                       | Default   |
-| --------------------- | --------------------------------------------------------------------------------- | --------- |
-| Panel mode | Edge Snap or Floating | Floating |
-| Default Side | Left or right side of the screen | Right |
-| Panel Width | Saved panel width (240–600 px); can also be changed by dragging the Floating panel edge | 320 px |
-| Widen on hover (Beta) | Temporarily widens the Floating panel while your cursor or keyboard focus is on it | Off |
-| Hover width (Beta) | Temporary width used while **Widen on hover** is active | 520 px |
-| Panel Height | 50–100 vh | 85 vh |
-| Snap Threshold | How close to the edge a drag triggers snapping, 0–400 px (Edge Snap mode only) | 30 px |
-| Default Margin | Initial distance between the Floating panel and the screen edge, 0–400 px (Floating mode only) | 0 px |
+| Setting | Range / Options | Default | Notes |
+| --- | --- | --- | --- |
+| **Panel Mode** | Floating / Edge Snap | Floating | Clicking this row in Edge Snap mode reveals **Edge trigger style** (`Handle` [default] or `Hidden`). |
+| **Default Side** | Left / Right | Right | Side where the panel opens and docks. |
+| **Panel Width** | 240–600 px | 320 px | Clicking this row in Floating mode reveals **Widen on hover (Beta)** (default **Off**) and **Hover width** (240–600 px, default **520 px**). Hover previews never trigger page avoidance. |
+| **Panel Height** | 50–100 vh | 85 vh | Percentage of viewport height. |
+| **Snap Threshold** | 0–400 px | 30 px | Shown in Edge Snap mode. Distance from the screen edge that triggers snapping. |
+| **Default Margin** | 0–400 px | 0 px | Shown in Floating mode. Gap between the panel and screen edge. |
 
-### Quick buttons behavior
+## Pass-through click mode (Ghost mode)
 
-In **Settings → General → Shortcuts → Quick Buttons Behavior**, you can also toggle:
+![Ophel pass-through ghost mode](/images/panel/ghost-mode.webp)
 
-- **Hide quick buttons when panel is open** — the floating button group automatically hides while the panel is open, and reappears when you close the panel.
+If the panel or floating buttons temporarily sit over a button or link you need to click, **hold <Shortcut combo="ctrl" /> alone for 0.2 seconds**. Ophel turns translucent and passes pointer events straight through to the underlying page. Release the key to restore normal interaction.
+
+## Global Search quick access
+
+Press <Shortcut combo="ctrl+k" /> (or click the search quick button) to jump across outlines, synced chats from any supported platform, prompts, and settings. You can also enable **Double Shift** in **Settings → Features → Global Search**.
+
+Example queries: `type:prompts`, `folder:work`, `date:30d`. See [Global Search](/features/global-search) for the complete filter syntax.
+
+## Extension toolbar popup
+
+Click the Ophel icon in your browser toolbar (extension builds) to open the compact popup:
+
+- Check whether the current site is active, disabled, or unsupported, and switch between multi-domain hosts (for example, Kimi `.com`/`.ai` or Doubao/Dola).
+- Enable or disable Ophel for the current site, or start a new chat.
+- Launch any supported site from the **Quick Access** grid (drag cards to reorder them).
+- Click any of your **3 most recently used prompts** to copy it to your clipboard.
 
 ## Next steps
 
 <CardGroup cols={2}>
-  <Card title="Smart outline" icon="list-tree" href="/features/outline">
-    Learn how the live outline works — locate mode, follow mode, bookmarks, and
-    word counts.
+  <Card title="Smart Outline" icon="/images/icons/outline.svg" href="/features/outline">
+    Navigate long replies with headings, bookmarks, and anchors.
   </Card>
-  <Card
-    title="Chat management"
-    icon="folder-open"
-    href="/features/conversations"
-  >
-    Organize your chat history with folders, tags, search, and batch exports.
+  <Card title="Chat Management" icon="/images/icons/folder.svg" href="/features/conversations">
+    Organize synced chats with folders, tags, and safe cleanup.
   </Card>
-  <Card
-    title="Prompt library"
-    icon="wand-magic-sparkles"
-    href="/features/prompts"
-  >
-    Build and use a reusable prompt library with variable templates and a prompt
-    queue.
+  <Card title="Prompt Library" icon="/images/icons/prompt.svg" href="/features/prompts">
+    Create reusable templates, prompt queues, and chains.
   </Card>
-  <Card title="Shortcuts" icon="keyboard" href="/customization/shortcuts">
-    View the full shortcut reference and configure custom key bindings.
+  <Card title="Keyboard Shortcuts" icon="/images/icons/keyboard.svg" href="/customization/shortcuts">
+    View and customize all 46 keyboard shortcuts.
   </Card>
 </CardGroup>
