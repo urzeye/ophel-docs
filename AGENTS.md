@@ -26,6 +26,7 @@ Keep product terms aligned with the actual UI labels in `ophel/src/locales/{en,z
 - Write directly in plain language for users — avoid internal architecture jargon, marketing adjectives, and translationese.
 - Keep English and Chinese pages structurally mirrored; every internal link in `zh/*.mdx` must start with `/zh/`.
 - Use active voice, second person ("you"), sentence case headings, bold for UI elements, and code formatting for commands, paths, filenames, and CSS variables.
+- Preserve existing frontmatter `icon` and `keywords` fields when rewriting pages so sidebar icons and local search remain intact.
 - Do not embed JSX components (such as `<Icon />`) inside Markdown headings (`##` / `###`), and do not leave unused imports.
 - For Ophel keyboard shortcuts, use `/snippets/shortcut.jsx` instead of hand-writing Mac variants. `ctrl` maps to Windows/Linux `Ctrl` and Mac `Command`; `alt` maps to Windows/Linux `Alt` and Mac `Option`. Prompt submit is the only documented exception: `Ctrl+Enter` remains `Ctrl+Enter` on Mac (`sameOnMac`).
 - For MP4 videos referenced in MDX, use `/snippets/docs-video.jsx` so `/docs` subpath deployments resolve the asset path cleanly.

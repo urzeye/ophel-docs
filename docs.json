@@ -256,6 +256,7 @@
                       "enhancements/site-extensions/faq",
                       {
                         "group": "For Pack Authors",
+                        "icon": "code",
                         "expanded": false,
                         "pages": [
                           "enhancements/site-extensions/capabilities",
@@ -365,6 +366,7 @@
                       "zh/enhancements/site-extensions/faq",
                       {
                         "group": "适配包编写与参考",
+                        "icon": "code",
                         "expanded": false,
                         "pages": [
                           "zh/enhancements/site-extensions/capabilities",
