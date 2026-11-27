@@ -1,0 +1,7 @@
+dist/
+.astro/
+node_modules/
+pnpm-lock.yaml
+README.md
+tsconfig.json
+public/google5737dc6733d8a523.html

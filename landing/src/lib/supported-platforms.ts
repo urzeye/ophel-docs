@@ -60,7 +60,6 @@ const PLATFORM_DEFINITIONS: SupportedPlatformDefinition[] = [
     href: 'https://notebook.google.com',
     domain: 'notebook.google.com',
     iconSrc: '/icons/notebook.png',
-    isNew: true,
   },
   {
     id: 'aistudio',
@@ -88,7 +87,7 @@ const PLATFORM_DEFINITIONS: SupportedPlatformDefinition[] = [
     id: 'kimi',
     name: 'Kimi',
     href: 'https://www.kimi.com',
-    domain: 'kimi.com',
+    domain: 'kimi.com / kimi.ai',
     iconSrc: '/icons/kimi.png',
   },
   {
@@ -101,10 +100,10 @@ const PLATFORM_DEFINITIONS: SupportedPlatformDefinition[] = [
   },
   {
     id: 'doubao',
-    name: 'Doubao',
-    zhName: '豆包',
+    name: 'Doubao / Dola',
+    zhName: '豆包 / Dola',
     href: 'https://www.doubao.com',
-    domain: 'doubao.com',
+    domain: 'doubao.com / dola.com',
     iconSrc: '/icons/doubao.png',
   },
   {
@@ -135,14 +134,14 @@ const PLATFORM_DEFINITIONS: SupportedPlatformDefinition[] = [
     id: 'zai',
     name: 'Z.ai',
     href: 'https://chat.z.ai',
-    domain: 'chat.z.ai',
+    domain: 'chat.z.ai / zchat.z.ai',
     iconSrc: '/icons/zai.png',
   },
   {
     id: 'chatglm',
     name: 'ChatGLM',
     zhName: '智谱清言',
-    href: 'https://chatglm.cn/main/alltoolsdetail?lang=zh',
+    href: 'https://chatglm.cn',
     domain: 'chatglm.cn',
     iconSrc: '/icons/chatglm.png',
   },
@@ -162,6 +161,13 @@ const SITE_PACK_DEFINITIONS: SitePackDefinition[] = [
     name: 'Perplexity',
     href: 'https://www.perplexity.ai',
     domain: 'perplexity.ai',
+    category: 'search-agent',
+  },
+  {
+    id: 'workbuddy',
+    name: 'WorkBuddy',
+    href: 'https://www.workbuddy.cn/app',
+    domain: 'workbuddy.cn / .ai',
     category: 'search-agent',
   },
   {
@@ -239,11 +245,18 @@ const SITE_PACK_DEFINITIONS: SitePackDefinition[] = [
     category: 'search-agent',
   },
   {
+    id: 'muse',
+    name: 'Muse',
+    href: 'https://muse.ai',
+    domain: 'muse.ai',
+    category: 'assistant',
+  },
+  {
     id: 'lobechat',
     name: 'LobeChat',
-    href: 'https://lobehub.com',
-    domain: 'lobehub.com',
-    category: 'self-hosted',
+    href: 'https://app.lobehub.com',
+    domain: 'app.lobehub.com',
+    category: 'assistant',
   },
   {
     id: 'open-webui',
@@ -275,9 +288,9 @@ const SITE_PACK_DEFINITIONS: SitePackDefinition[] = [
   },
 ];
 
-export const BUILTIN_PLATFORM_COUNT = PLATFORM_DEFINITIONS.length; // 16
-export const SITE_PACK_COUNT = SITE_PACK_DEFINITIONS.length; // 16
-export const TOTAL_SUPPORTED_SITES = BUILTIN_PLATFORM_COUNT + SITE_PACK_COUNT; // 32
+export const BUILTIN_PLATFORM_COUNT = PLATFORM_DEFINITIONS.length;
+export const SITE_PACK_COUNT = SITE_PACK_DEFINITIONS.length;
+export const TOTAL_SUPPORTED_SITES = BUILTIN_PLATFORM_COUNT + SITE_PACK_COUNT;
 
 export function getSupportedPlatforms(locale: SupportedPlatformLocale = 'en'): SupportedPlatform[] {
   return PLATFORM_DEFINITIONS.map((platform) => ({

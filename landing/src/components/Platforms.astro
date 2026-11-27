@@ -1,6 +1,8 @@
 ---
 import type { T } from '../i18n';
 import {
+  BUILTIN_PLATFORM_COUNT,
+  SITE_PACK_COUNT,
   getSupportedPlatforms,
   getSitePacks,
   type SupportedPlatformLocale,
@@ -19,10 +21,10 @@ const sitePacks = getSitePacks(locale);
 const copy =
   locale === 'zh'
     ? {
-        tier1Title: '16 个内置站点',
+        tier1Title: `${BUILTIN_PLATFORM_COUNT} 个内置站点`,
         tier1Badge: '开箱即用',
         newTag: '新增',
-        tier2Title: '16 个热插拔站点适配包',
+        tier2Title: `${SITE_PACK_COUNT} 个站点适配包`,
         tier2Badge: '适配中心一键启用 · 持续扩充',
         selfHostedTag: '自部署',
         docsLinkText: '适配包与自定义域名说明 →',
@@ -31,10 +33,10 @@ const copy =
         contributeHref: 'https://github.com/urzeye/ophel/tree/main/registry/sites',
       }
     : {
-        tier1Title: '16 Built-in Platforms',
+        tier1Title: `${BUILTIN_PLATFORM_COUNT} Built-in Platforms`,
         tier1Badge: 'Zero setup',
         newTag: 'NEW',
-        tier2Title: '16 Hot-Swappable Site Packs',
+        tier2Title: `${SITE_PACK_COUNT} Site Packs`,
         tier2Badge: 'One-click in Site Packs · Expanding',
         selfHostedTag: 'Self-hosted',
         docsLinkText: 'Site Packs & custom domain guide →',
@@ -102,7 +104,7 @@ const copy =
       </div>
     </div>
 
-    <!-- Tier 2: 16 Hot-Swappable Site Packs (Compact Distilled Grid) -->
+    <!-- Tier 2: Community Site Packs (Compact Distilled Grid) -->
     <div class="atlas-tier-compact mt-8 pt-7 border-t border-[color:var(--line)]">
       <div class="flex flex-wrap items-center justify-between gap-3 mb-3.5">
         <div class="flex flex-wrap items-center gap-2.5">

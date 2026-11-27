@@ -1,3 +1,9 @@
+import {
+  BUILTIN_PLATFORM_COUNT,
+  SITE_PACK_COUNT,
+  TOTAL_SUPPORTED_SITES,
+} from './lib/supported-platforms';
+
 export type Lang = 'en' | 'zh';
 
 /** Chrome Web Store 插件详情页 */
@@ -23,7 +29,7 @@ export const SCRIPTCAT_URL = 'https://scriptcat.org/script-show-page/6519';
 const en = {
   nav: {
     features: 'Workbench',
-    platforms: '32 Sites',
+    platforms: `${TOTAL_SUPPORTED_SITES} Sites`,
     reviews: 'Reviews',
     reviewsHref: '/#reviews',
     changelog: 'Changelog',
@@ -44,10 +50,10 @@ const en = {
     badge: 'Browser Extension & Userscript · Open Source GPLv3',
     titleLine1: 'Turn AI Chats into',
     titleGradient: 'Readable, Navigable, Lasting Documents',
-    desc: 'Ophel equips ChatGPT, Gemini, Claude, Gemini Notebook, and 32+ AI workspaces with a real-time outline tree, project folders, and a structured prompt library. Stop losing breakthroughs in infinite scroll.',
+    desc: `Ophel equips ${BUILTIN_PLATFORM_COUNT} built-in AI platforms (ChatGPT, Gemini, Claude, DeepSeek, and more) plus ${SITE_PACK_COUNT} Site Packs with a real-time outline tree, project folders, and a structured prompt library.`,
     ctaPrimary: 'Install on Chrome',
     ctaSecondary: 'Explore Docs',
-    note: 'Supports Chrome · Edge · Firefox · Safari · Tampermonkey',
+    note: 'Supports Chrome · Edge · Firefox · Safari (Experimental) · Tampermonkey · ScriptCat',
   },
   features: {
     title: 'An Ordered Console Beside Every AI Thread',
@@ -61,7 +67,7 @@ const en = {
       {
         code: 'FOLDER + TAG',
         title: 'Two-Dimensional Chat Manager',
-        desc: 'Organize threads across platforms with nested folders, multi-tag filters, drag-and-drop ordering, and batch actions without leaving your active tab.',
+        desc: 'Organize synced threads with project folders, multi-tag filters, pins, drag-and-drop ordering, and safe cleanup review without leaving your active tab.',
       },
       {
         code: '{{VAR}} · QUEUE',
@@ -71,23 +77,23 @@ const en = {
       {
         code: 'CTRL/⌘ + K',
         title: 'Syntax-Powered Global Search',
-        desc: 'Jump across outlines, saved chats, prompts, and settings in milliseconds using folder:, tag:, type:, and date: query operators.',
+        desc: 'Jump across outlines, synced chats (including other platforms), prompts, and settings using folder:, tag:, type:, is:, level:, and date: query operators.',
       },
       {
-        code: 'MD · JSON · ZIP',
-        title: 'Segmented & Attachment Export',
-        desc: 'Export complete threads or cherry-picked turns to clean Markdown, JSON, or TXT — bundling generated images and Gemini Notebook columns into ZIP archives.',
+        code: 'MD · IMG · ZIP',
+        title: 'Multi-Format & Segmented Export',
+        desc: 'Export complete threads or selected turns to clean Markdown, ZIP with images, shareable PNG/JPG images, HTML, JSON, or TXT.',
       },
       {
-        code: '24 THEMES · LOCAL',
+        code: '24 THEMES · WEBDAV',
         title: '24 Themes, Zen Mode & WebDAV Sync',
-        desc: '12 light + 12 dark themes, widescreen & Zen layout controls, plus zero-telemetry local storage with optional self-hosted WebDAV synchronization.',
+        desc: '12 light + 12 dark themes, widescreen & Zen layout controls, plus zero-telemetry local storage with manual and scheduled WebDAV backups.',
       },
     ],
   },
   platforms: {
-    title: '16 Built-in Sites + 16 Hot-Swap Site Packs',
-    desc: 'Works out of the box on 16 flagship AI platforms (now including Gemini Notebook), plus 16 declarative Site Packs you can enable in one click — with more shipping continuously.',
+    title: `${BUILTIN_PLATFORM_COUNT} Built-in Sites + ${SITE_PACK_COUNT} Site Packs`,
+    desc: `Works out of the box on ${BUILTIN_PLATFORM_COUNT} major AI platforms (including multi-domain hosts like Doubao/Dola and Kimi), plus ${SITE_PACK_COUNT} community Site Packs you can install in one click — and custom self-hosted URL binding.`,
   },
   reviews: {
     title: 'Trusted in Daily AI Workflows',
@@ -95,7 +101,7 @@ const en = {
   },
   footer: {
     tagline: 'Turn AI chats into documents you can read, navigate, and reuse.',
-    desc: 'Open-source browser extension and userscript bringing real-time outlines, chat folders, and prompt workflows to 32+ AI platforms.',
+    desc: `Open-source browser extension and userscript bringing real-time outlines, chat folders, and prompt workflows to ${TOTAL_SUPPORTED_SITES}+ AI platforms.`,
     product: 'Product',
     resources: 'Resources',
     support: 'Community & Support',
@@ -127,32 +133,35 @@ const en = {
   },
   meta: {
     title: 'Ophel Atlas — AI Chat Outline, Folder Organizer & Prompt Workbench',
-    description:
-      'Turn AI chats into readable, navigable knowledge. Supports 16 built-in platforms (ChatGPT, Gemini, Claude, Gemini Notebook, DeepSeek) + 16 hot-swappable Site Packs across Chrome, Edge, Firefox, Safari & Tampermonkey.',
+    description: `Turn AI chats into readable, navigable knowledge. Supports ${BUILTIN_PLATFORM_COUNT} built-in platforms (ChatGPT, Gemini, Claude, DeepSeek, Doubao/Dola) + ${SITE_PACK_COUNT} Site Packs across Chrome, Edge, Firefox, Safari & Userscript.`,
   },
   privacy: {
     title: 'Privacy Policy — Ophel Atlas',
     metaDesc: "Ophel's local-first privacy policy: how your data stays on your device.",
     h1: 'Privacy Policy',
     updatedLabel: 'Last updated: ',
+    updatedDate: 'November 28, 2026',
     sections: {
       collection: {
         title: 'Data Collection',
         p1: 'Ophel is a local-first browser extension and userscript. ',
         p1Strong: 'We do not collect, transmit, or sell your chat content or personal data.',
-        p2: "All data (chat metadata, folder structures, prompt library, and preferences) is stored locally in your browser's ",
+        p2: "All data (chat metadata, folders, tags, prompt library, bookmarks, and preferences) is stored locally in your browser's ",
         p2Suffix:
-          ' by default. If you enable WebDAV sync, encrypted or raw backup data is transmitted solely to the WebDAV endpoint you configure.',
+          ' (or GM storage for userscripts) by default. If you enable WebDAV sync, backup data is transmitted solely to the WebDAV server you configure.',
       },
       permissions: {
         title: 'Browser Permissions',
-        activeTab:
-          'Used to mount the Ophel side panel and reading enhancements on supported AI sites.',
-        storage: 'Used to persist your preferences, folders, and prompt library on your device.',
-        notifications:
-          '(Optional): Used to send desktop alerts when long AI responses finish generating.',
+        storage:
+          'Persists your preferences, folders, tags, prompts, bookmarks, reading history, and installed Site Packs on your device (Safari also declares unlimitedStorage).',
+        alarms: 'Schedules WebDAV automatic backups and 24-hour signed Site Pack index checks.',
+        dnr: '(Chrome / Edge / Firefox): Sets Referer/Origin and CORS headers only for extension background requests to Google image hosts so Gemini watermark removal and attachment downloads work reliably.',
+        hostPermissions:
+          'Mounts Ophel on the 16 built-in AI platforms and downloads embedded images/attachments during ZIP export.',
+        optional:
+          'Requested only on demand: notifications (completion alerts), cookies (Claude Session Key import/switch), <all_urls> (WebDAV cross-host sync & Gemini watermark removal), and per-origin access for Site Packs you install.',
         noNetwork:
-          'Ophel requests no background telemetry permissions. Network requests occur only when you trigger WebDAV sync or update Site Packs.',
+          'Ophel embeds zero background telemetry. Network requests occur only when you enable WebDAV sync, when Site Packs checks its read-only signed update index (can be disabled), or if you voluntarily submit the uninstall survey.',
       },
       webdav: {
         title: 'WebDAV Sync (Optional)',
@@ -210,13 +219,13 @@ const en = {
 const zh = {
   nav: {
     features: '工作台演示',
-    platforms: '32+ 站点生态',
+    platforms: `${TOTAL_SUPPORTED_SITES} 个站点生态`,
     reviews: '用户评价',
     reviewsHref: '/zh/#reviews',
     changelog: '更新日志',
     changelogHref: '/zh/changelog/',
     docs: '文档',
-    docsHref: 'https://ophel.app/docs/zh/introduction',
+    docsHref: 'https://ophel.app/docs/zh',
     githubHref: 'https://github.com/urzeye/ophel',
     githubAriaLabel: '在 GitHub 上查看 Ophel',
     install: '立即安装',
@@ -231,10 +240,10 @@ const zh = {
     badge: '浏览器扩展与油猴脚本 · GPLv3 开源免费',
     titleLine1: '把 AI 对话变成',
     titleGradient: '可阅读、可导航、可沉淀的文档',
-    desc: 'Ophel 为 ChatGPT、Gemini、Claude、Gemini Notebook 等 16 个内置站点与 16 个热插拔适配包注入实时大纲、对话文件夹与 Prompt 词库。告别无尽滚动，让每次深度对话都成为有秩序的知识资产。',
+    desc: `Ophel 为 ChatGPT、Gemini、Claude、DeepSeek 等 ${BUILTIN_PLATFORM_COUNT} 个内置站点与 ${SITE_PACK_COUNT} 个站点适配包提供实时大纲、对话文件夹与 Prompt 词库。告别无尽滚动，让每次深度对话都成为有秩序的知识资产。`,
     ctaPrimary: '安装 Chrome 扩展',
     ctaSecondary: '阅读文档',
-    note: '全面支持 Chrome · Edge · Firefox · Safari · 油猴脚本',
+    note: '支持 Chrome · Edge · Firefox · Safari（实验版） · 油猴脚本 · 脚本猫',
   },
   features: {
     title: '伴随每一次 AI 对话的「有秩序的操作台」',
@@ -248,7 +257,7 @@ const zh = {
       {
         code: 'FOLDER + TAG',
         title: '文件夹 + 标签双维管理',
-        desc: '将散落在各平台的对话归入多级文件夹与自定义标签，支持源站点自动同步、拖拽排序与批量操作。',
+        desc: '用项目文件夹、多维彩色标签与置顶整理已同步对话，支持安全同步审阅、拖拽排序与批量操作。',
       },
       {
         code: '{{VAR}} · QUEUE',
@@ -258,23 +267,23 @@ const zh = {
       {
         code: 'CTRL/⌘ + K',
         title: '语法级全局搜索',
-        desc: '跨当前大纲、对话文件夹、Prompt 词库与设置项毫秒级检索，支持 folder:、tag:、type:、date: 过滤语法。',
+        desc: '跨当前大纲、各平台已同步对话、Prompt 词库与设置项快速检索，支持 folder:、tag:、type:、is:、level:、date: 过滤语法。',
       },
       {
-        code: 'MD · JSON · ZIP',
-        title: '分段导出与附件打包',
-        desc: '将完整对话或勾选片段导出为纯净 Markdown、JSON、TXT，支持图片附件 ZIP 打包及 Gemini Notebook 分栏导出。',
+        code: 'MD · IMG · ZIP',
+        title: '多格式与分段导出',
+        desc: '将完整对话或选定片段导出为纯净 Markdown、带图片附件 ZIP、分享图片（PNG/JPG）、HTML、JSON 或 TXT。',
       },
       {
-        code: '24 THEMES · LOCAL',
+        code: '24 THEMES · WEBDAV',
         title: '24 套主题、禅模式与 WebDAV 同步',
-        desc: '内置 12 浅 + 12 深预置主题、宽屏与禅模式；数据默认 100% 本地存储，支持自建 WebDAV 多端同步。',
+        desc: '内置 12 浅 + 12 深预置主题、宽屏与禅模式；数据默认 100% 本地存储，支持自建 WebDAV 手动与定时自动备份。',
       },
     ],
   },
   platforms: {
-    title: '16 个内置站点 + 16 个热插拔适配包',
-    desc: '开箱内置 16 个主流 AI 平台（新增 Gemini Notebook），并可通过「适配中心」一键启用 16 个热插拔站点适配包，未来还将持续扩充。',
+    title: `${BUILTIN_PLATFORM_COUNT} 个内置站点 + ${SITE_PACK_COUNT} 个站点适配包`,
+    desc: `开箱内置 ${BUILTIN_PLATFORM_COUNT} 个主流 AI 平台（含豆包/Dola、Kimi 多域名），并可通过「适配中心」一键启用 ${SITE_PACK_COUNT} 个社区适配包与自定义自部署站点。`,
   },
   reviews: {
     title: '高频 AI 用户的真实口碑',
@@ -282,7 +291,7 @@ const zh = {
   },
   footer: {
     tagline: '让 AI 对话可读、可导航、可沉淀。',
-    desc: '开源免费的浏览器扩展与油猴脚本，为 32+ 个 AI 平台提供统一的大纲导航、对话整理与提示词工作流。',
+    desc: `开源免费的浏览器扩展与油猴脚本，为 ${TOTAL_SUPPORTED_SITES}+ 个 AI 平台提供统一的大纲导航、对话整理与提示词工作流。`,
     product: '产品',
     resources: '生态与资源',
     support: '社区与支持',
@@ -296,7 +305,7 @@ const zh = {
       download: '下载安装',
       downloadHref: '/zh/download/',
       docs: '官方文档',
-      docsHref: 'https://ophel.app/docs/zh/introduction',
+      docsHref: 'https://ophel.app/docs/zh',
       sitePacks: '站点适配包中心',
       sitePacksHref: 'https://ophel.app/docs/zh/enhancements/site-extensions',
       safariRelease: 'Safari 扩展下载 (GitHub)',
@@ -314,29 +323,35 @@ const zh = {
   },
   meta: {
     title: 'Ophel Atlas — AI 对话大纲 · 对话文件夹管理 · Prompt 词库',
-    description:
-      'Ophel 为 ChatGPT、Gemini、Claude、Gemini Notebook、DeepSeek 等 16 个内置平台及 16 个热插拔站点适配包注入实时大纲、对话文件夹与 Prompt 词库，支持 Chrome、Edge、Firefox、Safari 与油猴脚本。',
+    description: `Ophel 为 ChatGPT、Gemini、Claude、DeepSeek、豆包/Dola 等 ${BUILTIN_PLATFORM_COUNT} 个内置平台及 ${SITE_PACK_COUNT} 个站点适配包提供实时大纲、对话文件夹与 Prompt 词库，支持 Chrome、Edge、Firefox、Safari 与油猴脚本。`,
   },
   privacy: {
     title: '隐私政策 — Ophel Atlas',
     metaDesc: 'Ophel 的本地优先隐私承诺：您的数据始终留在本地设备。',
     h1: '隐私政策',
     updatedLabel: '最后更新：',
+    updatedDate: '2026 年 11 月 28 日',
     sections: {
       collection: {
         title: '数据收集',
         p1: 'Ophel 是一款本地优先（Local-First）的浏览器扩展与油猴脚本。',
         p1Strong: '我们不收集、不上传、不出售您的任何对话内容或个人数据。',
-        p2: '所有数据（对话标题、文件夹与标签结构、Prompt 词库、界面偏好等）默认均存储在您本地浏览器的 ',
-        p2Suffix: ' 中。当您主动启用 WebDAV 同步时，备份数据仅会发送至您自行配置的服务器地址。',
+        p2: '所有数据（对话标题、文件夹与标签、Prompt 词库、书签、界面偏好等）默认均存储在您本地浏览器的 ',
+        p2Suffix:
+          '（油猴版为脚本管理器本地存储）中。当您主动启用 WebDAV 同步时，备份数据仅会发送至您自行配置的服务器地址。',
       },
       permissions: {
         title: '权限说明',
-        activeTab: '用于在受支持的 AI 站点页面中挂载 Ophel 侧边面板与阅读增强组件。',
-        storage: '用于在本地设备持久化保存您的设置、对话目录和 Prompt 词库。',
-        notifications: '（可选按需权限）：用于在后台长回复生成完成时向您发送桌面通知。',
+        storage:
+          '在本地持久化保存您的设置、文件夹、标签、Prompt 词库、书签、阅读记录与已安装适配包（Safari 另含 unlimitedStorage）。',
+        alarms: '用于后台定时调度 WebDAV 自动备份与适配中心 24 小时签名索引检查。',
+        dnr: '（Chrome / Edge / Firefox）：仅对扩展后台发往 Google 图片域名的请求补充 Referer/Origin 与 CORS 响应头，用于 Gemini 去水印与附件下载。',
+        hostPermissions:
+          '用于在 16 个内置 AI 站点挂载 Ophel 面板，并在导出 ZIP 附件时读取官方 CDN 图片与文件。',
+        optional:
+          '仅在启用对应功能时按需申请：notifications（完成提醒通知）、cookies（Claude Session Key 导入与切换）、<all_urls>（WebDAV 跨主机同步与 Gemini 去水印），以及站点适配包的单域名访问权限。',
         noNetwork:
-          'Ophel 不包含任何后台遥测请求；网络通信仅在您主动触发 WebDAV 同步或拉取适配包更新时发生。',
+          'Ophel 不包含任何后台遥测请求；网络通信仅发生在您启用 WebDAV 同步、适配中心检查只读签名更新索引（可关闭），或您自愿提交卸载问卷时。',
       },
       webdav: {
         title: 'WebDAV 同步（可选功能）',
