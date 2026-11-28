@@ -46,7 +46,7 @@ WebDAV 同步让你把 Ophel 配置与整理数据直接备份到你自己掌控
     选择预设（或自定义），填入服务器地址（公网推荐 `https://`，内网可使用 `http://`）、用户名、应用密码以及备份目录（默认 `ophel`）。
   </Step>
   <Step title="测试连接并授权（扩展版）">
-    点击 <Icon src="/images/icons/check.svg" alt="测试连接图标" /> **测试连接**。Chrome、Edge 和 Firefox 扩展会按需申请主机访问权限（`<all_urls>`）；macOS Safari 会引导你在系统设置中允许访问该 WebDAV 域名；油猴脚本通过 `GM_xmlhttpRequest` 直连，无额外弹窗。
+    点击 <Icon src="/images/icons/link.svg" alt="测试连接图标" /> **测试连接**。Chrome、Edge 和 Firefox 扩展会按需申请主机访问权限（`<all_urls>`）；macOS Safari 会引导你在系统设置中允许访问该 WebDAV 域名；油猴脚本通过 `GM_xmlhttpRequest` 直连，无额外弹窗。
   </Step>
   <Step title="保存并立即备份">
     <Icon src="/images/icons/save.svg" alt="保存图标" /> 保存配置后，点击 <Icon src="/images/icons/cloud-upload.svg" alt="立即备份图标" /> **立即备份** 上传第一份快照。
@@ -60,11 +60,11 @@ WebDAV 同步让你把 Ophel 配置与整理数据直接备份到你自己掌控
 - **备份间隔**：可选 **每小时（60 分钟）**、**每 6 小时（360 分钟）** 或 **每天（1440 分钟，默认）**。开启或更改目标服务器后会立即调度首次备份。
 - **精简快照**：定时自动备份默认**排除阅读历史**。
 - **按设备保留最近 7 份**：自动备份文件名格式为 `ophel_backup_auto_{设备ID}_{时间戳}.json`，每台设备独立保留**最近 7 份**自动备份，多台设备同时开启也不会互相覆盖。
-- **仅手动恢复**：定时备份绝不会在后台静默覆盖你的本地数据。若某次定时上传失败（单次请求超时 25 秒），状态栏会显示上次同步失败状态；点击 <Icon src="/images/icons/check.svg" alt="测试连接图标" /> **测试连接** 或 <Icon src="/images/icons/cloud-upload.svg" alt="立即备份图标" /> **立即备份** 可查看具体报错详情。
+- **仅手动恢复**：定时备份绝不会在后台静默覆盖你的本地数据。若某次定时上传失败（单次请求超时 25 秒），状态栏会显示上次同步失败状态；点击 <Icon src="/images/icons/link.svg" alt="测试连接图标" /> **测试连接** 或 <Icon src="/images/icons/cloud-upload.svg" alt="立即备份图标" /> **立即备份** 可查看具体报错详情。
 - **扩展与油猴调度差异**：Chrome、Edge 和 Firefox 扩展由后台 `chrome.alarms` 定时触发；油猴脚本通过多标签协作锁在页面内轮询触发，需要至少保持一个受支持的 AI 页面处于打开状态。
 
 ## 在新设备上恢复
 
 1. 在新设备上填入相同的 WebDAV 服务器、账号密码与备份目录。
-2. 点击 <Icon src="/images/icons/download.svg" alt="恢复图标" /> **恢复**，浏览远端目录中的**全部备份文件列表**（包含手动备份与各设备的自动备份）。
+2. 点击 <Icon src="/images/icons/file-restore.svg" alt="恢复图标" /> **恢复**，浏览远端目录中的**全部备份文件列表**（包含手动备份与各设备的自动备份）。
 3. 挑选目标备份确认恢复即可，本机 WebDAV 连接配置会原样保留。

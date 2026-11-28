@@ -1,13 +1,1 @@
-<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Safari">
-  <defs>
-    <linearGradient id="safari-bg" x1="32" y1="2" x2="32" y2="62" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#1fc5ff" />
-      <stop offset="1" stop-color="#1966f5" />
-    </linearGradient>
-  </defs>
-  <circle cx="32" cy="32" r="30" fill="url(#safari-bg)" />
-  <circle cx="32" cy="32" r="26" fill="none" stroke="#ffffff" stroke-opacity="0.45" stroke-width="1.5" stroke-dasharray="1.5 4.28" />
-  <polygon points="32,32 27.6,27.6 47.5,16.5 36.4,36.4" fill="#ff3b30" />
-  <polygon points="32,32 36.4,36.4 16.5,47.5 27.6,27.6" fill="#ffffff" />
-  <circle cx="32" cy="32" r="2.2" fill="#0d2a5c" />
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="18" height="18"><circle cx="512" cy="512" r="512" fill="#2296F3"/><circle cx="512" cy="512" r="384" fill="#FFFFFF"/><path d="M704 320 576 576 448 448Z" fill="#F75045"/><path d="M320 704 448 448 576 576Z" fill="#E1E1E6"/></svg>

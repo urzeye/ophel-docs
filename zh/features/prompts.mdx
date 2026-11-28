@@ -23,11 +23,12 @@ import { Shortcut } from "/snippets/shortcut.jsx"
 
 ## 创建与使用提示词
 
-- **新建**：点击 <Icon src="/images/icons/prompt.svg" alt="提示词图标" /> **添加提示词**，填写标题、分类、适用平台（留空表示所有平台可用）和正文。
+- **新建**：点击 **提示词** 标签页底部的 **+ 添加提示词**，填写标题、分类、适用平台（留空表示所有平台可用）和正文。包含变量的提示词卡片会显示 <Icon src="/images/icons/variable.svg" alt="变量徽章图标" /> 变量徽章。
 - **一键插入**：单击任意提示词即可填入当前输入框；如果模板里带变量，会先弹出填空窗口。
 - **双击直接发送**：在设置中开启「双击直接发送」后，双击提示词会插入并立即发送（如果 AI 正在回复且已开启提示词队列，会自动排进队列）。
-- **整理与检索**：支持按分类或平台筛选、<Icon src="/images/icons/pin.svg" alt="置顶图标" /> 置顶常用模板，在 <Icon src="/images/icons/more-horizontal.svg" alt="更多菜单图标" /> 菜单中预览（<Icon src="/images/icons/eye.svg" alt="预览图标" />）、复制（<Icon src="/images/icons/copy.svg" alt="复制图标" />）、编辑（<Icon src="/images/icons/edit.svg" alt="编辑图标" />）或删除（<Icon src="/images/icons/delete.svg" alt="删除图标" />），并支持拖拽排序与 <Icon src="/images/icons/search.svg" alt="搜索图标" /> 关键词搜索。
-- **导入与导出**：在提示词工具栏点击 <Icon src="/images/icons/import.svg" alt="导入图标" /> **导入** 或 <Icon src="/images/icons/export.svg" alt="导出图标" /> **导出** JSON 文件。导入支持两种模式：**合并**（按相同 ID 更新并追加新条目）与 **覆盖**（替换当前词库）。链式提示词也会随备份一并保存。
+- **卡片操作**：鼠标悬停在卡片上直接显示 6 个按钮——<Icon src="/images/icons/pin.svg" alt="置顶图标" /> **置顶**、<Icon src="/images/icons/eye.svg" alt="预览图标" /> **预览**、<Icon src="/images/icons/copy.svg" alt="复制图标" /> **复制**、<Icon src="/images/icons/more-horizontal.svg" alt="更多菜单图标" /> **更多**（内含 <Icon src="/images/icons/add-to-queue.svg" alt="加入队列图标" /> 加入队列、<Icon src="/images/icons/split-lines-to-queue.svg" alt="按行拆分入队图标" /> 按行拆分入队、<Icon src="/images/icons/arrow-up.svg" alt="上移图标" /> 上移、<Icon src="/images/icons/arrow-down.svg" alt="下移图标" /> 下移）、<Icon src="/images/icons/edit.svg" alt="编辑图标" /> **编辑** 与 <Icon src="/images/icons/delete.svg" alt="删除图标" /> **删除**；也可以直接拖拽卡片调整顺序。
+- **筛选与检索**：顶部工具栏提供 <Icon src="/images/icons/search.svg" alt="搜索图标" /> 搜索框；分类胶囊栏右侧固定提供 <Icon src="/images/icons/globe.svg" alt="平台筛选图标" /> **平台筛选**、<Icon src="/images/icons/time.svg" alt="最近使用图标" /> **最近使用** 与 <Icon src="/images/icons/settings.svg" alt="管理分类图标" /> **管理分类**。
+- **导入与导出**：点击搜索框右侧的 <Icon src="/images/icons/import.svg" alt="导入导出菜单图标" /> 下拉按钮，选择 <Icon src="/images/icons/import.svg" alt="导入图标" /> **导入** 或 <Icon src="/images/icons/export.svg" alt="导出图标" /> **导出** JSON 文件。导入支持两种模式：**合并**（按相同 ID 更新并追加新条目）与 **覆盖**（替换当前词库）。链式提示词也会随备份一并保存。
 
 ## 变量语法
 
@@ -64,7 +65,7 @@ import { Shortcut } from "/snippets/shortcut.jsx"
 2. 通过任意方式加入队列：
    - 直接在队列输入框里输入并按 `Enter`。
    - 点击某条提示词右侧 <Icon src="/images/icons/more-horizontal.svg" alt="更多菜单图标" /> 菜单，选择 <Icon src="/images/icons/add-to-queue.svg" alt="加入队列图标" /> **加入队列** 或 <Icon src="/images/icons/split-lines-to-queue.svg" alt="按行拆分入队图标" /> **按行拆分加入队列**。
-   - 点击队列上的 **批量添加**，从词库勾选多条，或粘贴大段文本自动拆分。
+   - 点击队列展开面板顶部的 <Icon src="/images/icons/add-to-queue.svg" alt="批量添加图标" /> **批量添加**，从词库勾选多条或粘贴大段文本自动拆分（也可点击 <Icon src="/images/icons/cleanup.svg" alt="清空队列图标" /> **清空全部** 移除待发项）。
 
 <Tabs>
   <Tab title="从词库选择">
@@ -90,7 +91,7 @@ import { Shortcut } from "/snippets/shortcut.jsx"
 
 - 每一步都可以直接引用词库里的提示词，或者写一段内联模板。
 - 每一步可单独设置执行方式：**插入输入框**、**发送或入队**、**仅加入队列**，也可开启按行拆分入队。
-- 支持自定义 SVG 图标，并可勾选是否显示在划词工具栏中。
+- 支持自定义 SVG 图标，并可在每条链卡片上直接切换是否在划词工具栏中显示（<Icon src="/images/icons/eye.svg" alt="显示图标" /> / <Icon src="/images/icons/eye-closed.svg" alt="隐藏图标" />）、<Icon src="/images/icons/copy.svg" alt="复制图标" /> 复制或 <Icon src="/images/icons/delete.svg" alt="删除图标" /> 删除。
 - 默认内置一条 <Icon src="/images/icons/reply.svg" alt="引用回复图标" /> **引用回复** 链，选中页面文字后点一下就能带着引用块回复 AI。
 
 ## 划词引用

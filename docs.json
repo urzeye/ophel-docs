@@ -79,6 +79,14 @@
   },
   "redirects": [
     {
+      "source": "/introduction",
+      "destination": "/"
+    },
+    {
+      "source": "/zh/introduction",
+      "destination": "/zh"
+    },
+    {
       "source": "/data/migration",
       "destination": "/data/backup-sync"
     },
@@ -221,7 +229,7 @@
               {
                 "group": "Get Started",
                 "icon": "rocket",
-                "pages": ["index", "introduction", "installation", "panel-overview"]
+                "pages": ["index", "installation", "panel-overview"]
               },
               {
                 "group": "Core Features",
@@ -248,7 +256,7 @@
                   "enhancements/tab-notifications",
                   {
                     "group": "Site Packs",
-                    "icon": "puzzle-piece",
+                    "icon": "/images/icons/site-packs.svg",
                     "expanded": false,
                     "pages": [
                       "enhancements/site-extensions/index",
@@ -269,7 +277,7 @@
               },
               {
                 "group": "Customization",
-                "icon": "/images/icons/paint-bucket.svg",
+                "icon": "/images/icons/appearance.svg",
                 "pages": [
                   "customization/appearance",
                   "customization/layout",
@@ -328,7 +336,6 @@
                 "icon": "rocket",
                 "pages": [
                   "zh/index",
-                  "zh/introduction",
                   "zh/installation",
                   "zh/panel-overview"
                 ]
@@ -358,7 +365,7 @@
                   "zh/enhancements/tab-notifications",
                   {
                     "group": "适配中心",
-                    "icon": "puzzle-piece",
+                    "icon": "/images/icons/site-packs.svg",
                     "expanded": false,
                     "pages": [
                       "zh/enhancements/site-extensions/index",
@@ -379,7 +386,7 @@
               },
               {
                 "group": "个性化与站点设置",
-                "icon": "/images/icons/paint-bucket.svg",
+                "icon": "/images/icons/appearance.svg",
                 "pages": [
                   "zh/customization/appearance",
                   "zh/customization/layout",

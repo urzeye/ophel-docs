@@ -23,11 +23,12 @@ The **Prompts** tab stores reusable templates you can insert into any supported 
 
 ## Saving and using prompts
 
-- **Add a prompt**: Click <Icon src="/images/icons/prompt.svg" alt="Prompt icon" /> **Add Prompt** in the **Prompts** tab, enter a title, category, optional platform scope (leave empty for all sites), and content.
+- **Add a prompt**: Click **+ Add Prompt** at the bottom of the **Prompts** tab, enter a title, category, optional platform scope (leave empty for all sites), and content. Prompts with variables display a <Icon src="/images/icons/variable.svg" alt="Variable badge icon" /> variable badge on their card.
 - **Insert**: Click a prompt card to insert it into the active chat input. If the prompt contains variables, Ophel opens a quick fill-in dialog first.
 - **Double-click to send**: Enable **Double-click to send prompt** in settings if you want double-clicking a prompt to insert and send immediately (if the AI is still generating and Prompt Queue is enabled, it queues automatically instead).
-- **Organize**: Filter by category or platform, <Icon src="/images/icons/pin.svg" alt="Pin icon" /> pin favorite prompts to the top, preview (<Icon src="/images/icons/eye.svg" alt="Preview icon" />), copy (<Icon src="/images/icons/copy.svg" alt="Copy icon" />), edit (<Icon src="/images/icons/edit.svg" alt="Edit icon" />) or delete (<Icon src="/images/icons/delete.svg" alt="Delete icon" />) via the <Icon src="/images/icons/more-horizontal.svg" alt="More menu icon" /> menu, drag cards to reorder, and <Icon src="/images/icons/search.svg" alt="Search icon" /> search by title or content.
-- **Import & export**: Use <Icon src="/images/icons/import.svg" alt="Import icon" /> **Import** and <Icon src="/images/icons/export.svg" alt="Export icon" /> **Export** in the **Prompts** toolbar to back up or share prompts as JSON. Prompt import supports two modes: **Merge** (updates matching IDs and appends new entries) and **Overwrite** (replaces your current library). Prompt chains are included in backups.
+- **Card actions**: Hover any prompt card to reveal 6 direct actions—<Icon src="/images/icons/pin.svg" alt="Pin icon" /> **Pin**, <Icon src="/images/icons/eye.svg" alt="Preview icon" /> **Preview**, <Icon src="/images/icons/copy.svg" alt="Copy icon" /> **Copy**, <Icon src="/images/icons/more-horizontal.svg" alt="More menu icon" /> **More** (<Icon src="/images/icons/add-to-queue.svg" alt="Add to queue icon" /> add to queue, <Icon src="/images/icons/split-lines-to-queue.svg" alt="Split lines icon" /> split lines to queue, <Icon src="/images/icons/arrow-up.svg" alt="Move up icon" /> move up, <Icon src="/images/icons/arrow-down.svg" alt="Move down icon" /> move down), <Icon src="/images/icons/edit.svg" alt="Edit icon" /> **Edit**, and <Icon src="/images/icons/delete.svg" alt="Delete icon" /> **Delete**—or drag cards directly to reorder them.
+- **Filter & search**: Use the <Icon src="/images/icons/search.svg" alt="Search icon" /> search box in the toolbar, click category pills, or use the right-side filter buttons: <Icon src="/images/icons/globe.svg" alt="Platform filter icon" /> **Platform filter**, <Icon src="/images/icons/time.svg" alt="Recent prompts icon" /> **Recently used**, and <Icon src="/images/icons/settings.svg" alt="Manage categories icon" /> **Manage categories**.
+- **Import & export**: Open the combined <Icon src="/images/icons/import.svg" alt="Import and export menu icon" /> **Import / Export** menu next to the search box to <Icon src="/images/icons/import.svg" alt="Import icon" /> **Import** or <Icon src="/images/icons/export.svg" alt="Export icon" /> **Export** prompts as JSON. Prompt import supports two modes: **Merge** (updates matching IDs and appends new entries) and **Overwrite** (replaces your current library). Prompt chains are included in backups.
 
 ## Template variables
 
@@ -64,7 +65,7 @@ Focus on: {{focus:correctness and performance}}
 2. Add prompts to the queue in any of these ways:
    - Type directly in the queue overlay and press `Enter`.
    - Open a prompt's <Icon src="/images/icons/more-horizontal.svg" alt="More menu icon" /> menu and pick <Icon src="/images/icons/add-to-queue.svg" alt="Add to queue icon" /> **Add to queue** or <Icon src="/images/icons/split-lines-to-queue.svg" alt="Split lines icon" /> **Split lines and add to queue**.
-   - Click **Batch Add** in the queue bar to pick multiple prompts from your library or split pasted text.
+   - Click <Icon src="/images/icons/add-to-queue.svg" alt="Batch add icon" /> **Batch Add** in the expanded queue header to pick multiple prompts from your library or split pasted text (and click <Icon src="/images/icons/cleanup.svg" alt="Clear queue icon" /> **Clear All** to empty pending items).
 
 <Tabs>
   <Tab title="From Prompt Library">
@@ -90,7 +91,7 @@ Ophel checks generation status every second. Once the AI has stayed idle for 2 c
 
 - Each step can reference an existing library prompt or use inline text.
 - Choose each step's run mode: **Insert**, **Send or queue**, or **Queue only**, and optionally split multi-line input into separate queued prompts.
-- Pick a custom SVG icon and choose whether the chain appears in the **Selection Quote** popover.
+- Pick a custom SVG icon, toggle visibility in the **Selection Quote** bar (<Icon src="/images/icons/eye.svg" alt="Visible icon" /> / <Icon src="/images/icons/eye-closed.svg" alt="Hidden icon" />), <Icon src="/images/icons/copy.svg" alt="Duplicate icon" /> duplicate, or <Icon src="/images/icons/delete.svg" alt="Delete icon" /> delete chains right from each chain card.
 - Ophel ships with one built-in chain: <Icon src="/images/icons/reply.svg" alt="Quote Reply icon" /> **Quote Reply**, which wraps your selected text in `{{quote}}` and inserts a reply template into the input box.
 
 ## Selection Quote

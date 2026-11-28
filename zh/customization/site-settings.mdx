@@ -38,7 +38,7 @@ import { Shortcut } from "/snippets/shortcut.jsx"
 
 如果想让 Ophel 在某个内置平台上完全不加载，可以在以下任意一处停用：
 
-- 在 **设置 → 站点设置** 选中该站点后，点击右上角的停用按钮。
+- 在 **设置 → 站点设置** 选中该站点后，点击右上角的 <Icon src="/images/icons/power.svg" alt="停用站点图标" /> 停用按钮。
 - 在 **设置 → 适配中心 → 内置站点** 关闭对应开关。
 - 在浏览器工具栏的 Ophel 弹窗中一键停用当前站点。
 
@@ -90,9 +90,9 @@ import { Shortcut } from "/snippets/shortcut.jsx"
 
 选中 <Icon src="/images/icons/claude.svg" alt="Claude 图标" /> **Claude** 时显示（快捷键 <Shortcut combo="ctrl+alt+c" />）。保存多个 Claude Session Key（格式 `sk-ant-sidXX-...`），无需反复退出重新登录即可切换账号：
 
-- **添加与导入**：支持手动添加、<Icon src="/images/icons/import.svg" alt="导入图标" /> JSON 导入 / <Icon src="/images/icons/export.svg" alt="导出图标" /> 导出（<Icon src="/images/icons/json-file.svg" alt="JSON 图标" /> 自动去重合并），扩展版还支持点击 **从浏览器导入**（需授予可选的 `cookies` 权限读取当前登录的 `sessionKey` Cookie）。
-- **检测可用性**：支持单条 <Icon src="/images/icons/check.svg" alt="检测图标" /> **检测** 或 <Icon src="/images/icons/shield-check.svg" alt="批量检测图标" /> **批量检测**（每条间隔 **500 ms**，自动识别有效性与账号类型）。
-- **安全切换**：点击 <Icon src="/images/icons/sync.svg" alt="切换图标" /> 切换到指定 Key，或按 <Shortcut combo="ctrl+alt+s" /> 一键轮换到下一个可用 Key。扩展版在切换前会自动检测是否有其他 Claude 标签页正在生成回复，避免误打断；不需要的 Key 可点击 <Icon src="/images/icons/delete.svg" alt="删除图标" /> 删除。
+- **添加与导入**：点击 <Icon src="/images/icons/plus.svg" alt="添加图标" /> 手动添加、通过 <Icon src="/images/icons/import.svg" alt="导入图标" /> JSON 导入 / <Icon src="/images/icons/export.svg" alt="导出图标" /> 导出（<Icon src="/images/icons/json-file.svg" alt="JSON 图标" /> 自动去重合并），扩展版还支持点击 <Icon src="/images/icons/globe.svg" alt="从浏览器导入图标" /> **从浏览器导入**（需授予可选的 `cookies` 权限读取当前登录的 `sessionKey` Cookie）。
+- **检测可用性**：支持单条 <Icon src="/images/icons/refresh.svg" alt="检测图标" /> **检测** 或 <Icon src="/images/icons/shield-check.svg" alt="批量检测图标" /> **批量检测**（每条间隔 **500 ms**，自动识别有效性与账号类型）。
+- **安全切换**：点击 <Icon src="/images/icons/check.svg" alt="切换使用图标" /> 切换到指定 Key（也可点 <Icon src="/images/icons/copy.svg" alt="复制图标" /> 复制），或按 <Shortcut combo="ctrl+alt+s" /> 一键轮换到下一个可用 Key。扩展版在切换前会自动检测是否有其他 Claude 标签页正在生成回复，避免误打断。
 - **油猴版差异**：支持手动/JSON 管理、测活以及在 `claude.ai` 页面内切换；不支持「从浏览器导入」与跨标签页生成检测。
 - **组织隔离**：同步的 Claude 对话会按当前账号与组织自动隔离。
 

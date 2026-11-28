@@ -13,7 +13,7 @@ import { Shortcut } from "/snippets/shortcut.jsx"
 
 <Steps>
   <Step title="Confirm the site is supported and enabled">
-    Check the [supported platforms table](/introduction#supported-platforms) or your installed [Site Packs](/enhancements/site-extensions). Note that **Gemini Enterprise** is disabled by default for new installs—enable it under **Settings → Site Packs → Built-in sites**.
+    Check the [supported platforms table](/index#supported-platforms) or your installed [Site Packs](/enhancements/site-extensions). Note that **Gemini Enterprise** is disabled by default for new installs—enable it under **Settings → Site Packs → Built-in sites**.
   </Step>
   <Step title="Check hidden paths and site toggles">
     Click the Ophel browser toolbar icon to verify the site is not disabled. Also check **Settings → Site Settings → Hide Ophel on specific pages** to ensure no rule matches your current URL path.
@@ -33,7 +33,7 @@ import { Shortcut } from "/snippets/shortcut.jsx"
     Make sure <Icon src="/images/icons/user-query.svg" alt="User questions icon" /> **Show User Questions** (<Shortcut combo="alt+q" />) is enabled if the AI reply contains no Markdown headings, and check that the <Icon src="/images/icons/star.svg" alt="Bookmarks icon" /> **Bookmarks Filter** (<Shortcut combo="alt+c" />) is not hiding non-bookmarked items.
   </Step>
   <Step title="Force an immediate refresh">
-    Press <Shortcut combo="alt+r" /> or click the <Icon src="/images/icons/refresh.svg" alt="Refresh icon" /> refresh icon in the **Outline** toolbar. On virtual-scroll sites (DeepSeek, Claude, AI Studio, Grok, Qwen Studio), allow a brief moment for history API backfill after switching chats.
+    Press <Shortcut combo="alt+r" /> to force an immediate outline refresh. On virtual-scroll sites (DeepSeek, Claude, AI Studio, Grok, Qwen Studio), allow a brief moment for history API backfill after switching chats.
   </Step>
   <Step title="Verify auto-update and follow mode">
     Open **Settings → Features → Outline**: confirm **Outline Follow Mode** is set to **Follow Current Position** (not **Manual Control**), and expand **Advanced options** to verify **Auto-update outline during chat** is enabled.
@@ -47,7 +47,7 @@ import { Shortcut } from "/snippets/shortcut.jsx"
     **Hide quick buttons when panel is open** is **On** by default. Collapse the panel (<Shortcut combo="alt+p" />) or turn that option off under **Settings → General → Shortcuts**.
   </Step>
   <Step title="Wake the collapsed droplet">
-    The <Icon src="/images/icons/floating-toolbar.svg" alt="Quick buttons icon" /> strip collapses into a small <Icon src="/images/icons/sparkle.svg" alt="Droplet icon" /> droplet 3 seconds after your cursor moves away. Move near its last edge position—or if **Proximity wake distance** is set to `0`, hover directly over the droplet for **300 ms** to expand it.
+    The quick buttons strip collapses into a single <Icon src="/images/icons/sparkle.svg" alt="Droplet icon" /> droplet 3 seconds after your cursor moves away. Move near its last edge position—or if **Proximity wake distance** is set to `0`, hover directly over the droplet for **300 ms** to expand it (keep hovering the **Panel** button to open a temporary preview panel).
   </Step>
 </Steps>
 
@@ -96,10 +96,10 @@ import { Shortcut } from "/snippets/shortcut.jsx"
     Both `https://` and `http://` URLs are supported (`https://` is strongly recommended over public networks). Providers like **Nutstore**, **InfiniCLOUD**, and **Nextcloud** require a dedicated **app password**, not your main account login password.
   </Step>
   <Step title="Verify browser host permission">
-    Click <Icon src="/images/icons/check.svg" alt="Test connection icon" /> **Test Connection** under **Settings → Data & Permissions → WebDAV Sync**. On Chrome/Edge/Firefox, ensure `<all_urls>` is granted under **Permissions**; on macOS Safari, allow your WebDAV server host in **Safari → Settings → Extensions → Ophel Atlas**.
+    Click <Icon src="/images/icons/link.svg" alt="Test connection icon" /> **Test Connection** under **Settings → Data & Permissions → WebDAV Sync**. On Chrome/Edge/Firefox, ensure `<all_urls>` is granted under **Permissions**; on macOS Safari, allow your WebDAV server host in **Safari → Settings → Extensions → Ophel Atlas**.
   </Step>
   <Step title="Check sync status & runtime">
-    If an automatic backup fails (25-second timeout per request), the WebDAV card shows a failed status—click <Icon src="/images/icons/check.svg" alt="Test connection icon" /> **Test Connection** or <Icon src="/images/icons/cloud-upload.svg" alt="Backup now icon" /> **Backup Now** to see the exact error details. On userscript builds, scheduled automatic backups only run while at least one supported AI tab is open.
+    If an automatic backup fails (25-second timeout per request), the WebDAV card shows a failed status—click <Icon src="/images/icons/link.svg" alt="Test connection icon" /> **Test Connection** or <Icon src="/images/icons/cloud-upload.svg" alt="Backup now icon" /> **Backup Now** to see the exact error details. On userscript builds, scheduled automatic backups only run while at least one supported AI tab is open.
   </Step>
 </Steps>
 

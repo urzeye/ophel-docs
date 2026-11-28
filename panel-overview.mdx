@@ -48,13 +48,21 @@ The top bar of the panel gives you quick access to window controls:
 
 | Area / Button | Action |
 | --- | --- |
-| **Ophel title (left)** | Click to view release notes for the current version. Shows an unread dot after an update. |
-| **Header blank area** | Drag to move the panel. **Double-click** to toggle between **Floating** and **Edge Snap** mode (desktop only). Hold briefly to see the pass-through click hint. |
-| <Icon src="/images/icons/snap-to-edge.svg" alt="Panel mode icon" /> **Mode toggle** | Switch between **Floating** and **Edge Snap** mode (<Shortcut combo="alt+m" />). |
-| <Icon src="/images/icons/theme-dark.svg" alt="Theme icon" /> **Theme toggle** | Switch between light and dark themes (<Shortcut combo="alt+d" />). |
+| <Icon src="/images/icons/sparkle.svg" alt="Ophel icon" /> **Ophel title (left)** | Click—or hover for **350 ms**—to view release notes for the current version. Shows an unread dot after an update. |
+| <Icon src="/images/icons/drag.svg" alt="Drag icon" /> **Header blank area** | Drag to move the panel. **Double-click** to toggle between **Floating** and **Edge Snap** mode (desktop only). Hold for **450 ms** to see the drag & pass-through click hint. |
+| <Icon src="/images/icons/snap-to-edge.svg" alt="Edge Snap icon" /><Icon src="/images/icons/floating-mode.svg" alt="Floating mode icon" /> **Mode toggle** | Switch between **Floating** and **Edge Snap** mode (<Shortcut combo="alt+m" />). Shows the Edge Snap icon in Floating mode and the Floating icon in Edge Snap mode. |
+| <Icon src="/images/icons/theme-dark.svg" alt="Dark theme icon" /><Icon src="/images/icons/theme-light.svg" alt="Light theme icon" /> **Theme toggle** | Switch between light and dark themes (<Shortcut combo="alt+d" />). Displays the moon icon in light mode and the sun icon in dark mode. |
 | <Icon src="/images/icons/new-tab.svg" alt="New tab icon" /> **New tab** | Opens the current platform's homepage in a new tab. Only appears when **Open New Chat in New Tab** is enabled in **Settings → Features → Tab Settings**. |
 | <Icon src="/images/icons/settings.svg" alt="Settings icon" /> **Settings** | Open the Ophel settings modal (<Shortcut combo="alt+," />). |
 | <Icon src="/images/icons/minimize.svg" alt="Collapse icon" /> **Collapse** | Collapse the panel into the floating quick buttons (<Shortcut combo="alt+p" />). |
+
+### Panel footer
+
+The bottom bar of the panel keeps three scroll-navigation actions always within reach:
+
+- <Icon src="/images/icons/scroll-top.svg" alt="Scroll top icon" /> **Scroll to Top** (<Shortcut combo="alt+t" />) — jumps to the top and records an anchor.
+- <Icon src="/images/icons/anchor.svg" alt="Anchor icon" /> **Return to Anchor** (<Shortcut combo="alt+z" />) — jumps back to your saved position (disabled until an anchor is recorded).
+- <Icon src="/images/icons/scroll-bottom.svg" alt="Scroll bottom icon" /> **Scroll to Bottom** (<Shortcut combo="alt+b" />) — jumps to the bottom and records an anchor.
 
 ## Floating quick buttons
 
@@ -62,10 +70,10 @@ The top bar of the panel gives you quick access to window controls:
 
 When the panel is collapsed (or whenever **Hide quick buttons when panel is open** is turned off), Ophel displays a floating column of quick buttons on screen.
 
-- **Auto-collapse into a droplet**: After your pointer leaves the proximity area for **3 seconds** (or leaves the window for 1.5 seconds), the strip collapses into a single Ophel droplet.
-- **Proximity wake**: Move your cursor within the wake distance (default **150 px**, range `0–300 px`) to expand the strip. Setting distance to `0` requires hovering the droplet for **300 ms** instead.
-- **Hover preview**: Hover the collapsed Ophel droplet for **300 ms** to peek at the panel without permanently expanding it.
-- **Reposition**: Press and hold (~0.2 s) to drag the floating strip anywhere on screen; its relative position is saved.
+- **Auto-collapse into a droplet**: After your pointer leaves the proximity area for **3 seconds** (or **4 seconds** after dragging, pressing, closing the panel, or closing the Toolbox menu; or **1.5 seconds** after leaving the browser window / switching tabs), the strip collapses into a single <Icon src="/images/icons/sparkle.svg" alt="Ophel droplet icon" /> Ophel droplet.
+- **Proximity wake**: Move your cursor within the wake distance (default **150 px**, range `0–300 px`) to expand the strip. Setting distance to `0` disables proximity detection and requires hovering the droplet for **300 ms** instead.
+- **Hover preview (temporary floating panel)**: Whenever the main panel is collapsed on desktop, hover the <Icon src="/images/icons/sparkle.svg" alt="Panel icon" /> **Panel** button—either directly on the collapsed droplet or inside the expanded quick buttons strip—for **300 ms** to open a temporary floating preview panel right beside the button without permanently expanding it. *(If proximity distance is set to `0` and the strip is collapsed into a droplet, wait **600 ms** total: 300 ms to wake the strip plus 300 ms to open the preview.)* Move away from both the button and preview panel for **250 ms** to dismiss it automatically (active menus, dialogs, or resizing pause auto-hide), or click the **Panel** button to expand and pin the panel normally.
+- **Reposition**: Press and hold (**220 ms**, moving less than 6 px) to drag the floating strip anywhere on screen; its relative viewport position is saved.
 
 Configure button order, visibility, opacity (`40%–100%`), proximity radius, and **Hide quick buttons when panel is open** (default **On**) under **Settings → General → Shortcuts**.
 
@@ -73,11 +81,11 @@ Configure button order, visibility, opacity (`40%–100%`), proximity radius, an
 
 | Button | Action | Default |
 | --- | --- | --- |
-| <Icon src="/images/icons/panel-overview.svg" alt="Panel icon" /> **Panel** | Expand or collapse the main panel (<Shortcut combo="alt+p" />) | On |
-| <Icon src="/images/icons/floating-toolbar.svg" alt="Toolbox icon" /> **Toolbox** | Open the quick toolbox menu | On |
+| <Icon src="/images/icons/sparkle.svg" alt="Panel icon" /> **Panel** | Click to expand or collapse the main panel (<Shortcut combo="alt+p" />); hover when collapsed to open a temporary preview panel. Always enabled; shows an unread dot when release notes are new. | On *(required)* |
+| <Icon src="/images/icons/tools.svg" alt="Toolbox icon" /> **Toolbox** | Open the quick toolbox popover menu | On |
 | <Icon src="/images/icons/search.svg" alt="Search icon" /> **Global Search** | Open Global Search (<Shortcut combo="ctrl+k" />) | On |
-| <Icon src="/images/icons/theme-light.svg" alt="Theme icon" /> **Theme** | Toggle light / dark theme (<Shortcut combo="alt+d" />) | On |
-| <Icon src="/images/icons/eye.svg" alt="Zen mode icon" /> **Zen Mode** | Toggle Zen Mode (<Shortcut combo="ctrl+shift+z" />) | On |
+| <Icon src="/images/icons/theme-dark.svg" alt="Dark theme icon" /><Icon src="/images/icons/theme-light.svg" alt="Light theme icon" /> **Theme** | Toggle light / dark theme (<Shortcut combo="alt+d" />) | On |
+| <Icon src="/images/icons/eye.svg" alt="Zen mode icon" /><Icon src="/images/icons/eye-closed.svg" alt="Exit zen mode icon" /> **Zen Mode** | Toggle Zen Mode (<Shortcut combo="ctrl+shift+z" />); switches to the closed-eye icon while active | On |
 | <Icon src="/images/icons/settings.svg" alt="Settings icon" /> **Settings** | Open Settings (<Shortcut combo="alt+," />) | On |
 | <Icon src="/images/icons/scroll-top.svg" alt="Scroll top icon" /> **Scroll to Top** | Jump to the top of the chat and save an anchor (<Shortcut combo="alt+t" />) | On |
 | <Icon src="/images/icons/anchor.svg" alt="Anchor icon" /> **Return to Anchor** | Jump back to your previous scroll position (<Shortcut combo="alt+z" />) | On |
@@ -104,7 +112,7 @@ Customize which items appear in the Toolbox under **Settings → General → Too
 Switch between modes with the header mode button, by double-clicking the header bar, or by pressing <Shortcut combo="alt+m" />:
 
 - **Floating (default)**: The panel stays visible on the left or right side of the page. Drag its inner edge to resize between **240 px** and **600 px**. When **Smart Avoidance** is enabled, the page shifts cleanly so the panel does not cover text.
-- **Edge Snap**: Drag the panel near the left or right edge (within the snap threshold) to tuck it off-screen. Hover the edge handle (or screen edge when hidden) for **300 ms** to slide it back out.
+- **Edge Snap**: Drag the panel near the left or right edge (within the snap threshold) to tuck it off-screen. Hover the edge handle (or screen edge when hidden) for **300 ms** to slide it back out; moving away tucks it back after **200 ms** (with an **800 ms** hold when crossing out the snapped edge on multi-monitor setups). On wide touch screens, Edge Snap shows a tappable side tab.
 
 ### Panel size and position settings
 
@@ -146,7 +154,7 @@ Click the Ophel icon in your browser toolbar (extension builds) to open the comp
   <Card title="Smart Outline" icon="/images/icons/outline.svg" href="/features/outline">
     Navigate long replies with headings, bookmarks, and anchors.
   </Card>
-  <Card title="Chat Management" icon="/images/icons/folder.svg" href="/features/conversations">
+  <Card title="Chat Management" icon="/images/icons/conversation.svg" href="/features/conversations">
     Organize synced chats with folders, tags, and safe cleanup.
   </Card>
   <Card title="Prompt Library" icon="/images/icons/prompt.svg" href="/features/prompts">

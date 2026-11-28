@@ -38,7 +38,7 @@ Hide the Ophel panel and floating quick buttons on specific paths of a site (for
 
 To stop Ophel from initializing on a built-in platform altogether, use any of three places:
 
-- Click the power/disable button at the top-right of **Settings → Site Settings** when viewing that site.
+- Click the <Icon src="/images/icons/power.svg" alt="Disable site icon" /> power/disable button at the top-right of **Settings → Site Settings** when viewing that site.
 - Toggle it off under **Settings → Site Packs → Built-in sites**.
 - Toggle it off in the browser toolbar popup.
 
@@ -90,9 +90,9 @@ Available when <Icon src="/images/icons/chatgpt.png" alt="ChatGPT icon" /> **Cha
 
 Available when <Icon src="/images/icons/claude.svg" alt="Claude icon" /> **Claude** is selected (shortcut: <Shortcut combo="ctrl+alt+c" />). Lets you store multiple Claude Session Keys (`sk-ant-sidXX-...`) and switch accounts without signing out manually:
 
-- **Add keys**: Enter a key manually, <Icon src="/images/icons/import.svg" alt="Import icon" /> import / <Icon src="/images/icons/export.svg" alt="Export icon" /> export a <Icon src="/images/icons/json-file.svg" alt="JSON icon" /> JSON list (merges without duplicates), or click **Import from browser** (extension builds only; requests the optional `cookies` permission to read your active `sessionKey` cookie).
-- **Test keys**: Click <Icon src="/images/icons/check.svg" alt="Test icon" /> **Test** on a single key or <Icon src="/images/icons/shield-check.svg" alt="Test all icon" /> **Test all** (tests sequentially every **500 ms** to check validity and account tier).
-- **Switch safely**: Click <Icon src="/images/icons/sync.svg" alt="Switch icon" /> to switch to any saved key—or press <Shortcut combo="ctrl+alt+s" /> to rotate to the next valid key. On extension builds, Ophel checks whether another Claude tab is currently generating before switching so you do not interrupt an active reply. Use <Icon src="/images/icons/delete.svg" alt="Delete icon" /> to remove unused keys.
+- **Add keys**: Click <Icon src="/images/icons/plus.svg" alt="Add key icon" /> to enter a key manually, <Icon src="/images/icons/import.svg" alt="Import icon" /> import / <Icon src="/images/icons/export.svg" alt="Export icon" /> export a <Icon src="/images/icons/json-file.svg" alt="JSON icon" /> JSON list (merges without duplicates), or click <Icon src="/images/icons/globe.svg" alt="Import from browser icon" /> **Import from browser** (extension builds only; requests the optional `cookies` permission to read your active `sessionKey` cookie).
+- **Test keys**: Click <Icon src="/images/icons/refresh.svg" alt="Test key icon" /> **Test** on a single key or <Icon src="/images/icons/shield-check.svg" alt="Test all icon" /> **Test all** (tests sequentially every **500 ms** to check validity and account tier).
+- **Switch safely**: Click <Icon src="/images/icons/check.svg" alt="Use key icon" /> to switch to any saved key (or <Icon src="/images/icons/copy.svg" alt="Copy key icon" /> to copy it)—or press <Shortcut combo="ctrl+alt+s" /> to rotate to the next valid key. On extension builds, Ophel checks whether another Claude tab is currently generating before switching so you do not interrupt an active reply.
 - **Userscript notes**: Userscript builds support manual/JSON keys, testing, and switching while on `claude.ai`, but do not support **Import from browser** or cross-tab generating checks.
 - **Organization isolation**: Synced Claude chats are isolated automatically per account and organization.
 

@@ -14,7 +14,7 @@ import { Shortcut } from "/snippets/shortcut.jsx"
 
 <Steps>
   <Step title="确认站点在支持范围内且已启用">
-    对照[支持的平台](/zh/introduction#支持的平台)或已安装的[站点适配包](/zh/enhancements/site-extensions)。注意 **Gemini Enterprise** 对新用户默认停用，需在 **设置 → 适配中心 → 内置站点** 手动开启。
+    对照[支持的平台](/zh#支持的平台)或已安装的[站点适配包](/zh/enhancements/site-extensions)。注意 **Gemini Enterprise** 对新用户默认停用，需在 **设置 → 适配中心 → 内置站点** 手动开启。
   </Step>
   <Step title="检查站点开关与隐藏页面规则">
     点击浏览器工具栏的 Ophel 图标确认未停用当前站点；同时检查 **设置 → 站点设置 → 在指定页面隐藏 Ophel**，排除误配的路径规则。
@@ -34,7 +34,7 @@ import { Shortcut } from "/snippets/shortcut.jsx"
     如果 AI 回复里没有 Markdown 标题，请确认开启了 <Icon src="/images/icons/user-query.svg" alt="用户问题图标" /> **显示用户问题**（<Shortcut combo="alt+q" />）；同时确认没有误开 <Icon src="/images/icons/star.svg" alt="仅看收藏图标" /> **仅看收藏**（<Shortcut combo="alt+c" />）。
   </Step>
   <Step title="手动刷新大纲">
-    按 <Shortcut combo="alt+r" /> 或点击大纲工具栏的 <Icon src="/images/icons/refresh.svg" alt="刷新图标" /> 刷新按钮。在虚拟滚动站点（DeepSeek、Claude、AI Studio、Grok、Qwen Studio）切换长对话后，稍等片刻让历史接口自动补全节点。
+    按 <Shortcut combo="alt+r" /> 立即强制刷新大纲。在虚拟滚动站点（DeepSeek、Claude、AI Studio、Grok、Qwen Studio）切换长对话后，稍等片刻让历史接口自动补全节点。
   </Step>
   <Step title="核对大纲跟随与自动更新设置">
     打开 **设置 → 功能模块 → 大纲**：确认 **大纲跟随模式** 为 **跟随当前位置**（不是「手动控制」），并展开底部 **高级选项** 检查 **对话中自动更新大纲** 是否开启。
@@ -48,7 +48,7 @@ import { Shortcut } from "/snippets/shortcut.jsx"
     **面板展开时隐藏快捷按钮** 默认为 **开启**。按 <Shortcut combo="alt+p" /> 收起面板即可看到，或在 **设置 → 基本设置 → 快捷按钮** 关闭该选项。
   </Step>
   <Step title="唤醒收起后的星芒水滴">
-    鼠标移开 3 秒后 <Icon src="/images/icons/floating-toolbar.svg" alt="快捷按钮图标" /> 按钮条会缩成一颗 <Icon src="/images/icons/sparkle.svg" alt="星芒水滴图标" /> 小水滴。将鼠标靠近它上次所在的屏幕边缘；如果你把 **近距离感应半径** 设成了 `0`，则需要直接悬停在水滴上 **300 毫秒**才会展开。
+    鼠标移开 3 秒后快捷按钮条会缩成一颗 <Icon src="/images/icons/sparkle.svg" alt="星芒水滴图标" /> 小水滴。将鼠标靠近它上次所在的屏幕边缘；如果你把 **近距离感应半径** 设成了 `0`，则需要直接悬停在水滴上 **300 毫秒**才会展开（继续悬停在面板按钮上可弹出临时悬浮预览面板）。
   </Step>
 </Steps>
 
@@ -97,10 +97,10 @@ import { Shortcut } from "/snippets/shortcut.jsx"
     支持 `https://` 与 `http://`（公网强烈推荐 `https://`，内网 NAS 可用 `http://`）。使用 **坚果云**、**InfiniCLOUD**、**Nextcloud** 等服务时，必须填写**应用专用密码**，不能用主账号登录密码。
   </Step>
   <Step title="检查浏览器主机权限">
-    在 **设置 → 数据与权限 → WebDAV 同步** 点击 <Icon src="/images/icons/check.svg" alt="测试连接图标" /> **测试连接**。Chrome/Edge/Firefox 需授予 `<all_urls>` 权限；macOS Safari 需在 **Safari → 设置 → 扩展 → Ophel Atlas** 允许该 WebDAV 服务器域名。
+    在 **设置 → 数据与权限 → WebDAV 同步** 点击 <Icon src="/images/icons/link.svg" alt="测试连接图标" /> **测试连接**。Chrome/Edge/Firefox 需授予 `<all_urls>` 权限；macOS Safari 需在 **Safari → 设置 → 扩展 → Ophel Atlas** 允许该 WebDAV 服务器域名。
   </Step>
   <Step title="查看失败状态与调度条件">
-    定时备份失败（单次请求超时 25 秒）会在卡片状态栏提示上次同步失败；点击 <Icon src="/images/icons/check.svg" alt="测试连接图标" /> **测试连接** 或 <Icon src="/images/icons/cloud-upload.svg" alt="立即备份图标" /> **立即备份** 可查看具体报错详情。使用油猴版时，定时自动备份需要至少保持一个受支持的 AI 页面处于打开状态才会触发。
+    定时备份失败（单次请求超时 25 秒）会在卡片状态栏提示上次同步失败；点击 <Icon src="/images/icons/link.svg" alt="测试连接图标" /> **测试连接** 或 <Icon src="/images/icons/cloud-upload.svg" alt="立即备份图标" /> **立即备份** 可查看具体报错详情。使用油猴版时，定时自动备份需要至少保持一个受支持的 AI 页面处于打开状态才会触发。
   </Step>
 </Steps>
 

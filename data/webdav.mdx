@@ -51,7 +51,7 @@ Open **Settings → Data & Permissions → WebDAV Sync** and pick one of **7 pre
     Select a provider preset (or **Custom**), enter the server URL (`https://` recommended; `http://` allowed for LAN servers), username, password / app password, and remote directory (default `ophel`).
   </Step>
   <Step title="Grant host access (extension builds)">
-    Click <Icon src="/images/icons/check.svg" alt="Test connection icon" /> **Test Connection**. Chrome, Edge, and Firefox extensions request the optional host access permission (`<all_urls>`); macOS Safari guides you to allow the specific WebDAV server host in Safari Settings. Userscript builds connect directly via `GM_xmlhttpRequest` with no browser prompt.
+    Click <Icon src="/images/icons/link.svg" alt="Test connection icon" /> **Test Connection**. Chrome, Edge, and Firefox extensions request the optional host access permission (`<all_urls>`); macOS Safari guides you to allow the specific WebDAV server host in Safari Settings. Userscript builds connect directly via `GM_xmlhttpRequest` with no browser prompt.
   </Step>
   <Step title="Save and back up">
     <Icon src="/images/icons/save.svg" alt="Save icon" /> Save your settings and click <Icon src="/images/icons/cloud-upload.svg" alt="Upload backup icon" /> **Backup Now** to upload your first snapshot.
@@ -65,11 +65,11 @@ Turn on <Icon src="/images/icons/sync.svg" alt="Automatic backup icon" /> **Auto
 - **Interval**: Choose **Every hour (60 min)**, **Every 6 hours (360 min)**, or **Every day (1440 min, default)**. Enabling automatic backups or changing the target server schedules the first run right away.
 - **Lightweight snapshots**: Automatic backups exclude reading history.
 - **Per-device retention (7 copies)**: Automatic backups are named `ophel_backup_auto_{deviceId}_{timestamp}.json` and automatically keep the **latest 7 automatic backups per device**, so multiple devices never overwrite one another.
-- **Manual restore only**: Automatic backups never silently overwrite your local data. If a scheduled run fails (25-second timeout per request), the WebDAV card displays a failed sync status; click <Icon src="/images/icons/check.svg" alt="Test connection icon" /> **Test Connection** or <Icon src="/images/icons/cloud-upload.svg" alt="Upload backup icon" /> **Backup Now** to inspect the exact error message.
+- **Manual restore only**: Automatic backups never silently overwrite your local data. If a scheduled run fails (25-second timeout per request), the WebDAV card displays a failed sync status; click <Icon src="/images/icons/link.svg" alt="Test connection icon" /> **Test Connection** or <Icon src="/images/icons/cloud-upload.svg" alt="Upload backup icon" /> **Backup Now** to inspect the exact error message.
 - **Extension vs. Userscript scheduling**: Chrome, Edge, and Firefox extensions schedule runs in the background via `chrome.alarms`. Userscript builds coordinate across tabs and require at least one supported AI tab to be open for scheduled runs to fire.
 
 ## Restoring on another device
 
 1. Configure the same WebDAV server, credentials, and directory on your second device.
-2. Click <Icon src="/images/icons/download.svg" alt="Restore icon" /> **Restore** to browse the **full list of remote backups** in your directory (both manual and per-device automatic snapshots).
+2. Click <Icon src="/images/icons/file-restore.svg" alt="Restore icon" /> **Restore** to browse the **full list of remote backups** in your directory (both manual and per-device automatic snapshots).
 3. Select the snapshot you want to restore and confirm. Your local WebDAV credentials remain untouched.

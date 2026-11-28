@@ -33,15 +33,19 @@ On platforms that display a separate document or workspace alongside the chat, a
 
 | Control | Shortcut | What it does |
 | --- | --- | --- |
-| <Icon src="/images/icons/search.svg" alt="Search icon" /> **Search box** | <Shortcut combo="alt+f" /> | Filters outline entries in real time with match counts and keyword highlights. |
-| <Icon src="/images/icons/user-query.svg" alt="User question icon" /> **Show / Hide User Questions** | <Shortcut combo="alt+q" /> | Toggles whether your prompts appear in the outline tree. |
-| <Icon src="/images/icons/user-query.svg" alt="User questions only icon" /> **User Questions Only** | <Shortcut combo="alt+shift+q" /> | Collapses the outline to level `0` so only your questions remain visible. |
+| <Icon src="/images/icons/user-query.svg" alt="User question icon" /> **Show / Hide User Questions** | <Shortcut combo="alt+q" /> | Toggles whether your prompts appear in the outline tree (shown in conversation outline mode). |
 | <Icon src="/images/icons/star.svg" alt="Bookmark icon" /> **Bookmarks Filter** | <Shortcut combo="alt+c" /> | Shows only bookmarked entries (disables the level slider while active). |
-| <Icon src="/images/icons/expand-all.svg" alt="Expand icon" /><Icon src="/images/icons/collapse-all.svg" alt="Collapse icon" /> **Expand / Collapse All** | <Shortcut combo="alt+e" /> | Expands or collapses every heading branch. |
+| <Icon src="/images/icons/collapse-all.svg" alt="Collapse all icon" /><Icon src="/images/icons/expand-all.svg" alt="Expand all icon" /> **Expand / Collapse All** | <Shortcut combo="alt+e" /> | Expands or collapses every heading branch *(auto-hidden on narrow panels)*. |
 | <Icon src="/images/icons/locate.svg" alt="Locate icon" /> **Locate Current Position** | <Shortcut combo="alt+l" /> | Scrolls the outline list to the heading currently in view. |
-| <Icon src="/images/icons/refresh.svg" alt="Refresh icon" /> **Refresh Outline** | <Shortcut combo="alt+r" /> | Forces an immediate re-scan of the conversation. |
-| <Icon src="/images/icons/arrow-up.svg" alt="Previous heading icon" /><Icon src="/images/icons/arrow-down.svg" alt="Next heading icon" /> **Previous / Next Heading** | <Shortcut combo="alt+arrowup" /> / <Shortcut combo="alt+arrowdown" /> | Steps through outline headings one by one. |
-| <Icon src="/images/icons/export.svg" alt="Export icon" /> **Export** | <Shortcut combo="ctrl+shift+e" /> | Opens the [Export Chat](/features/export) dialog. |
+| <Icon src="/images/icons/scroll-bottom.svg" alt="Scroll outline bottom icon" /><Icon src="/images/icons/scroll-top.svg" alt="Scroll outline top icon" /> **Scroll Outline to Bottom / Top** | — | Jumps the outline list itself to the bottom or back to the top *(auto-hidden on narrow panels)*. |
+| <Icon src="/images/icons/export.svg" alt="Export icon" /> **Export** | <Shortcut combo="ctrl+shift+e" /> | Opens the [Export Chat](/features/export) dialog (including **Copy Outline**). |
+| <Icon src="/images/icons/search.svg" alt="Search icon" /> **Search box** | <Shortcut combo="alt+f" /> | Filters outline entries in real time with match counts, keyword highlights, and a <Icon src="/images/icons/clear.svg" alt="Clear icon" /> clear button. |
+
+Additional keyboard-only outline actions (not rendered as separate toolbar buttons):
+
+- **Refresh Outline** (<Shortcut combo="alt+r" />) — forces an immediate re-scan of the conversation.
+- **User Questions Only** (<Shortcut combo="alt+shift+q" />) — switches straight to level `0` so only your prompts are shown.
+- **Previous / Next Heading** (<Shortcut combo="alt+arrowup" /> / <Shortcut combo="alt+arrowdown" />) — steps through outline headings one by one.
 
 ## Bookmarks
 
@@ -54,7 +58,7 @@ Star any prompt or heading to mark key conclusions inside a long thread:
 
 - **Word count**: Enable **Show Word Count** in Outline settings to display character/word counts on outline items.
 - **Copy single node**: Hover an outline entry and click its <Icon src="/images/icons/copy.svg" alt="Copy icon" /> copy action to copy that section's content.
-- **Copy full outline**: Use the <Icon src="/images/icons/copy-outline.svg" alt="Copy outline icon" /> outline copy button (or **Copy Outline** in the Export dialog) to copy the entire structured outline as Markdown. When user questions are included, Ophel promotes questions to top-level `#` headings and shifts nested headings down automatically so the hierarchy stays valid.
+- **Copy full outline**: Open the <Icon src="/images/icons/export.svg" alt="Export icon" /> **Export Chat** dialog (from the outline toolbar or <Shortcut combo="ctrl+shift+e" />) and click <Icon src="/images/icons/copy-outline.svg" alt="Copy outline icon" /> **Copy Outline** to copy the entire structured outline as Markdown. When user questions are included, Ophel promotes questions to top-level `#` headings and shifts nested headings down automatically so the hierarchy stays valid.
 
 ## Settings
 
