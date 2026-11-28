@@ -9,11 +9,11 @@ interface Props {
 const { t, homeHref = '/' } = Astro.props;
 ---
 
-<footer class="site-footer border-t border-[rgba(148,179,196,0.14)] py-14 md:py-18">
-  <div class="mx-auto w-full max-w-[1200px] px-5 sm:px-6 lg:px-8">
+<footer class="site-footer border-t border-[rgba(148,179,196,0.14)] py-14 md:py-16">
+  <div class="mx-auto w-full max-w-[1200px] px-4 sm:px-6 lg:px-8">
     <div class="grid gap-10 md:grid-cols-4 lg:grid-cols-5">
       <div class="md:col-span-2">
-        <a href={homeHref} class="mb-4 inline-flex items-center gap-2.5 group">
+        <a href={homeHref} class="group mb-4 inline-flex min-h-[40px] items-center gap-2.5">
           <img
             src="/logo.png"
             alt="Ophel logo"
@@ -25,44 +25,54 @@ const { t, homeHref = '/' } = Astro.props;
             Ophel Atlas
           </span>
         </a>
-        <p class="max-w-sm text-sm leading-relaxed text-[#9bb0c3]">
+        <p class="max-w-sm text-sm leading-relaxed text-[#b7c8d8]">
           {t.desc}
         </p>
-        <p class="mt-4 font-mono text-xs text-[#7992a8]">
+        <p class="mt-4 font-mono text-xs text-[#9fb4c8]">
           Chrome · Edge · Firefox · Safari · Tampermonkey · ScriptCat
         </p>
       </div>
 
       <div>
-        <h3 class="mb-4 text-sm font-bold tracking-tight text-[#f3efe6]">{t.product}</h3>
-        <ul class="space-y-2.5 text-sm text-[#9bb0c3]">
+        <h3 class="mb-3 text-sm font-bold tracking-tight text-[#f3efe6]">{t.product}</h3>
+        <ul class="space-y-0.5 text-sm text-[#b7c8d8]">
           <li>
-            <a href={t.links.downloadHref} class="transition-colors hover:text-[#6fe3db]">
+            <a
+              href={t.links.downloadHref}
+              class="inline-flex min-h-[38px] items-center py-1 transition-colors hover:text-[#6fe3db]"
+            >
               {t.links.download}
             </a>
           </li>
           <li>
             <a
               href={t.links.safariReleaseHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="transition-colors hover:text-[#6fe3db]"
+              class="inline-flex min-h-[38px] items-center py-1 transition-colors hover:text-[#6fe3db]"
             >
               {t.links.safariRelease}
             </a>
           </li>
           <li>
-            <a href={t.links.sitePacksHref} class="transition-colors hover:text-[#6fe3db]">
+            <a
+              href={t.links.sitePacksHref}
+              class="inline-flex min-h-[38px] items-center py-1 transition-colors hover:text-[#6fe3db]"
+            >
               {t.links.sitePacks}
             </a>
           </li>
           <li>
-            <a href={t.links.changelogHref} class="transition-colors hover:text-[#6fe3db]">
+            <a
+              href={t.links.changelogHref}
+              class="inline-flex min-h-[38px] items-center py-1 transition-colors hover:text-[#6fe3db]"
+            >
               {t.links.changelog}
             </a>
           </li>
           <li>
-            <a href={t.links.docsHref} class="transition-colors hover:text-[#6fe3db]">
+            <a
+              href={t.links.docsHref}
+              class="inline-flex min-h-[38px] items-center py-1 transition-colors hover:text-[#6fe3db]"
+            >
               {t.links.docs}
             </a>
           </li>
@@ -70,14 +80,14 @@ const { t, homeHref = '/' } = Astro.props;
       </div>
 
       <div>
-        <h3 class="mb-4 text-sm font-bold tracking-tight text-[#f3efe6]">{t.support}</h3>
-        <ul class="space-y-2.5 text-sm text-[#9bb0c3]">
+        <h3 class="mb-3 text-sm font-bold tracking-tight text-[#f3efe6]">{t.support}</h3>
+        <ul class="space-y-0.5 text-sm text-[#b7c8d8]">
           <li>
             <a
               href={t.links.githubHref}
               target="_blank"
               rel="noopener noreferrer"
-              class="transition-colors hover:text-[#6fe3db]"
+              class="inline-flex min-h-[38px] items-center py-1 transition-colors hover:text-[#6fe3db]"
             >
               {t.links.github}
             </a>
@@ -87,7 +97,7 @@ const { t, homeHref = '/' } = Astro.props;
               href={t.links.issueHref}
               target="_blank"
               rel="noopener noreferrer"
-              class="transition-colors hover:text-[#6fe3db]"
+              class="inline-flex min-h-[38px] items-center py-1 transition-colors hover:text-[#6fe3db]"
             >
               {t.links.issue}
             </a>
@@ -96,10 +106,13 @@ const { t, homeHref = '/' } = Astro.props;
       </div>
 
       <div>
-        <h3 class="mb-4 text-sm font-bold tracking-tight text-[#f3efe6]">{t.legal}</h3>
-        <ul class="space-y-2.5 text-sm text-[#9bb0c3]">
+        <h3 class="mb-3 text-sm font-bold tracking-tight text-[#f3efe6]">{t.legal}</h3>
+        <ul class="space-y-0.5 text-sm text-[#b7c8d8]">
           <li>
-            <a href={t.links.privacyHref} class="transition-colors hover:text-[#6fe3db]">
+            <a
+              href={t.links.privacyHref}
+              class="inline-flex min-h-[38px] items-center py-1 transition-colors hover:text-[#6fe3db]"
+            >
               {t.links.privacy}
             </a>
           </li>
@@ -108,12 +121,12 @@ const { t, homeHref = '/' } = Astro.props;
     </div>
 
     <div
-      class="mt-12 flex flex-col items-start justify-between gap-4 border-t border-[rgba(148,179,196,0.12)] pt-8 sm:flex-row sm:items-center"
+      class="mt-10 flex flex-col items-start justify-between gap-3 border-t border-[rgba(148,179,196,0.14)] pt-7 sm:flex-row sm:items-center"
     >
-      <p class="text-xs text-[#7992a8]">
+      <p class="text-xs text-[#9fb4c8]">
         © {new Date().getFullYear()} Ophel Atlas. {t.rights}.
       </p>
-      <p class="text-xs text-[#7992a8]">
+      <p class="text-xs text-[#9fb4c8]">
         {t.tagline}
       </p>
     </div>

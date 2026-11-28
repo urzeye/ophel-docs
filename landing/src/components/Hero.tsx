@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
   ArrowRight,
-  BookOpen,
+  Check,
   CheckCircle2,
+  Copy,
   Download,
   FolderKanban,
   LayoutList,
@@ -10,22 +11,12 @@ import {
   ShieldCheck,
   Sparkles,
 } from 'lucide-react';
-import {
-  CHROME_STORE_URL,
-  EDGE_STORE_URL,
-  FIREFOX_STORE_URL,
-  GITHUB_RELEASES_URL,
-  GREASYFORK_URL,
-} from '../i18n';
-import {
-  BUILTIN_PLATFORM_COUNT,
-  SITE_PACK_COUNT,
-  TOTAL_SUPPORTED_SITES,
-} from '../lib/supported-platforms';
+import { CHROME_STORE_URL, EDGE_STORE_URL, FIREFOX_STORE_URL, GREASYFORK_URL } from '../i18n';
 
 interface BrowserCta {
   label: string;
   href: string;
+  external?: boolean;
 }
 
 interface HeroProps {
@@ -33,9 +24,7 @@ interface HeroProps {
   titleLine2: string;
   description: string;
   primaryCta: string;
-  secondaryCta: string;
   primaryLink: string;
-  secondaryLink: string;
   alternateInstallLabel: string;
   alternateInstallLink: string;
   browserCtas?: Record<string, BrowserCta>;
@@ -59,6 +48,10 @@ function detectBrowser(): string {
   return 'default';
 }
 
+function isMobileDevice(): boolean {
+  return /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
+}
+
 const BROWSER_ICONS: Record<string, string> = {
   chrome: '/icons/chrome.svg',
   edge: '/icons/edge.svg',
@@ -69,114 +62,99 @@ const BROWSER_ICONS: Record<string, string> = {
 const PLATFORM_STRIP: Array<{
   label: string;
   icon: string;
-  href: string;
   inverted?: boolean;
-  isNew?: boolean;
 }> = [
-  { label: 'ChatGPT', icon: '/icons/chatgpt.png', href: 'https://chatgpt.com', inverted: true },
-  { label: 'Gemini', icon: '/icons/gemini.png', href: 'https://gemini.google.com' },
-  { label: 'Claude', icon: '/icons/claude.svg', href: 'https://claude.ai' },
-  {
-    label: 'Gemini Notebook',
-    icon: '/icons/notebook.png',
-    href: 'https://notebook.google.com',
-  },
-  { label: 'DeepSeek', icon: '/icons/deepseek.svg', href: 'https://chat.deepseek.com' },
-  { label: 'Kimi', icon: '/icons/kimi.png', href: 'https://www.kimi.com' },
+  { label: 'ChatGPT', icon: '/icons/chatgpt.png', inverted: true },
+  { label: 'Gemini', icon: '/icons/gemini.png' },
+  { label: 'Claude', icon: '/icons/claude.svg' },
+  { label: 'Notebook', icon: '/icons/notebook.png' },
+  { label: 'DeepSeek', icon: '/icons/deepseek.svg' },
+  { label: 'Kimi', icon: '/icons/kimi.png' },
 ];
-
-const EXTRA_PLATFORMS_COUNT = TOTAL_SUPPORTED_SITES - PLATFORM_STRIP.length;
 
 const text = {
   en: {
     live: 'Latest release',
-    localFirst: '100% local-first · Zero telemetry',
-    ecosystemSummary: `${BUILTIN_PLATFORM_COUNT} built-in sites + ${SITE_PACK_COUNT} Site Packs`,
-    watchDemo: 'Watch 24s live demo',
-    morePlatforms: `+ ${EXTRA_PLATFORMS_COUNT} more sites & packs →`,
-    newBadge: 'NEW',
-    browsersLabel: 'Available on:',
-    allDownloads: 'All install options',
+    openSource: 'Free & Open Source (GPLv3)',
+    localFirst: '100% local · Zero telemetry',
+    ecosystemSummary: 'Built-in AI platforms & extensible Site Packs',
+    watchDemo: 'Watch 24s demo',
+    morePlatforms: 'All supported sites →',
+    browsersLabel: 'Also on:',
+    safariNote: 'Safari (macOS Beta)',
+    mobileHint: 'Desktop browser extension',
+    copyDesktopLink: 'Copy link for desktop',
+    copiedLink: 'Link copied!',
+    tabsLabel: 'Ophel side panel views',
     previewTabs: [
       {
         id: 'outline',
         label: 'Live Outline',
-        caption: 'H1–H6 tree, inline search & section anchors',
-        image: '/images/product/outline-en.png',
+        caption: 'H1–H6 tree, inline search & return anchors',
+        image: '/images/product/outline-en.webp',
         alt: 'Ophel Atlas side panel generating a real-time outline beside an AI chat',
       },
       {
         id: 'folders',
         label: 'Chat Folders',
-        caption: 'Project folders, tags & batch actions',
-        image: '/images/product/conversation-en.png',
+        caption: 'Project folders, tags & multi-workspace isolation',
+        image: '/images/product/conversation-en.webp',
         alt: 'Ophel Atlas chat folder and tag management panel',
       },
       {
         id: 'prompts',
         label: 'Prompt Library',
-        caption: 'Variable templates, quick quote & prompt chains',
-        image: '/images/product/prompt-en.png',
+        caption: 'Variable templates, quick quote & prompt queues',
+        image: '/images/product/prompt-en.webp',
         alt: 'Ophel Atlas structured prompt library and variable template modal',
       },
     ],
   },
   zh: {
     live: '最新发布',
-    localFirst: '数据 100% 本地优先 · 零遥测',
-    ecosystemSummary: `${BUILTIN_PLATFORM_COUNT} 个内置站点 + ${SITE_PACK_COUNT} 个站点适配包`,
-    watchDemo: '观看 24 秒实机演示',
-    morePlatforms: `+ ${EXTRA_PLATFORMS_COUNT} 个站点与适配包 →`,
-    newBadge: '新增',
-    browsersLabel: '支持环境：',
-    allDownloads: '全部安装方式',
+    openSource: 'GPLv3 开源免费 · 零账号',
+    localFirst: '100% 本地存储 · 零遥测',
+    ecosystemSummary: '内置主流平台与持续扩展的站点适配包',
+    watchDemo: '看 24 秒实机演示',
+    morePlatforms: '全部支持站点 →',
+    browsersLabel: '支持渠道：',
+    safariNote: 'Safari (实验版)',
+    mobileHint: '适用于电脑端浏览器',
+    copyDesktopLink: '复制链接到电脑安装',
+    copiedLink: '已复制安装链接',
+    tabsLabel: 'Ophel 面板视图切换',
     previewTabs: [
       {
         id: 'outline',
         label: '实时大纲',
-        caption: '多级标题树、内联检索与段落锚点跳转',
-        image: '/images/product/outline-zh.png',
+        caption: '多级标题树、内联检索与锚点回溯',
+        image: '/images/product/outline-zh.webp',
         alt: 'Ophel Atlas 在 AI 对话旁生成实时大纲的侧边面板',
       },
       {
         id: 'folders',
         label: '对话文件夹',
-        caption: '按项目归档对话、多标签过滤与批量管理',
-        image: '/images/product/conversation-zh.png',
+        caption: '按项目归档、多标签过滤与工作区隔离',
+        image: '/images/product/conversation-zh.webp',
         alt: 'Ophel Atlas 对话文件夹与标签管理面板',
       },
       {
         id: 'prompts',
         label: 'Prompt 词库',
-        caption: '变量填空模板、划词引用与链式队列发送',
-        image: '/images/product/prompt-zh.png',
+        caption: '变量填空模板、划词引用与队列发送',
+        image: '/images/product/prompt-zh.webp',
         alt: 'Ophel Atlas 结构化 Prompt 词库与模板预览',
       },
     ],
   },
 } as const;
 
-const BROWSER_TARGETS = [
-  { id: 'chrome', name: 'Chrome', icon: '/icons/chrome.svg', href: CHROME_STORE_URL },
-  { id: 'edge', name: 'Edge', icon: '/icons/edge.svg', href: EDGE_STORE_URL },
-  { id: 'firefox', name: 'Firefox', icon: '/icons/firefox.svg', href: FIREFOX_STORE_URL },
-  { id: 'safari', name: 'Safari', icon: '/icons/safari.svg', href: GITHUB_RELEASES_URL },
-  {
-    id: 'userscript',
-    name: 'Tampermonkey',
-    icon: '/icons/tampermonkey.svg',
-    href: GREASYFORK_URL,
-  },
-];
-
 export function Hero({
   titleLine1,
   titleLine2,
   description,
   primaryCta,
-  secondaryCta,
   primaryLink,
-  secondaryLink,
   alternateInstallLabel,
   alternateInstallLink,
   browserCtas,
@@ -185,16 +163,23 @@ export function Hero({
 }: HeroProps) {
   const [ctaLabel, setCtaLabel] = useState(primaryCta);
   const [ctaHref, setCtaHref] = useState(primaryLink);
+  const [ctaExternal, setCtaExternal] = useState(true);
   const [browserIcon, setBrowserIcon] = useState<string | null>('/icons/chrome.svg');
+  const [isMobile, setIsMobile] = useState(false);
+  const [copied, setCopied] = useState(false);
   const [activeTabIndex, setActiveTabIndex] = useState(0);
+  const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
   useEffect(() => {
+    const mobile = isMobileDevice();
+    setIsMobile(mobile);
     const browser = detectBrowser();
     setBrowserIcon(BROWSER_ICONS[browser] ?? '/icons/chrome.svg');
     const cta = browserCtas?.[browser] ?? browserCtas?.default;
     if (cta) {
       setCtaLabel(cta.label);
       setCtaHref(cta.href);
+      setCtaExternal(cta.external !== false);
     }
   }, [browserCtas]);
 
@@ -202,17 +187,76 @@ export function Hero({
   const activePreview = copy.previewTabs[activeTabIndex] ?? copy.previewTabs[0];
   const TAB_ICONS = [LayoutList, FolderKanban, Sparkles];
 
+  const safariHref = `${alternateInstallLink}#safari`;
+  const browserTargets = [
+    {
+      id: 'chrome',
+      name: 'Chrome',
+      icon: '/icons/chrome.svg',
+      href: CHROME_STORE_URL,
+      external: true,
+    },
+    { id: 'edge', name: 'Edge', icon: '/icons/edge.svg', href: EDGE_STORE_URL, external: true },
+    {
+      id: 'firefox',
+      name: 'Firefox',
+      icon: '/icons/firefox.svg',
+      href: FIREFOX_STORE_URL,
+      external: true,
+    },
+    {
+      id: 'safari',
+      name: copy.safariNote,
+      icon: '/icons/safari.svg',
+      href: safariHref,
+      external: false,
+    },
+    {
+      id: 'userscript',
+      name: 'Userscript',
+      icon: '/icons/tampermonkey.svg',
+      href: GREASYFORK_URL,
+      external: true,
+    },
+  ];
+
   const titleMarkPhrases =
     locale === 'zh'
       ? titleLine2.split('、').map((part, i, arr) => (i < arr.length - 1 ? `${part}、` : part))
       : [titleLine2];
 
+  const handleCopyDesktopLink = async () => {
+    const url = locale === 'zh' ? 'https://ophel.app/zh/download/' : 'https://ophel.app/download/';
+    try {
+      await navigator.clipboard.writeText(url);
+      setCopied(true);
+      window.setTimeout(() => setCopied(false), 2200);
+    } catch {
+      window.location.href = alternateInstallLink;
+    }
+  };
+
+  const handleTabKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>, idx: number) => {
+    const total = copy.previewTabs.length;
+    let nextIdx: number | null = null;
+    if (e.key === 'ArrowRight') nextIdx = (idx + 1) % total;
+    else if (e.key === 'ArrowLeft') nextIdx = (idx - 1 + total) % total;
+    else if (e.key === 'Home') nextIdx = 0;
+    else if (e.key === 'End') nextIdx = total - 1;
+
+    if (nextIdx !== null) {
+      e.preventDefault();
+      setActiveTabIndex(nextIdx);
+      tabRefs.current[nextIdx]?.focus();
+    }
+  };
+
   return (
-    <section className="hero-shell relative isolate overflow-hidden px-5 pb-16 pt-10 sm:px-6 sm:pt-14 lg:px-8 lg:pb-22">
+    <section className="hero-shell relative isolate overflow-hidden px-4 pb-12 pt-5 sm:px-6 sm:pt-12 sm:pb-16 lg:px-8 lg:pb-20">
       <div className="hero-atmosphere" aria-hidden="true" />
 
-      <div className="mx-auto grid w-full max-w-[1200px] items-center gap-10 lg:grid-cols-[minmax(0,1.04fr)_minmax(0,0.96fr)] lg:gap-12">
-        {/* Left column: Headline, CTAs, Browser targets & Specification ledger */}
+      <div className="mx-auto grid w-full max-w-[1200px] items-center gap-7 sm:gap-10 lg:grid-cols-[minmax(0,1.02fr)_minmax(0,0.98fr)] lg:gap-12">
+        {/* Left column: Headline, focused CTAs, concise browser links & trust strip */}
         <div className="hero-copy">
           <h1 className="hero-title">
             <span className="hero-title-lead">{titleLine1}</span>
@@ -225,53 +269,96 @@ export function Hero({
             </span>
           </h1>
 
-          <p className="mt-5 max-w-[60ch] text-base leading-relaxed text-[color:var(--text-muted)] sm:text-[1.125rem] sm:leading-[1.75]">
+          <p className="mt-3.5 max-w-[58ch] text-[0.95rem] leading-[1.65] text-[color:var(--text-muted)] sm:mt-5 sm:text-[1.1rem] sm:leading-[1.72]">
             {description}
           </p>
 
-          <div className="mt-7 flex flex-wrap items-center gap-3">
-            <a
-              className="hero-primary-btn group"
-              href={ctaHref}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {browserIcon ? (
-                <img src={browserIcon} alt="" width="20" height="20" className="shrink-0" />
-              ) : (
-                <Download className="h-5 w-5 shrink-0" aria-hidden="true" />
-              )}
-              <span>{ctaLabel}</span>
-              <ArrowRight className="h-4 w-4 shrink-0 transition-transform duration-150 group-hover:translate-x-0.5" />
-            </a>
+          {/* Primary + secondary action pair */}
+          <div className="mt-5 flex flex-wrap items-center gap-2.5 sm:mt-7 sm:gap-3">
+            {isMobile ? (
+              <>
+                <button
+                  type="button"
+                  onClick={handleCopyDesktopLink}
+                  className="hero-primary-btn group"
+                >
+                  {copied ? (
+                    <Check className="h-4 w-4 shrink-0" aria-hidden="true" />
+                  ) : (
+                    <Copy className="h-4 w-4 shrink-0" aria-hidden="true" />
+                  )}
+                  <span>{copied ? copy.copiedLink : copy.copyDesktopLink}</span>
+                </button>
+                <a className="hero-secondary-btn group" href="#features">
+                  <Play
+                    className="h-4 w-4 shrink-0 fill-current text-[color:var(--accent-strong)]"
+                    aria-hidden="true"
+                  />
+                  <span>{copy.watchDemo}</span>
+                </a>
+              </>
+            ) : (
+              <>
+                <a
+                  className="hero-primary-btn group"
+                  href={ctaHref}
+                  {...(ctaExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                >
+                  {browserIcon ? (
+                    <img src={browserIcon} alt="" width="20" height="20" className="shrink-0" />
+                  ) : (
+                    <Download className="h-5 w-5 shrink-0" aria-hidden="true" />
+                  )}
+                  <span>{ctaLabel}</span>
+                  <ArrowRight
+                    className="h-4 w-4 shrink-0 transition-transform duration-150 group-hover:translate-x-0.5"
+                    aria-hidden="true"
+                  />
+                </a>
 
-            <a className="hero-secondary-btn group" href="#features">
-              <Play
-                className="h-4 w-4 shrink-0 fill-current text-[color:var(--accent-strong)]"
-                aria-hidden="true"
-              />
-              <span>{copy.watchDemo}</span>
-            </a>
-
-            <a className="hero-ghost-btn" href={secondaryLink}>
-              <BookOpen className="h-4 w-4 shrink-0" aria-hidden="true" />
-              <span>{secondaryCta}</span>
-            </a>
+                <a className="hero-secondary-btn group" href="#features">
+                  <Play
+                    className="h-4 w-4 shrink-0 fill-current text-[color:var(--accent-strong)]"
+                    aria-hidden="true"
+                  />
+                  <span>{copy.watchDemo}</span>
+                </a>
+              </>
+            )}
           </div>
 
-          {/* Direct browser & runtime availability bar (includes Safari -> GitHub Releases) */}
-          <div className="mt-6 flex flex-wrap items-center gap-2 border-t border-[color:var(--line)] pt-5">
+          {/* Grounded open-source & local-first trust strip */}
+          <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-1.5 text-xs font-semibold text-[color:var(--ink-muted)] sm:mt-5 sm:gap-x-5">
+            <span className="inline-flex items-center gap-1.5 font-mono">
+              <CheckCircle2
+                className="h-3.5 w-3.5 shrink-0 text-[color:var(--ok)]"
+                aria-hidden="true"
+              />
+              <span>{version ? `v${version}` : copy.live}</span>
+            </span>
+            <span className="inline-flex items-center gap-1.5">
+              <ShieldCheck
+                className="h-3.5 w-3.5 shrink-0 text-[color:var(--ok)]"
+                aria-hidden="true"
+              />
+              <span>{copy.openSource}</span>
+            </span>
+            <span className="hidden sm:inline-flex items-center gap-1.5">
+              <span>{copy.localFirst}</span>
+            </span>
+          </div>
+
+          {/* Browser channels row (hidden on narrow mobile to keep product preview above the fold) */}
+          <div className="mt-5 hidden flex-wrap items-center gap-2 border-t border-[color:var(--line)] pt-4 sm:flex">
             <span className="text-xs font-semibold text-[color:var(--text-muted)]">
               {copy.browsersLabel}
             </span>
-            {BROWSER_TARGETS.map((target) => (
+            {browserTargets.map((target) => (
               <a
                 key={target.id}
                 href={target.href}
-                target="_blank"
-                rel="noopener noreferrer"
+                {...(target.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                 className="browser-pill"
-                title={target.name}
               >
                 <img src={target.icon} alt="" width="15" height="15" className="shrink-0" />
                 <span>{target.name}</span>
@@ -282,66 +369,16 @@ export function Hero({
               <ArrowRight className="h-3 w-3" aria-hidden="true" />
             </a>
           </div>
-
-          {/* Grounded technical specification strip (replaces generic 3-box metric cards) */}
-          <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs font-semibold text-[color:var(--ink-muted)]">
-            <span className="inline-flex items-center gap-1.5 font-mono">
-              <CheckCircle2
-                className="h-3.5 w-3.5 shrink-0 text-[color:var(--ok)]"
-                aria-hidden="true"
-              />
-              <span>{version ? `v${version}` : copy.live}</span>
-            </span>
-            <a
-              href="#platforms"
-              className="inline-flex items-center gap-1.5 underline decoration-[color:var(--line-strong)] underline-offset-4 transition-colors hover:text-[color:var(--accent-strong)]"
-            >
-              <span>{copy.ecosystemSummary}</span>
-            </a>
-            <span className="inline-flex items-center gap-1.5">
-              <ShieldCheck
-                className="h-3.5 w-3.5 shrink-0 text-[color:var(--ok)]"
-                aria-hidden="true"
-              />
-              <span>{copy.localFirst}</span>
-            </span>
-          </div>
-
-          <a
-            className="hero-tooltivity-link"
-            href="https://tooltivity.com/extensions/ophel"
-            target="_blank"
-            rel="noopener noreferrer"
-            tabIndex={-1}
-            aria-hidden="true"
-            title="Reviewed and tested by Tooltivity"
-          >
-            <img
-              src="https://tooltivity.com/api/widgets/embed-image/v1/featured.svg?extension=ophel&theme=light"
-              alt="Tooltivity - Tested and reviewed by Tooltivity"
-              width="176"
-              height="38"
-              className="hero-tooltivity-image"
-              loading="lazy"
-            />
-          </a>
         </div>
 
-        {/* Right column: Interactive 3-tab product stage + Ecosystem strip */}
+        {/* Right column: Clean single-frame 3-tab product stage (no faux macOS dots or nested cards) */}
         <div className="hero-product">
           <div className="product-window">
             <div className="product-window-bar">
-              <div className="flex items-center gap-1.5" aria-hidden="true">
-                <span className="window-dot bg-[#e56b55]" />
-                <span className="window-dot bg-[#e8b339]" />
-                <span className="window-dot bg-[#3ca873]" />
-              </div>
-
-              {/* Interactive panel view switcher inside window bar */}
               <div
-                className="flex items-center gap-1 rounded-full border border-[color:var(--line)] bg-[color:var(--paper)] p-1"
+                className="flex w-full items-center justify-between gap-1 rounded-full border border-[color:var(--line)] bg-[color:var(--background)] p-1 sm:w-auto sm:justify-start"
                 role="tablist"
-                aria-label="Ophel panel views"
+                aria-label={copy.tabsLabel}
               >
                 {copy.previewTabs.map((tab, idx) => {
                   const Icon = TAB_ICONS[idx] ?? LayoutList;
@@ -349,17 +386,27 @@ export function Hero({
                   return (
                     <button
                       key={tab.id}
+                      id={`hero-tab-${tab.id}`}
+                      ref={(el) => {
+                        tabRefs.current[idx] = el;
+                      }}
                       type="button"
                       role="tab"
                       aria-selected={isActive}
+                      aria-controls="hero-preview-panel"
+                      tabIndex={isActive ? 0 : -1}
                       onClick={() => setActiveTabIndex(idx)}
-                      className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-bold transition-all ${
+                      onKeyDown={(e) => handleTabKeyDown(e, idx)}
+                      className={`inline-flex min-h-[34px] flex-1 items-center justify-center gap-1 whitespace-nowrap rounded-full px-2 py-1.5 text-xs font-bold transition-colors sm:flex-none sm:gap-1.5 sm:px-3 ${
                         isActive
                           ? 'bg-[color:var(--ink-strong)] text-white shadow-sm'
                           : 'text-[color:var(--ink-muted)] hover:text-[color:var(--ink-strong)]'
                       }`}
                     >
-                      <Icon className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
+                      <Icon
+                        className="hidden h-3.5 w-3.5 shrink-0 sm:inline-block"
+                        aria-hidden="true"
+                      />
                       <span>{tab.label}</span>
                     </button>
                   );
@@ -367,7 +414,12 @@ export function Hero({
               </div>
             </div>
 
-            <div className="product-stage">
+            <div
+              id="hero-preview-panel"
+              role="tabpanel"
+              aria-labelledby={`hero-tab-${activePreview.id}`}
+              className="product-stage"
+            >
               <img
                 src={activePreview.image}
                 alt={activePreview.alt}
@@ -378,48 +430,40 @@ export function Hero({
                 fetchPriority="high"
               />
 
-              <div className="product-caption-bar">
-                <span className="font-mono text-[11px] font-semibold text-[color:var(--accent-strong)]">
+              <p className="product-caption">
+                <strong className="font-mono text-xs font-bold text-[color:var(--accent-strong)]">
                   {activePreview.label}
+                </strong>
+                <span aria-hidden="true" className="text-[color:var(--line-strong)]">
+                  ·
                 </span>
                 <span className="text-xs font-medium text-[color:var(--ink-muted)]">
                   {activePreview.caption}
                 </span>
-              </div>
+              </p>
             </div>
           </div>
 
-          {/* Supported platform quick strip */}
+          {/* Supported platform badges (non-outbound so visitors stay on the landing page) */}
           <div className="platform-strip" aria-label={copy.ecosystemSummary}>
             {PLATFORM_STRIP.map((platform) => (
-              <a
-                className="platform-strip-item"
-                href={platform.href}
-                key={platform.label}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <span className="platform-strip-item" key={platform.label}>
                 <span
                   className={`inline-flex h-4 w-4 shrink-0 items-center justify-center ${
                     platform.inverted ? 'rounded-full bg-[color:var(--ink-strong)] p-0.5' : ''
                   }`}
+                  aria-hidden="true"
                 >
                   <img
                     src={platform.icon}
                     alt=""
                     width="15"
                     height="15"
-                    loading="lazy"
                     className={platform.inverted ? '[filter:brightness(0)_invert(1)]' : ''}
                   />
                 </span>
                 <span>{platform.label}</span>
-                {platform.isNew && (
-                  <span className="rounded-full bg-[color:var(--surface-tint)] px-1.5 py-0.2 font-mono text-[10px] font-bold text-[color:var(--accent-strong)]">
-                    {copy.newBadge}
-                  </span>
-                )}
-              </a>
+              </span>
             ))}
             <a className="platform-strip-more" href="#platforms">
               {copy.morePlatforms}

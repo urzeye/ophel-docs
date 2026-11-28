@@ -1,9 +1,3 @@
-import {
-  BUILTIN_PLATFORM_COUNT,
-  SITE_PACK_COUNT,
-  TOTAL_SUPPORTED_SITES,
-} from './lib/supported-platforms';
-
 export type Lang = 'en' | 'zh';
 
 /** Chrome Web Store 插件详情页 */
@@ -28,14 +22,14 @@ export const SCRIPTCAT_URL = 'https://scriptcat.org/script-show-page/6519';
 
 const en = {
   nav: {
-    features: 'Workbench',
-    platforms: `${TOTAL_SUPPORTED_SITES} Sites`,
+    features: 'Live Demo',
+    platforms: 'Sites',
     reviews: 'Reviews',
     reviewsHref: '/#reviews',
     changelog: 'Changelog',
     changelogHref: '/changelog/',
     docs: 'Docs',
-    docsHref: '/docs',
+    docsHref: 'https://ophel.app/docs',
     githubHref: 'https://github.com/urzeye/ophel',
     githubAriaLabel: 'View Ophel on GitHub',
     install: 'Install',
@@ -47,69 +41,90 @@ const en = {
     langSwitchAriaLabel: 'Switch to Chinese',
   },
   hero: {
-    badge: 'Browser Extension & Userscript · Open Source GPLv3',
     titleLine1: 'Turn AI Chats into',
     titleGradient: 'Readable, Navigable, Lasting Documents',
-    desc: `Ophel equips ${BUILTIN_PLATFORM_COUNT} built-in AI platforms (ChatGPT, Gemini, Claude, DeepSeek, and more) plus ${SITE_PACK_COUNT} Site Packs with a real-time outline tree, project folders, and a structured prompt library.`,
+    desc: 'Stop endless scrolling through long AI threads. Ophel adds a live outline, project folders, reusable prompts, and clean exports across major AI platforms and extensible Site Packs.',
     ctaPrimary: 'Install on Chrome',
-    ctaSecondary: 'Explore Docs',
-    note: 'Supports Chrome · Edge · Firefox · Safari (Experimental) · Tampermonkey · ScriptCat',
   },
   features: {
-    title: 'An Ordered Console Beside Every AI Thread',
-    desc: 'Watch how Ophel turns a sprawling multi-turn architecture discussion into a structured, searchable workbench — or scrub through each workflow stage below.',
+    title: 'See How Ophel Tames a Long AI Thread',
+    desc: 'Watch a real 24-second recording of Ophel turning a sprawling multi-turn discussion into a collapsible outline with instant filtering, bookmarks, and radial theme switching.',
     items: [
       {
-        code: 'TOC · H1–H6',
-        title: 'Real-Time Smart Outline',
-        desc: 'Parses user prompts and AI headings on the fly into a collapsible tree with level filters, inline search, bookmarks, word counts, and one-click section copy.',
-      },
-      {
-        code: 'FOLDER + TAG',
-        title: 'Two-Dimensional Chat Manager',
-        desc: 'Organize synced threads with project folders, multi-tag filters, pins, drag-and-drop ordering, and safe cleanup review without leaving your active tab.',
-      },
-      {
-        code: '{{VAR}} · QUEUE',
-        title: 'Variable Prompt Library & Chains',
-        desc: 'Store reusable prompt templates with fill-in variables, selection quoting, and sequential prompt queues that send multi-step workflows automatically.',
+        code: 'PNG · MD · ZIP',
+        title: 'Shareable Long Images & Clean Exports',
+        desc: 'Export full threads or selected turns into clean PNG/JPG share cards with auto-matched themes and custom watermarks, or save Markdown, HTML, JSON, TXT, and ZIP bundles with images.',
       },
       {
         code: 'CTRL/⌘ + K',
-        title: 'Syntax-Powered Global Search',
-        desc: 'Jump across outlines, synced chats (including other platforms), prompts, and settings using folder:, tag:, type:, is:, level:, and date: query operators.',
+        title: 'Cross-Platform Global Search',
+        desc: 'Press Ctrl/⌘ + K (or double-tap Shift) to search across your live outline, synced chats from every AI site, prompts, and settings — narrow results by project folder or tag in seconds.',
       },
       {
-        code: 'MD · IMG · ZIP',
-        title: 'Multi-Format & Segmented Export',
-        desc: 'Export complete threads or selected turns to clean Markdown, ZIP with images, shareable PNG/JPG images, HTML, JSON, or TXT.',
+        code: 'LOCK · ALERT',
+        title: 'Focus Reading, Scroll Lock & Done Alerts',
+        desc: 'Lock scroll position while AI streams long answers, get desktop notifications and tab status markers (⏳/✅) when generation finishes, resume where you left off, and copy Mermaid or LaTeX cleanly.',
       },
       {
-        code: '24 THEMES · WEBDAV',
-        title: '24 Themes, Zen Mode & WebDAV Sync',
-        desc: '12 light + 12 dark themes, widescreen & Zen layout controls, plus zero-telemetry local storage with manual and scheduled WebDAV backups.',
+        code: 'FOLDER · {{VAR}}',
+        title: 'Folders, Multi-Account Isolation & Prompt Queues',
+        desc: 'Organize chats with project folders and colored tags while keeping personal and team workspaces isolated. Reuse {{variable}} templates, quote selections, and send multi-step prompt chains automatically.',
+      },
+      {
+        code: 'SITE PACKS',
+        title: 'Extensible Site Packs & Fast Rule Updates',
+        desc: 'Works out of the box on major AI platforms, expands via one-click community Site Packs and self-hosted tools like Open WebUI, and adapts to site redesigns through signed rule updates without waiting on store reviews.',
+      },
+      {
+        code: 'LOCAL · WEBDAV',
+        title: 'Zero-Account Privacy & Scheduled WebDAV Backups',
+        desc: 'Free and open-source under GPLv3 with zero background telemetry. Everything stays in your browser by default, permissions are requested on demand, and optional WebDAV keeps 7 automatic backups per device.',
       },
     ],
   },
   platforms: {
-    title: `${BUILTIN_PLATFORM_COUNT} Built-in Sites + ${SITE_PACK_COUNT} Site Packs`,
-    desc: `Works out of the box on ${BUILTIN_PLATFORM_COUNT} major AI platforms (including multi-domain hosts like Doubao/Dola and Kimi), plus ${SITE_PACK_COUNT} community Site Packs you can install in one click — and custom self-hosted URL binding.`,
+    title: 'Built-in Platforms & Extensible Site Packs',
+    desc: 'Works out of the box on major AI platforms (including multi-domain hosts like Doubao/Dola and Kimi), plus a growing library of one-click community Site Packs and custom self-hosted URLs.',
   },
   reviews: {
     title: 'Trusted in Daily AI Workflows',
-    subtitle: 'Unedited reviews from researchers, engineers, and writers on the Chrome Web Store',
+    subtitle: 'Real 5-star reviews from researchers, engineers, and everyday AI users',
+  },
+  finalCta: {
+    title: 'Private by Default. Free Forever.',
+    desc: 'Install Ophel in seconds — no sign-up, no subscription, and no remote servers reading your chats.',
+    pillars: [
+      {
+        title: '100% local storage & zero telemetry',
+        detail:
+          'Your folders, bookmarks, and prompts stay on your device unless you configure your own WebDAV server.',
+      },
+      {
+        title: 'Permissions requested only on demand',
+        detail:
+          'Notifications, cookies, and extra Site Pack domains are never requested until you explicitly enable them.',
+      },
+      {
+        title: 'GPLv3 open-source & transparent',
+        detail:
+          'Inspect every line of code on GitHub, choose extension or userscript, and export all data anytime.',
+      },
+    ],
+    primaryFallback: 'Install on Chrome',
+    secondaryCta: 'All install channels',
+    secondaryHref: '/download/',
+    privacyCta: 'Read privacy & permissions policy',
+    privacyHref: '/privacy/',
   },
   footer: {
     tagline: 'Turn AI chats into documents you can read, navigate, and reuse.',
-    desc: `Open-source browser extension and userscript bringing real-time outlines, chat folders, and prompt workflows to ${TOTAL_SUPPORTED_SITES}+ AI platforms.`,
+    desc: 'Open-source browser extension and userscript bringing real-time outlines, chat folders, and prompt workflows to major AI platforms and extensible Site Packs.',
     product: 'Product',
-    resources: 'Resources',
     support: 'Community & Support',
     legal: 'Legal',
-    other: 'Other',
     rights: 'Released under GPLv3 License',
     links: {
-      features: 'Workbench',
+      features: 'Live Demo',
       changelog: 'Changelog',
       changelogHref: '/changelog/',
       download: 'Download & Install',
@@ -118,10 +133,8 @@ const en = {
       docsHref: 'https://ophel.app/docs',
       sitePacks: 'Site Packs Registry',
       sitePacksHref: 'https://ophel.app/docs/enhancements/site-extensions',
-      safariRelease: 'Safari Package (GitHub)',
-      safariReleaseHref: 'https://github.com/urzeye/ophel/releases',
-      installation: 'Installation',
-      faq: 'FAQ',
+      safariRelease: 'Safari (macOS Beta)',
+      safariReleaseHref: '/download/#safari',
       privacy: 'Privacy Policy',
       privacyHref: '/privacy/',
       github: 'GitHub Repository',
@@ -133,7 +146,8 @@ const en = {
   },
   meta: {
     title: 'Ophel Atlas — AI Chat Outline, Folder Organizer & Prompt Workbench',
-    description: `Turn AI chats into readable, navigable knowledge. Supports ${BUILTIN_PLATFORM_COUNT} built-in platforms (ChatGPT, Gemini, Claude, DeepSeek, Doubao/Dola) + ${SITE_PACK_COUNT} Site Packs across Chrome, Edge, Firefox, Safari & Userscript.`,
+    description:
+      'Turn AI chats into readable, navigable knowledge. Supports major built-in AI platforms (ChatGPT, Gemini, Claude, DeepSeek, Doubao/Dola) plus extensible Site Packs across Chrome, Edge, Firefox, Safari & Userscript.',
   },
   privacy: {
     title: 'Privacy Policy — Ophel Atlas',
@@ -218,8 +232,8 @@ const en = {
 
 const zh = {
   nav: {
-    features: '工作台演示',
-    platforms: `${TOTAL_SUPPORTED_SITES} 个站点生态`,
+    features: '实机演示',
+    platforms: '支持站点',
     reviews: '用户评价',
     reviewsHref: '/zh/#reviews',
     changelog: '更新日志',
@@ -237,69 +251,88 @@ const zh = {
     langSwitchAriaLabel: 'Switch to English',
   },
   hero: {
-    badge: '浏览器扩展与油猴脚本 · GPLv3 开源免费',
     titleLine1: '把 AI 对话变成',
     titleGradient: '可阅读、可导航、可沉淀的文档',
-    desc: `Ophel 为 ChatGPT、Gemini、Claude、DeepSeek 等 ${BUILTIN_PLATFORM_COUNT} 个内置站点与 ${SITE_PACK_COUNT} 个站点适配包提供实时大纲、对话文件夹与 Prompt 词库。告别无尽滚动，让每次深度对话都成为有秩序的知识资产。`,
+    desc: '告别在百屏长聊里反复翻找。Ophel 为主流 AI 平台与持续扩展的站点适配包提供实时目录大纲、项目文件夹、可复用提示词与高清导出。',
     ctaPrimary: '安装 Chrome 扩展',
-    ctaSecondary: '阅读文档',
-    note: '支持 Chrome · Edge · Firefox · Safari（实验版） · 油猴脚本 · 脚本猫',
   },
   features: {
-    title: '伴随每一次 AI 对话的「有秩序的操作台」',
-    desc: '直观查看 Ophel 如何把超长架构讨论转化为可检索、可跳转的结构化文档——你也可以点击左侧章节或进度条，随时检视每个核心环节。',
+    title: '看 Ophel 如何把超长 AI 对话理出秩序',
+    desc: '这段 24 秒真实录屏展示了 Ophel 如何在长对话旁即时生成多级目录、秒级过滤重点、用星标与锚点来回跳转，并一键切换深浅主题。',
     items: [
       {
-        code: 'TOC · H1–H6',
-        title: '实时智能大纲',
-        desc: '实时解析用户提问与 AI 回复的多级标题，提供层级折叠、关键词过滤、重点书签、字数统计与单节复制。',
-      },
-      {
-        code: 'FOLDER + TAG',
-        title: '文件夹 + 标签双维管理',
-        desc: '用项目文件夹、多维彩色标签与置顶整理已同步对话，支持安全同步审阅、拖拽排序与批量操作。',
-      },
-      {
-        code: '{{VAR}} · QUEUE',
-        title: '变量模板与链式 Prompt 队列',
-        desc: '收藏结构化提示词模板，支持 {{变量}} 填空、划词一键引用，以及多步 Prompt 队列自动顺序发送。',
+        code: 'PNG · MD · ZIP',
+        title: '分享长图与多格式精准导出',
+        desc: '一键把完整对话或选定轮次导出为自动配色、可加自定义水印的高清分享长图（PNG/JPG），或导出纯净 Markdown、带图附件 ZIP、HTML、JSON 与 TXT。',
       },
       {
         code: 'CTRL/⌘ + K',
-        title: '语法级全局搜索',
-        desc: '跨当前大纲、各平台已同步对话、Prompt 词库与设置项快速检索，支持 folder:、tag:、type:、is:、level:、date: 过滤语法。',
+        title: '跨平台全局秒搜',
+        desc: '随时按 Ctrl/⌘ + K（或双击 Shift）一次搜遍当前大纲、各平台已同步的历史对话、Prompt 词库与设置——按项目文件夹或标签快速定位曾经聊过的结论。',
       },
       {
-        code: 'MD · IMG · ZIP',
-        title: '多格式与分段导出',
-        desc: '将完整对话或选定片段导出为纯净 Markdown、带图片附件 ZIP、分享图片（PNG/JPG）、HTML、JSON 或 TXT。',
+        code: 'LOCK · ALERT',
+        title: '滚动锁定、完成提醒与长文阅读增强',
+        desc: 'AI 正在输出时开启「滚动锁定」不再强制拉回底部；后台生成完毕后自动桌面通知、提示音并在标签页标出 ⏳/✅ 状态，支持断点续读与 Mermaid / 公式双击复制。',
       },
       {
-        code: '24 THEMES · WEBDAV',
-        title: '24 套主题、禅模式与 WebDAV 同步',
-        desc: '内置 12 浅 + 12 深预置主题、宽屏与禅模式；数据默认 100% 本地存储，支持自建 WebDAV 手动与定时自动备份。',
+        code: 'FOLDER · {{VAR}}',
+        title: '多账号隔离归档与变量 Prompt 队列',
+        desc: '用项目文件夹与彩色标签整理历史对话，自动隔离个人与团队多工作区；内置带 {{变量}} 填空的提示词模板、划词一键引用与多步队列自动顺序发送。',
+      },
+      {
+        code: '适配中心',
+        title: '广泛平台覆盖与官网改版云端热修',
+        desc: '开箱支持主流 AI 平台，可通过社区适配包一键扩展更多站点及 Open WebUI、LibreChat 等自部署界面；遇到 AI 官网改版时通过只读签名规则快速热更新，无需苦等商店审核。',
+      },
+      {
+        code: 'LOCAL · WEBDAV',
+        title: '零账号本地优先与 WebDAV 定时备份',
+        desc: 'GPLv3 开源免费、无需登录、零后台遥测，所有数据默认 100% 保存在本地浏览器；敏感权限按需申请，可直连你自己的 WebDAV 自动定时备份（每台设备保留最近 7 份）。',
       },
     ],
   },
   platforms: {
-    title: `${BUILTIN_PLATFORM_COUNT} 个内置站点 + ${SITE_PACK_COUNT} 个站点适配包`,
-    desc: `开箱内置 ${BUILTIN_PLATFORM_COUNT} 个主流 AI 平台（含豆包/Dola、Kimi 多域名），并可通过「适配中心」一键启用 ${SITE_PACK_COUNT} 个社区适配包与自定义自部署站点。`,
+    title: '内置主流平台与可扩展站点适配包',
+    desc: '开箱支持主流 AI 平台（含豆包/Dola、Kimi 多域名），并可在「适配中心」一键启用持续扩充的社区适配包与自定义自部署地址。',
   },
   reviews: {
     title: '高频 AI 用户的真实口碑',
-    subtitle: '来自全球开发者、研究者与创作者在扩展商店的真实评价',
+    subtitle: '来自 Chrome 网上应用店的真实五星评价，保留完整原文',
+  },
+  finalCta: {
+    title: '默认本地隐私，永久开源免费',
+    desc: '几秒即可安装上手——无需注册账号、没有订阅付费墙，也没有任何服务器会读取你的对话内容。',
+    pillars: [
+      {
+        title: '100% 本地存储，零后台遥测',
+        detail:
+          '文件夹、书签与提示词默认全部留在你的浏览器里，仅在主动配置 WebDAV 时直连你的自有服务器。',
+      },
+      {
+        title: '权限按需申请，随时可撤回',
+        detail: '完成通知、Cookie 导入及额外站点适配包权限，仅在你开启对应功能时才会弹窗请求授权。',
+      },
+      {
+        title: 'GPLv3 完整开源，支持扩展与油猴',
+        detail: '全部源码公开透明可审计，自由选择官方浏览器扩展或油猴脚本，数据随时一键备份迁移。',
+      },
+    ],
+    primaryFallback: '安装 Chrome 扩展',
+    secondaryCta: '查看全部安装渠道',
+    secondaryHref: '/zh/download/',
+    privacyCta: '查看完整隐私与权限说明',
+    privacyHref: '/zh/privacy/',
   },
   footer: {
     tagline: '让 AI 对话可读、可导航、可沉淀。',
-    desc: `开源免费的浏览器扩展与油猴脚本，为 ${TOTAL_SUPPORTED_SITES}+ 个 AI 平台提供统一的大纲导航、对话整理与提示词工作流。`,
+    desc: '开源免费的浏览器扩展与油猴脚本，为主流 AI 平台与持续扩充的社区适配包提供统一的大纲导航、对话整理与提示词工作流。',
     product: '产品',
-    resources: '生态与资源',
     support: '社区与支持',
     legal: '法律与隐私',
-    other: '其他',
     rights: '基于 GPLv3 开源协议发布',
     links: {
-      features: '工作台演示',
+      features: '实机演示',
       changelog: '更新日志',
       changelogHref: '/zh/changelog/',
       download: '下载安装',
@@ -308,10 +341,8 @@ const zh = {
       docsHref: 'https://ophel.app/docs/zh',
       sitePacks: '站点适配包中心',
       sitePacksHref: 'https://ophel.app/docs/zh/enhancements/site-extensions',
-      safariRelease: 'Safari 扩展下载 (GitHub)',
-      safariReleaseHref: 'https://github.com/urzeye/ophel/releases',
-      installation: '安装指南',
-      faq: '常见问题',
+      safariRelease: 'Safari 实验版说明',
+      safariReleaseHref: '/zh/download/#safari',
       privacy: '隐私政策',
       privacyHref: '/zh/privacy/',
       github: 'GitHub 仓库',
@@ -323,7 +354,8 @@ const zh = {
   },
   meta: {
     title: 'Ophel Atlas — AI 对话大纲 · 对话文件夹管理 · Prompt 词库',
-    description: `Ophel 为 ChatGPT、Gemini、Claude、DeepSeek、豆包/Dola 等 ${BUILTIN_PLATFORM_COUNT} 个内置平台及 ${SITE_PACK_COUNT} 个站点适配包提供实时大纲、对话文件夹与 Prompt 词库，支持 Chrome、Edge、Firefox、Safari 与油猴脚本。`,
+    description:
+      'Ophel 为 ChatGPT、Gemini、Claude、DeepSeek、豆包/Dola 等主流内置平台及持续扩展的站点适配包提供实时大纲、对话文件夹与 Prompt 词库，支持 Chrome、Edge、Firefox、Safari 与油猴脚本。',
   },
   privacy: {
     title: '隐私政策 — Ophel Atlas',

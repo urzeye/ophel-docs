@@ -23,7 +23,9 @@ export interface SitePackDefinition {
   zhName?: string;
   href: string;
   domain: string;
+  iconSrc: string;
   category: SitePackCategory;
+  isNew?: boolean;
 }
 
 export interface SitePackItem extends SitePackDefinition {
@@ -60,6 +62,7 @@ const PLATFORM_DEFINITIONS: SupportedPlatformDefinition[] = [
     href: 'https://notebook.google.com',
     domain: 'notebook.google.com',
     iconSrc: '/icons/notebook.png',
+    isNew: true,
   },
   {
     id: 'aistudio',
@@ -161,6 +164,7 @@ const SITE_PACK_DEFINITIONS: SitePackDefinition[] = [
     name: 'Perplexity',
     href: 'https://www.perplexity.ai',
     domain: 'perplexity.ai',
+    iconSrc: '/icons/site-packs/perplexity.svg',
     category: 'search-agent',
   },
   {
@@ -168,13 +172,16 @@ const SITE_PACK_DEFINITIONS: SitePackDefinition[] = [
     name: 'WorkBuddy',
     href: 'https://www.workbuddy.cn/app',
     domain: 'workbuddy.cn / .ai',
+    iconSrc: '/icons/site-packs/workbuddy.png',
     category: 'search-agent',
+    isNew: true,
   },
   {
     id: 'genspark',
     name: 'Genspark',
     href: 'https://www.genspark.ai',
     domain: 'genspark.ai',
+    iconSrc: '/icons/site-packs/genspark.png',
     category: 'search-agent',
   },
   {
@@ -182,6 +189,7 @@ const SITE_PACK_DEFINITIONS: SitePackDefinition[] = [
     name: 'Manus',
     href: 'https://manus.im',
     domain: 'manus.im',
+    iconSrc: '/icons/site-packs/manus.png',
     category: 'search-agent',
   },
   {
@@ -189,6 +197,7 @@ const SITE_PACK_DEFINITIONS: SitePackDefinition[] = [
     name: 'Notion AI',
     href: 'https://www.notion.so/product/ai',
     domain: 'app.notion.com',
+    iconSrc: '/icons/site-packs/notion-ai.png',
     category: 'assistant',
   },
   {
@@ -196,6 +205,7 @@ const SITE_PACK_DEFINITIONS: SitePackDefinition[] = [
     name: 'Duck.ai',
     href: 'https://duck.ai',
     domain: 'duck.ai',
+    iconSrc: '/icons/site-packs/duck-ai.png',
     category: 'assistant',
   },
   {
@@ -203,6 +213,7 @@ const SITE_PACK_DEFINITIONS: SitePackDefinition[] = [
     name: 'Proton Lumo',
     href: 'https://lumo.proton.me',
     domain: 'lumo.proton.me',
+    iconSrc: '/icons/site-packs/proton-lumo.png',
     category: 'assistant',
   },
   {
@@ -211,6 +222,7 @@ const SITE_PACK_DEFINITIONS: SitePackDefinition[] = [
     zhName: '知乎直答',
     href: 'https://zhida.zhihu.com',
     domain: 'zhida.zhihu.com',
+    iconSrc: '/icons/site-packs/zhida.png',
     category: 'search-agent',
   },
   {
@@ -219,6 +231,7 @@ const SITE_PACK_DEFINITIONS: SitePackDefinition[] = [
     zhName: '阶跃 AI',
     href: 'https://chat.stepfun.com',
     domain: 'chat.stepfun.com',
+    iconSrc: '/icons/site-packs/stepfun.png',
     category: 'assistant',
   },
   {
@@ -227,6 +240,7 @@ const SITE_PACK_DEFINITIONS: SitePackDefinition[] = [
     zhName: '百度文心',
     href: 'https://wenxin.baidu.com',
     domain: 'wenxin.baidu.com',
+    iconSrc: '/icons/site-packs/wenxin.png',
     category: 'assistant',
   },
   {
@@ -234,6 +248,7 @@ const SITE_PACK_DEFINITIONS: SitePackDefinition[] = [
     name: 'LongCat AI',
     href: 'https://longcat.chat',
     domain: 'longcat.chat',
+    iconSrc: '/icons/site-packs/longcat.svg',
     category: 'assistant',
   },
   {
@@ -242,6 +257,7 @@ const SITE_PACK_DEFINITIONS: SitePackDefinition[] = [
     zhName: 'OpenCode 分享页',
     href: 'https://opncd.ai',
     domain: 'opncd.ai',
+    iconSrc: '/icons/site-packs/opencode-share.svg',
     category: 'search-agent',
   },
   {
@@ -249,6 +265,7 @@ const SITE_PACK_DEFINITIONS: SitePackDefinition[] = [
     name: 'Muse',
     href: 'https://muse.ai',
     domain: 'muse.ai',
+    iconSrc: '/icons/site-packs/muse.png',
     category: 'assistant',
   },
   {
@@ -256,6 +273,7 @@ const SITE_PACK_DEFINITIONS: SitePackDefinition[] = [
     name: 'LobeChat',
     href: 'https://app.lobehub.com',
     domain: 'app.lobehub.com',
+    iconSrc: '/icons/site-packs/lobechat.png',
     category: 'assistant',
   },
   {
@@ -263,6 +281,7 @@ const SITE_PACK_DEFINITIONS: SitePackDefinition[] = [
     name: 'Open WebUI',
     href: 'https://openwebui.com',
     domain: 'openwebui.com',
+    iconSrc: '/icons/site-packs/open-webui.png',
     category: 'self-hosted',
   },
   {
@@ -270,6 +289,7 @@ const SITE_PACK_DEFINITIONS: SitePackDefinition[] = [
     name: 'LibreChat',
     href: 'https://www.librechat.ai',
     domain: 'librechat.ai',
+    iconSrc: '/icons/site-packs/librechat.png',
     category: 'self-hosted',
   },
   {
@@ -277,6 +297,7 @@ const SITE_PACK_DEFINITIONS: SitePackDefinition[] = [
     name: 'NextChat',
     href: 'https://nextchat.dev',
     domain: 'nextchat.dev',
+    iconSrc: '/icons/site-packs/nextchat.png',
     category: 'self-hosted',
   },
   {
@@ -284,6 +305,7 @@ const SITE_PACK_DEFINITIONS: SitePackDefinition[] = [
     name: 'DeepSeek Harness',
     href: 'https://github.com/deepseek-ai/deepseek-harness',
     domain: 'Self-hosted',
+    iconSrc: '/icons/site-packs/deepseek-harness.svg',
     category: 'self-hosted',
   },
 ];

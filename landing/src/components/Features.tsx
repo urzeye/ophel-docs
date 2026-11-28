@@ -1,16 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import {
-  BookmarkCheck,
-  FolderKanban,
-  Image as ImageIcon,
-  ListTree,
-  Palette,
-  Pause,
-  Play,
-  RotateCcw,
-  Search,
-} from 'lucide-react';
-import { TOTAL_SUPPORTED_SITES } from '../lib/supported-platforms';
+import { Anchor, ListTree, Loader2, Palette, Pause, Play, RotateCcw, Search } from 'lucide-react';
 
 type Locale = 'en' | 'zh';
 
@@ -36,8 +25,6 @@ interface WorkbenchChapter {
   title: string;
   desc: string;
   highlights: string[];
-  stillImage: string;
-  stillAlt: string;
 }
 
 const DURATION_SEC = 24.6;
@@ -46,151 +33,127 @@ const CHAPTERS: Record<Locale, WorkbenchChapter[]> = {
   en: [
     {
       id: 'outline-tree',
-      tag: 'Outline · H1–H6',
-      timeRange: '00:00 – 00:06',
+      tag: 'Live Outline',
+      timeRange: '00:00 – 00:08',
       startSec: 0,
-      endSec: 6.2,
-      title: 'Long answers become a navigable map',
-      desc: 'Ophel parses every user prompt and AI heading in real time. Drag the 6-level depth slider to fold nested subsections or jump straight to any architectural decision.',
-      highlights: ['H1–H6 depth slider', 'Turn-by-turn anchor jump', 'Live word & turn counter'],
-      stillImage: '/images/product/outline-en.png',
-      stillAlt: 'Ophel real-time outline panel beside an AI conversation',
+      endSec: 8.0,
+      title: 'Long answers fold into a clear map',
+      desc: 'Ophel parses every prompt and AI heading in real time. Slide the 6-level depth control to collapse nested subsections or jump straight to any section.',
+      highlights: ['1–6 heading depth slider', 'One-click section jump', 'Live turn index'],
     },
     {
       id: 'inline-search',
-      tag: 'Filter & Bookmark',
-      timeRange: '00:06 – 00:14',
-      startSec: 6.2,
-      endSec: 13.8,
-      title: 'Filter 100-screen threads in milliseconds',
-      desc: 'Type a keyword right inside the outline bar to isolate matching headings and code blocks, or star critical paragraphs as persistent bookmarks you can revisit in one click.',
-      highlights: [
-        'Instant inline filtering',
-        'Starred section bookmarks',
-        'One-click section copy',
-      ],
-      stillImage: '/images/product/outline-en.png',
-      stillAlt: 'Ophel outline search filtering headings in real time',
+      tag: 'Instant Filter',
+      timeRange: '00:08 – 00:14',
+      startSec: 8.0,
+      endSec: 14.0,
+      title: 'Filter hundred-screen threads in milliseconds',
+      desc: 'Type a keyword right inside the outline bar (such as “kafka”) to isolate matching headings and locate exact answers without endless scrolling.',
+      highlights: ['Real-time keyword filter', 'Instant heading match', 'Zero page lag'],
     },
     {
-      id: 'folders-prompts',
-      tag: 'Folders & Prompts',
+      id: 'bookmarks-anchor',
+      tag: 'Stars & Anchors',
       timeRange: '00:14 – 00:21',
-      startSec: 13.8,
+      startSec: 14.0,
       endSec: 21.0,
-      title: 'Chats and prompts stay organized by project',
-      desc: 'Switch tabs in the same panel to file conversations into project folders with custom tags, or insert structured {{variable}} prompt templates without leaving the page.',
-      highlights: [
-        'Folders + multi-tag filter',
-        '{{Variable}} prompt templates',
-        'Sequential prompt queue',
-      ],
-      stillImage: '/images/product/conversation-en.png',
-      stillAlt: 'Ophel conversation folders and prompt library workspace',
+      title: 'Star key takeaways & jump back with return anchors',
+      desc: 'Filter down to starred conclusions, click the bottom return anchor (⚓) to bounce back where you jumped from, or locate your active reading position in one click.',
+      highlights: ['Starred-only bookmark view', 'Return anchor (⚓)', 'Locate current spot'],
     },
     {
       id: 'theme-morph',
-      tag: '24 Themes · Zen',
+      tag: '24 Themes',
       timeRange: '00:21 – 00:24',
       startSec: 21.0,
       endSec: DURATION_SEC,
-      title: 'Radial dark/light transitions across 24 themes',
-      desc: 'Toggle between 12 light and 12 dark themes with a smooth circular View Transition anchored to your cursor — paired with Widescreen and distraction-free Zen Mode.',
-      highlights: [
-        '12 light + 12 dark presets',
-        'Alt/Option + D quick toggle',
-        'Smart panel avoidance',
-      ],
-      stillImage: '/images/product/prompt-en.png',
-      stillAlt: 'Ophel theme customization and prompt workbench',
+      title: 'Radial dark & light switch across 24 presets',
+      desc: 'Click the moon icon (or press Alt/Option + D) for a smooth circular transition from your cursor — with 12 light and 12 dark themes synced to the host page.',
+      highlights: ['12 light + 12 dark themes', 'Circular transition', 'Host page theme sync'],
     },
   ],
   zh: [
     {
       id: 'outline-tree',
-      tag: '大纲树 · H1–H6',
-      timeRange: '00:00 – 00:06',
+      tag: '实时目录树',
+      timeRange: '00:00 – 00:08',
       startSec: 0,
-      endSec: 6.2,
-      title: '超长回复实时生成可折叠目录树',
-      desc: 'Ophel 实时提取每一轮提问与 AI 回复中的 H1–H6 标题层级。拖动 6 级深度滑块即可一键收起细节，在万字长文中精准定位任意章节。',
-      highlights: ['1–6 级标题深度滑块', '提问与章节双向锚点跳转', '实时字数与轮次统计'],
-      stillImage: '/images/product/outline-zh.png',
-      stillAlt: 'Ophel 在长 AI 对话旁显示实时大纲目录树',
+      endSec: 8.0,
+      title: '万字长回复实时折叠成清晰目录',
+      desc: '自动提取每轮提问与 AI 回复中的 H1–H6 多级标题。拖动 6 级深度滑块一键收起细节，在长文里精准跳转任意小节。',
+      highlights: ['1–6 级标题深度滑块', '提问与章节一键跳转', '长对话实时更新'],
     },
     {
       id: 'inline-search',
-      tag: '内联过滤与书签',
-      timeRange: '00:06 – 00:14',
-      startSec: 6.2,
-      endSec: 13.8,
-      title: '在百屏对话中毫秒级筛选与星标收藏',
-      desc: '在大纲搜索框输入关键词（如 kafka），即可实时高亮并过滤出对应章节；点击星标即可将关键结论存为书签，随时一键回溯。',
-      highlights: ['关键词实时过滤高亮', '星标书签只看重点', '单节内容一键复制'],
-      stillImage: '/images/product/outline-zh.png',
-      stillAlt: 'Ophel 大纲内联关键词搜索与星标书签筛选',
+      tag: '关键词秒筛',
+      timeRange: '00:08 – 00:14',
+      startSec: 8.0,
+      endSec: 14.0,
+      title: '在百屏对话中毫秒级筛出目标章节',
+      desc: '直接在大纲搜索框输入关键词（如 kafka），即时过滤匹配标题与段落，不必从头到尾反复上下翻找。',
+      highlights: ['关键词实时过滤', '匹配结果直达正文', '不干扰原生对话'],
     },
     {
-      id: 'folders-prompts',
-      tag: '文件夹与词库',
+      id: 'bookmarks-anchor',
+      tag: '星标与锚点回溯',
       timeRange: '00:14 – 00:21',
-      startSec: 13.8,
+      startSec: 14.0,
       endSec: 21.0,
-      title: '对话归档与 Prompt 模板在同一面板协同',
-      desc: '无需离开当前聊天页，切换标签即可把散落对话归入项目文件夹与多维标签，或从词库一键插入带 {{变量}} 的结构化提示词。',
-      highlights: [
-        '文件夹 + 标签双维整理',
-        '{{变量}} 模板填空与划词引用',
-        '链式 Prompt 队列自动发送',
-      ],
-      stillImage: '/images/product/conversation-zh.png',
-      stillAlt: 'Ophel 对话文件夹与标签管理面板',
+      title: '星标只看重点，锚点一键回到原阅读位',
+      desc: '点亮星标即可只筛选关键结论；跳去查阅前后文后，点击底部锚点（⚓）或「定位当前位置」，瞬间回到刚才的阅读坐标。',
+      highlights: ['星标书签只看重点', '底部返回锚点 (⚓)', '一键定位当前阅读位'],
     },
     {
       id: 'theme-morph',
-      tag: '24 套主题与禅模式',
+      tag: '24 套主题',
       timeRange: '00:21 – 00:24',
       startSec: 21.0,
       endSec: DURATION_SEC,
-      title: '24 套主题与丝滑圆形扩散暗色切换',
-      desc: '点击顶栏月亮图标或按 Alt/Option + D，界面将从点击处平滑扩散切换深浅主题；配合宽屏调节与面板智能避让，拒绝挤压原生页面。',
-      highlights: ['12 浅 + 12 深预置主题', '点击原点圆形扩散动画', '页面宽度调节与禅模式'],
-      stillImage: '/images/product/prompt-zh.png',
-      stillAlt: 'Ophel 主题切换与 Prompt 词库预览',
+      title: '24 套主题与圆形扩散深浅色切换',
+      desc: '点击顶栏月亮图标或按 Alt/Option + D，界面从点击位置平滑圆形扩散切换深浅色，内置 12 套浅色与 12 套深色预置主题。',
+      highlights: ['12 浅 + 12 深预置主题', '点击处圆形扩散动画', '与宿主页面深浅联动'],
     },
   ],
 };
 
 const UI_COPY = {
   en: {
-    stageTitle: 'Ophel Live Workbench · Real Screen Recording',
-    modeVideo: 'Live Video (24s)',
-    modeStill: 'HD UI Snapshot',
-    play: 'Play',
-    pause: 'Pause',
-    restart: 'Replay',
-    jumpPrompt: 'Click any chapter or timeline bar to jump to that workflow moment',
-    ledgerHeading: 'Complete Capability Specification',
-    ledgerSub: `Every tool runs locally inside your browser via Shadow DOM isolation — consistent across all ${TOTAL_SUPPORTED_SITES} supported AI sites.`,
+    stageTitle: 'Real recording on DeepSeek · 24s',
+    play: 'Play demo video',
+    pause: 'Pause demo video',
+    restart: 'Replay from start',
+    loading: 'Loading demo…',
+    tabsLabel: 'Demo chapters',
+    jumpPrompt: 'Select any chapter or timeline segment to jump directly to that moment',
+    ledgerHeading: 'What Sets Ophel Apart Beyond the Outline',
+    ledgerSub:
+      'Designed for daily heavy AI workflows across major AI platforms and extensible Site Packs — fast, private, and free.',
     docsCta: 'Read full feature documentation →',
     docsHref: 'https://ophel.app/docs',
   },
   zh: {
-    stageTitle: 'Ophel 实机工作台 · 真实录屏演示',
-    modeVideo: '实机录屏 (24s)',
-    modeStill: '高清界面截图',
-    play: '播放',
-    pause: '暂停',
-    restart: '重播',
-    jumpPrompt: '点击左侧任意章节或顶部进度条，可直接跳转至对应实机演示片段',
-    ledgerHeading: '核心能力规格一览',
-    ledgerSub: `所有组件均基于 Shadow DOM 隔离渲染并 100% 本地存储，在全部 ${TOTAL_SUPPORTED_SITES} 个支持站点保持一致体验。`,
+    stageTitle: 'DeepSeek 真实录屏 · 24 秒',
+    play: '播放演示视频',
+    pause: '暂停演示视频',
+    restart: '从头重播',
+    loading: '演示视频加载中…',
+    tabsLabel: '实机演示章节',
+    jumpPrompt: '点击任意章节卡片或下方进度段，可直接跳到对应实机画面',
+    ledgerHeading: '不止大纲：真正拉开体验差距的 6 项核心能力',
+    ledgerSub:
+      '专为高频 AI 工作流打造，覆盖主流 AI 平台与持续扩充的社区适配包——流畅、私密且完全免费。',
     docsCta: '查看完整功能文档 →',
     docsHref: 'https://ophel.app/docs/zh',
   },
 } as const;
 
-const CHAPTER_ICONS = [ListTree, Search, FolderKanban, Palette];
+const CHAPTER_ICONS = [ListTree, Search, Anchor, Palette];
+
+function formatTime(sec: number): string {
+  const clamped = Math.max(0, Math.min(DURATION_SEC, sec));
+  const whole = Math.floor(clamped);
+  return `00:${String(whole).padStart(2, '0')}`;
+}
 
 export function Features({ featuresTitle, featuresSubtitle, items, locale = 'en' }: FeaturesProps) {
   const chapters = CHAPTERS[locale];
@@ -204,87 +167,25 @@ export function Features({ featuresTitle, featuresSubtitle, items, locale = 'en'
 
   const [activeChapter, setActiveChapter] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(true);
-  const [viewMode, setViewMode] = useState<'video' | 'still'>('video');
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [hasActivatedVideo, setHasActivatedVideo] = useState(false);
+  const [isBuffering, setIsBuffering] = useState(false);
   const [reducedMotion, setReducedMotion] = useState(false);
 
   const applyVideoSeek = (video: HTMLVideoElement, targetSec: number) => {
-    const seekable = video.seekable;
-    let canSeekDirectly = false;
-    for (let i = 0; i < seekable.length; i++) {
-      if (targetSec >= seekable.start(i) && targetSec <= seekable.end(i) + 0.25) {
-        canSeekDirectly = true;
-        break;
-      }
-    }
-
-    if (canSeekDirectly || video.src.startsWith('blob:')) {
+    if (video.readyState >= 1) {
       try {
         video.currentTime = targetSec;
         if (Math.abs(video.currentTime - targetSec) <= 1.2) {
           pendingSeekRef.current = null;
-        } else {
-          pendingSeekRef.current = targetSec;
+          return;
         }
       } catch {
-        pendingSeekRef.current = targetSec;
+        // Wait for metadata/canplay
       }
-    } else {
-      pendingSeekRef.current = targetSec;
     }
+    pendingSeekRef.current = targetSec;
   };
-
-  // Preload video into an in-memory Blob URL so seeking works 100% locally
-  // even when Cloudflare / reverse proxies return HTTP 200 instead of 206 Partial Content
-  useEffect(() => {
-    let revokedUrl: string | null = null;
-    const controller = new AbortController();
-
-    const probe = document.createElement('video');
-    const canPlayWebm =
-      probe.canPlayType('video/webm; codecs="vp09.01.10.08"') !== '' ||
-      probe.canPlayType('video/webm; codecs="vp9"') !== '';
-    const mediaUrl = canPlayWebm ? '/media/ophel-demo.webm' : '/media/ophel-demo.mp4';
-
-    fetch(mediaUrl, { signal: controller.signal })
-      .then((res) => (res.ok ? res.blob() : Promise.reject(new Error('Failed to fetch video'))))
-      .then((blob) => {
-        if (controller.signal.aborted) return;
-        const blobUrl = URL.createObjectURL(blob);
-        revokedUrl = blobUrl;
-        const video = videoRef.current;
-        if (!video) return;
-
-        const desiredTime =
-          pendingSeekRef.current !== null ? pendingSeekRef.current : video.currentTime;
-        const wasPaused = video.paused;
-
-        video.src = blobUrl;
-        const onLoadedMetadata = () => {
-          video.removeEventListener('loadedmetadata', onLoadedMetadata);
-          if (desiredTime > 0) {
-            video.currentTime = desiredTime;
-            setCurrentTime(desiredTime);
-          }
-          pendingSeekRef.current = null;
-          if (!wasPaused && !reducedMotion && viewMode === 'video') {
-            video.play().catch(() => {});
-          }
-        };
-        video.addEventListener('loadedmetadata', onLoadedMetadata);
-        video.load();
-      })
-      .catch(() => {
-        // Fallback to native <source> tags if fetch fails
-      });
-
-    return () => {
-      controller.abort();
-      if (revokedUrl) {
-        URL.revokeObjectURL(revokedUrl);
-      }
-    };
-  }, []);
 
   // Detect prefers-reduced-motion on mount
   useEffect(() => {
@@ -305,7 +206,22 @@ export function Features({ featuresTitle, featuresSubtitle, items, locale = 'en'
     return () => mq.removeEventListener('change', handler);
   }, []);
 
-  // Pause video when workbench scrolls out of viewport
+  // Trigger load + play once sources are attached
+  useEffect(() => {
+    if (!hasActivatedVideo) return;
+    const video = videoRef.current;
+    if (!video) return;
+    video.load();
+    if (!reducedMotion) {
+      video.play().catch(() => {
+        setIsBuffering(false);
+      });
+    } else {
+      setIsBuffering(false);
+    }
+  }, [hasActivatedVideo, reducedMotion]);
+
+  // Load & play video lazily only when workbench enters viewport; pause when offscreen
   useEffect(() => {
     const node = stageContainerRef.current;
     if (!node) return;
@@ -313,25 +229,43 @@ export function Features({ featuresTitle, featuresSubtitle, items, locale = 'en'
       (entries) => {
         const entry = entries[0];
         const video = videoRef.current;
-        if (!video || viewMode !== 'video') return;
+        if (!video) return;
+
         if (entry?.isIntersecting) {
           if (!reducedMotion) {
-            video.play().catch(() => {});
+            if (!hasActivatedVideo) {
+              setHasActivatedVideo(true);
+              setIsBuffering(true);
+            } else {
+              video.play().catch(() => {
+                setIsBuffering(false);
+              });
+            }
           }
         } else {
           video.pause();
         }
       },
-      { threshold: 0.2 },
+      { rootMargin: '80px 0px', threshold: 0.15 },
     );
     io.observe(node);
     return () => io.disconnect();
-  }, [reducedMotion, viewMode]);
+  }, [reducedMotion, hasActivatedVideo]);
 
-  const handleProgress = () => {
+  const handleLoadedMetadata = () => {
     const video = videoRef.current;
-    if (!video || pendingSeekRef.current === null) return;
-    applyVideoSeek(video, pendingSeekRef.current);
+    if (!video) return;
+    if (pendingSeekRef.current !== null) {
+      applyVideoSeek(video, pendingSeekRef.current);
+    }
+  };
+
+  const handleCanPlay = () => {
+    setIsBuffering(false);
+    const video = videoRef.current;
+    if (video && pendingSeekRef.current !== null) {
+      applyVideoSeek(video, pendingSeekRef.current);
+    }
   };
 
   const handleTimeUpdate = () => {
@@ -340,9 +274,7 @@ export function Features({ featuresTitle, featuresSubtitle, items, locale = 'en'
 
     if (pendingSeekRef.current !== null) {
       applyVideoSeek(video, pendingSeekRef.current);
-      if (pendingSeekRef.current !== null) {
-        return;
-      }
+      if (pendingSeekRef.current !== null) return;
     }
 
     const t = video.currentTime;
@@ -352,7 +284,6 @@ export function Features({ featuresTitle, featuresSubtitle, items, locale = 'en'
     }
 
     setCurrentTime(t);
-
     const matchedIndex = chapters.findIndex((c) => t >= c.startSec && t < c.endSec);
     if (matchedIndex !== -1 && matchedIndex !== activeChapter) {
       setActiveChapter(matchedIndex);
@@ -367,12 +298,18 @@ export function Features({ featuresTitle, featuresSubtitle, items, locale = 'en'
     setCurrentTime(target.startSec);
 
     const video = videoRef.current;
-    if (video) {
-      applyVideoSeek(video, target.startSec);
-      if (viewMode === 'video' && !reducedMotion) {
-        video.play().catch(() => {});
-        setIsPlaying(true);
-      }
+    if (!video) return;
+
+    if (!hasActivatedVideo) {
+      setHasActivatedVideo(true);
+      setIsBuffering(true);
+    }
+
+    applyVideoSeek(video, target.startSec);
+    if (!reducedMotion) {
+      video.play().catch(() => {
+        setIsBuffering(false);
+      });
     }
   };
 
@@ -380,12 +317,15 @@ export function Features({ featuresTitle, featuresSubtitle, items, locale = 'en'
     const video = videoRef.current;
     if (!video) return;
     if (video.paused) {
-      setViewMode('video');
-      video.play().catch(() => {});
-      setIsPlaying(true);
+      if (!hasActivatedVideo) {
+        setHasActivatedVideo(true);
+        setIsBuffering(true);
+      }
+      video.play().catch(() => {
+        setIsBuffering(false);
+      });
     } else {
       video.pause();
-      setIsPlaying(false);
     }
   };
 
@@ -393,66 +333,87 @@ export function Features({ featuresTitle, featuresSubtitle, items, locale = 'en'
     const video = videoRef.current;
     if (!video) return;
     pendingSeekRef.current = null;
-    seekLockUntilRef.current = Date.now() + 400;
-    setViewMode('video');
-    video.currentTime = 0;
+    seekLockUntilRef.current = Date.now() + 450;
     setCurrentTime(0);
     setActiveChapter(0);
-    video.play().catch(() => {});
-    setIsPlaying(true);
+    if (!hasActivatedVideo) {
+      setHasActivatedVideo(true);
+      setIsBuffering(true);
+    }
+    applyVideoSeek(video, 0);
+    video.play().catch(() => {
+      setIsBuffering(false);
+    });
   };
 
-  const currentChapter = chapters[activeChapter] ?? chapters[0];
+  const handleChapterKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>, idx: number) => {
+    const total = chapters.length;
+    let nextIdx: number | null = null;
+    if (e.key === 'ArrowDown' || e.key === 'ArrowRight') nextIdx = (idx + 1) % total;
+    else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') nextIdx = (idx - 1 + total) % total;
+    else if (e.key === 'Home') nextIdx = 0;
+    else if (e.key === 'End') nextIdx = total - 1;
+
+    if (nextIdx !== null) {
+      e.preventDefault();
+      selectChapter(nextIdx);
+      chapterRefs.current[nextIdx]?.focus();
+    }
+  };
+
+  const activeChapterData = chapters[activeChapter] ?? chapters[0];
 
   return (
-    <section id="features" className="features-shell relative z-10 px-5 py-20 sm:px-6 lg:px-8">
-      <div className="mx-auto w-full max-w-[1280px]">
-        {/* Section Header — No banned eyebrow kicker above h2 */}
+    <section
+      id="features"
+      className="features-shell relative z-10 px-4 py-16 sm:px-6 sm:py-20 lg:px-8"
+    >
+      <div className="mx-auto w-full max-w-[1240px]">
         <div className="section-heading">
           <h2>{featuresTitle}</h2>
           <p>{featuresSubtitle}</p>
         </div>
 
-        {/* Overdrive Direction C: Sticky Chapter-Synced Workbench */}
+        {/* Sticky Chapter-Synced Video Stage */}
         <div
           ref={stageContainerRef}
-          className="workbench-layout mt-12 grid items-start gap-8 lg:grid-cols-[minmax(300px,0.35fr)_minmax(0,0.65fr)] lg:gap-9"
+          className="workbench-layout mt-10 grid items-start gap-6 sm:mt-12 lg:grid-cols-[minmax(300px,0.36fr)_minmax(0,0.64fr)] lg:gap-8"
         >
-          {/* Left column: Scrollable / clickable workflow chapters */}
+          {/* Chapter selector list */}
           <div
-            className="workbench-chapters order-2 lg:order-1 flex flex-col gap-3.5"
+            className="workbench-chapters order-2 flex flex-col gap-3 lg:order-1"
             role="tablist"
+            aria-label={ui.tabsLabel}
+            aria-orientation="vertical"
           >
             {chapters.map((chapter, idx) => {
-              const Icon = CHAPTER_ICONS[idx % CHAPTER_ICONS.length] ?? BookmarkCheck;
+              const Icon = CHAPTER_ICONS[idx % CHAPTER_ICONS.length] ?? ListTree;
               const isSelected = idx === activeChapter;
 
-              // Calculate chapter progress percentage
               let progressPct = 0;
-              if (viewMode === 'video') {
-                if (idx < activeChapter) progressPct = 100;
-                else if (idx === activeChapter) {
-                  const span = Math.max(0.1, chapter.endSec - chapter.startSec);
-                  progressPct = Math.min(
-                    100,
-                    Math.max(0, ((currentTime - chapter.startSec) / span) * 100),
-                  );
-                }
-              } else if (isSelected) {
-                progressPct = 100;
+              if (idx < activeChapter) progressPct = 100;
+              else if (idx === activeChapter) {
+                const span = Math.max(0.1, chapter.endSec - chapter.startSec);
+                progressPct = Math.min(
+                  100,
+                  Math.max(0, ((currentTime - chapter.startSec) / span) * 100),
+                );
               }
 
               return (
                 <button
                   key={chapter.id}
+                  id={`demo-tab-${chapter.id}`}
                   ref={(el) => {
                     chapterRefs.current[idx] = el;
                   }}
-                  data-chapter-index={idx}
                   type="button"
                   role="tab"
                   aria-selected={isSelected}
+                  aria-controls="workbench-stage-panel"
+                  tabIndex={isSelected ? 0 : -1}
                   onClick={() => selectChapter(idx)}
+                  onKeyDown={(e) => handleChapterKeyDown(e, idx)}
                   className={`workbench-chapter-card text-left transition-all ${
                     isSelected ? 'workbench-chapter-active' : ''
                   }`}
@@ -462,37 +423,36 @@ export function Features({ featuresTitle, featuresSubtitle, items, locale = 'en'
                       <Icon className="h-4 w-4 shrink-0" aria-hidden="true" />
                       <span>{chapter.tag}</span>
                     </span>
-                    <span className="font-mono text-[11px] font-medium text-[color:var(--text-faint)] tabular-nums">
+                    <span className="font-mono text-xs font-medium text-[color:var(--text-faint)] tabular-nums">
                       {chapter.timeRange}
                     </span>
                   </div>
 
-                  <h3 className="mt-2.5 font-display text-lg font-extrabold leading-snug text-[color:var(--ink-strong)] sm:text-xl">
+                  <h3 className="mt-2 font-display text-lg font-extrabold leading-snug text-[color:var(--ink-strong)]">
                     {chapter.title}
                   </h3>
 
-                  <p className="mt-2 text-sm leading-relaxed text-[color:var(--text-muted)]">
+                  <p className="mt-1.5 text-sm leading-relaxed text-[color:var(--text-muted)]">
                     {chapter.desc}
                   </p>
 
-                  <div className="mt-3.5 flex flex-wrap gap-1.5">
+                  <div className="mt-3 flex flex-wrap gap-1.5">
                     {chapter.highlights.map((h) => (
                       <span
                         key={h}
-                        className="rounded-md border border-[color:var(--line)] bg-[color:var(--paper)] px-2 py-0.5 text-[11px] font-semibold text-[color:var(--ink-muted)]"
+                        className="rounded-md border border-[color:var(--line)] bg-[color:var(--paper)] px-2.5 py-0.5 text-xs font-semibold text-[color:var(--ink-muted)]"
                       >
                         {h}
                       </span>
                     ))}
                   </div>
 
-                  {/* Chapter progress bar */}
                   <div
-                    className="mt-4 h-1 w-full overflow-hidden rounded-full bg-[color:var(--line)]"
+                    className="mt-3.5 h-1 w-full overflow-hidden rounded-full bg-[color:var(--line)]"
                     aria-hidden="true"
                   >
                     <div
-                      className="h-full rounded-full bg-[color:var(--accent)] transition-[width] duration-150 ease-out"
+                      className="h-full rounded-full bg-[color:var(--accent-strong)] transition-[width] duration-150 ease-out"
                       style={{ width: `${progressPct}%` }}
                     />
                   </div>
@@ -501,166 +461,177 @@ export function Features({ featuresTitle, featuresSubtitle, items, locale = 'en'
             })}
           </div>
 
-          {/* Right column: Sticky Interactive Video & Snapshot Stage */}
-          <div className="workbench-stage-sticky order-1 lg:order-2 lg:sticky lg:top-24">
+          {/* Sticky Video Stage — No faux macOS dots around a recording that already has its own macOS window */}
+          <div
+            id="workbench-stage-panel"
+            role="tabpanel"
+            aria-labelledby={`demo-tab-${activeChapterData.id}`}
+            className="workbench-stage-sticky order-1 lg:sticky lg:top-24 lg:order-2"
+          >
             <div className="workbench-frame">
-              {/* Top Console Chrome */}
+              {/* Compact control bar */}
               <div className="workbench-chrome">
-                <div className="flex items-center gap-2">
-                  <span className="window-dot bg-[#e56b55]" />
-                  <span className="window-dot bg-[#e8b339]" />
-                  <span className="window-dot bg-[#3ca873]" />
-                  <span className="ml-2 hidden font-mono text-xs font-semibold text-[#c5d4e3] sm:inline">
+                <div className="flex min-w-0 items-center gap-2.5">
+                  <span
+                    className={`inline-block h-2 w-2 shrink-0 rounded-full ${
+                      isPlaying ? 'bg-[#48d1b5]' : 'bg-[#8fa6bd]'
+                    }`}
+                    aria-hidden="true"
+                  />
+                  <span className="truncate font-mono text-xs font-semibold text-[#e6eef6]">
                     {ui.stageTitle}
                   </span>
                 </div>
 
-                {/* Controls: Video / Still toggle + Play/Pause */}
-                <div className="flex items-center gap-1.5">
-                  <div className="inline-flex rounded-full border border-[rgba(155,180,200,0.2)] bg-[#0c1420] p-0.5">
-                    <button
-                      type="button"
-                      onClick={() => setViewMode('video')}
-                      className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-bold transition-colors ${
-                        viewMode === 'video'
-                          ? 'bg-[#198c86] text-white'
-                          : 'text-[#9bb0c3] hover:text-white'
-                      }`}
-                    >
-                      <Play className="h-3 w-3 fill-current" aria-hidden="true" />
-                      <span>{ui.modeVideo}</span>
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setViewMode('still');
-                        videoRef.current?.pause();
-                        setIsPlaying(false);
-                      }}
-                      className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-bold transition-colors ${
-                        viewMode === 'still'
-                          ? 'bg-[#198c86] text-white'
-                          : 'text-[#9bb0c3] hover:text-white'
-                      }`}
-                    >
-                      <ImageIcon className="h-3 w-3" aria-hidden="true" />
-                      <span>{ui.modeStill}</span>
-                    </button>
-                  </div>
+                <div className="flex items-center gap-2">
+                  <span className="font-mono text-xs font-semibold text-[#bfd0e0] tabular-nums">
+                    {formatTime(currentTime)} / 00:24
+                  </span>
 
-                  {viewMode === 'video' && (
-                    <>
-                      <button
-                        type="button"
-                        onClick={togglePlay}
-                        className="inline-flex h-7 w-7 items-center justify-center rounded-full border border-[rgba(155,180,200,0.22)] bg-[#0c1420] text-[#e2ecf5] transition-colors hover:border-[#6fe3db] hover:text-white"
-                        aria-label={isPlaying ? ui.pause : ui.play}
-                        title={isPlaying ? ui.pause : ui.play}
-                      >
-                        {isPlaying ? (
-                          <Pause className="h-3.5 w-3.5" aria-hidden="true" />
-                        ) : (
-                          <Play className="h-3.5 w-3.5 fill-current" aria-hidden="true" />
-                        )}
-                      </button>
-                      <button
-                        type="button"
-                        onClick={restartVideo}
-                        className="inline-flex h-7 w-7 items-center justify-center rounded-full border border-[rgba(155,180,200,0.22)] bg-[#0c1420] text-[#e2ecf5] transition-colors hover:border-[#6fe3db] hover:text-white"
-                        aria-label={ui.restart}
-                        title={ui.restart}
-                      >
-                        <RotateCcw className="h-3.5 w-3.5" aria-hidden="true" />
-                      </button>
-                    </>
-                  )}
+                  <button
+                    type="button"
+                    onClick={togglePlay}
+                    className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[rgba(180,206,228,0.28)] bg-[#085d59] text-white transition-colors hover:bg-[#0d7a75]"
+                    aria-label={isPlaying ? ui.pause : ui.play}
+                    title={isPlaying ? ui.pause : ui.play}
+                  >
+                    {isPlaying ? (
+                      <Pause className="h-4 w-4" aria-hidden="true" />
+                    ) : (
+                      <Play className="h-4 w-4 fill-current" aria-hidden="true" />
+                    )}
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={restartVideo}
+                    className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[rgba(180,206,228,0.28)] bg-[#142338] text-[#e6eef6] transition-colors hover:border-[#6fe3db] hover:text-white"
+                    aria-label={ui.restart}
+                    title={ui.restart}
+                  >
+                    <RotateCcw className="h-4 w-4" aria-hidden="true" />
+                  </button>
                 </div>
               </div>
 
-              {/* Viewport Stage */}
+              {/* Video Viewport */}
               <div className="workbench-viewport relative overflow-hidden bg-[#0a101a]">
                 <video
                   ref={videoRef}
                   width="1200"
                   height="676"
-                  className={`block aspect-[1200/676] w-full object-contain ${
-                    viewMode === 'video' ? 'block' : 'hidden'
-                  }`}
+                  className="block aspect-[1200/676] w-full cursor-pointer object-contain"
                   poster="/media/ophel-demo-poster.webp"
                   muted
                   playsInline
                   loop
-                  preload="auto"
-                  onProgress={handleProgress}
-                  onCanPlay={handleProgress}
+                  preload="none"
+                  onLoadedMetadata={handleLoadedMetadata}
+                  onCanPlay={handleCanPlay}
+                  onWaiting={() => setIsBuffering(true)}
+                  onPlaying={() => {
+                    setIsBuffering(false);
+                    setIsPlaying(true);
+                  }}
                   onTimeUpdate={handleTimeUpdate}
                   onPlay={() => setIsPlaying(true)}
                   onPause={() => setIsPlaying(false)}
                   onClick={togglePlay}
                 >
-                  <source src="/media/ophel-demo.webm" type="video/webm" />
-                  <source src="/media/ophel-demo.mp4" type="video/mp4" />
+                  {hasActivatedVideo && (
+                    <>
+                      <source src="/media/ophel-demo.webm" type="video/webm" />
+                      <source src="/media/ophel-demo.mp4" type="video/mp4" />
+                    </>
+                  )}
                 </video>
 
-                {viewMode === 'still' && (
-                  <img
-                    src={currentChapter.stillImage}
-                    alt={currentChapter.stillAlt}
-                    width="1280"
-                    height="800"
-                    className="block aspect-[1200/676] w-full object-cover object-right-top"
-                  />
+                {isBuffering && (
+                  <div
+                    className="pointer-events-none absolute inset-x-0 bottom-3 flex justify-center"
+                    role="status"
+                    aria-live="polite"
+                  >
+                    <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-[#0c1420]/90 px-3 py-1.5 font-mono text-xs font-semibold text-[#e6eef6] backdrop-blur-sm">
+                      <Loader2 className="h-3.5 w-3.5 animate-spin" aria-hidden="true" />
+                      <span>{ui.loading}</span>
+                    </span>
+                  </div>
+                )}
+
+                {!isPlaying && !isBuffering && reducedMotion && (
+                  <button
+                    type="button"
+                    onClick={togglePlay}
+                    className="absolute bottom-4 right-4 inline-flex min-h-[40px] items-center gap-2 rounded-full bg-[#085d59] px-4 py-2 text-xs font-bold text-white shadow-lg transition-colors hover:bg-[#0d7a75]"
+                  >
+                    <Play className="h-3.5 w-3.5 fill-current" aria-hidden="true" />
+                    <span>{ui.play}</span>
+                  </button>
                 )}
               </div>
 
-              {/* Segmented Timeline Scrubber Bar */}
+              {/* Clean Segmented Timeline Bar (replaces duplicate 4-card truncated text row) */}
               <div className="workbench-scrubber-bar">
-                <div className="grid grid-cols-4 gap-2">
+                <div className="grid grid-cols-4 gap-2" role="group" aria-label={ui.tabsLabel}>
                   {chapters.map((chapter, idx) => {
                     const isSelected = idx === activeChapter;
+                    let fillPct = 0;
+                    if (idx < activeChapter) fillPct = 100;
+                    else if (idx === activeChapter) {
+                      const span = Math.max(0.1, chapter.endSec - chapter.startSec);
+                      fillPct = Math.min(
+                        100,
+                        Math.max(0, ((currentTime - chapter.startSec) / span) * 100),
+                      );
+                    }
                     return (
                       <button
                         key={chapter.id}
                         type="button"
                         onClick={() => selectChapter(idx)}
-                        className={`group flex flex-col gap-1.5 rounded-lg px-2.5 py-2 text-left transition-colors ${
-                          isSelected
-                            ? 'bg-[rgba(25,140,134,0.22)] text-white'
-                            : 'text-[#9bb0c3] hover:bg-[rgba(255,255,255,0.05)] hover:text-white'
-                        }`}
+                        className="group flex min-h-[38px] flex-col justify-center gap-1.5 rounded-md px-1.5 py-1 text-left transition-colors hover:bg-white/5"
+                        aria-label={`${chapter.tag} (${chapter.timeRange})`}
                       >
-                        <span className="truncate font-mono text-[11px] font-bold">
+                        <div className="h-1.5 w-full overflow-hidden rounded-full bg-[rgba(180,206,228,0.2)]">
+                          <div
+                            className={`h-full rounded-full transition-[width] duration-150 ${
+                              isSelected ? 'bg-[#5eead4]' : 'bg-[#6495a8]'
+                            }`}
+                            style={{ width: `${fillPct}%` }}
+                          />
+                        </div>
+                        <span
+                          className={`truncate font-mono text-xs font-semibold ${
+                            isSelected ? 'text-white' : 'text-[#b5c9db] group-hover:text-white'
+                          }`}
+                        >
                           {chapter.tag}
-                        </span>
-                        <span className="truncate text-xs font-medium opacity-85">
-                          {chapter.title}
                         </span>
                       </button>
                     );
                   })}
                 </div>
-                <p className="mt-2 text-center font-mono text-[11px] text-[#869eb3]">
-                  {ui.jumpPrompt}
-                </p>
+                <p className="mt-2 text-center text-xs text-[#b5c9db]">{ui.jumpPrompt}</p>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Architectural Specification Ledger (replaces generic 6-card grid scaffold) */}
-        <div className="capability-ledger mt-20">
+        {/* 6 Differentiators Specification Ledger */}
+        <div className="capability-ledger mt-16 sm:mt-20">
           <div className="flex flex-col justify-between gap-4 border-b border-[color:var(--line-strong)] pb-6 md:flex-row md:items-end">
             <div>
               <h3 className="font-display text-2xl font-extrabold tracking-tight text-[color:var(--ink-strong)] sm:text-3xl">
                 {ui.ledgerHeading}
               </h3>
-              <p className="mt-2 max-w-[64ch] text-sm text-[color:var(--text-muted)] sm:text-base">
+              <p className="mt-2 max-w-[64ch] text-sm leading-relaxed text-[color:var(--text-muted)] sm:text-base">
                 {ui.ledgerSub}
               </p>
             </div>
             <a
               href={ui.docsHref}
-              className="shrink-0 font-mono text-xs font-bold text-[color:var(--accent-strong)] underline decoration-[color:var(--line-strong)] underline-offset-4 transition-colors hover:text-[color:var(--ink-strong)]"
+              className="inline-flex min-h-[38px] shrink-0 items-center font-mono text-xs font-bold text-[color:var(--accent-strong)] underline decoration-[color:var(--line-strong)] underline-offset-4 transition-colors hover:text-[color:var(--ink-strong)]"
             >
               {ui.docsCta}
             </a>
@@ -672,17 +643,17 @@ export function Features({ featuresTitle, featuresSubtitle, items, locale = 'en'
                 key={item.title}
                 className="flex flex-col justify-between gap-2.5 py-6 md:px-6 first:md:pl-0 odd:md:pl-0 even:md:pr-0"
               >
-                <div className="flex items-center justify-between gap-3">
-                  <dt className="font-display text-lg font-extrabold text-[color:var(--ink-strong)]">
+                <div className="flex items-start justify-between gap-3">
+                  <dt className="font-display text-lg font-extrabold leading-snug text-[color:var(--ink-strong)]">
                     {item.title}
                   </dt>
                   {item.code && (
-                    <span className="shrink-0 rounded border border-[color:var(--line-strong)] bg-[color:var(--surface-tint)] px-2 py-0.5 font-mono text-[11px] font-bold text-[color:var(--accent-strong)]">
+                    <span className="shrink-0 rounded border border-[color:var(--line-strong)] bg-[color:var(--surface-tint)] px-2 py-0.5 font-mono text-xs font-bold text-[color:var(--accent-strong)]">
                       {item.code}
                     </span>
                   )}
                 </div>
-                <dd className="text-sm leading-relaxed text-[color:var(--text-muted)]">
+                <dd className="max-w-[62ch] text-sm leading-relaxed text-[color:var(--text-muted)]">
                   {item.desc}
                 </dd>
               </div>
