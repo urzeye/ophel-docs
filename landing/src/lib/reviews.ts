@@ -685,6 +685,41 @@ export const reviews: Review[] = [
   },
 ];
 
+const CURATED_IDS: Record<'en' | 'zh', readonly string[]> = {
+  en: [
+    'davis-allrick',
+    'sherlock-holmes',
+    'astrocyte',
+    'lazar-antic',
+    'gimme-video',
+    'saleh-mohammad',
+    'joshua-goldstein',
+    'adnan-arefin',
+    'dom-andrews',
+  ],
+  zh: [
+    'wu-dengdeng',
+    'cherry-691',
+    'wujingfeng',
+    'ink-vagabond',
+    'steel-maestro',
+    'chia-ying',
+    'nai-an',
+    'lu-mu-yuan',
+    'howe-ryan',
+  ],
+};
+
+/**
+ * Return curated high-signal reviews matching the active page locale,
+ * keeping full review copy intact without cross-language mixing or two-word filler.
+ */
+export function getCuratedReviews(locale: 'en' | 'zh' = 'en'): Review[] {
+  const byId = new Map(reviews.map((review) => [review.id, review]));
+  const ids = CURATED_IDS[locale] ?? CURATED_IDS.en;
+  return ids.map((id) => byId.get(id)).filter((item): item is Review => Boolean(item));
+}
+
 /**
  * Build two marquee rows from the weighted review pool.
  *
@@ -692,7 +727,7 @@ export const reviews: Review[] = [
  * review sequence. The second row is offset and reversed for visual variety.
  */
 export function buildMarqueeRows(): [Review[], Review[]] {
-  const weighted = reviews.flatMap((r) => Array<Review>(Math.min(r.weight, 1)).fill(r));
+  const weighted = reviews.flatMap((r) => Array<Review>(Math.max(1, r.weight)).fill(r));
   const midpoint = Math.ceil(weighted.length / 2);
   const row2 = [...weighted.slice(midpoint), ...weighted.slice(0, midpoint)].reverse();
   return [weighted, row2];
