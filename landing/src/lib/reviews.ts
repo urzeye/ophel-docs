@@ -685,39 +685,75 @@ export const reviews: Review[] = [
   },
 ];
 
-const CURATED_IDS: Record<'en' | 'zh', readonly string[]> = {
+const MARQUEE_ROW_IDS: Record<'en' | 'zh', [readonly string[], readonly string[]]> = {
   en: [
-    'davis-allrick',
-    'sherlock-holmes',
-    'astrocyte',
-    'lazar-antic',
-    'gimme-video',
-    'saleh-mohammad',
-    'joshua-goldstein',
-    'adnan-arefin',
-    'dom-andrews',
+    [
+      'davis-allrick',
+      'sherlock-holmes',
+      'astrocyte',
+      'lazar-antic',
+      'gimme-video',
+      'saleh-mohammad',
+      'joshua-goldstein',
+      'adnan-arefin',
+      'dom-andrews',
+    ],
+    [
+      'jean-bravo',
+      'niamat-ullah',
+      'asifur-rahman',
+      'Ruggiero-Capacchione',
+      'deniz',
+      'al-amin-islam',
+      'orion-ventures',
+      'pathan-boks',
+      'luis-novoa',
+    ],
   ],
   zh: [
-    'wu-dengdeng',
-    'cherry-691',
-    'wujingfeng',
-    'ink-vagabond',
-    'Steel-Maestro',
-    'chia-ying',
-    'nai-an',
-    'lu-mu-yuan',
-    'howe-ryan',
+    [
+      'wu-dengdeng',
+      'cherry-691',
+      'wujingfeng',
+      'ink-vagabond',
+      'Steel-Maestro',
+      'chia-ying',
+      'nai-an',
+      'lu-mu-yuan',
+      'howe-ryan',
+    ],
+    [
+      'baihe',
+      'hugh-ray',
+      'mortal-noel',
+      'ramirez3-su',
+      'xnne-hang',
+      'jacy-walln',
+      'davis-allrick',
+      'sherlock-holmes',
+      'astrocyte',
+    ],
   ],
 };
+
+/**
+ * Return two curated high-signal rows for the dual-row reviews marquee,
+ * matched to the active locale without two-word filler or bloated SSR duplication.
+ */
+export function buildCuratedMarqueeRows(locale: 'en' | 'zh' = 'en'): [Review[], Review[]] {
+  const byId = new Map(reviews.map((review) => [review.id, review]));
+  const [row1Ids, row2Ids] = MARQUEE_ROW_IDS[locale] ?? MARQUEE_ROW_IDS.en;
+  const pick = (ids: readonly string[]) =>
+    ids.map((id) => byId.get(id)).filter((item): item is Review => Boolean(item));
+  return [pick(row1Ids), pick(row2Ids)];
+}
 
 /**
  * Return curated high-signal reviews matching the active page locale,
  * keeping full review copy intact without cross-language mixing or two-word filler.
  */
 export function getCuratedReviews(locale: 'en' | 'zh' = 'en'): Review[] {
-  const byId = new Map(reviews.map((review) => [review.id, review]));
-  const ids = CURATED_IDS[locale] ?? CURATED_IDS.en;
-  return ids.map((id) => byId.get(id)).filter((item): item is Review => Boolean(item));
+  return buildCuratedMarqueeRows(locale)[0];
 }
 
 /**
