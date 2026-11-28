@@ -1,11 +1,5 @@
 ---
-import {
-  translations,
-  CHROME_STORE_URL,
-  EDGE_STORE_URL,
-  FIREFOX_STORE_URL,
-  GITHUB_RELEASES_URL,
-} from '../../i18n';
+import { translations, CHROME_STORE_URL, EDGE_STORE_URL, FIREFOX_STORE_URL } from '../../i18n';
 import { getLatestVersion } from '../../lib/changelog';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Navbar from '../../components/Navbar.astro';
@@ -13,10 +7,19 @@ import { Hero } from '../../components/Hero';
 import { Features } from '../../components/Features';
 import Platforms from '../../components/Platforms.astro';
 import { ReviewsMarquee } from '../../components/ReviewsMarquee';
+import { FinalCta } from '../../components/FinalCta';
 import Footer from '../../components/Footer.astro';
 
 const t = translations.zh;
 const latestVersion = getLatestVersion();
+
+const browserCtas = {
+  chrome: { label: '安装 Chrome 扩展', href: CHROME_STORE_URL, external: true },
+  edge: { label: '安装 Edge 扩展', href: EDGE_STORE_URL, external: true },
+  firefox: { label: '安装到 Firefox', href: FIREFOX_STORE_URL, external: true },
+  safari: { label: 'Safari（macOS 实验版）', href: '/zh/download/#safari', external: false },
+  default: { label: t.hero.ctaPrimary, href: CHROME_STORE_URL, external: true },
+};
 ---
 
 <BaseLayout
@@ -27,37 +30,36 @@ const latestVersion = getLatestVersion();
   withJsonLd={true}
 >
   <Navbar t={t.nav} homeHref="/zh/" />
-  <main>
+  <main id="main-content">
     <Hero
       client:load
       titleLine1={t.hero.titleLine1}
       titleLine2={t.hero.titleGradient}
       description={t.hero.desc}
       primaryCta={t.hero.ctaPrimary}
-      secondaryCta={t.hero.ctaSecondary}
       primaryLink={CHROME_STORE_URL}
-      secondaryLink="https://ophel.app/docs/zh"
-      alternateInstallLabel="全部安装方式"
+      alternateInstallLabel="全部渠道"
       alternateInstallLink="/zh/download/"
       version={latestVersion}
       locale="zh"
-      browserCtas={{
-        chrome: { label: '安装 Chrome 扩展', href: CHROME_STORE_URL },
-        edge: { label: '安装 Edge 扩展', href: EDGE_STORE_URL },
-        firefox: { label: '安装到 Firefox', href: FIREFOX_STORE_URL },
-        safari: { label: '下载 Safari 扩展', href: GITHUB_RELEASES_URL },
-        default: { label: t.hero.ctaPrimary, href: CHROME_STORE_URL },
-      }}
+      browserCtas={browserCtas}
     />
     <Features
-      client:load
+      client:visible
       featuresTitle={t.features.title}
       featuresSubtitle={t.features.desc}
       items={t.features.items}
       locale="zh"
     />
     <Platforms t={t.platforms} locale="zh" />
-    <ReviewsMarquee client:load title={t.reviews.title} subtitle={t.reviews.subtitle} />
+    <ReviewsMarquee client:visible title={t.reviews.title} subtitle={t.reviews.subtitle} />
+    <FinalCta
+      client:visible
+      t={t.finalCta}
+      primaryLink={CHROME_STORE_URL}
+      browserCtas={browserCtas}
+      locale="zh"
+    />
   </main>
   <Footer t={t.footer} homeHref="/zh/" />
 </BaseLayout>

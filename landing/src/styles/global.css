@@ -135,9 +135,9 @@
   inset: 0;
   z-index: -1;
   background:
-    radial-gradient(circle at 18% 24%, rgba(13, 122, 117, 0.14), transparent 28rem),
-    radial-gradient(circle at 80% 22%, rgba(31, 86, 194, 0.09), transparent 28rem),
-    radial-gradient(circle at 60% 85%, rgba(200, 122, 8, 0.11), transparent 24rem);
+    radial-gradient(circle at 18% 24%, rgba(13, 122, 117, 0.085), transparent 28rem),
+    radial-gradient(circle at 80% 22%, rgba(31, 86, 194, 0.06), transparent 28rem),
+    radial-gradient(circle at 60% 85%, rgba(200, 122, 8, 0.075), transparent 24rem);
 }
 
 .hero-copy {
@@ -267,26 +267,6 @@
   color: var(--ink-strong);
 }
 
-.hero-tooltivity-link {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-  opacity: 0;
-  pointer-events: none;
-}
-
-.hero-tooltivity-image {
-  display: block;
-  width: 1px;
-  height: 1px;
-}
-
 /* ─── Hero Product Stage ─── */
 .hero-product {
   position: relative;
@@ -296,7 +276,7 @@
 .product-window {
   overflow: hidden;
   border: 1px solid rgba(24, 36, 54, 0.15);
-  border-radius: 1.5rem;
+  border-radius: 1.25rem;
   background: #ffffff;
   box-shadow: var(--shadow-soft);
 }
@@ -305,47 +285,56 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: 0.5rem;
   border-bottom: 1px solid var(--line);
   background: #fbf8f2;
-  padding: 0.65rem 0.95rem;
-}
-
-.window-dot {
-  display: inline-flex;
-  height: 0.68rem;
-  width: 0.68rem;
-  border-radius: 999px;
+  padding: 0.55rem 0.75rem;
 }
 
 .product-stage {
   position: relative;
   overflow: hidden;
-  background: linear-gradient(145deg, #ffffff 0%, #eef5f4 100%);
-  padding: 0.85rem;
+  background: #ffffff;
 }
 
 .product-shot {
   display: block;
   width: 100%;
   height: auto;
-  border-radius: 1rem;
-  border: 1px solid rgba(24, 36, 54, 0.08);
-  box-shadow: 0 12px 32px rgba(16, 26, 42, 0.11);
 }
 
-.product-caption-bar {
-  margin-top: 0.7rem;
+.product-caption {
+  margin: 0;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
-  gap: 0.5rem;
-  border-radius: 0.75rem;
-  border: 1px solid var(--line);
+  justify-content: center;
+  gap: 0.45rem;
+  border-top: 1px solid var(--line);
+  background: #fbf8f2;
+  padding: 0.6rem 0.9rem;
+  text-align: center;
+}
+
+.final-cta-section {
+  background:
+    radial-gradient(circle at 85% 20%, rgba(13, 122, 117, 0.09), transparent 28rem),
+    linear-gradient(180deg, #f8f3e9 0%, #f5efe4 100%);
+}
+
+.final-cta-panel {
+  border: 1px solid var(--line-strong);
+  border-radius: 1.5rem;
   background: rgba(255, 255, 255, 0.88);
-  padding: 0.5rem 0.85rem;
+  padding: 2rem;
+  box-shadow: var(--shadow-card);
+}
+
+@media (max-width: 640px) {
+  .final-cta-panel {
+    padding: 1.35rem;
+  }
 }
 
 .platform-strip {

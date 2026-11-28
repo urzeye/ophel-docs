@@ -50,6 +50,7 @@ const platforms = [
     note: '需要 Firefox 109+ · 官方 AMO 签名',
   },
   {
+    id: 'safari',
     name: 'Safari',
     icon: '/icons/safari.svg',
     badge: 'macOS 实验版',
@@ -125,8 +126,9 @@ const allSitePacks = getSitePacks('zh');
         {
           platforms.map((p, idx) => (
             <SpotlightCard
+              id={'id' in p ? p.id : undefined}
               spotlightColor="rgba(13, 122, 117, 0.1)"
-              className={`p-6 group border-[color:var(--line)] bg-white/80 shadow-[0_14px_36px_rgba(24,33,49,0.08)] hover:border-[color:var(--line-strong)] ${
+              className={`p-6 group scroll-mt-24 border-[color:var(--line)] bg-white/80 shadow-[0_14px_36px_rgba(24,33,49,0.08)] hover:border-[color:var(--line-strong)] ${
                 idx === platforms.length - 1 ? 'md:col-span-2' : ''
               }`}
             >
