@@ -6,6 +6,7 @@ icon: "search"
 keywords: ["global search", "search syntax", "fuzzy search", "chat search", "outline search", "search filters"]
 ---
 
+import { Icon } from "/snippets/icon.jsx"
 import { Shortcut } from "/snippets/shortcut.jsx"
 
 Global Search lets you jump to headings, saved chats, prompt templates, or settings pages from a single command palette.
@@ -15,7 +16,7 @@ Global Search lets you jump to headings, saved chats, prompt templates, or setti
 ## How to open Global Search
 
 - Press <Shortcut combo="ctrl+k" /> (customizable in **Settings → Keyboard Shortcuts**).
-- Click the **Global Search** icon in the floating quick buttons.
+- Click the <Icon src="/images/icons/search.svg" alt="Search icon" /> **Global Search** icon in the floating quick buttons.
 - **Double-press `Shift`** (optional, off by default): Enable **Double Shift to open Global Search** in settings, then tap `Shift` twice within 360 ms anywhere on a supported AI tab—whether your cursor is inside the chat input or on the page—without opening the Ophel panel first. Pressing any other key in between cancels the trigger so normal typing is unaffected.
 
 ## What you can search
@@ -24,12 +25,12 @@ Switch result categories using `Tab` / `Shift+Tab` or click a category tab:
 
 | Category | What it searches | Selection behavior |
 | --- | --- | --- |
-| **All** | Combined top results across categories | Runs the matched item's default action. |
-| **Outline** | Headings and user questions in the active chat | Scrolls straight to that node. |
-| **Chats** | Synced chats on the current platform **and other supported platforms** (external results show the site icon) | Opens current-site chats in place; opens external-site chats in a new tab. |
-| **Prompts** | Titles, content, categories, and tags in your Prompt Library | Inserts the prompt (or opens the variable dialog), or locates it in the **Prompts** tab depending on your Enter behavior setting. |
-| **Settings** | Every Ophel setting page and option (including legacy aliases) | Opens the exact settings section and scrolls to the option. |
-| **Tips** | Built-in feature tips and shortcuts | Browse shortcuts and tips directly in the palette. |
+| <Icon src="/images/icons/search.svg" alt="All icon" /> **All** | Combined top results across categories | Runs the matched item's default action. |
+| <Icon src="/images/icons/outline.svg" alt="Outline icon" /> **Outline** | Headings and user questions in the active chat | Scrolls straight to that node. |
+| <Icon src="/images/icons/conversation.svg" alt="Chats icon" /> **Chats** | Synced chats on the current platform **and other supported platforms** (external results show the site icon) | Opens current-site chats in place; opens external-site chats in a new tab. |
+| <Icon src="/images/icons/prompt.svg" alt="Prompts icon" /> **Prompts** | Titles, content, categories, and tags in your Prompt Library | Inserts the prompt (or opens the variable dialog), or locates it in the **Prompts** tab depending on your Enter behavior setting. |
+| <Icon src="/images/icons/settings.svg" alt="Settings icon" /> **Settings** | Every Ophel setting page and option (including legacy aliases) | Opens the exact settings section and scrolls to the option. |
+| <Icon src="/images/icons/features.svg" alt="Tips icon" /> **Tips** | Built-in feature tips and shortcuts | Browse shortcuts and tips directly in the palette. |
 
 <Tip>
 Hover a prompt result for ~0.5 s (or highlight it with arrow keys for ~0.7 s) to preview the full prompt content before inserting it.

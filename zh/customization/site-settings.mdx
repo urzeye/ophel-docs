@@ -6,6 +6,7 @@ icon: "/images/icons/site-settings.svg"
 keywords: ["模型锁定", "站点设置", "Claude对话密钥", "Gemini去水印", "按站点配置", "AI模型"]
 ---
 
+import { Icon } from "/snippets/icon.jsx"
 import { Shortcut } from "/snippets/shortcut.jsx"
 
 进入 **设置 → 站点设置**，在顶部下拉选择器中挑选任意内置平台或已安装适配包（当前所在站点会置顶；选中非当前站点时顶部会常驻提示条）。
@@ -19,10 +20,10 @@ import { Shortcut } from "/snippets/shortcut.jsx"
 
 ## 模型锁定
 
-开启模型锁定后，每次打开或刷新该站点时，Ophel 会自动帮你选中目标模型；对话中途你依然可以手动切换其他模型，不会被强行切回去。
+开启 <Icon src="/images/icons/model-lock.svg" alt="模型锁定图标" /> **模型锁定**后，每次打开或刷新该站点时，Ophel 会自动帮你选中目标模型；对话中途你依然可以手动切换其他模型，不会被强行切回去。
 
-- **匹配方式**：填写不区分大小写的模型关键词（如 `pro`、`o3`、`sonnet`），自动匹配下拉菜单中第一项；在 **AI Studio** 上，Ophel 会直接抓取并缓存页面里的模型列表供你下拉选择。
-- **快捷入口**：可在浮动 **工具箱 → 模型锁定** 快速开关，或按 <Shortcut combo="ctrl+alt+l" /> 直达设置。
+- **匹配方式**：填写不区分大小写的模型关键词（如 `pro`、`o3`、`sonnet`），自动匹配下拉菜单中第一项；在 <Icon src="/images/icons/aistudio.png" alt="AI Studio 图标" /> **AI Studio** 上，Ophel 会直接抓取并缓存页面里的模型列表供你下拉选择。
+- **快捷入口**：可在浮动 <Icon src="/images/icons/tools.svg" alt="工具箱图标" /> **工具箱 → <Icon src="/images/icons/model-lock.svg" alt="模型锁定图标" /> 模型锁定** 快速开关，或按 <Shortcut combo="ctrl+alt+l" /> 直达设置。
 - **支持的内置站点（14 / 16）**：ChatGPT、Gemini、Gemini Enterprise、AI Studio、Claude、Grok、豆包 / Dola、Kimi、Qwen Studio、通义千问（Qianwen）、腾讯元宝、智谱清言、腾讯 ima、Z.ai。*（**DeepSeek** 与 **Gemini Notebook** 不支持。）*
 
 ## 在指定页面隐藏 Ophel
@@ -43,7 +44,7 @@ import { Shortcut } from "/snippets/shortcut.jsx"
 
 ## Gemini 专属设置
 
-选中 **Gemini** 时显示（快捷键 <Shortcut combo="ctrl+alt+g" />）：
+选中 <Icon src="/images/icons/gemini.png" alt="Gemini 图标" /> **Gemini** 时显示（快捷键 <Shortcut combo="ctrl+alt+g" />）：
 
 | 设置项 | 默认值 | 说明 |
 | --- | --- | --- |
@@ -58,7 +59,7 @@ import { Shortcut } from "/snippets/shortcut.jsx"
 
 ## AI Studio 专属设置
 
-选中 **AI Studio** 时显示（默认模型选择位于同页的 **模型锁定** 卡片中）：
+选中 <Icon src="/images/icons/aistudio.png" alt="AI Studio 图标" /> **AI Studio** 时显示（默认模型选择位于同页的 **模型锁定** 卡片中）：
 
 | 设置项 | 默认值 | 说明 |
 | --- | --- | --- |
@@ -76,7 +77,7 @@ import { Shortcut } from "/snippets/shortcut.jsx"
 
 ## ChatGPT 专属设置
 
-选中 **ChatGPT** 时显示：
+选中 <Icon src="/images/icons/chatgpt.png" alt="ChatGPT 图标" /> **ChatGPT** 时显示：
 
 | 设置项 | 默认值 | 说明 |
 | --- | --- | --- |
@@ -87,11 +88,11 @@ import { Shortcut } from "/snippets/shortcut.jsx"
 
 ## Claude 专属设置（Session Key 多账号切换）
 
-选中 **Claude** 时显示（快捷键 <Shortcut combo="ctrl+alt+c" />）。保存多个 Claude Session Key（格式 `sk-ant-sidXX-...`），无需反复退出重新登录即可切换账号：
+选中 <Icon src="/images/icons/claude.svg" alt="Claude 图标" /> **Claude** 时显示（快捷键 <Shortcut combo="ctrl+alt+c" />）。保存多个 Claude Session Key（格式 `sk-ant-sidXX-...`），无需反复退出重新登录即可切换账号：
 
-- **添加与导入**：支持手动添加、JSON 导入导出（自动去重合并），扩展版还支持点击 **从浏览器导入**（需授予可选的 `cookies` 权限读取当前登录的 `sessionKey` Cookie）。
-- **检测可用性**：支持单条 **检测** 或 **批量检测**（每条间隔 **500 ms**，自动识别有效性与账号类型）。
-- **安全切换**：点击指定 Key 切换，或按 <Shortcut combo="ctrl+alt+s" /> 一键轮换到下一个可用 Key。扩展版在切换前会自动检测是否有其他 Claude 标签页正在生成回复，避免误打断。
+- **添加与导入**：支持手动添加、<Icon src="/images/icons/import.svg" alt="导入图标" /> JSON 导入 / <Icon src="/images/icons/export.svg" alt="导出图标" /> 导出（<Icon src="/images/icons/json-file.svg" alt="JSON 图标" /> 自动去重合并），扩展版还支持点击 **从浏览器导入**（需授予可选的 `cookies` 权限读取当前登录的 `sessionKey` Cookie）。
+- **检测可用性**：支持单条 <Icon src="/images/icons/check.svg" alt="检测图标" /> **检测** 或 <Icon src="/images/icons/shield-check.svg" alt="批量检测图标" /> **批量检测**（每条间隔 **500 ms**，自动识别有效性与账号类型）。
+- **安全切换**：点击 <Icon src="/images/icons/sync.svg" alt="切换图标" /> 切换到指定 Key，或按 <Shortcut combo="ctrl+alt+s" /> 一键轮换到下一个可用 Key。扩展版在切换前会自动检测是否有其他 Claude 标签页正在生成回复，避免误打断；不需要的 Key 可点击 <Icon src="/images/icons/delete.svg" alt="删除图标" /> 删除。
 - **油猴版差异**：支持手动/JSON 管理、测活以及在 `claude.ai` 页面内切换；不支持「从浏览器导入」与跨标签页生成检测。
 - **组织隔离**：同步的 Claude 对话会按当前账号与组织自动隔离。
 

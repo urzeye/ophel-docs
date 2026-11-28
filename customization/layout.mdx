@@ -17,6 +17,7 @@ keywords:
   ]
 ---
 
+import { Icon } from "/snippets/icon.jsx"
 import { Shortcut } from "/snippets/shortcut.jsx"
 import { DocsVideo } from "/snippets/docs-video.jsx"
 
@@ -45,20 +46,20 @@ Most AI sites lock replies inside a narrow central column even on wide monitors.
 
 ## Zen Mode
 
-**Zen Mode** (default **Off**, supported on 15 built-in sites, all except Gemini Notebook) hides the site's native sidebars, top bars, and surrounding chrome so you can focus purely on the conversation. Zen Mode also includes Clean Mode effects.
+<Icon src="/images/icons/eye.svg" alt="Zen Mode icon" /> **Zen Mode** (default **Off**, supported on 15 built-in sites, all except Gemini Notebook) hides the site's native sidebars, top bars, and surrounding chrome so you can focus purely on the conversation. Zen Mode also includes Clean Mode effects.
 
-- **Temporary toggle**: Press <Shortcut combo="ctrl+shift+z" /> or click the eye icon in the floating quick buttons.
-- **Persistent per site**: Turn on **Zen Mode** under **Settings → Site Settings → Page Layout**.
-- **Show Exit Button** (default **On**): Displays a floating exit button while Zen Mode is active; turn it off if you prefer exiting exclusively with <Shortcut combo="ctrl+shift+z" />.
+- **Temporary toggle**: Press <Shortcut combo="ctrl+shift+z" /> or click the <Icon src="/images/icons/eye.svg" alt="Zen Mode icon" /> eye icon in the floating quick buttons.
+- **Persistent per site**: Turn on **Zen Mode** under <Icon src="/images/icons/settings.svg" alt="Settings icon" /> **Settings → Site Settings → Page Layout**.
+- **Show Exit Button** (default **On**): Displays a floating <Icon src="/images/icons/eye-closed.svg" alt="Exit Zen Mode icon" /> exit button while Zen Mode is active; turn it off if you prefer exiting exclusively with <Shortcut combo="ctrl+shift+z" />.
 
 ## Clean Mode
 
-**Clean Mode** (default **On**, supported on 14 built-in sites—all except Gemini Notebook and Grok) quietly removes low-value distractions such as AI disclaimer banners, upgrade nags, and promotional cards without altering the core chat layout.
+<Icon src="/images/icons/clean-mode.svg" alt="Clean Mode icon" /> **Clean Mode** (default **On**, supported on 14 built-in sites—all except Gemini Notebook and Grok) quietly removes low-value distractions such as AI disclaimer banners, upgrade nags, and promotional cards without altering the core chat layout.
 
 ## Auto-hide input (Gemini, Beta)
 
-Available on **Gemini** (default **Off**): slides the bottom prompt input out of view while you read long replies. Move your cursor to the bottom of the screen, insert a prompt from Ophel, or press <Shortcut combo="alt+i" /> to bring the input box right back.
+Available on <Icon src="/images/icons/gemini.png" alt="Gemini icon" /> **Gemini** (default **Off**): slides the bottom prompt input out of view while you read long replies. Move your cursor to the bottom of the screen, insert a prompt from Ophel, or press <Shortcut combo="alt+i" /> to bring the input box right back.
 
 ## Panel size and docking behavior
 
-Controls for the Ophel panel itself—Floating vs. Edge Snap mode, width (`240–600 px`), temporary hover width (`520 px`), height (`50–100 vh`), snap threshold, and margins—live under **Settings → General → Panel**. See [Panel Overview — Panel size and position settings](/panel-overview#panel-size-and-position-settings).
+Controls for the Ophel panel itself—<Icon src="/images/icons/floating-mode.svg" alt="Floating mode icon" /> Floating vs. <Icon src="/images/icons/snap-to-edge.svg" alt="Edge Snap icon" /> Edge Snap mode, width (`240–600 px`), temporary hover width (`520 px`), height (`50–100 vh`), snap threshold, and margins—live under **Settings → General → Panel**. See [Panel Overview — Panel size and position settings](/panel-overview#panel-size-and-position-settings).

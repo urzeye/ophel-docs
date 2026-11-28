@@ -15,6 +15,7 @@ keywords:
   ]
 ---
 
+import { Icon } from "/snippets/icon.jsx"
 import { Shortcut } from "/snippets/shortcut.jsx"
 
 **对话** 标签页在 AI 平台原有历史列表之上，提供单层项目文件夹、多标签筛选、置顶、搜索与批量操作。
@@ -45,27 +46,27 @@ Ophel 只从当前站点读取对话标题与链接（Claude、Grok、Qwen Studi
 
 ## 文件夹、标签与置顶
 
-- **文件夹（单层平级）**：每条对话归属一个文件夹（默认归入固定的 **收件箱**）。可自定义名称与 64 种 Emoji 图标、拖拽调整文件夹顺序、直接把对话拖进目标文件夹。列表左上角的文件夹选择器决定新同步进来的对话默认放进哪个文件夹。
-- **多标签**：可为同一条对话添加多个彩色标签（内置 30 种配色）并按标签筛选。
-- **置顶**：把常用对话置顶到文件夹顶部，并可按需同步取消置顶状态。
+- <Icon src="/images/icons/folder.svg" alt="文件夹图标" /> **文件夹（单层平级）**：每条对话归属一个文件夹（默认归入固定的 **收件箱**）。点击 <Icon src="/images/icons/folder-plus.svg" alt="新建文件夹图标" /> 新建文件夹，可自定义名称与 64 种 Emoji 图标、拖拽调整顺序，或直接把对话拖入文件夹（也可通过对话行 <Icon src="/images/icons/more-horizontal.svg" alt="更多菜单图标" /> 菜单或 <Icon src="/images/icons/tools.svg" alt="工具箱图标" /> **工具箱 → <Icon src="/images/icons/folder-move.svg" alt="移动图标" /> 移动**）。列表左上角的文件夹选择器决定新同步进来的对话默认放进哪个文件夹。
+- <Icon src="/images/icons/tag.svg" alt="标签图标" /> **多标签**：可为同一条对话添加多个彩色标签（内置 30 种配色）并按标签筛选。
+- <Icon src="/images/icons/pin.svg" alt="置顶图标" /> **置顶**：把常用对话置顶到文件夹顶部，并可按需同步取消置顶状态。
 
 ## 批量操作
 
-点击工具栏的批量操作按钮即可多选对话（支持按住 `Shift` 范围连选或整文件夹全选）：
+点击工具栏的 <Icon src="/images/icons/batch.svg" alt="批量操作图标" /> 批量操作按钮即可多选对话（支持按住 `Shift` 范围连选或整文件夹全选）：
 
-- 批量 **置顶/取消置顶**、**移动到文件夹**、**增删标签** 与 **删除**。
-- **导出**：当**恰好选中 1 条对话**时可点击导出（平时也可从对话行右侧 `⋯` 菜单导出，或按 <Shortcut combo="ctrl+shift+e" /> 导出当前打开的对话）。详见[导出对话](/zh/features/export)。
+- 批量 <Icon src="/images/icons/pin.svg" alt="置顶图标" /> **置顶/取消置顶**、<Icon src="/images/icons/folder-move.svg" alt="移动图标" /> **移动到文件夹**、<Icon src="/images/icons/tag.svg" alt="标签图标" /> **增删标签**、<Icon src="/images/icons/delete.svg" alt="删除图标" /> **删除** 与 <Icon src="/images/icons/clear.svg" alt="退出图标" /> **退出**。
+- <Icon src="/images/icons/export.svg" alt="导出图标" /> **导出**：当**恰好选中 1 条对话**时可点击导出（平时也可从对话行右侧 <Icon src="/images/icons/more-horizontal.svg" alt="更多菜单图标" /> 菜单导出，或按 <Shortcut combo="ctrl+shift+e" /> 导出当前打开的对话）。详见[导出对话](/zh/features/export)。
 
 ## 快捷键
 
 | 操作 | 默认快捷键 |
 | --- | --- |
-| 新建对话 | <Shortcut combo="ctrl+shift+o" /> |
-| 刷新对话列表 | <Shortcut combo="alt+shift+r" /> |
-| 定位当前对话 | <Shortcut combo="alt+shift+l" /> |
-| 上一个 / 下一个对话 | <Shortcut combo="alt+[" /> / <Shortcut combo="alt+]" /> |
-| 导出当前对话 | <Shortcut combo="ctrl+shift+e" /> |
-| 复制最新 AI 回复 | <Shortcut combo="ctrl+shift+c" /> |
+| <Icon src="/images/icons/edit.svg" alt="新对话图标" /> 新建对话 | <Shortcut combo="ctrl+shift+o" /> |
+| <Icon src="/images/icons/refresh.svg" alt="刷新图标" /> 刷新对话列表 | <Shortcut combo="alt+shift+r" /> |
+| <Icon src="/images/icons/locate.svg" alt="定位图标" /> 定位当前对话 | <Shortcut combo="alt+shift+l" /> |
+| <Icon src="/images/icons/chevron-up.svg" alt="上一个图标" /><Icon src="/images/icons/chevron-down.svg" alt="下一个图标" /> 上一个 / 下一个对话 | <Shortcut combo="alt+[" /> / <Shortcut combo="alt+]" /> |
+| <Icon src="/images/icons/export.svg" alt="导出图标" /> 导出当前对话 | <Shortcut combo="ctrl+shift+e" /> |
+| <Icon src="/images/icons/copy.svg" alt="复制图标" /> 复制最新 AI 回复 | <Shortcut combo="ctrl+shift+c" /> |
 
 ## 设置项
 

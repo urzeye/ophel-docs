@@ -21,18 +21,19 @@ keywords:
   ]
 ---
 
+import { Icon } from "/snippets/icon.jsx"
 import { Shortcut } from "/snippets/shortcut.jsx"
 
 Ophel lets you export an entire conversation—or just the turns you pick—into clean documents, attachment ZIP archives, or styled shareable images.
 
 ## How to export
 
-Open the **Export Chat** dialog in any of four ways:
+Open the <Icon src="/images/icons/export.svg" alt="Export icon" /> **Export Chat** dialog in any of four ways:
 
 - Press <Shortcut combo="ctrl+shift+e" />.
-- Click the **Export** icon in the **Outline** tab toolbar.
-- Click **Toolbox → Export** in the floating quick buttons.
-- Open the `⋯` menu on any chat in the **Chats** tab (for non-open chats, Ophel opens the thread and exports it).
+- Click the <Icon src="/images/icons/export.svg" alt="Export icon" /> **Export** icon in the **Outline** tab toolbar.
+- Click <Icon src="/images/icons/tools.svg" alt="Toolbox icon" /> **Toolbox → <Icon src="/images/icons/export.svg" alt="Export icon" /> Export** in the floating quick buttons.
+- Open the <Icon src="/images/icons/more-horizontal.svg" alt="More menu icon" /> menu on any chat in the **Chats** tab (for non-open chats, Ophel opens the thread and exports it).
 
 <Tip>
 If you prefer one-click downloads without the dialog, turn off **Show Export Options Dialog** under **Settings → Features → Chats → Export Settings** and set your **Default Export Format**. For quick copying without opening the dialog, use <Shortcut combo="ctrl+shift+c" /> (copy latest reply) or <Shortcut combo="alt+;" /> (copy last code block).
@@ -42,12 +43,12 @@ If you prefer one-click downloads without the dialog, turn off **Show Export Opt
 
 | Format | Output | Best for |
 | --- | --- | --- |
-| **Markdown** | `.md` or `.zip` | Obsidian, Notion, GitHub, and personal knowledge bases. When packaging is set to **ZIP**, Ophel bundles `assets/images/`, `assets/files/`, and `assets/documents/` alongside the Markdown file. |
-| **Shareable Image** | `.png`, `.jpg`, or `.zip` | Sharing clean conversations on social media, docs, or chat apps, with full preview, layout, theme, and watermark controls. |
-| **HTML** | `.html` | Standalone web page you can open offline or print to PDF in any browser. |
-| **JSON** | `.json` | Structured metadata + turn array for scripts, archiving, or downstream processing. |
-| **Plain Text** | `.txt` | Lightweight stripped text without Markdown formatting. |
-| **Clipboard actions** | Markdown / Outline | Copy the entire chat as Markdown or copy just the heading outline straight from the export dialog. |
+| <Icon src="/images/icons/markdown.svg" alt="Markdown icon" /><Icon src="/images/icons/zip-file.svg" alt="ZIP icon" /> **Markdown** | `.md` or `.zip` | Obsidian, Notion, GitHub, and personal knowledge bases. When packaging is set to **ZIP**, Ophel bundles `assets/images/`, `assets/files/`, and `assets/documents/` alongside the Markdown file. |
+| <Icon src="/images/icons/image-file.svg" alt="Image icon" /> **Shareable Image** | `.png`, `.jpg`, or `.zip` | Sharing clean conversations on social media, docs, or chat apps, with full preview, layout, theme, and watermark controls. |
+| <Icon src="/images/icons/html-file.svg" alt="HTML icon" /> **HTML** | `.html` | Standalone web page you can open offline or print to PDF in any browser. |
+| <Icon src="/images/icons/json-file.svg" alt="JSON icon" /> **JSON** | `.json` | Structured metadata + turn array for scripts, archiving, or downstream processing. |
+| <Icon src="/images/icons/txt-file.svg" alt="TXT icon" /> **Plain Text** | `.txt` | Lightweight stripped text without Markdown formatting. |
+| <Icon src="/images/icons/copy.svg" alt="Copy icon" /><Icon src="/images/icons/copy-outline.svg" alt="Copy outline icon" /> **Clipboard actions** | Markdown / Outline | Copy the entire chat as Markdown or copy just the heading outline straight from the export dialog. |
 
 ### Normalized Markdown headings
 
@@ -78,35 +79,35 @@ Choose **Image** in the Export dialog (or in **Segmented Export**) to open the i
 
 ## Segmented export
 
-Click **Segmented Export** in the Export dialog to pick only the turns you want:
+Click <Icon src="/images/icons/segmented-export.svg" alt="Segmented export icon" /> **Segmented Export** in the Export dialog to pick only the turns you want:
 
 - Filter turns by keyword, check individual turns, use **Select all** / **Invert**, or enter ranges such as `1-3, 8`.
 - Choose from **4 output modes**:
-  1. **ZIP (one Markdown per segment)**
-  2. **Merge into one Markdown**
-  3. **Copy as Markdown**
-  4. **Export as image** (opens the shareable image studio with only your selected turns)
+  1. <Icon src="/images/icons/zip-file.svg" alt="ZIP icon" /> **ZIP (one Markdown per segment)**
+  2. <Icon src="/images/icons/markdown.svg" alt="Markdown icon" /> **Merge into one Markdown**
+  3. <Icon src="/images/icons/copy.svg" alt="Copy icon" /> **Copy as Markdown**
+  4. <Icon src="/images/icons/image-file.svg" alt="Image icon" /> **Export as image** (opens the shareable image studio with only your selected turns)
 
 ## Platform export capabilities
 
 | Platform | Collection method | Image / attachment ZIP | Thought / reasoning blocks | Notes |
 | --- | --- | --- | --- | --- |
-| **ChatGPT** | API-first | Yes | Filtered out | Complete history via API |
-| **Gemini** | DOM (auto-loads history) | Yes | Yes | Uses watermark-free images when Gemini watermark removal is enabled; supports Deep Research & Canvas export |
-| **Gemini Enterprise** | Shadow DOM | No | No | Standard text/Markdown export |
-| **Claude** | API-first | Yes | Yes | Exports full branch + thinking blocks; supports Artifact documents |
-| **Google AI Studio** | API-first (RPC, DOM fallback) | Yes | Yes | Fetches Drive attachments via extension fetch channel |
-| **Grok** | API-first | Yes | No | Exports final card attachments; works on share pages |
-| **Gemini Notebook** | DOM snapshot | No | No | Exports the active source column (Sources / Chat / Studio) |
-| **DeepSeek** | API-first | Yes | Yes | Includes reasoning blocks and attachments |
-| **Doubao / Dola** | DOM scroll capture | Yes | No | Same exporter on `doubao.com` and `dola.com` |
-| **Kimi** | DOM | Yes | Yes | Preserves full tables on copy and export |
-| **Qwen Studio** | API-first | Yes | Yes | Full history pagination |
-| **Qianwen** | DOM (auto-loads history) | Yes | Yes | — |
-| **Yuanbao** | DOM | Yes | Yes | — |
-| **ChatGLM** | DOM (+ Share API) | Yes | Yes | Supports share-page API export |
-| **ima** | DOM | Yes | Yes | — |
-| **Z.ai** | DOM | Yes | Yes | — |
+| <Icon src="/images/icons/chatgpt.png" alt="ChatGPT icon" /> **ChatGPT** | API-first | Yes | Filtered out | Complete history via API |
+| <Icon src="/images/icons/gemini.png" alt="Gemini icon" /> **Gemini** | DOM (auto-loads history) | Yes | Yes | Uses watermark-free images when Gemini watermark removal is enabled; supports Deep Research & Canvas export |
+| <Icon src="/images/icons/gemini-enterprise.png" alt="Gemini Enterprise icon" /> **Gemini Enterprise** | Shadow DOM | No | No | Standard text/Markdown export |
+| <Icon src="/images/icons/claude.svg" alt="Claude icon" /> **Claude** | API-first | Yes | Yes | Exports full branch + thinking blocks; supports Artifact documents |
+| <Icon src="/images/icons/aistudio.png" alt="AI Studio icon" /> **Google AI Studio** | API-first (RPC, DOM fallback) | Yes | Yes | Fetches Drive attachments via extension fetch channel |
+| <Icon src="/images/icons/grok.png" alt="Grok icon" /> **Grok** | API-first | Yes | No | Exports final card attachments; works on share pages |
+| <Icon src="/images/icons/gemini-notebook.png" alt="Gemini Notebook icon" /> **Gemini Notebook** | DOM snapshot | No | No | Exports the active source column (Sources / Chat / Studio) |
+| <Icon src="/images/icons/deepseek.svg" alt="DeepSeek icon" /> **DeepSeek** | API-first | Yes | Yes | Includes reasoning blocks and attachments |
+| <Icon src="/images/icons/doubao.png" alt="Doubao icon" /> **Doubao / Dola** | DOM scroll capture | Yes | No | Same exporter on `doubao.com` and `dola.com` |
+| <Icon src="/images/icons/kimi.png" alt="Kimi icon" /> **Kimi** | DOM | Yes | Yes | Preserves full tables on copy and export |
+| <Icon src="/images/icons/qwenai.png" alt="Qwen Studio icon" /> **Qwen Studio** | API-first | Yes | Yes | Full history pagination |
+| <Icon src="/images/icons/qianwen.png" alt="Qianwen icon" /> **Qianwen** | DOM (auto-loads history) | Yes | Yes | — |
+| <Icon src="/images/icons/yuanbao.png" alt="Yuanbao icon" /> **Yuanbao** | DOM | Yes | Yes | — |
+| <Icon src="/images/icons/chatglm.png" alt="ChatGLM icon" /> **ChatGLM** | DOM (+ Share API) | Yes | Yes | Supports share-page API export |
+| <Icon src="/images/icons/ima.jpg" alt="ima icon" /> **ima** | DOM | Yes | Yes | — |
+| <Icon src="/images/icons/zai.png" alt="Z.ai icon" /> **Z.ai** | DOM | Yes | Yes | — |
 
 <Note>
 On Gemini, when viewing a **Deep Research** report, Ophel automatically handles expanding and exporting the report content (and adds Copy / Download Markdown actions on the report view).

@@ -6,6 +6,7 @@ icon: "history"
 keywords: ["reading history", "scroll lock", "position restore", "reading progress", "page anchors", "scroll position"]
 ---
 
+import { Icon } from "/snippets/icon.jsx"
 import { Shortcut } from "/snippets/shortcut.jsx"
 
 Ophel helps you keep your place inside long threads—whether you are reading an earlier paragraph while the AI keeps generating, jumping to the bottom and back, or returning to a thread hours later.
@@ -29,7 +30,7 @@ Open **Settings → Features → Reading History**:
 
 Most AI sites keep forcing the page to the bottom as a reply streams. Scroll lock stops that behavior so you can read earlier answers undisturbed:
 
-- **Quick temporary toggle**: Press <Shortcut combo="alt+s" /> or click **Toolbox → Scroll Lock** in the floating quick buttons.
+- **Quick temporary toggle**: Press <Shortcut combo="alt+s" /> or click <Icon src="/images/icons/tools.svg" alt="Toolbox icon" /> **Toolbox → <Icon src="/images/icons/scroll-lock.svg" alt="Scroll lock icon" /> Scroll Lock** in the floating quick buttons.
 - **Persistent setting**: Turn on **Prevent auto-scroll** under **Settings → Features → Outline** (default **Off**) to keep scroll lock active by default.
 
 <Note>
@@ -42,12 +43,12 @@ Jump across long pages without losing where you were reading:
 
 | Action | Shortcut | Behavior |
 | --- | --- | --- |
-| **Scroll to Top** | <Shortcut combo="alt+t" /> | Saves your current scroll position as an anchor, then jumps to the top of the conversation. |
-| **Scroll to Bottom** | <Shortcut combo="alt+b" /> | Saves your current scroll position as an anchor, then jumps to the bottom. |
-| **Return to Anchor** | <Shortcut combo="alt+z" /> | Jumps back to the saved anchor. Pressing it again toggles back and forth between the two positions. |
+| <Icon src="/images/icons/scroll-top.svg" alt="Scroll top icon" /> **Scroll to Top** | <Shortcut combo="alt+t" /> | Saves your current scroll position as an anchor, then jumps to the top of the conversation. |
+| <Icon src="/images/icons/scroll-bottom.svg" alt="Scroll bottom icon" /> **Scroll to Bottom** | <Shortcut combo="alt+b" /> | Saves your current scroll position as an anchor, then jumps to the bottom. |
+| <Icon src="/images/icons/anchor.svg" alt="Anchor icon" /> **Return to Anchor** | <Shortcut combo="alt+z" /> | Jumps back to the saved anchor. Pressing it again toggles back and forth between the two positions. |
 
 The same three actions are also available in the panel footer and floating quick buttons.
 
 ## Bookmarks
 
-For persistent markers that stay saved across reloads, star headings or prompts directly in the page or panel. See [Smart Outline — Bookmarks](/features/outline#bookmarks).
+For persistent markers that stay saved across reloads, click <Icon src="/images/icons/star.svg" alt="Bookmark icon" /> on headings or prompts directly in the page or panel, and remove stale entries via <Icon src="/images/icons/cleanup.svg" alt="Cleanup icon" /> **Cleanup**. See [Smart Outline — Bookmarks](/features/outline#bookmarks).

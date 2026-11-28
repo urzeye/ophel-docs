@@ -7,6 +7,7 @@ keywords:
   ["故障排查", "面板不显示", "大纲为空", "调试步骤", "修复Ophel", "扩展问题"]
 ---
 
+import { Icon } from "/snippets/icon.jsx"
 import { Shortcut } from "/snippets/shortcut.jsx"
 
 ## 面板没有出现
@@ -19,7 +20,7 @@ import { Shortcut } from "/snippets/shortcut.jsx"
     点击浏览器工具栏的 Ophel 图标确认未停用当前站点；同时检查 **设置 → 站点设置 → 在指定页面隐藏 Ophel**，排除误配的路径规则。
   </Step>
   <Step title="确认面板不是被收起了">
-    按 <Shortcut combo="alt+p" /> 尝试展开面板，或到屏幕左右边缘寻找收起后的星芒水滴 / 吸附把手。
+    按 <Shortcut combo="alt+p" /> 尝试展开面板，或到屏幕左右边缘寻找收起后的 <Icon src="/images/icons/sparkle.svg" alt="星芒水滴图标" /> 星芒水滴 / 吸附把手。
   </Step>
   <Step title="强制刷新页面">
     按 <Shortcut combo="ctrl+shift+r" /> 硬刷新。安装或更新 Ophel 前就已经打开的标签页需要刷新一次才能挂载面板。
@@ -30,10 +31,10 @@ import { Shortcut } from "/snippets/shortcut.jsx"
 
 <Steps>
   <Step title="检查筛选按钮和标题内容">
-    如果 AI 回复里没有 Markdown 标题，请确认开启了 **显示用户问题**（<Shortcut combo="alt+q" />）；同时确认没有误开 **仅看收藏**（<Shortcut combo="alt+c" />）。
+    如果 AI 回复里没有 Markdown 标题，请确认开启了 <Icon src="/images/icons/user-query.svg" alt="用户问题图标" /> **显示用户问题**（<Shortcut combo="alt+q" />）；同时确认没有误开 <Icon src="/images/icons/star.svg" alt="仅看收藏图标" /> **仅看收藏**（<Shortcut combo="alt+c" />）。
   </Step>
   <Step title="手动刷新大纲">
-    按 <Shortcut combo="alt+r" /> 或点击大纲工具栏刷新按钮。在虚拟滚动站点（DeepSeek、Claude、AI Studio、Grok、Qwen Studio）切换长对话后，稍等片刻让历史接口自动补全节点。
+    按 <Shortcut combo="alt+r" /> 或点击大纲工具栏的 <Icon src="/images/icons/refresh.svg" alt="刷新图标" /> 刷新按钮。在虚拟滚动站点（DeepSeek、Claude、AI Studio、Grok、Qwen Studio）切换长对话后，稍等片刻让历史接口自动补全节点。
   </Step>
   <Step title="核对大纲跟随与自动更新设置">
     打开 **设置 → 功能模块 → 大纲**：确认 **大纲跟随模式** 为 **跟随当前位置**（不是「手动控制」），并展开底部 **高级选项** 检查 **对话中自动更新大纲** 是否开启。
@@ -47,7 +48,7 @@ import { Shortcut } from "/snippets/shortcut.jsx"
     **面板展开时隐藏快捷按钮** 默认为 **开启**。按 <Shortcut combo="alt+p" /> 收起面板即可看到，或在 **设置 → 基本设置 → 快捷按钮** 关闭该选项。
   </Step>
   <Step title="唤醒收起后的星芒水滴">
-    鼠标移开 3 秒后按钮条会缩成一颗小水滴。将鼠标靠近它上次所在的屏幕边缘；如果你把 **近距离感应半径** 设成了 `0`，则需要直接悬停在水滴上 **300 毫秒**才会展开。
+    鼠标移开 3 秒后 <Icon src="/images/icons/floating-toolbar.svg" alt="快捷按钮图标" /> 按钮条会缩成一颗 <Icon src="/images/icons/sparkle.svg" alt="星芒水滴图标" /> 小水滴。将鼠标靠近它上次所在的屏幕边缘；如果你把 **近距离感应半径** 设成了 `0`，则需要直接悬停在水滴上 **300 毫秒**才会展开。
   </Step>
 </Steps>
 
@@ -55,7 +56,7 @@ import { Shortcut } from "/snippets/shortcut.jsx"
 
 - **开启智能避让**：在 **设置 → 站点设置 → 页面布局** 中开启 **智能避让**（默认开启），让对话正文自动避开悬浮面板。
 - **临时穿透点击**：单独按住 <Shortcut combo="ctrl" /> 约 **0.2 秒**，直接穿透面板点击下方的按钮或链接。
-- **切换为自动吸附**：按 <Shortcut combo="alt+m" /> 或双击面板标题栏，把面板贴边收起，需要时再滑出。
+- <Icon src="/images/icons/snap-to-edge.svg" alt="自动吸附图标" /> **切换为自动吸附**：按 <Shortcut combo="alt+m" /> 或双击面板标题栏，把面板贴边收起，需要时再滑出。
 
 ## 对话标签页为空（或升级后多域名站点列表清空）
 
@@ -64,7 +65,7 @@ import { Shortcut } from "/snippets/shortcut.jsx"
     仅 11 个内置平台有侧栏对话列表（Gemini Notebook、智谱清言、腾讯 ima、通义千问、Z.ai 与站点适配包不显示此标签）。
   </Step>
   <Step title="展开原网站侧栏并手动刷新">
-    在通过侧栏扫描同步的平台上，先展开网站自带的历史记录栏，再在 **对话** 标签页按 <Shortcut combo="alt+shift+r" /> 同步。
+    在通过侧栏扫描同步的平台上，先展开网站自带的历史记录栏，再在 **对话** 标签页按 <Shortcut combo="alt+shift+r" />（或点击 <Icon src="/images/icons/refresh.svg" alt="同步图标" /> 同步）。
   </Step>
   <Step title="多域名站点重新同步一次">
     自 v1.3.4 起，**豆包 / Dola**、**Kimi（`.com` / `.ai`）** 与 **Z.ai（`chat.z.ai` / `zchat.z.ai`）** 按域名分开存放本地对话，首次切到新域名后点击同步即可重建列表。
@@ -75,7 +76,7 @@ import { Shortcut } from "/snippets/shortcut.jsx"
 
 <Steps>
   <Step title="检查暂停状态与输入框">
-    按 <Shortcut combo="alt+j" /> 打开队列浮条，确认队列没有处于暂停状态，且当前页面输入框是空的（输入框里有草稿时队列会等待而不抢发）。
+    按 <Shortcut combo="alt+j" /> 打开 <Icon src="/images/icons/prompt-queue.svg" alt="提示词队列图标" /> 队列浮条，确认队列没有处于暂停状态，且当前页面输入框是空的（输入框里有草稿时队列会等待而不抢发）。
   </Step>
   <Step title="点击「强制发送」手动推进">
     AI 停止输出后队列会等待约 2 秒确认空闲。如果目标平台改动了加载指示器导致一直等待，点击 **强制发送** 即可立即发出下一条。
@@ -96,17 +97,17 @@ import { Shortcut } from "/snippets/shortcut.jsx"
     支持 `https://` 与 `http://`（公网强烈推荐 `https://`，内网 NAS 可用 `http://`）。使用 **坚果云**、**InfiniCLOUD**、**Nextcloud** 等服务时，必须填写**应用专用密码**，不能用主账号登录密码。
   </Step>
   <Step title="检查浏览器主机权限">
-    在 **设置 → 数据与权限 → WebDAV 同步** 点击 **测试连接**。Chrome/Edge/Firefox 需授予 `<all_urls>` 权限；macOS Safari 需在 **Safari → 设置 → 扩展 → Ophel Atlas** 允许该 WebDAV 服务器域名。
+    在 **设置 → 数据与权限 → WebDAV 同步** 点击 <Icon src="/images/icons/check.svg" alt="测试连接图标" /> **测试连接**。Chrome/Edge/Firefox 需授予 `<all_urls>` 权限；macOS Safari 需在 **Safari → 设置 → 扩展 → Ophel Atlas** 允许该 WebDAV 服务器域名。
   </Step>
   <Step title="查看失败状态与调度条件">
-    定时备份失败（单次请求超时 25 秒）会在卡片状态栏提示上次同步失败；点击 **测试连接** 或 **立即备份** 可查看具体报错详情。使用油猴版时，定时自动备份需要至少保持一个受支持的 AI 页面处于打开状态才会触发。
+    定时备份失败（单次请求超时 25 秒）会在卡片状态栏提示上次同步失败；点击 <Icon src="/images/icons/check.svg" alt="测试连接图标" /> **测试连接** 或 <Icon src="/images/icons/cloud-upload.svg" alt="立即备份图标" /> **立即备份** 可查看具体报错详情。使用油猴版时，定时自动备份需要至少保持一个受支持的 AI 页面处于打开状态才会触发。
   </Step>
 </Steps>
 
 ## Firefox 或 Safari 扩展重启后消失
 
-- **Firefox**：通过 `about:debugging` 载入未签名 ZIP 属于临时测试模式，重启浏览器即清除。日常使用请直接从 [Firefox 附加组件商店（AMO）](https://addons.mozilla.org/firefox/addon/ophel-ai-chat-enhancer/)安装官方签名版。
-- **Safari（macOS 实验版）**：受 macOS Safari 临时扩展限制，加载后会在 **24 小时**或退出 Safari 时自动卸载，需要重新通过 **Safari → 设置 → 开发者 → 添加临时扩展…** 载入解压目录。
+- <Icon src="/images/icons/firefox.svg" alt="Firefox" /> **Firefox**：通过 `about:debugging` 载入未签名 ZIP 属于临时测试模式，重启浏览器即清除。日常使用请直接从 [Firefox 附加组件商店（AMO）](https://addons.mozilla.org/firefox/addon/ophel-ai-chat-enhancer/)安装官方签名版。
+- <Icon src="/images/icons/safari.svg" alt="Safari" /> **Safari（macOS 实验版）**：受 macOS Safari 临时扩展限制，加载后会在 **24 小时**或退出 Safari 时自动卸载，需要重新通过 **Safari → 设置 → 开发者 → 添加临时扩展…** 载入解压目录。
 
 ## 仍然无法解决？
 

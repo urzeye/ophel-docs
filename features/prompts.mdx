@@ -14,6 +14,7 @@ keywords:
   ]
 ---
 
+import { Icon } from "/snippets/icon.jsx"
 import { Shortcut } from "/snippets/shortcut.jsx"
 
 The **Prompts** tab stores reusable templates you can insert into any supported AI chat in one click, along with a sequential prompt queue, multi-step chains, and text-selection quoting.
@@ -22,11 +23,11 @@ The **Prompts** tab stores reusable templates you can insert into any supported 
 
 ## Saving and using prompts
 
-- **Add a prompt**: Click **Add Prompt** in the **Prompts** tab, enter a title, category, optional platform scope (leave empty for all sites), and content.
+- **Add a prompt**: Click <Icon src="/images/icons/prompt.svg" alt="Prompt icon" /> **Add Prompt** in the **Prompts** tab, enter a title, category, optional platform scope (leave empty for all sites), and content.
 - **Insert**: Click a prompt card to insert it into the active chat input. If the prompt contains variables, Ophel opens a quick fill-in dialog first.
 - **Double-click to send**: Enable **Double-click to send prompt** in settings if you want double-clicking a prompt to insert and send immediately (if the AI is still generating and Prompt Queue is enabled, it queues automatically instead).
-- **Organize**: Filter by category or platform, pin favorite prompts to the top, drag cards to reorder, and search by title or content.
-- **Import & export**: Use the toolbar buttons in the **Prompts** tab to export or import prompts as JSON. Prompt import supports two modes: **Merge** (updates matching IDs and appends new entries) and **Overwrite** (replaces your current library). Prompt chains are included in backups.
+- **Organize**: Filter by category or platform, <Icon src="/images/icons/pin.svg" alt="Pin icon" /> pin favorite prompts to the top, preview (<Icon src="/images/icons/eye.svg" alt="Preview icon" />), copy (<Icon src="/images/icons/copy.svg" alt="Copy icon" />), edit (<Icon src="/images/icons/edit.svg" alt="Edit icon" />) or delete (<Icon src="/images/icons/delete.svg" alt="Delete icon" />) via the <Icon src="/images/icons/more-horizontal.svg" alt="More menu icon" /> menu, drag cards to reorder, and <Icon src="/images/icons/search.svg" alt="Search icon" /> search by title or content.
+- **Import & export**: Use <Icon src="/images/icons/import.svg" alt="Import icon" /> **Import** and <Icon src="/images/icons/export.svg" alt="Export icon" /> **Export** in the **Prompts** toolbar to back up or share prompts as JSON. Prompt import supports two modes: **Merge** (updates matching IDs and appends new entries) and **Overwrite** (replaces your current library). Prompt chains are included in backups.
 
 ## Template variables
 
@@ -57,12 +58,12 @@ Focus on: {{focus:correctness and performance}}
 
 ## Prompt Queue
 
-Prompt Queue lets you line up multiple prompts and have Ophel send them one by one after each AI reply finishes.
+<Icon src="/images/icons/prompt-queue.svg" alt="Prompt Queue icon" /> **Prompt Queue** lets you line up multiple prompts and have Ophel send them one by one after each AI reply finishes.
 
 1. Turn on **Prompt Queue** under **Settings → Features → Prompts** (or toggle the floating queue bar anytime with <Shortcut combo="alt+j" />).
 2. Add prompts to the queue in any of these ways:
    - Type directly in the queue overlay and press `Enter`.
-   - Open a prompt's `⋯` menu and pick **Add to queue** or **Split lines and add to queue**.
+   - Open a prompt's <Icon src="/images/icons/more-horizontal.svg" alt="More menu icon" /> menu and pick <Icon src="/images/icons/add-to-queue.svg" alt="Add to queue icon" /> **Add to queue** or <Icon src="/images/icons/split-lines-to-queue.svg" alt="Split lines icon" /> **Split lines and add to queue**.
    - Click **Batch Add** in the queue bar to pick multiple prompts from your library or split pasted text.
 
 <Tabs>
@@ -85,20 +86,20 @@ Ophel checks generation status every second. Once the AI has stayed idle for 2 c
 
 ## Prompt Chains
 
-Prompt Chains let you combine multiple steps into one reusable workflow. Open the **Chains** section in the **Prompts** tab to create or edit chains:
+<Icon src="/images/icons/chain.svg" alt="Prompt Chains icon" /> **Prompt Chains** let you combine multiple steps into one reusable workflow. Open the **Chains** section in the **Prompts** tab to create or edit chains:
 
 - Each step can reference an existing library prompt or use inline text.
 - Choose each step's run mode: **Insert**, **Send or queue**, or **Queue only**, and optionally split multi-line input into separate queued prompts.
 - Pick a custom SVG icon and choose whether the chain appears in the **Selection Quote** popover.
-- Ophel ships with one built-in chain: **Quote Reply**, which wraps your selected text in `{{quote}}` and inserts a reply template into the input box.
+- Ophel ships with one built-in chain: <Icon src="/images/icons/reply.svg" alt="Quote Reply icon" /> **Quote Reply**, which wraps your selected text in `{{quote}}` and inserts a reply template into the input box.
 
 ## Selection Quote
 
 Highlight text inside an AI reply (up to 8,000 characters) to show Ophel's quick action bar right above the selection:
 
-- **Copy** — copies the selected text.
-- **Quote** — inserts the text as a blockquote into the chat input and creates a clickable jump-to-source reference.
-- **Prompt Chains** — displays up to 3 pinned selection chains (plus a **More** menu), including **Quote Reply** by default.
+- <Icon src="/images/icons/copy.svg" alt="Copy icon" /> **Copy** — copies the selected text.
+- <Icon src="/images/icons/quote.svg" alt="Quote icon" /> **Quote** — inserts the text as a blockquote into the chat input and creates a clickable jump-to-source reference.
+- <Icon src="/images/icons/chain.svg" alt="Prompt Chains icon" /> **Prompt Chains** — displays up to 3 pinned selection chains (plus a **More** menu), including <Icon src="/images/icons/reply.svg" alt="Quote Reply icon" /> **Quote Reply** by default.
 
 On platforms that already show a native quote bar, Ophel adjusts its position automatically to avoid overlap. Selection Quote is disabled on sites where it conflicts with the host UI (such as Gemini Notebook and AI Studio).
 

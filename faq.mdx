@@ -13,6 +13,7 @@ keywords:
   ]
 ---
 
+import { Icon } from "/snippets/icon.jsx"
 import { Shortcut } from "/snippets/shortcut.jsx"
 
 Looking for step-by-step fixes when something isn't working? Go straight to [Troubleshooting](/troubleshooting).
@@ -25,9 +26,9 @@ Looking for step-by-step fixes when something isn't working? Go straight to [Tro
   </Accordion>
 
   <Accordion title="Should I install the browser extension, Safari build, or userscript?">
-    - **Chrome / Edge / Firefox extensions** give you the complete feature set (optional permissions UI, browser-wide <Shortcut combo="alt+o" /> shortcut, background `alarms` for WebDAV auto-backup, Claude browser cookie import, and AI Studio preloads).
-    - **Userscript** (Tampermonkey / Violentmonkey / ScriptCat) works in any browser that supports userscripts and includes core features, WebDAV, notifications, and Gemini watermark removal, without browser-wide shortcuts or Claude cookie import.
-    - **Safari (macOS)** is experimental and runs as a temporary extension (expires after 24 hours or when Safari quits), without desktop notifications, window auto-focus, or Gemini watermark removal.
+    - <Icon src="/images/icons/chrome.svg" alt="Chrome" /> <Icon src="/images/icons/edge.svg" alt="Edge" /> <Icon src="/images/icons/firefox.svg" alt="Firefox" /> **Chrome / Edge / Firefox extensions** give you the complete feature set (optional permissions UI, browser-wide <Shortcut combo="alt+o" /> shortcut, background `alarms` for WebDAV auto-backup, Claude browser cookie import, and AI Studio preloads).
+    - <Icon src="/images/icons/tampermonkey.svg" alt="Userscript" /> **Userscript** (Tampermonkey / Violentmonkey / ScriptCat) works in any browser that supports userscripts and includes core features, WebDAV, notifications, and Gemini watermark removal, without browser-wide shortcuts or Claude cookie import.
+    - <Icon src="/images/icons/safari.svg" alt="Safari" /> **Safari (macOS)** is experimental and runs as a temporary extension (expires after 24 hours or when Safari quits), without desktop notifications, window auto-focus, or Gemini watermark removal.
 
     See the full [Platform capability comparison](/installation#platform-capability-comparison).
   </Accordion>
@@ -70,7 +71,7 @@ Looking for step-by-step fixes when something isn't working? Go straight to [Tro
 
 <AccordionGroup>
   <Accordion title="Where is my data stored, and how do I move to another device?">
-    Everything lives locally in your browser's storage (`chrome.storage.local` for extensions, GM storage for userscripts). To move or sync across devices, export a **Full Backup** JSON under **Settings → Data & Permissions → Local Backup**, or set up [WebDAV Sync & Automatic Backups](/data/webdav) with your own WebDAV server.
+    Everything lives locally in your browser's storage (`chrome.storage.local` for extensions, GM storage for userscripts). To move or sync across devices, export a <Icon src="/images/icons/backup.svg" alt="Backup icon" /> **Full Backup** JSON under **Settings → Data & Permissions → Local Backup**, or set up <Icon src="/images/icons/cloud.svg" alt="WebDAV icon" /> [WebDAV Sync & Automatic Backups](/data/webdav) with your own WebDAV server.
   </Accordion>
 
   <Accordion title="Does Ophel send my conversations to any external server?">
@@ -78,7 +79,7 @@ Looking for step-by-step fixes when something isn't working? Go straight to [Tro
   </Accordion>
 
   <Accordion title="How do I reset everything and start fresh?">
-    Go to **Settings → Data & Permissions → Local Backup** and click **Clear All Data** at the bottom. This clears local Ophel data only and never deletes your chats on AI websites.
+    Go to <Icon src="/images/icons/settings.svg" alt="Settings icon" /> **Settings → Data & Permissions → Local Backup** and click <Icon src="/images/icons/delete.svg" alt="Clear data icon" /> **Clear All Data** at the bottom. This clears local Ophel data only and never deletes your chats on AI websites.
   </Accordion>
 </AccordionGroup>
 

@@ -5,6 +5,7 @@ icon: "book-open"
 keywords: ["浏览器扩展", "AI对话增强", "支持平台", "对话管理", "智能大纲", "Ophel Atlas", "AI助手"]
 ---
 
+import { Icon } from "/snippets/icon.jsx"
 import { Shortcut } from "/snippets/shortcut.jsx"
 
 和 AI 聊久了，页面动辄几十屏，想找回某段代码或结论只能拼命往上翻；常用提示词散落在记事本里；跨平台使用时每个网站的交互又各不相同。
@@ -40,22 +41,22 @@ Ophel 开箱内置 **16 个站点适配器**。具体可用功能取决于各平
 
 | 平台 | 匹配域名 | 说明 |
 | --- | --- | --- |
-| **ChatGPT** | `chatgpt.com` *（旧域名 `chat.openai.com` 会跳转至此）* | 完整功能；支持接口优先导出、按工作空间隔离对话、长对话渲染性能优化 |
-| **Gemini** | `gemini.google.com` | 完整功能；支持文档大纲（Deep Research / Canvas）、生成图片去水印、输入框自动隐藏 |
-| **Claude** | `claude.ai` | 完整功能；支持文档大纲（Artifact）、接口优先大纲与导出、按组织隔离对话、Session Key 账号切换 |
-| **Google AI Studio** | `aistudio.google.com` | 完整功能；支持接口优先大纲与导出、默认折叠界面区块与屏蔽背景水印 |
-| **Grok** | `grok.com` | 支持接口优先大纲、对话列表与导出；不支持净化模式 |
-| **Gemini Notebook** | `notebook.google.com` | 精简增强模式：三源大纲（来源 / 对话 / Studio 产物）、提示词插入、面板避让、当前视图快照导出；无对话列表与模型锁定 |
-| **Gemini Enterprise** | `business.gemini.google` | 新用户默认停用，可在 **设置 → 适配中心 → 内置站点** 中手动启用 |
-| **DeepSeek** | `chat.deepseek.com` | 支持接口优先大纲与导出；不支持模型锁定 |
-| **豆包 / Dola** | `www.doubao.com`、`www.dola.com` | 共用适配器，访问 `dola.com` 时显示为 **Dola**；两域名共享设置，本地对话与书签按域名隔离 |
-| **Kimi** | `www.kimi.com`、`www.kimi.ai` | 完整功能；两个域名共享设置，本地对话与书签按域名隔离 |
-| **Qwen Studio** | `chat.qwen.ai` | 支持接口优先大纲、对话列表与导出 |
-| **通义千问（Qianwen）** | `www.qianwen.com`、`qianwen.com` | 无侧栏对话列表同步（自动隐藏对话标签页） |
-| **腾讯元宝** | `yuanbao.tencent.com` | 完整功能；支持代码块自动换行 |
-| **Z.ai** | `chat.z.ai`、`zchat.z.ai`、`www.zchat.z.ai` | 无侧栏对话列表同步（自动隐藏对话标签页）；`chat.z.ai` 与 `zchat.z.ai` 本地数据分开存放 |
-| **智谱清言（ChatGLM）** | `chatglm.cn` | 无侧栏对话列表同步（自动隐藏对话标签页）；支持分享页接口导出 |
-| **腾讯 ima** | `ima.qq.com` | 无侧栏对话列表同步（自动隐藏对话标签页）；不支持同步宿主页深浅主题 |
+| <Icon src="/images/icons/chatgpt.png" alt="ChatGPT 图标" /> **ChatGPT** | `chatgpt.com` *（旧域名 `chat.openai.com` 会跳转至此）* | 完整功能；支持接口优先导出、按工作空间隔离对话、长对话渲染性能优化 |
+| <Icon src="/images/icons/gemini.png" alt="Gemini 图标" /> **Gemini** | `gemini.google.com` | 完整功能；支持文档大纲（Deep Research / Canvas）、生成图片去水印、输入框自动隐藏 |
+| <Icon src="/images/icons/claude.svg" alt="Claude 图标" /> **Claude** | `claude.ai` | 完整功能；支持文档大纲（Artifact）、接口优先大纲与导出、按组织隔离对话、Session Key 账号切换 |
+| <Icon src="/images/icons/aistudio.png" alt="AI Studio 图标" /> **Google AI Studio** | `aistudio.google.com` | 完整功能；支持接口优先大纲与导出、默认折叠界面区块与屏蔽背景水印 |
+| <Icon src="/images/icons/grok.png" alt="Grok 图标" /> **Grok** | `grok.com` | 支持接口优先大纲、对话列表与导出；不支持净化模式 |
+| <Icon src="/images/icons/gemini-notebook.png" alt="Gemini Notebook 图标" /> **Gemini Notebook** | `notebook.google.com` | 精简增强模式：三源大纲（来源 / 对话 / Studio 产物）、提示词插入、面板避让、当前视图快照导出；无对话列表与模型锁定 |
+| <Icon src="/images/icons/gemini-enterprise.png" alt="Gemini Enterprise 图标" /> **Gemini Enterprise** | `business.gemini.google` | 新用户默认停用，可在 **设置 → 适配中心 → 内置站点** 中手动启用 |
+| <Icon src="/images/icons/deepseek.svg" alt="DeepSeek 图标" /> **DeepSeek** | `chat.deepseek.com` | 支持接口优先大纲与导出；不支持模型锁定 |
+| <Icon src="/images/icons/doubao.png" alt="豆包图标" /> **豆包 / Dola** | `www.doubao.com`、`www.dola.com` | 共用适配器，访问 `dola.com` 时显示为 **Dola**；两域名共享设置，本地对话与书签按域名隔离 |
+| <Icon src="/images/icons/kimi.png" alt="Kimi 图标" /> **Kimi** | `www.kimi.com`、`www.kimi.ai` | 完整功能；两个域名共享设置，本地对话与书签按域名隔离 |
+| <Icon src="/images/icons/qwenai.png" alt="Qwen Studio 图标" /> **Qwen Studio** | `chat.qwen.ai` | 支持接口优先大纲、对话列表与导出 |
+| <Icon src="/images/icons/qianwen.png" alt="通义千问图标" /> **通义千问（Qianwen）** | `www.qianwen.com`、`qianwen.com` | 无侧栏对话列表同步（自动隐藏对话标签页） |
+| <Icon src="/images/icons/yuanbao.png" alt="腾讯元宝图标" /> **腾讯元宝** | `yuanbao.tencent.com` | 完整功能；支持代码块自动换行 |
+| <Icon src="/images/icons/zai.png" alt="Z.ai 图标" /> **Z.ai** | `chat.z.ai`、`zchat.z.ai`、`www.zchat.z.ai` | 无侧栏对话列表同步（自动隐藏对话标签页）；`chat.z.ai` 与 `zchat.z.ai` 本地数据分开存放 |
+| <Icon src="/images/icons/chatglm.png" alt="智谱清言图标" /> **智谱清言（ChatGLM）** | `chatglm.cn` | 无侧栏对话列表同步（自动隐藏对话标签页）；支持分享页接口导出 |
+| <Icon src="/images/icons/ima.jpg" alt="ima 图标" /> **腾讯 ima** | `ima.qq.com` | 无侧栏对话列表同步（自动隐藏对话标签页）；不支持同步宿主页深浅主题 |
 
 <Tip>
 想在 Perplexity、WorkBuddy、Notion AI、Manus、Open WebUI 或 LibreChat 上使用？打开 **设置 → 适配中心** 即可安装另外 18 个社区适配包，或绑定你自己部署的站点。详见[适配中心](/zh/enhancements/site-extensions)。

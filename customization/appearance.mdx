@@ -6,6 +6,7 @@ icon: "palette"
 keywords: ["themes", "dark mode", "light mode", "custom CSS", "theme presets", "panel appearance", "color scheme"]
 ---
 
+import { Icon } from "/snippets/icon.jsx"
 import { Shortcut } from "/snippets/shortcut.jsx"
 import { ThemePresetGrid } from "/snippets/theme-preset-grid.jsx"
 
@@ -22,8 +23,8 @@ Open **Settings → Appearance** from the side panel inside any supported AI tab
 Each site remembers its own theme mode and preset independently. Switch modes anytime by:
 
 - Pressing <Shortcut combo="alt+d" /> (toggles light / dark with a circular transition from your cursor or button).
-- Clicking the theme icon in the panel header or floating quick buttons.
-- Choosing **Light**, **Dark**, or **System** at the bottom of the Settings sidebar.
+- Clicking the <Icon src="/images/icons/theme-light.svg" alt="Light theme icon" /> / <Icon src="/images/icons/theme-dark.svg" alt="Dark theme icon" /> theme icon in the panel header or floating quick buttons.
+- Choosing <Icon src="/images/icons/theme-light.svg" alt="Light mode icon" /> **Light**, <Icon src="/images/icons/theme-dark.svg" alt="Dark mode icon" /> **Dark**, or <Icon src="/images/icons/theme-system.svg" alt="System mode icon" /> **System** at the bottom of the <Icon src="/images/icons/settings.svg" alt="Settings icon" /> Settings sidebar.
 
 ### Sync native page theme
 

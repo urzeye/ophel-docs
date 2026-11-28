@@ -6,6 +6,7 @@ icon: "/images/icons/site-settings.svg"
 keywords: ["model lock", "site settings", "Claude session key", "Gemini watermark", "per-site configuration", "AI model"]
 ---
 
+import { Icon } from "/snippets/icon.jsx"
 import { Shortcut } from "/snippets/shortcut.jsx"
 
 Open **Settings → Site Settings** and pick any built-in platform or installed Site Pack from the site selector at the top (your active site is pinned first; selecting another site shows a reminder banner).
@@ -19,10 +20,10 @@ Everything for the selected site appears on one page in four sections:
 
 ## Model Lock
 
-Model Lock automatically selects your preferred model whenever a chat page loads, while still letting you switch models manually mid-conversation.
+<Icon src="/images/icons/model-lock.svg" alt="Model Lock icon" /> **Model Lock** automatically selects your preferred model whenever a chat page loads, while still letting you switch models manually mid-conversation.
 
-- **How matching works**: Enter a case-insensitive keyword (for example `pro`, `o3`, `sonnet`) and Ophel picks the first matching model in the site's selector. On **AI Studio**, Ophel reads and caches the model dropdown list so you can pick from a dropdown directly.
-- **Quick toggle**: Turn Model Lock on or off for the current site from **Toolbox → Model Lock**, or jump to this card with <Shortcut combo="ctrl+alt+l" />.
+- **How matching works**: Enter a case-insensitive keyword (for example `pro`, `o3`, `sonnet`) and Ophel picks the first matching model in the site's selector. On <Icon src="/images/icons/aistudio.png" alt="AI Studio icon" /> **AI Studio**, Ophel reads and caches the model dropdown list so you can pick from a dropdown directly.
+- **Quick toggle**: Turn Model Lock on or off for the current site from <Icon src="/images/icons/tools.svg" alt="Toolbox icon" /> **Toolbox → <Icon src="/images/icons/model-lock.svg" alt="Model Lock icon" /> Model Lock**, or jump to this card with <Shortcut combo="ctrl+alt+l" />.
 - **Supported built-in sites (14 of 16)**: ChatGPT, Gemini, Gemini Enterprise, AI Studio, Claude, Grok, Doubao / Dola, Kimi, Qwen Studio, Qianwen, Yuanbao, ChatGLM, ima, and Z.ai. *(Not available on **DeepSeek** or **Gemini Notebook**.)*
 
 ## Hide Ophel on specific pages
@@ -43,7 +44,7 @@ To stop Ophel from initializing on a built-in platform altogether, use any of th
 
 ## Gemini settings
 
-Available when **Gemini** is selected (shortcut: <Shortcut combo="ctrl+alt+g" />):
+Available when <Icon src="/images/icons/gemini.png" alt="Gemini icon" /> **Gemini** is selected (shortcut: <Shortcut combo="ctrl+alt+g" />):
 
 | Setting | Default | What it does |
 | --- | --- | --- |
@@ -58,7 +59,7 @@ Available when **Gemini** is selected (shortcut: <Shortcut combo="ctrl+alt+g" />
 
 ## AI Studio settings
 
-Available when **AI Studio** is selected (default model selection lives in the **Model Lock** card on the same page):
+Available when <Icon src="/images/icons/aistudio.png" alt="AI Studio icon" /> **AI Studio** is selected (default model selection lives in the **Model Lock** card on the same page):
 
 | Setting | Default | What it does |
 | --- | --- | --- |
@@ -76,7 +77,7 @@ Except for **Markdown Bold Fix**, the AI Studio options above rely on the extens
 
 ## ChatGPT settings
 
-Available when **ChatGPT** is selected:
+Available when <Icon src="/images/icons/chatgpt.png" alt="ChatGPT icon" /> **ChatGPT** is selected:
 
 | Setting | Default | What it does |
 | --- | --- | --- |
@@ -87,11 +88,11 @@ Available when **ChatGPT** is selected:
 
 ## Claude settings (Session Key switcher)
 
-Available when **Claude** is selected (shortcut: <Shortcut combo="ctrl+alt+c" />). Lets you store multiple Claude Session Keys (`sk-ant-sidXX-...`) and switch accounts without signing out manually:
+Available when <Icon src="/images/icons/claude.svg" alt="Claude icon" /> **Claude** is selected (shortcut: <Shortcut combo="ctrl+alt+c" />). Lets you store multiple Claude Session Keys (`sk-ant-sidXX-...`) and switch accounts without signing out manually:
 
-- **Add keys**: Enter a key manually, import/export a JSON list (merges without duplicates), or click **Import from browser** (extension builds only; requests the optional `cookies` permission to read your active `sessionKey` cookie).
-- **Test keys**: Click **Test** on a single key or **Test all** (tests sequentially every **500 ms** to check validity and account tier).
-- **Switch safely**: Switch to any saved key—or press <Shortcut combo="ctrl+alt+s" /> to rotate to the next valid key. On extension builds, Ophel checks whether another Claude tab is currently generating before switching so you do not interrupt an active reply.
+- **Add keys**: Enter a key manually, <Icon src="/images/icons/import.svg" alt="Import icon" /> import / <Icon src="/images/icons/export.svg" alt="Export icon" /> export a <Icon src="/images/icons/json-file.svg" alt="JSON icon" /> JSON list (merges without duplicates), or click **Import from browser** (extension builds only; requests the optional `cookies` permission to read your active `sessionKey` cookie).
+- **Test keys**: Click <Icon src="/images/icons/check.svg" alt="Test icon" /> **Test** on a single key or <Icon src="/images/icons/shield-check.svg" alt="Test all icon" /> **Test all** (tests sequentially every **500 ms** to check validity and account tier).
+- **Switch safely**: Click <Icon src="/images/icons/sync.svg" alt="Switch icon" /> to switch to any saved key—or press <Shortcut combo="ctrl+alt+s" /> to rotate to the next valid key. On extension builds, Ophel checks whether another Claude tab is currently generating before switching so you do not interrupt an active reply. Use <Icon src="/images/icons/delete.svg" alt="Delete icon" /> to remove unused keys.
 - **Userscript notes**: Userscript builds support manual/JSON keys, testing, and switching while on `claude.ai`, but do not support **Import from browser** or cross-tab generating checks.
 - **Organization isolation**: Synced Claude chats are isolated automatically per account and organization.
 

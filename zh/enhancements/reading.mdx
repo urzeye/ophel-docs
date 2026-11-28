@@ -6,6 +6,7 @@ icon: "history"
 keywords: ["阅读历史", "滚动锁定", "位置恢复", "阅读进度", "页面锚点", "滚动位置"]
 ---
 
+import { Icon } from "/snippets/icon.jsx"
 import { Shortcut } from "/snippets/shortcut.jsx"
 
 在几十屏的长对话里来回对照内容时，Ophel 帮你稳住阅读位置——AI 正在输出时不再强行拉回底部，跳到页首或页尾后也能一键回到刚才的位置。
@@ -29,7 +30,7 @@ import { Shortcut } from "/snippets/shortcut.jsx"
 
 许多 AI 平台在生成回复时会不停把屏幕拉到底部，导致没法安静回看上面的内容。你可以用滚动锁定拦住这种自动滚动：
 
-- **临时开关**：按 <Shortcut combo="alt+s" />，或点击浮动快捷按钮中的 **工具箱 → 锁定滚动**。
+- **临时开关**：按 <Shortcut combo="alt+s" />，或点击浮动快捷按钮中的 <Icon src="/images/icons/tools.svg" alt="工具箱图标" /> **工具箱 → <Icon src="/images/icons/scroll-lock.svg" alt="滚动锁定图标" /> 锁定滚动**。
 - **长期生效**：在 **设置 → 功能模块 → 大纲** 中开启 **阻止自动滚动到底部**（默认 **关闭**）。
 
 <Note>
@@ -42,12 +43,12 @@ import { Shortcut } from "/snippets/shortcut.jsx"
 
 | 操作 | 快捷键 | 行为 |
 | --- | --- | --- |
-| **去顶部** | <Shortcut combo="alt+t" /> | 先记录当前阅读位置作为锚点，再跳到对话顶部。 |
-| **去底部** | <Shortcut combo="alt+b" /> | 先记录当前阅读位置作为锚点，再跳到对话底部。 |
-| **返回锚点** | <Shortcut combo="alt+z" /> | 跳回刚才记录的锚点位置；再次按下可在两个位置间来回切换。 |
+| <Icon src="/images/icons/scroll-top.svg" alt="去顶部图标" /> **去顶部** | <Shortcut combo="alt+t" /> | 先记录当前阅读位置作为锚点，再跳到对话顶部。 |
+| <Icon src="/images/icons/scroll-bottom.svg" alt="去底部图标" /> **去底部** | <Shortcut combo="alt+b" /> | 先记录当前阅读位置作为锚点，再跳到对话底部。 |
+| <Icon src="/images/icons/anchor.svg" alt="锚点图标" /> **返回锚点** | <Shortcut combo="alt+z" /> | 跳回刚才记录的锚点位置；再次按下可在两个位置间来回切换。 |
 
 这三个按钮也位于面板底部栏和浮动快捷按钮中。
 
 ## 书签收藏
 
-如果需要跨刷新长期保留重点位置，可以直接在页面正文或大纲面板中打星收藏。详见[实时大纲 — 书签收藏](/zh/features/outline#书签收藏)。
+如果需要跨刷新长期保留重点位置，可以直接点击页面正文或大纲面板中的 <Icon src="/images/icons/star.svg" alt="收藏图标" /> 收藏图标，失效书签可通过 <Icon src="/images/icons/cleanup.svg" alt="清理图标" /> **清理无效收藏** 移除。详见[实时大纲 — 书签收藏](/zh/features/outline#书签收藏)。

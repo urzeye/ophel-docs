@@ -15,6 +15,7 @@ keywords:
   ]
 ---
 
+import { Icon } from "/snippets/icon.jsx"
 import { Shortcut } from "/snippets/shortcut.jsx"
 
 The **Chats** tab gives you flat project folders, multi-tag filters, pins, search, and batch actions on top of each platform's own chat list.
@@ -45,27 +46,27 @@ Ophel keeps local chat lists separated so switching accounts does not mix your h
 
 ## Folders, tags, and pins
 
-- **Folders (single-level)**: Every chat belongs to one folder (defaulting to the pinned **Inbox** folder). Create custom folders with a name and any of 64 emoji presets, drag folders to reorder them, and drag chats onto a folder to move them. The folder selector at the top-left of the tab chooses which folder newly synced chats land in.
-- **Tags**: Attach multiple color-coded tags (30 preset colors) to any chat and filter by tag.
-- **Pins**: Pin important chats to the top of their folder. Optionally sync unpinning back to the platform.
+- <Icon src="/images/icons/folder.svg" alt="Folder icon" /> **Folders (single-level)**: Every chat belongs to one folder (defaulting to the pinned **Inbox** folder). Click <Icon src="/images/icons/folder-plus.svg" alt="New folder icon" /> to create custom folders with a name and any of 64 emoji presets, drag folders to reorder them, and drag chats onto a folder (or use <Icon src="/images/icons/folder-move.svg" alt="Move icon" /> **Move** from the <Icon src="/images/icons/more-horizontal.svg" alt="More menu icon" /> menu or <Icon src="/images/icons/tools.svg" alt="Toolbox icon" /> **Toolbox**) to file them. The folder selector at the top-left of the tab chooses which folder newly synced chats land in.
+- <Icon src="/images/icons/tag.svg" alt="Tag icon" /> **Tags**: Attach multiple color-coded tags (30 preset colors) to any chat and filter by tag.
+- <Icon src="/images/icons/pin.svg" alt="Pin icon" /> **Pins**: Pin important chats to the top of their folder. Optionally sync unpinning back to the platform.
 
 ## Batch actions
 
-Click the batch button in the **Chats** toolbar to select multiple chats (hold `Shift` to select a range, or select an entire folder):
+Click the <Icon src="/images/icons/batch.svg" alt="Batch mode icon" /> batch button in the **Chats** toolbar to select multiple chats (hold `Shift` to select a range, or select an entire folder):
 
-- **Pin / Unpin**, **Move to folder**, **Add or remove tags**, and **Delete**.
-- **Export**: Available when **exactly 1 chat** is selected (or use any chat row's `⋯` menu, or press <Shortcut combo="ctrl+shift+e" /> for the open chat). See [Chat Export](/features/export).
+- <Icon src="/images/icons/pin.svg" alt="Pin icon" /> **Pin / Unpin**, <Icon src="/images/icons/folder-move.svg" alt="Move icon" /> **Move to folder**, <Icon src="/images/icons/tag.svg" alt="Tag icon" /> **Add or remove tags**, <Icon src="/images/icons/delete.svg" alt="Delete icon" /> **Delete**, and <Icon src="/images/icons/clear.svg" alt="Exit icon" /> **Exit**.
+- <Icon src="/images/icons/export.svg" alt="Export icon" /> **Export**: Available when **exactly 1 chat** is selected (or use any chat row's <Icon src="/images/icons/more-horizontal.svg" alt="More menu icon" /> menu, or press <Shortcut combo="ctrl+shift+e" /> for the open chat). See [Chat Export](/features/export).
 
 ## Keyboard shortcuts
 
 | Action | Default shortcut |
 | --- | --- |
-| New chat | <Shortcut combo="ctrl+shift+o" /> |
-| Refresh chat list | <Shortcut combo="alt+shift+r" /> |
-| Locate current chat | <Shortcut combo="alt+shift+l" /> |
-| Previous / Next chat | <Shortcut combo="alt+[" /> / <Shortcut combo="alt+]" /> |
-| Export current chat | <Shortcut combo="ctrl+shift+e" /> |
-| Copy latest AI reply | <Shortcut combo="ctrl+shift+c" /> |
+| <Icon src="/images/icons/edit.svg" alt="New chat icon" /> New chat | <Shortcut combo="ctrl+shift+o" /> |
+| <Icon src="/images/icons/refresh.svg" alt="Refresh icon" /> Refresh chat list | <Shortcut combo="alt+shift+r" /> |
+| <Icon src="/images/icons/locate.svg" alt="Locate icon" /> Locate current chat | <Shortcut combo="alt+shift+l" /> |
+| <Icon src="/images/icons/chevron-up.svg" alt="Previous chat icon" /><Icon src="/images/icons/chevron-down.svg" alt="Next chat icon" /> Previous / Next chat | <Shortcut combo="alt+[" /> / <Shortcut combo="alt+]" /> |
+| <Icon src="/images/icons/export.svg" alt="Export icon" /> Export current chat | <Shortcut combo="ctrl+shift+e" /> |
+| <Icon src="/images/icons/copy.svg" alt="Copy icon" /> Copy latest AI reply | <Shortcut combo="ctrl+shift+c" /> |
 
 ## Settings
 

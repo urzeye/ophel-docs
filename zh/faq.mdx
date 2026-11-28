@@ -6,6 +6,7 @@ icon: "circle-question"
 keywords: ["常见问题", "FAQ", "问答", "帮助", "故障排查基础"]
 ---
 
+import { Icon } from "/snippets/icon.jsx"
 import { Shortcut } from "/snippets/shortcut.jsx"
 
 如果遇到具体故障（如面板不显示、大纲为空、队列卡住、WebDAV 报错），请直接查看[故障排查](/zh/troubleshooting)。
@@ -18,9 +19,9 @@ import { Shortcut } from "/snippets/shortcut.jsx"
   </Accordion>
 
   <Accordion title="浏览器扩展、macOS Safari 和油猴脚本该怎么选？">
-    - **Chrome / Edge / Firefox 扩展**：能力最完整，包含按需权限管理、浏览器全局快捷键 <Shortcut combo="alt+o" />、后台 `alarms` 定时自动备份、Claude 从浏览器导入 Cookie 以及 AI Studio 预加载优化。
-    - **油猴脚本**（Tampermonkey / Violentmonkey / ScriptCat）：适用于任何装有脚本管理器的浏览器，核心功能、WebDAV、桌面通知与 Gemini 去水印都可用；不含浏览器全局快捷键与 Claude 浏览器 Cookie 导入。
-    - **Safari（macOS 实验版）**：受限于临时扩展机制（24 小时或退出 Safari 自动失效），不支持系统桌面通知、自动聚焦窗口与 Gemini 图片去水印。
+    - <Icon src="/images/icons/chrome.svg" alt="Chrome" /> <Icon src="/images/icons/edge.svg" alt="Edge" /> <Icon src="/images/icons/firefox.svg" alt="Firefox" /> **Chrome / Edge / Firefox 扩展**：能力最完整，包含按需权限管理、浏览器全局快捷键 <Shortcut combo="alt+o" />、后台 `alarms` 定时自动备份、Claude 从浏览器导入 Cookie 以及 AI Studio 预加载优化。
+    - <Icon src="/images/icons/tampermonkey.svg" alt="油猴脚本" /> **油猴脚本**（Tampermonkey / Violentmonkey / ScriptCat）：适用于任何装有脚本管理器的浏览器，核心功能、WebDAV、桌面通知与 Gemini 去水印都可用；不含浏览器全局快捷键与 Claude 浏览器 Cookie 导入。
+    - <Icon src="/images/icons/safari.svg" alt="Safari" /> **Safari（macOS 实验版）**：受限于临时扩展机制（24 小时或退出 Safari 自动失效），不支持系统桌面通知、自动聚焦窗口与 Gemini 图片去水印。
 
     完整对照见[安装指南 — 各平台能力对比](/zh/installation#各平台能力对比)。
   </Accordion>
@@ -63,7 +64,7 @@ import { Shortcut } from "/snippets/shortcut.jsx"
 
 <AccordionGroup>
   <Accordion title="数据存在哪里？换电脑或换浏览器怎么迁移？">
-    全部数据默认保存在你的浏览器本地存储（扩展用 `chrome.storage.local`，油猴用脚本管理器本地存储）。换设备时可在 **设置 → 数据与权限 → 本地备份** 导出完整 JSON 文件，或配置 [WebDAV 同步与定时自动备份](/zh/data/webdav)。
+    全部数据默认保存在你的浏览器本地存储（扩展用 `chrome.storage.local`，油猴用脚本管理器本地存储）。换设备时可在 **设置 → 数据与权限 → 本地备份** 导出 <Icon src="/images/icons/backup.svg" alt="备份图标" /> 完整 JSON 文件，或配置 <Icon src="/images/icons/cloud.svg" alt="WebDAV 图标" /> [WebDAV 同步与定时自动备份](/zh/data/webdav)。
   </Accordion>
 
   <Accordion title="Ophel 会把我的聊天内容上传到服务器吗？">
@@ -71,7 +72,7 @@ import { Shortcut } from "/snippets/shortcut.jsx"
   </Accordion>
 
   <Accordion title="如何清空全部数据恢复出厂设置？">
-    前往 **设置 → 数据与权限 → 本地备份**，点击底部的 **清除全部数据** 并确认即可。该操作仅清空 Ophel 本地数据，不会影响 AI 网站上的历史对话。
+    前往 <Icon src="/images/icons/settings.svg" alt="设置图标" /> **设置 → 数据与权限 → 本地备份**，点击底部的 <Icon src="/images/icons/delete.svg" alt="清除数据图标" /> **清除全部数据** 并确认即可。该操作仅清空 Ophel 本地数据，不会影响 AI 网站上的历史对话。
   </Accordion>
 </AccordionGroup>
 

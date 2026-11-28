@@ -6,6 +6,7 @@ icon: "keyboard"
 keywords: ["keyboard shortcuts", "hotkeys", "shortcut customization", "key remapping", "accessibility"]
 ---
 
+import { Icon } from "/snippets/icon.jsx"
 import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
 
 Ophel includes **46 customizable keyboard shortcuts** organized into 6 categories, plus quick gestures and a browser-wide Global URL command.
@@ -40,77 +41,77 @@ Shortcuts are grouped to match **Settings → Keyboard Shortcuts** (including th
   <Accordion title="Navigation (3)" defaultOpen>
     | Action | Default shortcut |
     | --- | --- |
-    | Scroll to top | <Shortcut combo="alt+t" /> |
-    | Scroll to bottom | <Shortcut combo="alt+b" /> |
-    | Return to anchor | <Shortcut combo="alt+z" /> |
+    | <Icon src="/images/icons/scroll-top.svg" alt="Scroll top icon" /> Scroll to top | <Shortcut combo="alt+t" /> |
+    | <Icon src="/images/icons/scroll-bottom.svg" alt="Scroll bottom icon" /> Scroll to bottom | <Shortcut combo="alt+b" /> |
+    | <Icon src="/images/icons/anchor.svg" alt="Anchor icon" /> Return to anchor | <Shortcut combo="alt+z" /> |
   </Accordion>
 
   <Accordion title="Panel (6)" defaultOpen>
     | Action | Default shortcut | Group |
     | --- | --- | --- |
-    | Expand / collapse panel | <Shortcut combo="alt+p" /> | Main |
-    | Toggle panel mode (Edge Snap / Floating) | <Shortcut combo="alt+m" /> | Main |
-    | Toggle light / dark theme | <Shortcut combo="alt+d" /> | Main |
-    | Switch to Panel Tab 1 | <Shortcut combo="alt+1" /> | Collapsed: **Switch Panel Tabs** |
-    | Switch to Panel Tab 2 | <Shortcut combo="alt+2" /> | Collapsed: **Switch Panel Tabs** |
-    | Switch to Panel Tab 3 | <Shortcut combo="alt+3" /> | Collapsed: **Switch Panel Tabs** |
+    | <Icon src="/images/icons/sparkle.svg" alt="Panel icon" /> Expand / collapse panel | <Shortcut combo="alt+p" /> | Main |
+    | <Icon src="/images/icons/snap-to-edge.svg" alt="Panel mode icon" /> Toggle panel mode (Edge Snap / Floating) | <Shortcut combo="alt+m" /> | Main |
+    | <Icon src="/images/icons/theme-system.svg" alt="Theme icon" /> Toggle light / dark theme | <Shortcut combo="alt+d" /> | Main |
+    | <Icon src="/images/icons/outline.svg" alt="Outline tab icon" /> Switch to Panel Tab 1 | <Shortcut combo="alt+1" /> | Collapsed: **Switch Panel Tabs** |
+    | <Icon src="/images/icons/conversation.svg" alt="Chats tab icon" /> Switch to Panel Tab 2 | <Shortcut combo="alt+2" /> | Collapsed: **Switch Panel Tabs** |
+    | <Icon src="/images/icons/prompt.svg" alt="Prompts tab icon" /> Switch to Panel Tab 3 | <Shortcut combo="alt+3" /> | Collapsed: **Switch Panel Tabs** |
   </Accordion>
 
   <Accordion title="Outline (15)">
     | Action | Default shortcut | Group |
     | --- | --- | --- |
-    | Show / hide user questions | <Shortcut combo="alt+q" /> | Main |
-    | Show only user questions | <Shortcut combo="alt+shift+q" /> | Main |
-    | Toggle bookmarks filter | <Shortcut combo="alt+c" /> | Main |
-    | Locate current position in outline | <Shortcut combo="alt+l" /> | Main |
-    | Search outline | <Shortcut combo="alt+f" /> | Main |
-    | Previous heading | <Shortcut combo="alt+arrowup" /> | Main |
-    | Next heading | <Shortcut combo="alt+arrowdown" /> | Main |
-    | Refresh outline | <Shortcut combo="alt+r" /> | Main |
-    | Expand / collapse all headings | <Shortcut combo="alt+e" /> | Main |
-    | Expand to level 1 | <Shortcut combo="alt+shift+1" /> | Collapsed: **Expand to a Specific Level** |
-    | Expand to level 2 | <Shortcut combo="alt+shift+2" /> | Collapsed: **Expand to a Specific Level** |
-    | Expand to level 3 | <Shortcut combo="alt+shift+3" /> | Collapsed: **Expand to a Specific Level** |
-    | Expand to level 4 | <Shortcut combo="alt+shift+4" /> | Collapsed: **Expand to a Specific Level** |
-    | Expand to level 5 | <Shortcut combo="alt+shift+5" /> | Collapsed: **Expand to a Specific Level** |
-    | Expand to level 6 | <Shortcut combo="alt+shift+6" /> | Collapsed: **Expand to a Specific Level** |
+    | <Icon src="/images/icons/user-query.svg" alt="Questions icon" /> Show / hide user questions | <Shortcut combo="alt+q" /> | Main |
+    | <Icon src="/images/icons/user-query.svg" alt="Only questions icon" /> Show only user questions | <Shortcut combo="alt+shift+q" /> | Main |
+    | <Icon src="/images/icons/star.svg" alt="Bookmarks icon" /> Toggle bookmarks filter | <Shortcut combo="alt+c" /> | Main |
+    | <Icon src="/images/icons/locate.svg" alt="Locate icon" /> Locate current position in outline | <Shortcut combo="alt+l" /> | Main |
+    | <Icon src="/images/icons/search.svg" alt="Search icon" /> Search outline | <Shortcut combo="alt+f" /> | Main |
+    | <Icon src="/images/icons/arrow-up.svg" alt="Previous heading icon" /> Previous heading | <Shortcut combo="alt+arrowup" /> | Main |
+    | <Icon src="/images/icons/arrow-down.svg" alt="Next heading icon" /> Next heading | <Shortcut combo="alt+arrowdown" /> | Main |
+    | <Icon src="/images/icons/refresh.svg" alt="Refresh icon" /> Refresh outline | <Shortcut combo="alt+r" /> | Main |
+    | <Icon src="/images/icons/expand-all.svg" alt="Expand all icon" /> Expand / collapse all headings | <Shortcut combo="alt+e" /> | Main |
+    | <Icon src="/images/icons/outline.svg" alt="Outline level icon" /> Expand to level 1 | <Shortcut combo="alt+shift+1" /> | Collapsed: **Expand to a Specific Level** |
+    | <Icon src="/images/icons/outline.svg" alt="Outline level icon" /> Expand to level 2 | <Shortcut combo="alt+shift+2" /> | Collapsed: **Expand to a Specific Level** |
+    | <Icon src="/images/icons/outline.svg" alt="Outline level icon" /> Expand to level 3 | <Shortcut combo="alt+shift+3" /> | Collapsed: **Expand to a Specific Level** |
+    | <Icon src="/images/icons/outline.svg" alt="Outline level icon" /> Expand to level 4 | <Shortcut combo="alt+shift+4" /> | Collapsed: **Expand to a Specific Level** |
+    | <Icon src="/images/icons/outline.svg" alt="Outline level icon" /> Expand to level 5 | <Shortcut combo="alt+shift+5" /> | Collapsed: **Expand to a Specific Level** |
+    | <Icon src="/images/icons/outline.svg" alt="Outline level icon" /> Expand to level 6 | <Shortcut combo="alt+shift+6" /> | Collapsed: **Expand to a Specific Level** |
   </Accordion>
 
   <Accordion title="Chats (5)">
     | Action | Default shortcut |
     | --- | --- |
-    | Start new chat | <Shortcut combo="ctrl+shift+o" /> |
-    | Refresh chat list | <Shortcut combo="alt+shift+r" /> |
-    | Locate current chat | <Shortcut combo="alt+shift+l" /> |
-    | Previous chat | <Shortcut combo="alt+[" /> |
-    | Next chat | <Shortcut combo="alt+]" /> |
+    | <Icon src="/images/icons/conversation.svg" alt="New chat icon" /> Start new chat | <Shortcut combo="ctrl+shift+o" /> |
+    | <Icon src="/images/icons/refresh.svg" alt="Refresh icon" /> Refresh chat list | <Shortcut combo="alt+shift+r" /> |
+    | <Icon src="/images/icons/locate.svg" alt="Locate icon" /> Locate current chat | <Shortcut combo="alt+shift+l" /> |
+    | <Icon src="/images/icons/chevron-up.svg" alt="Previous chat icon" /> Previous chat | <Shortcut combo="alt+[" /> |
+    | <Icon src="/images/icons/chevron-down.svg" alt="Next chat icon" /> Next chat | <Shortcut combo="alt+]" /> |
   </Accordion>
 
   <Accordion title="Interaction Controls (10)">
     | Action | Default shortcut |
     | --- | --- |
-    | Export chat | <Shortcut combo="ctrl+shift+e" /> |
-    | Copy latest AI reply | <Shortcut combo="ctrl+shift+c" /> |
-    | Copy last code block | <Shortcut combo="alt+;" /> |
-    | Toggle scroll lock | <Shortcut combo="alt+s" /> |
-    | Toggle Zen Mode | <Shortcut combo="ctrl+shift+z" /> |
-    | Focus chat input | <Shortcut combo="alt+i" /> |
-    | Open Global Search | <Shortcut combo="ctrl+k" /> |
-    | Stop AI generation | <Shortcut combo="alt+k" /> |
-    | Show / hide Prompt Queue | <Shortcut combo="alt+j" /> |
-    | Open model selector menu | <Shortcut combo="alt+/" /> |
+    | <Icon src="/images/icons/export.svg" alt="Export icon" /> Export chat | <Shortcut combo="ctrl+shift+e" /> |
+    | <Icon src="/images/icons/copy.svg" alt="Copy icon" /> Copy latest AI reply | <Shortcut combo="ctrl+shift+c" /> |
+    | <Icon src="/images/icons/copy.svg" alt="Copy code icon" /> Copy last code block | <Shortcut combo="alt+;" /> |
+    | <Icon src="/images/icons/scroll-lock.svg" alt="Scroll lock icon" /> Toggle scroll lock | <Shortcut combo="alt+s" /> |
+    | <Icon src="/images/icons/eye.svg" alt="Zen mode icon" /> Toggle Zen Mode | <Shortcut combo="ctrl+shift+z" /> |
+    | <Icon src="/images/icons/edit.svg" alt="Input focus icon" /> Focus chat input | <Shortcut combo="alt+i" /> |
+    | <Icon src="/images/icons/search.svg" alt="Global search icon" /> Open Global Search | <Shortcut combo="ctrl+k" /> |
+    | <Icon src="/images/icons/clear.svg" alt="Stop icon" /> Stop AI generation | <Shortcut combo="alt+k" /> |
+    | <Icon src="/images/icons/prompt-queue.svg" alt="Prompt queue icon" /> Show / hide Prompt Queue | <Shortcut combo="alt+j" /> |
+    | <Icon src="/images/icons/model-lock.svg" alt="Model selector icon" /> Open model selector menu | <Shortcut combo="alt+/" /> |
   </Accordion>
 
   <Accordion title="Settings (7)">
     | Action | Default shortcut |
     | --- | --- |
-    | Open Settings | <Shortcut combo="alt+," /> |
-    | Show Keyboard Shortcuts | <Shortcut combo="alt+backslash" /> |
-    | Open Appearance settings | <Shortcut combo="ctrl+alt+t" /> |
-    | Open Model Lock settings | <Shortcut combo="ctrl+alt+l" /> |
-    | Open Gemini settings | <Shortcut combo="ctrl+alt+g" /> |
-    | Open Claude settings | <Shortcut combo="ctrl+alt+c" /> |
-    | Switch to next valid Claude Session Key | <Shortcut combo="ctrl+alt+s" /> |
+    | <Icon src="/images/icons/settings.svg" alt="Settings icon" /> Open Settings | <Shortcut combo="alt+," /> |
+    | <Icon src="/images/icons/keyboard.svg" alt="Shortcuts icon" /> Show Keyboard Shortcuts | <Shortcut combo="alt+backslash" /> |
+    | <Icon src="/images/icons/appearance.svg" alt="Appearance icon" /> Open Appearance settings | <Shortcut combo="ctrl+alt+t" /> |
+    | <Icon src="/images/icons/model-lock.svg" alt="Model lock icon" /> Open Model Lock settings | <Shortcut combo="ctrl+alt+l" /> |
+    | <Icon src="/images/icons/gemini.png" alt="Gemini" /> Open Gemini settings | <Shortcut combo="ctrl+alt+g" /> |
+    | <Icon src="/images/icons/claude.svg" alt="Claude" /> Open Claude settings | <Shortcut combo="ctrl+alt+c" /> |
+    | <Icon src="/images/icons/sync.svg" alt="Switch key icon" /> Switch to next valid Claude Session Key | <Shortcut combo="ctrl+alt+s" /> |
   </Accordion>
 </AccordionGroup>
 
@@ -120,7 +121,7 @@ Browser extension builds register a browser-wide command (`open-global-url`, sug
 
 - Set the target URL under **Settings → Keyboard Shortcuts → Global URL** (default: `https://gemini.google.com`).
 - Change the key combination in your browser's extension shortcut manager:
-  - **Chrome**: `chrome://extensions/shortcuts` (direct button in Ophel Settings).
-  - **Edge**: `edge://extensions/shortcuts` (direct button in Ophel Settings).
-  - **Firefox**: Open `about:addons` → gear icon → **Manage Extension Shortcuts**.
+  - <Icon src="/images/icons/chrome.svg" alt="Chrome" /> **Chrome**: `chrome://extensions/shortcuts` (direct button in Ophel Settings).
+  - <Icon src="/images/icons/edge.svg" alt="Edge" /> **Edge**: `edge://extensions/shortcuts` (direct button in Ophel Settings).
+  - <Icon src="/images/icons/firefox.svg" alt="Firefox" /> **Firefox**: Open `about:addons` → gear icon → **Manage Extension Shortcuts**.
 - Userscript builds do not support browser-wide commands (all 46 in-page shortcuts work identically).

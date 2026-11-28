@@ -5,6 +5,7 @@ icon: "book-open"
 keywords: ["AI chat enhancement", "browser extension features", "supported platforms", "chat organization", "smart outline", "Ophel Atlas"]
 ---
 
+import { Icon } from "/snippets/icon.jsx"
 import { Shortcut } from "/snippets/shortcut.jsx"
 
 Long AI sessions get hard to read and harder to find later. Most chat sites give you one flat, scrolling column with little or no way to jump between sections, group threads by topic, or reuse prompt workflows across tools.
@@ -40,22 +41,22 @@ Ophel ships with **16 built-in site adapters**. Feature availability depends on 
 
 | Platform | Domains | Notes |
 | --- | --- | --- |
-| **ChatGPT** | `chatgpt.com` *(legacy `chat.openai.com` redirects here)* | Full features; API-first export; per-workspace chat isolation; long-chat performance options |
-| **Gemini** | `gemini.google.com` | Full features; document outline (Deep Research / Canvas); image watermark removal; auto-hide input |
-| **Claude** | `claude.ai` | Full features; document outline (Artifacts); API-first outline & export; per-organization isolation; Session Key switcher |
-| **Google AI Studio** | `aistudio.google.com` | Full features; API-first outline & export; sidebar/panel collapse and background watermark options |
-| **Grok** | `grok.com` | API-first outline, chat list & export; no Clean Mode |
-| **Gemini Notebook** | `notebook.google.com` | Minimal enhancement mode: 3-source outline (Sources / Chat / Studio), prompt insert, panel avoidance, DOM snapshot export; no Chats tab or model lock |
-| **Gemini Enterprise** | `business.gemini.google` | Disabled by default for new installs; enable in **Settings → Site Packs → Built-in sites** |
-| **DeepSeek** | `chat.deepseek.com` | API-first outline & export; no model lock |
-| **Doubao / Dola** | `www.doubao.com`, `www.dola.com` | Same built-in adapter; displays as **Dola** on `dola.com`; local chats/bookmarks isolated per domain while sharing settings |
-| **Kimi** | `www.kimi.com`, `www.kimi.ai` | Full features; local chats/bookmarks isolated per domain while sharing settings |
-| **Qwen Studio** | `chat.qwen.ai` | API-first outline, chat list & export |
-| **Qianwen** | `www.qianwen.com`, `qianwen.com` | No sidebar chat list sync (Chats tab hidden) |
-| **Yuanbao** | `yuanbao.tencent.com` | Full features; Monaco code-block word wrap |
-| **Z.ai** | `chat.z.ai`, `zchat.z.ai`, `www.zchat.z.ai` | No sidebar chat list sync (Chats tab hidden); local data isolated between `chat.z.ai` and `zchat.z.ai` |
-| **ChatGLM** | `chatglm.cn` | No sidebar chat list sync (Chats tab hidden); supports share-page API export |
-| **ima** | `ima.qq.com` | No sidebar chat list sync (Chats tab hidden); no native page theme sync |
+| <Icon src="/images/icons/chatgpt.png" alt="ChatGPT icon" /> **ChatGPT** | `chatgpt.com` *(legacy `chat.openai.com` redirects here)* | Full features; API-first export; per-workspace chat isolation; long-chat performance options |
+| <Icon src="/images/icons/gemini.png" alt="Gemini icon" /> **Gemini** | `gemini.google.com` | Full features; document outline (Deep Research / Canvas); image watermark removal; auto-hide input |
+| <Icon src="/images/icons/claude.svg" alt="Claude icon" /> **Claude** | `claude.ai` | Full features; document outline (Artifacts); API-first outline & export; per-organization isolation; Session Key switcher |
+| <Icon src="/images/icons/aistudio.png" alt="AI Studio icon" /> **Google AI Studio** | `aistudio.google.com` | Full features; API-first outline & export; sidebar/panel collapse and background watermark options |
+| <Icon src="/images/icons/grok.png" alt="Grok icon" /> **Grok** | `grok.com` | API-first outline, chat list & export; no Clean Mode |
+| <Icon src="/images/icons/gemini-notebook.png" alt="Gemini Notebook icon" /> **Gemini Notebook** | `notebook.google.com` | Minimal enhancement mode: 3-source outline (Sources / Chat / Studio), prompt insert, panel avoidance, DOM snapshot export; no Chats tab or model lock |
+| <Icon src="/images/icons/gemini-enterprise.png" alt="Gemini Enterprise icon" /> **Gemini Enterprise** | `business.gemini.google` | Disabled by default for new installs; enable in **Settings → Site Packs → Built-in sites** |
+| <Icon src="/images/icons/deepseek.svg" alt="DeepSeek icon" /> **DeepSeek** | `chat.deepseek.com` | API-first outline & export; no model lock |
+| <Icon src="/images/icons/doubao.png" alt="Doubao icon" /> **Doubao / Dola** | `www.doubao.com`, `www.dola.com` | Same built-in adapter; displays as **Dola** on `dola.com`; local chats/bookmarks isolated per domain while sharing settings |
+| <Icon src="/images/icons/kimi.png" alt="Kimi icon" /> **Kimi** | `www.kimi.com`, `www.kimi.ai` | Full features; local chats/bookmarks isolated per domain while sharing settings |
+| <Icon src="/images/icons/qwenai.png" alt="Qwen Studio icon" /> **Qwen Studio** | `chat.qwen.ai` | API-first outline, chat list & export |
+| <Icon src="/images/icons/qianwen.png" alt="Qianwen icon" /> **Qianwen** | `www.qianwen.com`, `qianwen.com` | No sidebar chat list sync (Chats tab hidden) |
+| <Icon src="/images/icons/yuanbao.png" alt="Yuanbao icon" /> **Yuanbao** | `yuanbao.tencent.com` | Full features; Monaco code-block word wrap |
+| <Icon src="/images/icons/zai.png" alt="Z.ai icon" /> **Z.ai** | `chat.z.ai`, `zchat.z.ai`, `www.zchat.z.ai` | No sidebar chat list sync (Chats tab hidden); local data isolated between `chat.z.ai` and `zchat.z.ai` |
+| <Icon src="/images/icons/chatglm.png" alt="ChatGLM icon" /> **ChatGLM** | `chatglm.cn` | No sidebar chat list sync (Chats tab hidden); supports share-page API export |
+| <Icon src="/images/icons/ima.jpg" alt="ima icon" /> **ima** | `ima.qq.com` | No sidebar chat list sync (Chats tab hidden); no native page theme sync |
 
 <Tip>
 Need another site such as Perplexity, WorkBuddy, Notion AI, Manus, Open WebUI, or LibreChat? Open **Settings → Site Packs** to install from 18 community packs or bind a self-hosted instance. See [Site Packs](/enhancements/site-extensions).

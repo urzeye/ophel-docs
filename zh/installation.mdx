@@ -18,6 +18,7 @@ keywords:
   ]
 ---
 
+import { Icon } from "/snippets/icon.jsx"
 import { Shortcut } from "/snippets/shortcut.jsx"
 
 Ophel Atlas 由同一套源码构建为**浏览器扩展**与**油猴脚本**两种形态，你可以按自己的浏览器环境选择。
@@ -44,6 +45,9 @@ Ophel Atlas 由同一套源码构建为**浏览器扩展**与**油猴脚本**两
   <Card title="ScriptCat（脚本猫）" icon="/images/icons/scriptcat.png" href="https://scriptcat.org/script-show-page/6519">
     适合使用脚本猫（ScriptCat）管理器的用户一键安装。
   </Card>
+  <Card title="Safari（macOS 实验版）" icon="/images/icons/safari.svg" href="https://github.com/urzeye/ophel/releases">
+    从 GitHub Releases 下载 macOS Safari 实验构建包（临时扩展，24 小时或退出 Safari 自动移除）。
+  </Card>
   <Card title="GitHub Releases" icon="/images/icons/github.svg" href="https://github.com/urzeye/ophel/releases">
     第一时间获取 Chrome、Firefox、macOS Safari（实验版）和油猴脚本构建包。
   </Card>
@@ -57,7 +61,7 @@ Ophel Atlas 由同一套源码构建为**浏览器扩展**与**油猴脚本**两
 
 安装前可以先看下不同浏览器和油猴版本的真实差异：
 
-| 能力 | Chrome / Edge | Firefox | Safari（macOS 实验版） | 油猴脚本 |
+| 能力 | <Icon src="/images/icons/chrome.svg" alt="Chrome 图标" /><Icon src="/images/icons/edge.svg" alt="Edge 图标" /> Chrome / Edge | <Icon src="/images/icons/firefox.svg" alt="Firefox 图标" /> Firefox | <Icon src="/images/icons/safari.svg" alt="Safari 图标" /> Safari（macOS 实验版） | <Icon src="/images/icons/tampermonkey.svg" alt="油猴图标" /> 油猴脚本 |
 | --- | --- | --- | --- | --- |
 | 核心功能（大纲、对话、提示词、导出、全局搜索、主题、布局） | 完整支持 | 完整支持 | 完整支持 | 完整支持 |
 | 适配中心与自部署站点绑定 | 完整支持（按站点弹窗授权） | 完整支持（按站点弹窗授权） | 完整支持（在 Safari 设置中授权网站访问） | 完整支持（免权限弹窗，按白名单运行） |

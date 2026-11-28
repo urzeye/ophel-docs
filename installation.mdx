@@ -18,6 +18,7 @@ keywords:
   ]
 ---
 
+import { Icon } from "/snippets/icon.jsx"
 import { Shortcut } from "/snippets/shortcut.jsx"
 
 Ophel Atlas is distributed as a browser extension and as a userscript built from the same codebase.
@@ -44,6 +45,9 @@ Browser extensions (Chrome, Edge, Firefox) give you the complete feature set, in
   <Card title="ScriptCat (Userscript)" icon="/images/icons/scriptcat.png" href="https://scriptcat.org/script-show-page/6519">
     Userscript channel for ScriptCat users.
   </Card>
+  <Card title="Safari (macOS, Experimental)" icon="/images/icons/safari.svg" href="https://github.com/urzeye/ophel/releases">
+    Experimental macOS Safari ZIP on GitHub Releases. Temporary extension (24 hours or until Safari quits).
+  </Card>
   <Card title="GitHub Releases" icon="/images/icons/github.svg" href="https://github.com/urzeye/ophel/releases">
     Direct release packages for Chrome, Firefox, macOS Safari (experimental), and userscript.
   </Card>
@@ -57,7 +61,7 @@ GitHub Releases publish immediately on each release tag. Browser stores (Chrome 
 
 Use this table to see what differs across runtimes before choosing how to install:
 
-| Capability | Chrome / Edge | Firefox | Safari (macOS, Experimental) | Userscript |
+| Capability | <Icon src="/images/icons/chrome.svg" alt="Chrome icon" /><Icon src="/images/icons/edge.svg" alt="Edge icon" /> Chrome / Edge | <Icon src="/images/icons/firefox.svg" alt="Firefox icon" /> Firefox | <Icon src="/images/icons/safari.svg" alt="Safari icon" /> Safari (macOS, Experimental) | <Icon src="/images/icons/tampermonkey.svg" alt="Tampermonkey icon" /> Userscript |
 | --- | --- | --- | --- | --- |
 | Core features (Outline, Chats, Prompts, Export, Global Search, Themes, Layout) | Full | Full | Full | Full |
 | Site Packs & custom self-hosted domains | Full (per-origin permission prompt) | Full (per-origin permission prompt) | Full (managed in Safari Settings) | Full (no browser prompt; matched by script whitelist) |

@@ -16,6 +16,8 @@ keywords:
   ]
 ---
 
+import { Icon } from "/snippets/icon.jsx"
+
 When you run long prompts across multiple tabs, Ophel keeps tab titles informative, alerts you the moment an answer finishes, hides titles in public spaces, and optionally tracks local send counts and token estimates.
 
 ## Tab behavior and auto-renaming
@@ -24,7 +26,7 @@ Open **Settings → Features → Tab Settings**:
 
 | Setting | Options | Default | Location & notes |
 | --- | --- | --- | --- |
-| **Open New Chat in New Tab** | On / Off | Off | Adds a quick **New Tab** button to the panel header that opens the current site in a new tab. |
+| <Icon src="/images/icons/new-tab.svg" alt="New tab icon" /> **Open New Chat in New Tab** | On / Off | Off | Adds a quick **New Tab** button to the panel header that opens the current site in a new tab. |
 | **Auto Rename Tab** | On / Off | On | Updates the browser tab title with the active chat title and model name. |
 | **Show Status Icon** | On / Off | On | Prepends `⏳` while generating and `✅` when done. |
 | **Refresh Interval** | 1 / 3 / 5 / 10 / 30 / 60 s | 3 s | **Advanced options** — Automatically slows to ≥ 15 s when the tab is idle in the background. |
@@ -35,7 +37,7 @@ Open **Settings → Features → Tab Settings**:
 
 Located in the **Privacy Mode** card under **Settings → Features → Tab Settings**:
 
-- **Privacy Mode** (default **Off**): Replaces the browser tab title with a neutral decoy title so bystanders cannot read your chat topics from your tab strip.
+- <Icon src="/images/icons/eye-closed.svg" alt="Privacy mode icon" /> **Privacy Mode** (default **Off**): Replaces the browser tab title with a neutral decoy title so bystanders cannot read your chat topics from your tab strip.
 - **Decoy Title**: Default **`Google`** (editable to anything you prefer).
 
 ## Completion alerts

@@ -6,6 +6,7 @@ icon: "palette"
 keywords: ["主题", "深色模式", "浅色模式", "自定义CSS", "主题预设", "面板外观", "配色方案"]
 ---
 
+import { Icon } from "/snippets/icon.jsx"
 import { Shortcut } from "/snippets/shortcut.jsx"
 import { ThemePresetGrid } from "/snippets/theme-preset-grid.jsx"
 
@@ -22,8 +23,8 @@ Ophel 内置 24 套预置主题（12 套浅色 + 12 套深色），支持按站�
 每个站点都会独立保存自己的明暗模式与所选预置主题。你可以通过以下方式随时切换：
 
 - 按快捷键 <Shortcut combo="alt+d" />（触发从光标或按钮处向外扩散的过渡动画）。
-- 点击面板标题栏或浮动快捷按钮中的主题图标。
-- 在设置弹窗侧栏底部选择 **浅色 / 深色 / 跟随系统**。
+- 点击面板标题栏或浮动快捷按钮中的 <Icon src="/images/icons/theme-light.svg" alt="浅色主题图标" /> / <Icon src="/images/icons/theme-dark.svg" alt="深色主题图标" /> 主题图标。
+- 在 <Icon src="/images/icons/settings.svg" alt="设置图标" /> 设置弹窗侧栏底部选择 <Icon src="/images/icons/theme-light.svg" alt="浅色模式图标" /> **浅色** / <Icon src="/images/icons/theme-dark.svg" alt="深色模式图标" /> **深色** / <Icon src="/images/icons/theme-system.svg" alt="跟随系统图标" /> **跟随系统**。
 
 ### 同步原生页面主题
 

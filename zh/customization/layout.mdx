@@ -17,6 +17,7 @@ keywords:
   ]
 ---
 
+import { Icon } from "/snippets/icon.jsx"
 import { Shortcut } from "/snippets/shortcut.jsx"
 import { DocsVideo } from "/snippets/docs-video.jsx"
 
@@ -45,20 +46,20 @@ import { DocsVideo } from "/snippets/docs-video.jsx"
 
 ## 禅模式
 
-**禅模式**（默认 **关闭**，支持 15 个内置站点，除 Gemini Notebook）会隐藏 AI 网站自带的侧栏、顶部导航和其他无关界面，只保留纯净对话区域，并自动涵盖净化模式的效果。
+<Icon src="/images/icons/eye.svg" alt="禅模式图标" /> **禅模式**（默认 **关闭**，支持 15 个内置站点，除 Gemini Notebook）会隐藏 AI 网站自带的侧栏、顶部导航和其他无关界面，只保留纯净对话区域，并自动涵盖净化模式的效果。
 
-- **临时开关**：按快捷键 <Shortcut combo="ctrl+shift+z" /> 或点击浮动快捷按钮中的眼睛图标。
-- **按站点持久开启**：在 **设置 → 站点设置 → 页面布局** 中打开 **禅模式**。
-- **显示退出按钮**（默认 **开启**）：开启禅模式后在角落显示退出按钮；如果你习惯纯键盘按 <Shortcut combo="ctrl+shift+z" /> 退出，可关闭此按钮。
+- **临时开关**：按快捷键 <Shortcut combo="ctrl+shift+z" /> 或点击浮动快捷按钮中的 <Icon src="/images/icons/eye.svg" alt="禅模式图标" /> 眼睛图标。
+- **按站点持久开启**：在 <Icon src="/images/icons/settings.svg" alt="设置图标" /> **设置 → 站点设置 → 页面布局** 中打开 **禅模式**。
+- **显示退出按钮**（默认 **开启**）：开启禅模式后在角落显示 <Icon src="/images/icons/eye-closed.svg" alt="退出禅模式图标" /> 退出按钮；如果你习惯纯键盘按 <Shortcut combo="ctrl+shift+z" /> 退出，可关闭此按钮。
 
 ## 净化模式
 
-**净化模式**（默认 **开启**，支持 14 个内置站点，除 Gemini Notebook 与 Grok）在不影响正常聊天的前提下，自动隐藏底部 AI 免责提示条、升级横幅和推广卡片等干扰元素。
+<Icon src="/images/icons/clean-mode.svg" alt="净化模式图标" /> **净化模式**（默认 **开启**，支持 14 个内置站点，除 Gemini Notebook 与 Grok）在不影响正常聊天的前提下，自动隐藏底部 AI 免责提示条、升级横幅和推广卡片等干扰元素。
 
 ## 自动隐藏输入框（Gemini，Beta）
 
-目前仅在 **Gemini** 提供（默认 **关闭**）：阅读长文时自动把底部输入框滑出视野；当鼠标移到屏幕底部、通过 Ophel 插入提示词，或按 <Shortcut combo="alt+i" /> 时会自动滑回。
+目前仅在 <Icon src="/images/icons/gemini.png" alt="Gemini 图标" /> **Gemini** 提供（默认 **关闭**）：阅读长文时自动把底部输入框滑出视野；当鼠标移到屏幕底部、通过 Ophel 插入提示词，或按 <Shortcut combo="alt+i" /> 时会自动滑回。
 
 ## 面板尺寸与停靠行为
 
-如果你要调整 Ophel 面板本身的悬浮/吸附模式、宽度（`240–600 px`）、悬停加宽（`520 px`）、高度（`50–100 vh`）或吸附阈值，请前往 **设置 → 基本设置 → 面板**，完整说明见[面板概览 — 面板尺寸与位置设置](/zh/panel-overview#面板尺寸与位置设置)。
+如果你要调整 Ophel 面板本身的 <Icon src="/images/icons/floating-mode.svg" alt="悬浮模式图标" /> 悬浮 / <Icon src="/images/icons/snap-to-edge.svg" alt="自动吸附图标" /> 自动吸附模式、宽度（`240–600 px`）、悬停加宽（`520 px`）、高度（`50–100 vh`）或吸附阈值，请前往 **设置 → 基本设置 → 面板**，完整说明见[面板概览 — 面板尺寸与位置设置](/zh/panel-overview#面板尺寸与位置设置)。

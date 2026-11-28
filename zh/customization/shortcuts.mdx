@@ -6,6 +6,7 @@ icon: "keyboard"
 keywords: ["键盘快捷键", "热键", "快捷键自定义", "按键重映射", "可访问性"]
 ---
 
+import { Icon } from "/snippets/icon.jsx"
 import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
 
 Ophel 提供 **46 个可自定义快捷键**（按 6 大分类排列），另支持穿透点击、双击 Shift 与扩展级全局打开网址命令。
@@ -40,77 +41,77 @@ Ophel 提供 **46 个可自定义快捷键**（按 6 大分类排列），另支
   <Accordion title="导航（3 个）" defaultOpen>
     | 动作 | 默认快捷键 |
     | --- | --- |
-    | 去顶部 | <Shortcut combo="alt+t" /> |
-    | 去底部 | <Shortcut combo="alt+b" /> |
-    | 返回锚点 | <Shortcut combo="alt+z" /> |
+    | <Icon src="/images/icons/scroll-top.svg" alt="去顶部图标" /> 去顶部 | <Shortcut combo="alt+t" /> |
+    | <Icon src="/images/icons/scroll-bottom.svg" alt="去底部图标" /> 去底部 | <Shortcut combo="alt+b" /> |
+    | <Icon src="/images/icons/anchor.svg" alt="返回锚点图标" /> 返回锚点 | <Shortcut combo="alt+z" /> |
   </Accordion>
 
   <Accordion title="面板（6 个）" defaultOpen>
     | 动作 | 默认快捷键 | 所属位置 |
     | --- | --- | --- |
-    | 展开/收起面板 | <Shortcut combo="alt+p" /> | 主列表 |
-    | 切换面板模式（吸附/悬浮） | <Shortcut combo="alt+m" /> | 主列表 |
-    | 切换主题 | <Shortcut combo="alt+d" /> | 主列表 |
-    | 切换到第 1 个面板标签 | <Shortcut combo="alt+1" /> | 折叠组：**切换面板标签** |
-    | 切换到第 2 个面板标签 | <Shortcut combo="alt+2" /> | 折叠组：**切换面板标签** |
-    | 切换到第 3 个面板标签 | <Shortcut combo="alt+3" /> | 折叠组：**切换面板标签** |
+    | <Icon src="/images/icons/sparkle.svg" alt="面板图标" /> 展开/收起面板 | <Shortcut combo="alt+p" /> | 主列表 |
+    | <Icon src="/images/icons/snap-to-edge.svg" alt="切换面板模式图标" /> 切换面板模式（吸附/悬浮） | <Shortcut combo="alt+m" /> | 主列表 |
+    | <Icon src="/images/icons/theme-system.svg" alt="切换主题图标" /> 切换主题 | <Shortcut combo="alt+d" /> | 主列表 |
+    | <Icon src="/images/icons/outline.svg" alt="大纲标签图标" /> 切换到第 1 个面板标签 | <Shortcut combo="alt+1" /> | 折叠组：**切换面板标签** |
+    | <Icon src="/images/icons/conversation.svg" alt="对话标签图标" /> 切换到第 2 个面板标签 | <Shortcut combo="alt+2" /> | 折叠组：**切换面板标签** |
+    | <Icon src="/images/icons/prompt.svg" alt="提示词标签图标" /> 切换到第 3 个面板标签 | <Shortcut combo="alt+3" /> | 折叠组：**切换面板标签** |
   </Accordion>
 
   <Accordion title="大纲（15 个）">
     | 动作 | 默认快捷键 | 所属位置 |
     | --- | --- | --- |
-    | 显示用户问题 | <Shortcut combo="alt+q" /> | 主列表 |
-    | 只显示用户问题 | <Shortcut combo="alt+shift+q" /> | 主列表 |
-    | 显示用户收藏 | <Shortcut combo="alt+c" /> | 主列表 |
-    | 定位大纲 | <Shortcut combo="alt+l" /> | 主列表 |
-    | 搜索大纲 | <Shortcut combo="alt+f" /> | 主列表 |
-    | 上一个标题 | <Shortcut combo="alt+arrowup" /> | 主列表 |
-    | 下一个标题 | <Shortcut combo="alt+arrowdown" /> | 主列表 |
-    | 刷新大纲 | <Shortcut combo="alt+r" /> | 主列表 |
-    | 展开/折叠全部 | <Shortcut combo="alt+e" /> | 主列表 |
-    | 展开到 1 级 | <Shortcut combo="alt+shift+1" /> | 折叠组：**展开到指定层级** |
-    | 展开到 2 级 | <Shortcut combo="alt+shift+2" /> | 折叠组：**展开到指定层级** |
-    | 展开到 3 级 | <Shortcut combo="alt+shift+3" /> | 折叠组：**展开到指定层级** |
-    | 展开到 4 级 | <Shortcut combo="alt+shift+4" /> | 折叠组：**展开到指定层级** |
-    | 展开到 5 级 | <Shortcut combo="alt+shift+5" /> | 折叠组：**展开到指定层级** |
-    | 展开到 6 级 | <Shortcut combo="alt+shift+6" /> | 折叠组：**展开到指定层级** |
+    | <Icon src="/images/icons/user-query.svg" alt="用户问题图标" /> 显示用户问题 | <Shortcut combo="alt+q" /> | 主列表 |
+    | <Icon src="/images/icons/user-query.svg" alt="仅看用户问题图标" /> 只显示用户问题 | <Shortcut combo="alt+shift+q" /> | 主列表 |
+    | <Icon src="/images/icons/star.svg" alt="用户收藏图标" /> 显示用户收藏 | <Shortcut combo="alt+c" /> | 主列表 |
+    | <Icon src="/images/icons/locate.svg" alt="定位大纲图标" /> 定位大纲 | <Shortcut combo="alt+l" /> | 主列表 |
+    | <Icon src="/images/icons/search.svg" alt="搜索大纲图标" /> 搜索大纲 | <Shortcut combo="alt+f" /> | 主列表 |
+    | <Icon src="/images/icons/arrow-up.svg" alt="上一个标题图标" /> 上一个标题 | <Shortcut combo="alt+arrowup" /> | 主列表 |
+    | <Icon src="/images/icons/arrow-down.svg" alt="下一个标题图标" /> 下一个标题 | <Shortcut combo="alt+arrowdown" /> | 主列表 |
+    | <Icon src="/images/icons/refresh.svg" alt="刷新大纲图标" /> 刷新大纲 | <Shortcut combo="alt+r" /> | 主列表 |
+    | <Icon src="/images/icons/expand-all.svg" alt="展开折叠全部图标" /> 展开/折叠全部 | <Shortcut combo="alt+e" /> | 主列表 |
+    | <Icon src="/images/icons/outline.svg" alt="大纲层级图标" /> 展开到 1 级 | <Shortcut combo="alt+shift+1" /> | 折叠组：**展开到指定层级** |
+    | <Icon src="/images/icons/outline.svg" alt="大纲层级图标" /> 展开到 2 级 | <Shortcut combo="alt+shift+2" /> | 折叠组：**展开到指定层级** |
+    | <Icon src="/images/icons/outline.svg" alt="大纲层级图标" /> 展开到 3 级 | <Shortcut combo="alt+shift+3" /> | 折叠组：**展开到指定层级** |
+    | <Icon src="/images/icons/outline.svg" alt="大纲层级图标" /> 展开到 4 级 | <Shortcut combo="alt+shift+4" /> | 折叠组：**展开到指定层级** |
+    | <Icon src="/images/icons/outline.svg" alt="大纲层级图标" /> 展开到 5 级 | <Shortcut combo="alt+shift+5" /> | 折叠组：**展开到指定层级** |
+    | <Icon src="/images/icons/outline.svg" alt="大纲层级图标" /> 展开到 6 级 | <Shortcut combo="alt+shift+6" /> | 折叠组：**展开到指定层级** |
   </Accordion>
 
   <Accordion title="对话（5 个）">
     | 动作 | 默认快捷键 |
     | --- | --- |
-    | 新对话 | <Shortcut combo="ctrl+shift+o" /> |
-    | 刷新对话列表 | <Shortcut combo="alt+shift+r" /> |
-    | 定位当前对话 | <Shortcut combo="alt+shift+l" /> |
-    | 上一个对话 | <Shortcut combo="alt+[" /> |
-    | 下一个对话 | <Shortcut combo="alt+]" /> |
+    | <Icon src="/images/icons/conversation.svg" alt="新对话图标" /> 新对话 | <Shortcut combo="ctrl+shift+o" /> |
+    | <Icon src="/images/icons/refresh.svg" alt="刷新对话列表图标" /> 刷新对话列表 | <Shortcut combo="alt+shift+r" /> |
+    | <Icon src="/images/icons/locate.svg" alt="定位当前对话图标" /> 定位当前对话 | <Shortcut combo="alt+shift+l" /> |
+    | <Icon src="/images/icons/chevron-up.svg" alt="上一个对话图标" /> 上一个对话 | <Shortcut combo="alt+[" /> |
+    | <Icon src="/images/icons/chevron-down.svg" alt="下一个对话图标" /> 下一个对话 | <Shortcut combo="alt+]" /> |
   </Accordion>
 
   <Accordion title="交互控制（10 个）">
     | 动作 | 默认快捷键 |
     | --- | --- |
-    | 导出对话 | <Shortcut combo="ctrl+shift+e" /> |
-    | 复制最新回复 | <Shortcut combo="ctrl+shift+c" /> |
-    | 复制最后代码块 | <Shortcut combo="alt+;" /> |
-    | 锁定滚动 | <Shortcut combo="alt+s" /> |
-    | 切换禅模式 | <Shortcut combo="ctrl+shift+z" /> |
-    | 聚焦输入框 | <Shortcut combo="alt+i" /> |
-    | 全局搜索 | <Shortcut combo="ctrl+k" /> |
-    | 停止生成 | <Shortcut combo="alt+k" /> |
-    | 显示/隐藏提示词队列 | <Shortcut combo="alt+j" /> |
-    | 模型选择菜单 | <Shortcut combo="alt+/" /> |
+    | <Icon src="/images/icons/export.svg" alt="导出对话图标" /> 导出对话 | <Shortcut combo="ctrl+shift+e" /> |
+    | <Icon src="/images/icons/copy.svg" alt="复制回复图标" /> 复制最新回复 | <Shortcut combo="ctrl+shift+c" /> |
+    | <Icon src="/images/icons/copy.svg" alt="复制代码块图标" /> 复制最后代码块 | <Shortcut combo="alt+;" /> |
+    | <Icon src="/images/icons/scroll-lock.svg" alt="锁定滚动图标" /> 锁定滚动 | <Shortcut combo="alt+s" /> |
+    | <Icon src="/images/icons/eye.svg" alt="禅模式图标" /> 切换禅模式 | <Shortcut combo="ctrl+shift+z" /> |
+    | <Icon src="/images/icons/edit.svg" alt="聚焦输入框图标" /> 聚焦输入框 | <Shortcut combo="alt+i" /> |
+    | <Icon src="/images/icons/search.svg" alt="全局搜索图标" /> 全局搜索 | <Shortcut combo="ctrl+k" /> |
+    | <Icon src="/images/icons/clear.svg" alt="停止生成图标" /> 停止生成 | <Shortcut combo="alt+k" /> |
+    | <Icon src="/images/icons/prompt-queue.svg" alt="提示词队列图标" /> 显示/隐藏提示词队列 | <Shortcut combo="alt+j" /> |
+    | <Icon src="/images/icons/model-lock.svg" alt="模型选择菜单图标" /> 模型选择菜单 | <Shortcut combo="alt+/" /> |
   </Accordion>
 
   <Accordion title="设置（7 个）">
     | 动作 | 默认快捷键 |
     | --- | --- |
-    | 打开设置 | <Shortcut combo="alt+," /> |
-    | 快捷键一览 | <Shortcut combo="alt+backslash" /> |
-    | 打开外观主题 | <Shortcut combo="ctrl+alt+t" /> |
-    | 打开模型锁定 | <Shortcut combo="ctrl+alt+l" /> |
-    | 打开 Gemini 专属设置 | <Shortcut combo="ctrl+alt+g" /> |
-    | 打开 Claude 专属设置 | <Shortcut combo="ctrl+alt+c" /> |
-    | 一键切换可用 Session Key | <Shortcut combo="ctrl+alt+s" /> |
+    | <Icon src="/images/icons/settings.svg" alt="设置图标" /> 打开设置 | <Shortcut combo="alt+," /> |
+    | <Icon src="/images/icons/keyboard.svg" alt="快捷键图标" /> 快捷键一览 | <Shortcut combo="alt+backslash" /> |
+    | <Icon src="/images/icons/appearance.svg" alt="外观主题图标" /> 打开外观主题 | <Shortcut combo="ctrl+alt+t" /> |
+    | <Icon src="/images/icons/model-lock.svg" alt="模型锁定图标" /> 打开模型锁定 | <Shortcut combo="ctrl+alt+l" /> |
+    | <Icon src="/images/icons/gemini.png" alt="Gemini" /> 打开 Gemini 专属设置 | <Shortcut combo="ctrl+alt+g" /> |
+    | <Icon src="/images/icons/claude.svg" alt="Claude" /> 打开 Claude 专属设置 | <Shortcut combo="ctrl+alt+c" /> |
+    | <Icon src="/images/icons/sync.svg" alt="切换 Session Key 图标" /> 一键切换可用 Session Key | <Shortcut combo="ctrl+alt+s" /> |
   </Accordion>
 </AccordionGroup>
 
@@ -120,7 +121,7 @@ Ophel 提供 **46 个可自定义快捷键**（按 6 大分类排列），另支
 
 - 在 **设置 → 快捷键位 → 全局打开地址** 中配置目标 URL（默认 `https://gemini.google.com`）。
 - 如需更改浏览器级触发按键：
-  - **Chrome**：前往 `chrome://extensions/shortcuts`（设置页提供一键直达按钮）。
-  - **Edge**：前往 `edge://extensions/shortcuts`（设置页提供一键直达按钮）。
-  - **Firefox**：访问 `about:addons` → 右上角齿轮 → **管理扩展快捷键**。
+  - <Icon src="/images/icons/chrome.svg" alt="Chrome" /> **Chrome**：前往 `chrome://extensions/shortcuts`（设置页提供一键直达按钮）。
+  - <Icon src="/images/icons/edge.svg" alt="Edge" /> **Edge**：前往 `edge://extensions/shortcuts`（设置页提供一键直达按钮）。
+  - <Icon src="/images/icons/firefox.svg" alt="Firefox" /> **Firefox**：访问 `about:addons` → 右上角齿轮 → **管理扩展快捷键**。
 - 油猴脚本不支持浏览器级全局命令，但页内全部 46 个快捷键功能完全一致。

@@ -6,6 +6,7 @@ icon: "wrench"
 keywords: ["troubleshooting", "panel not showing", "outline empty", "debug steps", "fix Ophel", "extension problems"]
 ---
 
+import { Icon } from "/snippets/icon.jsx"
 import { Shortcut } from "/snippets/shortcut.jsx"
 
 ## Panel is not appearing
@@ -18,7 +19,7 @@ import { Shortcut } from "/snippets/shortcut.jsx"
     Click the Ophel browser toolbar icon to verify the site is not disabled. Also check **Settings → Site Settings → Hide Ophel on specific pages** to ensure no rule matches your current URL path.
   </Step>
   <Step title="Expand if collapsed">
-    Press <Shortcut combo="alt+p" /> to toggle the panel open, or look near the screen edge for the collapsed Ophel droplet or Edge Snap handle.
+    Press <Shortcut combo="alt+p" /> to toggle the panel open, or look near the screen edge for the collapsed <Icon src="/images/icons/sparkle.svg" alt="Panel droplet icon" /> Ophel droplet or Edge Snap handle.
   </Step>
   <Step title="Hard-refresh the tab">
     Press <Shortcut combo="ctrl+shift+r" />. Tabs that were already open before installing or updating Ophel need a refresh to inject the content script.
@@ -29,10 +30,10 @@ import { Shortcut } from "/snippets/shortcut.jsx"
 
 <Steps>
   <Step title="Check outline filters and heading levels">
-    Make sure **Show User Questions** (<Shortcut combo="alt+q" />) is enabled if the AI reply contains no Markdown headings, and check that the **Bookmarks Filter** (<Shortcut combo="alt+c" />) is not hiding non-bookmarked items.
+    Make sure <Icon src="/images/icons/user-query.svg" alt="User questions icon" /> **Show User Questions** (<Shortcut combo="alt+q" />) is enabled if the AI reply contains no Markdown headings, and check that the <Icon src="/images/icons/star.svg" alt="Bookmarks icon" /> **Bookmarks Filter** (<Shortcut combo="alt+c" />) is not hiding non-bookmarked items.
   </Step>
   <Step title="Force an immediate refresh">
-    Press <Shortcut combo="alt+r" /> or click the refresh icon in the **Outline** toolbar. On virtual-scroll sites (DeepSeek, Claude, AI Studio, Grok, Qwen Studio), allow a brief moment for history API backfill after switching chats.
+    Press <Shortcut combo="alt+r" /> or click the <Icon src="/images/icons/refresh.svg" alt="Refresh icon" /> refresh icon in the **Outline** toolbar. On virtual-scroll sites (DeepSeek, Claude, AI Studio, Grok, Qwen Studio), allow a brief moment for history API backfill after switching chats.
   </Step>
   <Step title="Verify auto-update and follow mode">
     Open **Settings → Features → Outline**: confirm **Outline Follow Mode** is set to **Follow Current Position** (not **Manual Control**), and expand **Advanced options** to verify **Auto-update outline during chat** is enabled.
@@ -46,7 +47,7 @@ import { Shortcut } from "/snippets/shortcut.jsx"
     **Hide quick buttons when panel is open** is **On** by default. Collapse the panel (<Shortcut combo="alt+p" />) or turn that option off under **Settings → General → Shortcuts**.
   </Step>
   <Step title="Wake the collapsed droplet">
-    The strip collapses into a small droplet 3 seconds after your cursor moves away. Move near its last edge position—or if **Proximity wake distance** is set to `0`, hover directly over the droplet for **300 ms** to expand it.
+    The <Icon src="/images/icons/floating-toolbar.svg" alt="Quick buttons icon" /> strip collapses into a small <Icon src="/images/icons/sparkle.svg" alt="Droplet icon" /> droplet 3 seconds after your cursor moves away. Move near its last edge position—or if **Proximity wake distance** is set to `0`, hover directly over the droplet for **300 ms** to expand it.
   </Step>
 </Steps>
 
@@ -54,7 +55,7 @@ import { Shortcut } from "/snippets/shortcut.jsx"
 
 - **Enable Smart Avoidance**: Under **Settings → Site Settings → Page Layout**, turn on **Smart Avoidance** (default **On**) so the page reserves space for the open Floating panel.
 - **Pass-through click temporarily**: Hold <Shortcut combo="ctrl" /> alone for **0.2 seconds** to click directly through Ophel to buttons underneath.
-- **Switch to Edge Snap**: Press <Shortcut combo="alt+m" /> or double-click the panel header to tuck the panel off the edge until needed.
+- <Icon src="/images/icons/snap-to-edge.svg" alt="Edge Snap icon" /> **Switch to Edge Snap**: Press <Shortcut combo="alt+m" /> or double-click the panel header to tuck the panel off the edge until needed.
 
 ## Chats tab is empty (or empty after upgrading on a multi-domain site)
 
@@ -63,7 +64,7 @@ import { Shortcut } from "/snippets/shortcut.jsx"
     Only 11 built-in platforms have a synced **Chats** tab (Gemini Notebook, ChatGLM, ima, Qianwen, Z.ai, and Site Packs do not).
   </Step>
   <Step title="Make sure the platform's own sidebar is visible">
-    On DOM-scanned platforms, expand the website's native history sidebar first, then press <Shortcut combo="alt+shift+r" /> (or click sync) in the **Chats** tab.
+    On DOM-scanned platforms, expand the website's native history sidebar first, then press <Shortcut combo="alt+shift+r" /> (or click <Icon src="/images/icons/refresh.svg" alt="Sync icon" /> sync) in the **Chats** tab.
   </Step>
   <Step title="Resync once on multi-domain sites">
     Since v1.3.4, **Doubao / Dola**, **Kimi (`.com` / `.ai`)**, and **Z.ai (`chat.z.ai` / `zchat.z.ai`)** store local chats separately per domain. Trigger a manual sync to populate the list on each domain.
@@ -74,7 +75,7 @@ import { Shortcut } from "/snippets/shortcut.jsx"
 
 <Steps>
   <Step title="Check pause state and input box">
-    Open the queue overlay (<Shortcut combo="alt+j" />) and verify the queue is not paused and the chat input box is empty (auto-dispatch waits until the input box is clear).
+    Open the <Icon src="/images/icons/prompt-queue.svg" alt="Prompt Queue icon" /> queue overlay (<Shortcut combo="alt+j" />) and verify the queue is not paused and the chat input box is empty (auto-dispatch waits until the input box is clear).
   </Step>
   <Step title="Use Force Send if idle detection got stuck">
     Wait ~2 seconds after the AI stops streaming. If the platform changed its stop/loading indicator and the queue still waits, click **Force Send** to send the next prompt manually.
@@ -95,17 +96,17 @@ import { Shortcut } from "/snippets/shortcut.jsx"
     Both `https://` and `http://` URLs are supported (`https://` is strongly recommended over public networks). Providers like **Nutstore**, **InfiniCLOUD**, and **Nextcloud** require a dedicated **app password**, not your main account login password.
   </Step>
   <Step title="Verify browser host permission">
-    Click **Test Connection** under **Settings → Data & Permissions → WebDAV Sync**. On Chrome/Edge/Firefox, ensure `<all_urls>` is granted under **Permissions**; on macOS Safari, allow your WebDAV server host in **Safari → Settings → Extensions → Ophel Atlas**.
+    Click <Icon src="/images/icons/check.svg" alt="Test connection icon" /> **Test Connection** under **Settings → Data & Permissions → WebDAV Sync**. On Chrome/Edge/Firefox, ensure `<all_urls>` is granted under **Permissions**; on macOS Safari, allow your WebDAV server host in **Safari → Settings → Extensions → Ophel Atlas**.
   </Step>
   <Step title="Check sync status & runtime">
-    If an automatic backup fails (25-second timeout per request), the WebDAV card shows a failed status—click **Test Connection** or **Backup Now** to see the exact error details. On userscript builds, scheduled automatic backups only run while at least one supported AI tab is open.
+    If an automatic backup fails (25-second timeout per request), the WebDAV card shows a failed status—click <Icon src="/images/icons/check.svg" alt="Test connection icon" /> **Test Connection** or <Icon src="/images/icons/cloud-upload.svg" alt="Backup now icon" /> **Backup Now** to see the exact error details. On userscript builds, scheduled automatic backups only run while at least one supported AI tab is open.
   </Step>
 </Steps>
 
 ## Firefox or Safari extension disappeared
 
-- **Firefox**: Loading an unsigned ZIP via `about:debugging` is temporary and disappears when Firefox restarts. Install the signed version from [Firefox Add-ons (AMO)](https://addons.mozilla.org/firefox/addon/ophel-ai-chat-enhancer/) instead.
-- **Safari (macOS, Experimental)**: macOS Safari removes temporary extensions after **24 hours** or whenever Safari quits. Reload the extracted folder via **Safari → Settings → Developer → Add Temporary Extension…**.
+- <Icon src="/images/icons/firefox.svg" alt="Firefox" /> **Firefox**: Loading an unsigned ZIP via `about:debugging` is temporary and disappears when Firefox restarts. Install the signed version from [Firefox Add-ons (AMO)](https://addons.mozilla.org/firefox/addon/ophel-ai-chat-enhancer/) instead.
+- <Icon src="/images/icons/safari.svg" alt="Safari" /> **Safari (macOS, Experimental)**: macOS Safari removes temporary extensions after **24 hours** or whenever Safari quits. Reload the extracted folder via **Safari → Settings → Developer → Add Temporary Extension…**.
 
 ## Still broken?
 
