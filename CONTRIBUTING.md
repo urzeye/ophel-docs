@@ -1,34 +1,59 @@
-> **Customize this file**: Tailor this template to your project by noting specific contribution types you're looking for, adding a Code of Conduct, or adjusting the writing guidelines to match your style.
+# Contributing to Ophel Atlas Documentation
 
-# Contribute to the documentation
+Thank you for helping improve the Ophel Atlas documentation and website.
 
-Thank you for your interest in contributing to our documentation! This guide will help you get started.
+## Before you edit
 
-## How to contribute
+- Verify every default value, keyboard shortcut, permission, capability, and settings path against the [ophel](https://github.com/urzeye/ophel) source code.
+- Keep English (`*.mdx`) and Chinese (`zh/*.mdx`) pages structurally mirrored. Every internal link inside `zh/*.mdx` must start with `/zh/`.
+- Do not edit `changelog.mdx` or `zh/changelog.mdx` directly—they are generated from `ophel/CHANGELOG*.md` via `node scripts/sync-changelog.mjs`.
+- Follow the terminology and MDX conventions in [AGENTS.md](AGENTS.md).
 
-### Option 1: Edit directly on GitHub
+## Local development
 
-1. Navigate to the page you want to edit
-2. Click the "Edit this file" button (the pencil icon)
-3. Make your changes and submit a pull request
+1. Fork and clone this repository, then create a branch for your changes.
+2. Install the Mintlify CLI (`npm i -g mint`) and preview docs locally:
 
-### Option 2: Local development
+   ```bash
+   mint dev
+   ```
 
-1. Fork and clone this repository
-2. Install the Mintlify CLI: `npm i -g mint`
-3. Create a branch for your changes
-4. Make changes
-5. Navigate to the docs directory and run `mint dev`
-6. Preview your changes at `http://localhost:3000`
-7. Commit your changes and submit a pull request
+3. If editing the landing site under `landing/`, install dependencies and preview with:
 
-For more details on local development, see our [development guide](development.mdx).
+   ```bash
+   pnpm --dir landing install
+   pnpm --dir landing dev
+   ```
+
+## Verification before opening a PR
+
+Run the checks relevant to the files you changed:
+
+- **Docs**:
+
+  ```bash
+  mint validate
+  mint broken-links --check-anchors
+  mint a11y
+  ```
+
+- **Landing site**:
+
+  ```bash
+  pnpm --dir landing typecheck
+  pnpm --dir landing format:check
+  pnpm --dir landing build
+  ```
+
+- **Cloudflare Worker**:
+
+  ```bash
+  pnpm --dir worker typecheck
+  ```
 
 ## Writing guidelines
 
-- **Use active voice**: "Run the command" not "The command should be run"
-- **Address the reader directly**: Use "you" instead of "the user"
-- **Keep sentences concise**: Aim for one idea per sentence
-- **Lead with the goal**: Start instructions with what the user wants to accomplish
-- **Use consistent terminology**: Don't alternate between synonyms for the same concept
-- **Include examples**: Show, don't just tell
+- Write clearly and directly in plain language for users.
+- Use active voice, second person ("you"), and sentence case headings.
+- Keep product terms consistent with the UI labels in `ophel/src/locales/{en,zh-CN}/index.ts` (for example, **Site Packs** / **适配中心**, **Chats** / **对话**, **Global Search** / **全局搜索**).
+- Preserve existing frontmatter `icon` and `keywords` fields, avoid putting JSX tags inside Markdown headings, and use `/snippets/icon.jsx`, `/snippets/shortcut.jsx`, and `/snippets/docs-video.jsx` for icons, shortcuts, and MP4 videos.
