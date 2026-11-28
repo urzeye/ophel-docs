@@ -13,6 +13,8 @@ Ophel Atlas is a browser extension and userscript that adds a real-time outline,
 ```text
 .
 ├── docs.json                  # Mintlify navigation, theme, redirects, and i18n config
+├── custom.css                 # Custom Mintlify layout, card, and width-switcher styles
+├── content-width.js           # Client-side content width switcher & single-page sidebar layout
 ├── index.mdx / *.mdx          # English Mintlify documentation pages
 ├── zh/                        # Chinese Mintlify documentation pages (mirrored structure)
 ├── snippets/                  # Shared MDX components (icon, shortcut, docs-video, theme-preset-grid)

@@ -75,3 +75,181 @@
   overflow: hidden;
   width: 100%;
 }
+
+/* ── Desktop content width & single-page tab layout ───────────────────────── */
+:root {
+  --ophel-docs-max-width: 960px;
+}
+
+html[data-docs-width="standard"] {
+  --ophel-docs-max-width: 720px;
+}
+
+html[data-docs-width="wide"] {
+  --ophel-docs-max-width: 960px;
+}
+
+html[data-docs-width="full"] {
+  --ophel-docs-max-width: 1360px;
+}
+
+@media (min-width: 1024px) {
+  /* Relax luma's fixed 696px content column and center smoothly within available space */
+  #content-area {
+    max-width: min(100%, var(--ophel-docs-max-width)) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    transition: max-width 180ms ease;
+  }
+
+  /* Allow prose body and changelog <Update> entries to expand with #content-area */
+  #content.prose,
+  #content [data-component-part="update-content"] {
+    max-width: none !important;
+  }
+
+  /* Hide redundant single-item left sidebar on standalone tabs (e.g. Changelog, Installation)
+     while keeping the right-hand "On this page" TOC intact */
+  html[data-single-page-sidebar="true"] #sidebar-content,
+  body:has(#content[data-page-href$="/changelog"]) #sidebar-content {
+    display: none !important;
+  }
+
+  html[data-single-page-sidebar="true"] #body-content,
+  body:has(#content[data-page-href$="/changelog"]) #body-content {
+    padding-left: 0 !important;
+  }
+}
+
+/* ── Navbar content-width switcher ────────────────────────────────────────── */
+.ophel-width-control {
+  position: relative;
+  display: none;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+@media (min-width: 1024px) {
+  .ophel-width-control {
+    display: inline-flex;
+  }
+}
+
+.ophel-width-trigger {
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: 0;
+  border: 0;
+  border-radius: 9999px;
+  background: rgba(15, 23, 42, 0.03);
+  color: #4b5563;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 150ms ease, color 150ms ease;
+}
+
+.ophel-width-trigger:hover,
+.ophel-width-control[data-open="true"] .ophel-width-trigger {
+  background: rgba(15, 23, 42, 0.09);
+  color: #111827;
+}
+
+.dark .ophel-width-trigger {
+  background: rgba(255, 255, 255, 0.04);
+  color: #9ca3af;
+}
+
+.dark .ophel-width-trigger:hover,
+.dark .ophel-width-control[data-open="true"] .ophel-width-trigger {
+  background: rgba(255, 255, 255, 0.12);
+  color: #f3f4f6;
+}
+
+.ophel-width-menu {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  min-width: 11.5rem;
+  padding: 0.35rem;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(15, 23, 42, 0.09);
+  background: #ffffff;
+  box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.2);
+  z-index: 60;
+  display: none;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.ophel-width-control[data-open="true"] .ophel-width-menu {
+  display: flex;
+}
+
+.dark .ophel-width-menu {
+  background: #14161a;
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 12px 32px -10px rgba(0, 0, 0, 0.65);
+}
+
+.ophel-width-menu-label {
+  padding: 0.3rem 0.6rem 0.25rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #6b7280;
+}
+
+.dark .ophel-width-menu-label {
+  color: #9ca3af;
+}
+
+.ophel-width-option {
+  width: 100%;
+  border: 0;
+  border-radius: 0.5rem;
+  background: transparent;
+  padding: 0.42rem 0.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  font-size: 0.8125rem;
+  line-height: 1.25;
+  color: #374151;
+  cursor: pointer;
+  text-align: left;
+  transition: background-color 120ms ease, color 120ms ease;
+}
+
+.ophel-width-option:hover {
+  background: rgba(15, 23, 42, 0.05);
+  color: #111827;
+}
+
+.dark .ophel-width-option {
+  color: #d1d5db;
+}
+
+.dark .ophel-width-option:hover {
+  background: rgba(255, 255, 255, 0.07);
+  color: #f9fafb;
+}
+
+.ophel-width-option[aria-checked="true"] {
+  background: rgba(25, 103, 210, 0.09);
+  color: #1967d2;
+  font-weight: 600;
+}
+
+.dark .ophel-width-option[aria-checked="true"] {
+  background: rgba(51, 103, 214, 0.22);
+  color: #93c5fd;
+}
+
+.ophel-width-option-meta {
+  font-size: 0.72rem;
+  font-weight: 400;
+  opacity: 0.65;
+}
