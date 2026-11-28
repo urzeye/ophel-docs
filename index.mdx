@@ -1,152 +1,98 @@
 ---
-title: "Ophel Atlas: Turn AI Chats into Navigable Documents"
-sidebarTitle: "Home"
-description: "Ophel Atlas is a browser extension that adds real-time outlines, chat folders, and a prompt library to 16 major AI platforms — no account required."
+title: "Introduction"
+sidebarTitle: "Introduction"
+description: "What Ophel Atlas does, how to get started in 3 steps, which AI platforms it supports out of the box, and how it keeps your data local."
+icon: "book-open"
 keywords:
   [
+    "Ophel Atlas",
     "browser extension",
-    "AI chat",
-    "outline",
+    "AI chat enhancement",
+    "smart outline",
     "chat management",
     "prompt library",
+    "supported platforms",
     "ChatGPT",
     "Gemini",
     "Claude",
     "DeepSeek",
-    "productivity",
   ]
 ---
 
-Ophel Atlas enhances your AI chat experience by turning long, scrollable chats into structured, navigable documents. Install it on Chrome, Firefox, or as a userscript, then open any supported AI site to get a powerful side panel with outlines, chat management, and productivity tools — all stored locally in your browser.
+import { Icon } from "/snippets/icon.jsx"
+import { Shortcut } from "/snippets/shortcut.jsx"
+
+Long AI sessions get hard to read and harder to find later. Most chat sites give you one flat, scrolling column with little or no way to jump between sections, group threads by topic, or reuse prompt workflows across tools.
+
+Ophel Atlas runs inside your AI chat pages as a browser extension or userscript and adds the same structured side panel across platforms: a live outline, folder-and-tag organization, reusable prompts, flexible exports, and reading controls. All data stays in your browser by default—no account or API key is required.
+
+## Core capabilities
 
 <CardGroup cols={2}>
-  <Card
-    title="Quick Install"
-    icon="rocket"
-    href="/installation"
-  >
-    Get Ophel running in your browser in under two minutes. Supports Chrome,
-    Edge, Firefox, Safari (macOS), and Tampermonkey.
+  <Card title="Smart Outline" icon="/images/icons/outline.svg" href="/features/outline">
+    Builds a live heading and question tree as replies stream in, with level folding, keyword filtering, bookmarks, word counts, and section copy.
   </Card>
-  <Card
-    title="Panel Overview"
-    icon="sidebar"
-    href="/panel-overview"
-  >
-    Learn the panel layout, floating buttons, ghost mode, and edge-snap
-    navigation.
+  <Card title="Chat Management & Export" icon="/images/icons/conversation.svg" href="/features/conversations">
+    Organize synced chats into folders and tags, pin key threads, run batch actions, and export full or selected turns to Markdown, ZIP (with images), HTML, JSON, TXT, or shareable images.
   </Card>
-  <Card
-    title="Smart Outline"
-    icon="list-tree"
-    href="/features/outline"
-  >
-    Auto-generated table of contents for every chat, with bookmarks,
-    scroll tracking, and word counts.
+  <Card title="Prompt Library, Queues & Chains" icon="/images/icons/prompt.svg" href="/features/prompts">
+    Store templates with variables (`{{var}}`, defaults, dropdown options), quote text directly from replies, queue prompts to send in order, and chain multi-step instructions.
   </Card>
-  <Card
-    title="Chat Management"
-    icon="folder-open"
-    href="/features/conversations"
-  >
-    Organize chats into folders and tags, with search, filters, and batch
-    actions.
+  <Card title="Global Search" icon="/images/icons/search.svg" href="/features/global-search">
+    Press <Shortcut combo="ctrl+k" /> to search your current outline, synced chats across sites, prompts, settings, and tips with `type:`, `folder:`, `tag:`, `is:`, `level:`, `date:`, and `tip:` filters.
   </Card>
-  <Card
-    title="Prompt Library"
-    icon="wand-magic-sparkles"
-    href="/features/prompts"
-  >
-    Build a reusable prompt library with variable templates and an automated
-    prompt queue.
+  <Card title="Reading & Content Enhancements" icon="/images/icons/features.svg" href="/enhancements/content">
+    Render Markdown in your own questions, double-click formulas to copy LaTeX or MathML, copy tables as Markdown, render Mermaid diagrams, lock auto-scroll, and resume reading positions.
   </Card>
-  <Card
-    title="Global Search"
-    icon="magnifying-glass"
-    href="/features/global-search"
-  >
-    Search across outlines, chats, prompts, and settings — all from one
-    place.
+  <Card title="Appearance, Layout & Site Controls" icon="/images/icons/appearance.svg" href="/customization/appearance">
+    Choose from 24 built-in themes or write custom CSS, widen pages, enable Zen or Clean Mode, lock default models per site, and keep your data synced via your own WebDAV server.
   </Card>
 </CardGroup>
 
 ## Get started in 3 steps
 
 <Steps>
-  <Step title="Install the extension">
-    Download Ophel Atlas from the [Chrome Web
-    Store](https://chromewebstore.google.com/detail/ai-chat-organizer-outline/lpcohdfbomkgepfladogodgeoppclakd),
-    [Edge
-    Add-ons](https://microsoftedge.microsoft.com/addons/detail/ophel-atlas-ai-chat-navi/ffpenkdeifijngifjmbbpijfpdhlolga),
-    [Firefox
-    Add-ons](https://addons.mozilla.org/firefox/addon/ophel-ai-chat-enhancer/),
-    or [Greasy
-    Fork](https://greasyfork.org/scripts/563646-ophel-ai-chat-page-enhancer) for
-    Tampermonkey. See the [Installation guide](/installation) for manual
-    sideloading options.
+  <Step title="Install Ophel Atlas">
+    Install the browser extension for Chrome, Edge, Firefox, or macOS Safari (experimental), or use the userscript on Greasy Fork / ScriptCat. See the [Installation guide](/installation) for direct links and platform differences.
   </Step>
   <Step title="Open a supported AI site">
-    Visit any of the 16 supported platforms — ChatGPT, Gemini, Claude, Grok,
-    DeepSeek, and more. The Ophel panel appears automatically on the side of the
-    page.
+    Visit ChatGPT, Gemini, Claude, DeepSeek, or any other supported platform below. On first launch, accept the local-use disclaimer to start a short 4-step spotlight tour covering Outline, Chats, Prompts, and Settings.
   </Step>
-  <Step title="Explore the panel">
-    Start a chat and watch the Smart Outline populate in real time. Use
-    the **Chats** tab to organize chats into folders, and the
-    **Prompts** tab to build your reusable prompt library.
+  <Step title="Work from the side panel">
+    Use the live outline to jump around long replies, file chats into folders and tags, insert prompt templates, or press <Shortcut combo="ctrl+k" /> to open Global Search. See [Panel Overview](/panel-overview) to learn all panel controls and quick buttons.
   </Step>
 </Steps>
 
-## Supported AI platforms
+## Supported platforms
 
-Ophel works on 16 platforms out of the box — install adapter packs from the [Site Packs](/enhancements/site-extensions) section to hot-swap support for even more sites:
+Ophel ships with **16 built-in site adapters**. Feature availability depends on what each platform exposes (for example, sites without a sidebar chat list do not show the **Chats** tab).
 
-<CardGroup cols={3}>
-  <Card
-    title="ChatGPT"
-    icon="/images/icons/chatgpt.png"
-    href="https://chatgpt.com"
-  >
-    chatgpt.com
-  </Card>
-  <Card
-    title="Gemini"
-    icon="/images/icons/gemini.png"
-    href="https://gemini.google.com"
-  >
-    gemini.google.com
-  </Card>
-  <Card
-    title="Claude"
-    icon="/images/icons/claude.svg"
-    href="https://claude.ai"
-  >
-    claude.ai
-  </Card>
-  <Card
-    title="Grok"
-    icon="/images/icons/grok.png"
-    href="https://grok.com"
-  >
-    grok.com
-  </Card>
-  <Card
-    title="DeepSeek"
-    icon="/images/icons/deepseek.svg"
-    href="https://chat.deepseek.com"
-  >
-    chat.deepseek.com
-  </Card>
-  <Card
-    title="Kimi, Doubao, and more"
-    icon="ellipsis"
-    href="/introduction#supported-platforms"
-  >
-    View all 16 platforms
-  </Card>
-</CardGroup>
+| Platform | Domains | Notes |
+| --- | --- | --- |
+| <Icon src="/images/icons/chatgpt.png" alt="ChatGPT icon" /> **ChatGPT** | `chatgpt.com` *(legacy `chat.openai.com` redirects here)* | Full features; API-first export; per-workspace chat isolation; long-chat performance options |
+| <Icon src="/images/icons/gemini.png" alt="Gemini icon" /> **Gemini** | `gemini.google.com` | Full features; document outline (Deep Research / Canvas); image watermark removal; auto-hide input |
+| <Icon src="/images/icons/claude.svg" alt="Claude icon" /> **Claude** | `claude.ai` | Full features; document outline (Artifacts); API-first outline & export; per-organization isolation; Session Key switcher |
+| <Icon src="/images/icons/aistudio.png" alt="AI Studio icon" /> **Google AI Studio** | `aistudio.google.com` | Full features; API-first outline & export; sidebar/panel collapse and background watermark options |
+| <Icon src="/images/icons/grok.png" alt="Grok icon" /> **Grok** | `grok.com` | API-first outline, chat list & export; no Clean Mode |
+| <Icon src="/images/icons/gemini-notebook.png" alt="Gemini Notebook icon" /> **Gemini Notebook** | `notebook.google.com` | Minimal enhancement mode: 3-source outline (Sources / Chat / Studio), prompt insert, panel avoidance, DOM snapshot export; no Chats tab or model lock |
+| <Icon src="/images/icons/gemini-enterprise.png" alt="Gemini Enterprise icon" /> **Gemini Enterprise** | `business.gemini.google` | Disabled by default for new installs; enable in **Settings → Site Packs → Built-in sites** |
+| <Icon src="/images/icons/deepseek.svg" alt="DeepSeek icon" /> **DeepSeek** | `chat.deepseek.com` | API-first outline & export; no model lock |
+| <Icon src="/images/icons/doubao.png" alt="Doubao icon" /> **Doubao / Dola** | `www.doubao.com`, `www.dola.com` | Same built-in adapter; displays as **Dola** on `dola.com`; local chats/bookmarks isolated per domain while sharing settings |
+| <Icon src="/images/icons/kimi.png" alt="Kimi icon" /> **Kimi** | `www.kimi.com`, `www.kimi.ai` | Full features; local chats/bookmarks isolated per domain while sharing settings |
+| <Icon src="/images/icons/qwenai.png" alt="Qwen Studio icon" /> **Qwen Studio** | `chat.qwen.ai` | API-first outline, chat list & export |
+| <Icon src="/images/icons/qianwen.png" alt="Qianwen icon" /> **Qianwen** | `www.qianwen.com`, `qianwen.com` | No sidebar chat list sync (Chats tab hidden) |
+| <Icon src="/images/icons/yuanbao.png" alt="Yuanbao icon" /> **Yuanbao** | `yuanbao.tencent.com` | Full features; Monaco code-block word wrap |
+| <Icon src="/images/icons/zai.png" alt="Z.ai icon" /> **Z.ai** | `chat.z.ai`, `zchat.z.ai`, `www.zchat.z.ai` | No sidebar chat list sync (Chats tab hidden); local data isolated between `chat.z.ai` and `zchat.z.ai` |
+| <Icon src="/images/icons/chatglm.png" alt="ChatGLM icon" /> **ChatGLM** | `chatglm.cn` | No sidebar chat list sync (Chats tab hidden); supports share-page API export |
+| <Icon src="/images/icons/ima.jpg" alt="ima icon" /> **ima** | `ima.qq.com` | No sidebar chat list sync (Chats tab hidden); no native page theme sync |
 
-<Note>
-  Ophel stores all your data locally in your browser. No account is required and
-  no chat data is ever uploaded to Ophel's servers.
-</Note>
+<Tip>
+Need another site such as Perplexity, WorkBuddy, Notion AI, Manus, Open WebUI, or LibreChat? Open <Icon src="/images/icons/site-packs.svg" alt="Site Packs icon" /> **Settings → Site Packs** to install from 18 community packs or bind a self-hosted instance. See [Site Packs](/enhancements/site-extensions).
+</Tip>
+
+## Privacy and local-first design
+
+- **Stored on your device**: Settings, folders, tags, prompts, bookmarks, and reading history live in your browser's local storage (or your userscript manager's local storage).
+- **No Ophel account or tracking**: Ophel has no login, no ads, and no in-extension analytics.
+- **Minimal optional network access**: Ophel only talks to the network when you configure your own WebDAV server, when Site Packs checks its signed read-only update index (every 24 hours when auto-update is enabled), or if you choose to submit the optional uninstall survey. See [Privacy](/data/privacy) and [Permissions](/data/permissions).
+- **Open source**: Licensed under GPLv3 on [GitHub](https://github.com/urzeye/ophel).

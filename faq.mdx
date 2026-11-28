@@ -1,8 +1,8 @@
 ---
-title: "Frequently asked questions about Ophel Atlas extension"
+title: "Frequently Asked Questions"
 sidebarTitle: "FAQ"
+description: "Quick answers on supported AI platforms, extension vs. userscript differences, folders, multi-account isolation, backups, and settings layout."
 icon: "circle-question"
-description: "Answers to common questions about installing Ophel Atlas, using the panel, outline, chats, prompts, Claude session keys, permissions, and privacy."
 keywords:
   [
     "FAQ",
@@ -14,205 +14,77 @@ keywords:
 ---
 
 import { Icon } from "/snippets/icon.jsx"
-import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
+import { Shortcut } from "/snippets/shortcut.jsx"
 
-This page answers the most common questions about Ophel Atlas. If you don't find what you're looking for here, check the [Troubleshooting](/troubleshooting) page or open an issue on [GitHub Issues](https://github.com/urzeye/ophel/issues).
+Looking for step-by-step fixes when something isn't working? Go straight to [Troubleshooting](/troubleshooting).
 
-## Installation & Setup
+## Platforms and installation
 
 <AccordionGroup>
-  <Accordion title="Which AI platforms does Ophel support?" icon="robot">
-    Ophel works on 16 AI platforms:
-
-    | Platform              | URL                                                      |
-    | --------------------- | -------------------------------------------------------- |
-    | **Gemini**            | [gemini.google.com](https://gemini.google.com)           |
-    | **Gemini Enterprise** | [business.gemini.google](https://business.gemini.google) |
-    | **AI Studio**         | [aistudio.google.com](https://aistudio.google.com)       |
-    | **Gemini Notebook**   | [notebook.google.com](https://notebook.google.com)       |
-    | **ChatGPT**           | [chatgpt.com](https://chatgpt.com)                       |
-    | **Claude**            | [claude.ai](https://claude.ai)                           |
-    | **Grok**              | [grok.com](https://grok.com)                             |
-    | **DeepSeek**          | [chat.deepseek.com](https://chat.deepseek.com)           |
-    | **Doubao**            | [www.doubao.com](https://www.doubao.com)                 |
-    | **Kimi**              | [www.kimi.com](https://www.kimi.com)                     |
-    | **Qwen Studio**       | [chat.qwen.ai](https://chat.qwen.ai)                     |
-    | **Qianwen**           | [www.qianwen.com](https://www.qianwen.com)               |
-    | **Yuanbao**           | [yuanbao.tencent.com](https://yuanbao.tencent.com)       |
-    | **Z.ai**              | [chat.z.ai](https://chat.z.ai)                           |
-    | **ChatGLM**           | [chatglm.cn](https://chatglm.cn)                         |
-    | **ima**               | [ima.qq.com](https://ima.qq.com)                         |
-
+  <Accordion title="Which AI platforms does Ophel support?">
+    Ophel supports **16 built-in platforms** out of the box (including multi-domain hosts such as Doubao/Dola, Kimi `.com`/`.ai`, and Z.ai) plus **18 community Site Packs** (including self-hosted apps like Open WebUI, LibreChat, and NextChat). See the [full built-in platform table](/index#supported-platforms) and [Site Packs Overview](/enhancements/site-extensions).
   </Accordion>
 
-  <Accordion title="How do I enable the extension after installing it?" icon="puzzle-piece">
-    After installing, open any supported AI platform in your browser. The Ophel panel should appear automatically in the sidebar. If it doesn't, check that the extension is enabled in your browser toolbar (click the puzzle-piece icon and confirm Ophel is toggled on), then hard-reload the page with <Shortcut combo="ctrl+shift+r" />.
+  <Accordion title="Should I install the browser extension, Safari build, or userscript?">
+    - <Icon src="/images/icons/chrome.svg" alt="Chrome" /> <Icon src="/images/icons/edge.svg" alt="Edge" /> <Icon src="/images/icons/firefox.svg" alt="Firefox" /> **Chrome / Edge / Firefox extensions** give you the complete feature set (optional permissions UI, browser-wide <Shortcut combo="alt+o" /> shortcut, background `alarms` for WebDAV auto-backup, Claude browser cookie import, and AI Studio preloads).
+    - <Icon src="/images/icons/tampermonkey.svg" alt="Userscript" /> **Userscript** (Tampermonkey / Violentmonkey / ScriptCat) works in any browser that supports userscripts and includes core features, WebDAV, notifications, and Gemini watermark removal, without browser-wide shortcuts or Claude cookie import.
+    - <Icon src="/images/icons/safari.svg" alt="Safari" /> **Safari (macOS)** is experimental and runs as a temporary extension (expires after 24 hours or when Safari quits), without desktop notifications, window auto-focus, or Gemini watermark removal.
 
-    Some URLs require you to explicitly grant Ophel permission to run. If you see a "Click to enable" prompt in the extension popup, click it and allow access to the current site.
-
+    See the full [Platform capability comparison](/installation#platform-capability-comparison).
   </Accordion>
 
-  <Accordion title="What's the difference between the browser extension and the userscript?" icon="layer-group">
-    The **browser extension** (available for Chrome, Edge, and Firefox, plus an experimental temporary extension for Safari on macOS via [GitHub Releases](https://github.com/urzeye/ophel/releases)) is the recommended option. It has the full feature set, better performance, and higher compatibility because it integrates directly with the browser.
-
-    The **userscript** runs inside a userscript manager like Tampermonkey and does not require a browser extension install. It is a good fallback if you cannot install extensions, but some features may be limited compared to the extension version.
-
+  <Accordion title="Is Ophel free and open source? Do I need an API key?">
+    Yes—Ophel Atlas is free and open source under the **GPLv3** license on [GitHub](https://github.com/urzeye/ophel). No account, subscription, or AI API key is needed; Ophel works directly on top of the AI websites you already use.
   </Accordion>
 </AccordionGroup>
 
-## Site Extensions
+## Features and behavior
 
 <AccordionGroup>
-  <Accordion title="What are Site Extensions?" icon="puzzle-piece">
-    Site Packs are declarative JSON manifests that add support for AI chat sites beyond the built-in platforms. They do not run arbitrary JavaScript. Manage them from **Settings → Site Packs**.
-
-    Start with the [Site Extensions overview](/enhancements/site-extensions), then see [install and manage](/enhancements/site-extensions/installation) for registry installs, local import, and custom origin binding.
+  <Accordion title="Why is the Chats tab missing on some sites?">
+    Only the **11 built-in platforms** that expose a sidebar chat history list show the **Chats** tab (ChatGPT, Gemini, Gemini Enterprise, AI Studio, Claude, Grok, DeepSeek, Doubao/Dola, Kimi, Qwen Studio, and Yuanbao). Platforms without a sidebar chat list (Gemini Notebook, ChatGLM, ima, Qianwen, Z.ai, and current Site Packs) hide the tab automatically.
   </Accordion>
-  <Accordion title="Can Site Extensions support self-hosted Open WebUI or LibreChat?" icon="server">
-    Yes. Several community packs ship with empty match lists and require an explicit HTTPS origin binding under **Settings → Site Packs → Custom sites**. See the [installation guide](/enhancements/site-extensions/installation#bind-a-custom-origin).
+
+  <Accordion title="Does Ophel support nested subfolders?">
+    Folders are single-level by design, paired with unlimited multi-color **tags** and **pins**. Using one folder per project plus multiple tags lets you drag chats cleanly and filter across categories with `folder:` and `tag:` in Global Search.
+  </Accordion>
+
+  <Accordion title="Do chats mix when I switch accounts, workspaces, or domains?">
+    No. Ophel isolates synced chats per account/workspace (such as ChatGPT personal vs. team workspaces and Claude organizations) and isolates local data per domain on multi-domain sites (Doubao vs. Dola, Kimi `.com` vs. `.ai`, Z.ai `chat.z.ai` vs. `zchat.z.ai`) while sharing your Ophel settings.
+  </Accordion>
+
+  <Accordion title="If I delete a chat in Ophel, does it delete the chat on the AI platform too?">
+    By default, **yes** — **Delete chat on site when deleting** under **Settings → Features → Chats** is **On**, which also deletes the original chat on supported platforms (irreversible). Turn that switch **Off** if you only want to remove entries from Ophel's local list. Note that cleaning records inside **Missing Chats Review** always removes local metadata only.
+  </Accordion>
+
+  <Accordion title="Why can't I find some settings that used to be directly visible?">
+    Low-frequency options in cards like **Outline**, **Export**, **Tab Settings**, **Alerts**, and **Content** are tucked under an **Advanced options** toggle at the bottom of each card to keep everyday settings uncluttered. Two shortcut groups (**Switch Panel Tabs** and **Expand to a Specific Level**) are collapsed the same way. Press <Shortcut combo="ctrl+k" /> to jump directly to any setting by name (legacy names still match).
+  </Accordion>
+
+  <Accordion title="Why are Appearance or Permissions missing from my Settings sidebar?">
+    - **Appearance** is hidden when you open the standalone extension Options page directly without a content script attached—open Settings from the side panel inside any supported AI tab instead.
+    - **Permissions** is hidden on userscript builds because script managers control host access via `@match` / `@connect` rather than browser extension permission APIs.
   </Accordion>
 </AccordionGroup>
 
-## Panel & Navigation
+## Data, sync, and privacy
 
 <AccordionGroup>
-  <Accordion title="Why isn't the panel showing on the page?" icon="table-columns">
-    Work through these steps in order:
-
-    1. Confirm the extension is installed and enabled — check the browser toolbar for the Ophel icon.
-    2. Hard-reload the page: <Shortcut combo="ctrl+shift+r" />.
-    3. Check that the site you're on is in the [supported platforms list](#which-ai-platforms-does-ophel-support).
-    4. If you previously closed the panel, press <Icon src="/images/icons/keyboard.svg" alt="Keyboard shortcut icon" /> <Shortcut combo="alt+p" /> to reopen it, or click the <Icon src="/images/icons/sparkle.svg" alt="Panel quick button icon" /> panel button in the floating quick buttons group.
-
+  <Accordion title="Where is my data stored, and how do I move to another device?">
+    Everything lives locally in your browser's storage (`chrome.storage.local` for extensions, GM storage for userscripts). To move or sync across devices, export a <Icon src="/images/icons/backup.svg" alt="Backup icon" /> **Full Backup** JSON under **Settings → Data & Permissions → Local Backup**, or set up <Icon src="/images/icons/cloud.svg" alt="WebDAV icon" /> [WebDAV Sync & Automatic Backups](/data/webdav) with your own WebDAV server.
   </Accordion>
 
-<Accordion
-  title="How do I open the panel if the floating buttons have disappeared?"
-  icon="circle-question"
->
-  Press <Icon src="/images/icons/keyboard.svg" alt="Keyboard shortcut icon" /> <Shortcut combo="alt+p" />. This keyboard shortcut toggles the panel
-  regardless of whether the floating buttons are visible on screen.
-</Accordion>
+  <Accordion title="Does Ophel send my conversations to any external server?">
+    Never. Your chat messages stay on the AI platforms you visit. See [Privacy](/data/privacy) for the complete list of optional network requests Ophel can make (WebDAV to your own server, signed Site Pack index checks, and the voluntary uninstall survey).
+  </Accordion>
 
-<Accordion
-  title="How do I use ghost mode?"
-  icon="arrow-pointer"
->
-  Ghost mode makes the panel temporarily transparent and click-through so you
-  can interact with the page behind it. Hold <Shortcut combo="ctrl" /> alone
-  for about 0.2 seconds. The panel fades out and lets
-  clicks pass through. Release the key to return to normal.
-</Accordion>
-
-  <Accordion title="What is edge snap, and how do I use it?" icon="thumbtack">
-    Edge snap lets the panel hide against the screen edge and slide out when you need it. Drag the panel toward a screen edge until it snaps into place. To reveal it, hover over that edge — the panel slides out automatically. To undock it, drag it away from the edge.
-
-    If you prefer to keep the panel floating freely, switch **Panel mode** to **Floating** in **Settings → General → Panel**.
-
+  <Accordion title="How do I reset everything and start fresh?">
+    Go to <Icon src="/images/icons/settings.svg" alt="Settings icon" /> **Settings → Data & Permissions → Local Backup** and click <Icon src="/images/icons/delete.svg" alt="Clear data icon" /> **Clear All Data** at the bottom. This clears local Ophel data only and never deletes your chats on AI websites.
   </Accordion>
 </AccordionGroup>
 
-## Outline
+## Still need help?
 
-<AccordionGroup>
-  <Accordion title="Why is the outline empty even though the chat has content?" icon="list-tree">
-    Some AI platforms update the DOM asynchronously, so the outline may not populate immediately when the page first loads. Press <Shortcut combo="alt+r" /> to refresh the outline manually. If the outline stays empty after a refresh, check that **Auto-update outline during chat** is enabled in **Settings → Features → Outline**.
-  </Accordion>
-
-<Accordion
-  title="Why isn't the outline tracking my scroll position?"
-  icon="arrows-up-down"
->
-  The scroll-tracking feature is controlled by a setting. Go to **Settings →
-  Features → Outline** and make sure **Outline Follow Mode**
-  is set to **Follow Current Position** rather than **Manual Control**.
-</Accordion>
-
-  <Accordion title="How do I refresh the outline manually?" icon="rotate">
-    Press <Icon src="/images/icons/refresh.svg" alt="Refresh outline icon" /> <Shortcut combo="alt+r" /> at any time to force the outline to re-scan the chat and rebuild its entries.
-  </Accordion>
-</AccordionGroup>
-
-## Chats
-
-<AccordionGroup>
-  <Accordion title="Why aren't my chats showing in the Chats tab?" icon="folder-open">
-    The Chats tab reads from the AI platform's own sidebar. If the platform's sidebar hasn't fully loaded, Ophel cannot see the chats. Try scrolling the native sidebar on the AI platform to trigger it to load more items, then check the Chats tab again.
-  </Accordion>
-
-  <Accordion title="What does WebDAV sync actually back up?" icon="cloud">
-    WebDAV sync backs up Ophel data stored locally: chat titles, folder assignments, tags, pins, saved prompts, settings, and Claude Session Keys if you use the Claude multi-account feature. It does **not** upload the actual chat messages — those belong to the AI platform and stay there.
-  </Accordion>
-</AccordionGroup>
-
-## Prompts & Queue
-
-<AccordionGroup>
-  <Accordion title="How does the Prompt Queue work?" icon="list-ol">
-    The Prompt Queue lets you line up multiple prompts and send them automatically one by one without waiting manually after each AI response. To use it:
-
-    1. Enable the queue in <Icon src="/images/icons/settings.svg" alt="Settings icon" /> **Settings → Features → Prompts → Prompt Queue**.
-    2. Open the queue overlay with <Icon src="/images/icons/keyboard.svg" alt="Keyboard shortcut icon" /> <Shortcut combo="alt+j" />.
-    3. Add prompts one by one, or use the batch-import option to paste and split a large block of text.
-    4. After you add pending prompts, Ophel automatically sends the next one once it detects the AI has finished responding (no active generation for two consecutive checks, roughly 2 seconds).
-
-    You can edit pending items, force-send a single item, remove individual items, or clear the queue at any time.
-
-  </Accordion>
-
-  <Accordion title="The queue isn't sending the next prompt — why?" icon="hourglass">
-    Ophel waits until the AI page appears idle (no generation spinner detected) for two consecutive polling intervals, which takes about 2 seconds. If the AI platform uses an unusual loading indicator that Ophel cannot detect, the queue may stall indefinitely. As a workaround, open the queue overlay with <Icon src="/images/icons/keyboard.svg" alt="Keyboard shortcut icon" /> <Shortcut combo="alt+j" /> and use **Force Send** on a pending item.
-  </Accordion>
-</AccordionGroup>
-
-## Claude
-
-<AccordionGroup>
-  <Accordion title="What are Session Keys?" icon="key">
-    A Claude session key is an authentication token from your active browser session on claude.ai. By adding multiple session keys (from different Claude accounts), you can rotate between accounts when one hits its usage limit. Ophel intercepts outgoing requests to claude.ai and swaps in the active session key automatically.
-  </Accordion>
-
-  <Accordion title="Is it safe to store session keys in Ophel?" icon="shield-halved">
-    Session keys are stored locally in your browser on your own machine. Ophel does not upload them to Ophel servers. If you use full backup or WebDAV backup, be careful about who has access to your backup files — they can contain valid authentication tokens.
-  </Accordion>
-</AccordionGroup>
-
-## Permissions
-
-<AccordionGroup>
-  <Accordion title="Why does Ophel ask for the all_urls permission?" icon="globe">
-    The `<all_urls>` permission is required for two optional features: **WebDAV sync** (to connect to your own WebDAV server at any URL) and **watermark removal** (to fetch and convert images). This permission is entirely optional — if you don't use either feature, you can deny or revoke it. Go to **Settings → Data & Permissions → Permissions** and click **Revoke** next to it.
-  </Accordion>
-
-  <Accordion title="Can I revoke permissions after granting them?" icon="shield-check">
-    Yes. Go to **Settings → Data & Permissions → Permissions** and click **Revoke** next to any permission you want to remove. Revoking a permission disables the feature that depends on it, but everything else in Ophel continues to work normally.
-  </Accordion>
-</AccordionGroup>
-
-## Privacy
-
-<AccordionGroup>
-  <Accordion
-    title="Does Ophel send my chat data anywhere?"
-    icon="lock"
-  >
-    No. Ophel runs entirely in your browser. Your chat data, prompts,
-    and settings stay on your device by default. If you configure WebDAV sync,
-    data is sent only to the WebDAV server you specify — which you control.
-    Ophel itself does not collect or transmit any user data.
-  </Accordion>
-</AccordionGroup>
-
-## General
-
-<AccordionGroup>
-  <Accordion
-    title="How do I reset everything to defaults?"
-    icon="rotate-left"
-  >
-    Go to **Settings → Data & Permissions → Local Backup** and click **Clear all data**. This
-    removes all Ophel data stored in your browser, including saved prompts,
-    chat metadata, folder and tag definitions, and all settings. The AI
-    platform's own chat history is not affected.
-  </Accordion>
-</AccordionGroup>
+<Card title="Troubleshooting" icon="wrench" href="/troubleshooting">
+  Step-by-step fixes for missing panels, empty outlines, sync issues, WebDAV errors, and Safari/Firefox temporary add-ons.
+</Card>

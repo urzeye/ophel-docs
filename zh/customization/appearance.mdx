@@ -1,99 +1,85 @@
 ---
-title: "外观与主题 — 24 套预设与自定义 CSS"
-sidebarTitle: "外观与主题"
-icon: "palette"
-description: "Ophel 提供亮色/暗色各 12 套主题预设，支持自定义 CSS 变量和主题预设保存，View Transitions 动画切换。"
+title: "外观与主题"
+sidebarTitle: "外观主题"
+description: "自由切换浅色、深色或跟随系统模式，同步 AI 网站原生深浅主题，选用 24 套内置预置主题，或用自定义 CSS 精细微调。"
+icon: "/images/icons/appearance.svg"
 keywords: ["主题", "深色模式", "浅色模式", "自定义CSS", "主题预设", "面板外观", "配色方案"]
 ---
 
 import { Icon } from "/snippets/icon.jsx"
-import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
+import { Shortcut } from "/snippets/shortcut.jsx"
 import { ThemePresetGrid } from "/snippets/theme-preset-grid.jsx"
 
-![外观与主题设置 — 主题预览与切换](/images/appearance/theme-preview-zh.png)
+Ophel 内置 24 套预置主题（12 套浅色 + 12 套深色），支持按站点独立记忆主题、自动同步 AI 网站原生深浅色，并提供实时生效的自定义样式编辑器。
 
-## 亮色 / 暗色模式
-
-Ophel 支持三种模式：
-
-- <Icon src="/images/icons/theme-light.svg" alt="浅色主题图标" /> **浅色** — 始终使用亮色主题
-- <Icon src="/images/icons/theme-dark.svg" alt="深色主题图标" /> **深色** — 始终使用暗色主题
-- <Icon src="/images/icons/theme-system.svg" alt="跟随系统图标" /> **跟随系统** — 自动跟随操作系统的外观设置
-
-可通过浮动按钮组中的 <Icon src="/images/icons/theme-system.svg" alt="主题切换图标" /> 主题切换按钮、快捷键 <Icon src="/images/icons/keyboard.svg" alt="快捷键图标" /> <Shortcut combo="alt+d" />，或 <Icon src="/images/icons/settings.svg" alt="设置图标" /> **设置 → 外观主题** 切换。
-
-<Tip>
-  主题模式按站点独立保存：在 Gemini 上切到深色，不会影响你在 ChatGPT 上的选择。
-</Tip>
-
-### 同步原生页面颜色
-
-开启后，Ophel 会在切换亮/暗模式时，同步调整 AI 平台页面上部分原生元素（如输入框、滚动条）的颜色，使整体视觉更一致。此功能仅对部分站点生效。
-
-**设置路径：设置 → 外观主题 → 同步原生页面颜色**（默认开启）
+![Ophel 外观主题设置界面](/images/appearance/theme-preview-zh.png)
 
 <Note>
-  当前站点的亮/暗模式始终跟随 Ophel 的设置。此选项仅控制是否额外同步页面原生元素颜色——如果某个站点出现视觉冲突，可关闭此项。
+请在任意受支持的 AI 页面内打开设置弹窗进入 **设置 → 外观主题**。如果直接打开独立的扩展选项页（当前页面无内容脚本挂载），侧栏会自动隐藏「外观主题」入口。
 </Note>
 
-## 内置主题预设
+## 浅色、深色与跟随系统
 
-每种模式各提供 12 套预设主题。
+每个站点都会独立保存自己的明暗模式与所选预置主题。你可以通过以下方式随时切换：
+
+- 按快捷键 <Shortcut combo="alt+d" />（触发从光标或按钮处向外扩散的过渡动画）。
+- 点击面板标题栏或浮动快捷按钮中的 <Icon src="/images/icons/theme-light.svg" alt="浅色主题图标" /> / <Icon src="/images/icons/theme-dark.svg" alt="深色主题图标" /> 主题图标。
+- 在 <Icon src="/images/icons/settings.svg" alt="设置图标" /> 设置弹窗侧栏底部选择 <Icon src="/images/icons/theme-light.svg" alt="浅色模式图标" /> **浅色** / <Icon src="/images/icons/theme-dark.svg" alt="深色模式图标" /> **深色** / <Icon src="/images/icons/theme-system.svg" alt="跟随系统图标" /> **跟随系统**。
+
+### 同步原生页面主题
+
+位于 **设置 → 外观主题** 顶部的 **同步原生页面主题**（默认 **开启**）：切换 Ophel 深浅色时，会同步把当前 AI 网站也切换到对应的浅色或深色模式。
+
+- 支持 **15 个内置站点**（仅 **腾讯 ima** 不支持）。
+- 支持配置了 `themeSync` 的社区适配包（Perplexity、WorkBuddy、LobeChat、阶跃 AI、知乎直答）。
+
+## 24 套预置主题
+
+打开 **设置 → 外观主题 → 预置主题**，点击任意卡片即可立即应用。浅色模式与深色模式可分别指定不同的预置主题。
 
 <Tabs>
-  <Tab title="亮色预设（12 套）">
+  <Tab title="浅色预置（12 套）">
     <ThemePresetGrid mode="light" locale="zh" />
   </Tab>
-  <Tab title="暗色预设（12 套）">
+  <Tab title="深色预置（12 套）">
     <ThemePresetGrid mode="dark" locale="zh" />
   </Tab>
 </Tabs>
 
-## 选择主题
+## 自定义样式（Custom CSS）
 
-<Steps>
-  <Step title="打开设置">
-    按 <Icon src="/images/icons/keyboard.svg" alt="快捷键图标" /> <Shortcut combo="alt+," />，或点击面板标题栏的 <Icon src="/images/icons/settings.svg" alt="设置图标" /> 设置图标。
-  </Step>
-  <Step title="进入外观主题页面">在设置页面中点击 **外观主题**。</Step>
-  <Step title="选择并应用">
-    在 **主题预置** 标签下的 **浅色模式** 或 **深色模式** 区域，点击任意预设卡片即可应用。
-  </Step>
-</Steps>
+进入 **设置 → 外观主题 → 自定义样式**，可以针对浅色或深色模式编写自己的 CSS 样式。保存后，它会像内置预置一样出现在主题列表中供各站点选用，且编辑后即时生效、无需刷新页面。
 
-切换时会以点击位置为中心播放过渡动画（View Transitions API）：切换到深色时从点击处向外扩散，切换到浅色时深色画面向点击处收缩消失。
-
-## 自定义 CSS
-
-在 **设置 → 外观主题 → 自定义样式** 中输入自己的 CSS 规则，实现全面定制。面板运行在 Shadow DOM 中，样式与页面其他部分完全隔离。
-
-面板的样式使用 `--gh-` 前缀的 CSS 变量。你可以在自定义 CSS 中覆盖任意变量：
+由于 Ophel 界面运行在 Shadow DOM 内，请在 `:host` 选择器下覆盖 `--gh-*` CSS 变量：
 
 ```css
 :host {
-  --gh-bg: #1a1a2e;
-  --gh-primary: #e94560;
-  --gh-text: #eaeaea;
+  --gh-primary: #0f766e;
+  --gh-bg: #fcfcfb;
+  --gh-header-bg: linear-gradient(135deg, #0f766e 0%, #0284c7 100%);
+  --gh-header-text: #ffffff;
+  --gh-font-family: "Inter", "PingFang SC", system-ui, sans-serif;
 }
 ```
 
-常用变量：
+### 常用 CSS 变量
 
-| 变量                  | 控制范围                      |
-| --------------------- | ----------------------------- |
-| `--gh-bg`             | 主面板背景色                  |
-| `--gh-bg-secondary`   | 次级背景（侧边、交替行）      |
-| `--gh-text`           | 主文字颜色                    |
-| `--gh-text-secondary` | 次级文字颜色                  |
-| `--gh-primary`        | 强调色 / 激活色（按钮、高亮） |
-| `--gh-border`         | 边框颜色                      |
-| `--gh-shadow`         | 面板阴影                      |
-| `--gh-header-bg`      | 面板顶栏背景（支持渐变）      |
-| `--gh-danger`         | 删除 / 危险操作颜色           |
-| `--gh-hover`          | 行悬停背景色                  |
-
-更改即时生效，无需刷新页面。
+| 变量名 | 控制区域 |
+| --- | --- |
+| `--gh-bg` | 面板与卡片主背景色 |
+| `--gh-bg-secondary` | 次级区域背景色 |
+| `--gh-text` | 主文字颜色 |
+| `--gh-text-secondary` | 次要说明文字颜色 |
+| `--gh-primary` | 强调色（按钮、选中态与高亮） |
+| `--gh-primary-text` | 用于文字或图标的高可读强调色 |
+| `--gh-border` | 边框与分割线颜色 |
+| `--gh-shadow` | 面板阴影 |
+| `--gh-header-bg` | 面板标题栏背景（支持纯色或渐变） |
+| `--gh-header-text` | 面板标题栏文字与图标颜色 |
+| `--gh-hover` | 列表项与按钮悬停背景色 |
+| `--gh-danger` | 危险操作强调色 |
+| `--gh-font-family` | Ophel 界面字体栈 |
 
 <Tip>
-  自定义样式可以保存为**自定义主题预设**，在不同主题之间快速切换而不影响全局设置。保存后，该样式会出现在主题预设列表中，与内置预设并列。
+`--gh-header-bg` 支持任意合法的 CSS `background` 写法，包括渐变色，例如 `linear-gradient(135deg, #1e40af 0%, #3b82f6 100%)`。
 </Tip>

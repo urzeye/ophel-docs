@@ -1,8 +1,8 @@
 ---
-title: "Keep Ophel in sync across devices with WebDAV"
+title: "WebDAV Sync & Automatic Backups"
 sidebarTitle: "WebDAV Sync"
+description: "Back up and restore your Ophel workspace across devices using your own WebDAV server (Nutstore, InfiniCLOUD, Nextcloud, Synology, pCloud, Seafile, or custom)."
 icon: "cloud"
-description: "Use a WebDAV server to sync Ophel prompts, folders, and settings across devices. Your data goes to your own server — Ophel's infrastructure is never involved."
 keywords:
   [
     "WebDAV sync",
@@ -10,116 +10,66 @@ keywords:
     "self-hosted sync",
     "data sync",
     "WebDAV server",
+    "automatic backup",
+    "scheduled backup",
   ]
 ---
 
 import { Icon } from "/snippets/icon.jsx"
 
-WebDAV sync lets you push your Ophel data to a server you own and pull it back on any other device where Ophel is installed. Because the data goes to your own server — not to Ophel’s infrastructure — you stay in full control of where your data lives.
+WebDAV sync lets you back up and restore your Ophel workspace directly between your browser and a WebDAV server you control—with zero Ophel relay servers in between.
 
-Ophel has built-in presets for the most common WebDAV providers:
+## Supported providers
 
-| Provider                  | Notes                                                  |
-| ------------------------- | ------------------------------------------------------ |
-| **Nutstore (Jianguoyun)** | Generate an app-specific password on the web dashboard |
-| **Infinicloud**           | Fixed URL, works out of the box                        |
-| **pCloud**                | Fixed URL, works out of the box                        |
-| **Nextcloud**             | Self-hosted; enter your own server URL                 |
-| **Synology NAS**          | Enable WebDAV Server in Package Center first           |
-| **Seafile**               | Self-hosted; enter your own server URL                 |
-| **Custom**                | Any other WebDAV-compatible server                     |
+Open **Settings → Data & Permissions → WebDAV Sync** and pick one of **7 presets**:
 
-## What gets synced
+| Provider | Typical WebDAV URL | Notes |
+| --- | --- | --- |
+| **Nutstore (Jianguoyun)** | `https://dav.jianguoyun.com/dav/` | Create an app-specific password under Account Security → Third-party app management. |
+| **InfiniCLOUD** | `https://connect.infini.cloud/dav` | Enable Apps Connection and use the generated app password. |
+| **pCloud** | `https://webdav.pcloud.com` (or `ewebdav.pcloud.com` for EU) | Use your pCloud credentials or app password. |
+| **Nextcloud** | `https://your-domain/remote.php/dav/files/username/` | Create an app password under Personal Settings → Security. |
+| **Synology NAS** | `https://your-nas-address/webdav/` | Enable WebDAV Server in DSM. |
+| **Seafile** | Your Seafile SeafDAV URL | Enable SeafDAV on your server. |
+| **Custom** | Any `https://` or `http://` WebDAV URL | Both `https://` and `http://` are supported; always use `https://` over public networks (`http://` is best limited to trusted LAN servers). |
 
-WebDAV sync backs up the Ophel data stored locally:
+## What gets backed up
 
-- Folders, tags, and pinned state you've set for your chats
-- Your prompt library
-- Ophel settings
-- Claude Session Keys, if you use the Claude multi-account feature
+- **Manual backups** upload a **Full Backup** (settings, Prompt Library, Prompt Chains, folders, tags, chat metadata, reading history, Claude Session Keys, bookmarks, usage monitor history, and installed Site Packs with custom site bindings).
+- **Scheduled automatic backups** upload the same Full Backup **minus reading history** to keep snapshots compact and avoid churn.
+- Your actual AI chat transcripts always stay on the AI platforms.
+- **Default remote directory**: `ophel` (created automatically on first upload).
+- **Safe restore**: Restoring from WebDAV **preserves your local WebDAV connection credentials** so you never overwrite your own sync setup.
 
-**Not synced:** The actual chat messages on AI platforms. Those messages belong to each AI service. Ophel has no access to read or upload them.
-
-<Warning>
-  Backup files can contain valid Claude Session Keys when that feature is in
-  use. Keep WebDAV backup files private.
-</Warning>
-
-## Settings
-
-Configure the sync connection at **Settings → Data & Permissions → WebDAV Sync**:
-
-| Field | Description |
-| --- | --- |
-| Provider | Presets for common providers (Jianguoyun, InfiniCloud, Nextcloud, and more) or Custom |
-| Server URL | Full URL of your WebDAV server — must start with `https://` |
-| Username | Your WebDAV account username |
-| Password | Your WebDAV account password (stored locally, never sent to Ophel servers or any third party) |
-| Default Directory | Directory on the server where sync files are stored (default: `ophel`, created automatically) |
-
-## Set up WebDAV sync
+## Initial setup and manual backup
 
 <Steps>
-  <Step title="Open the WebDAV settings panel">
+  <Step title="Open WebDAV Sync">
     Go to **Settings → Data & Permissions → WebDAV Sync**.
   </Step>
   <Step title="Enter your server details">
-    Fill in the Server URL, Username, Password, and Default Directory. If the directory doesn't exist yet, Ophel creates it on first sync.
+    Select a provider preset (or **Custom**), enter the server URL (`https://` recommended; `http://` allowed for LAN servers), username, password / app password, and remote directory (default `ophel`).
   </Step>
-  <Step title="Grant the required permission">
-    WebDAV sync requires the optional `<all_urls>` permission. Your browser will prompt you to grant it the first time you enable the feature.
+  <Step title="Grant host access (extension builds)">
+    Click <Icon src="/images/icons/link.svg" alt="Test connection icon" /> **Test Connection**. Chrome, Edge, and Firefox extensions request the optional host access permission (`<all_urls>`); macOS Safari guides you to allow the specific WebDAV server host in Safari Settings. Userscript builds connect directly via `GM_xmlhttpRequest` with no browser prompt.
   </Step>
-  <Step title="Test the connection">
-    Click <Icon src="/images/icons/check.svg" alt="Test connection icon" /> **Test connection** to verify your credentials and server reachability before syncing any data.
-  </Step>
-  <Step title="Push your data">
-    Click <Icon src="/images/icons/cloud-upload.svg" alt="Upload backup icon" /> **Upload** to push your current local data to the server.
+  <Step title="Save and back up">
+    <Icon src="/images/icons/save.svg" alt="Save icon" /> Save your settings and click <Icon src="/images/icons/cloud-upload.svg" alt="Upload backup icon" /> **Backup Now** to upload your first snapshot.
   </Step>
 </Steps>
 
-## Restore on a new device
+## Scheduled automatic backups
 
-<Steps>
-  <Step title="Configure the same WebDAV server">
-    On the new device, enter the same server URL, username, password, and default
-    directory you used on the original device.
-  </Step>
-  <Step title="Pull from server">
-    Click <Icon src="/images/icons/download.svg" alt="Pull from server icon" /> **Download** to fetch the latest backup, or pick an older
-    snapshot from the **WebDAV Backup List** to restore.
-  </Step>
-</Steps>
+Turn on <Icon src="/images/icons/sync.svg" alt="Automatic backup icon" /> **Automatic Backup** in **Settings → Data & Permissions → WebDAV Sync** to keep snapshots up to date without manual uploads:
 
-## Multi-device usage
+- **Interval**: Choose **Every hour (60 min)**, **Every 6 hours (360 min)**, or **Every day (1440 min, default)**. Enabling automatic backups or changing the target server schedules the first run right away.
+- **Lightweight snapshots**: Automatic backups exclude reading history.
+- **Per-device retention (7 copies)**: Automatic backups are named `ophel_backup_auto_{deviceId}_{timestamp}.json` and automatically keep the **latest 7 automatic backups per device**, so multiple devices never overwrite one another.
+- **Manual restore only**: Automatic backups never silently overwrite your local data. If a scheduled run fails (25-second timeout per request), the WebDAV card displays a failed sync status; click <Icon src="/images/icons/link.svg" alt="Test connection icon" /> **Test Connection** or <Icon src="/images/icons/cloud-upload.svg" alt="Upload backup icon" /> **Backup Now** to inspect the exact error message.
+- **Extension vs. Userscript scheduling**: Chrome, Edge, and Firefox extensions schedule runs in the background via `chrome.alarms`. Userscript builds coordinate across tabs and require at least one supported AI tab to be open for scheduled runs to fire.
 
-<Note>
-  Simultaneous writes from multiple devices can cause conflicts on the server.
-  Download the latest backup before uploading from a second device.
-</Note>
+## Restoring on another device
 
-## Required permission
-
-WebDAV sync requires the optional `<all_urls>` browser permission. Ophel uses this to make network requests to your WebDAV server's URL. The browser will ask you to grant this permission the first time you enable WebDAV sync. You can revoke it at any time from **Settings → Data & Permissions → Permissions** — revoking it will disable WebDAV sync automatically.
-
-## Provider-specific setup notes
-
-<AccordionGroup>
-  <Accordion title="Nutstore (Jianguoyun)">
-    Log in to the Jianguoyun web dashboard, go to **Account Info**, and generate
-    an **app-specific password**. Use that app password in the Password field —
-    your main login password will not work. The server URL is pre-filled as
-    `https://dav.jianguoyun.com/dav/`.
-  </Accordion>
-  <Accordion title="Nextcloud">
-    Set the server URL to `https://your-domain/remote.php/dav/files/username/`.
-    Use your Nextcloud login username and password.
-  </Accordion>
-  <Accordion title="Synology NAS">
-    Install the **WebDAV Server** package from Package Center and enable HTTPS.
-    The server URL format is `https://your-nas-address/webdav/`.
-  </Accordion>
-  <Accordion title="Other providers">
-    Select **Custom** and enter your server's WebDAV URL. The URL must start
-    with `https://` — plain HTTP is not supported.
-  </Accordion>
-</AccordionGroup>
+1. Configure the same WebDAV server, credentials, and directory on your second device.
+2. Click <Icon src="/images/icons/file-restore.svg" alt="Restore icon" /> **Restore** to browse the **full list of remote backups** in your directory (both manual and per-device automatic snapshots).
+3. Select the snapshot you want to restore and confirm. Your local WebDAV credentials remain untouched.

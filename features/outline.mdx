@@ -1,131 +1,75 @@
 ---
-title: "Smart Outline: live table of contents for AI chats"
+title: "Smart Outline"
 sidebarTitle: "Smart Outline"
+description: "Turn long AI conversations and side documents into a collapsible table of contents with bookmarks, search, word counts, and normalized Markdown outline copy."
 icon: "list-tree"
-description: "Ophel builds a live, clickable table of contents from your questions and AI headings — with bookmarks, filters, and keyboard shortcuts for long chats."
 keywords: ["smart outline", "table of contents", "chat outline", "bookmarks", "heading navigation", "AI outline", "live outline"]
 ---
 
 import { Icon } from "/snippets/icon.jsx"
-import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
+import { Shortcut } from "/snippets/shortcut.jsx"
 
-The Smart Outline reads your chat after every AI reply and builds a navigable tree in the side panel. Each of your messages becomes a top-level entry, and any Markdown headings inside the AI's response become nested entries beneath it. The longer the chat, the more value the outline adds.
+The **Outline** tab reads your prompts and the AI's Markdown headings (`H1`–`H6`) and arranges them into a live table of contents. Click any entry to jump straight to that spot in the conversation.
 
-![Smart Outline — live chat table of contents](/images/features/outline-en.png)
+![Ophel Smart Outline tab](/images/features/outline-en.png)
 
 ## How the outline is built
 
-Every time the AI finishes a reply, Ophel scans the page and produces a tree from two sources:
-
-- **Your questions** — each user message becomes a first-level entry
-- **AI response headings** — Markdown headings (`#`, `##`, `###`, etc.) inside AI replies appear as nested children under the question that triggered them
-
-```text
-You: Explain React core concepts
-  ├── # React Introduction
-  │   ├── ## What is React
-  │   └── ## Why use React
-  ├── # Core Concepts
-  │   ├── ## Components
-  │   ├── ## Props and State
-  │   └── ## Lifecycle
-  └── # Summary
-```
-
-Click any entry in the outline to jump directly to that part of the chat.
-
-## Scroll following and locate mode
-
-As you scroll the chat, the outline highlights the entry that matches your current reading position in real time — a position indicator that keeps you oriented inside long threads.
-
-If you scroll the outline panel itself and lose track of where you are, click the <Icon src="/images/icons/locate.svg" alt="Locate current position icon" /> **Locate current position** button or press <Shortcut combo="alt+l" /> to snap the outline panel back to highlight your current position.
-
-## Filter and toolbar controls
-
-The outline toolbar gives you quick controls for filtering, expansion, locating, scrolling, and exporting. On narrow panels, less-used buttons collapse automatically to keep the search box usable.
-
-| Button             | What it shows                                                                            |
-| ------------------ | ---------------------------------------------------------------------------------------- |
-| <Icon src="/images/icons/user-query.svg" alt="User questions icon" /> **Questions toggle** | Shows or hides your messages as outline entries — useful for reviewing the chat flow |
-| <Icon src="/images/icons/star.svg" alt="Bookmarks icon" /> **Bookmarks only** | Shows only entries you have starred |
-| <Icon src="/images/icons/expand-all.svg" alt="Expand all icon" /> / <Icon src="/images/icons/collapse-all.svg" alt="Collapse all icon" /> **Expand / collapse all** | Expands or collapses the visible outline tree |
-| <Icon src="/images/icons/locate.svg" alt="Locate current position icon" /> **Locate current position** | Scrolls the outline panel back to the item matching your current reading position |
-| <Icon src="/images/icons/scroll-top.svg" alt="Scroll to outline top icon" /> / <Icon src="/images/icons/scroll-bottom.svg" alt="Scroll to outline bottom icon" /> **Scroll top / bottom** | One button that flips direction with the outline's scroll state — jumps within the outline list without moving the chat page |
-| <Icon src="/images/icons/export.svg" alt="Export icon" /> **Export Chat** | Opens the [Export Chat dialog](/features/export#the-export-chat-dialog) for the current chat. The button is highlighted until you use it once |
-
-Below the buttons, a **level slider** (dots 0–6) sets how deep the tree expands — click a dot or drag across it. Each dot's tooltip shows how many headings exist at that level. The slider is disabled while the bookmarks filter is on.
-
-You can also switch filters with keyboard shortcuts:
-
-| Shortcut                              | Action                                         |
-| ------------------------------------- | ---------------------------------------------- |
-| <Shortcut combo="alt+q" />        | Toggle user questions on/off                   |
-| <Shortcut combo="alt+shift+q" /> | Show only user questions (collapse to level 0) |
-| <Shortcut combo="alt+c" />        | Toggle bookmarks filter                        |
-
-## Bookmarks
-
-Hover over any outline entry to reveal the <Icon src="/images/icons/star.svg" alt="Star bookmark icon" /> star icon. Click it to bookmark that heading. Bookmarks persist across page reloads.
-
-<Note>
-  If a bookmarked heading disappears from the chat — for example, when
-  the AI regenerates a response — it becomes a **ghost bookmark**. Open the
-  <Icon src="/images/icons/tools.svg" alt="Toolbox icon" /> **Toolbox** and
-  select <Icon src="/images/icons/cleanup.svg" alt="Clear invalid bookmarks icon" />
-  **Clear Invalid Bookmarks** to remove stale ghost bookmarks.
-</Note>
-
-## Expand by level
-
-You can expand the tree to a specific heading depth without manually clicking every node. Drag the [level slider](#filter-and-toolbar-controls) under the toolbar to the depth you want, or press <Shortcut combo="alt+shift+1" /> through <Shortcut combo="alt+shift+6" /> to expand to heading levels 1–6 directly.
-
-Press <Shortcut combo="alt+e" /> to toggle all nodes expanded or collapsed at once.
-
-## Word count on hover
-
-Hover over any outline entry to see a small tooltip showing the approximate word count of that section. This gives you a quick sense of how long an AI response or section is before you navigate to it. The word count requires **Show Word Count** to be enabled in **Settings → Features → Outline** (off by default).
-
-## Copy node text
-
-Outline entries show a <Icon src="/images/icons/copy.svg" alt="Copy icon" /> copy icon on hover. Click it to copy that node's text to your clipboard — handy for re-asking a question in a new chat or saving a heading to notes.
-
-## Copy full outline
-
-Click the <Icon src="/images/icons/export.svg" alt="Export icon" /> **Export Chat** button in the Outline toolbar, then choose <Icon src="/images/icons/copy-outline.svg" alt="Copy outline icon" /> **Copy outline** in the dialog and click **Copy**. This copies a structured Markdown outline for the current source — for chats, the copy follows the current user-question toggle and heading level; for document outlines, it follows the visible outline tree. For virtualized long chats, Ophel loads the full history first, then restores the page position when it finishes.
+- **Real-time updates**: As replies stream in, Ophel refreshes the outline automatically (every **2 seconds** by default).
+- **Virtual-scroll backfill**: Platforms that unload off-screen messages (such as DeepSeek, Claude, AI Studio, Grok, and Qwen Studio) use Ophel's history API loaders so earlier turns stay visible in the outline even before you scroll back up.
+- **Level slider (`0`–`6`)**: Drag the slider in the outline toolbar to control how deep the tree expands. Level `0` shows only your questions; levels `1`–`6` expand headings down to that depth. You can also collapse or expand individual nodes, toggle all with <Shortcut combo="alt+e" />, or jump to a depth directly with <Shortcut combo="alt+shift+1" /> through <Shortcut combo="alt+shift+6" />.
 
 ## Document outline sources
 
-On platforms that expose a separate document panel — such as Claude's right-side document panel, Gemini's Deep Research report, or a document open in Gemini Notebook — the outline header shows a <Icon src="/images/icons/outline-document.svg" alt="Document outline icon" /> **Chat / Document** source switch. When you select **Document**, the outline tree reflects the document's heading structure instead of the chat's, letting you navigate the report independently from the chat thread.
+On platforms that display a separate document or workspace alongside the chat, a <Icon src="/images/icons/outline-document.svg" alt="Document outline icon" /> source switcher appears at the top of the **Outline** tab:
 
-## Shortcuts
+| Platform | Available outline sources |
+| --- | --- |
+| <Icon src="/images/icons/gemini.png" alt="Gemini icon" /> **Gemini** | Chat conversation / Deep Research report / Canvas document |
+| <Icon src="/images/icons/claude.svg" alt="Claude icon" /> **Claude** | Chat conversation / Artifact document panel |
+| <Icon src="/images/icons/gemini-notebook.png" alt="Gemini Notebook icon" /> **Gemini Notebook** | Sources / Chat conversation / Studio outputs & notes |
 
-<ShortcutLegend />
+## Toolbar controls and filtering
 
-| Shortcut         | Action                                         |
-| ---------------- | ---------------------------------------------- |
-| <Shortcut combo="alt+r" />          | Refresh outline                                |
-| <Shortcut combo="alt+e" />          | Expand / collapse all                          |
-| <Shortcut combo="alt+q" />          | Toggle user questions on/off                   |
-| <Shortcut combo="alt+shift+q" />    | Show only user questions (collapse to level 0) |
-| <Shortcut combo="alt+c" />          | Toggle bookmarks filter                        |
-| <Shortcut combo="alt+l" />          | Locate current position in outline             |
-| <Shortcut combo="alt+f" />          | Search within outline                          |
-| <Shortcut combo="alt+up" />         | Jump to previous heading                       |
-| <Shortcut combo="alt+down" />       | Jump to next heading                           |
-| <Shortcut combo="alt+shift+1" /> - <Shortcut combo="alt+shift+6" /> | Expand outline to heading level 1–6            |
+| Control | Shortcut | What it does |
+| --- | --- | --- |
+| <Icon src="/images/icons/user-query.svg" alt="User question icon" /> **Show / Hide User Questions** | <Shortcut combo="alt+q" /> | Toggles whether your prompts appear in the outline tree (shown in conversation outline mode). |
+| <Icon src="/images/icons/star.svg" alt="Bookmark icon" /> **Bookmarks Filter** | <Shortcut combo="alt+c" /> | Shows only bookmarked entries (disables the level slider while active). |
+| <Icon src="/images/icons/collapse-all.svg" alt="Collapse all icon" /><Icon src="/images/icons/expand-all.svg" alt="Expand all icon" /> **Expand / Collapse All** | <Shortcut combo="alt+e" /> | Expands or collapses every heading branch *(auto-hidden on narrow panels)*. |
+| <Icon src="/images/icons/locate.svg" alt="Locate icon" /> **Locate Current Position** | <Shortcut combo="alt+l" /> | Scrolls the outline list to the heading currently in view. |
+| <Icon src="/images/icons/scroll-bottom.svg" alt="Scroll outline bottom icon" /><Icon src="/images/icons/scroll-top.svg" alt="Scroll outline top icon" /> **Scroll Outline to Bottom / Top** | — | Jumps the outline list itself to the bottom or back to the top *(auto-hidden on narrow panels)*. |
+| <Icon src="/images/icons/export.svg" alt="Export icon" /> **Export** | <Shortcut combo="ctrl+shift+e" /> | Opens the [Export Chat](/features/export) dialog (including **Copy Outline**). |
+| <Icon src="/images/icons/search.svg" alt="Search icon" /> **Search box** | <Shortcut combo="alt+f" /> | Filters outline entries in real time with match counts, keyword highlights, and a <Icon src="/images/icons/clear.svg" alt="Clear icon" /> clear button. |
 
-All shortcuts are customizable in **Settings → Keyboard Shortcuts**.
+Additional keyboard-only outline actions (not rendered as separate toolbar buttons):
+
+- **Refresh Outline** (<Shortcut combo="alt+r" />) — forces an immediate re-scan of the conversation.
+- **User Questions Only** (<Shortcut combo="alt+shift+q" />) — switches straight to level `0` so only your prompts are shown.
+- **Previous / Next Heading** (<Shortcut combo="alt+arrowup" /> / <Shortcut combo="alt+arrowdown" />) — steps through outline headings one by one.
+
+## Bookmarks
+
+Star any prompt or heading to mark key conclusions inside a long thread:
+
+- **Two places to star**: Click the <Icon src="/images/icons/star.svg" alt="Bookmark icon" /> bookmark icon next to a heading inside the chat page (**inline bookmark**) or inside the **Outline** panel (**panel bookmark**). Each can be set independently to **Always Visible** (default), **Hover Only**, or **Hidden**.
+- **Invalid ("ghost") bookmarks**: If you edit or regenerate a reply and a bookmarked heading no longer exists, it becomes an invalid bookmark. Clear stale entries from <Icon src="/images/icons/tools.svg" alt="Toolbox icon" /> **Toolbox → <Icon src="/images/icons/cleanup.svg" alt="Cleanup icon" /> Cleanup** (Clear Invalid Bookmarks).
+
+## Word count, section copy, and outline copy
+
+- **Word count**: Enable **Show Word Count** in Outline settings to display character/word counts on outline items.
+- **Copy single node**: Hover an outline entry and click its <Icon src="/images/icons/copy.svg" alt="Copy icon" /> copy action to copy that section's content.
+- **Copy full outline**: Open the <Icon src="/images/icons/export.svg" alt="Export icon" /> **Export Chat** dialog (from the outline toolbar or <Shortcut combo="ctrl+shift+e" />) and click <Icon src="/images/icons/copy-outline.svg" alt="Copy outline icon" /> **Copy Outline** to copy the entire structured outline as Markdown. When user questions are included, Ophel promotes questions to top-level `#` headings and shifts nested headings down automatically so the hierarchy stays valid.
 
 ## Settings
 
-Go to **Settings → Features → Outline** to configure the outline's behavior.
+Open **Settings → Features → Outline**:
 
-| Setting | Description | Default |
-| --- | --- | --- |
-| Auto-update outline during chat | Rebuild the outline after each AI reply; when off, refresh manually with <Shortcut combo="alt+r" /> | On |
-| Update interval (seconds) | How often Ophel checks for changes, 1–60 | 2 |
-| Outline Follow Mode | Follow Current Position / Follow Latest Message / Manual Control | Follow Current Position |
-| Show Word Count | Show the node's approximate word count on hover | Off |
-| Inline Bookmark Icons | When to show the bookmark star inside the chat text: Always Visible / Hover Only / Hidden | Always Visible |
-| Panel Bookmark Icons | When to show the bookmark star in the outline panel entries | Always Visible |
-| Prevent auto-scroll | Stop the page from auto-scrolling to the bottom while the AI is generating | Off |
+| Setting | Options | Default | Location |
+| --- | --- | --- | --- |
+| **Outline Follow Mode** | Follow Current Position / Follow Latest Message / Manual Control | Follow Current Position | Outline card |
+| **Auto-update outline during chat** | On / Off | On | Outline card → **Advanced options** |
+| **Update interval (seconds)** | 1–60 s | 2 s | Outline card → **Advanced options** |
+| **Show Word Count** | On / Off | Off | Outline card → **Advanced options** |
+| **Inline Bookmark Icons** | Always Visible / Hover Only / Hidden | Always Visible | Bookmarks card |
+| **Panel Bookmark Icons** | Always Visible / Hover Only / Hidden | Always Visible | Bookmarks card |
+| **Prevent auto-scroll** | On / Off | Off | Scroll card (temporary toggle also available via <Shortcut combo="alt+s" /> or Toolbox) |

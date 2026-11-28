@@ -1,113 +1,85 @@
 ---
-title: "Themes and appearance: 24 presets plus custom CSS"
+title: "Appearance & Themes"
 sidebarTitle: "Appearance"
-icon: "palette"
-description: "Switch between light, dark, and system modes, pick from 24 built-in theme presets, or write your own CSS to fully control how the Ophel panel looks."
+description: "Switch between light, dark, and system themes, sync host AI site colors, pick from 24 built-in presets, or write custom CSS."
+icon: "/images/icons/appearance.svg"
 keywords: ["themes", "dark mode", "light mode", "custom CSS", "theme presets", "panel appearance", "color scheme"]
 ---
 
 import { Icon } from "/snippets/icon.jsx"
-import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
+import { Shortcut } from "/snippets/shortcut.jsx"
 import { ThemePresetGrid } from "/snippets/theme-preset-grid.jsx"
 
-Ophel gives you full control over how the panel looks.
+Ophel ships with 24 built-in theme presets (12 light and 12 dark), per-site theme memory, native page theme syncing, and a live Custom CSS editor.
 
-![Appearance and theme settings — theme preview and switcher](/images/appearance/theme-preview-en.png)
+![Ophel appearance settings with built-in theme presets](/images/appearance/theme-preview-en.png)
 
-From a quick mode toggle to a palette of 24 built-in presets and an open CSS editor for pixel-level customization. All changes apply instantly without reloading the page.
+<Note>
+Open **Settings → Appearance** from the side panel inside any supported AI tab. When you open the standalone extension Options page directly without a content script attached, the **Appearance** menu item is hidden automatically.
+</Note>
 
 ## Light, dark, and system mode
 
-Ophel supports three color modes:
+Each site remembers its own theme mode and preset independently. Switch modes anytime by:
 
-- <Icon src="/images/icons/theme-light.svg" alt="Light theme icon" /> **Light** — always use a light theme
-- <Icon src="/images/icons/theme-dark.svg" alt="Dark theme icon" /> **Dark** — always use a dark theme
-- <Icon src="/images/icons/theme-system.svg" alt="System theme icon" /> **System** — automatically match your operating system preference
+- Pressing <Shortcut combo="alt+d" /> (toggles light / dark with a circular transition from your cursor or button).
+- Clicking the <Icon src="/images/icons/theme-light.svg" alt="Light theme icon" /> / <Icon src="/images/icons/theme-dark.svg" alt="Dark theme icon" /> theme icon in the panel header or floating quick buttons.
+- Choosing <Icon src="/images/icons/theme-light.svg" alt="Light mode icon" /> **Light**, <Icon src="/images/icons/theme-dark.svg" alt="Dark mode icon" /> **Dark**, or <Icon src="/images/icons/theme-system.svg" alt="System mode icon" /> **System** at the bottom of the <Icon src="/images/icons/settings.svg" alt="Settings icon" /> Settings sidebar.
 
-**How to switch modes:**
+### Sync native page theme
 
-<Tabs>
-  <Tab title="Keyboard shortcut">
-    Press <Icon src="/images/icons/keyboard.svg" alt="Keyboard shortcut icon" /> <Shortcut combo="alt+d" /> to cycle between light and dark mode.
-  </Tab>
-  <Tab title="Quick buttons">
-    Click the <Icon src="/images/icons/theme-system.svg" alt="Theme button icon" /> theme button in the floating quick buttons group.
-  </Tab>
-  <Tab title="Settings">
-    Go to <Icon src="/images/icons/settings.svg" alt="Settings icon" /> **Settings → Appearance** to choose presets for light and dark mode separately.
-  </Tab>
-</Tabs>
+**Sync Native Page Theme** (default **On**, at the top of **Settings → Appearance**) automatically switches the underlying AI website between light and dark mode whenever you toggle Ophel's theme.
 
-### Sync native page colors
+- Supported on **15 of 16 built-in sites** (all except **ima**).
+- Supported on Site Packs that declare `themeSync` (Perplexity, WorkBuddy, LobeChat, StepFun, Zhihu Zhida).
 
-When this option is enabled, Ophel also adjusts some native element colors on the AI platform page to match the current light or dark mode — for example, input fields and scrollbars that the platform exposes as themeable. This works only on supported sites.
+## Built-in theme presets (24)
 
-**Setting:** **Settings → Appearance → Sync Native Page Colors** (enabled by default)
-
-<Note>
-  The site's light/dark mode always follows Ophel's active mode. This setting
-  controls only the additional adjustment of native element colors on the page —
-  disable it if you notice visual conflicts on a particular site.
-</Note>
-
-## Built-in theme presets
-
-Each mode comes with 12 presets. Click any preset card in **Settings → Appearance → Theme Presets** to apply it — the transition animates from the point you clicked: switching to dark expands outward from it, switching to light shrinks the dark view into it.
+Open **Settings → Appearance → Theme Presets** and click any card to apply it immediately. You pick one preset for Light mode and one for Dark mode.
 
 <Tabs>
-  <Tab title="Light presets">
+  <Tab title="Light presets (12)">
     <ThemePresetGrid mode="light" locale="en" />
   </Tab>
-  <Tab title="Dark presets">
+  <Tab title="Dark presets (12)">
     <ThemePresetGrid mode="dark" locale="en" />
   </Tab>
 </Tabs>
 
-## Choosing a theme
-
-1. Open <Icon src="/images/icons/settings.svg" alt="Settings icon" /> **Settings** (<Shortcut combo="alt+," />)
-2. Go to **Appearance**
-3. Under **Theme Presets**, find the **Light Mode** or **Dark Mode** section
-4. Click any preset card to apply it
-
 ## Custom CSS
 
-For complete control over the panel's appearance, go to **Settings → Appearance → Custom Styles** and write your own CSS rules.
+Open **Settings → Appearance → Custom Styles** to create your own light or dark styles. Saved custom styles appear right alongside built-in presets so you can reuse and switch between them per site, and edits take effect immediately without refreshing.
 
-The panel runs inside a **Shadow DOM**, which means your custom CSS is isolated from the AI platform's page styles — your rules only affect the Ophel panel, nothing else on the page.
-
-The panel's built-in styles use CSS variables prefixed with `--gh-`. Override any of them inside a `:host` block:
+Because Ophel renders inside a Shadow DOM, target `:host` and override Ophel's `--gh-*` CSS variables:
 
 ```css
 :host {
-  --gh-bg: #1a1a2e;
-  --gh-primary: #e94560;
-  --gh-text: #eaeaea;
+  --gh-primary: #0f766e;
+  --gh-bg: #fcfcfb;
+  --gh-header-bg: linear-gradient(135deg, #0f766e 0%, #0284c7 100%);
+  --gh-header-text: #ffffff;
+  --gh-font-family: "Inter", system-ui, sans-serif;
 }
 ```
 
-<Note>
-  Changes to custom CSS apply instantly. You do not need to reload the page or
-  restart the extension.
-</Note>
+### Commonly overridden CSS variables
 
-### Key CSS variables
-
-| Variable              | Controls                                          |
-| --------------------- | ------------------------------------------------- |
-| `--gh-bg`             | Main panel background                             |
-| `--gh-bg-secondary`   | Secondary background (sidebars, alternating rows) |
-| `--gh-text`           | Primary text color                                |
-| `--gh-text-secondary` | Muted text color                                  |
-| `--gh-primary`        | Accent / active color (buttons, highlights)       |
-| `--gh-border`         | Border color                                      |
-| `--gh-shadow`         | Panel drop shadow                                 |
-| `--gh-header-bg`      | Panel header background (supports gradients)      |
-| `--gh-danger`         | Delete / destructive action color                 |
-| `--gh-hover`          | Row hover background                              |
+| Variable | Controls |
+| --- | --- |
+| `--gh-bg` | Main panel and card background |
+| `--gh-bg-secondary` | Subtle secondary surface background |
+| `--gh-text` | Primary text color |
+| `--gh-text-secondary` | Secondary / muted text color |
+| `--gh-primary` | Accent color for buttons, active states, and highlights |
+| `--gh-primary-text` | Readable accent text/icon variant |
+| `--gh-border` | Borders and dividers |
+| `--gh-shadow` | Panel drop shadow |
+| `--gh-header-bg` | Panel header background (solid color or CSS gradient) |
+| `--gh-header-text` | Panel header title and icon color |
+| `--gh-hover` | Row and button hover background |
+| `--gh-danger` | Destructive action accent color |
+| `--gh-font-family` | UI font stack inside Ophel |
 
 <Tip>
-  `--gh-header-bg` accepts any valid CSS value, including
-  `linear-gradient(...)`. Use it to give the panel header a custom gradient that
-  matches your preferred aesthetic.
+`--gh-header-bg` accepts any valid CSS `background` value, including gradients such as `linear-gradient(135deg, #1e40af 0%, #3b82f6 100%)`.
 </Tip>

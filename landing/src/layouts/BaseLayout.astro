@@ -1,6 +1,8 @@
 ---
 import '../styles/global.css';
 import { getLatestVersion } from '../lib/changelog';
+import { BUILTIN_PLATFORM_COUNT, SITE_PACK_COUNT } from '../lib/supported-platforms';
+import { SCRIPTCAT_URL } from '../i18n';
 
 interface Props {
   title?: string;
@@ -15,7 +17,7 @@ interface Props {
 
 const {
   title = 'Ophel Atlas — AI Chat Outline, Folder Organizer & Prompt Workbench',
-  description = 'Ophel transforms AI chats into readable, navigable knowledge. Real-time outlines, chat folders & prompt library across 16 built-in platforms and 16 hot-swappable Site Packs.',
+  description = `Ophel transforms AI chats into readable, navigable knowledge. Real-time outlines, chat folders & prompt library across ${BUILTIN_PLATFORM_COUNT} built-in platforms and ${SITE_PACK_COUNT} Site Packs.`,
   ogImage = '/og-image.png',
   lang = 'en',
   enPath,
@@ -39,11 +41,10 @@ const jsonLd = {
   alternateName: 'Ophel Atlas',
   applicationCategory: 'BrowserApplication',
   applicationSubCategory: 'ProductivityApplication',
-  operatingSystem: 'Chrome, Edge, Firefox, Safari, Tampermonkey',
-  softwareVersion: getLatestVersion() || '1.3.2',
+  operatingSystem: 'Chrome, Edge, Firefox, Safari, Tampermonkey, ScriptCat',
+  softwareVersion: getLatestVersion() || '1.3.6',
   url: 'https://ophel.app',
-  description:
-    'Transform AI conversations into readable, navigable, and reusable knowledge across 16 built-in platforms (including ChatGPT, Gemini, Claude, Gemini Notebook) and 16 hot-swappable Site Packs.',
+  description: `Transform AI conversations into readable, navigable, and reusable knowledge across ${BUILTIN_PLATFORM_COUNT} built-in platforms (including ChatGPT, Gemini, Claude, DeepSeek, Doubao/Dola) and ${SITE_PACK_COUNT} Site Packs.`,
   screenshot: 'https://ophel.app/og-image.png',
   offers: {
     '@type': 'Offer',
@@ -61,6 +62,7 @@ const jsonLd = {
     'https://microsoftedge.microsoft.com/addons/detail/ophel-atlas-ai-chat-navi/ffpenkdeifijngifjmbbpijfpdhlolga',
     'https://addons.mozilla.org/firefox/addon/ophel-ai-chat-enhancer/',
     'https://greasyfork.org/scripts/563646-ophel-ai-chat-page-enhancer',
+    SCRIPTCAT_URL,
   ],
 };
 

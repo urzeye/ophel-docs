@@ -52,11 +52,11 @@ const platforms = [
   {
     name: 'Safari',
     icon: '/icons/safari.svg',
-    badge: 'macOS',
-    desc: 'Download the Safari Web Extension package from GitHub Releases for desktop Safari on macOS.',
+    badge: 'macOS · Experimental',
+    desc: 'Download the experimental Safari Web Extension ZIP from GitHub Releases for desktop Safari on macOS. Temporary extensions expire after 24 hours or when Safari quits.',
     cta: 'Download from GitHub Releases',
     href: GITHUB_RELEASES_URL,
-    note: 'macOS Safari · Load via Develop / Temporary Extension',
+    note: 'macOS Safari · Load via Developer → Add Temporary Extension',
   },
   {
     name: 'Tampermonkey',
@@ -77,10 +77,10 @@ const platforms = [
     note: 'Requires ScriptCat manager',
   },
   {
-    name: 'GitHub Releases (ZIP / XPI / User.js)',
+    name: 'GitHub Releases (ZIP / Safari / User.js)',
     icon: '/icons/github.svg',
     badge: 'Offline & Manual',
-    desc: 'Download signed release archives (.zip, .xpi, Safari bundle, and .user.js) directly from GitHub Releases.',
+    desc: 'Download release packages (Chrome .zip, unsigned Firefox .zip, experimental macOS Safari .zip, and .user.js) directly from GitHub Releases.',
     cta: 'Open GitHub Releases',
     href: GITHUB_RELEASES_URL,
     note: 'Direct packages for Chrome, Firefox, Safari & Userscript',
@@ -93,7 +93,7 @@ const allSitePacks = getSitePacks('en');
 
 <BaseLayout
   title="Download & Install Ophel — Chrome, Edge, Firefox, Safari, Tampermonkey"
-  description="Install Ophel free on Chrome, Edge, Firefox, Safari, Tampermonkey, or ScriptCat. Works with 16 built-in AI platforms and 16 hot-swappable Site Packs."
+  description={`Install Ophel free on Chrome, Edge, Firefox, Safari (experimental), Tampermonkey, or ScriptCat. Works with ${BUILTIN_PLATFORM_COUNT} built-in AI platforms and ${SITE_PACK_COUNT} Site Packs.`}
   lang="en"
   zhPath="/zh/download/"
   withJsonLd={false}
@@ -116,7 +116,7 @@ const allSitePacks = getSitePacks('en');
           </strong>{' '}
           and{' '}
           <strong class="text-[color:var(--ink-strong)]">
-            {SITE_PACK_COUNT} hot-swappable Site Packs
+            {SITE_PACK_COUNT} Site Packs
           </strong>.
         </p>
       </header>
@@ -225,7 +225,7 @@ const allSitePacks = getSitePacks('en');
         </div>
 
         <h2 class="font-display text-xl font-extrabold text-[color:var(--ink-strong)] mt-10 mb-4">
-          {SITE_PACK_COUNT} Hot-Swappable Site Packs
+          {SITE_PACK_COUNT} Community Site Packs
         </h2>
         <div class="flex flex-wrap gap-2">
           {
@@ -279,7 +279,7 @@ const allSitePacks = getSitePacks('en');
               </span>
               <div>
                 <strong class="block text-base font-bold text-[color:var(--ink-strong)] mb-1">
-                  Open any of the 16 built-in AI sites (or enable Site Packs)
+                  Open any of the {BUILTIN_PLATFORM_COUNT} built-in AI sites (or enable Site Packs)
                 </strong>
                 <p class="text-sm text-[color:var(--text-muted)] leading-relaxed">
                   Visit ChatGPT, Gemini, Claude, Gemini Notebook, DeepSeek, or enable additional

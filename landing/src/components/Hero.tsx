@@ -17,6 +17,11 @@ import {
   GITHUB_RELEASES_URL,
   GREASYFORK_URL,
 } from '../i18n';
+import {
+  BUILTIN_PLATFORM_COUNT,
+  SITE_PACK_COUNT,
+  TOTAL_SUPPORTED_SITES,
+} from '../lib/supported-platforms';
 
 interface BrowserCta {
   label: string;
@@ -61,7 +66,13 @@ const BROWSER_ICONS: Record<string, string> = {
   safari: '/icons/safari.svg',
 };
 
-const PLATFORM_STRIP = [
+const PLATFORM_STRIP: Array<{
+  label: string;
+  icon: string;
+  href: string;
+  inverted?: boolean;
+  isNew?: boolean;
+}> = [
   { label: 'ChatGPT', icon: '/icons/chatgpt.png', href: 'https://chatgpt.com', inverted: true },
   { label: 'Gemini', icon: '/icons/gemini.png', href: 'https://gemini.google.com' },
   { label: 'Claude', icon: '/icons/claude.svg', href: 'https://claude.ai' },
@@ -69,19 +80,20 @@ const PLATFORM_STRIP = [
     label: 'Gemini Notebook',
     icon: '/icons/notebook.png',
     href: 'https://notebook.google.com',
-    isNew: true,
   },
   { label: 'DeepSeek', icon: '/icons/deepseek.svg', href: 'https://chat.deepseek.com' },
   { label: 'Kimi', icon: '/icons/kimi.png', href: 'https://www.kimi.com' },
 ];
 
+const EXTRA_PLATFORMS_COUNT = TOTAL_SUPPORTED_SITES - PLATFORM_STRIP.length;
+
 const text = {
   en: {
     live: 'Latest release',
     localFirst: '100% local-first · Zero telemetry',
-    ecosystemSummary: '16 built-in sites + 16 hot-swap Site Packs',
+    ecosystemSummary: `${BUILTIN_PLATFORM_COUNT} built-in sites + ${SITE_PACK_COUNT} Site Packs`,
     watchDemo: 'Watch 24s live demo',
-    morePlatforms: '+ 26 more sites & packs →',
+    morePlatforms: `+ ${EXTRA_PLATFORMS_COUNT} more sites & packs →`,
     newBadge: 'NEW',
     browsersLabel: 'Available on:',
     allDownloads: 'All install options',
@@ -96,7 +108,7 @@ const text = {
       {
         id: 'folders',
         label: 'Chat Folders',
-        caption: 'Nested project folders, tags & batch actions',
+        caption: 'Project folders, tags & batch actions',
         image: '/images/product/conversation-en.png',
         alt: 'Ophel Atlas chat folder and tag management panel',
       },
@@ -112,9 +124,9 @@ const text = {
   zh: {
     live: '最新发布',
     localFirst: '数据 100% 本地优先 · 零遥测',
-    ecosystemSummary: '16 个内置站点 + 16 个热插拔适配包',
+    ecosystemSummary: `${BUILTIN_PLATFORM_COUNT} 个内置站点 + ${SITE_PACK_COUNT} 个站点适配包`,
     watchDemo: '观看 24 秒实机演示',
-    morePlatforms: '+ 26 个站点与适配包 →',
+    morePlatforms: `+ ${EXTRA_PLATFORMS_COUNT} 个站点与适配包 →`,
     newBadge: '新增',
     browsersLabel: '支持环境：',
     allDownloads: '全部安装方式',
@@ -377,7 +389,7 @@ export function Hero({
             </div>
           </div>
 
-          {/* Supported platform quick strip (includes Gemini Notebook NEW badge) */}
+          {/* Supported platform quick strip */}
           <div className="platform-strip" aria-label={copy.ecosystemSummary}>
             {PLATFORM_STRIP.map((platform) => (
               <a

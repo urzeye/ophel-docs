@@ -1,60 +1,40 @@
 ---
-title: "Privacy in Ophel Atlas: local-first, no data collection"
+title: "Privacy"
 sidebarTitle: "Privacy"
+description: "How Ophel Atlas keeps your data local-first, every optional network request it can make, and how to audit the open-source code."
 icon: "shield-check"
-description: "Ophel stores everything in your browser and collects nothing. No account, no analytics, no chat data sent to any Ophel server."
 keywords: ["privacy", "local storage", "no account", "data collection", "local-first", "data security"]
 ---
 
-Ophel stores your data in your browser by default. Every setting, prompt, folder, tag, and piece of chat metadata you create stays in local storage unless you enable an optional feature such as WebDAV sync. Ophel does not collect or store your data on Ophel servers.
+Ophel Atlas is built local-first. You do not need an Ophel account, we do not run a cloud backend for your chats, and we never inject ads or behavioral analytics into the extension.
 
 ## Where your data lives
 
-All Ophel data is written to your browser's local storage by default. Nothing is uploaded to Ophel's infrastructure. The data stored locally includes:
+Your settings, folders, tags, prompts, prompt chains, bookmarks, reading history, usage estimates, and installed Site Packs stay on your own device:
 
-- Extension settings and preferences
-- Your prompt library
-- Chat organization data (folders, tags, pinned state)
-- Reading history positions
-- Theme preferences
-- Claude Session Keys (when you use the Claude multi-account feature)
+- **Browser extensions (Chrome / Edge / Firefox / Safari)**: Stored locally via `chrome.storage.local`.
+- **Userscript (Tampermonkey / Violentmonkey / ScriptCat)**: Stored locally via your userscript manager's GM storage (`GM_getValue` / `GM_setValue`).
 
-No account is required to use Ophel. There is no sign-in, no profile, and no sync tied to an Ophel-owned service.
+Your actual AI chat messages remain on the AI platform you are using; Ophel only stores lightweight metadata (such as titles, URLs, folder assignments, tags, and pins) locally.
 
-## What Ophel never does
+## Complete list of network requests
 
-- Ophel does not collect analytics or usage telemetry.
-- Ophel does not display advertisements.
-- Ophel does not read, upload, or have any access to the content of your AI chats. Chat messages belong to the AI platform you are using.
-- During normal Claude multi-account use, Ophel sends Claude Session Keys only to Claude's own endpoints when you initiate a request. Full backups and WebDAV backups can contain those keys when the feature is in use.
+Ophel makes **zero background telemetry requests**. The only external network requests Ophel can initiate are:
 
-## Permissions model
-
-Ophel requests only the permissions it needs. Optional permissions are never granted automatically — your browser asks you first, and you can revoke them at any time.
-
-| Type     | Permission      | Purpose                                                      |
-| -------- | --------------- | ------------------------------------------------------------ |
-| Required | `storage`       | Save your settings and local data in the browser             |
-| Required | `alarms`        | Schedule periodic checks for Site Extension registry updates |
-| Required | `declarativeNetRequestWithHostAccess` | Apply header rules on Claude for certain features |
-| Optional | `notifications` | Show a desktop notification when AI generation completes     |
-| Optional | `cookies`       | Read and switch Claude Session Keys                          |
-| Optional | `<all_urls>`    | WebDAV sync and watermark removal                            |
-
-Revoking an optional permission automatically disables the features that depend on it. See [Permissions](/data/permissions) for details on how to grant and revoke each one.
-
-## WebDAV sync: your server, your data
-
-If you choose to enable WebDAV sync, your data is transmitted to the WebDAV server you configure — not to Ophel. You choose the server, you hold the credentials, and you control who has access. Your password is stored locally in your browser and is never sent to Ophel or any third party.
+1. **WebDAV sync (off by default)**: Only when you configure and enable WebDAV sync or automatic backups. Requests go directly from your browser to **your own WebDAV server**—never through an Ophel relay.
+2. **Site Packs & selector patch index check (on by default, can be disabled)**: When **Auto-update** is enabled under **Settings → Site Packs → Browse & updates**, Ophel sends an anonymous read-only `GET` request once every 24 hours to jsDelivr (`cdn.jsdelivr.net`) or GitHub (`raw.githubusercontent.com`) to fetch the Ed25519-signed index. No cookies, user IDs, or chat data are transmitted.
+3. **Optional uninstall survey (Chrome / Edge / Firefox only)**: When you remove the extension, your browser may open `https://ophel.app/uninstall/` with basic non-identifying query parameters (extension version, browser name, UI language, days since install). Filling it in is completely voluntary; if you choose to submit, your selected reason and comment are sent to our PostHog project using a random one-time ID—no account, email, or user identifier is collected.
 
 ## Claude Session Keys
 
-Claude Session Keys are stored locally in your browser and are used to make requests to Claude's own endpoints on your behalf. If you use full backup or WebDAV sync, backup files can contain those keys. Keep backup files private.
+If you use Claude multi-account switching, your Session Keys (`sk-ant-sidXX-...`) are saved in your browser's local storage and are included in **Full Backup** JSON exports and all WebDAV backups (both manual and scheduled). Keep exported backup files and your WebDAV storage private.
 
-## Exporting and migrating your data
+## Permissions transparency
 
-You can export your full data set at any time from **Settings → Data & Permissions → Local Backup**. This lets you move to a different device, keep an offline backup, or leave Ophel without losing anything you've organized. See [Backup & Restore](/data/backup-sync) for export options.
+Ophel follows least-privilege permissions—requesting optional permissions only when you turn on a feature that needs them. See [Permissions](/data/permissions) for a breakdown of every required and optional permission.
+
+Firefox's manifest explicitly declares `data_collection_permissions: { required: ["none"] }`.
 
 ## Open source
 
-Ophel is released under the GPLv3 license. You can read the source code, verify the data practices described here, and build from source yourself.
+Ophel Atlas is open source under the **GPLv3** license. You can inspect every line of code, build from source, or report security concerns on [GitHub](https://github.com/urzeye/ophel).

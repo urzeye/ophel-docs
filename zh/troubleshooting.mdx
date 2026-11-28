@@ -1,177 +1,118 @@
 ---
-title: "故障排查 — 常见问题逐步修复指南"
+title: "故障排查"
 sidebarTitle: "故障排查"
+description: "按症状逐步排查 Ophel Atlas 常见问题：面板不显示、大纲为空、快捷按钮不见、对话未同步、队列卡住、WebDAV 报错与临时扩展失效。"
 icon: "wrench"
-description: "Ophel Atlas 最常见问题的逐步修复方法：面板不显示、大纲为空、提示词队列卡住、Firefox 重启等。"
 keywords:
   ["故障排查", "面板不显示", "大纲为空", "调试步骤", "修复Ophel", "扩展问题"]
 ---
 
-import { Icon } from "/snippets/icon.jsx";
-import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx";
-
-如果某些功能没有按预期工作，本页提供最常见问题的修复步骤。如果下面没有覆盖你的问题，请在 [GitHub Issues](https://github.com/urzeye/ophel/issues) 中提交报告，附上浏览器版本、扩展版本，以及浏览器控制台中的错误信息。
+import { Icon } from "/snippets/icon.jsx"
+import { Shortcut } from "/snippets/shortcut.jsx"
 
 ## 面板没有出现
 
-![Ophel 侧边面板 — 三标签页概览](/images/panel/panel-tabs.png)
-
-在打开支持的 AI 平台时，Ophel 侧边面板应该自动出现。如果没有显示：
-
 <Steps>
-  <Step title="确认扩展已启用">
-    点击浏览器工具栏中的扩展图标，确认 Ophel Atlas
-    已开启。如果被禁用，启用它并刷新页面。
+  <Step title="确认站点在支持范围内且已启用">
+    对照[支持的平台](/zh#支持的平台)或已安装的[站点适配包](/zh/enhancements/site-extensions)。注意 **Gemini Enterprise** 对新用户默认停用，需在 **设置 → 适配中心 → 内置站点** 手动开启。
+  </Step>
+  <Step title="检查站点开关与隐藏页面规则">
+    点击浏览器工具栏的 Ophel 图标确认未停用当前站点；同时检查 **设置 → 站点设置 → 在指定页面隐藏 Ophel**，排除误配的路径规则。
+  </Step>
+  <Step title="确认面板不是被收起了">
+    按 <Shortcut combo="alt+p" /> 尝试展开面板，或到屏幕左右边缘寻找收起后的 <Icon src="/images/icons/sparkle.svg" alt="星芒水滴图标" /> 星芒水滴 / 吸附把手。
   </Step>
   <Step title="强制刷新页面">
-    按 <Shortcut combo="ctrl+shift+r" />{" "}
-    强制完整刷新页面。普通刷新有时不会重新初始化 Ophel 面板。
-  </Step>
-  <Step title="检查是否在支持的网站上">
-    Ophel 只在[支持的 16 个平台](/zh/introduction#支持的平台)上激活。确认当前 URL
-    属于其中之一。
-  </Step>
-  <Step title="用快捷键手动打开">
-    如果面板之前被关闭了，按{" "}
-    <Icon
-      src="/images/icons/keyboard.svg"
-      alt="快捷键图标"
-    />{" "}
-    <Shortcut combo="alt+p" />{" "}
-    重新打开，无论浮动按钮是否可见，这个快捷键都能切换面板状态。
+    按 <Shortcut combo="ctrl+shift+r" /> 硬刷新。安装或更新 Ophel 前就已经打开的标签页需要刷新一次才能挂载面板。
   </Step>
 </Steps>
 
-## 大纲为空或不更新
-
-![大纲标签页 — 实时对话目录树](/images/features/outline-zh.png)
+## 大纲为空或不随滚动更新
 
 <Steps>
+  <Step title="检查筛选按钮和标题内容">
+    如果 AI 回复里没有 Markdown 标题，请确认开启了 <Icon src="/images/icons/user-query.svg" alt="用户问题图标" /> **显示用户问题**（<Shortcut combo="alt+q" />）；同时确认没有误开 <Icon src="/images/icons/star.svg" alt="仅看收藏图标" /> **仅看收藏**（<Shortcut combo="alt+c" />）。
+  </Step>
   <Step title="手动刷新大纲">
-    按{" "}
-    <Icon
-      src="/images/icons/refresh.svg"
-      alt="刷新大纲图标"
-    />{" "}
-    <Shortcut combo="alt+r" /> 强制大纲重新扫描对话。部分 AI 平台异步更新
-    DOM，大纲可能需要几秒才能填充。
+    按 <Shortcut combo="alt+r" /> 立即强制刷新大纲。在虚拟滚动站点（DeepSeek、Claude、AI Studio、Grok、Qwen Studio）切换长对话后，稍等片刻让历史接口自动补全节点。
   </Step>
-  <Step title="等待 AI 完成回复">
-    大纲在每次 AI 回复完成后重建。如果 AI 仍在生成中，大纲不会更新。
-  </Step>
-  <Step title="检查自动更新设置">
-    前往 **设置 → 功能模块 →
-    大纲**，确认**对话期间自动更新大纲**已开启。如果关闭，大纲只在手动按{" "}
-    <Shortcut combo="alt+r" /> 时才刷新。
+  <Step title="核对大纲跟随与自动更新设置">
+    打开 **设置 → 功能模块 → 大纲**：确认 **大纲跟随模式** 为 **跟随当前位置**（不是「手动控制」），并展开底部 **高级选项** 检查 **对话中自动更新大纲** 是否开启。
   </Step>
 </Steps>
 
-## 大纲不跟踪滚动位置
-
-如果滚动时大纲没有高亮当前阅读的章节：
+## 浮动快捷按钮不见了
 
 <Steps>
-  <Step title="检查大纲跟随模式">
-    前往 **设置 → 功能模块 → 大纲**，将**大纲跟随模式**设为**跟随当前位置**。
+  <Step title="检查面板是否正处于展开状态">
+    **面板展开时隐藏快捷按钮** 默认为 **开启**。按 <Shortcut combo="alt+p" /> 收起面板即可看到，或在 **设置 → 基本设置 → 快捷按钮** 关闭该选项。
+  </Step>
+  <Step title="唤醒收起后的星芒水滴">
+    鼠标移开 3 秒后快捷按钮条会缩成一颗 <Icon src="/images/icons/sparkle.svg" alt="星芒水滴图标" /> 小水滴。将鼠标靠近它上次所在的屏幕边缘；如果你把 **近距离感应半径** 设成了 `0`，则需要直接悬停在水滴上 **300 毫秒**才会展开（继续悬停在面板按钮上可弹出临时悬浮预览面板）。
   </Step>
 </Steps>
 
-## 浮动按钮消失
+## 面板遮挡了页面内容
 
-![浮动操作按钮 — 展开与折叠胶囊状态](/images/panel/floating-buttons.png)
+- **开启智能避让**：在 **设置 → 站点设置 → 页面布局** 中开启 **智能避让**（默认开启），让对话正文自动避开悬浮面板。
+- **临时穿透点击**：单独按住 <Shortcut combo="ctrl" /> 约 **0.2 秒**，直接穿透面板点击下方的按钮或链接。
+- <Icon src="/images/icons/snap-to-edge.svg" alt="自动吸附图标" /> **切换为自动吸附**：按 <Shortcut combo="alt+m" /> 或双击面板标题栏，把面板贴边收起，需要时再滑出。
 
-浮动快捷按钮 5 秒不操作后会自动折叠成胶囊形状，并没有真的消失——只是最小化了。
+## 对话标签页为空（或升级后多域名站点列表清空）
 
 <Steps>
-  <Step title="将鼠标移近胶囊位置">
-    将鼠标移动到胶囊形状约 150px 范围内，按钮会自动展开。
+  <Step title="确认站点支持对话列表同步">
+    仅 11 个内置平台有侧栏对话列表（Gemini Notebook、智谱清言、腾讯 ima、通义千问、Z.ai 与站点适配包不显示此标签）。
   </Step>
-  <Step title="如果胶囊完全不可见">
-    按{" "}
-    <Icon
-      src="/images/icons/keyboard.svg"
-      alt="快捷键图标"
-    />{" "}
-    <Shortcut combo="alt+p" /> 打开面板，浮动按钮会随之重新出现。
+  <Step title="展开原网站侧栏并手动刷新">
+    在通过侧栏扫描同步的平台上，先展开网站自带的历史记录栏，再在 **对话** 标签页按 <Shortcut combo="alt+shift+r" />（或点击 <Icon src="/images/icons/refresh.svg" alt="同步图标" /> 同步）。
+  </Step>
+  <Step title="多域名站点重新同步一次">
+    自 v1.3.4 起，**豆包 / Dola**、**Kimi（`.com` / `.ai`）** 与 **Z.ai（`chat.z.ai` / `zchat.z.ai`）** 按域名分开存放本地对话，首次切到新域名后点击同步即可重建列表。
   </Step>
 </Steps>
 
-## 面板遮挡了需要点击的内容
-
-![幽灵穿透模式 — 半透明可点透面板](/images/panel/ghost-mode.webp)
+## 提示词队列卡住不自动发送
 
 <Steps>
-  <Step title="使用幽灵穿透模式临时点透">
-    按住 <Shortcut combo="ctrl" /> 约 0.2
-    秒，面板变半透明并允许鼠标点透背后内容。松开按键后恢复。
+  <Step title="检查暂停状态与输入框">
+    按 <Shortcut combo="alt+j" /> 打开 <Icon src="/images/icons/prompt-queue.svg" alt="提示词队列图标" /> 队列浮条，确认队列没有处于暂停状态，且当前页面输入框是空的（输入框里有草稿时队列会等待而不抢发）。
   </Step>
-  <Step title="将面板移开或切换到吸附模式">
-    拖动面板标题栏移到屏幕另一侧，或切换到**自动吸附**模式（快捷键{" "}
-    <Shortcut combo="alt+m" />
-    ），让面板贴边隐藏。
+  <Step title="点击「强制发送」手动推进">
+    AI 停止输出后队列会等待约 2 秒确认空闲。如果目标平台改动了加载指示器导致一直等待，点击 **强制发送** 即可立即发出下一条。
   </Step>
 </Steps>
 
-## 对话标签页为空
+## 站点适配包不生效或提示缺权限
 
-![对话标签页 — 文件夹与标签列表](/images/features/conversation-zh.png)
+- **自部署站点**：前往 **设置 → 适配中心 → 自定义站点**，确认填写了精确的 `http://` 或 `https://` 根地址（不要带路径或通配符）。
+- **刚恢复完备份**：打开 **设置 → 适配中心**，点击顶部 **重新授权已恢复的适配包** 补授站点访问权限。
+- **目标网站改版**：前往 **设置 → 适配中心 → 获取与更新** 点击 **检查更新**，拉取社区最新修复。
+- **油猴修改过 `@match`**：如果你在脚本管理器里收窄了匹配规则，请按 **自定义站点** 页面的提示补全缺失域名。
+
+## WebDAV 同步或定时自动备份失败
 
 <Steps>
-  <Step title="确认 AI 平台侧边栏已加载">
-    对话标签页直接从 AI 平台的原生侧边栏读取数据。如果侧边栏尚未加载，Ophel
-    没有内容可以显示。
+  <Step title="确认服务器地址与应用密码">
+    支持 `https://` 与 `http://`（公网强烈推荐 `https://`，内网 NAS 可用 `http://`）。使用 **坚果云**、**InfiniCLOUD**、**Nextcloud** 等服务时，必须填写**应用专用密码**，不能用主账号登录密码。
   </Step>
-  <Step title="滚动原生侧边栏">
-    打开 AI 平台自带的对话列表并向下滚动，触发加载更多条目。加载完成后，Ophel
-    的对话标签页会同步更新。
+  <Step title="检查浏览器主机权限">
+    在 **设置 → 数据与权限 → WebDAV 同步** 点击 <Icon src="/images/icons/link.svg" alt="测试连接图标" /> **测试连接**。Chrome/Edge/Firefox 需授予 `<all_urls>` 权限；macOS Safari 需在 **Safari → 设置 → 扩展 → Ophel Atlas** 允许该 WebDAV 服务器域名。
   </Step>
-</Steps>
-
-## <Icon src="/images/icons/prompt-queue.svg" alt="提示词队列图标" /> 提示词队列卡住，不发送下一条
-
-<Steps>
-  <Step title="确认 AI 是否还在生成">
-    确认 AI 已经完成回复（无旋转/加载指示器）。队列在检测到生成完成前不会发送。
-  </Step>
-  <Step title="强制发送待处理条目">
-    如果 AI 平台使用了 Ophel 无法识别的加载动画，队列可能会卡住。按{" "}
-    <Icon
-      src="/images/icons/keyboard.svg"
-      alt="快捷键图标"
-    />{" "}
-    <Shortcut combo="alt+j" />{" "}
-    打开队列叠加层，然后对需要立即发送的条目使用**强制发送**。
+  <Step title="查看失败状态与调度条件">
+    定时备份失败（单次请求超时 25 秒）会在卡片状态栏提示上次同步失败；点击 <Icon src="/images/icons/link.svg" alt="测试连接图标" /> **测试连接** 或 <Icon src="/images/icons/cloud-upload.svg" alt="立即备份图标" /> **立即备份** 可查看具体报错详情。使用油猴版时，定时自动备份需要至少保持一个受支持的 AI 页面处于打开状态才会触发。
   </Step>
 </Steps>
 
-## WebDAV 同步失败
+## Firefox 或 Safari 扩展重启后消失
 
-<Steps>
-  <Step title="验证服务器地址格式">
-    确认 WebDAV 服务器地址以 `https://` 开头，末尾有没有斜杠均可，但必须是 HTTPS 协议。
-  </Step>
-  <Step title="检查权限">
-    WebDAV 依赖可选权限 `<all_urls>`。前往 **设置 → 数据与权限 → 权限管理**，确认该权限已授予。
-  </Step>
-  <Step title="测试连接">
-    在 WebDAV 设置页面点击**测试连接**，查看错误提示（通常是 401 凭证错误、404 路径错误或 CORS 错误）。
-  </Step>
-</Steps>
+- <Icon src="/images/icons/firefox.svg" alt="Firefox" /> **Firefox**：通过 `about:debugging` 载入未签名 ZIP 属于临时测试模式，重启浏览器即清除。日常使用请直接从 [Firefox 附加组件商店（AMO）](https://addons.mozilla.org/firefox/addon/ophel-ai-chat-enhancer/)安装官方签名版。
+- <Icon src="/images/icons/safari.svg" alt="Safari" /> **Safari（macOS 实验版）**：受 macOS Safari 临时扩展限制，加载后会在 **24 小时**或退出 Safari 时自动卸载，需要重新通过 **Safari → 设置 → 开发者 → 添加临时扩展…** 载入解压目录。
 
-## Firefox 重启后扩展消失
+## 仍然无法解决？
 
-Firefox 上通过 `about:debugging` 手动临时加载的扩展，在浏览器重启后会失效。
+欢迎前往 [GitHub Issues](https://github.com/urzeye/ophel/issues) 提交反馈，附上以下信息能帮我们最快定位：
 
-<Steps>
-  <Step title="使用 Firefox 附加组件商店版本">
-    前往 [Firefox
-    附加组件商店](https://addons.mozilla.org/firefox/addon/ophel-ai-chat-enhancer/)
-    安装正式版本，支持持久化，不受重启影响。
-  </Step>
-</Steps>
-
-## 还是无法解决？
-
-1. 在无痕模式（只开启 Ophel）下复现问题
-2. 打开浏览器开发者工具（右键 → 检查 → Console），查看是否有报错
-3. 携带浏览器版本、扩展版本和控制台输出，在 [GitHub Issues](https://github.com/urzeye/ophel/issues) 页面反馈
+- Ophel 版本号（见 **设置 → 关于**）及运行环境（Chrome / Edge / Firefox / Safari / 油猴脚本及管理器名称）
+- 出问题的 AI 平台网址
+- 复现步骤以及浏览器开发者工具（Console）中的报错信息

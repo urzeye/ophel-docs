@@ -15,7 +15,7 @@ const p = t.privacy;
       <h1>{p.h1}</h1>
       <p class="updated">
         {p.updatedLabel}
-        {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+        {p.updatedDate}
       </p>
 
       <h2>{p.sections.collection.title}</h2>
@@ -28,9 +28,14 @@ const p = t.privacy;
 
       <h2>{p.sections.permissions.title}</h2>
       <ul>
-        <li><strong>activeTab / scripting</strong>: {p.sections.permissions.activeTab}</li>
         <li><strong>storage</strong>: {p.sections.permissions.storage}</li>
-        <li><strong>notifications</strong> {p.sections.permissions.notifications}</li>
+        <li><strong>alarms</strong>: {p.sections.permissions.alarms}</li>
+        <li>
+          <strong>declarativeNetRequestWithHostAccess</strong>
+          {p.sections.permissions.dnr}
+        </li>
+        <li><strong>host_permissions</strong>: {p.sections.permissions.hostPermissions}</li>
+        <li><strong>Optional permissions</strong>: {p.sections.permissions.optional}</li>
       </ul>
       <p>{p.sections.permissions.noNetwork}</p>
 

@@ -1,8 +1,8 @@
 ---
-title: "Chat Management: folders, tags, and search"
+title: "Chat Management"
 sidebarTitle: "Chats"
+description: "Sync chats from supported AI platforms, organize them with folders, tags, and pins, keep accounts isolated, and review missing chats safely."
 icon: "folder-open"
-description: "Organize your AI chat history with color-coded folders, free-form tags, pinning, bulk actions, and flexible export — all synced from the platform sidebar."
 keywords:
   [
     "chat folders",
@@ -16,123 +16,71 @@ keywords:
 ---
 
 import { Icon } from "/snippets/icon.jsx"
-import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
+import { Shortcut } from "/snippets/shortcut.jsx"
 
-The Chats tab gives you a searchable, organized view of every chat on the current AI platform.
+The **Chats** tab gives you flat project folders, multi-tag filters, pins, search, and batch actions on top of each platform's own chat list.
 
-![Chats tab — folder and tag list](/images/features/conversation-en.png)
+![Ophel Chats tab with folders and tags](/images/features/conversation-en.png)
 
-Ophel reads the same chat list the AI platform displays and layers folders, tags, pinning, and export on top of it — no data leaves the browser unless you explicitly export or sync.
+<Note>
+**Supported sites**: The **Chats** tab appears on the **11 built-in platforms** that expose a chat history list: ChatGPT, Gemini, Gemini Enterprise, AI Studio, Claude, Grok, DeepSeek, Doubao / Dola, Kimi, Qwen Studio, and Yuanbao. Sites without a sidebar chat list (Gemini Notebook, ChatGLM, ima, Qianwen, Z.ai, and current Site Packs) hide the tab and skip sync automatically.
+</Note>
 
-## How chats sync
+## How chat sync works
 
-Ophel observes the AI platform's sidebar and reflects its chat list in real time. When you create, rename, or delete a chat on the platform, the Chats tab updates automatically. The metadata Ophel adds — folder assignments, tags, pins — is stored locally and overlaid on top of the platform's data.
+Ophel reads chat titles and URLs from the current site (via API pagination on Claude, Grok, and Qwen Studio, or sidebar scanning on other platforms) and stores only metadata locally (title, URL, folder, tags, pin state). Your message contents stay on the AI platform.
 
-The folder selector in the upper-left toolbar controls the default folder for new sync results. After you select a folder there, newly discovered chats are added to that folder by default, whether they are found during manual sync or detected later from the platform sidebar. Existing chats keep their current folder unless you move them.
+- **Bounded initial & manual sync**: Full sync runs with a progress bar and a **Stop** button (up to 120 seconds total, 90 seconds of DOM scrolling), writing batches as it goes. If you click the native sidebar or navigate away, Ophel yields control immediately.
+- **Safe cleanup with review & undo**: Ophel never silently deletes your local folders, tags, or pins when a sync is interrupted or returns empty. Only after a complete manual sync succeeds with non-empty results does Ophel gather records missing from the platform and open the **Missing Chats Review** dialog.
+  - Inside the review dialog, you can search, select all/invert, or open original links to verify before cleaning.
+  - Confirming cleanup removes **only Ophel's local metadata**—it never deletes chats on the AI site.
+  - A **5-second undo toast** appears afterward (pausing automatically while hovered or when you switch tabs) so you can restore cleaned batches immediately.
+- **In-page navigation**: Clicking a chat on built-in sites switches within the page whenever possible (preserving ChatGPT Project and GPT chat URLs) instead of forcing a full reload.
 
-## Browsing and filtering
+## Account, workspace, and domain isolation
 
-The Chats tab supports several ways to narrow the list:
+Ophel keeps local chat lists separated so switching accounts does not mix your history:
 
-- **Search** — type in the search box to filter by title in real time
-- **Filter by folder** — click a folder in the sidebar to show only chats in that folder
-- **Filter by tag** — click a tag to show only chats with that tag
-- **Pinned chats** — pinned items always appear at the top, regardless of any active filter
+- **Account & workspace isolation**: ChatGPT separates chats by personal/team workspace; Claude separates by account and organization; Grok, AI Studio, Gemini, DeepSeek, Kimi, Qwen Studio, and Yuanbao separate by signed-in account. If the page has not resolved your account identity yet, Ophel waits instead of syncing into the wrong bucket.
+- **Multi-domain isolation**: Platforms that share one built-in adapter across multiple hosts (**Doubao** `doubao.com` vs. **Dola** `dola.com`; **Kimi** `.com` vs. `.ai`; **Z.ai** `chat.z.ai` vs. `zchat.z.ai`) share Ophel settings but keep local chats, bookmarks, and reading progress isolated per domain.
 
-## Folders
+## Folders, tags, and pins
 
-Folders group related chats under a name and an emoji icon you pick when creating the folder. Enable **Folder Rainbow Colors** in settings to give each folder's chats a distinct tinted background throughout the list.
+The top toolbar provides <Icon src="/images/icons/folder-plus.svg" alt="New folder icon" /> **New Folder**, <Icon src="/images/icons/batch.svg" alt="Batch mode icon" /> **Batch Mode**, <Icon src="/images/icons/locate.svg" alt="Locate icon" /> **Locate Current Chat**, and <Icon src="/images/icons/sync.svg" alt="Sync icon" /> **Sync** alongside the **target folder dropdown** on the right (which chooses where newly synced chats land). Below it, the filter bar combines <Icon src="/images/icons/search.svg" alt="Search icon" /> search with <Icon src="/images/icons/pin.svg" alt="Pinned filter icon" /> **Pinned Only**, <Icon src="/images/icons/tag.svg" alt="Tag filter icon" /> **Tag Filter**, and <Icon src="/images/icons/clear.svg" alt="Clear filters icon" /> **Clear Filters**.
 
-A chat belongs to one folder at a time. Moving it to another folder updates the local Ophel metadata; it does not modify the original chat content on the AI platform.
+- <Icon src="/images/icons/folder.svg" alt="Folder icon" /> **Folders (single-level)**: Every chat belongs to one folder (defaulting to the pinned **Inbox** folder). Click <Icon src="/images/icons/folder-plus.svg" alt="New folder icon" /> to create custom folders with a name and any of 64 emoji presets, drag folders to reorder them, and drag chats onto a folder (or use <Icon src="/images/icons/folder-move.svg" alt="Move icon" /> **Move** from the chat menu or <Icon src="/images/icons/tools.svg" alt="Toolbox icon" /> **Toolbox**) to file them.
+- <Icon src="/images/icons/tag.svg" alt="Tag icon" /> **Tags**: Attach multiple color-coded tags (30 preset colors) to any chat and filter by tag.
+- <Icon src="/images/icons/pin.svg" alt="Pin icon" /> **Pins**: Pin important chats to the top of their folder. Optionally sync unpinning back to the platform.
+- **Chat row menu** (<Icon src="/images/icons/more-horizontal.svg" alt="More menu icon" /> or right-click any row): <Icon src="/images/icons/link.svg" alt="Open in new tab icon" /> **Open in new tab**, <Icon src="/images/icons/rename.svg" alt="Rename icon" /> **Rename**, <Icon src="/images/icons/pin.svg" alt="Pin icon" /> **Pin / Unpin**, <Icon src="/images/icons/tag.svg" alt="Tag icon" /> **Set tags**, <Icon src="/images/icons/folder-move.svg" alt="Move icon" /> **Move**, <Icon src="/images/icons/export.svg" alt="Export icon" /> **Export**, and <Icon src="/images/icons/delete.svg" alt="Delete icon" /> **Delete**.
 
-You can move chats in three ways:
+## Batch actions
 
-- **Quick button group** — click the <Icon src="/images/icons/tools.svg" alt="Toolbox icon" /> toolbox icon in the floating quick button group, then click the <Icon src="/images/icons/folder-move.svg" alt="Move chat icon" /> **Move Chat** icon in the popover.
-- **Chat row menu** — in the Chats tab, click the <Icon src="/images/icons/more-horizontal.svg" alt="Three-dot menu icon" /> three-dot menu on the chat row, then choose <Icon src="/images/icons/folder-move.svg" alt="Move chat icon" /> **Move Chat**.
-- **Batch mode** — click the <Icon src="/images/icons/batch.svg" alt="Batch mode icon" /> **Batch Mode** button in the Chats tab toolbar, select one or more chats, then click the <Icon src="/images/icons/folder-move.svg" alt="Move chat icon" /> **Move** button in the batch action bar.
+Click the <Icon src="/images/icons/batch.svg" alt="Batch mode icon" /> batch button in the **Chats** toolbar to select multiple chats (hold `Shift` to select a range, or select an entire folder):
 
-After you choose **Move to folder**, select an existing folder. The folder assignment updates immediately in Ophel metadata and does not modify the original chat content on the AI platform.
-
-### Drag chats to folders
-
-Drag any chat row onto a folder row to move it there. The target folder highlights while you hover over it, and the list updates as soon as you drop.
-
-### Reorder folders
-
-Drag any non-default folder row to reorder your folder list. The default inbox folder stays fixed, and buttons or inputs inside a folder row remain interactive instead of starting a drag.
-
-## Tags
-
-Tags are free-form labels — one chat can have multiple tags. Use them to mark status (`reviewed`, `todo`), topic (`work`, `study`), or any other dimension that folders do not cover.
-
-- Add or change tags from <Icon src="/images/icons/tools.svg" alt="Toolbox icon" /> **Toolbox** → <Icon src="/images/icons/tag.svg" alt="Set tag icon" /> **Set Tags**, or from the chat list context menu
-- Filter by tag by clicking the tag in the sidebar
-
-## Pinning chats
-
-Right-click any chat, or click the <Icon src="/images/icons/more-horizontal.svg" alt="Three-dot menu icon" /> three-dot menu on its row, then choose <Icon src="/images/icons/pin.svg" alt="Pin icon" /> **Pin** to move it to the top of the list. Pinned rows show a filled pin in the same menu; choose <Icon src="/images/icons/pin.svg" alt="Unpin icon" /> **Unpin** to return the row to normal sorting. Pins persist across sessions.
-
-## Batch operations
-
-Click the <Icon src="/images/icons/batch.svg" alt="Batch mode icon" /> **Batch Mode** button in the Chats tab toolbar, then select chats with the row checkboxes. The batch action bar supports:
-
-| Action         | Description                                           |
-| -------------- | ----------------------------------------------------- |
-| <Icon src="/images/icons/export.svg" alt="Export icon" /> Export | Export the selected chat — shown only when exactly one chat is selected |
-| <Icon src="/images/icons/folder-move.svg" alt="Move chat icon" /> Move | Assign all selected chats to a folder at once |
-| <Icon src="/images/icons/tag.svg" alt="Tag icon" /> Tag | Add or change tags on all selected chats |
-| <Icon src="/images/icons/delete.svg" alt="Delete icon" /> Delete | Remove all selected chats |
-| <Icon src="/images/icons/clear.svg" alt="Exit batch mode icon" /> Exit | Leave batch mode and clear the current selection |
-
-## Exporting a chat
-
-You can export a chat in several ways — by default each one opens the [Export Chat dialog](/features/export#the-export-chat-dialog) with format and content options:
-
-- **Outline toolbar** — click the highlighted <Icon src="/images/icons/export.svg" alt="Export icon" /> **Export Chat** button in the Outline tab toolbar.
-- **Quick button group** — click the <Icon src="/images/icons/tools.svg" alt="Toolbox icon" /> toolbox icon in the floating quick button group, then click <Icon src="/images/icons/export.svg" alt="Export icon" /> **Export**.
-- **Keyboard shortcut** — press <Shortcut combo="ctrl+shift+e" /> to export the current chat.
-- **Chat row menu** — in the Chats tab, click the <Icon src="/images/icons/more-horizontal.svg" alt="Three-dot menu icon" /> three-dot menu on any chat row and choose <Icon src="/images/icons/export.svg" alt="Export icon" /> **Export**. This works for chats you have not opened too; on some sites the entry reads **Open and export...** and Ophel opens the chat for you first.
-
-Markdown exports can optionally be delivered as a zip package that includes images, attachments, and other assets referenced in the chat.
-
-To copy instead of saving a file, choose **Copy Markdown** in the Export Chat dialog — the entire chat goes to your clipboard.
-
-For full details on export formats, packaging modes, asset handling, and per-platform capabilities, see the dedicated [Export & Packaging](/features/export) page.
+- <Icon src="/images/icons/pin.svg" alt="Pin icon" /> **Pin / Unpin**, <Icon src="/images/icons/folder-move.svg" alt="Move icon" /> **Move to folder**, <Icon src="/images/icons/tag.svg" alt="Tag icon" /> **Add or remove tags**, <Icon src="/images/icons/delete.svg" alt="Delete icon" /> **Delete**, and <Icon src="/images/icons/clear.svg" alt="Exit icon" /> **Exit**.
+- <Icon src="/images/icons/export.svg" alt="Export icon" /> **Export**: Available when **exactly 1 chat** is selected (or use any chat row's <Icon src="/images/icons/more-horizontal.svg" alt="More menu icon" /> menu, or press <Shortcut combo="ctrl+shift+e" /> for the open chat). See [Chat Export](/features/export).
 
 ## Keyboard shortcuts
 
-<ShortcutLegend />
-
-| Shortcut                           | Action                              |
-| ---------------------------------- | ----------------------------------- |
-| <Shortcut combo="ctrl+shift+o" />  | New chat                    |
-| <Shortcut combo="alt+shift+r" />   | Refresh chat list           |
-| <Shortcut combo="alt+shift+l" />   | Locate current chat in list |
-| <Shortcut combo="alt+[" />         | Previous chat               |
-| <Shortcut combo="alt+]" />         | Next chat                   |
-| <Shortcut combo="ctrl+shift+e" />  | Export current chat         |
-| <Shortcut combo="ctrl+shift+c" />  | Copy latest AI reply                |
-
-All shortcuts are customizable in **Settings → Keyboard Shortcuts**.
-
-## WebDAV sync
-
-Configure a WebDAV server in **Settings → Data & Permissions → WebDAV Sync** to sync Ophel's **chat metadata** to your own private server.
-
-<Note>
-  WebDAV sync transfers only the metadata Ophel stores locally — folder
-  assignments, tags, and pin state. It does not include the actual AI
-  chat content, which belongs to the AI platform.
-</Note>
-
-Once configured, click **Upload** / **Download** to sync manually. See [WebDAV Sync](/data/webdav) for full setup instructions.
+| Action | Default shortcut |
+| --- | --- |
+| <Icon src="/images/icons/edit.svg" alt="New chat icon" /> New chat | <Shortcut combo="ctrl+shift+o" /> |
+| <Icon src="/images/icons/refresh.svg" alt="Refresh icon" /> Refresh chat list | <Shortcut combo="alt+shift+r" /> |
+| <Icon src="/images/icons/locate.svg" alt="Locate icon" /> Locate current chat | <Shortcut combo="alt+shift+l" /> |
+| <Icon src="/images/icons/chevron-up.svg" alt="Previous chat icon" /><Icon src="/images/icons/chevron-down.svg" alt="Next chat icon" /> Previous / Next chat | <Shortcut combo="alt+[" /> / <Shortcut combo="alt+]" /> |
+| <Icon src="/images/icons/export.svg" alt="Export icon" /> Export current chat | <Shortcut combo="ctrl+shift+e" /> |
+| <Icon src="/images/icons/copy.svg" alt="Copy icon" /> Copy latest AI reply | <Shortcut combo="ctrl+shift+c" /> |
 
 ## Settings
 
-Go to **Settings → Features → Chats** to configure folder and sync behavior.
+Open **Settings → Features → Chats**:
 
-| Setting | Description |
-| --- | --- |
-| Folder Rainbow Colors | Use distinct colored backgrounds for folder-assigned chats |
-| Sync Unpin Status | Remove pins when syncing from a remote source |
-| Sync Delete Cloud | Delete remote records when you delete chats locally |
+| Setting | Default | What it does |
+| --- | --- | --- |
+| **Folder Rainbow Colors** | On | Assigns soft alternating background tints to folders. |
+| **Sync Unpin Status** | Off | Unpins the chat in Ophel if it is no longer pinned on the platform. |
+| **Delete chat on site when deleting** | On | When you delete a chat in Ophel, also deletes the original chat on the AI platform. |
+
+<Warning>
+**Delete chat on site when deleting** is **On** by default. Deleting a chat from the **Chats** tab (or batch delete) will permanently remove the original conversation on the AI platform where supported. Turn this option **Off** if you only want to remove local entries from Ophel. (Cleanup inside **Missing Chats Review** always deletes local records only.)
+</Warning>

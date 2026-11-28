@@ -10,6 +10,7 @@ import {
   RotateCcw,
   Search,
 } from 'lucide-react';
+import { TOTAL_SUPPORTED_SITES } from '../lib/supported-platforms';
 
 type Locale = 'en' | 'zh';
 
@@ -78,7 +79,7 @@ const CHAPTERS: Record<Locale, WorkbenchChapter[]> = {
       startSec: 13.8,
       endSec: 21.0,
       title: 'Chats and prompts stay organized by project',
-      desc: 'Switch tabs in the same panel to file conversations into nested folders with custom tags, or insert structured {{variable}} prompt templates without leaving the page.',
+      desc: 'Switch tabs in the same panel to file conversations into project folders with custom tags, or insert structured {{variable}} prompt templates without leaving the page.',
       highlights: [
         'Folders + multi-tag filter',
         '{{Variable}} prompt templates',
@@ -170,8 +171,7 @@ const UI_COPY = {
     restart: 'Replay',
     jumpPrompt: 'Click any chapter or timeline bar to jump to that workflow moment',
     ledgerHeading: 'Complete Capability Specification',
-    ledgerSub:
-      'Every tool runs locally inside your browser via Shadow DOM isolation — consistent across all 32 supported AI sites.',
+    ledgerSub: `Every tool runs locally inside your browser via Shadow DOM isolation — consistent across all ${TOTAL_SUPPORTED_SITES} supported AI sites.`,
     docsCta: 'Read full feature documentation →',
     docsHref: 'https://ophel.app/docs',
   },
@@ -184,10 +184,9 @@ const UI_COPY = {
     restart: '重播',
     jumpPrompt: '点击左侧任意章节或顶部进度条，可直接跳转至对应实机演示片段',
     ledgerHeading: '核心能力规格一览',
-    ledgerSub:
-      '所有组件均基于 Shadow DOM 隔离渲染并 100% 本地存储，在全部 32+ 个 AI 站点保持一致体验。',
+    ledgerSub: `所有组件均基于 Shadow DOM 隔离渲染并 100% 本地存储，在全部 ${TOTAL_SUPPORTED_SITES} 个支持站点保持一致体验。`,
     docsCta: '查看完整功能文档 →',
-    docsHref: 'https://ophel.app/docs/zh/introduction',
+    docsHref: 'https://ophel.app/docs/zh',
   },
 } as const;
 

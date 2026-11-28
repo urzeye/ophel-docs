@@ -1,8 +1,8 @@
 ---
-title: "安装与管理站点拓展"
+title: "安装与管理站点适配包"
 sidebarTitle: "安装与管理"
+description: "了解如何从在线适配库安装适配包、从本地导入 JSON、为自部署 AI 站点绑定地址，以及管理权限与更新。"
 icon: "download"
-description: "从在线库或本地 JSON 安装站点拓展，授予主机访问权限，绑定自托管源，并保持站点拓展更新。"
 keywords:
   [
     "安装站点拓展",
@@ -13,138 +13,98 @@ keywords:
   ]
 ---
 
-打开 **设置 → 适配中心**。同一管理页也可从扩展 Options 页和页内设置对话框进入。
+所有站点适配包的安装、自建地址绑定、更新与卸载都在 **设置 → 适配中心** 完成。
 
-<video
-  className="ophel-docs-video"
-  controls
-  muted
-  playsInline
-  preload="metadata"
-  aria-label="安装与管理站点拓展演示"
->
-  <source
-    src="https://github.com/user-attachments/assets/49274b97-abfc-4167-9068-695946c26af9"
-    type="video/mp4"
-  />
-  当前浏览器不支持嵌入视频。可直接打开
-  https://github.com/user-attachments/assets/49274b97-abfc-4167-9068-695946c26af9
-  查看。
-</video>
+## 从在线适配库安装
 
-![已安装站点拓展标签](/images/enhancements/site-extensions/installed-tab.png)
+<Steps>
+  <Step title="打开「获取与更新」">
+    进入 **设置 → 适配中心 → 获取与更新**。
+  </Step>
+  <Step title="搜索并安装">
+    在在线适配库中找到目标站点，点击 **安装**。
+  </Step>
+  <Step title="同意站点访问权限（扩展版）">
+    浏览器会弹出授权提示，仅请求该站点对应域名的访问权限。点击允许即可生效；如果拒绝，系统会自动回滚安装。
+  </Step>
+  <Step title="打开网站使用">
+    点击 **打开站点**（或刷新已打开的标签页），即可看到 Ophel 面板。
+  </Step>
+</Steps>
 
-## 从在线拓展库安装
+![适配中心「已安装」标签页](/images/enhancements/site-extensions/installed-tab.png)
 
-1. 打开 **获取与更新** 标签。
-2. 在 **在线拓展库** 下，若列表为空或过期，刷新 registry。
-3. 查看包名、版本、目标域名或自托管标记、描述与兼容状态。
-4. 选择 **安装**。
-5. 在浏览器扩展中批准请求的目标域权限。Ophel 只会请求该站点拓展或绑定引用的 HTTPS 源。
-6. 安装完成后刷新目标站点。
+<Note>
+默认情况下，在线适配库优先从 jsDelivr（`cdn.jsdelivr.net/gh/urzeye/ophel@registry-dist/index.json`）拉取签名索引，失败时自动回退 GitHub 源（`raw.githubusercontent.com/urzeye/ophel/registry-dist/index.json`）；开启自动更新时每 **24 小时**检查一次。
+</Note>
 
-registry 站点拓展通过签名远程 registry 更新。替换已安装版本前，Ophel 会校验：
+## 从本地文件导入适配包
 
-- 签名索引
-- 不可变包摘要
-- 站点拓展的 `minAppVersion`
-- 完整运行时 schema
+如果你自己编写了适配包，或收到了他人分享的 `.json` 文件，可以本地导入：
 
-默认 registry 源：
+<Steps>
+  <Step title="选择本地导入">
+    进入 **设置 → 适配中心 → 获取与更新**，点击 **从文件安装适配包**。
+  </Step>
+  <Step title="查看校验摘要">
+    Ophel 会校验文件格式、体积、选择器与匹配规则，并展示适配包名称、版本和匹配的站点数量。
+  </Step>
+  <Step title="确认并授权">
+    确认导入，扩展版按提示允许对应站点权限即可生效。
+  </Step>
+</Steps>
 
-```text
-https://cdn.jsdelivr.net/gh/urzeye/ophel@registry-dist/index.json
-https://raw.githubusercontent.com/urzeye/ophel/registry-dist/index.json
-```
+![本地导入适配包 JSON 文件](/images/enhancements/site-extensions/local-import.png)
 
-客户端大约每 24 小时检查一次 registry。失败或无效下载不会替换 last-known-good 已安装状态。
+<Warning>
+本地导入的适配包不经过在线签名校验，也**不会**自动更新。请只导入你信任来源的文件。
+</Warning>
 
-## 导入本地 JSON 拓展
+## 为自部署应用绑定站点地址
 
-当你在社区库之外测试自己创建或收到的站点拓展时，使用 **本地 JSON 导入**。
+如果你安装的是纯自部署适配包（如 **Open WebUI**、**LibreChat**、**NextChat**、**DeepSeek Harness**）——或者自己架设了 **LobeChat**——需要把你的访问地址绑定到对应适配包：
 
-1. 选择导入控件并挑选 `.json` 文件。
-2. 检查确认对话框：包名、ID、版本、匹配模式数量与风险提示。
-3. 确认导入。
-4. 扩展端在提示时批准目标域权限，然后刷新站点。
+<Steps>
+  <Step title="先安装对应适配包">
+    在 **获取与更新** 安装目标适配包（未绑定地址前会显示 **自部署 / 待绑定站点地址** 徽章）。
+  </Step>
+  <Step title="进入「自定义站点」">
+    切换到 **设置 → 适配中心 → 自定义站点**（或在适配包卡片上直接点 **去绑定**）。
+  </Step>
+  <Step title="填写精确的站点地址">
+    选择对应适配包并填入站点根地址——**同时支持 `https://` 和 `http://`**（如 `https://ai.example.com` 或内网 `http://192.168.1.10:3000`），不要附加路径或通配符。
+  </Step>
+  <Step title="保存并授权">
+    保存绑定后，在浏览器弹窗中允许访问该域名即可。
+  </Step>
+</Steps>
 
-本地导入会走与 registry 包相同的运行时规则校验，但它们：
+![为自部署适配包绑定自定义站点地址](/images/enhancements/site-extensions/custom-origin-binding.png)
 
-- **不会** 通过社区 registry 签名认证
-- **不会** 自动更新
+- **不同地址的数据完全隔离**：同一个适配包如果分别绑定了公司和家里的两个 Open WebUI 地址，各自的站点设置、书签与阅读记录互不干扰。
 
-若要替换，请导入更新的本地文件。
+## 不同平台的权限机制
 
-{/* TODO: 后续补充产品截图 */}
-![本地 JSON 导入确认](/images/enhancements/site-extensions/local-import.png)
+![站点适配包主机权限弹窗](/images/enhancements/site-extensions/permission-prompt.png)
 
-## 扩展权限
+- **Chrome / Edge / Firefox 扩展**：只申请该适配包实际需要的域名权限并动态注册脚本；当你停用、卸载适配包或删除自定义地址后，不再被引用的托管域名权限会自动回收。
+- **从备份恢复后**：恢复的适配包会保留原有配置，并在页面顶部提供 **重新授权已恢复的适配包** 区块，一键重新授权即可恢复运行。
+- **Safari（macOS 实验版）**：Safari 不支持弹窗动态授权，网站访问权限需在 **Safari → 设置 → 扩展 → Ophel Atlas** 中手动勾选，界面会给出具体引导。
+- **油猴脚本**：默认声明了广义匹配并在脚本内部按白名单过滤，不弹浏览器权限窗。如果你手动改窄了油猴管理器中的 `@match` 规则，保存自定义站点后页面会列出尚未覆盖的域名，提醒你手动补充 `@match`。
 
-扩展对站点拓展源使用可选主机权限与动态 content script 注册。
+## 更新、停用与卸载
 
-- 若所需权限被拒绝，安装或绑定会回滚，不会留下半安装状态。
-- 在另一台浏览器恢复备份后，站点拓展数据会恢复，但域名权限必须重新授予。站点拓展页会在 **重新授权已恢复的站点适配包** 下列出它们。
-- 禁用或卸载某个源的最后一个站点拓展时，会移除其动态注册。若多个站点拓展或自定义绑定共享同一源，Ophel 会保留注册，直到最后一个引用被移除。
+- **检查更新**：在 **已安装** 或 **获取与更新** 中点击 **检查更新**，都会刷新整个在线适配库并更新所有可升级的在线适配包。
+- **停用**：在 **已安装** 列表关闭开关，即可暂停在该站点运行，保留所有配置与绑定。
+- **卸载**：移除适配包及其自定义地址绑定，但会**保留**你的站点设置和本地数据，日后重装无需重新配置。
 
-{/* TODO: 后续补充产品截图 */}
-![站点拓展主机权限提示](/images/enhancements/site-extensions/permission-prompt.png)
+## 状态徽章说明
 
-## 绑定自定义源
-
-自定义源用于自托管或同应用多部署场景，这些域名不在站点拓展静态 `matches` 中。
-
-典型自托管站点拓展会使用 `matches: []`，并在你添加源之前显示 **需要绑定** / **自托管** 标记。
-
-1. 打开 **自定义站点** 标签。
-2. 输入精确 HTTPS 源，例如 `https://chat.example.com`。
-   路径和通配符会被拒绝。
-3. 选择一个已安装站点拓展。
-4. 保存绑定。
-5. 在扩展中批准主机权限。
-6. 刷新绑定源。
-
-所选站点拓展会始终在该源上激活。Ophel 会按站点拓展 ID 与源派生键存储每个实例，因此同一站点拓展的两个部署不会混用设置、主题、阅读历史与对话数据。
-
-{/* TODO: 后续补充产品截图 */}
-![自定义 HTTPS 源绑定](/images/enhancements/site-extensions/custom-origin-binding.png)
-
-## 更新、禁用或卸载
-
-| 操作                   | 结果                                                     |
-| ---------------------- | -------------------------------------------------------- |
-| **检查更新**           | 将已安装的 registry 站点拓展与最新兼容 registry 版本比较 |
-| **禁用**               | 保留已安装清单，但移出适配器激活与源引用                 |
-| **卸载**               | 移除清单及其注册引用；站点设置与对话数据会保留           |
-| registry 禁用 / 不兼容 | 管理页显示原因，而不是静默激活                           |
-
-当 registry 站点拓展需要更新的 Ophel 版本时，UI 会显示 **需要 Ophel {version} 或更高版本**。
-
-## 你可能看到的状态标记
-
-| 状态                      | 含义                                   |
-| ------------------------- | -------------------------------------- |
-| **可用**                  | 在当前权限与 match 覆盖下可以激活      |
-| **已禁用**                | 已安装但关闭                           |
-| **不兼容**                | 应用版本或 registry 状态无法激活该包   |
-| **自托管** / **需要绑定** | 站点拓展没有静态 matches，需要自定义源 |
-| **已从库中移除**          | registry 条目不再可用                  |
-| **在线库** / **本地导入** | 站点拓展来源                           |
-
-## 安装问题排查
-
-如果站点拓展装上了，但站点仍未被识别：
-
-1. 确认站点拓展已启用。
-2. 在授予权限后，刷新目标标签页。
-3. 检查当前源是否与站点拓展或自定义绑定完全一致，包括协议与主机。
-4. 对自托管站点拓展，确认已存在自定义源绑定。
-5. 若来自在线库，检查是否有更新版本。
-6. 若最新包仍失败，在 GitHub 提交 issue，附带站点 URL、站点拓展版本、Ophel 版本与失效选择器名称，不要包含私密对话内容。
-
-## 相关页面
-
-- [站点拓展概览](/zh/enhancements/site-extensions)
-- [能力参考](/zh/enhancements/site-extensions/capabilities)
-- [编写站点拓展](/zh/enhancements/site-extensions/authoring)
-- [站点拓展 FAQ](/zh/enhancements/site-extensions/faq)
-- [权限](/zh/data/permissions)
+| 徽章 | 含义 |
+| --- | --- |
+| **可用** | 已安装且正常启用。 |
+| **已停用** | 已安装但手动暂停运行。 |
+| **自部署** / **待绑定站点地址** | 该适配包没有固定官网域名，需到 **自定义站点** 绑定你的地址后才会生效。 |
+| **不兼容** | 当前 Ophel 版本过低（会提示「需要 Ophel X.Y.Z 或更高版本」），升级 Ophel 后即可启用。 |
+| **适配库中已移除** | 在线库已下架该包，但你本机已安装的版本仍可继续使用，直到你手动卸载。 |
+| **在线适配库** / **本地导入** | 标明该包来自在线自动更新库还是本地手动导入。 |

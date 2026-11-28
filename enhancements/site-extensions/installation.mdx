@@ -1,8 +1,8 @@
 ---
-title: "Install and manage Site Extensions"
+title: "Install and Manage Site Packs"
 sidebarTitle: "Install & Manage"
+description: "Install Site Packs from the online library, import local JSON packs, bind custom self-hosted URLs, and manage permissions and updates."
 icon: "download"
-description: "Install Site Extensions from the online library or local JSON, grant host access, bind self-hosted origins, and keep packs updated."
 keywords:
   [
     "install Site Pack",
@@ -13,139 +13,98 @@ keywords:
   ]
 ---
 
-Open **Settings → Site Packs**. The same management page is available from the extension Options page and the in-page settings dialog.
+This guide covers installing, binding, updating, and removing Site Packs in **Settings → Site Packs**.
 
-<video
-  className="ophel-docs-video"
-  controls
-  muted
-  playsInline
-  preload="metadata"
-  aria-label="Demo: install and manage Site Extensions"
->
-  <source
-    src="https://github.com/user-attachments/assets/49274b97-abfc-4167-9068-695946c26af9"
-    type="video/mp4"
-  />
-  Your browser does not support embedded video. Open
-  https://github.com/user-attachments/assets/49274b97-abfc-4167-9068-695946c26af9
-  to watch it directly.
-</video>
+## Install from the online library
 
-{/* TODO: replace with product screenshot once available */}
-![Installed Site Extensions tab](/images/enhancements/site-extensions/installed-tab.png)
+<Steps>
+  <Step title="Open Browse & updates">
+    Go to **Settings → Site Packs → Browse & updates**.
+  </Step>
+  <Step title="Search and install">
+    Find the site you want and click **Install**.
+  </Step>
+  <Step title="Approve site access (extension builds)">
+    Your browser will ask to grant Ophel access to that site's domain. Approve the prompt so Ophel can mount on the page. If you decline, installation is rolled back cleanly.
+  </Step>
+  <Step title="Open the site">
+    Click **Open site** (or refresh an already-open tab) to start using Ophel there.
+  </Step>
+</Steps>
 
-## Install from the online pack library
+![Installed Site Packs tab](/images/enhancements/site-extensions/installed-tab.png)
 
-1. Open the **Browse & updates** tab.
-2. Under **Online pack library**, select **Refresh** / refresh the registry if the list is empty or stale.
-3. Review the pack name, version, target domain or self-hosted badge, description, and compatibility status.
-4. Select **Install**.
-5. In the browser extension, approve the requested target-domain permission. Ophel requests only the HTTPS origins referenced by the pack or binding.
-6. Reload the target site after installation completes.
-
-Registry packs update through the signed remote registry. Before replacing an installed version, Ophel verifies:
-
-- the signed index
-- the immutable package digest
-- the pack's `minAppVersion`
-- the complete runtime schema
-
-Default registry sources:
-
-```text
-https://cdn.jsdelivr.net/gh/urzeye/ophel@registry-dist/index.json
-https://raw.githubusercontent.com/urzeye/ophel/registry-dist/index.json
-```
-
-The client checks the registry about every 24 hours. A failed or invalid download does not replace the last-known-good installed state.
+<Note>
+By default, Ophel fetches the signed index from jsDelivr (`cdn.jsdelivr.net/gh/urzeye/ophel@registry-dist/index.json`) with GitHub raw (`raw.githubusercontent.com/urzeye/ophel/registry-dist/index.json`) as a fallback, checking once every **24 hours** when auto-update is enabled.
+</Note>
 
 ## Import a local JSON pack
 
-Use **Local JSON import** when testing a pack you created or received outside the community library.
+Use local import if you created your own pack or received a `.json` pack file to test:
 
-1. Select the import control and choose a `.json` file.
-2. Review the confirmation dialog: pack name, ID, version, match-pattern count, and risk notice.
-3. Confirm the import.
-4. Approve target-domain permission in the extension when prompted, then reload the site.
+<Steps>
+  <Step title="Open Browse & updates">
+    Go to **Settings → Site Packs → Browse & updates** and choose **Import pack from file**.
+  </Step>
+  <Step title="Review validation and summary">
+    Ophel validates the file format, size, selectors, and patterns, then shows the pack ID, version, and matched URLs before saving.
+  </Step>
+  <Step title="Confirm and authorize">
+    Confirm the import and approve the site permission prompt if using the extension build.
+  </Step>
+</Steps>
 
-Local imports are validated by the same runtime rules as registry packs, but they are:
+![Importing a local Site Pack JSON file](/images/enhancements/site-extensions/local-import.png)
 
-- **not** authenticated by the community registry signature
-- **not** auto-updated
+<Warning>
+Locally imported packs are not signed by the online library and do **not** auto-update. Only import JSON files from sources you trust.
+</Warning>
 
-Install a newer local file when you want to replace one.
+## Bind a custom self-hosted URL
 
-{/* TODO: replace with product screenshot once available */}
-![Local JSON import confirmation](/images/enhancements/site-extensions/local-import.png)
+For self-hosted packs (such as **Open WebUI**, **LibreChat**, **NextChat**, or **DeepSeek Harness**) — or your own self-hosted **LobeChat** — bind the exact site address you visit:
 
-## Extension permissions
+<Steps>
+  <Step title="Install the pack first">
+    Install the matching pack from **Browse & updates** (it will show a **Self-hosted / Binding needed** badge until you bind a URL).
+  </Step>
+  <Step title="Open Custom sites">
+    Switch to **Settings → Site Packs → Custom sites** (or click **Bind now** on the pack card).
+  </Step>
+  <Step title="Enter your site origin">
+    Pick the installed pack and enter the exact origin, including scheme and port if needed — both `https://` and `http://` are supported (for example `https://ai.example.com` or `http://192.168.1.10:3000`). Do not include a path or wildcard.
+  </Step>
+  <Step title="Save and grant permission">
+    Save the binding and approve browser access for that origin.
+  </Step>
+</Steps>
 
-The extension uses optional host permissions and dynamic content-script registration for Site Pack origins.
+![Binding a custom origin to a Site Pack](/images/enhancements/site-extensions/custom-origin-binding.png)
 
-- Installation or binding is rolled back if required permission is denied, so a half-installed pack is not left active.
-- After restoring a backup on another browser, pack data is restored, but domain permission must be granted again. The Site Packs page lists packs under **Reauthorize restored site packs**.
-- Disabling or uninstalling the last pack that references an origin removes its dynamic registration. If several packs or custom bindings share one origin, Ophel keeps the registration until the final reference is removed.
+- **Separate data per address**: If you bind the same Site Pack to two different servers (such as work and home Open WebUI instances), Ophel keeps their site settings, bookmarks, and reading history completely separate.
 
-{/* TODO: replace with product screenshot once available */}
-![Host permission prompt for a Site Extension](/images/enhancements/site-extensions/permission-prompt.png)
+## How permissions differ by platform
 
-## Bind a custom origin
+![Site Pack host permission prompt](/images/enhancements/site-extensions/permission-prompt.png)
 
-Custom origins support self-hosted or same-application deployments whose domain is not listed in a pack's static `matches`.
-
-Typical self-hosted packs ship with `matches: []` and show a **Binding needed** / **Self-hosted** badge until you add an origin.
-
-1. Open the **Custom sites** tab.
-2. Enter an exact HTTPS origin such as `https://chat.example.com`.
-   Paths and wildcards are rejected.
-3. Choose an installed pack.
-4. Save the binding.
-5. Approve host permission in the extension.
-6. Reload the bound origin.
-
-The selected pack always activates on that origin. Ophel stores each instance under a key derived from pack ID and origin, so settings, themes, reading history, and chats do not mix between two deployments of the same pack.
-
-{/* TODO: replace with product screenshot once available */}
-![Custom HTTPS origin binding](/images/enhancements/site-extensions/custom-origin-binding.png)
+- **Chrome / Edge / Firefox extensions**: Ophel requests host access only for the specific site origin(s) required by each pack and registers its content scripts dynamically. When you disable or uninstall a pack—or remove a custom binding—Ophel unregisters the scripts and revokes managed origin permissions that no other pack uses.
+- **After restoring a backup**: Restored Site Packs keep their settings, and an inline **Reauthorize restored site packs** section lets you re-approve their host permissions in one click.
+- **Safari (macOS)**: Safari manages website access in **Safari → Settings → Extensions → Ophel Atlas**. Ophel displays guided instructions rather than a popup permission dialog.
+- **Userscript**: Userscript builds do not prompt for per-site browser permissions because the script matches sites locally via its whitelist. If you manually restricted `@match` rules in your script manager, Ophel lists any uncovered custom origins so you can add them.
 
 ## Update, disable, or uninstall
 
-| Action | Result |
+- **Check for updates**: Click **Check updates** in **Installed** or **Browse & updates** to refresh the online library and apply compatible updates to installed online packs.
+- **Disable**: Toggle a pack off in **Installed** to stop Ophel from running on its sites without deleting your settings or bindings.
+- **Uninstall**: Removes the pack and its custom bindings. Your site layout preferences and local data are preserved in case you reinstall later.
+
+## Status badges
+
+| Badge | Meaning |
 | --- | --- |
-| **Check for updates** | Compares an installed registry pack with the latest compatible registry version |
-| **Disable** | Keeps the pack installed but removes it from adapter activation and origin references |
-| **Uninstall** | Removes the manifest and its registration references. Site settings and chat data are retained |
-| Registry disabled / incompatible | The management page shows the reason instead of silently activating the pack |
-
-When a registry pack requires a newer Ophel version, the UI shows **Requires Ophel {version} or newer**.
-
-## Status badges you may see
-
-| Status | Meaning |
-| --- | --- |
-| **Available** | Pack can activate with current permission and match coverage |
-| **Disabled** | Installed but turned off |
-| **Incompatible** | App version or registry state cannot activate the pack |
-| **Self-hosted** / **Binding needed** | Pack has no static matches and needs a custom origin |
-| **Removed from library** | Registry entry is no longer available |
-| **Online library** / **Local import** | Pack source |
-
-## Troubleshooting install problems
-
-If a pack installs but the site is not recognized:
-
-1. Confirm the pack is enabled.
-2. Reload the target tab after granting permission.
-3. Check that the current origin matches the pack or custom binding exactly, including scheme and host.
-4. For self-hosted packs, confirm a custom origin binding exists.
-5. If the pack is from the online library, check for a newer version.
-6. If the latest pack still fails, open a GitHub issue with the site URL, pack version, Ophel version, and failed selector names — without private chat content.
-
-## Related pages
-
-- [Site Extensions overview](/enhancements/site-extensions)
-- [Capabilities reference](/enhancements/site-extensions/capabilities)
-- [Author a Site Extension](/enhancements/site-extensions/authoring)
-- [Site Extension FAQ](/enhancements/site-extensions/faq)
-- [Permissions](/data/permissions)
+| **Available** | Installed, enabled, and ready to run. |
+| **Disabled** | Installed but turned off. |
+| **Self-hosted** / **Binding needed** | Installed pack has no default public URL; bind your own address in **Custom sites**. |
+| **Incompatible** | Pack requires a newer Ophel version (`Requires Ophel X.Y.Z or newer`). Update Ophel to enable it. |
+| **Removed from library** | Pack is no longer listed in the online library; your installed copy remains usable until you uninstall it. |
+| **Online library** / **Local import** | Shows whether the pack auto-updates from the online library or was imported manually. |

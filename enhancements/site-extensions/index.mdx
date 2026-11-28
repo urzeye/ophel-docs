@@ -1,8 +1,8 @@
 ---
-title: "Site Extensions: add support for more AI chat sites"
+title: "Site Packs Overview"
 sidebarTitle: "Overview"
-icon: "puzzle-piece"
-description: "Site Extensions (Site Packs) are declarative JSON manifests that teach Ophel Atlas how to recognize additional AI chat sites without running arbitrary code."
+description: "Add support for more AI chat sites and self-hosted AI web apps with one-click Site Packs in Ophel Atlas."
+icon: "/images/icons/puzzle.svg"
 keywords:
   [
     "Site Packs",
@@ -16,108 +16,85 @@ keywords:
   ]
 ---
 
-Site Extensions extend Ophel Atlas beyond the built-in AI platforms. In the product and registry this feature is also called **Site Packs**. A pack is a reviewed JSON manifest that declares match rules, stable page selectors, and the capabilities those selectors unlock.
+Beyond the 16 built-in platforms, **Site Packs** let you add support for more AI websites—such as Perplexity, WorkBuddy, Notion AI, Manus, Open WebUI, and LibreChat—without waiting for a full extension release.
 
-They are **not plugins with executable code**. They cannot ship JavaScript, expressions, remote scripts, or unrestricted CSS. Ophel loads them through the same runtime validator, optional-permission boundary, and feature-capability system used by the community registry.
+You manage built-in sites, installed packs, custom self-hosted URLs, and updates from one screen: **Settings → Site Packs**.
 
-{/* TODO: replace with product screenshot once available */}
-![Site Extensions management page](/images/enhancements/site-extensions/overview.png)
+![Site Packs management page in Ophel Settings](/images/enhancements/site-extensions/overview.png)
 
-## Choose a path
+## Built-in sites vs. Site Packs
 
-| Goal | Start here |
-| --- | --- |
-| Install a community or self-hosted pack | [Install and manage](/enhancements/site-extensions/installation) |
-| Understand what each capability unlocks | [Capabilities reference](/enhancements/site-extensions/capabilities) |
-| Create or contribute a pack | [Author a Site Extension](/enhancements/site-extensions/authoring) |
-| Permissions, updates, and limitations | [Site Extension FAQ](/enhancements/site-extensions/faq) |
-
-## What a Site Extension can provide
-
-A pack only unlocks the controls that match its declared capabilities. Depending on the pack, that may include:
-
-- chat outlines and user-query headings
-- prompt insertion and submit behavior
-- basic chat export
-- generation and stop-button detection
-- new-chat actions
-- width, Zen mode, clean mode, or panel avoidance
-- reading history, model locking, or conversation-list integration when the required configuration is present
-
-The management page and site-settings UI hide unsupported controls automatically. A pack should therefore declare only behavior that has been verified on the target site.
-
-## Built-in adapters vs Site Extensions
-
-| | Built-in adapters | Site Extensions (Site Packs) |
+| Aspect | Built-in sites (16) | Site Packs (18 in community library) |
 | --- | --- | --- |
-| Format | TypeScript adapters shipped with Ophel | Declarative JSON only |
-| Priority | Always win on their domains | Cannot override a built-in site |
-| Scope | Complex or site-private behavior | Selector- and config-driven integrations |
-| Updates | App releases, plus signed selector patches for configured builtins | Registry updates or local re-import |
-| Trust | Reviewed as product code | Registry signature + local schema validation, or local import from a trusted source |
+| **Setup** | Works immediately after install (except Gemini Enterprise, which starts disabled) | Install in one click from **Browse & updates**, or import a local JSON file |
+| **Capabilities** | Full custom adapters (history APIs, multi-account sync, site-specific settings, chat list sync) | Declarative JSON definitions covering outline, basic export, prompt insert, width, Zen/Clean Mode, generation detection, and theme sync |
+| **Self-hosted apps** | Fixed public domains | Bind any exact `http://` or `https://` origin (including local LAN servers) |
+| **Updates** | Updated with Ophel releases (plus optional selector hotfix patches) | Updated automatically from the signed online library (checked every 24 hours) |
 
-Selector-only hotfixes for configured built-in adapters use the signed **patch** channel in the same registry. They are not Site Extensions and cannot introduce a new site.
+<Note>
+A Site Pack cannot run JavaScript or arbitrary code—it only declares page selectors, layout rules, and safe options. Packs cannot override an enabled built-in site (if you disable a built-in site first, a Site Pack can take over).
+</Note>
 
-## Trust boundary
+## The four tabs in Site Packs
 
-Registry packages are downloaded from immutable version paths, checked against a signed registry index and SHA-256 package digests, then validated again locally before activation.
+Open **Settings → Site Packs** to see four tabs (plus a **Guide** button in the top-right):
 
-Local JSON imports still pass the runtime validator, but they **skip** the registry signature chain and do **not** auto-update. Import only from a source you trust, and review domains and capabilities first.
+1. **Built-in sites**: Enable or disable any of the 16 built-in platforms and jump straight to its **Site Settings**.
+2. **Installed**: Enable, disable, update, or uninstall your installed Site Packs.
+3. **Custom sites**: Bind an installed Site Pack to your own self-hosted address (for example `https://chat.company.internal` or `http://192.168.1.10:3000`).
+4. **Browse & updates**: Search and install packs from the online library, import a local JSON pack, trigger manual update checks, or open the collapsed **Built-in Config Patches** section for debugging.
 
-<Warning>
-Site Extensions can change page styles and Ophel behavior on matched origins. Treat unknown local JSON the same way you would treat an unreviewed configuration file.
-</Warning>
+## Available community Site Packs
 
-## Where to manage packs
+The community library currently provides **18 Site Packs** (14 with default domains and 4 self-hosted packs):
 
-Open **Settings → Site Packs**. The same management page is available from the extension Options page and the in-page settings dialog.
+### Ready-to-use sites (14)
 
-Tabs in the current UI:
-
-| Tab | Purpose |
-| --- | --- |
-| **Installed** | Enable, disable, reauthorize, uninstall, and open pack guides |
-| **Custom sites** | Bind an exact HTTPS origin to an installed pack |
-| **Browse & updates** | Online pack library, refresh registry, install/update, local JSON import |
-
-A **Guide** button in the settings toolbar opens this documentation on ophel.app.
-
-## Packs in the community registry
-
-The community registry currently ships 16 packs under `registry/sites/`:
-
-| Pack ID | Typical target | Match style |
+| Site Pack | Default URL(s) | Key capabilities |
 | --- | --- | --- |
-| `perplexity` | [Perplexity](https://www.perplexity.ai) | Static `https://www.perplexity.ai/*` |
-| `duck-ai` | [Duck.ai](https://duck.ai) | Static `https://duck.ai/*` |
-| `longcat` | [LongCat AI](https://longcat.chat) | Static `https://longcat.chat/*` |
-| `manus` | [Manus](https://manus.im) | Static `https://manus.im/*` |
-| `genspark` | [Genspark](https://www.genspark.ai) | Static `https://www.genspark.ai/*` |
-| `stepfun` | [StepFun](https://chat.stepfun.com) | Static `https://chat.stepfun.com/*` |
-| `proton-lumo` | [Proton Lumo](https://lumo.proton.me) | Static `https://lumo.proton.me/*` |
-| `notion-ai` | [Notion AI](https://www.notion.com) | Static `https://app.notion.com/ai*` and `https://app.notion.com/chat*` |
-| `opencode-share` | [OpenCode Share](https://opncd.ai) | Static `https://opncd.ai/*` |
-| `wenxin` | [百度文心](https://wenxin.baidu.com) | Static `https://wenxin.baidu.com/*` |
-| `zhida` | [知乎直答](https://zhida.zhihu.com) | Static `https://zhida.zhihu.com/*` |
-| `lobechat` | [LobeChat](https://app.lobehub.com) | Static `https://app.lobehub.com/*` |
-| `librechat` | Self-hosted LibreChat | Empty `matches`; bind a custom origin |
-| `nextchat` | Self-hosted NextChat | Empty `matches`; bind a custom origin |
-| `open-webui` | Self-hosted Open WebUI | Empty `matches`; bind a custom origin |
-| `deepseek-harness` | Self-hosted DeepSeek Harness | Empty `matches`; bind a custom origin |
+| **Perplexity** | `www.perplexity.ai` | Outline, export, prompts, width, Zen Mode, theme sync |
+| **WorkBuddy** | `www.workbuddy.cn/app`, `www.workbuddy.ai/app` | Outline, export, prompts, generation detect, panel avoidance, width, Zen & Clean Mode, theme sync |
+| **Notion AI** | `app.notion.com/ai*`, `app.notion.com/chat*` | Outline, export, prompts, width, Zen Mode |
+| **Manus** | `manus.im` | Outline, export, prompts, width, Zen & Clean Mode, Mermaid fallback |
+| **Genspark** | `www.genspark.ai` | Outline, export, prompts, generation detect, width, Zen & Clean Mode |
+| **Duck.ai** | `duck.ai` | Outline, export, prompts, generation detect, width, Zen Mode |
+| **Proton Lumo** | `lumo.proton.me` | Outline, export, prompts, generation detect, width, Zen & Clean Mode |
+| **LobeChat** | `app.lobehub.com` *(also supports custom self-hosted URLs)* | Outline, export, prompts, generation detect, panel avoidance, Zen Mode, theme sync |
+| **StepFun** | `chat.stepfun.com` | Outline, export, prompts, generation detect, panel avoidance, width, Zen Mode, theme sync |
+| **LongCat AI** | `longcat.chat` | Outline, export, prompts, generation detect, width, Zen Mode |
+| **Baidu Wenxin** | `wenxin.baidu.com` | Outline, export, prompts, width, Zen Mode |
+| **Zhihu Zhida** | `zhida.zhihu.com` | Outline, export, prompts, width, Zen Mode, theme sync |
+| **OpenCode Share** | `opncd.ai` | Read-only share pages: outline, export, Mermaid fallback |
+| **Muse** *(requires Ophel v1.3.7+)* | `muse.ai` | Minimal enhancement mode: outline, export, prompts, width, Zen Mode (main & side chats) |
 
-Exact capability sets differ by pack. Install a pack and inspect its declared capabilities, or open the JSON in the [ophel registry](https://github.com/urzeye/ophel/tree/main/registry/sites) for the source of truth.
+### Self-hosted packs (4 — bind your own URL after install)
 
-## Security model in one page
+| Site Pack | Key capabilities |
+| --- | --- |
+| **Open WebUI** | Outline, export, prompts, generation detect, Zen Mode |
+| **LibreChat** | Outline, export, prompts, generation detect, Zen Mode |
+| **NextChat** | Outline, export, prompts, Zen Mode |
+| **DeepSeek Harness** | Outline, export, prompts, generation detect, width, Zen Mode, reading history |
 
-- No arbitrary JavaScript, remote code, or executable callbacks
-- HTTPS origins only; HTTP custom bindings are rejected
-- Optional host permission and dynamic content-script registration in the extension
-- Registry index is Ed25519-signed; package files are SHA-256 pinned
-- Failed or invalid updates keep the last-known-good installed state
-- Built-in site IDs and domains cannot be claimed by a pack
+## Security at a glance
+
+- **No executable code**: Every Site Pack is a validated JSON file (`≤ 64 KiB`)—no remote JS or unrestricted CSS.
+- **Verified downloads**: The online library index is signed with Ed25519 and every pack is verified against its SHA-256 hash before applying. If an update fails validation, Ophel keeps your previous working version.
+- **Scoped permissions**: Extension builds ask permission only for the specific site origin(s) a pack needs and revoke unused managed origins automatically when you uninstall.
 
 ## Next steps
 
-1. [Install a pack](/enhancements/site-extensions/installation) from the online library or a local JSON file.
-2. For self-hosted apps, bind the exact HTTPS origin under **Custom sites**.
-3. If you are writing a pack, read the [capabilities reference](/enhancements/site-extensions/capabilities) and [authoring guide](/enhancements/site-extensions/authoring).
+<CardGroup cols={2}>
+  <Card title="Install & Manage" icon="download" href="/enhancements/site-extensions/installation">
+    Step-by-step instructions for online install, local JSON import, and binding self-hosted URLs.
+  </Card>
+  <Card title="Site Packs FAQ" icon="circle-question" href="/enhancements/site-extensions/faq">
+    Answers on updates, permissions, data isolation, and troubleshooting broken sites.
+  </Card>
+  <Card title="Capabilities Reference (Authors)" icon="list-check" href="/enhancements/site-extensions/capabilities">
+    Reference of all 15 Site Pack capability IDs for pack authors.
+  </Card>
+  <Card title="Author a Site Pack" icon="code" href="/enhancements/site-extensions/authoring">
+    Write a declarative JSON Site Pack, test it locally, and submit it to the community library.
+  </Card>
+</CardGroup>

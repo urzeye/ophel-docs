@@ -1,192 +1,117 @@
 ---
-title: "Troubleshoot common Ophel Atlas problems step by step"
+title: "Troubleshooting"
 sidebarTitle: "Troubleshooting"
+description: "Step-by-step fixes for common Ophel Atlas issues: missing panels, empty outlines, sync or WebDAV failures, Site Pack permissions, and temporary extensions."
 icon: "wrench"
-description: "Step-by-step fixes for the most common Ophel Atlas problems: panel not showing, empty outline, stalled prompt queue, Firefox restarts, and more."
 keywords: ["troubleshooting", "panel not showing", "outline empty", "debug steps", "fix Ophel", "extension problems"]
 ---
 
 import { Icon } from "/snippets/icon.jsx"
-import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
+import { Shortcut } from "/snippets/shortcut.jsx"
 
-If something isn't working as expected, this page walks you through the most common issues and how to fix them. For problems not covered here, open a report on [GitHub Issues](https://github.com/urzeye/ophel/issues) with your browser version, extension version, and any errors from the browser console.
-
-## Panel not appearing
-
-![Ophel side panel — three tabs overview](/images/panel/panel-tabs.png)
-
-The Ophel side panel should appear automatically when you open a supported AI platform. If it doesn't show up:
+## Panel is not appearing
 
 <Steps>
-  <Step title="Confirm the extension is enabled">
-    Click the puzzle-piece icon in your browser toolbar and verify that Ophel
-    Atlas is toggled on. If it's disabled, enable it and reload the page.
+  <Step title="Confirm the site is supported and enabled">
+    Check the [supported platforms table](/index#supported-platforms) or your installed [Site Packs](/enhancements/site-extensions). Note that **Gemini Enterprise** is disabled by default for new installs—enable it under **Settings → Site Packs → Built-in sites**.
   </Step>
-  <Step title="Hard-reload the page">
-    Press <Shortcut combo="ctrl+shift+r" /> to force a full page reload. A
-    standard reload sometimes does not reinitialize the Ophel panel on the page.
+  <Step title="Check hidden paths and site toggles">
+    Click the Ophel browser toolbar icon to verify the site is not disabled. Also check **Settings → Site Settings → Hide Ophel on specific pages** to ensure no rule matches your current URL path.
   </Step>
-  <Step title="Check the supported site list">
-    Ophel only activates on its supported platforms. Confirm you're on one of
-    the 16 supported sites (Gemini, ChatGPT, Claude, DeepSeek, Grok, and
-    others). If the URL doesn't match, Ophel will not inject the panel.
+  <Step title="Expand if collapsed">
+    Press <Shortcut combo="alt+p" /> to toggle the panel open, or look near the screen edge for the collapsed <Icon src="/images/icons/sparkle.svg" alt="Panel droplet icon" /> Ophel droplet or Edge Snap handle.
   </Step>
-  <Step title="Use the keyboard shortcut as a fallback">
-    If the panel was previously closed, press <Icon src="/images/icons/keyboard.svg" alt="Keyboard shortcut icon" /> <Shortcut combo="alt+p" /> to
-    reopen it. This toggles the panel regardless of the state of any floating
-    buttons.
+  <Step title="Hard-refresh the tab">
+    Press <Shortcut combo="ctrl+shift+r" />. Tabs that were already open before installing or updating Ophel need a refresh to inject the content script.
   </Step>
 </Steps>
 
 ## Outline is empty or not updating
 
-![Outline tab — real-time chat tree](/images/features/outline-en.png)
-
 <Steps>
-  <Step title="Refresh the outline manually">
-    Press <Icon src="/images/icons/refresh.svg" alt="Refresh outline icon" /> <Shortcut combo="alt+r" /> to force the outline to re-scan the
-    chat. Some AI platforms update the DOM asynchronously, so the
-    outline may not populate on its own immediately after the page loads.
+  <Step title="Check outline filters and heading levels">
+    Make sure <Icon src="/images/icons/user-query.svg" alt="User questions icon" /> **Show User Questions** (<Shortcut combo="alt+q" />) is enabled if the AI reply contains no Markdown headings, and check that the <Icon src="/images/icons/star.svg" alt="Bookmarks icon" /> **Bookmarks Filter** (<Shortcut combo="alt+c" />) is not hiding non-bookmarked items.
   </Step>
-  <Step title="Wait for the AI to finish responding">
-    The outline rebuilds after each AI reply completes. If the AI is still
-    generating, the outline won't update until it finishes.
+  <Step title="Force an immediate refresh">
+    Press <Shortcut combo="alt+r" /> to force an immediate outline refresh. On virtual-scroll sites (DeepSeek, Claude, AI Studio, Grok, Qwen Studio), allow a brief moment for history API backfill after switching chats.
   </Step>
-  <Step title="Check the auto-update setting">
-    Go to **Settings → Features → Outline** and confirm that **Auto-update outline during chat** is
-    enabled. If it's off, the outline only refreshes when you trigger it
-    manually with <Shortcut combo="alt+r" />.
+  <Step title="Verify auto-update and follow mode">
+    Open **Settings → Features → Outline**: confirm **Outline Follow Mode** is set to **Follow Current Position** (not **Manual Control**), and expand **Advanced options** to verify **Auto-update outline during chat** is enabled.
   </Step>
 </Steps>
 
-## Outline not tracking scroll position
-
-If the outline doesn't highlight the section you're currently reading as you scroll:
+## Floating quick buttons disappeared
 
 <Steps>
-  <Step title="Check the follow mode setting">
-    Go to **Settings → Features → Outline** and set **Outline Follow Mode** to
-    **Follow Current Position**. When set to **Manual Control**, the outline does not automatically
-    track your scroll position.
+  <Step title="Check whether the panel is open">
+    **Hide quick buttons when panel is open** is **On** by default. Collapse the panel (<Shortcut combo="alt+p" />) or turn that option off under **Settings → General → Shortcuts**.
+  </Step>
+  <Step title="Wake the collapsed droplet">
+    The quick buttons strip collapses into a single <Icon src="/images/icons/sparkle.svg" alt="Droplet icon" /> droplet 3 seconds after your cursor moves away. Move near its last edge position—or if **Proximity wake distance** is set to `0`, hover directly over the droplet for **300 ms** to expand it (keep hovering the **Panel** button to open a temporary preview panel).
   </Step>
 </Steps>
 
-## Floating buttons disappeared
+## Panel is covering page content
 
-![Floating action buttons — expanded and collapsed pill state](/images/panel/floating-buttons.png)
+- **Enable Smart Avoidance**: Under **Settings → Site Settings → Page Layout**, turn on **Smart Avoidance** (default **On**) so the page reserves space for the open Floating panel.
+- **Pass-through click temporarily**: Hold <Shortcut combo="ctrl" /> alone for **0.2 seconds** to click directly through Ophel to buttons underneath.
+- <Icon src="/images/icons/snap-to-edge.svg" alt="Edge Snap icon" /> **Switch to Edge Snap**: Press <Shortcut combo="alt+m" /> or double-click the panel header to tuck the panel off the edge until needed.
 
-The floating action buttons auto-collapse into a compact pill shape after 5 seconds of inactivity. They are not gone — they're just minimized.
+## Chats tab is empty (or empty after upgrading on a multi-domain site)
 
 <Steps>
-  <Step title="Move your mouse near the buttons">
-    Move your cursor within approximately 150 px of the collapsed pill. The
-    buttons will expand automatically.
+  <Step title="Confirm the platform supports chat list sync">
+    Only 11 built-in platforms have a synced **Chats** tab (Gemini Notebook, ChatGLM, ima, Qianwen, Z.ai, and Site Packs do not).
   </Step>
-  <Step title="Use the keyboard shortcut if the pill is not visible">
-    If the buttons are completely missing from the screen, press <Icon src="/images/icons/keyboard.svg" alt="Keyboard shortcut icon" /> <Shortcut combo="alt+p" /> to open the panel. The floating buttons reappear alongside it.
+  <Step title="Make sure the platform's own sidebar is visible">
+    On DOM-scanned platforms, expand the website's native history sidebar first, then press <Shortcut combo="alt+shift+r" /> (or click <Icon src="/images/icons/refresh.svg" alt="Sync icon" /> sync) in the **Chats** tab.
+  </Step>
+  <Step title="Resync once on multi-domain sites">
+    Since v1.3.4, **Doubao / Dola**, **Kimi (`.com` / `.ai`)**, and **Z.ai (`chat.z.ai` / `zchat.z.ai`)** store local chats separately per domain. Trigger a manual sync to populate the list on each domain.
   </Step>
 </Steps>
 
-## Panel covering page content
-
-![Ghost mode — semi-transparent panel with click-through enabled](/images/panel/ghost-mode.webp)
-
-If the Ophel panel is positioned over something you need to click on the underlying page:
+## Prompt Queue is stalled
 
 <Steps>
-  <Step title="Use ghost mode for temporary click-through">
-    Hold <Shortcut combo="ctrl" /> alone for about 0.2
-    seconds. The panel becomes transparent and lets clicks pass through to the
-    page behind it. Release the key to restore the panel to normal.
+  <Step title="Check pause state and input box">
+    Open the <Icon src="/images/icons/prompt-queue.svg" alt="Prompt Queue icon" /> queue overlay (<Shortcut combo="alt+j" />) and verify the queue is not paused and the chat input box is empty (auto-dispatch waits until the input box is clear).
   </Step>
-  <Step title="Drag the panel to a screen edge">
-    Drag the panel toward any screen edge. When it snaps into place, it hides
-    against the edge and only slides out when you hover over it — freeing up the
-    rest of the screen. To undock it, drag it away from the edge.
+  <Step title="Use Force Send if idle detection got stuck">
+    Wait ~2 seconds after the AI stops streaming. If the platform changed its stop/loading indicator and the queue still waits, click **Force Send** to send the next prompt manually.
   </Step>
 </Steps>
 
-## Chats tab is empty
+## Site Pack not running or missing permissions
 
-![Chats tab — folder and tag list](/images/features/conversation-en.png)
+- **Self-hosted packs**: Open **Settings → Site Packs → Custom sites** and confirm you bound your exact `http://` or `https://` origin (no trailing path or wildcard).
+- **After restoring a backup**: Open **Settings → Site Packs** and click **Reauthorize restored site packs** to re-grant host access.
+- **Website redesign**: Open **Settings → Site Packs → Browse & updates** and click **Check updates** to pull any community selector fixes.
+- **Userscript custom `@match`**: If you narrowed `@match` rules in your script manager, add the missing origin listed on the **Custom sites** tab.
+
+## WebDAV sync or automatic backup failed
 
 <Steps>
-  <Step title="Make sure the AI platform's sidebar has loaded">
-    The Chats tab reads directly from the AI platform's own sidebar. If
-    that sidebar hasn't loaded yet, Ophel has nothing to display.
+  <Step title="Check server URL and app password">
+    Both `https://` and `http://` URLs are supported (`https://` is strongly recommended over public networks). Providers like **Nutstore**, **InfiniCLOUD**, and **Nextcloud** require a dedicated **app password**, not your main account login password.
   </Step>
-  <Step title="Scroll the native sidebar">
-    Open the AI platform's built-in chat list and scroll down to trigger
-    it to load more items. After it loads, Ophel's Chats tab will
-    reflect the updated list.
+  <Step title="Verify browser host permission">
+    Click <Icon src="/images/icons/link.svg" alt="Test connection icon" /> **Test Connection** under **Settings → Data & Permissions → WebDAV Sync**. On Chrome/Edge/Firefox, ensure `<all_urls>` is granted under **Permissions**; on macOS Safari, allow your WebDAV server host in **Safari → Settings → Extensions → Ophel Atlas**.
+  </Step>
+  <Step title="Check sync status & runtime">
+    If an automatic backup fails (25-second timeout per request), the WebDAV card shows a failed status—click <Icon src="/images/icons/link.svg" alt="Test connection icon" /> **Test Connection** or <Icon src="/images/icons/cloud-upload.svg" alt="Backup now icon" /> **Backup Now** to see the exact error details. On userscript builds, scheduled automatic backups only run while at least one supported AI tab is open.
   </Step>
 </Steps>
 
-## Prompt queue stalled
+## Firefox or Safari extension disappeared
 
-The <Icon src="/images/icons/prompt-queue.svg" alt="Prompt Queue icon" /> Prompt Queue advances to the next prompt by detecting when the AI page becomes idle — specifically, when no active generation spinner is visible for two consecutive polling intervals (roughly 2 seconds).
+- <Icon src="/images/icons/firefox.svg" alt="Firefox" /> **Firefox**: Loading an unsigned ZIP via `about:debugging` is temporary and disappears when Firefox restarts. Install the signed version from [Firefox Add-ons (AMO)](https://addons.mozilla.org/firefox/addon/ophel-ai-chat-enhancer/) instead.
+- <Icon src="/images/icons/safari.svg" alt="Safari" /> **Safari (macOS, Experimental)**: macOS Safari removes temporary extensions after **24 hours** or whenever Safari quits. Reload the extracted folder via **Safari → Settings → Developer → Add Temporary Extension…**.
 
-<Steps>
-  <Step title="Check whether the AI has actually finished">
-    Some platforms briefly show a loading indicator even after generation is
-    complete. Wait a few seconds to see if the queue advances on its own.
-  </Step>
-  <Step title="Force-send a pending item">
-    If the AI platform uses an unusual loading indicator that Ophel cannot
-    detect, the queue may stall. Open the queue overlay with <Icon src="/images/icons/keyboard.svg" alt="Keyboard shortcut icon" /> <Shortcut combo="alt+j" />, then use **Force Send** on the pending item you want to send now.
-  </Step>
-</Steps>
+## Still broken?
 
-## Firefox: extension removed after browser restart
+Open an issue on [GitHub Issues](https://github.com/urzeye/ophel/issues) and include:
 
-Firefox treats extensions loaded via **Load Temporary Add-on** (through `about:debugging`) as temporary add-ons. They are automatically removed every time you restart Firefox.
-
-<Steps>
-  <Step title="Install from Firefox Add-ons for a permanent install">
-    Install Ophel Atlas from the [Firefox Add-ons
-    store](https://addons.mozilla.org/firefox/addon/ophel-ai-chat-enhancer/).
-    Store-installed extensions persist across restarts.
-  </Step>
-  <Step title="Use the userscript as an alternative">
-    If you need to use a local build or cannot use the Add-ons store, install
-    the userscript version via Tampermonkey. Userscripts managed by Tampermonkey
-    are not affected by Firefox's temporary add-on limitation.
-  </Step>
-</Steps>
-
-## Something else is broken
-
-If none of the above applies, follow these steps to diagnose the issue before reporting it:
-
-<Steps>
-  <Step title="Test in an incognito window">
-    Open an incognito (private) window with only Ophel enabled and no other
-    extensions. If the problem disappears, another extension is likely
-    interfering.
-  </Step>
-  <Step title="Check the browser DevTools console">
-    Right-click anywhere on the page, choose **Inspect**, and open the
-    **Console** tab. Look for red error messages that mention Ophel or the AI
-    platform. Copy any errors you find — they're essential for a bug report.
-  </Step>
-  <Step title="Note your versions">
-    Before reporting, note your browser name and version, your Ophel Atlas
-    version (shown in the extension popup), and the affected AI platform URL.
-  </Step>
-  <Step title="Report on GitHub Issues">
-    Open a new issue at
-    [github.com/urzeye/ophel/issues](https://github.com/urzeye/ophel/issues)
-    with the information from the steps above. Include the console output and a
-    description of how to reproduce the problem.
-  </Step>
-</Steps>
-
-<Card
-  title="Report an issue on GitHub"
-  icon="bug"
-  href="https://github.com/urzeye/ophel/issues"
->
-  Open a bug report or feature request on the Ophel Atlas GitHub Issues page.
-  Include your browser version, extension version, and any console errors to
-  help the team reproduce the problem.
-</Card>
+- Ophel version (from **Settings → About**) and install type (Chrome / Edge / Firefox / Safari / Userscript + manager name)
+- Affected AI platform URL
+- Steps to reproduce and any errors from the browser DevTools Console

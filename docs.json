@@ -61,7 +61,7 @@
       "href": "https://github.com/urzeye/ophel"
     }
   },
-  "description": "Ophel Atlas is a browser extension that transforms AI chat into navigable, structured knowledge. Supports ChatGPT, Gemini, Claude, DeepSeek, and 11 more platforms.",
+  "description": "Ophel Atlas is a browser extension and userscript that turns AI chats into navigable, structured documents. Supports 16 built-in platforms and community Site Packs.",
   "seo": {
     "indexing": "navigable",
     "metatags": {
@@ -78,6 +78,14 @@
     }
   },
   "redirects": [
+    {
+      "source": "/introduction",
+      "destination": "/"
+    },
+    {
+      "source": "/zh/introduction",
+      "destination": "/zh"
+    },
     {
       "source": "/data/migration",
       "destination": "/data/backup-sync"
@@ -152,6 +160,10 @@
             "href": "https://chromewebstore.google.com/detail/ai-chat-organizer-outline/lpcohdfbomkgepfladogodgeoppclakd"
           },
           {
+            "label": "Microsoft Edge Add-ons",
+            "href": "https://microsoftedge.microsoft.com/addons/detail/ophel-atlas-ai-chat-navi/ffpenkdeifijngifjmbbpijfpdhlolga"
+          },
+          {
             "label": "Firefox Add-ons",
             "href": "https://addons.mozilla.org/firefox/addon/ophel-ai-chat-enhancer/"
           },
@@ -217,7 +229,7 @@
               {
                 "group": "Get Started",
                 "icon": "rocket",
-                "pages": ["index", "introduction", "installation", "panel-overview"]
+                "pages": ["index", "installation", "panel-overview"]
               },
               {
                 "group": "Core Features",
@@ -243,48 +255,50 @@
                   "enhancements/content",
                   "enhancements/tab-notifications",
                   {
-                    "group": "Site Extensions",
-                    "icon": "puzzle-piece",
+                    "group": "Site Packs",
+                    "icon": "/images/icons/site-packs.svg",
                     "expanded": false,
                     "pages": [
                       "enhancements/site-extensions/index",
                       "enhancements/site-extensions/installation",
-                      "enhancements/site-extensions/capabilities",
-                      "enhancements/site-extensions/authoring",
-                      "enhancements/site-extensions/faq"
+                      "enhancements/site-extensions/faq",
+                      {
+                        "group": "For Pack Authors",
+                        "icon": "code",
+                        "expanded": false,
+                        "pages": [
+                          "enhancements/site-extensions/capabilities",
+                          "enhancements/site-extensions/authoring"
+                        ]
+                      }
                     ]
                   }
                 ]
               },
               {
                 "group": "Customization",
-                "icon": "/images/icons/paint-bucket.svg",
+                "icon": "/images/icons/appearance.svg",
                 "pages": [
                   "customization/appearance",
-                  "customization/shortcuts",
                   "customization/layout",
-                  "customization/site-settings"
+                  "customization/site-settings",
+                  "customization/shortcuts"
                 ]
               },
               {
-                "group": "Sync & Backup",
-                "icon": "cloud-arrow-up",
-                "pages": ["data/backup-sync", "data/webdav"]
-              },
-              {
-                "group": "Privacy & Permissions",
+                "group": "Data & Privacy",
                 "icon": "shield",
-                "pages": ["data/privacy", "data/permissions"]
+                "pages": [
+                  "data/backup-sync",
+                  "data/webdav",
+                  "data/privacy",
+                  "data/permissions"
+                ]
               },
               {
                 "group": "Help",
                 "icon": "circle-question",
                 "pages": ["faq", "troubleshooting"]
-              },
-              {
-                "group": "Changelog",
-                "icon": "list",
-                "pages": ["changelog"]
               }
             ]
           },
@@ -322,7 +336,6 @@
                 "icon": "rocket",
                 "pages": [
                   "zh/index",
-                  "zh/introduction",
                   "zh/installation",
                   "zh/panel-overview"
                 ]
@@ -344,55 +357,57 @@
                 ]
               },
               {
-                "group": "功能增强",
+                "group": "体验增强",
                 "icon": "sparkles",
                 "pages": [
                   "zh/enhancements/reading",
                   "zh/enhancements/content",
                   "zh/enhancements/tab-notifications",
                   {
-                    "group": "站点拓展",
-                    "icon": "puzzle-piece",
+                    "group": "适配中心",
+                    "icon": "/images/icons/site-packs.svg",
                     "expanded": false,
                     "pages": [
                       "zh/enhancements/site-extensions/index",
                       "zh/enhancements/site-extensions/installation",
-                      "zh/enhancements/site-extensions/capabilities",
-                      "zh/enhancements/site-extensions/authoring",
-                      "zh/enhancements/site-extensions/faq"
+                      "zh/enhancements/site-extensions/faq",
+                      {
+                        "group": "适配包编写与参考",
+                        "icon": "code",
+                        "expanded": false,
+                        "pages": [
+                          "zh/enhancements/site-extensions/capabilities",
+                          "zh/enhancements/site-extensions/authoring"
+                        ]
+                      }
                     ]
                   }
                 ]
               },
               {
-                "group": "个性化设置",
-                "icon": "/images/icons/paint-bucket.svg",
+                "group": "个性化与站点设置",
+                "icon": "/images/icons/appearance.svg",
                 "pages": [
                   "zh/customization/appearance",
-                  "zh/customization/shortcuts",
                   "zh/customization/layout",
-                  "zh/customization/site-settings"
+                  "zh/customization/site-settings",
+                  "zh/customization/shortcuts"
                 ]
               },
               {
-                "group": "同步与备份",
-                "icon": "cloud-arrow-up",
-                "pages": ["zh/data/backup-sync", "zh/data/webdav"]
-              },
-              {
-                "group": "隐私与权限",
+                "group": "数据与隐私",
                 "icon": "shield",
-                "pages": ["zh/data/privacy", "zh/data/permissions"]
+                "pages": [
+                  "zh/data/backup-sync",
+                  "zh/data/webdav",
+                  "zh/data/privacy",
+                  "zh/data/permissions"
+                ]
               },
               {
                 "group": "帮助",
                 "icon": "circle-question",
                 "pages": ["zh/faq", "zh/troubleshooting"]
-              },
-              {
-                "group": "更新日志",
-                "icon": "list",
-                "pages": ["zh/changelog"]
               }
             ]
           },

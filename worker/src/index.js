@@ -1,5 +1,6 @@
 const DOCS_PATH_PREFIX = "/docs";
 const ICON_PATH_PREFIX = "/images/icons/";
+const PANEL_MEDIA_PREFIX = "/images/panel/";
 const MINTLIFY_HOST = "urzeye.mintlify.dev";
 const CUSTOM_HOST = "ophel.app";
 const PAGES_HOST = "ophel-docs.pages.dev";
@@ -14,12 +15,16 @@ function redirectRootIconToDocs(requestUrl) {
 	return Response.redirect(redirectUrl.toString(), 308);
 }
 
-function rewriteDocsIconUrl(src) {
-	if (!src || !src.startsWith(ICON_PATH_PREFIX)) {
+function rewriteDocsAssetUrl(src) {
+	if (!src) {
 		return src;
 	}
 
-	return `${DOCS_PATH_PREFIX}${src}`;
+	if (src.startsWith(ICON_PATH_PREFIX) || src.startsWith(PANEL_MEDIA_PREFIX)) {
+		return `${DOCS_PATH_PREFIX}${src}`;
+	}
+
+	return src;
 }
 
 function rewriteDocsHtml(request, response) {
@@ -32,16 +37,20 @@ function rewriteDocsHtml(request, response) {
 		return response;
 	}
 
+	const rewriteSrcAttr = {
+		element(element) {
+			const src = element.getAttribute("src");
+			const rewrittenSrc = rewriteDocsAssetUrl(src);
+			if (rewrittenSrc && rewrittenSrc !== src) {
+				element.setAttribute("src", rewrittenSrc);
+			}
+		},
+	};
+
 	return new HTMLRewriter()
-		.on("img", {
-			element(element) {
-				const src = element.getAttribute("src");
-				const rewrittenSrc = rewriteDocsIconUrl(src);
-				if (rewrittenSrc && rewrittenSrc !== src) {
-					element.setAttribute("src", rewrittenSrc);
-				}
-			},
-		})
+		.on("img", rewriteSrcAttr)
+		.on("video", rewriteSrcAttr)
+		.on("source", rewriteSrcAttr)
 		.transform(response);
 }
 
@@ -55,8 +64,11 @@ export default {
 				return fetch(request);
 			}
 
-			// 自定义 MDX 图标不会走 Mintlify CDN，根路径旧请求导向 /docs 资源。
-			if (url.pathname.startsWith(ICON_PATH_PREFIX)) {
+			// 自定义 MDX 图标与面板媒体不会走 Mintlify CDN，根路径请求导向 /docs 资源。
+			if (
+				url.pathname.startsWith(ICON_PATH_PREFIX) ||
+				url.pathname.startsWith(PANEL_MEDIA_PREFIX)
+			) {
 				return redirectRootIconToDocs(request.url);
 			}
 

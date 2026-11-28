@@ -6,10 +6,12 @@
 drafts/
 *.draft.mdx
 
-# 排除特定文件
-private-notes.md
+# Legacy standalone privacy note (docs use data/privacy.mdx and zh/data/privacy.mdx)
+privacy-notes.md
 
-
-# 排除首页项目
+# Non-Mintlify apps in this repository
 landing/
 worker/
+scripts/
+.atlas-analysis.json
+.playwright-mcp/

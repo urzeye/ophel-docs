@@ -1,8 +1,8 @@
 ---
-title: "内容增强 — Markdown 渲染、公式复制与 Mermaid"
-sidebarTitle: "内容增强"
+title: "内容交互增强"
+sidebarTitle: "内容交互"
+description: "增强用户提问 Markdown 排版、渲染 Mermaid 图表、双击公式复制 LaTeX 或 MathML 源码，以及一键复制 Markdown 表格。"
 icon: "file-text"
-description: "用户问题 Markdown 渲染、双击复制 LaTeX 或 MathML 公式源码、一键复制 Markdown 表格、Mermaid 兜底渲染等内容处理增强功能。"
 keywords:
   [
     "Mermaid图表",
@@ -17,77 +17,52 @@ keywords:
 
 import { Icon } from "/snippets/icon.jsx"
 
-这一组功能在 AI 对话页面上叠加额外的交互能力，让读写体验更顺手。
+Ophel 在对话页面内直接增强排版渲染和复制效率。全局内容交互开关位于 **设置 → 功能模块 → 内容交互**。
 
-## 用户问题 Markdown 渲染
+## AI 回复 Mermaid 渲染增强
 
-AI 输入框里写的 Markdown 语法（`**加粗**`、代码块、`- 列表` 等）发送后，消息气泡里通常只显示纯文本。启用此功能后，Ophel 会在你的消息气泡中渲染 Markdown 格式，让问题更便于阅读。
+不少平台只会把 Mermaid 图表显示成纯代码块。开启 **AI 回复 Mermaid 渲染增强**（默认 **关闭**）后，在未原生支持 Mermaid 渲染的平台上，Ophel 会自动将 Mermaid 代码块渲染为可交互的 SVG 图表：
 
-**设置 → 功能模块 → 内容交互 → 用户提问样式优化**（默认开启）
+- 支持 **50%–300%** 自由缩放。
+- 支持全屏查看大图细节。
+- 支持导出 **2× 高清 PNG** 图片。
 
-## 双击复制公式源码
+## 渲染用户提问中的 Markdown 和公式
 
-AI 回复中包含数学公式时，鼠标双击公式渲染块，Ophel 会把对应源码复制到剪贴板。你可以选择复制 **LaTeX 源码** 或 **MathML 源码**。
+很多平台会把你自己发出的问题显示成一团纯文本。开启 **渲染用户提问中的 Markdown 和公式**（默认 **开启**）后，你发送的标题、列表、数学公式和代码块（带一键复制按钮）都会按标准排版显示。
 
-**设置 → 功能模块 → 内容交互 → 双击复制公式**（默认开启）
+## 公式双击复制
 
-### 公式复制格式
+当 AI 平台渲染出数学公式后，开启 **公式双击复制**（默认 **开启**）即可双击任意公式直接复制源码到剪贴板。
 
-在 **设置 → 功能模块 → 内容交互 → 公式复制格式** 中选择：
+点击内容交互卡片底部的 **高级选项**，还可以调整：
 
-- **LaTeX 源码** — 适合 Markdown 笔记、TeX 编辑器、Obsidian、Typora 和再次发给 AI
-- **MathML 源码** — 适合无障碍工作流、网页文档和需要保留结构化数学标记的工具
+- **公式复制格式**：`LaTeX`（默认）或 `MathML`。
+- **复制时保留定界符**（默认 **开启**）：自动为行内公式加上 `$ ... $`，为块级公式加上 `$$ ... $$`。
 
-<Note>
-  部分站点只暴露视觉渲染后的公式 HTML，没有稳定源码。遇到这种情况时，Ophel
-  会提示当前公式缺少可复制源码，而不是复制不可靠的内容。
-</Note>
+## 表格一键复制 Markdown
 
-### LaTeX 分隔符
+开启 **表格一键复制 Markdown**（默认 **开启**）后，AI 回复中的每个表格右上角都会出现 <Icon src="/images/icons/copy.svg" alt="复制图标" /> 复制按钮，点击即可拿到标准 <Icon src="/images/icons/markdown.svg" alt="Markdown 图标" /> Markdown 表格源码，方便直接粘贴到笔记软件中。
 
-当复制格式为 **LaTeX 源码** 时，可以开启 **设置 → 功能模块 → 内容交互 → 复制时添加分隔符**。开启后：
+## 设置项一览
 
-- 行内公式会复制为 `$ ... $`
-- 块级公式会复制为 `$$ ... $$`
+路径：**设置 → 功能模块 → 内容交互**
 
-如果目标工具需要完整的 Markdown 数学片段，建议开启此选项。
+| 设置项 | 可选项 | 默认值 | 所在位置 |
+| --- | --- | --- | --- |
+| **AI 回复 Mermaid 渲染增强** | 开启 / 关闭 | 关闭 | 卡片主区 |
+| **渲染用户提问中的 Markdown 和公式** | 开启 / 关闭 | 开启 | 卡片主区 |
+| **公式双击复制** | 开启 / 关闭 | 开启 | 卡片主区 |
+| **表格一键复制 Markdown** | 开启 / 关闭 | 开启 | 卡片主区 |
+| **公式复制格式** | LaTeX / MathML | LaTeX | 底部 **高级选项** |
+| **复制时保留定界符** | 开启 / 关闭 | 开启 | 底部 **高级选项** |
 
-## 一键复制 Markdown 表格
+## 站点专属的内容增强
 
-AI 回复中的表格会额外出现一个"复制"按钮。点击后，表格内容以标准 Markdown 表格语法复制到剪贴板，可直接粘贴到支持 Markdown 的编辑器中。
+针对特定平台的修复和优化统一放在 <Icon src="/images/icons/site-settings.svg" alt="站点设置图标" /> **设置 → 站点设置** 中，而非全局内容交互页：
 
-**设置 → 功能模块 → 内容交互 → 表格复制 Markdown**（默认开启）
+- **Markdown 加粗修复**（<Icon src="/images/icons/gemini.png" alt="Gemini 图标" /> Gemini、<Icon src="/images/icons/aistudio.png" alt="AI Studio 图标" /> AI Studio、<Icon src="/images/icons/chatgpt.png" alt="ChatGPT 图标" /> ChatGPT）
+- **生成图片去水印**（<Icon src="/images/icons/gemini.png" alt="Gemini 图标" /> Gemini）与 **背景水印屏蔽**（<Icon src="/images/icons/aistudio.png" alt="AI Studio 图标" /> AI Studio）
+- **长对话渲染性能优化**（<Icon src="/images/icons/chatgpt.png" alt="ChatGPT 图标" /> ChatGPT）
 
-## Mermaid 图表兜底渲染
-
-部分 AI 平台不会将 AI 回复中的 Mermaid 代码块渲染为图表。Ophel 在这类平台上会尝试自动将 Mermaid 代码渲染为图形。
-
-<Note>此功能只在平台本身未渲染 Mermaid 时生效，不会干扰已有渲染结果。</Note>
-
-**设置 → 功能模块 → 内容交互 → AI 回复 Mermaid 渲染**（默认关闭）
-
-## Markdown 修复（Gemini / AI Studio / ChatGPT）
-
-Gemini、AI Studio 和 ChatGPT 在某些情况下存在**加粗文字无法正常渲染**的问题。Ophel 对受影响的平台提供修复补丁：
-
-- **设置 → 站点设置 → Gemini → Markdown 加粗修复**
-- **设置 → 站点设置 → AI Studio → Markdown 加粗修复**
-- **设置 → 站点设置 → ChatGPT → Markdown 加粗修复**
-
-## 去水印（Gemini / AI Studio）
-
-Gemini 和 AI Studio 在导出/截图某些内容时会附加水印。开启后，Ophel 会在导出时去除这些水印。
-
-<Note>
-  此功能依赖可选权限 `<all_urls>`（用于抓取图片并转为 base64）。首次启用时，浏览器会弹出权限请求，确认授权后生效。
-</Note>
-
-**设置 → 站点设置 → Gemini → 移除图片水印**
-
-## 导出选项
-
-在当前对话页，可以从 <Icon src="/images/icons/tools.svg" alt="工具箱图标" /> **工具箱** → <Icon src="/images/icons/export.svg" alt="导出图标" /> **导出**、大纲工具栏、对话标签页行菜单或导出快捷键发起导出。所有入口都会打开「导出对话」弹窗，可选择 <Icon src="/images/icons/markdown.svg" alt="Markdown 文件图标" /> Markdown、HTML、<Icon src="/images/icons/json-file.svg" alt="JSON 文件图标" /> JSON、<Icon src="/images/icons/txt-file.svg" alt="TXT 文件图标" /> TXT，或直接把对话以 Markdown 复制到剪贴板。
-
-<Tip>
-  完整的导出说明——格式对比、Zip 打包目录结构、各平台资源导出能力、分段导出和全部导出设置——请参阅专门的[导出功能](/zh/features/export)页面。
-</Tip>
+详见[站点设置](/zh/customization/site-settings)；如需导出整场对话或图片附件，见 <Icon src="/images/icons/export.svg" alt="导出图标" /> [导出对话](/zh/features/export)。

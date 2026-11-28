@@ -1,8 +1,8 @@
 ---
-title: "Widescreen, Zen mode, Clean Mode, and panel layout"
+title: "Page Layout & Display"
 sidebarTitle: "Layout"
+description: "Configure Smart Avoidance, widescreen page and prompt widths, Zen Mode, Clean Mode, and Gemini auto-hide input per site."
 icon: "/images/icons/layout-settings.svg"
-description: "Customize page and message width, use Zen mode and Clean Mode to reduce clutter, and configure panel size and behavior — all configured per site."
 keywords:
   [
     "widescreen layout",
@@ -17,143 +17,49 @@ keywords:
   ]
 ---
 
-import { Icon } from "/snippets/icon.jsx";
-import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx";
+import { Icon } from "/snippets/icon.jsx"
+import { Shortcut } from "/snippets/shortcut.jsx"
+import { DocsVideo } from "/snippets/docs-video.jsx"
 
-Ophel gives you fine-grained control over how AI pages are displayed. You can widen the reading area to use your full monitor, independently adjust your message bubble width, hide page chrome with Zen mode, and reduce ads or redundant page elements with Clean Mode. Layout settings are configured per site so each platform has its own values.
+All page layout controls live under **Settings → Site Settings → Page Layout** and are stored independently per site (falling back to defaults if you have not customized a site).
 
-## Page width
+## Smart Avoidance (Beta)
 
-Many AI platforms cap their content area to a narrow column, leaving wide margins on large screens. Ophel lets you set a custom maximum width to fill more of the screen.
+**Smart Avoidance** (default **On**, supported on all 16 built-in sites) automatically reserves horizontal space so the open Floating panel sits beside the conversation instead of covering text or tables.
 
-**Settings → Site Settings → Page Layout → Page Width Control** (applies to the current site)
+<DocsVideo
+  src="/images/panel/panel-aware-layout.mp4"
+  label="Smart Avoidance resizing the chat area cleanly when the Ophel Floating panel opens"
+/>
 
-- **Unit**: percentage of viewport width
-- **Range**: 50%–100% (sliders are capped at 99% to preserve a sliver of the original platform chrome)
-- Changes apply immediately; no page refresh needed.
+- Only activates when the desktop panel is expanded in **Floating** mode.
+- Hovering the **Panel** quick button (or collapsed droplet) to open a temporary preview panel, using **Edge Snap**, or triggering temporary **Widen on hover** never activates Smart Avoidance, preventing page jitter.
 
-### Smart Avoidance
+## Page width and user message width
 
-**Settings → Site Settings → Page Layout → Smart Avoidance** (applies to the current site)
+Most AI sites lock replies inside a narrow central column even on wide monitors. Under **Settings → Site Settings → Page Layout** (supported on 15 built-in sites, all except Gemini Notebook):
 
-Smart Avoidance keeps the AI page visible while the Ophel panel is open. On supported sites, Ophel recalculates the chat safe area so messages, code blocks, input boxes, and right-side tool panels are not covered by the floating panel.
+| Setting | Range | Default | What it adjusts |
+| --- | --- | --- | --- |
+| **Page Width** | `40%`–`99%` | Off (`81%` when enabled) | Widens the main conversation column so wide code blocks and tables fit without awkward wrapping. |
+| **User Query Width** | `40%`–`99%` | Off (`81%` when enabled) | Controls the width of your own message bubbles independently. |
 
-<video
-  className="ophel-docs-video"
-  controls
-  muted
-  playsInline
-  preload="metadata"
-  aria-label="Smart Avoidance demo showing the chat area moving away from the Ophel panel"
->
-  <source
-    src="/images/panel/panel-aware-layout.mp4"
-    type="video/mp4"
-  />
-  Your browser does not support embedded video. Open
-  `/images/panel/panel-aware-layout.mp4` directly.
-</video>
+## Zen Mode
 
-Smart Avoidance works with Page Width and the panel's current side. If keeping the chat area visible requires more space than the page has, Ophel may cap the effective page width even when the Page Width slider is set higher. This is expected: the setting prioritizes keeping the chat usable instead of letting content sit under the panel.
+<Icon src="/images/icons/eye.svg" alt="Zen Mode icon" /> **Zen Mode** (default **Off**, supported on 15 built-in sites, all except Gemini Notebook) hides the site's native sidebars, top bars, and surrounding chrome so you can focus purely on the conversation. Zen Mode also includes Clean Mode effects.
 
-## User message width
+- **Temporary toggle**: Press <Shortcut combo="ctrl+shift+z" /> or click the <Icon src="/images/icons/eye.svg" alt="Zen Mode icon" /> eye icon in the floating quick buttons.
+- **Persistent per site**: Turn on **Zen Mode** under <Icon src="/images/icons/settings.svg" alt="Settings icon" /> **Settings → Site Settings → Page Layout**.
+- **Show Exit Button** (default **On**): Displays a floating <Icon src="/images/icons/eye-closed.svg" alt="Exit Zen Mode icon" /> exit button while Zen Mode is active; turn it off if you prefer exiting exclusively with <Shortcut combo="ctrl+shift+z" />.
 
-Your outgoing message bubbles have their own independent width control, separate from the overall content area. Widening them reduces the whitespace around your messages in chats that use a wide content area.
+## Clean Mode
 
-**Settings → Site Settings → Page Layout → User Query Width** (applies to the current site)
+<Icon src="/images/icons/clean-mode.svg" alt="Clean Mode icon" /> **Clean Mode** (default **On**, supported on 14 built-in sites—all except Gemini Notebook and Grok) quietly removes low-value distractions such as AI disclaimer banners, upgrade nags, and promotional cards without altering the core chat layout.
 
 ## Auto-hide input (Gemini, Beta)
 
-On Gemini, the chat input box can float as an overlay and slide away when idle, so the conversation can use the freed space. It comes back when the pointer approaches the bottom of the page, when a prompt is inserted, or when you press the focus-input shortcut (<Shortcut combo="alt+i" />).
+Available on <Icon src="/images/icons/gemini.png" alt="Gemini icon" /> **Gemini** (default **Off**): slides the bottom prompt input out of view while you read long replies. Move your cursor to the bottom of the screen, insert a prompt from Ophel, or press <Shortcut combo="alt+i" /> to bring the input box right back.
 
-**Settings → Site Settings → Page Layout → Auto-hide Input** (Gemini only, Beta)
+## Panel size and docking behavior
 
-## Zen mode
-
-Zen mode hides platform UI elements outside the chat — sidebars, navigation bars, headers — so your focus stays on the content.
-
-**How to enable:**
-
-<Tabs>
-  <Tab title="Keyboard shortcut">
-    Press{" "}
-    <Icon
-      src="/images/icons/keyboard.svg"
-      alt="Keyboard shortcut icon"
-    />{" "}
-    <Shortcut combo="ctrl+shift+z" /> to toggle Zen mode.
-  </Tab>
-  <Tab title="Floating button">
-    Click the{" "}
-    <Icon
-      src="/images/icons/eye.svg"
-      alt="Zen mode icon"
-    />{" "}
-    **Zen** button in the floating button group.
-  </Tab>
-  <Tab title="Settings (persistent)">
-    Enable{" "}
-    <Icon
-      src="/images/icons/settings.svg"
-      alt="Settings icon"
-    />{" "}
-    **Settings → Site Settings → Page Layout → Zen Mode** to enter
-    Zen mode automatically every time you open that site.
-  </Tab>
-</Tabs>
-
-<Note>
-  Toggling Zen mode with the button or shortcut creates a temporary state that
-  may not survive a page refresh. Enable it in Settings for a persistent effect
-  on a specific site.
-</Note>
-
-### Zen exit button
-
-When Zen mode is active, a small <Icon src="/images/icons/eye-closed.svg" alt="Exit Zen mode icon" /> exit button appears on screen so you can leave Zen mode without using the keyboard shortcut. You can hide this button in **Settings → Site Settings → Page Layout → Zen Mode** if you prefer to rely on the shortcut (<Shortcut combo="ctrl+shift+z" />) alone.
-
-<Note>
-  Zen mode hides elements based on Ophel's knowledge of each platform's DOM
-  structure. The effect may be incomplete on some sites.
-</Note>
-
-## <Icon src="/images/icons/clean-mode.svg" alt="Clean Mode icon" /> Clean Mode
-
-Clean Mode hides page clutter such as disclaimers, ads, download prompts, promotional cards, and other non-chat elements. It is enabled by default and configured per site.
-
-**Settings → Site Settings → Page Layout → Clean Mode** (applies to the current site)
-
-Clean Mode is narrower than Zen mode: it keeps the normal platform layout visible, but removes elements Ophel recognizes as redundant. Zen mode focuses more aggressively by hiding sidebars and navigation; when Zen mode is enabled, it also includes the clean effect.
-
-<Note>
-  On ChatGPT, Clean Mode also hides sponsored cards when Ophel can identify
-  them. Since each platform can change its page structure, some promotional
-  elements may require future adapter updates.
-</Note>
-
-## Panel size and position
-
-You can drag the panel by its title bar to reposition it anywhere on screen. **Double-clicking** the title bar toggles between <Icon src="/images/icons/snap-to-edge.svg" alt="Edge Snap icon" /> Edge Snap and <Icon src="/images/icons/floating-mode.svg" alt="Floating mode icon" /> Floating mode. Additional size and behavior settings are in <Icon src="/images/icons/settings.svg" alt="Settings icon" /> **Settings → General → Panel**:
-
-| Setting               | Description                                                                                                                                                      | Default   |
-| --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- |
-| Panel mode | <Icon src="/images/icons/snap-to-edge.svg" alt="Edge Snap icon" /> Edge Snap or <Icon src="/images/icons/floating-mode.svg" alt="Floating mode icon" /> Floating | Floating |
-| Default Side | Left or right side of the screen | Right |
-| Panel Width | Saved panel width, 240–600 px | 320 px |
-| Widen on hover (Beta) | Temporarily widens the Floating panel while your cursor or keyboard focus is on it (expand the Panel Width row to enable) | Off |
-| Hover width (Beta) | Temporary panel width used while hovering, 240–600 px | 520 px |
-| Panel Height | 50–100 vh | 85 vh |
-| Snap Threshold | How close to the edge a drag triggers snapping, 0–400 px (Edge Snap mode only) | 30 px |
-| Default Margin | Initial distance between the Floating panel and the screen edge, 0–400 px (Floating mode only) | 0 px |
-
-When in Edge Snap mode, hover over the corresponding screen edge to pop the panel out for a preview. Drag the title bar away from the edge to switch to Floating mode.
-
-### Resize the Floating panel directly
-
-In Floating mode, a slim resize handle appears on the panel edge facing the page. Drag it to change **Panel width** without opening Settings. If the panel is on the right, drag the left edge; if the panel is on the left, drag the right edge. The new width is saved after you release the pointer.
-
-### Temporary hover width
-
-Enable **Widen on hover** when you want more room for long outline headings, chat titles, or prompt names only while you are reading the panel. The panel expands to **Hover width** while your cursor or keyboard focus is inside it, then returns to the saved **Panel width** when you leave.
-
-Hover widening only applies to Floating mode on devices with a mouse or trackpad. It does not change Edge Snap previews, launcher previews, or the saved panel width. If Smart Avoidance is enabled, temporary hover widening does not move the AI page; dragging the panel edge to save a new width does.
+Controls for the Ophel panel itself—<Icon src="/images/icons/floating-mode.svg" alt="Floating mode icon" /> Floating vs. <Icon src="/images/icons/snap-to-edge.svg" alt="Edge Snap icon" /> Edge Snap mode, width (`240–600 px`), temporary hover width (`520 px`), height (`50–100 vh`), snap threshold, and margins—live under **Settings → General → Panel**. See [Panel Overview — Panel size and position settings](/panel-overview#panel-size-and-position-settings).

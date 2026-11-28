@@ -1,8 +1,8 @@
 ---
-title: "Install Ophel Atlas on Chrome, Edge, Firefox, Safari, or as a Userscript"
+title: "Install Ophel Atlas"
 sidebarTitle: "Installation"
+description: "Install Ophel Atlas on Chrome, Edge, Firefox, macOS Safari (experimental), or as a userscript, and compare capabilities across platforms."
 icon: "download"
-description: "Install Ophel Atlas from the Chrome Web Store, Edge Add-ons, Firefox Add-ons, Greasy Fork, ScriptCat, load it as a temporary extension in Safari on macOS, or sideload it manually from GitHub Releases in four steps or fewer."
 keywords:
   [
     "install Ophel",
@@ -18,576 +18,207 @@ keywords:
   ]
 ---
 
-Ophel Atlas is available as a browser extension for Chrome-based browsers and Firefox, as an experimental temporary extension for Safari on macOS, and as a userscript through Greasy Fork or ScriptCat. The browser extension is recommended — it offers a fuller feature set, better compatibility, and does not require developer mode after the initial install.
+import { Icon } from "/snippets/icon.jsx"
+import { Shortcut } from "/snippets/shortcut.jsx"
+
+Ophel Atlas is distributed as a browser extension and as a userscript built from the same codebase.
 
 <Tip>
-  Use the browser extension version whenever possible. The userscript version
-  has feature limitations compared to the extension and may have lower
-  compatibility on some platforms.
+Browser extensions (Chrome, Edge, Firefox) give you the complete feature set, including optional permission controls, browser-level shortcuts, and Claude browser cookie import. Use the userscript if you cannot install extensions or run another browser with Tampermonkey, Violentmonkey, or ScriptCat.
 </Tip>
 
+## Download channels
+
+<CardGroup cols={2}>
+  <Card title="Chrome Web Store" icon="/images/icons/chrome.svg" href="https://chromewebstore.google.com/detail/ai-chat-organizer-outline/lpcohdfbomkgepfladogodgeoppclakd">
+    Recommended for Chrome, Brave, Arc, Vivaldi, and other Chromium browsers. Automatic updates.
+  </Card>
+  <Card title="Microsoft Edge Add-ons" icon="/images/icons/edge.svg" href="https://microsoftedge.microsoft.com/addons/detail/ophel-atlas-ai-chat-navi/ffpenkdeifijngifjmbbpijfpdhlolga">
+    Official Edge store listing with automatic updates.
+  </Card>
+  <Card title="Firefox Add-ons (AMO)" icon="/images/icons/firefox.svg" href="https://addons.mozilla.org/firefox/addon/ophel-ai-chat-enhancer/">
+    Requires Firefox 109+. Signed extension with full feature parity.
+  </Card>
+  <Card title="Greasy Fork (Userscript)" icon="/images/icons/greasy-fork.svg" href="https://greasyfork.org/scripts/563646-ophel-ai-chat-page-enhancer">
+    Install with Tampermonkey or Violentmonkey in any browser that supports userscripts.
+  </Card>
+  <Card title="ScriptCat (Userscript)" icon="/images/icons/scriptcat.png" href="https://scriptcat.org/script-show-page/6519">
+    Userscript channel for ScriptCat users.
+  </Card>
+  <Card title="Safari (macOS, Experimental)" icon="/images/icons/safari.svg" href="https://github.com/urzeye/ophel/releases">
+    Experimental macOS Safari ZIP on GitHub Releases. Temporary extension (24 hours or until Safari quits).
+  </Card>
+  <Card title="GitHub Releases" icon="/images/icons/github.svg" href="https://github.com/urzeye/ophel/releases">
+    Direct release packages for Chrome, Firefox, macOS Safari (experimental), and userscript.
+  </Card>
+</CardGroup>
+
 <Note>
-  GitHub Releases and browser store updates are separate steps. A new GitHub
-  Release means the files are available on GitHub, but Chrome Web Store,
-  Microsoft Edge Add-ons, Firefox Add-ons, Greasy Fork, and ScriptCat each have
-  their own submission, review, approval, and rollout process. Store and script
-  directory versions can temporarily lag behind GitHub Releases or differ from
-  each other. Check the public listing for each store to confirm the current
-  published version.
+GitHub Releases publish immediately on each release tag. Browser stores (Chrome Web Store, Edge Add-ons, Firefox Add-ons) review updates separately and may take 1–3 days to catch up.
 </Note>
 
-## Download
+## Platform capability comparison
 
-<div
-  style={{
-    display: "grid",
-    gridTemplateColumns: "repeat(2,1fr)",
-    gap: "16px",
-    margin: "0 0 32px",
-  }}
->
-  <a
-    href="https://chromewebstore.google.com/detail/ai-chat-organizer-outline/lpcohdfbomkgepfladogodgeoppclakd"
-    target="_blank"
-    style={{
-      display: "flex",
-      flexDirection: "column",
-      gap: "10px",
-      padding: "16px",
-      border: "1px solid rgba(128,128,128,0.2)",
-      borderRadius: "12px",
-      textDecoration: "none",
-      color: "inherit",
-    }}
-  >
-    <span
-      style={{
-        display: "flex",
-        alignItems: "center",
-        gap: "7px",
-        fontWeight: "600",
-        fontSize: "14px",
-        margin: "0",
-        lineHeight: "1.4",
-      }}
-    >
-      <img
-        alt="Chrome icon"
-        src="/images/icons/chrome.svg"
-        style={{
-          display: "block",
-          width: "16px",
-          height: "16px",
-          margin: "0",
-          flexShrink: "0",
-        }}
-      />
-      Chrome
-    </span>
-    <span
-      style={{
-        display: "flex",
-        gap: "6px",
-        flexWrap: "wrap",
-        margin: "0",
-        padding: "0",
-        lineHeight: "1",
-      }}
-    >
-      <img
-        alt="Chrome Web Store users badge"
-        src="https://img.shields.io/chrome-web-store/users/lpcohdfbomkgepfladogodgeoppclakd?logo=google-chrome&logoColor=white&label=users&color=4285F4"
-        style={{ display: "block", margin: "0", height: "20px" }}
-      />
-      <img
-        alt="Chrome Web Store rating badge"
-        src="https://img.shields.io/chrome-web-store/stars/lpcohdfbomkgepfladogodgeoppclakd?logo=google-chrome&logoColor=white&color=4285F4"
-        style={{ display: "block", margin: "0", height: "20px" }}
-      />
-    </span>
-  </a>
-  <a
-    href="https://microsoftedge.microsoft.com/addons/detail/ophel-atlas-ai-chat-navi/ffpenkdeifijngifjmbbpijfpdhlolga"
-    target="_blank"
-    style={{
-      display: "flex",
-      flexDirection: "column",
-      gap: "10px",
-      padding: "16px",
-      border: "1px solid rgba(128,128,128,0.2)",
-      borderRadius: "12px",
-      textDecoration: "none",
-      color: "inherit",
-    }}
-  >
-    <span
-      style={{
-        display: "flex",
-        alignItems: "center",
-        gap: "7px",
-        fontWeight: "600",
-        fontSize: "14px",
-        margin: "0",
-        lineHeight: "1.4",
-      }}
-    >
-      <img
-        src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciICB2aWV3Qm94PSIwIDAgNDggNDgiIHdpZHRoPSI5NnB4IiBoZWlnaHQ9Ijk2cHgiPjxwYXRoIGZpbGw9IiMxZTg4ZTUiIGQ9Ik00MC42OSwzNS40MmMtOS4xNSwxMS44OC0yMS40MSw4LjgtMjYuMjMsNi4xIGMtNy4zNS00LjExLTEyLjUtMTMuNjgtOS40NC0yMy4yNWMwLjktMi44MiwyLjI3LTUuMjMsMy45OC03LjIzYzEuNjcsMC4xMywzLjY1LDAuMTMsNi0wLjA0YzE0LTEsMTgsMTEsMTcsMTQgYy0wLjUxLDEuNTMtMi4zMiwyLjAyLTMuOTcsMi4xM2MwLjE2LTAuMjIsMC4zNi0wLjU0LDAuNjQtMS4wMmMwLjg3LTEuNTQsMC45OC00LjQ5LTEuNzMtNi4yN2MtMi42MS0xLjctNS40My0wLjY1LTYuODgsMS4yOCBjLTEuNDUsMS45Mi0wLjg4LDQuODEtMC4zNyw2LjA5YzIuMiw1LjUyLDYuMjYsNi45NSw5LjAyLDcuNzhjMi43NiwwLjgzLDYuODYsMC43MSw5LjA1LTAuMTljMi4xOC0wLjkxLDIuOC0xLjQzLDMuMjItMC45NyBDNDEuNDEsMzQuMjksNDEuMTEsMzQuODIsNDAuNjksMzUuNDJ6Ii8+PHBhdGggZmlsbD0iIzBkNDdhMSIgZD0iTTQwLjczMiwzNS40MmMtMy40OCw0LjUyLTcuNDEsNi44Ny0xMS4yMSw3LjkxIGMtMC4wMywwLjAxLTAuMDYsMC4wMS0wLjA4LDAuMDJjLTIuMiwwLjQyLTMuOTUsMC4wOC01Ljg1LTAuMjljLTMuMDktMC42LTcuMzUtNC4wMS04LjM4LTEwLjE4Yy0wLjg4LTUuMzEsMS42My05LjgxLDUuNTktMTIuNTQgYy0wLjI2LDAuMjQtMC40OSwwLjUtMC43LDAuNzhjLTEuNDUsMS45Mi0wLjg4LDQuODEtMC4zNyw2LjA5YzIuMiw1LjUyLDYuMjYsNi45NSw5LjAyLDcuNzhjMi43NiwwLjgzLDYuODYsMC43MSw5LjA1LTAuMTkgYzIuMTgtMC45MSwyLjgtMS40MywzLjIyLTAuOTdDNDEuNDUyLDM0LjI5LDQxLjE1MiwzNC44Miw0MC43MzIsMzUuNDJ6Ii8+PHBhdGggZmlsbD0iIzAwZTVmZiIgZD0iTTI2Ljk0LDQuMjVjMC4wMiwwLjI2LDAuMDMsMC41NCwwLjAzLDAuODFjMCwzLjc4LTEuNzUsNy4xNC00LjQ4LDkuMzIgYy0xLjAyLTAuNTItMi4yMS0wLjk0LTMuNjUtMS4yMmMtNC4wNy0wLjc4LTEwLjYzLDEuMS0xMy4zLDUuNzdjLTAuODgsMS41My0xLjI1LDMuMS0xLjQxLDQuNTVjMC4wNC0xLjcxLDAuMzMtMy40NiwwLjg5LTUuMjEgQzguMzEsOC4wMSwxNy44NiwzLjA1LDI2Ljk0LDQuMjV6Ii8+PHBhdGggZmlsbD0iIzAwZTY3NiIgZD0iTTQxLjQsMjcuODljLTIuNzYsMi43OC02LjI3LDIuODYtOC42NywyLjczIGMtMi40MS0wLjEyLTMuNTktMC44Mi00LjY5LTEuNWMtMS4xMS0wLjY5LTAuNDgtMS4zNy0wLjM3LTEuNTJjMC4xMS0wLjE1LDAuMzgtMC40MSwxLTEuNDljMC4yOS0wLjUxLDAuNS0xLjE4LDAuNTQtMS45MSBjNC42Mi0zLjQzLDcuOTYtOC40OSw5LjE2LTE0LjM0YzIuOTIsMi45NSw0LjMsNi4yMSw0Ljc5LDcuNjFDNDQuMDQsMTkuOTksNDQuNzEsMjQuNTYsNDEuNCwyNy44OXoiLz48cGF0aCBmaWxsPSIjMWRlOWI2IiBkPSJNMzguMzcsOS44NXYwLjAxYy0xLjIsNS44NS00LjU0LDEwLjkxLTkuMTYsMTQuMzRjMC4wMy0wLjQyLDAtMC44Ny0wLjEtMS4zMiBjMC0wLjAyLTAuMDEtMC4wNC0wLjAxLTAuMDVjLTAuMjUtMS40Ny0wLjk5LTMuMzMtMi4yMi00Ljc3Yy0xLjIyLTEuNDQtMi41Mi0yLjczLTQuMzktMy42OGMyLjczLTIuMTgsNC40OC01LjU0LDQuNDgtOS4zMiBjMC0wLjI3LTAuMDEtMC41NS0wLjAzLTAuODFjMC40LDAuMDUsMC43OSwwLjExLDEuMTksMC4xOUMzMi43NCw1LjMzLDM2LjA0LDcuNDksMzguMzcsOS44NXoiLz48L3N2Zz4="
-        style={{
-          display: "block",
-          width: "16px",
-          height: "16px",
-          margin: "0",
-          flexShrink: "0",
-        }}
-        alt="Edge icon"
-      />
-      Edge
-    </span>
-    <span
-      style={{
-        display: "flex",
-        gap: "6px",
-        flexWrap: "wrap",
-        margin: "0",
-        padding: "0",
-        lineHeight: "1",
-      }}
-    >
-      <img
-        alt="Edge install badge"
-        src="https://img.shields.io/badge/Edge-0078D7?logo=microsoft-edge&logoColor=white&style=flat"
-        style={{ display: "block", margin: "0", height: "20px" }}
-      />
-    </span>
-  </a>
-  <a
-    href="https://addons.mozilla.org/firefox/addon/ophel-ai-chat-enhancer/"
-    target="_blank"
-    style={{
-      display: "flex",
-      flexDirection: "column",
-      gap: "10px",
-      padding: "16px",
-      border: "1px solid rgba(128,128,128,0.2)",
-      borderRadius: "12px",
-      textDecoration: "none",
-      color: "inherit",
-    }}
-  >
-    <span
-      style={{
-        display: "flex",
-        alignItems: "center",
-        gap: "7px",
-        fontWeight: "600",
-        fontSize: "14px",
-        margin: "0",
-        lineHeight: "1.4",
-      }}
-    >
-      <img
-        alt="Firefox icon"
-        src="https://cdn.simpleicons.org/firefox/FF7139"
-        style={{
-          display: "block",
-          width: "16px",
-          height: "16px",
-          margin: "0",
-          flexShrink: "0",
-        }}
-      />
-      Firefox
-    </span>
-    <span
-      style={{
-        display: "flex",
-        gap: "6px",
-        flexWrap: "wrap",
-        margin: "0",
-        padding: "0",
-        lineHeight: "1",
-      }}
-    >
-      <img
-        alt="Firefox Add-ons users badge"
-        src="https://img.shields.io/amo/users/ophel-ai-chat-enhancer?logo=firefox&logoColor=white&label=users&color=FF7139"
-        style={{ display: "block", margin: "0", height: "20px" }}
-      />
-      <img
-        alt="Firefox Add-ons rating badge"
-        src="https://img.shields.io/amo/stars/ophel-ai-chat-enhancer?logo=firefox&logoColor=white&color=FF7139"
-        style={{ display: "block", margin: "0", height: "20px" }}
-      />
-    </span>
-  </a>
-  <a
-    href="https://greasyfork.org/scripts/563646-ophel-ai-chat-page-enhancer"
-    target="_blank"
-    style={{
-      display: "flex",
-      flexDirection: "column",
-      gap: "10px",
-      padding: "16px",
-      border: "1px solid rgba(128,128,128,0.2)",
-      borderRadius: "12px",
-      textDecoration: "none",
-      color: "inherit",
-    }}
-  >
-    <span
-      style={{
-        display: "flex",
-        alignItems: "center",
-        gap: "7px",
-        fontWeight: "600",
-        fontSize: "14px",
-        margin: "0",
-        lineHeight: "1.4",
-      }}
-    >
-      <img
-        alt="Greasy Fork icon"
-        src="https://cdn.simpleicons.org/greasyfork/4C4C4C"
-        style={{
-          display: "block",
-          width: "16px",
-          height: "16px",
-          margin: "0",
-          flexShrink: "0",
-        }}
-      />
-      Greasy Fork
-    </span>
-    <span
-      style={{
-        display: "flex",
-        gap: "6px",
-        flexWrap: "wrap",
-        margin: "0",
-        padding: "0",
-        lineHeight: "1",
-      }}
-    >
-      <img
-        alt="Greasy Fork install count badge"
-        src="https://img.shields.io/greasyfork/dt/563646?logo=tampermonkey&logoColor=white&label=installs&color=4C4C4C"
-        style={{ display: "block", margin: "0", height: "20px" }}
-      />
-      <img
-        alt="Greasy Fork rating count badge"
-        src="https://img.shields.io/greasyfork/rating-count/563646?logo=tampermonkey&logoColor=white&label=ratings&color=4C4C4C"
-        style={{ display: "block", margin: "0", height: "20px" }}
-      />
-    </span>
-  </a>
-  <a
-    href="https://scriptcat.org/script-show-page/6519"
-    target="_blank"
-    style={{
-      display: "flex",
-      flexDirection: "column",
-      gap: "10px",
-      padding: "16px",
-      border: "1px solid rgba(128,128,128,0.2)",
-      borderRadius: "12px",
-      textDecoration: "none",
-      color: "inherit",
-    }}
-  >
-    <span
-      style={{
-        display: "flex",
-        alignItems: "center",
-        gap: "7px",
-        fontWeight: "600",
-        fontSize: "14px",
-        margin: "0",
-        lineHeight: "1.4",
-      }}
-    >
-      <img
-        alt="ScriptCat icon"
-        src="/images/icons/scriptcat.png"
-        style={{
-          display: "block",
-          width: "16px",
-          height: "16px",
-          margin: "0",
-          flexShrink: "0",
-        }}
-      />
-      ScriptCat
-    </span>
-    <span
-      style={{
-        display: "flex",
-        gap: "6px",
-        flexWrap: "wrap",
-        margin: "0",
-        padding: "0",
-        lineHeight: "1",
-      }}
-    >
-      <img
-        alt="ScriptCat install badge"
-        src="https://img.shields.io/badge/ScriptCat-install-1597FF?style=flat"
-        style={{ display: "block", margin: "0", height: "20px" }}
-      />
-    </span>
-  </a>
-  <a
-    href="https://github.com/urzeye/ophel/releases"
-    target="_blank"
-    style={{
-      display: "flex",
-      flexDirection: "column",
-      gap: "10px",
-      padding: "16px",
-      border: "1px solid rgba(128,128,128,0.2)",
-      borderRadius: "12px",
-      textDecoration: "none",
-      color: "inherit",
-    }}
-  >
-    <span
-      style={{
-        display: "flex",
-        alignItems: "center",
-        gap: "7px",
-        fontWeight: "600",
-        fontSize: "14px",
-        margin: "0",
-        lineHeight: "1.4",
-      }}
-    >
-      <img
-        alt="Safari icon"
-        src="https://cdn.simpleicons.org/safari/006CFF"
-        style={{
-          display: "block",
-          width: "16px",
-          height: "16px",
-          margin: "0",
-          flexShrink: "0",
-        }}
-      />
-      Safari (macOS)
-    </span>
-    <span
-      style={{
-        display: "flex",
-        gap: "6px",
-        flexWrap: "wrap",
-        margin: "0",
-        padding: "0",
-        lineHeight: "1",
-      }}
-    >
-      <img
-        alt="Safari experimental badge"
-        src="https://img.shields.io/badge/Safari-experimental%20%C2%B7%20GitHub%20Releases-006CFF?style=flat"
-        style={{ display: "block", margin: "0", height: "20px" }}
-      />
-    </span>
-  </a>
-</div>
+Use this table to see what differs across runtimes before choosing how to install:
+
+| Capability | <Icon src="/images/icons/chrome.svg" alt="Chrome icon" /><Icon src="/images/icons/edge.svg" alt="Edge icon" /> Chrome / Edge | <Icon src="/images/icons/firefox.svg" alt="Firefox icon" /> Firefox | <Icon src="/images/icons/safari.svg" alt="Safari icon" /> Safari (macOS, Experimental) | <Icon src="/images/icons/tampermonkey.svg" alt="Tampermonkey icon" /> Userscript |
+| --- | --- | --- | --- | --- |
+| Core features (Outline, Chats, Prompts, Export, Global Search, Themes, Layout) | Full | Full | Full | Full |
+| Site Packs & custom self-hosted domains | Full (per-origin permission prompt) | Full (per-origin permission prompt) | Full (managed in Safari Settings) | Full (no browser prompt; matched by script whitelist) |
+| WebDAV manual & scheduled automatic backups | Full (`chrome.alarms` background schedule) | Full (`chrome.alarms` background schedule) | Full (grant target server host in Safari Settings) | Full (automatic backups run while any supported tab is open) |
+| Desktop notifications on reply completion | Optional (`notifications` permission; default off) | Optional (`notifications` permission; default off) | Not supported (sound & tab title status still work) | Supported via `GM_notification` (default on) |
+| Auto-focus window when generation finishes | Supported | Supported | Not supported | Partial (`window.focus()` only; cannot unminimize windows) |
+| Gemini generated-image watermark removal | Optional (`<all_urls>` permission) | Optional (`<all_urls>` permission) | Not supported | Supported |
+| Claude Session Key management | Full (including import from browser cookies & cross-tab generating check) | Full (including import from browser cookies & cross-tab generating check) | Full (manual/JSON keys; cookies permission supported) | Partial (manual/JSON keys & switch on `claude.ai`; no browser cookie import or cross-tab check) |
+| Global browser shortcut (<Shortcut combo="alt+o" />) | Supported | Supported | Supported | Not supported (all in-page shortcuts still work) |
+| AI Studio preload tweaks (early sidebar collapse & background watermark blocker) | Supported | Supported | Supported | Not available (no userscript preload entry) |
+| Persistence across restarts | Permanent | Permanent (from AMO) | **Temporary (24 hours or until Safari quits)** | Permanent |
 
 ## Install from a store or script directory
 
 <Tabs>
-  <Tab title="Chrome">
-    Install directly from the Chrome Web Store — no developer mode required.
-
+  <Tab title="Chrome / Chromium">
     <Steps>
-      <Step title="Open the Chrome Web Store listing">
-        Go to the [Ophel Atlas listing on the Chrome Web Store](https://chromewebstore.google.com/detail/ai-chat-organizer-outline/lpcohdfbomkgepfladogodgeoppclakd).
+      <Step title="Open the Chrome Web Store">
+        Visit the [Ophel Atlas Chrome Web Store page](https://chromewebstore.google.com/detail/ai-chat-organizer-outline/lpcohdfbomkgepfladogodgeoppclakd).
       </Step>
-      <Step title="Click Add to Chrome">
-        Click **Add to Chrome** and confirm the permissions prompt.
+      <Step title="Add the extension">
+        Click **Add to Chrome** (or **Add to Brave / Arc / Vivaldi**) and confirm the prompt.
       </Step>
       <Step title="Open a supported AI site">
-        Navigate to any [supported platform](/introduction#supported-platforms) — for example, [chatgpt.com](https://chatgpt.com) or [claude.ai](https://claude.ai). The Ophel panel appears automatically on the right side of the page.
+        Visit any [supported platform](/index#supported-platforms). Refresh the tab if it was already open.
       </Step>
     </Steps>
-
   </Tab>
-  <Tab title="Edge">
-    Install directly from the Microsoft Edge Add-ons store.
 
+  <Tab title="Microsoft Edge">
     <Steps>
-      <Step title="Open the Edge Add-ons listing">
-        Go to the [Ophel Atlas listing on the Microsoft Edge Add-ons store](https://microsoftedge.microsoft.com/addons/detail/ophel-atlas-ai-chat-navi/ffpenkdeifijngifjmbbpijfpdhlolga).
+      <Step title="Open Edge Add-ons">
+        Visit the [Ophel Atlas Microsoft Edge Add-ons page](https://microsoftedge.microsoft.com/addons/detail/ophel-atlas-ai-chat-navi/ffpenkdeifijngifjmbbpijfpdhlolga).
       </Step>
-      <Step title="Click Get">
-        Click **Get** and confirm the permissions prompt.
+      <Step title="Install">
+        Click **Get** and then **Add extension**.
       </Step>
       <Step title="Open a supported AI site">
-        Navigate to any [supported platform](/introduction#supported-platforms) — for example, [chatgpt.com](https://chatgpt.com) or [claude.ai](https://claude.ai). The Ophel panel appears automatically on the right side of the page.
+        Open or refresh any [supported platform](/index#supported-platforms).
       </Step>
     </Steps>
-
   </Tab>
+
   <Tab title="Firefox">
-    Install from the Firefox Add-ons store for a persistent, auto-updating installation.
-
     <Steps>
-      <Step title="Open the Firefox Add-ons listing">
-        Go to the [Ophel AI Chat Enhancer listing on Firefox Add-ons](https://addons.mozilla.org/firefox/addon/ophel-ai-chat-enhancer/).
+      <Step title="Open Firefox Add-ons">
+        Visit the [Ophel Atlas Firefox Add-ons page](https://addons.mozilla.org/firefox/addon/ophel-ai-chat-enhancer/) (requires Firefox 109 or newer).
       </Step>
-      <Step title="Click Add to Firefox">
-        Click **Add to Firefox** and confirm the permissions prompt.
+      <Step title="Add to Firefox">
+        Click **Add to Firefox** and confirm the permission dialog.
       </Step>
       <Step title="Open a supported AI site">
-        Navigate to any [supported platform](/introduction#supported-platforms). The Ophel panel appears automatically.
+        Open or refresh any [supported platform](/index#supported-platforms).
       </Step>
     </Steps>
-
   </Tab>
-  <Tab title="Userscript (Tampermonkey)">
-    Use this method if you cannot install browser extensions, or if you prefer the Tampermonkey workflow.
 
-    <Warning>
-      The userscript version has feature limitations compared to the browser extension. Install the extension version when possible.
-    </Warning>
-
+  <Tab title="Userscript (Greasy Fork / ScriptCat)">
     <Steps>
-      <Step title="Install Tampermonkey">
-        If you do not already have it, install [Tampermonkey](https://www.tampermonkey.net/) for your browser.
+      <Step title="Install a userscript manager">
+        Install [Tampermonkey](https://www.tampermonkey.net/), [Violentmonkey](https://violentmonkey.github.io/), or [ScriptCat](https://docs.scriptcat.org/) in your browser.
       </Step>
-      <Step title="Open the Greasy Fork listing">
-        Go to the [Ophel AI Chat Page Enhancer on Greasy Fork](https://greasyfork.org/scripts/563646-ophel-ai-chat-page-enhancer).
-      </Step>
-      <Step title="Click Install this script">
-        Click **Install this script**. Tampermonkey opens a confirmation dialog — click **Install**.
+      <Step title="Install the Ophel script">
+        Open [Greasy Fork](https://greasyfork.org/scripts/563646-ophel-ai-chat-page-enhancer) or [ScriptCat](https://scriptcat.org/script-show-page/6519), click **Install this script**, and confirm inside your script manager.
       </Step>
       <Step title="Open a supported AI site">
-        Navigate to any [supported platform](/introduction#supported-platforms). The Ophel panel appears automatically.
+        Open or refresh any [supported platform](/index#supported-platforms).
       </Step>
     </Steps>
 
-  </Tab>
-  <Tab title="Userscript (ScriptCat)">
-    Use this method if you prefer ScriptCat as your userscript manager.
-
-    <Warning>
-      The userscript version has feature limitations compared to the browser extension. Install the extension version when possible.
-    </Warning>
-
-    <Steps>
-      <Step title="Install ScriptCat">
-        If you do not already have it, install [ScriptCat](https://scriptcat.org/) for your browser.
-      </Step>
-      <Step title="Open the ScriptCat listing">
-        Go to the [Ophel AI Chat Page Enhancer on ScriptCat](https://scriptcat.org/script-show-page/6519).
-      </Step>
-      <Step title="Install the script">
-        Click the install button on ScriptCat and confirm the installation in ScriptCat.
-      </Step>
-      <Step title="Open a supported AI site">
-        Navigate to any [supported platform](/introduction#supported-platforms). The Ophel panel appears automatically.
-      </Step>
-    </Steps>
-
+    <Note>
+    The userscript loads version-pinned helper bundles and assets via `@require` and `@resource` with `#sha256=` integrity checks, and exits immediately on pages outside your enabled sites.
+    </Note>
   </Tab>
 </Tabs>
 
-## Manual sideload from GitHub Releases
+## Manual install from GitHub Releases
 
-Use this method if you want to install a specific version, test a pre-release build, or install without a store.
+Download packages directly from [GitHub Releases](https://github.com/urzeye/ophel/releases) when you want to test a fresh release before store review finishes, install offline, or try the experimental macOS Safari build.
 
 <Warning>
-  Do not install `*-cws-upload.zip` or `*-edge-addons-upload.zip` manually.
-  Those files are maintainer submission packages for browser stores. They do not
-  mean the store version has already been approved or rolled out.
+Do **not** manually sideload `*-cws-upload.zip` or `*-edge-addons-upload.zip`. Those archives are generated specifically for store uploads and strip manifest metadata needed for local loading.
 </Warning>
 
 <Tabs>
-  <Tab title="Chrome / Edge (manual)">
+  <Tab title="Chrome / Edge">
     <Steps>
-      <Step title="Download the release archive">
-        Go to [GitHub Releases](https://github.com/urzeye/ophel/releases) and download the latest `ophel-vX.X.X-chrome.zip`.
-      </Step>
-      <Step title="Unzip the archive">
-        Extract the zip to a permanent folder on your computer. Do not delete the folder after loading — the browser loads the extension from it every time.
+      <Step title="Download and unzip">
+        Download `ophel-atlas-vX.X.X-chrome.zip` from GitHub Releases and extract it into a permanent folder (removing the folder breaks the extension).
       </Step>
       <Step title="Open the extensions page">
-        In Chrome: navigate to `chrome://extensions`. In Edge: navigate to `edge://extensions`.
+        Go to `chrome://extensions` (Chrome) or `edge://extensions` (Edge) and turn on **Developer mode**.
       </Step>
-      <Step title="Enable Developer mode">
-        Toggle **Developer mode** on (top-right corner of the extensions page).
-      </Step>
-      <Step title="Load the unpacked folder">
-        Click **Load unpacked** and select the folder you extracted in step 2.
+      <Step title="Load unpacked">
+        Click **Load unpacked** and select the extracted folder containing `manifest.json`.
       </Step>
     </Steps>
   </Tab>
-  <Tab title="Firefox (manual)">
+
+  <Tab title="Firefox">
     <Warning>
-      Firefox only allows temporary add-on loading through the debugging interface. The add-on is removed when you restart the browser, so you must reload it after each restart. For a persistent install, use the [Firefox Add-ons store](#install-from-a-store-or-script-directory) tab above.
+    GitHub Releases distributes an unsigned ZIP (`ophel-atlas-vX.X.X-firefox.zip`). Loading it through `about:debugging` is temporary and Firefox removes it when the browser restarts. For permanent installation, use [Firefox Add-ons (AMO)](https://addons.mozilla.org/firefox/addon/ophel-ai-chat-enhancer/).
     </Warning>
 
     <Steps>
-      <Step title="Download the release archive">
-        Go to [GitHub Releases](https://github.com/urzeye/ophel/releases) and download the latest `ophel-vX.X.X-firefox.zip`.
+      <Step title="Download and unzip">
+        Download `ophel-atlas-vX.X.X-firefox.zip` and extract it.
       </Step>
-      <Step title="Open the Firefox debugging page">
+      <Step title="Open about:debugging">
         Navigate to `about:debugging#/runtime/this-firefox`.
       </Step>
-      <Step title="Load the temporary add-on">
-        Click **Load Temporary Add-on** and select the downloaded zip file. You do not need to extract it.
-      </Step>
-    </Steps>
-
-  </Tab>
-  <Tab title="Userscript (manual)">
-    <Steps>
-      <Step title="Install Tampermonkey">
-        If you do not already have it, install [Tampermonkey](https://www.tampermonkey.net/) for your browser.
-      </Step>
-      <Step title="Download the userscript file">
-        Go to [GitHub Releases](https://github.com/urzeye/ophel/releases) and download the latest `.user.js` file.
-      </Step>
-      <Step title="Install the script">
-        Drag the `.user.js` file into your browser window, or open the Tampermonkey dashboard and use **Import from file**. Confirm the install when prompted.
+      <Step title="Load temporary add-on">
+        Click **Load Temporary Add-on…** and select `manifest.json` inside the extracted folder.
       </Step>
     </Steps>
   </Tab>
-  <Tab title="Safari (macOS)">
-    Safari support is experimental. It is provided as a temporary extension for local use on macOS — there is no Safari App Store listing, and no signed macOS or iOS app. You do not need Xcode or a paid Apple Developer account.
 
-    <Steps>
-      <Step title="Download the release archive">
-        Go to [GitHub Releases](https://github.com/urzeye/ophel/releases) and download the latest `ophel-atlas-vX.X.X-safari.zip`.
-      </Step>
-      <Step title="Enable developer features in Safari">
-        In Safari, go to **Settings → Advanced** and turn on **Show features for web developers**.
-      </Step>
-      <Step title="Add the temporary extension">
-        Go to **Settings → Developer → Add Temporary Extension…** and approve the unsigned-extension prompt. Select the downloaded zip, or extract it and select the folder containing `manifest.json`.
-      </Step>
-      <Step title="Enable Ophel and allow site access">
-        In **Settings → Extensions**, enable Ophel, allow access to the AI sites you use, then reload those pages.
-      </Step>
-    </Steps>
-
+  <Tab title="Safari (macOS, Experimental)">
     <Warning>
-      Temporary extensions expire after 24 hours and are also removed when Safari
-      quits — add the extension again to keep using it. This is not a permanent
-      install. See [Apple's temporary installation
-      instructions](https://developer.apple.com/documentation/safariservices/running-your-safari-web-extension)
-      for details.
+    Desktop Safari support is **experimental** and only runs as a temporary extension on macOS. Safari automatically removes temporary extensions after **24 hours** or whenever you quit Safari. There is currently no signed Safari App Store release or iOS Safari build.
     </Warning>
 
-    <Note>
-      On Safari, desktop notifications, automatic tab-title updates when a reply
-      finishes, and Gemini watermark removal are not available. Other core
-      features — outline, chat management, prompts, themes, export — work as on
-      other browsers.
-    </Note>
+    <Steps>
+      <Step title="Download and unzip">
+        Download `ophel-atlas-vX.X.X-safari.zip` from GitHub Releases and extract it. No Xcode or paid Apple Developer account is required.
+      </Step>
+      <Step title="Enable Safari developer features">
+        Open **Safari → Settings → Advanced** and check **Show features for web developers**.
+      </Step>
+      <Step title="Add temporary extension">
+        Go to **Safari → Settings → Developer** (or the **Develop** menu), choose **Add Temporary Extension…**, and pick the extracted folder containing `manifest.json`.
+      </Step>
+      <Step title="Grant website access">
+        Open **Safari → Settings → Extensions**, enable **Ophel Atlas**, and allow access on the AI sites you use.
+      </Step>
+    </Steps>
+  </Tab>
+
+  <Tab title="Userscript">
+    <Steps>
+      <Step title="Download the script">
+        Download `ophel-atlas-vX.X.X.user.js` from GitHub Releases.
+      </Step>
+      <Step title="Import into your script manager">
+        Drag the `.user.js` file into your browser window, or open your script manager dashboard and import it manually.
+      </Step>
+    </Steps>
   </Tab>
 </Tabs>
 
 ## Next steps
 
-Once installed, open any [supported AI site](/introduction#supported-platforms) and read the [Panel Overview](/panel-overview) to understand the three tabs, floating buttons, ghost mode, and edge snap.
+<CardGroup cols={2}>
+  <Card title="Panel Overview" icon="/images/icons/panel-overview.svg" href="/panel-overview">
+    Explore the side panel tabs, floating buttons, and keyboard shortcuts.
+  </Card>
+  <Card title="Permissions" icon="/images/icons/permissions.svg" href="/data/permissions">
+    See what each required and optional browser permission does.
+  </Card>
+</CardGroup>

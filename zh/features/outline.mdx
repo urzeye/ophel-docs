@@ -1,121 +1,75 @@
 ---
-title: "智能大纲 — 实时对话目录树"
-sidebarTitle: "智能大纲"
+title: "实时大纲"
+sidebarTitle: "实时大纲"
+description: "将长篇 AI 对话与侧栏文档实时解析为可折叠目录树，支持书签收藏、搜索过滤、字数统计与层级规范化的大纲复制。"
 icon: "list-tree"
-description: "Ophel 自动从 AI 对话生成可点击的实时大纲，支持书签、过滤、层级折叠与滚动同步。"
 keywords: ["智能大纲", "目录树", "对话大纲", "书签", "标题导航", "AI大纲", "实时大纲"]
 ---
 
 import { Icon } from "/snippets/icon.jsx"
-import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
+import { Shortcut } from "/snippets/shortcut.jsx"
 
-![智能大纲 — 实时对话目录树](/images/features/outline-zh.png)
+**大纲** 标签页会自动读取你的提问和 AI 回复中的 Markdown 标题（`H1`–`H6`），生成一棵实时更新的目录树。点击任意条目即可直接跳到对应位置。
 
-大纲标签页自动读取当前 AI 对话，在侧边面板中生成一棵可点击的实时目录树。对话越长，它越有价值。
+![Ophel 实时大纲标签页](/images/features/outline-zh.png)
 
-## 工作原理
+## 大纲如何生成与展开
 
-每次 AI 完成一次回复，Ophel 就扫描对话，从以下内容构建大纲树：
+- **随回答实时更新**：AI 生成过程中自动刷新目录（默认每 **2 秒**一次）。
+- **虚拟滚动自动补全**：在会卸载屏幕外消息的平台（如 DeepSeek、Claude、AI Studio、Grok、Qwen Studio），Ophel 会通过平台历史接口补全未渲染的历史节点，不用手动一路往上滚也能看到完整目录。
+- **0–6 级层级滑块**：拖动工具栏上的深度滑块即可控制展开层级。`0` 级表示只看你的提问，`1`–`6` 级依次展开对应级别的标题。也可以点击单个节点折叠、按 <Shortcut combo="alt+e" /> 全部展开/折叠，或按 <Shortcut combo="alt+shift+1" /> 到 <Shortcut combo="alt+shift+6" /> 直接展开到指定层级。
 
-- **你的问题** — 每条用户消息成为第一级节点
-- **AI 回复中的 Markdown 标题** — AI 回复里的 `#`、`##`、`###` 等标题，作为嵌套子节点挂在触发那次回复的问题下方
+## 文档大纲切换（多大纲源）
 
-```text
-你：解释 React 核心概念
-  ├── # React 简介
-  │   ├── ## 什么是 React
-  │   └── ## 为什么用 React
-  ├── # 核心概念
-  │   ├── ## 组件
-  │   ├── ## Props 与 State
-  │   └── ## 生命周期
-  └── # 总结
-```
+在自带右侧文档或产物栏的平台上，**大纲** 顶部会显示 <Icon src="/images/icons/outline-document.svg" alt="文档大纲图标" /> 数据源切换栏：
 
-点击任意节点，页面立即跳转到对应位置。
-
-## 滚动同步
-
-在页面中滚动时，大纲会实时高亮当前可见区域对应的节点，让你随时清楚自己在长对话中的位置。可在 **设置 → 功能模块 → 大纲 → 大纲跟随模式** 中调整跟随行为。
-
-## 过滤与工具栏按钮
-
-大纲工具栏提供过滤、展开、定位、列表滚动和导出按钮。面板较窄时，不常用的按钮会自动收起，保证搜索框可用。
-
-| 按钮 | 作用 |
+| 平台 | 可切换的大纲源 |
 | --- | --- |
-| <Icon src="/images/icons/user-query.svg" alt="用户问题图标" /> **用户问题开关** | 显示或隐藏你的消息节点，适合快速回顾对话脉络 |
-| <Icon src="/images/icons/star.svg" alt="书签图标" /> **仅书签** | 只显示你手动标星的节点 |
-| <Icon src="/images/icons/expand-all.svg" alt="展开全部图标" /> / <Icon src="/images/icons/collapse-all.svg" alt="折叠全部图标" /> **展开 / 折叠全部** | 展开或折叠当前可见的大纲树 |
-| <Icon src="/images/icons/locate.svg" alt="定位当前节点图标" /> **定位当前位置** | 将大纲列表滚回当前阅读位置对应的节点 |
-| <Icon src="/images/icons/scroll-top.svg" alt="滚动到大纲顶部图标" /> / <Icon src="/images/icons/scroll-bottom.svg" alt="滚动到大纲底部图标" /> **滚到顶部 / 底部** | 同一个按钮随大纲滚动位置切换方向，只在大纲列表内跳转，不移动对话页面 |
-| <Icon src="/images/icons/export.svg" alt="导出图标" /> **导出对话** | 打开当前对话的[「导出对话」弹窗](/zh/features/export#「导出对话」弹窗)。首次使用前按钮会保持高亮提示 |
+| <Icon src="/images/icons/gemini.png" alt="Gemini 图标" /> **Gemini** | 对话大纲 / Deep Research 报告 / Canvas 文档 |
+| <Icon src="/images/icons/claude.svg" alt="Claude 图标" /> **Claude** | 对话大纲 / Artifact 文档面板 |
+| <Icon src="/images/icons/gemini-notebook.png" alt="Gemini Notebook 图标" /> **Gemini Notebook** | 来源（Sources） / 对话（Chat） / Studio 产物与笔记 |
 
-按钮下方还有一个**层级滑块**（0–6 共七个圆点），点击或拖动即可把大纲树展开到对应深度，圆点提示里会显示该层级的标题数量。开启书签过滤时滑块暂时不可用。
+## 工具栏操作与快捷键
 
-## 书签
-
-鼠标悬停在任意大纲节点上，会出现 <Icon src="/images/icons/star.svg" alt="书签图标" /> 星形图标。点击即可为该节点添加书签。书签在页面刷新后仍然保留。通过过滤按钮可以只查看书签节点，方便在多个重要片段之间快速跳转。
-
-<Note>
-  如果一个加了书签的标题后来被 AI
-  删改（例如重新生成），它就成了"幽灵书签"——指向不存在的位置。点击
-  <Icon src="/images/icons/tools.svg" alt="工具箱图标" /> **工具箱**中的
-  <Icon src="/images/icons/cleanup.svg" alt="清除无效收藏图标" /> **清除无效收藏**，可以批量删除这些无效书签。
-</Note>
-
-## 按层级展开
-
-拖动工具栏下方的[层级滑块](#过滤与工具栏按钮)到目标层级，或使用快捷键 <Shortcut combo="alt+shift+1" /> 到 <Shortcut combo="alt+shift+6" />，可以一键折叠到对应标题层级（比如只展开到 H2）。<Shortcut combo="alt+e" /> 在全部展开和全部折叠之间切换。
-
-## 字数统计与节点复制
-
-鼠标悬停在大纲节点上，会显示该节点内容的大致字数统计（需在 **设置 → 功能模块 → 大纲** 中开启 **悬停显示字数**），方便判断每个章节的长度。节点右侧会出现 <Icon src="/images/icons/copy.svg" alt="复制图标" /> 复制图标，点击即可将该节点文本复制到剪贴板。
-
-## 复制完整大纲
-
-点击大纲工具栏里的 <Icon src="/images/icons/export.svg" alt="导出图标" /> **导出对话**按钮，在弹窗中选择 <Icon src="/images/icons/copy-outline.svg" alt="复制大纲图标" /> **复制大纲**，再点击 **复制**，即可复制当前来源的结构化 Markdown 大纲。对话来源会遵循当前用户问题开关和标题层级；文档来源会遵循当前可见的大纲树。遇到虚拟滚动长对话时，Ophel 会先加载完整历史，复制完成后再恢复页面位置。
-
-## 文档大纲源切换
-
-在包含独立文档面板的平台上——例如 Claude 右侧的文档面板、Gemini Deep Research 报告，或 Gemini Notebook 中打开的文档——大纲顶部会显示 <Icon src="/images/icons/outline-document.svg" alt="文档大纲图标" /> **对话 / 文档**源切换器。切换到 **文档** 后，大纲树反映的是文档的标题结构而非对话内容，方便你独立浏览报告内容。
-
-## 刷新与定位
-
-按 <Shortcut combo="alt+r" /> 手动刷新大纲（有时平台的 DOM 更新较慢，需要手动触发）。点击 <Icon src="/images/icons/locate.svg" alt="定位当前节点图标" /> **定位当前位置**按钮，或按 <Shortcut combo="alt+l" />，可以将大纲列表滚回当前页面位置对应的节点，节点会短暂高亮。
-
-## 大纲设置
-
-在 **设置 → 功能模块 → 大纲** 中调整：
-
-| 设置项 | 说明 | 默认 |
+| 控件 | 快捷键 | 说明 |
 | --- | --- | --- |
-| 对话期间自动更新大纲 | AI 回复后自动重建大纲；关闭后只能按 <Shortcut combo="alt+r" /> 手动刷新 | 开启 |
-| 更新检测间隔 (秒) | 检测对话变化的间隔，范围 1–60 秒 | 2 |
-| 大纲跟随模式 | 跟随当前位置（滚动时高亮当前节点）/ 跟随最新消息 / 手动控制 | 跟随当前位置 |
-| 悬停显示字数 | 鼠标悬停节点时显示该节点的大致字数 | 关闭 |
+| <Icon src="/images/icons/user-query.svg" alt="用户问题图标" /> **显示/隐藏用户问题** | <Shortcut combo="alt+q" /> | 切换目录中是否显示你发出的提问（对话大纲模式下显示）。 |
+| <Icon src="/images/icons/star.svg" alt="收藏图标" /> **显示用户收藏** | <Shortcut combo="alt+c" /> | 只看加了星标书签的节点（开启期间会禁用层级滑块）。 |
+| <Icon src="/images/icons/collapse-all.svg" alt="折叠图标" /><Icon src="/images/icons/expand-all.svg" alt="展开图标" /> **展开/折叠全部** | <Shortcut combo="alt+e" /> | 一键展开或收起全部标题分支 *（窄面板自动隐藏）*。 |
+| <Icon src="/images/icons/locate.svg" alt="定位图标" /> **定位当前位置** | <Shortcut combo="alt+l" /> | 让大纲列表滚到你当前正在阅读的标题。 |
+| <Icon src="/images/icons/scroll-bottom.svg" alt="大纲滚底图标" /><Icon src="/images/icons/scroll-top.svg" alt="大纲回顶图标" /> **大纲列表滚底 / 回顶** | — | 将大纲列表自身一键滚动到底部或回到顶部 *（窄面板自动隐藏）*。 |
+| <Icon src="/images/icons/export.svg" alt="导出图标" /> **导出对话** | <Shortcut combo="ctrl+shift+e" /> | 打开[导出对话](/zh/features/export)弹窗（内含「复制大纲」）。 |
+| <Icon src="/images/icons/search.svg" alt="搜索图标" /> **搜索大纲** | <Shortcut combo="alt+f" /> | 实时过滤目录条目，高亮关键词并显示匹配数，右侧带 <Icon src="/images/icons/clear.svg" alt="清除图标" /> 清除按钮。 |
 
-同页还有两组相关设置：
+以下大纲操作仅提供键盘快捷键（工具栏不单独占按钮）：
 
-| 设置项 | 说明 |
-| --- | --- |
-| 页内收藏图标 | 对话内容中收藏图标的显示方式：固定显示 / 悬浮显示 / 隐藏 |
-| 面板收藏图标 | 大纲面板中收藏图标的显示方式：固定显示 / 悬浮显示 / 隐藏 |
-| 防止自动滚动 | AI 生成期间阻止页面自动滚动到底部 |
+- **刷新大纲**（<Shortcut combo="alt+r" />）— 手动触发一次大纲重新提取。
+- **只显示用户问题**（<Shortcut combo="alt+shift+q" />）— 直接切到 `0` 级，只保留每一轮提问。
+- **上一个 / 下一个标题**（<Shortcut combo="alt+arrowup" /> / <Shortcut combo="alt+arrowdown" />）— 逐条在标题间前后跳转。
 
-## 常用快捷键
+## 书签收藏
 
-<ShortcutLegend lang="zh" />
+在长对话里遇到关键结论时，可以随时打星收藏：
 
-| 操作                              | 快捷键                        |
-| --------------------------------- | ----------------------------- |
-| 刷新大纲                          | <Shortcut combo="alt+r" />                       |
-| 展开/折叠全部                     | <Shortcut combo="alt+e" />                       |
-| 展开到 H1–H6                      | <Shortcut combo="alt+shift+1" /> ~ <Shortcut combo="alt+shift+6" /> |
-| 跳到上一个标题                    | <Shortcut combo="alt+up" />                       |
-| 跳到下一个标题                    | <Shortcut combo="alt+down" />                       |
-| 切换显示/隐藏用户问题             | <Shortcut combo="alt+q" />                       |
-| 仅显示用户问题（层级收起至 0 级） | <Shortcut combo="alt+shift+q" />                 |
-| 切换"仅书签"过滤                  | <Shortcut combo="alt+c" />                       |
-| 定位大纲                          | <Shortcut combo="alt+l" />                       |
-| 搜索大纲                          | <Shortcut combo="alt+f" />                       |
+- **两处收藏入口**：既可以点页面正文中标题或提问旁的 <Icon src="/images/icons/star.svg" alt="收藏图标" /> **页内收藏图标**，也可以点 **大纲面板内的收藏图标**。两者可分别设置为 **始终显示**（默认）、**悬停显示** 或 **隐藏**。
+- **清理无效收藏**：如果重新生成或修改回答后原标题不再存在，对应书签会变成无效收藏。点击 <Icon src="/images/icons/tools.svg" alt="工具箱图标" /> **工具箱 → <Icon src="/images/icons/cleanup.svg" alt="清理图标" /> 清理无效收藏** 即可一键清理。
+
+## 字数统计、单节复制与复制大纲
+
+- **字数统计**：在大纲设置的高级选项中开启 **显示字数统计** 后，会在大纲条目上显示字数信息。
+- **复制单节**：悬停在任意大纲条目上，点击 <Icon src="/images/icons/copy.svg" alt="复制图标" /> 复制按钮即可复制该节内容。
+- **复制完整大纲**：点击工具栏的 <Icon src="/images/icons/export.svg" alt="导出图标" /> **导出对话**（或按 <Shortcut combo="ctrl+shift+e" />），在导出弹窗中点击 <Icon src="/images/icons/copy-outline.svg" alt="复制大纲图标" /> **复制大纲**，即可将整份目录复制为 Markdown。包含用户提问时，Ophel 会把提问设为一级标题 `#` 并将回复内标题按需顺延降级，确保复制后的文档层级清晰、不会错乱。
+
+## 设置项
+
+路径：**设置 → 功能模块 → 大纲**
+
+| 设置项 | 可选项 | 默认值 | 所在位置 |
+| --- | --- | --- | --- |
+| **大纲跟随模式** | 跟随当前位置 / 跟随最新消息 / 手动控制 | 跟随当前位置 | 大纲设置卡 |
+| **对话中自动更新大纲** | 开启 / 关闭 | 开启 | 大纲设置卡 → 底部 **高级选项** |
+| **更新间隔（秒）** | 1–60 秒 | 2 秒 | 大纲设置卡 → 底部 **高级选项** |
+| **显示字数统计** | 开启 / 关闭 | 关闭 | 大纲设置卡 → 底部 **高级选项** |
+| **页内收藏图标** | 始终显示 / 悬停显示 / 隐藏 | 始终显示 | 收藏图标卡 |
+| **面板收藏图标** | 始终显示 / 悬停显示 / 隐藏 | 始终显示 | 收藏图标卡 |
+| **阻止自动滚动到底部** | 开启 / 关闭 | 关闭 | 滚动设置卡（临时切换也可按 <Shortcut combo="alt+s" /> 或在工具箱开关） |

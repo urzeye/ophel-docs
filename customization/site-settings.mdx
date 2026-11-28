@@ -1,208 +1,101 @@
 ---
-title: "Per-site settings: model lock, Markdown fixes, and Claude"
+title: "Site Settings"
 sidebarTitle: "Site Settings"
+description: "Configure per-site model lock, hidden page rules, site enable/disable toggles, and dedicated options for Gemini, AI Studio, ChatGPT, and Claude."
 icon: "/images/icons/site-settings.svg"
-description: "Configure model lock, Markdown rendering fixes, Gemini watermark removal, Claude session key management, and usage monitoring on a per-site basis."
 keywords: ["model lock", "site settings", "Claude session key", "Gemini watermark", "per-site configuration", "AI model"]
 ---
 
 import { Icon } from "/snippets/icon.jsx"
-import { Shortcut, ShortcutLegend } from "/snippets/shortcut.jsx"
+import { Shortcut } from "/snippets/shortcut.jsx"
 
-Different AI platforms have different page structures, behaviors, and account models. Ophel lets you configure settings independently for each site rather than applying a single global configuration. Go to **Settings → Site Settings** and pick a site in the **Configure site** selector at the top (the site you are currently on is preselected and marked as current). All of that site's settings then appear on one page: **Page Layout** and **Model Lock**, the **Hide Ophel on specific pages** rules, and — for Gemini, AI Studio, ChatGPT, and Claude — a **Site-specific** section with that platform's own options.
+Open **Settings → Site Settings** and pick any built-in platform or installed Site Pack from the site selector at the top (your active site is pinned first; selecting another site shows a reminder banner).
 
-In the paths below, "Site Settings → *site name*" means: open Site Settings and select that site in the selector. Platform-own options live in the **Site-specific** section at the bottom of the page.
+Everything for the selected site appears on one page in four sections:
 
-## Model lock
+1. **Page Layout** — Smart Avoidance, page/prompt widths, Zen Mode, Clean Mode, and auto-hide input (see [Layout](/customization/layout)).
+2. **Model Lock** — Automatically switch to your preferred model when opening a site.
+3. **Hide Ophel on specific pages** — Hide the UI on selected URL paths.
+4. **Site-specific settings** — Dedicated options for **Gemini**, **AI Studio**, **ChatGPT**, and **Claude**.
 
-Model lock solves a common annoyance: manually switching back to your preferred model every time you open an AI platform. Once configured, Ophel checks the model selector after the page loads and switches to your target model automatically. If the target model isn't available on your account, Ophel leaves the current selection untouched.
+## Model Lock
 
-**To set up model lock:**
+<Icon src="/images/icons/model-lock.svg" alt="Model Lock icon" /> **Model Lock** automatically selects your preferred model whenever a chat page loads, while still letting you switch models manually mid-conversation.
 
-1. Open the target AI platform, then go to **Settings → Site Settings → Model Lock**
-2. Toggle it on
-3. Enter a keyword from the target model's name (matching is case-insensitive)
-
-<Note>
-  The **Model Lock** tab only appears on sites that support it; on unsupported
-  sites (such as DeepSeek) it is not shown.
-</Note>
-
-<Tip>
-  You only need part of the model name. Entering `flash` matches `Gemini 2.0 Flash`. If multiple models match, the first match is selected.
-</Tip>
-
-Each site's model lock setting is independent, so you can configure different target models for different platforms. You can also toggle model lock for the current site quickly from <Icon src="/images/icons/tools.svg" alt="Toolbox icon" /> **Toolbox** → <Icon src="/images/icons/model-lock.svg" alt="Model lock icon" /> **Model Lock**.
-
-<Note>
-  If you manually switch to a different model during a session, model lock only kicks in again on the next page load — it won't override your manual selection mid-session.
-</Note>
-
-**Supported sites:**
-
-| Site | URL |
-| --- | --- |
-| Gemini | gemini.google.com |
-| Gemini Enterprise | Enterprise accounts |
-| AI Studio | aistudio.google.com |
-| ChatGPT | chatgpt.com |
-| Claude | claude.ai |
-| Grok | grok.com |
-| Doubao | www.doubao.com |
-| Kimi | www.kimi.com |
-| Tongyi Qianwen | www.qianwen.com |
-| Qwen Studio | chat.qwen.ai |
-| Yuanbao | yuanbao.tencent.com |
-| Z.ai | chat.z.ai |
-| ChatGLM | chatglm.cn |
-| ima | ima.qq.com |
+- **How matching works**: Enter a case-insensitive keyword (for example `pro`, `o3`, `sonnet`) and Ophel picks the first matching model in the site's selector. On <Icon src="/images/icons/aistudio.png" alt="AI Studio icon" /> **AI Studio**, Ophel reads and caches the model dropdown list so you can pick from a dropdown directly.
+- **Quick toggle**: Turn Model Lock on or off for the current site from <Icon src="/images/icons/tools.svg" alt="Toolbox icon" /> **Toolbox → <Icon src="/images/icons/model-lock.svg" alt="Model Lock icon" /> Model Lock**, or jump to this card with <Shortcut combo="ctrl+alt+l" />.
+- **Supported built-in sites (14 of 16)**: ChatGPT, Gemini, Gemini Enterprise, AI Studio, Claude, Grok, Doubao / Dola, Kimi, Qwen Studio, Qianwen, Yuanbao, ChatGLM, ima, and Z.ai. *(Not available on **DeepSeek** or **Gemini Notebook**.)*
 
 ## Hide Ophel on specific pages
 
-Sometimes you want Ophel on a site, just not on every page of it — for example, on ChatGPT's `/canvas` pages or Claude's `/artifacts` pages. Instead of disabling the whole site, add a path rule and Ophel stays out of the way there.
+Hide the Ophel panel and floating quick buttons on specific paths of a site (for example, embedded previews or share pages) while keeping background modules running:
 
-**Settings → Site Settings → Hide Ophel on specific pages**
-
-- Enter the part of the URL after the domain, such as `/artifact/*` — `*` matches anything. You can also paste a full URL, or click **Use current page** to fill in the page you are on.
-- Turn on **Use regular expression** for more complex matching, for example `^/(artifact|share)/`.
-- On matching pages, the panel and quick buttons are hidden and Ophel's shortcuts do not fire. Everything comes back as soon as you leave those pages.
-
-<Tip>
-  If a rule covers the page you are currently on, Ophel tells you before you add
-  it — it will disappear from that page immediately.
-</Tip>
+- **Wildcard rules** (default): `*` matches any characters along `location.pathname` (for example `/artifact/*`).
+- **Regex rules**: Toggle `.*` to match with a regular expression (for example `^/(artifact|share)/`).
+- Click **Use current page** to prefill the path of the tab you are currently viewing.
 
 ## Disable Ophel on a site entirely
 
-If you never want Ophel on a site, you can turn it off there instead of hiding individual pages:
+To stop Ophel from initializing on a built-in platform altogether, use any of three places:
 
-- On the site itself: open **Settings → Site Settings** with that site selected and click the power icon next to the page title, then confirm — the page reloads without Ophel.
-- Anywhere else: toggle the site off in **Settings → Site Packs → Built-in sites**, or from the extension popup's quick access grid.
+- Click the <Icon src="/images/icons/power.svg" alt="Disable site icon" /> power/disable button at the top-right of **Settings → Site Settings** when viewing that site.
+- Toggle it off under **Settings → Site Packs → Built-in sites**.
+- Toggle it off in the browser toolbar popup.
 
-Re-enable the site from the same places to bring Ophel back.
+## Gemini settings
 
-## Markdown rendering fixes
+Available when <Icon src="/images/icons/gemini.png" alt="Gemini icon" /> **Gemini** is selected (shortcut: <Shortcut combo="ctrl+alt+g" />):
 
-Some AI platforms have intermittent Markdown rendering bugs — bold text failing to render is a common example. Ophel provides site-specific toggles to patch these issues without affecting other platforms.
-
-| Site | Path | Default |
+| Setting | Default | What it does |
 | --- | --- | --- |
-| Gemini | Settings → Site Settings → Gemini → Markdown Bold Fix | Off |
-| AI Studio | Settings → Site Settings → AI Studio → Markdown Bold Fix | Off |
-| ChatGPT | Settings → Site Settings → ChatGPT → Markdown Bold Fix | Off |
-
-The fix is off by default on all three platforms — enable it only when you actually see rendering problems.
-
-## ChatGPT performance
-
-**Settings → Site Settings → ChatGPT** includes three rendering optimizations for long conversations:
-
-| Setting | Description | Default |
-| --- | --- | --- |
-| Load Code Blocks in Batches | Mounts code editors in batches when opening or switching long chats, reducing page freezes | On |
-| Reduce Animations While Generating | Pauses message-area animations and transitions while a response is being generated | On |
-| Disable Backdrop Blur | Turns off the page's background blur effect to reduce scroll frame drops in long chats, at the cost of a slight visual change | Off |
-
-## Gemini watermark removal
-
-When you export or screenshot a Gemini chat, Gemini appends a "Created with Gemini" watermark. Ophel can strip this watermark automatically.
-
-**Settings → Site Settings → Gemini → Remove Image Watermark**
+| **Markdown Bold Fix** | Off | Fixes unrendered `**bold**` Markdown sequences that sometimes appear in Gemini replies. |
+| **Remove Image Watermark** | Off | Removes the visible star watermark on **Gemini AI-generated images** across page display, download, copy, and Markdown/ZIP export. |
 
 <Note>
-  Watermark removal requires the `<all_urls>` host permission, which Ophel will ask you to grant the first time you enable this setting. This permission lets Ophel intercept and modify the export request before it reaches the page. The setting is off by default.
+**Watermark removal permissions & platform support**: On Chrome, Edge, and Firefox extensions, enabling Gemini watermark removal requests the optional `<all_urls>` permission so Ophel can fetch and process watermarked images cleanly. Userscript builds work without an extra prompt. Not supported in experimental macOS Safari.
 </Note>
 
-The same watermark removal option is also available for AI Studio under **Settings → Site Settings → AI Studio → Remove Image Watermark**.
-
-## Gemini Enterprise: policy retry
-
-**Settings → Site Settings → Gemini**, in the Gemini Enterprise section:
-
-| Setting | Description | Default |
-| --- | --- | --- |
-| Auto-retry on Policy Block | Automatically retry requests blocked by enterprise content policies (for false-positive triggers) | Off |
-| Max Retries | Maximum consecutive retries when enabled, 1–10 | 3 |
+- **Automatic MyStuff / Library enhancement**: On Gemini's `/mystuff` and `/library` pages, Ophel automatically adds an **Open in new tab** action to media cards and resolves document items straight to their original conversations—no toggle needed.
 
 ## AI Studio settings
 
-**Settings → Site Settings → AI Studio** provides controls for the initial state of various sections on the AI Studio page, so you don't have to collapse them manually every time you open it:
+Available when <Icon src="/images/icons/aistudio.png" alt="AI Studio icon" /> **AI Studio** is selected (default model selection lives in the **Model Lock** card on the same page):
 
-| Setting | Description | Default |
+| Setting | Default | What it does |
 | --- | --- | --- |
-| Collapse Sidebar by Default | Auto-collapse the left navigation bar when opening the page | Off |
-| Collapse Run Settings Panel by Default | Auto-collapse the right run settings panel when opening the page | Off |
-| Collapse Tools Section by Default | Auto-collapse the tools section inside run settings | Off |
-| Collapse Advanced Settings by Default | Auto-collapse the advanced options inside run settings | Off |
-| Enable Search Tool by Default | Auto-enable Google real-time search when opening the page | On |
-| Remove Image Watermark | Remove the watermark from AI Studio generated images (takes effect after a page reload) | Off |
-| Markdown Bold Fix | Fix intermittent bold text rendering failures | Off |
-
-## Claude session key management
-
-Claude accounts have usage rate limits. When one account hits its cap, you normally have to wait for a reset. If you have multiple Claude accounts, Ophel can store Session Keys for all of them and let you switch instantly — keeping the chat going without logging out and back in.
-
-A Session Key (`sk-ant-sid...` format) is the authentication token your browser session uses on claude.ai. Ophel injects the specified key into requests so you can switch accounts without a full logout cycle. Keys are stored locally in your browser and are never sent to Ophel's servers.
-
-**Adding a session key** — go to **Settings → Site Settings → Claude**:
-
-<Tabs>
-  <Tab title="Auto-import (recommended)">
-    Click **Import current session**. Ophel reads the Session Key for your currently logged-in Claude account directly from your browser's cookies — no manual copying required.
-
-    <Note>
-      Auto-import requires the cookie access permission for claude.ai. Ophel will prompt you to grant it if needed.
-    </Note>
-  </Tab>
-  <Tab title="Manual add">
-    Click the Add button and paste a Session Key string in `sk-ant-sid...` format. You can add a label to each key to identify which account it belongs to.
-  </Tab>
-</Tabs>
-
-**Switching between accounts:**
-
-<Tabs>
-  <Tab title="Settings page">
-    Go to <Icon src="/images/icons/settings.svg" alt="Settings icon" /> **Settings → Site Settings → Claude** and select a key from the current Session Key selector, or use **Set as current** on a key row.
-  </Tab>
-  <Tab title="Keyboard shortcut">
-    Press <Icon src="/images/icons/keyboard.svg" alt="Keyboard shortcut icon" /> <Shortcut combo="ctrl+alt+s" /> to switch to the next key in your list.
-  </Tab>
-</Tabs>
-
-After switching, Ophel refreshes the current Claude page to apply the new key.
-
-**Managing the key list:**
-
-| Action | Description |
-| --- | --- |
-| <Icon src="/images/icons/check.svg" alt="Set current key icon" /> Set as current | Make a specific key the active account |
-| <Icon src="/images/icons/shield-check.svg" alt="Test key icon" /> Test single | Send a lightweight request to verify the key is valid and not rate-limited |
-| <Icon src="/images/icons/sync.svg" alt="Test all keys icon" /> Test all | Validate all keys in sequence, with 500 ms between tests to avoid triggering rate limits |
-| <Icon src="/images/icons/export.svg" alt="Export keys icon" /> Export | Export all keys as a <Icon src="/images/icons/json-file.svg" alt="JSON file icon" /> JSON file for backup |
-| <Icon src="/images/icons/import.svg" alt="Import keys icon" /> Import | Restore a key list from a <Icon src="/images/icons/json-file.svg" alt="JSON file icon" /> JSON file |
-| <Icon src="/images/icons/delete.svg" alt="Delete key icon" /> Delete | Remove a single entry — does not affect the Claude account itself |
-
-<Warning>
-  Exported JSON files contain the full Session Keys. Anyone with the file can use your account's quota. Be careful when sharing WebDAV backups or local files that contain exported keys.
-</Warning>
-
-## Usage monitor
-
-For AI services with daily usage limits, Ophel provides a local counter that shows how many chat turns you have used today and roughly how many tokens were consumed.
-
-The usage monitor runs entirely locally — it does not call any external APIs or rely on usage data from the platform. Ophel counts turns and estimates tokens by observing messages on the page.
-
-**Settings → Features → Alerts → Local Usage Counter & Estimate**:
-
-| Setting | Description | Default |
-| --- | --- | --- |
-| Enable local advanced-model counter and estimate | Show the local counter widget near the input field | Off |
-| Estimated daily chat limit | Used for the 80% / 100% threshold reminders; local estimate only | 100 |
-| Enable auto reset | Automatically reset the count each day | Off |
-
-When enabled, the widget shows today's send count, input/output character stats, rough token estimates, and progress toward your daily limit.
+| **Collapse Sidebar** | Off | Collapses the left navigation bar on load *(extension preload only)*. |
+| **Collapse Run Settings Panel** | Off | Collapses the right-hand Run Settings panel on load *(extension preload only)*. |
+| **Collapse Tools Section** | Off | Collapses the Tools subsection inside Run Settings *(extension preload only)*. |
+| **Collapse Advanced Settings** | Off | Collapses the Advanced Settings subsection *(extension preload only)*. |
+| **Enable Search Tool by Default** | **On** | Keeps Google Search grounding enabled by default *(extension preload only)*. |
+| **Remove Watermark** | Off *(Extension)* | Blocks AI Studio's `watermark_v4.png` page background watermark (requires page refresh; *extension preload only*). |
+| **Markdown Bold Fix** | Off (Extension) / On (Userscript) | Fixes unrendered `**bold**` text in responses (works on both extension and userscript). |
 
 <Note>
-  Token estimates are based on character counting and may differ from the platform's actual billing. Treat them as a rough reference, not an exact measure.
+Except for **Markdown Bold Fix**, the AI Studio options above rely on the extension's `document_start` preload script and do not apply to userscript builds.
 </Note>
+
+## ChatGPT settings
+
+Available when <Icon src="/images/icons/chatgpt.png" alt="ChatGPT icon" /> **ChatGPT** is selected:
+
+| Setting | Default | What it does |
+| --- | --- | --- |
+| **Markdown Bold Fix** | Off | Fixes unrendered `**bold**` sequences in replies. |
+| **Load Code Blocks in Batches** | **On** | Mounts CodeMirror blocks in batches so opening or switching long coding chats feels smoother. |
+| **Reduce Animations While Generating** | **On** | Pauses heavy message-area animations while streaming to cut CPU/GPU usage. |
+| **Disable Backdrop Blur** | Off | Turns off frosted-glass `backdrop-filter` effects to reduce frame drops when scrolling long threads. |
+
+## Claude settings (Session Key switcher)
+
+Available when <Icon src="/images/icons/claude.svg" alt="Claude icon" /> **Claude** is selected (shortcut: <Shortcut combo="ctrl+alt+c" />). Lets you store multiple Claude Session Keys (`sk-ant-sidXX-...`) and switch accounts without signing out manually:
+
+- **Add keys**: Click <Icon src="/images/icons/plus.svg" alt="Add key icon" /> to enter a key manually, <Icon src="/images/icons/import.svg" alt="Import icon" /> import / <Icon src="/images/icons/export.svg" alt="Export icon" /> export a <Icon src="/images/icons/json-file.svg" alt="JSON icon" /> JSON list (merges without duplicates), or click <Icon src="/images/icons/globe.svg" alt="Import from browser icon" /> **Import from browser** (extension builds only; requests the optional `cookies` permission to read your active `sessionKey` cookie).
+- **Test keys**: Click <Icon src="/images/icons/refresh.svg" alt="Test key icon" /> **Test** on a single key or <Icon src="/images/icons/shield-check.svg" alt="Test all icon" /> **Test all** (tests sequentially every **500 ms** to check validity and account tier).
+- **Switch safely**: Click <Icon src="/images/icons/check.svg" alt="Use key icon" /> to switch to any saved key (or <Icon src="/images/icons/copy.svg" alt="Copy key icon" /> to copy it)—or press <Shortcut combo="ctrl+alt+s" /> to rotate to the next valid key. On extension builds, Ophel checks whether another Claude tab is currently generating before switching so you do not interrupt an active reply.
+- **Userscript notes**: Userscript builds support manual/JSON keys, testing, and switching while on `claude.ai`, but do not support **Import from browser** or cross-tab generating checks.
+- **Organization isolation**: Synced Claude chats are isolated automatically per account and organization.
+
+<Tip>
+Looking for **Advanced Model Usage Estimate** (daily send counter and token chart)? It lives under **Settings → Features → Alerts** — see [Tabs, Alerts & Usage Estimate](/enhancements/tab-notifications#advanced-model-usage-estimate).
+</Tip>

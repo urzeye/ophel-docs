@@ -52,11 +52,11 @@ const platforms = [
   {
     name: 'Safari',
     icon: '/icons/safari.svg',
-    badge: 'macOS',
-    desc: '从 GitHub Releases 下载 macOS 桌面端 Safari 扩展构建包，通过 Safari 开发者功能加载使用。',
+    badge: 'macOS 实验版',
+    desc: '从 GitHub Releases 下载 macOS 桌面端 Safari 实验扩展压缩包，通过开发者功能加载。临时扩展在 24 小时后或退出 Safari 时会自动移除。',
     cta: '前往 GitHub Releases 下载',
     href: GITHUB_RELEASES_URL,
-    note: '支持 macOS Safari · 见 Releases 安装说明',
+    note: 'macOS Safari · 开发者 → 添加临时扩展',
   },
   {
     name: 'Tampermonkey 油猴脚本',
@@ -77,10 +77,10 @@ const platforms = [
     note: '需要 ScriptCat 脚本猫管理器',
   },
   {
-    name: 'GitHub Releases (ZIP / XPI / Safari / User.js)',
+    name: 'GitHub Releases（ZIP / Safari / User.js）',
     icon: '/icons/github.svg',
     badge: '离线与手动安装',
-    desc: '直接从 GitHub Releases 下载最新发布的 Chrome (.zip)、Firefox (.xpi)、Safari 资源包及油猴脚本。',
+    desc: '直接从 GitHub Releases 下载最新发布的 Chrome (.zip)、Firefox 未签名 (.zip)、Safari 实验包 (.zip) 及油猴脚本 (.user.js)。',
     cta: '打开 GitHub Releases',
     href: GITHUB_RELEASES_URL,
     note: '第一时间获取最新构建包',
@@ -93,7 +93,7 @@ const allSitePacks = getSitePacks('zh');
 
 <BaseLayout
   title="下载安装 Ophel — Chrome、Edge、Firefox、Safari、油猴脚本"
-  description="免费安装 Ophel 到 Chrome、Edge、Firefox、Safari、Tampermonkey 或 ScriptCat。支持 16 个内置 AI 平台与 16 个热插拔站点适配包。"
+  description={`免费安装 Ophel 到 Chrome、Edge、Firefox、Safari（实验版）、Tampermonkey 或 ScriptCat。支持 ${BUILTIN_PLATFORM_COUNT} 个内置 AI 平台与 ${SITE_PACK_COUNT} 个站点适配包。`}
   lang="zh-CN"
   enPath="/download/"
 >
@@ -115,7 +115,7 @@ const allSitePacks = getSitePacks('zh');
           </strong>{' '}
           与{' '}
           <strong class="text-[color:var(--ink-strong)]">
-            {SITE_PACK_COUNT} 个热插拔站点适配包
+            {SITE_PACK_COUNT} 个站点适配包
           </strong>
           。
         </p>
@@ -224,7 +224,7 @@ const allSitePacks = getSitePacks('zh');
         </div>
 
         <h2 class="font-display text-xl font-extrabold text-[color:var(--ink-strong)] mt-10 mb-4">
-          {SITE_PACK_COUNT} 个热插拔站点适配包（适配中心一键启用）
+          {SITE_PACK_COUNT} 个站点适配包（适配中心一键启用）
         </h2>
         <div class="flex flex-wrap gap-2">
           {
@@ -238,7 +238,7 @@ const allSitePacks = getSitePacks('zh');
               >
                 <span>{pack.label}</span>
                 <span class="font-mono text-[10px] text-[color:var(--text-faint)]">
-                  {pack.domain}
+                  {pack.category === 'self-hosted' ? '自部署' : pack.domain}
                 </span>
               </a>
             ))
@@ -281,7 +281,7 @@ const allSitePacks = getSitePacks('zh');
                   打开任意受支持的 AI 网站（或在适配中心启用适配包）
                 </strong>
                 <p class="text-sm text-[color:var(--text-muted)] leading-relaxed">
-                  访问 ChatGPT、Gemini、Claude、Gemini Notebook、DeepSeek 等 16
+                  访问 ChatGPT、Gemini、Claude、DeepSeek、豆包/Dola 等 {BUILTIN_PLATFORM_COUNT}{' '}
                   个内置平台，或在「设置 → 适配中心」开启更多站点。
                 </p>
               </div>

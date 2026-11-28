@@ -52,8 +52,8 @@ const presets = {
     },
     {
       id: "sakura",
-      en: ["Sakura", "Delicate pink blossom palette"],
-      zh: ["樱花物语", "精致粉色花瓣调"],
+      en: ["Sakura Season", "Delicate pink blossom palette"],
+      zh: ["樱花物语", "柔和粉色花瓣色调"],
       colors: {
         bg: "#fff5f7",
         secondary: "#fff0f3",
@@ -68,8 +68,8 @@ const presets = {
     },
     {
       id: "mint",
-      en: ["Mint", "Fresh mint-green highlights"],
-      zh: ["清新薄荷", "清爽绿色高亮"],
+      en: ["Fresh Mint", "Fresh mint-green highlights"],
+      zh: ["清新薄荷", "清爽薄荷绿高亮"],
       colors: {
         bg: "#f0fdf9",
         secondary: "#e6fffa",
@@ -148,8 +148,8 @@ const presets = {
     },
     {
       id: "porcelain",
-      en: ["Blue-and-white porcelain", "Classic Chinese porcelain blue"],
-      zh: ["青花瓷", "中国青花瓷传统蓝白"],
+      en: ["Porcelain", "Classic blue-and-white porcelain tones"],
+      zh: ["青花瓷", "传统青花蓝白色调"],
       colors: {
         bg: "#f9fbff",
         secondary: "#eff6ff",
@@ -247,8 +247,8 @@ const presets = {
     },
     {
       id: "cyberpunk",
-      en: ["Cyberpunk Neon", "Electric neon on dark"],
-      zh: ["赛博霓虹", "霓虹灯电光暗色"],
+      en: ["Cyberpunk", "Electric neon accents on dark"],
+      zh: ["赛博霓虹", "霓虹电光暗色调"],
       colors: {
         bg: "#050505",
         secondary: "#121212",
@@ -263,7 +263,7 @@ const presets = {
     },
     {
       id: "coffee",
-      en: ["Roasted Coffee", "Warm brown dark palette"],
+      en: ["Coffee House", "Warm brown dark palette"],
       zh: ["醇香咖啡", "温暖棕色暗色调"],
       colors: {
         bg: "#1c1917",
@@ -279,7 +279,7 @@ const presets = {
     },
     {
       id: "sunset",
-      en: ["Sunset Dream", "Purple-orange sunset gradient"],
+      en: ["Sunset Glow", "Purple-orange sunset gradient"],
       zh: ["幻梦落日", "紫橙落日渐变"],
       colors: {
         bg: "#120a21",
@@ -311,8 +311,8 @@ const presets = {
     },
     {
       id: "deep-abyss",
-      en: ["Deep Abyss", "Almost-black ultra-deep dark"],
-      zh: ["深海幽蓝", "近乎纯黑的深邃暗色"],
+      en: ["Deep Abyss", "Deep ocean-teal dark palette"],
+      zh: ["深海幽蓝", "深邃海蓝暗色调"],
       colors: {
         bg: "#042f2e",
         secondary: "#134e4a",
