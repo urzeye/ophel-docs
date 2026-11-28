@@ -12,11 +12,6 @@ import {
   Sparkles,
 } from 'lucide-react';
 import { CHROME_STORE_URL, EDGE_STORE_URL, FIREFOX_STORE_URL, GREASYFORK_URL } from '../i18n';
-import {
-  BUILTIN_PLATFORM_COUNT,
-  SITE_PACK_COUNT,
-  TOTAL_SUPPORTED_SITES,
-} from '../lib/supported-platforms';
 
 interface BrowserCta {
   label: string;
@@ -77,16 +72,14 @@ const PLATFORM_STRIP: Array<{
   { label: 'Kimi', icon: '/icons/kimi.png' },
 ];
 
-const EXTRA_PLATFORMS_COUNT = TOTAL_SUPPORTED_SITES - PLATFORM_STRIP.length;
-
 const text = {
   en: {
     live: 'Latest release',
     openSource: 'Free & Open Source (GPLv3)',
     localFirst: '100% local · Zero telemetry',
-    ecosystemSummary: `${BUILTIN_PLATFORM_COUNT} built-in sites + ${SITE_PACK_COUNT} Site Packs`,
+    ecosystemSummary: 'Built-in AI platforms & extensible Site Packs',
     watchDemo: 'Watch 24s demo',
-    morePlatforms: `+ ${EXTRA_PLATFORMS_COUNT} more sites →`,
+    morePlatforms: 'All supported sites →',
     browsersLabel: 'Also on:',
     safariNote: 'Safari (macOS Beta)',
     mobileHint: 'Desktop browser extension',
@@ -121,9 +114,9 @@ const text = {
     live: '最新发布',
     openSource: 'GPLv3 开源免费 · 零账号',
     localFirst: '100% 本地存储 · 零遥测',
-    ecosystemSummary: `${BUILTIN_PLATFORM_COUNT} 个内置站点 + ${SITE_PACK_COUNT} 个站点适配包`,
+    ecosystemSummary: '内置主流平台与持续扩展的站点适配包',
     watchDemo: '看 24 秒实机演示',
-    morePlatforms: `+ ${EXTRA_PLATFORMS_COUNT} 个站点与适配包 →`,
+    morePlatforms: '全部支持站点 →',
     browsersLabel: '支持渠道：',
     safariNote: 'Safari (实验版)',
     mobileHint: '适用于电脑端浏览器',

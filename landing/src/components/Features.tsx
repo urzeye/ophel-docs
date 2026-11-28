@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Anchor, ListTree, Loader2, Palette, Pause, Play, RotateCcw, Search } from 'lucide-react';
-import { TOTAL_SUPPORTED_SITES } from '../lib/supported-platforms';
 
 type Locale = 'en' | 'zh';
 
@@ -127,7 +126,8 @@ const UI_COPY = {
     tabsLabel: 'Demo chapters',
     jumpPrompt: 'Select any chapter or timeline segment to jump directly to that moment',
     ledgerHeading: 'What Sets Ophel Apart Beyond the Outline',
-    ledgerSub: `Designed for daily heavy AI workflows across ${TOTAL_SUPPORTED_SITES}+ supported platforms — fast, private, and free.`,
+    ledgerSub:
+      'Designed for daily heavy AI workflows across major AI platforms and extensible Site Packs — fast, private, and free.',
     docsCta: 'Read full feature documentation →',
     docsHref: 'https://ophel.app/docs',
   },
@@ -140,7 +140,8 @@ const UI_COPY = {
     tabsLabel: '实机演示章节',
     jumpPrompt: '点击任意章节卡片或下方进度段，可直接跳到对应实机画面',
     ledgerHeading: '不止大纲：真正拉开体验差距的 6 项核心能力',
-    ledgerSub: `覆盖 ${TOTAL_SUPPORTED_SITES}+ 个 AI 平台的日常深度工作流——不卡顿、不登录、数据始终留在你的设备里。`,
+    ledgerSub:
+      '专为高频 AI 工作流打造，覆盖主流 AI 平台与持续扩充的社区适配包——流畅、私密且完全免费。',
     docsCta: '查看完整功能文档 →',
     docsHref: 'https://ophel.app/docs/zh',
   },

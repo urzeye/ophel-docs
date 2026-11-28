@@ -1,8 +1,6 @@
 ---
 import type { T } from '../i18n';
 import {
-  BUILTIN_PLATFORM_COUNT,
-  SITE_PACK_COUNT,
   getSupportedPlatforms,
   getSitePacks,
   type SitePackCategory,
@@ -24,11 +22,11 @@ const categoryOrder: SitePackCategory[] = ['search-agent', 'assistant', 'self-ho
 const copy =
   locale === 'zh'
     ? {
-        tier1Title: `${BUILTIN_PLATFORM_COUNT} 个内置站点`,
+        tier1Title: '内置主流平台',
         tier1Badge: '开箱即用',
         newTag: '新增',
-        tier2Title: `${SITE_PACK_COUNT} 个站点适配包`,
-        tier2Badge: '适配中心一键启用 · 支持自定义域名',
+        tier2Title: '社区站点适配包',
+        tier2Badge: '适配中心一键启用 · 持续扩充 · 支持自定义域名',
         selfHostedTag: '开源自部署',
         docsLinkText: '适配包与自定义域名说明 →',
         docsHref: 'https://ophel.app/docs/zh/enhancements/site-extensions',
@@ -41,11 +39,11 @@ const copy =
         } as Record<SitePackCategory, string>,
       }
     : {
-        tier1Title: `${BUILTIN_PLATFORM_COUNT} Built-in Platforms`,
+        tier1Title: 'Built-in Platforms',
         tier1Badge: 'Works out of the box',
         newTag: 'NEW',
-        tier2Title: `${SITE_PACK_COUNT} Community Site Packs`,
-        tier2Badge: 'One-click install · Custom URL binding',
+        tier2Title: 'Community Site Packs',
+        tier2Badge: 'One-click install · Expanding · Custom URL binding',
         selfHostedTag: 'Self-hosted',
         docsLinkText: 'Site Packs & custom domain guide →',
         docsHref: 'https://ophel.app/docs/enhancements/site-extensions',
@@ -157,11 +155,8 @@ const groupedSitePacks = categoryOrder.map((category) => ({
         {
           groupedSitePacks.map((group) => (
             <div>
-              <h4 class="mb-2.5 flex items-center gap-2 text-xs font-bold uppercase tracking-wide text-[color:var(--ink-muted)]">
-                <span>{group.title}</span>
-                <span class="font-mono text-xs font-semibold text-[color:var(--text-faint)]">
-                  ({group.items.length})
-                </span>
+              <h4 class="mb-2.5 text-xs font-bold uppercase tracking-wide text-[color:var(--ink-muted)]">
+                {group.title}
               </h4>
               <ul class="grid grid-cols-2 gap-2.5 sm:grid-cols-3 lg:grid-cols-4">
                 {group.items.map((pack) => (

@@ -1,9 +1,3 @@
-import {
-  BUILTIN_PLATFORM_COUNT,
-  SITE_PACK_COUNT,
-  TOTAL_SUPPORTED_SITES,
-} from './lib/supported-platforms';
-
 export type Lang = 'en' | 'zh';
 
 /** Chrome Web Store 插件详情页 */
@@ -29,7 +23,7 @@ export const SCRIPTCAT_URL = 'https://scriptcat.org/script-show-page/6519';
 const en = {
   nav: {
     features: 'Live Demo',
-    platforms: `${TOTAL_SUPPORTED_SITES} Sites`,
+    platforms: 'Sites',
     reviews: 'Reviews',
     reviewsHref: '/#reviews',
     changelog: 'Changelog',
@@ -49,7 +43,7 @@ const en = {
   hero: {
     titleLine1: 'Turn AI Chats into',
     titleGradient: 'Readable, Navigable, Lasting Documents',
-    desc: `Stop endless scrolling through long AI threads. Ophel adds a live outline, project folders, reusable prompts, and clean exports to ${BUILTIN_PLATFORM_COUNT} built-in platforms and ${SITE_PACK_COUNT} Site Packs.`,
+    desc: 'Stop endless scrolling through long AI threads. Ophel adds a live outline, project folders, reusable prompts, and clean exports across major AI platforms and extensible Site Packs.',
     ctaPrimary: 'Install on Chrome',
   },
   features: {
@@ -77,9 +71,9 @@ const en = {
         desc: 'Organize chats with project folders and colored tags while keeping personal and team workspaces isolated. Reuse {{variable}} templates, quote selections, and send multi-step prompt chains automatically.',
       },
       {
-        code: `${BUILTIN_PLATFORM_COUNT} + ${SITE_PACK_COUNT} SITES`,
-        title: '34+ Sites & Fast Rule Updates',
-        desc: `Works out of the box on ${BUILTIN_PLATFORM_COUNT} major AI sites plus ${SITE_PACK_COUNT} one-click Site Packs and self-hosted tools like Open WebUI. Signed rule updates adapt to site redesigns without waiting on store reviews.`,
+        code: 'SITE PACKS',
+        title: 'Extensible Site Packs & Fast Rule Updates',
+        desc: 'Works out of the box on major AI platforms, expands via one-click community Site Packs and self-hosted tools like Open WebUI, and adapts to site redesigns through signed rule updates without waiting on store reviews.',
       },
       {
         code: 'LOCAL · WEBDAV',
@@ -89,8 +83,8 @@ const en = {
     ],
   },
   platforms: {
-    title: `${BUILTIN_PLATFORM_COUNT} Built-in Sites + ${SITE_PACK_COUNT} Site Packs`,
-    desc: `Works out of the box on ${BUILTIN_PLATFORM_COUNT} major AI platforms (including multi-domain hosts like Doubao/Dola and Kimi), plus ${SITE_PACK_COUNT} community Site Packs you can enable in one click — and custom self-hosted URLs.`,
+    title: 'Built-in Platforms & Extensible Site Packs',
+    desc: 'Works out of the box on major AI platforms (including multi-domain hosts like Doubao/Dola and Kimi), plus a growing library of one-click community Site Packs and custom self-hosted URLs.',
   },
   reviews: {
     title: 'Trusted in Daily AI Workflows',
@@ -124,7 +118,7 @@ const en = {
   },
   footer: {
     tagline: 'Turn AI chats into documents you can read, navigate, and reuse.',
-    desc: `Open-source browser extension and userscript bringing real-time outlines, chat folders, and prompt workflows to ${TOTAL_SUPPORTED_SITES}+ AI platforms.`,
+    desc: 'Open-source browser extension and userscript bringing real-time outlines, chat folders, and prompt workflows to major AI platforms and extensible Site Packs.',
     product: 'Product',
     support: 'Community & Support',
     legal: 'Legal',
@@ -152,7 +146,8 @@ const en = {
   },
   meta: {
     title: 'Ophel Atlas — AI Chat Outline, Folder Organizer & Prompt Workbench',
-    description: `Turn AI chats into readable, navigable knowledge. Supports ${BUILTIN_PLATFORM_COUNT} built-in platforms (ChatGPT, Gemini, Claude, DeepSeek, Doubao/Dola) + ${SITE_PACK_COUNT} Site Packs across Chrome, Edge, Firefox, Safari & Userscript.`,
+    description:
+      'Turn AI chats into readable, navigable knowledge. Supports major built-in AI platforms (ChatGPT, Gemini, Claude, DeepSeek, Doubao/Dola) plus extensible Site Packs across Chrome, Edge, Firefox, Safari & Userscript.',
   },
   privacy: {
     title: 'Privacy Policy — Ophel Atlas',
@@ -238,7 +233,7 @@ const en = {
 const zh = {
   nav: {
     features: '实机演示',
-    platforms: `${TOTAL_SUPPORTED_SITES} 个站点`,
+    platforms: '支持站点',
     reviews: '用户评价',
     reviewsHref: '/zh/#reviews',
     changelog: '更新日志',
@@ -258,7 +253,7 @@ const zh = {
   hero: {
     titleLine1: '把 AI 对话变成',
     titleGradient: '可阅读、可导航、可沉淀的文档',
-    desc: `告别在百屏长聊里反复翻找。Ophel 为 ${BUILTIN_PLATFORM_COUNT} 个主流 AI 平台与 ${SITE_PACK_COUNT} 个站点适配包提供实时目录大纲、项目文件夹、可复用提示词与高清导出。`,
+    desc: '告别在百屏长聊里反复翻找。Ophel 为主流 AI 平台与持续扩展的站点适配包提供实时目录大纲、项目文件夹、可复用提示词与高清导出。',
     ctaPrimary: '安装 Chrome 扩展',
   },
   features: {
@@ -286,9 +281,9 @@ const zh = {
         desc: '用项目文件夹与彩色标签整理历史对话，自动隔离个人与团队多工作区；内置带 {{变量}} 填空的提示词模板、划词一键引用与多步队列自动顺序发送。',
       },
       {
-        code: `${BUILTIN_PLATFORM_COUNT} + ${SITE_PACK_COUNT} 站点`,
-        title: '34+ 站点覆盖与官网改版云端热修',
-        desc: `开箱即用 ${BUILTIN_PLATFORM_COUNT} 个主流 AI 平台与 ${SITE_PACK_COUNT} 个一键适配包，并支持 Open WebUI、LibreChat 等自部署站点；遇到 AI 官网改版时通过只读签名规则快速热更新，无需苦等商店审核。`,
+        code: '适配中心',
+        title: '广泛平台覆盖与官网改版云端热修',
+        desc: '开箱支持主流 AI 平台，可通过社区适配包一键扩展更多站点及 Open WebUI、LibreChat 等自部署界面；遇到 AI 官网改版时通过只读签名规则快速热更新，无需苦等商店审核。',
       },
       {
         code: 'LOCAL · WEBDAV',
@@ -298,8 +293,8 @@ const zh = {
     ],
   },
   platforms: {
-    title: `${BUILTIN_PLATFORM_COUNT} 个内置站点 + ${SITE_PACK_COUNT} 个站点适配包`,
-    desc: `开箱支持 ${BUILTIN_PLATFORM_COUNT} 个主流 AI 平台（含豆包/Dola、Kimi 多域名），并可在「适配中心」一键启用 ${SITE_PACK_COUNT} 个社区适配包与自定义自部署地址。`,
+    title: '内置主流平台与可扩展站点适配包',
+    desc: '开箱支持主流 AI 平台（含豆包/Dola、Kimi 多域名），并可在「适配中心」一键启用持续扩充的社区适配包与自定义自部署地址。',
   },
   reviews: {
     title: '高频 AI 用户的真实口碑',
@@ -331,7 +326,7 @@ const zh = {
   },
   footer: {
     tagline: '让 AI 对话可读、可导航、可沉淀。',
-    desc: `开源免费的浏览器扩展与油猴脚本，为 ${TOTAL_SUPPORTED_SITES}+ 个 AI 平台提供统一的大纲导航、对话整理与提示词工作流。`,
+    desc: '开源免费的浏览器扩展与油猴脚本，为主流 AI 平台与持续扩充的社区适配包提供统一的大纲导航、对话整理与提示词工作流。',
     product: '产品',
     support: '社区与支持',
     legal: '法律与隐私',
@@ -359,7 +354,8 @@ const zh = {
   },
   meta: {
     title: 'Ophel Atlas — AI 对话大纲 · 对话文件夹管理 · Prompt 词库',
-    description: `Ophel 为 ChatGPT、Gemini、Claude、DeepSeek、豆包/Dola 等 ${BUILTIN_PLATFORM_COUNT} 个内置平台及 ${SITE_PACK_COUNT} 个站点适配包提供实时大纲、对话文件夹与 Prompt 词库，支持 Chrome、Edge、Firefox、Safari 与油猴脚本。`,
+    description:
+      'Ophel 为 ChatGPT、Gemini、Claude、DeepSeek、豆包/Dola 等主流内置平台及持续扩展的站点适配包提供实时大纲、对话文件夹与 Prompt 词库，支持 Chrome、Edge、Firefox、Safari 与油猴脚本。',
   },
   privacy: {
     title: '隐私政策 — Ophel Atlas',

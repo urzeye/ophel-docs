@@ -12,12 +12,7 @@ import {
   SCRIPTCAT_URL,
 } from '../../i18n';
 import { SpotlightCard } from '../../components/ui/SpotlightCard';
-import {
-  getSupportedPlatforms,
-  getSitePacks,
-  BUILTIN_PLATFORM_COUNT,
-  SITE_PACK_COUNT,
-} from '../../lib/supported-platforms';
+import { getSupportedPlatforms, getSitePacks } from '../../lib/supported-platforms';
 
 const t = translations.en;
 
@@ -94,7 +89,7 @@ const allSitePacks = getSitePacks('en');
 
 <BaseLayout
   title="Download & Install Ophel — Chrome, Edge, Firefox, Safari, Tampermonkey"
-  description={`Install Ophel free on Chrome, Edge, Firefox, Safari (experimental), Tampermonkey, or ScriptCat. Works with ${BUILTIN_PLATFORM_COUNT} built-in AI platforms and ${SITE_PACK_COUNT} Site Packs.`}
+  description="Install Ophel free on Chrome, Edge, Firefox, Safari (experimental), Tampermonkey, or ScriptCat. Works with major built-in AI platforms and extensible community Site Packs."
   lang="en"
   zhPath="/zh/download/"
   withJsonLd={false}
@@ -112,13 +107,9 @@ const allSitePacks = getSitePacks('en');
           class="text-base sm:text-lg text-[color:var(--text-muted)] max-w-2xl mx-auto leading-relaxed"
         >
           Free and open-source (GPLv3). Works across{' '}
-          <strong class="text-[color:var(--ink-strong)]">
-            {BUILTIN_PLATFORM_COUNT} built-in AI platforms
-          </strong>{' '}
-          and{' '}
-          <strong class="text-[color:var(--ink-strong)]">
-            {SITE_PACK_COUNT} Site Packs
-          </strong>.
+          <strong class="text-[color:var(--ink-strong)]">major built-in AI platforms</strong>{' '}
+          and an expanding library of{' '}
+          <strong class="text-[color:var(--ink-strong)]">community Site Packs</strong>.
         </p>
       </header>
 
@@ -188,7 +179,7 @@ const allSitePacks = getSitePacks('en');
 
       <section class="mb-14">
         <h2 class="font-display text-xl font-extrabold text-[color:var(--ink-strong)] mb-4">
-          {BUILTIN_PLATFORM_COUNT} Built-in AI Platforms
+          Built-in AI Platforms
         </h2>
         <div class="flex flex-wrap gap-2.5">
           {
@@ -227,7 +218,7 @@ const allSitePacks = getSitePacks('en');
         </div>
 
         <h2 class="font-display text-xl font-extrabold text-[color:var(--ink-strong)] mt-10 mb-4">
-          {SITE_PACK_COUNT} Community Site Packs
+          Community Site Packs
         </h2>
         <div class="flex flex-wrap gap-2">
           {
@@ -281,7 +272,7 @@ const allSitePacks = getSitePacks('en');
               </span>
               <div>
                 <strong class="block text-base font-bold text-[color:var(--ink-strong)] mb-1">
-                  Open any of the {BUILTIN_PLATFORM_COUNT} built-in AI sites (or enable Site Packs)
+                  Open any supported AI site (or enable Site Packs)
                 </strong>
                 <p class="text-sm text-[color:var(--text-muted)] leading-relaxed">
                   Visit ChatGPT, Gemini, Claude, Gemini Notebook, DeepSeek, or enable additional

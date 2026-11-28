@@ -12,12 +12,7 @@ import {
   SCRIPTCAT_URL,
 } from '../../../i18n';
 import { SpotlightCard } from '../../../components/ui/SpotlightCard';
-import {
-  getSupportedPlatforms,
-  getSitePacks,
-  BUILTIN_PLATFORM_COUNT,
-  SITE_PACK_COUNT,
-} from '../../../lib/supported-platforms';
+import { getSupportedPlatforms, getSitePacks } from '../../../lib/supported-platforms';
 
 const t = translations.zh;
 
@@ -94,7 +89,7 @@ const allSitePacks = getSitePacks('zh');
 
 <BaseLayout
   title="下载安装 Ophel — Chrome、Edge、Firefox、Safari、油猴脚本"
-  description={`免费安装 Ophel 到 Chrome、Edge、Firefox、Safari（实验版）、Tampermonkey 或 ScriptCat。支持 ${BUILTIN_PLATFORM_COUNT} 个内置 AI 平台与 ${SITE_PACK_COUNT} 个站点适配包。`}
+  description="免费安装 Ophel 到 Chrome、Edge、Firefox、Safari（实验版）、Tampermonkey 或 ScriptCat。支持主流内置 AI 平台与持续扩充的社区站点适配包。"
   lang="zh-CN"
   enPath="/download/"
 >
@@ -111,14 +106,8 @@ const allSitePacks = getSitePacks('zh');
           class="text-base sm:text-lg text-[color:var(--text-muted)] max-w-2xl mx-auto leading-relaxed"
         >
           开源免费（GPLv3），无需注册账号。开箱支持{' '}
-          <strong class="text-[color:var(--ink-strong)]">
-            {BUILTIN_PLATFORM_COUNT} 个内置 AI 平台
-          </strong>{' '}
-          与{' '}
-          <strong class="text-[color:var(--ink-strong)]">
-            {SITE_PACK_COUNT} 个站点适配包
-          </strong>
-          。
+          <strong class="text-[color:var(--ink-strong)]">主流内置 AI 平台</strong> 与持续扩充的{' '}
+          <strong class="text-[color:var(--ink-strong)]">社区站点适配包</strong>。
         </p>
       </header>
 
@@ -187,7 +176,7 @@ const allSitePacks = getSitePacks('zh');
 
       <section class="mb-14">
         <h2 class="font-display text-xl font-extrabold text-[color:var(--ink-strong)] mb-4">
-          {BUILTIN_PLATFORM_COUNT} 个内置 AI 平台（开箱即用）
+          内置主流 AI 平台（开箱即用）
         </h2>
         <div class="flex flex-wrap gap-2.5">
           {
@@ -226,7 +215,7 @@ const allSitePacks = getSitePacks('zh');
         </div>
 
         <h2 class="font-display text-xl font-extrabold text-[color:var(--ink-strong)] mt-10 mb-4">
-          {SITE_PACK_COUNT} 个站点适配包（适配中心一键启用）
+          社区站点适配包（适配中心一键启用）
         </h2>
         <div class="flex flex-wrap gap-2">
           {
@@ -283,8 +272,8 @@ const allSitePacks = getSitePacks('zh');
                   打开任意受支持的 AI 网站（或在适配中心启用适配包）
                 </strong>
                 <p class="text-sm text-[color:var(--text-muted)] leading-relaxed">
-                  访问 ChatGPT、Gemini、Claude、DeepSeek、豆包/Dola 等 {BUILTIN_PLATFORM_COUNT}{' '}
-                  个内置平台，或在「设置 → 适配中心」开启更多站点。
+                  访问 ChatGPT、Gemini、Claude、DeepSeek、豆包/Dola 等主流内置平台，或在「设置 →
+                  适配中心」开启更多站点。
                 </p>
               </div>
             </li>
