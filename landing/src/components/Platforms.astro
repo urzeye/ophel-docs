@@ -5,6 +5,7 @@ import {
   SITE_PACK_COUNT,
   getSupportedPlatforms,
   getSitePacks,
+  type SitePackCategory,
   type SupportedPlatformLocale,
 } from '../lib/supported-platforms';
 
@@ -18,6 +19,8 @@ const { t, locale = 'en' } = Astro.props;
 const builtInPlatforms = getSupportedPlatforms(locale);
 const sitePacks = getSitePacks(locale);
 
+const categoryOrder: SitePackCategory[] = ['search-agent', 'assistant', 'self-hosted'];
+
 const copy =
   locale === 'zh'
     ? {
@@ -25,25 +28,41 @@ const copy =
         tier1Badge: '开箱即用',
         newTag: '新增',
         tier2Title: `${SITE_PACK_COUNT} 个站点适配包`,
-        tier2Badge: '适配中心一键启用 · 持续扩充',
-        selfHostedTag: '自部署',
+        tier2Badge: '适配中心一键启用 · 支持自定义域名',
+        selfHostedTag: '开源自部署',
         docsLinkText: '适配包与自定义域名说明 →',
         docsHref: 'https://ophel.app/docs/zh/enhancements/site-extensions',
         contributeText: '提交新站点适配包 →',
         contributeHref: 'https://github.com/urzeye/ophel/tree/main/registry/sites',
+        categories: {
+          'search-agent': 'AI 搜索与智能体',
+          assistant: 'AI 助手与知识空间',
+          'self-hosted': '开源与自部署界面',
+        } as Record<SitePackCategory, string>,
       }
     : {
         tier1Title: `${BUILTIN_PLATFORM_COUNT} Built-in Platforms`,
-        tier1Badge: 'Zero setup',
+        tier1Badge: 'Works out of the box',
         newTag: 'NEW',
-        tier2Title: `${SITE_PACK_COUNT} Site Packs`,
-        tier2Badge: 'One-click in Site Packs · Expanding',
+        tier2Title: `${SITE_PACK_COUNT} Community Site Packs`,
+        tier2Badge: 'One-click install · Custom URL binding',
         selfHostedTag: 'Self-hosted',
         docsLinkText: 'Site Packs & custom domain guide →',
         docsHref: 'https://ophel.app/docs/enhancements/site-extensions',
         contributeText: 'Contribute a Site Pack →',
         contributeHref: 'https://github.com/urzeye/ophel/tree/main/registry/sites',
+        categories: {
+          'search-agent': 'Search & Agents',
+          assistant: 'Assistants & Workspaces',
+          'self-hosted': 'Open-Source & Self-Hosted',
+        } as Record<SitePackCategory, string>,
       };
+
+const groupedSitePacks = categoryOrder.map((category) => ({
+  id: category,
+  title: copy.categories[category],
+  items: sitePacks.filter((pack) => pack.category === category),
+}));
 ---
 
 <section class="platforms" id="platforms">
@@ -53,66 +72,61 @@ const copy =
       <p class="section-desc">{t.desc}</p>
     </div>
 
-    <!-- Tier 1: 16 Built-in Platforms -->
+    <!-- Tier 1: 16 Built-in Platforms (non-outbound cards, two-line stack prevents truncation) -->
     <div class="atlas-tier-compact">
-      <div class="flex flex-wrap items-center justify-between gap-2 mb-3.5">
-        <div class="flex items-center gap-2.5">
+      <div class="mb-4 flex flex-wrap items-center justify-between gap-2">
+        <div class="flex flex-wrap items-center gap-2.5">
           <h3 class="font-display text-lg font-extrabold text-[color:var(--ink-strong)]">
             {copy.tier1Title}
           </h3>
           <span
-            class="rounded-full border border-[color:var(--line-strong)] bg-[color:var(--surface-tint)] px-2.5 py-0.5 font-mono text-[11px] font-bold text-[color:var(--accent-strong)]"
+            class="rounded-full border border-[color:var(--line-strong)] bg-[color:var(--surface-tint)] px-2.5 py-0.5 font-mono text-xs font-bold text-[color:var(--accent-strong)]"
           >
             {copy.tier1Badge}
           </span>
         </div>
       </div>
 
-      <div class="grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4">
+      <ul class="grid grid-cols-2 gap-2.5 sm:grid-cols-3 lg:grid-cols-4">
         {
           builtInPlatforms.map((platform) => (
-            <a
-              class={`builtin-site-tile group ${platform.isNew ? 'builtin-site-tile-new' : ''}`}
-              href={platform.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              title={`${platform.label} (${platform.domain})`}
-            >
+            <li class={`builtin-site-tile ${platform.isNew ? 'builtin-site-tile-new' : ''}`}>
               <span
                 class={`platform-chip-icon ${platform.iconVariant === 'inverted' ? 'platform-chip-icon-inverted' : ''}`}
                 aria-hidden="true"
               >
                 <img src={platform.iconSrc} alt="" width="18" height="18" loading="lazy" />
               </span>
-              <div class="min-w-0 flex-1 flex items-center justify-between gap-1.5">
-                <span class="truncate text-sm font-bold text-[color:var(--ink-strong)] group-hover:text-[color:var(--accent-strong)]">
-                  {platform.label}
+              <div class="min-w-0 flex-1">
+                <div class="flex items-center gap-1.5">
+                  <span class="text-sm font-bold leading-snug text-[color:var(--ink-strong)]">
+                    {platform.label}
+                  </span>
+                  {platform.isNew && (
+                    <span class="shrink-0 rounded-full bg-[color:var(--accent-strong)] px-1.5 py-0.5 font-mono text-[11px] font-bold leading-none text-white">
+                      {copy.newTag}
+                    </span>
+                  )}
+                </div>
+                <span class="mt-0.5 block break-all font-mono text-xs leading-tight text-[color:var(--text-faint)]">
+                  {platform.domain}
                 </span>
-                {platform.isNew ? (
-                  <span class="shrink-0 rounded-full bg-[color:var(--accent-strong)] px-1.5 py-0.2 font-mono text-[10px] font-bold text-white">
-                    {copy.newTag}
-                  </span>
-                ) : (
-                  <span class="hidden xl:inline shrink-0 font-mono text-[11px] text-[color:var(--text-faint)]">
-                    {platform.domain}
-                  </span>
-                )}
               </div>
-            </a>
+            </li>
           ))
         }
-      </div>
+      </ul>
     </div>
 
-    <!-- Tier 2: Community Site Packs (Compact Distilled Grid) -->
-    <div class="atlas-tier-compact mt-8 pt-7 border-t border-[color:var(--line)]">
-      <div class="flex flex-wrap items-center justify-between gap-3 mb-3.5">
+    <!-- Tier 2: 18 Community Site Packs grouped by category -->
+    <div class="atlas-tier-compact mt-10 border-t border-[color:var(--line)] pt-8">
+      <div class="mb-5 flex flex-wrap items-center justify-between gap-3">
         <div class="flex flex-wrap items-center gap-2.5">
           <h3 class="font-display text-lg font-extrabold text-[color:var(--ink-strong)]">
             {copy.tier2Title}
           </h3>
           <span
-            class="rounded-full border border-[rgba(200,122,8,0.32)] bg-[rgba(200,122,8,0.1)] px-2.5 py-0.5 font-mono text-[11px] font-bold text-[#945700]"
+            class="rounded-full border border-[rgba(148,87,0,0.3)] bg-[rgba(200,122,8,0.1)] px-2.5 py-0.5 font-mono text-xs font-bold text-[#7d4900]"
           >
             {copy.tier2Badge}
           </span>
@@ -121,7 +135,7 @@ const copy =
         <div class="flex flex-wrap items-center gap-4">
           <a
             href={copy.docsHref}
-            class="font-mono text-xs font-bold text-[color:var(--accent-strong)] underline decoration-[color:var(--line-strong)] underline-offset-4 transition-colors hover:text-[color:var(--ink-strong)]"
+            class="inline-flex min-h-[38px] items-center font-mono text-xs font-bold text-[color:var(--accent-strong)] underline decoration-[color:var(--line-strong)] underline-offset-4 transition-colors hover:text-[color:var(--ink-strong)]"
           >
             {copy.docsLinkText}
           </a>
@@ -129,30 +143,43 @@ const copy =
             href={copy.contributeHref}
             target="_blank"
             rel="noopener noreferrer"
-            class="font-mono text-xs font-semibold text-[color:var(--ink-muted)] underline decoration-[color:var(--line)] underline-offset-4 transition-colors hover:text-[color:var(--ink-strong)]"
+            class="inline-flex min-h-[38px] items-center font-mono text-xs font-semibold text-[color:var(--ink-muted)] underline decoration-[color:var(--line)] underline-offset-4 transition-colors hover:text-[color:var(--ink-strong)]"
           >
             {copy.contributeText}
           </a>
         </div>
       </div>
 
-      <div class="grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4">
+      <div class="space-y-6">
         {
-          sitePacks.map((pack) => (
-            <a
-              href={pack.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="sitepack-row group"
-              title={`${pack.label} (${pack.domain})`}
-            >
-              <span class="truncate text-sm font-bold text-[color:var(--ink-strong)] transition-colors group-hover:text-[color:var(--accent-strong)]">
-                {pack.label}
-              </span>
-              <span class="shrink-0 font-mono text-[11px] text-[color:var(--text-faint)]">
-                {pack.category === 'self-hosted' ? copy.selfHostedTag : pack.domain}
-              </span>
-            </a>
+          groupedSitePacks.map((group) => (
+            <div>
+              <h4 class="mb-2.5 flex items-center gap-2 text-xs font-bold uppercase tracking-wide text-[color:var(--ink-muted)]">
+                <span>{group.title}</span>
+                <span class="font-mono text-xs font-semibold text-[color:var(--text-faint)]">
+                  ({group.items.length})
+                </span>
+              </h4>
+              <ul class="grid grid-cols-2 gap-2.5 sm:grid-cols-3 lg:grid-cols-4">
+                {group.items.map((pack) => (
+                  <li class={`sitepack-row ${pack.isNew ? 'builtin-site-tile-new' : ''}`}>
+                    <div class="flex items-center gap-1.5">
+                      <span class="text-sm font-bold leading-snug text-[color:var(--ink-strong)]">
+                        {pack.label}
+                      </span>
+                      {pack.isNew && (
+                        <span class="shrink-0 rounded-full bg-[color:var(--accent-strong)] px-1.5 py-0.5 font-mono text-[11px] font-bold leading-none text-white">
+                          {copy.newTag}
+                        </span>
+                      )}
+                    </div>
+                    <span class="mt-0.5 block break-all font-mono text-xs leading-tight text-[color:var(--text-faint)]">
+                      {pack.category === 'self-hosted' ? copy.selfHostedTag : pack.domain}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           ))
         }
       </div>

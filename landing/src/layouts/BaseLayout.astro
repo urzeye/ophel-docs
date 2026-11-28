@@ -132,6 +132,9 @@ const fontUrl =
     {withJsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
   </head>
   <body>
+    <a href="#main-content" class="skip-link">
+      {lang === 'zh-CN' ? '跳转到正文内容' : 'Skip to main content'}
+    </a>
     <slot />
   </body>
 </html>

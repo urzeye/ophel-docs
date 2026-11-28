@@ -24,6 +24,7 @@ export interface SitePackDefinition {
   href: string;
   domain: string;
   category: SitePackCategory;
+  isNew?: boolean;
 }
 
 export interface SitePackItem extends SitePackDefinition {
@@ -60,6 +61,7 @@ const PLATFORM_DEFINITIONS: SupportedPlatformDefinition[] = [
     href: 'https://notebook.google.com',
     domain: 'notebook.google.com',
     iconSrc: '/icons/notebook.png',
+    isNew: true,
   },
   {
     id: 'aistudio',
@@ -169,6 +171,7 @@ const SITE_PACK_DEFINITIONS: SitePackDefinition[] = [
     href: 'https://www.workbuddy.cn/app',
     domain: 'workbuddy.cn / .ai',
     category: 'search-agent',
+    isNew: true,
   },
   {
     id: 'genspark',
