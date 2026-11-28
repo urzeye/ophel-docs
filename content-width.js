@@ -175,7 +175,9 @@
 
   function mountControl() {
     var themeToggle = document.querySelector(
-      '#navbar [data-component-name="theme-toggle"]'
+      '#navbar #theme-preference-menu-trigger, ' +
+        '#navbar [data-component-name="theme-preference-menu"], ' +
+        '#navbar [data-component-name="theme-toggle"]'
     );
     if (!themeToggle || !themeToggle.parentElement) return;
 
