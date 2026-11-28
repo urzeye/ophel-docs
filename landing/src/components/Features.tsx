@@ -205,6 +205,21 @@ export function Features({ featuresTitle, featuresSubtitle, items, locale = 'en'
     return () => mq.removeEventListener('change', handler);
   }, []);
 
+  // Trigger load + play once sources are attached
+  useEffect(() => {
+    if (!hasActivatedVideo) return;
+    const video = videoRef.current;
+    if (!video) return;
+    video.load();
+    if (!reducedMotion) {
+      video.play().catch(() => {
+        setIsBuffering(false);
+      });
+    } else {
+      setIsBuffering(false);
+    }
+  }, [hasActivatedVideo, reducedMotion]);
+
   // Load & play video lazily only when workbench enters viewport; pause when offscreen
   useEffect(() => {
     const node = stageContainerRef.current;
@@ -220,16 +235,17 @@ export function Features({ featuresTitle, featuresSubtitle, items, locale = 'en'
             if (!hasActivatedVideo) {
               setHasActivatedVideo(true);
               setIsBuffering(true);
+            } else {
+              video.play().catch(() => {
+                setIsBuffering(false);
+              });
             }
-            video.play().catch(() => {
-              setIsBuffering(false);
-            });
           }
         } else {
           video.pause();
         }
       },
-      { rootMargin: '120px 0px', threshold: 0.15 },
+      { rootMargin: '80px 0px', threshold: 0.15 },
     );
     io.observe(node);
     return () => io.disconnect();
@@ -521,8 +537,12 @@ export function Features({ featuresTitle, featuresSubtitle, items, locale = 'en'
                   onPause={() => setIsPlaying(false)}
                   onClick={togglePlay}
                 >
-                  <source src="/media/ophel-demo.webm" type="video/webm" />
-                  <source src="/media/ophel-demo.mp4" type="video/mp4" />
+                  {hasActivatedVideo && (
+                    <>
+                      <source src="/media/ophel-demo.webm" type="video/webm" />
+                      <source src="/media/ophel-demo.mp4" type="video/mp4" />
+                    </>
+                  )}
                 </video>
 
                 {isBuffering && (
@@ -632,7 +652,7 @@ export function Features({ featuresTitle, featuresSubtitle, items, locale = 'en'
                     </span>
                   )}
                 </div>
-                <dd className="text-sm leading-relaxed text-[color:var(--text-muted)]">
+                <dd className="max-w-[62ch] text-sm leading-relaxed text-[color:var(--text-muted)]">
                   {item.desc}
                 </dd>
               </div>

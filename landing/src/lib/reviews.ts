@@ -702,7 +702,7 @@ const CURATED_IDS: Record<'en' | 'zh', readonly string[]> = {
     'cherry-691',
     'wujingfeng',
     'ink-vagabond',
-    'steel-maestro',
+    'Steel-Maestro',
     'chia-ying',
     'nai-an',
     'lu-mu-yuan',

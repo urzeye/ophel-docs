@@ -404,13 +404,16 @@ export function Hero({
                       tabIndex={isActive ? 0 : -1}
                       onClick={() => setActiveTabIndex(idx)}
                       onKeyDown={(e) => handleTabKeyDown(e, idx)}
-                      className={`inline-flex min-h-[34px] flex-1 items-center justify-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-bold transition-colors sm:flex-none ${
+                      className={`inline-flex min-h-[34px] flex-1 items-center justify-center gap-1 whitespace-nowrap rounded-full px-2 py-1.5 text-xs font-bold transition-colors sm:flex-none sm:gap-1.5 sm:px-3 ${
                         isActive
                           ? 'bg-[color:var(--ink-strong)] text-white shadow-sm'
                           : 'text-[color:var(--ink-muted)] hover:text-[color:var(--ink-strong)]'
                       }`}
                     >
-                      <Icon className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
+                      <Icon
+                        className="hidden h-3.5 w-3.5 shrink-0 sm:inline-block"
+                        aria-hidden="true"
+                      />
                       <span>{tab.label}</span>
                     </button>
                   );

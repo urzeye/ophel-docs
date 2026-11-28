@@ -264,12 +264,13 @@ section[id] {
 .browser-pill,
 .browser-pill-more {
   display: inline-flex;
+  min-height: 34px;
   align-items: center;
   gap: 0.4rem;
   border-radius: 999px;
   border: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.76);
-  padding: 0.32rem 0.7rem;
+  background: rgba(255, 255, 255, 0.78);
+  padding: 0.38rem 0.76rem;
   font-size: 0.76rem;
   font-weight: 700;
   color: var(--ink-muted);
