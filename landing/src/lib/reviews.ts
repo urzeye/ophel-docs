@@ -685,86 +685,43 @@ export const reviews: Review[] = [
   },
 ];
 
-const MARQUEE_ROW_IDS: Record<'en' | 'zh', [readonly string[], readonly string[]]> = {
-  en: [
-    [
-      'davis-allrick',
-      'sherlock-holmes',
-      'astrocyte',
-      'lazar-antic',
-      'gimme-video',
-      'saleh-mohammad',
-      'joshua-goldstein',
-      'adnan-arefin',
-      'dom-andrews',
-    ],
-    [
-      'jean-bravo',
-      'niamat-ullah',
-      'asifur-rahman',
-      'Ruggiero-Capacchione',
-      'deniz',
-      'al-amin-islam',
-      'orion-ventures',
-      'pathan-boks',
-      'luis-novoa',
-    ],
-  ],
-  zh: [
-    [
-      'wu-dengdeng',
-      'cherry-691',
-      'wujingfeng',
-      'ink-vagabond',
-      'Steel-Maestro',
-      'chia-ying',
-      'nai-an',
-      'lu-mu-yuan',
-      'howe-ryan',
-    ],
-    [
-      'baihe',
-      'hugh-ray',
-      'mortal-noel',
-      'ramirez3-su',
-      'xnne-hang',
-      'jacy-walln',
-      'davis-allrick',
-      'sherlock-holmes',
-      'astrocyte',
-    ],
-  ],
-};
+const CJK_RE = /[\u3400-\u9fff]/;
 
 /**
- * Return two curated high-signal rows for the dual-row reviews marquee,
- * matched to the active locale without two-word filler or bloated SSR duplication.
- */
-export function buildCuratedMarqueeRows(locale: 'en' | 'zh' = 'en'): [Review[], Review[]] {
-  const byId = new Map(reviews.map((review) => [review.id, review]));
-  const [row1Ids, row2Ids] = MARQUEE_ROW_IDS[locale] ?? MARQUEE_ROW_IDS.en;
-  const pick = (ids: readonly string[]) =>
-    ids.map((id) => byId.get(id)).filter((item): item is Review => Boolean(item));
-  return [pick(row1Ids), pick(row2Ids)];
-}
-
-/**
- * Return curated high-signal reviews matching the active page locale,
- * keeping full review copy intact without cross-language mixing or two-word filler.
- */
-export function getCuratedReviews(locale: 'en' | 'zh' = 'en'): Review[] {
-  return buildCuratedMarqueeRows(locale)[0];
-}
-
-/**
- * Build two marquee rows from the weighted review pool.
+ * Build two deterministic, non-overlapping marquee rows from all reviews.
  *
- * Keep the order deterministic so SSR and client hydration render the same
- * review sequence. The second row is offset and reversed for visual variety.
+ * - Reads the entire `reviews` array automatically so newly appended reviews appear with zero config.
+ * - Sorts by `weight` descending (5 → 1), prioritizing reviews matching the active page locale within the same weight tier.
+ * - Splits odd/even items across Row 1 (scrolls left) and Row 2 (scrolls right) so every review appears once per loop without duplicating across rows.
+ * - Orders Row 2 so high-weight reviews are visible immediately at t=0 and enter first from the left as it scrolls right.
  */
-export function buildMarqueeRows(): [Review[], Review[]] {
-  const weighted = reviews.flatMap((r) => Array<Review>(Math.max(1, r.weight)).fill(r));
-  const midpoint = Math.ceil(weighted.length / 2);
-  const row2 = [...weighted.slice(midpoint), ...weighted.slice(0, midpoint)].reverse();
-  return [weighted, row2];
+export function buildMarqueeRows(locale: 'en' | 'zh' = 'en'): [Review[], Review[]] {
+  const sorted = reviews
+    .map((review, index) => ({
+      review,
+      index,
+      matchesLocale: locale === 'zh' ? CJK_RE.test(review.text) : !CJK_RE.test(review.text),
+      isDetailed: review.text.trim().length >= 20,
+    }))
+    .sort((a, b) => {
+      if (b.review.weight !== a.review.weight) return b.review.weight - a.review.weight;
+      if (a.matchesLocale !== b.matchesLocale) return a.matchesLocale ? -1 : 1;
+      if (a.isDetailed !== b.isDetailed) return a.isDetailed ? -1 : 1;
+      return a.index - b.index;
+    })
+    .map((entry) => entry.review);
+
+  const row1: Review[] = [];
+  const row2Raw: Review[] = [];
+  sorted.forEach((review, idx) => {
+    if (idx % 2 === 0) row1.push(review);
+    else row2Raw.push(review);
+  });
+
+  // Row 2 starts at translateX(-50%) and moves right, so items[0..3] sit in view at t=0
+  // while items[length-1], items[length-2]... enter from the left edge next.
+  const row2 =
+    row2Raw.length > 4 ? [...row2Raw.slice(0, 4), ...row2Raw.slice(4).reverse()] : row2Raw;
+
+  return [row1, row2];
 }

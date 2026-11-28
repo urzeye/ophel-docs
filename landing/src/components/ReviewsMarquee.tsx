@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { ExternalLink, Pause, Play, Star } from 'lucide-react';
 import { CHROME_STORE_URL } from '../i18n';
-import { buildCuratedMarqueeRows, type Review } from '../lib/reviews';
+import { buildMarqueeRows, type Review } from '../lib/reviews';
 
 const AVATAR_COLORS = [
   '#0f766e',
@@ -34,10 +34,6 @@ function ReviewCard({
 
   return (
     <figure className="reviews-card" aria-hidden={isClone || undefined}>
-      <blockquote className="reviews-text">
-        <p>“{review.text}”</p>
-      </blockquote>
-
       <figcaption className="reviews-card-header">
         {showFallback ? (
           <div
@@ -65,6 +61,10 @@ function ReviewCard({
           </span>
         </div>
       </figcaption>
+
+      <blockquote className="reviews-text" title={review.text}>
+        <p>{review.text}</p>
+      </blockquote>
     </figure>
   );
 }
@@ -129,7 +129,7 @@ const TRUST_COPY = {
 } as const;
 
 export function ReviewsMarquee({ title, subtitle, locale = 'en' }: ReviewsMarqueeProps) {
-  const [row1, row2] = useMemo(() => buildCuratedMarqueeRows(locale), [locale]);
+  const [row1, row2] = useMemo(() => buildMarqueeRows(locale), [locale]);
   const copy = TRUST_COPY[locale];
 
   const sectionRef = useRef<HTMLElement | null>(null);
@@ -222,14 +222,14 @@ export function ReviewsMarquee({ title, subtitle, locale = 'en' }: ReviewsMarque
         <MarqueeRow
           items={row1}
           direction="left"
-          duration={58}
+          duration={210}
           paused={isPaused}
           starLabel={copy.starLabel}
         />
         <MarqueeRow
           items={row2}
           direction="right"
-          duration={66}
+          duration={240}
           paused={isPaused}
           starLabel={copy.starLabel}
         />

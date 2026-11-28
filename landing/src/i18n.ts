@@ -298,7 +298,7 @@ const zh = {
   },
   reviews: {
     title: '高频 AI 用户的真实口碑',
-    subtitle: '精选自 Chrome 网上应用店的真实五星评价，保留完整原文',
+    subtitle: '来自 Chrome 网上应用店的真实五星评价，保留完整原文',
   },
   finalCta: {
     title: '默认本地隐私，永久开源免费',
