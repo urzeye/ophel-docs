@@ -562,6 +562,7 @@ section[id] {
   display: block;
   width: 17px;
   height: 17px;
+  border-radius: 3px;
   object-fit: contain;
 }
 
@@ -573,18 +574,18 @@ section[id] {
 .platform-chip-icon-inverted img {
   width: 15px;
   height: 15px;
+  border-radius: 0;
   filter: brightness(0) invert(1);
 }
 
 .sitepack-row {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 0.15rem;
+  align-items: flex-start;
+  gap: 0.65rem;
   border: 1px solid var(--line);
   border-radius: 0.85rem;
-  background: rgba(255, 255, 255, 0.8);
-  padding: 0.68rem 0.85rem;
+  background: rgba(255, 255, 255, 0.82);
+  padding: 0.7rem 0.8rem;
   transition:
     border-color 150ms ease,
     background-color 150ms ease;

@@ -161,22 +161,27 @@ const groupedSitePacks = categoryOrder.map((category) => ({
               <ul class="grid grid-cols-2 gap-2.5 sm:grid-cols-3 lg:grid-cols-4">
                 {group.items.map((pack) => (
                   <li class={`sitepack-row ${pack.isNew ? 'builtin-site-tile-new' : ''}`}>
-                    <div class="flex flex-wrap items-center gap-1.5">
-                      <span class="text-sm font-bold leading-snug text-[color:var(--ink-strong)]">
-                        {pack.label}
-                      </span>
-                      {pack.isNew && (
-                        <span class="shrink-0 rounded-full bg-[color:var(--accent-strong)] px-1.5 py-0.5 font-mono text-[11px] font-bold leading-none text-white">
-                          {copy.newTag}
-                        </span>
-                      )}
-                    </div>
-                    <span
-                      class="mt-0.5 block truncate font-mono text-xs leading-tight text-[color:var(--text-faint)]"
-                      title={pack.domain}
-                    >
-                      {pack.category === 'self-hosted' ? copy.selfHostedTag : pack.domain}
+                    <span class="platform-chip-icon" aria-hidden="true">
+                      <img src={pack.iconSrc} alt="" width="18" height="18" loading="lazy" />
                     </span>
+                    <div class="min-w-0 flex-1">
+                      <div class="flex flex-wrap items-center gap-1.5">
+                        <span class="text-sm font-bold leading-snug text-[color:var(--ink-strong)]">
+                          {pack.label}
+                        </span>
+                        {pack.isNew && (
+                          <span class="shrink-0 rounded-full bg-[color:var(--accent-strong)] px-1.5 py-0.5 font-mono text-[11px] font-bold leading-none text-white">
+                            {copy.newTag}
+                          </span>
+                        )}
+                      </div>
+                      <span
+                        class="mt-0.5 block truncate font-mono text-xs leading-tight text-[color:var(--text-faint)]"
+                        title={pack.domain}
+                      >
+                        {pack.category === 'self-hosted' ? copy.selfHostedTag : pack.domain}
+                      </span>
+                    </div>
                   </li>
                 ))}
               </ul>

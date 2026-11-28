@@ -227,6 +227,14 @@ const allSitePacks = getSitePacks('zh');
                 title={pack.domain}
                 class="inline-flex items-center gap-2 px-3.5 py-1.5 text-xs font-bold text-[color:var(--ink-muted)] bg-white/65 border border-[color:var(--line)] rounded-full hover:border-[color:var(--line-strong)] hover:text-[color:var(--ink-strong)] hover:bg-white transition-colors"
               >
+                <img
+                  src={pack.iconSrc}
+                  alt=""
+                  width="16"
+                  height="16"
+                  class="h-4 w-4 shrink-0 rounded-[3px] object-contain"
+                  loading="lazy"
+                />
                 <span>{pack.label}</span>
                 <span class="font-mono text-[10px] text-[color:var(--text-faint)]">
                   {pack.category === 'self-hosted' ? '自部署' : pack.domain}
